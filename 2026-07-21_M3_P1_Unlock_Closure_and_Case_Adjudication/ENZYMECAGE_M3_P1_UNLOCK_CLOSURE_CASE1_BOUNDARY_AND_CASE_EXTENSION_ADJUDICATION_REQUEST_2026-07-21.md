@@ -154,9 +154,9 @@ db875a42c9e4fe79a4490d974dbba6c2a7778ef092844787559f5f26166e6d26
 
 本轮没有更新资产，因此不重复上传或重新打包。
 
-## 五、6.4 微生物侧简要反馈（不阻塞 M3）
+## 五、6.4 微生物侧最新反馈（独立于 M3，不阻塞 M3）
 
-按老师已裁定口径复核，当前 enzyme→organism 数据源状态为：
+按老师 7 月 18 日对 MT-D1--D8 的裁定，当前 enzyme→organism 数据源口径为：
 
 ```text
 UniProt reviewed organism + NCBI taxon ID：主证据
@@ -165,8 +165,14 @@ TrEMBL unreviewed：v1 默认不纳入，除非后续单独授权并带降级标
 ```
 
 已接受 D5 证据为 UniProt 10/10 精确返回；KEGG 对十个固定 UID 的映射呈
-7个单映射、1个零映射、2个多映射。不得把 KEGG 多命中折叠成唯一宿主，也
+7 个单映射、1 个零映射、2 个多映射。不得把 KEGG 多命中折叠成唯一宿主，也
 不输出未经校准的 `organism_confidence` float。
+
+老师已于 7 月 18 日另行授权 M4a（`Enzyme2OrganismTool` +
+`OrganismAggregator`）启动。当前授权范围内的实现、离线测试和 M4a-4 联调
+基准证据已完成本地审计，状态为“可提交老师审阅”，不是“老师已验收 M4a”。
+具体实现、基准结果和待裁定问题由独立的 M4a 教师材料提交，不并入 M3
+解冻条件。
 
 metaTraits v1 allowlist 校对与老师7月18日裁定一致：
 
@@ -179,9 +185,15 @@ metaTraits v1 allowlist 校对与老师7月18日裁定一致：
 | biofilm | 不使用；无数据时标 unknown |
 | safety/pathogenicity | soft + 人工复核标记 |
 
-当前所有可用 trait 均为 `soft + uncertainty_flag`，不执行不可逆 hard
-剔除。专家 allowlist、方向和阈值尚未确认，M4b/M4c 未因本文件获得授权；
-M5 节点继续占位，不阻塞 M3。
+上述为老师裁定的 v1 trait 政策；当前 M4a 不消费 trait，也没有据此执行过滤。
+所有可用 trait 均为 `soft + uncertainty_flag`，不执行不可逆 hard 剔除；
+专家 hard allowlist、方向和阈值仍待确认。M4b/M4c 尚未获得授权，porTraits、
+bulk observation 抓取和模型训练均未启动。
+
+当前 M4a 尚待老师裁定的事项包括：A/B/C 排序公式及稳定 tie-break、snapshot
+合同草案、维护方邮件、最终 checkpoint 加载策略、零额外本地模型时的共存证据
+解释，以及 exact-tax-ID 与 species/同物种其他菌株的 trait 归因规则。以上事项
+不阻塞本轮 M3-P1 解冻，也不构成微生物完整链路已经完成的声明。
 
 ## 六、Case 1 冻结后生物学边界复核
 
