@@ -1,5 +1,19 @@
 # EnzymeCAGE Teacher Deliverables
 
+## Current hard prerequisite return — 2026-07-24
+
+The original 2026-07-22 RHEA:11880 fairness clarification requested for
+teacher-side byte alignment is placed directly in the repository root:
+
+- [`TEACHER_REPLY_M3_CASE1_RHEA11880_FAIRNESS_AND_KNOWN_POSITIVE_EVIDENCE_2026-07-22.md`](TEACHER_REPLY_M3_CASE1_RHEA11880_FAIRNESS_AND_KNOWN_POSITIVE_EVIDENCE_2026-07-22.md)
+- required SHA256:
+  `80a3be0c8507a6cbf4f318de0c4735aa04d7c5106c2cc759fb5af7ee9ea356c0`
+- path index, independent audit and delivery hashes:
+  [`2026-07-24_M3_RHEA11880_Clarification_Original_Byte_Resubmission/`](2026-07-24_M3_RHEA11880_Clarification_Original_Byte_Resubmission/)
+
+The returned authority file is byte-identical to the original referenced by
+`case_1_rhea_46976.json`. It was not reconstructed, edited or reformatted.
+
 ## Current submission — 2026-07-23
 
 Teacher-requested files are placed directly in the repository root:
@@ -18,9 +32,10 @@ Individual task audits and the final pre-submission audit are under
 The submission hash manifest is
 [`2026-07-23_Enzyme_Tasks_1_2_3_5_Submission/DELIVERABLE_SHA256SUMS.txt`](2026-07-23_Enzyme_Tasks_1_2_3_5_Submission/DELIVERABLE_SHA256SUMS.txt).
 
-Tasks 1, 2, 3 and the Task 5 shortlist passed local audit. This repository
-submission does not claim teacher acceptance, official challenge-case
-promotion, D4 completion, Route-B/Route-C mutation or a new model run.
+Tasks 1–6 were subsequently accepted by the teacher on 2026-07-23. Task 5
+remains within candidate-screening scope and still needs separate promotion
+and asset adjudication. This repository does not claim official challenge-case
+promotion, D4 completion, Route-B/Route-C mutation or a student-side model run.
 
 Earlier dated folders and commits are retained unchanged as historical
 submissions.
