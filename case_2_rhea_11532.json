@@ -1,0 +1,85 @@
+{
+  "reaction_sha256": "19fe5b26e16a1a8ca60628be8718d3162cabded0299e2276a8503aec787bcf15",
+  "rhea_master_id": "11532",
+  "ec": "1.4.3.19",
+  "canonical_reaction_smiles": "NCC(=O)O.O.O=O>>N.O=CC(=O)O.OO",
+  "difficulty_tier": "MEDIUM_6_TO_30",
+  "route_used": "B-primary",
+  "wastewater_status": "NOT_ESTABLISHED",
+  "role": "ENZYMECAGE_RANKING_CAPABILITY_MEASUREMENT",
+  "B_pool_uids": [
+    "A0A095C6S0",
+    "A0A499UB99",
+    "C4R4G9",
+    "O31616",
+    "P80324",
+    "Q5L2C2",
+    "Q7X2D3",
+    "Q99042",
+    "Q9Y7N4",
+    "S5FMM4"
+  ],
+  "C_pool_uids": [
+    "A0A095C6S0",
+    "A0A499UB99",
+    "C4R4G9",
+    "C4R6B0",
+    "J9VRT1",
+    "O31616",
+    "P80324",
+    "Q1AYM8",
+    "Q5L2C2",
+    "Q75WF1",
+    "Q7X2D3",
+    "Q8VPD4",
+    "Q99042",
+    "Q9X7P6",
+    "Q9Y7N4",
+    "S4S6Z0",
+    "S5FMM4"
+  ],
+  "known_positive_uids": [
+    "S5FMM4",
+    "Q5L2C2",
+    "O31616",
+    "Q55710",
+    "Q3M859",
+    "Q8YRC9",
+    "P33642",
+    "Q88Q83"
+  ],
+  "historical_d4_ranks": {
+    "S5FMM4": 8,
+    "Q5L2C2": 9,
+    "O31616": 10,
+    "Q55710": 17,
+    "Q3M859": 21,
+    "Q8YRC9": 25,
+    "P33642": 33,
+    "Q88Q83": 34
+  },
+  "mechanism_self_review": "老师指出两个污水 medium 候选的正确 UID 均未入池，并允许从 P0 非污水 `MEDIUM_6_TO_30` 中选择 B 或 C 能召回正确 UID 的反应。Rhea:11532 的 best rank=8，难度标签真实为 medium；B=10、C=17，且两路各召回 3 个正确 UID，因此不需要人为调整难度，也不需要虚构污水关联。\n\n反应把 glycine 氧化为 glyoxylate，同时释放 NH4(+) 并将 O2 还原为 H2O2，符合 EC 1.4.3.19 的以氧为受体的氨基酸氧化脱氨类型。Rhea、EC、SMILES 的反应物和产物一致，未发现方向或计量冲突。",
+  "frozen_boundary": "三个冻结案例中唯一具备 EnzymeCAGE 排序统计意义的案例；B pool = 10、C pool = 17，两路各召回 3/8 已知正例。只按实际 B-primary pool 进行后续排序，不把 C 合并入 B。",
+  "evidence_provenance": {
+    "rhea140_hashes": {
+      "rhea-directions.tsv": "a10e61027681de822fd2ad91d0c2a7b66c92a55ee770974c1816b4c335ef771b",
+      "rhea2ec.tsv": "5a90d95d4aab686b4a0c46db6495b89c6431696f4bb351a5a63e4c84a3187d44",
+      "rhea2uniprot_sprot.tsv": "89efa346087108e8b0abbeb3d8739a15d1979951bcfa9b42fa01d8786c5d827e",
+      "rhea-reaction-smiles.tsv": "34f7fb5eff7d230c2d0243b2a669b236b075a35ffda76ebe0137b0f5dd374e02"
+    },
+    "b1_evidence_ref": {
+      "package": "03_HPC_Returned_Result_Summaries/m3_p0b1_b_query_leakage_control_fair_bc_correction_20260717",
+      "manifest_sha256": "71360777df7a0b262e810ea60475e1fb73aba2cb840054079a596237c76510fb",
+      "query_route_results.csv_sha256": "48d49ada8950db4149210aeadea887feae1b081fca20ea458291bb2fa2d99b6d",
+      "route_pool_membership.csv.gz_sha256": "6e9eed2ba02e2821581c4f78d38fbbcea0c1b060c365140de4cc206ee997dd5f",
+      "route_c_top10_neighbors.csv_sha256": "0f71c00dd67ac0c6c5ba18c5758ade28658f35a6350fe72be96d581c9727bb1a"
+    },
+    "a1a_evidence_ref": {
+      "package": "03_HPC_Returned_Result_Summaries/m3_p0a1a_decision_matrix_distribution_final_package_correction_20260717",
+      "manifest_sha256": "336adc68b252c1488de2af3d107ccece5f83f8f3624412b1035f0962fb4870ce",
+      "p0_reaction_difficulty_inventory.csv_sha256": "9fe2e43c3951901f123c11385779f039cfa324f9fac1b268bb6261e37cea09c7",
+      "p0_positive_rank_rows.csv_sha256": "9dc5f38378f32338144b5cb6bd14376ec3da38eb7d912dc56b59a1be4e0d96b2",
+      "wastewater_candidate_inventory.csv_sha256": "85bf78ba88bca6cdcbe8f36e40e89e6fd016a245889caf9537ede9b95dabb90f"
+    }
+  }
+}
