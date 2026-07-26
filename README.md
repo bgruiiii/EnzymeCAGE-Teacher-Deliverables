@@ -1,5 +1,21 @@
 # EnzymeCAGE Teacher Deliverables
 
+## Current route adjudication request — 2026-07-26
+
+The three-route reaction-predictor pilot has passed answer-key unlock,
+deterministic scoring and independent recomputation. No final route or live
+implementation is claimed.
+
+- teacher-facing decision request:
+  [`M3_P1_2_1_REACTION_PREDICTOR_ROUTE_ADJUDICATION_REQUEST_2026-07-26.md`](M3_P1_2_1_REACTION_PREDICTOR_ROUTE_ADJUDICATION_REQUEST_2026-07-26.md)
+- self-contained evidence package, route audits, machine reports and hashes:
+  [`2026-07-26_M3_P1_2_1_Reaction_Predictor_Route_Adjudication/`](2026-07-26_M3_P1_2_1_Reaction_Predictor_Route_Adjudication/)
+
+Current boundary: Route A is contract-incompatible, Route B is product-only,
+Route C-exact is a known-Rhea lookup baseline and C-generic is not ready.
+`reaction_prediction_node` remains unchanged pending biological/teacher
+adjudication.
+
 ## Current hard prerequisite return — 2026-07-24
 
 The original 2026-07-22 RHEA:11880 fairness clarification requested for
