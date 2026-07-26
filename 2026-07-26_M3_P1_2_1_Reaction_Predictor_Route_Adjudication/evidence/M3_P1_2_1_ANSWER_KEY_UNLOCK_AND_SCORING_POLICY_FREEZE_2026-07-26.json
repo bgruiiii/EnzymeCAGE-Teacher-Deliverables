@@ -1,0 +1,220 @@
+{
+  "policy_version": "m3-p1-2-1-answer-key-unlock-and-scoring-policy-v0.1",
+  "frozen_at_utc": "2026-07-26T08:50:58Z",
+  "frozen_before_answer_key_content_access": true,
+  "answer_key_content_access_at_freeze": "NOT_READ_OR_PARSED",
+  "purpose": "Freeze the evidence identities, answer-key unlock gate, and deterministic target-scoring rules before the answer key is opened.",
+  "authority_contract": {
+    "path": "01_Path_Contract_Objective/M3_P1_2_1_Reaction_Predictor_Pilot_Contract_2026-07-24/P1_2_1_REACTION_PREDICTOR_THREE_ROUTE_PREAUDIT_AND_UNIFIED_PILOT_CONTRACT.md",
+    "sha256": "4c6918526631944d19dd6b0379ce7646f654803cc4347ef651aaca36f27a7714"
+  },
+  "frozen_input": {
+    "path": "01_Path_Contract_Objective/M3_P1_2_1_Reaction_Predictor_Pilot_Contract_2026-07-24/UNIFIED_PILOT_INPUTS.json",
+    "sha256": "54861e7d7c4346fd4521d6dccfaea2e3fb4ae257c1c3631d4e7be60c3ef4cd3d",
+    "valid_case_ids": [
+      "RP-P01",
+      "RP-P02",
+      "RP-P03",
+      "RP-P04",
+      "RP-P05",
+      "RP-P06"
+    ],
+    "invalid_case_ids": [
+      "RP-N01"
+    ]
+  },
+  "sealed_answer_key_identity": {
+    "path": "01_Path_Contract_Objective/M3_P1_2_1_Reaction_Predictor_Pilot_Contract_2026-07-24/UNIFIED_PILOT_ANSWER_KEY.json",
+    "expected_sha256": "6f2d377afa443aae9806b78ba883dc6a12aae9426964aa11e2d82efc3cebd156",
+    "expected_bytes": 4971
+  },
+  "route_evidence_freeze": {
+    "A": {
+      "archive": "03_HPC_Returned_Result_Summaries/enzymecage_m3_p1_2_1a_biotransformer_envimicro_one_step_pilot_rerun1_20260724.tar.gz",
+      "archive_sha256": "48f8253b3526dbfed99d731fcc40326361fc6f10fdd7133a84181c27fddc2b8a",
+      "local_audit": "04_Local_Review_Audits/ENZYMECAGE_M3_P1_2_1A_REACTION_PREDICTOR_ROUTE_A_BIOTRANSFORMER_ENVIRONMENTAL_MICROBIAL_RERUN1_V0_5_RETURN_LOCAL_AUDIT_2026-07-24.md",
+      "local_audit_sha256": "409db5adda4bd7b4ef180770a81f9ba0e70b4cc7c3413b17ef7df6432e521225",
+      "frozen_status": "RAW_VENDOR_EXECUTION_PASS_UNIFIED_CONTRACT_INCOMPATIBLE",
+      "native_output": "product_only_rows",
+      "valid_case_raw_rows": 26,
+      "valid_case_unique_product_strings_within_case": 24,
+      "ranking_status": "NO_TRACEABLE_NATIVE_RANK",
+      "confidence_status": "NO_EXPORTED_TRACEABLE_SCORE"
+    },
+    "B": {
+      "archive": "03_HPC_Returned_Result_Summaries/enzymecage_m3_p1_2_1b_three_model_rdkit_technical_validation_20260726.tar.gz",
+      "archive_sha256": "4ce4b3955856c8abe29d3dbb86f8892e228b65bffb71a1d5b63dc70627f03856",
+      "local_audit": "04_Local_Review_Audits/ENZYMECAGE_M3_P1_2_1B_THREE_MODEL_RDKIT_TECHNICAL_VALIDATION_HPC_RETURN_LOCAL_AUDIT_2026-07-26.md",
+      "local_audit_sha256": "b5db2d8db2584d7c953a1d232add0e86b77f7c262fdaeab49648a4c1655a51c8",
+      "frozen_status": "TECHNICAL_VALIDATION_PASS_NOT_TARGET_SCORED",
+      "validated_prediction_count": 59,
+      "source_groups": [
+        "chatgpt",
+        "deepseek",
+        "qwen"
+      ],
+      "ranking_status": "USE_EACH_SOURCE_CASE_NATIVE_RANK_WITHOUT_CROSS_MODEL_MERGE_OR_RERANK",
+      "native_output": "product_only",
+      "reaction_completeness": "partial_unbalanced"
+    },
+    "C_exact": {
+      "archive": "03_HPC_Returned_Result_Summaries/enzymecage_m3_p1_2_1c_rhea_exact_structure_lookup_pilot_rerun2_20260726.tar.gz",
+      "archive_sha256": "2998bee8b101c20a34872ef2ac8450629d72b46e756cbb0e3da6c515654dffba",
+      "local_audit": "04_Local_Review_Audits/ENZYMECAGE_M3_P1_2_1C_RHEA_EXACT_STRUCTURE_LOOKUP_PILOT_RERUN2_HPC_RETURN_LOCAL_AUDIT_2026-07-26.md",
+      "local_audit_sha256": "2ff3de4a9da5e24a5275a9fe1ad36092f76dd6310f44a918a78858c35210b8c4",
+      "frozen_status": "TECHNICALLY_COMPLETE_NOT_TARGET_SCORED",
+      "predicted_reactions_sha256": "4980a9b7ebcfe7bad8f34cfee118fc8a7af7d38941d0dacad569c7b84ae580f1",
+      "validated_prediction_count": 12,
+      "ranking_status": "NUMERIC_DIRECTED_RHEA_ID_ASCENDING_WITHIN_CASE",
+      "native_output": "full_rhea_reaction"
+    },
+    "C_generic": {
+      "frozen_status": "NOT_READY",
+      "scoring_status": "NOT_SCORED"
+    }
+  },
+  "unlock_gate": {
+    "required_checks": [
+      "authority contract identity matches",
+      "frozen input identity matches",
+      "answer key identity and byte count match without parsing content",
+      "Route A archive and audit identities match",
+      "Route B archive and audit identities match",
+      "Route C-exact archive and audit identities match",
+      "Route A raw output remains explicitly contract-incompatible for ranking",
+      "Route B remains separated by model source",
+      "C-generic remains NOT_READY"
+    ],
+    "failure_action": "FAIL_CLOSED_DO_NOT_OPEN_ANSWER_KEY",
+    "success_action": "ANSWER_KEY_CONTENT_MAY_BE_READ_ONCE_FOR_DETERMINISTIC_SCORING"
+  },
+  "runtime_lock": {
+    "python": "3.12.x",
+    "rdkit": "2026.03.3",
+    "canonicalization": {
+      "molecule_parse": "Chem.MolFromSmiles with sanitization",
+      "molecule_output": "Chem.MolToSmiles(canonical=true,isomericSmiles=true)",
+      "stereochemistry": "RETAIN",
+      "formal_charge": "RETAIN",
+      "fragment_handling": "COMPARE_EACH_DOT_SEPARATED_MOLECULE_COMPONENT",
+      "strict_match_relaxations": "NONE"
+    }
+  },
+  "scoring_units": {
+    "Route_A": "one unranked product-set result per case",
+    "Route_B": "one independently scored model-source result per case; no pooled Route-B ranking",
+    "Route_C_exact": "one numerically ordered directed-Rhea result per case",
+    "Route_C_generic": "not scored"
+  },
+  "diagnostic_product_scoring": {
+    "target_definition": "Use only diagnostic target product SMILES present in the sealed answer key.",
+    "strict_candidate_match": "A target is recovered only when its canonical isomeric SMILES exactly equals a canonical molecule component on the prediction product side.",
+    "left_side_target": "DOES_NOT_COUNT",
+    "standardized_or_relaxed_match": "NOT_COMPUTED_IN_PRIMARY_SCORE",
+    "Route_A": {
+      "eligible_metric": "UNRANKED_RAW_PRODUCT_SET_RECOVERY",
+      "candidate_construction": "For each case, canonicalize every nonempty vendor CSV product SMILES row, deduplicate canonical products, and test the complete frozen set.",
+      "top_k_metrics": "NOT_SCOREABLE_CONTRACT_INCOMPATIBLE",
+      "prohibited": [
+        "using CSV row order as rank",
+        "using Reaction ID order as rank",
+        "using 0.5 threshold or occurrence ratio as confidence",
+        "post-answer reranking or truncation"
+      ]
+    },
+    "Route_B": {
+      "eligible_metrics": [
+        "TOP_1_RECOVERY",
+        "TOP_3_RECOVERY",
+        "TOP_5_RECOVERY"
+      ],
+      "candidate_construction": "Use each model source's frozen case-local rank exactly as returned.",
+      "cross_model_aggregation": "PROHIBITED"
+    },
+    "Route_C_exact": {
+      "eligible_metrics": [
+        "TOP_1_RECOVERY",
+        "TOP_3_RECOVERY",
+        "TOP_5_RECOVERY"
+      ],
+      "candidate_construction": "Use the frozen numeric directed Rhea ID ascending order."
+    }
+  },
+  "direction_scoring": {
+    "definition": "Direction passes only when the frozen input substrate is on the left and an answer-key diagnostic product is on the right.",
+    "nitrobenzene_rule": "RP-P06 is evaluated only in the RHEA:52886 degradation direction; reverse-direction recovery is direction_fail.",
+    "case_denominator": "six valid cases per independently scored route or model source",
+    "Route_A_limitation": "Only product-side diagnostic recovery can be reported; complete biochemical direction is NOT_SCOREABLE because no full reaction was emitted.",
+    "Route_B_limitation": "Product-side direction recovery is scoreable, but complete biochemical direction is not.",
+    "Route_C_exact": "Both product-side direction and complete directed-reaction equivalence are scoreable."
+  },
+  "full_reaction_scoring": {
+    "strict_equivalence": "Canonicalize every molecule component on each side with stereochemistry and charge retained; compare side-specific sorted multisets including duplicate multiplicity.",
+    "side_swapping": "PROHIBITED",
+    "currency_molecule_removal": "PROHIBITED_IN_PRIMARY_SCORE",
+    "answer_rhea_id_equivalence": "A predicted directed Rhea ID may also count as an identifier-level full-reaction hit only when it equals an accepted directed Rhea ID from the answer key; master-ID-only or reverse-direction equality does not override direction.",
+    "product_only_eligibility": "INELIGIBLE",
+    "Route_A": "NOT_SCOREABLE_NO_FULL_REACTION",
+    "Route_B": "NOT_SCOREABLE_PRODUCT_ONLY_PARTIAL_UNBALANCED",
+    "Route_C_exact": "SCORE_STRICT_STRUCTURE_AND_DIRECTED_RHEA_IDENTIFIER_SEPARATELY"
+  },
+  "rhea_ec_and_candidate_pool_scoring": {
+    "frozen_assets": {
+      "rhea_reactions": {
+        "path": "data/raw/rhea/RHEA-140_2026-01-21/tsv/rhea-reaction-smiles.tsv",
+        "sha256": "34f7fb5eff7d230c2d0243b2a669b236b075a35ffda76ebe0137b0f5dd374e02"
+      },
+      "rhea_directions": {
+        "path": "data/raw/rhea/RHEA-140_2026-01-21/tsv/rhea-directions.tsv",
+        "sha256": "a10e61027681de822fd2ad91d0c2a7b66c92a55ee770974c1816b4c335ef771b"
+      },
+      "rhea_to_ec": {
+        "path": "data/raw/rhea/RHEA-140_2026-01-21/tsv/rhea2ec.tsv",
+        "sha256": "5a90d95d4aab686b4a0c46db6495b89c6431696f4bb351a5a63e4c84a3187d44"
+      },
+      "rhea_to_uniprot_sprot": {
+        "path": "data/raw/rhea/RHEA-140_2026-01-21/tsv/rhea2uniprot_sprot.tsv",
+        "sha256": "89efa346087108e8b0abbeb3d8739a15d1979951bcfa9b42fa01d8786c5d827e"
+      },
+      "rhea_to_uniprot_trembl": {
+        "path": "data/raw/rhea/RHEA-140_2026-01-21/tsv/rhea2uniprot_trembl.tsv.gz",
+        "sha256": "efd3c54016f28316a1ea0b484ae7241921126dc6c40d7fba269bfcb0f59573a0"
+      },
+      "d4_uid_asset_availability": {
+        "path": "03_HPC_Returned_Result_Summaries/m3_agent_data_assets/assets/d4/uid_asset_availability.csv.gz",
+        "sha256": "28a1f88165c47e80d1774c9f6fe6a259c1e1a59b70ac343bdd4baf8b8f19e829",
+        "complete_uid_count": 107705
+      }
+    },
+    "direct_rhea_recovery": "Score only an emitted directed Rhea identifier that matches an answer-key accepted directed Rhea identifier.",
+    "ec_recovery": "Map the recovered directed Rhea identifier to its Rhea master ID and then through frozen rhea2ec.tsv; compare with non-null answer-key EC values. Preserve and report EC-null honestly.",
+    "candidate_pool_recoverability": "For a correctly recovered directed Rhea identifier, map its master ID to the union of frozen Swiss-Prot and TrEMBL UIDs, intersect with complete_d4_enzyme_assets=True, and report whether the resulting pool is nonempty plus its size.",
+    "candidate_pool_semantics": "A nonempty pool means the reaction can technically enter the frozen D4-valid EnzymeCAGE ranking domain; it does not mean a correct enzyme is present or ranked first.",
+    "untied_technical_pool": "Separately report whether any emitted Rhea candidate has a nonempty D4-valid pool, but never count this as target recovery.",
+    "Route_A": "NOT_DIRECTLY_RECOVERABLE_NO_RHEA_ID_OR_FULL_REACTION",
+    "Route_B": "NOT_DIRECTLY_RECOVERABLE_NO_RHEA_ID_AND_PRODUCT_ONLY",
+    "Route_C_exact": "ELIGIBLE"
+  },
+  "invalid_input_safety": {
+    "pass_condition": "RP-N01 yields no prediction and is rejected as invalid input.",
+    "denominator": "one invalid case per route or model source"
+  },
+  "reporting_rules": {
+    "always_report_numerator_and_denominator": true,
+    "no_single_composite_winner_score": true,
+    "no_route_selection_from_scoring_alone": true,
+    "no_scientific_accuracy_claim_from_parseability_or_lookup_coverage": true,
+    "no_post_unlock_prediction_edit": true,
+    "no_post_unlock_rank_edit": true,
+    "no_post_unlock_policy_edit": true,
+    "answer_key_schema_adaptation": "Only field-name parsing needed to implement these frozen semantics is allowed; semantic rules may not change."
+  },
+  "required_adversarial_tests": [
+    "mutated prediction identity is rejected",
+    "mutated answer-key identity is rejected",
+    "mutated rank changes or invalid rank are rejected",
+    "reversed direction does not score as directed recovery",
+    "product-only output cannot score as full-reaction match",
+    "changed scoring-policy identity is rejected"
+  ]
+}

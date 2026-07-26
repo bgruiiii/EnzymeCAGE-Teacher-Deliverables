@@ -1,0 +1,1968 @@
+{
+  "adversarial_tests": {
+    "pass_count": 6,
+    "test_count": 6,
+    "tests": [
+      {
+        "detail": "one-byte policy mutation changes SHA256",
+        "pass": true,
+        "test": "changed_scoring_policy_identity_rejected"
+      },
+      {
+        "detail": "one-byte answer-key mutation changes SHA256",
+        "pass": true,
+        "test": "changed_answer_key_identity_rejected"
+      },
+      {
+        "detail": "one prediction mutation changes deterministic body hash",
+        "pass": true,
+        "test": "changed_prediction_identity_detected"
+      },
+      {
+        "detail": "rank 1 changed to 2 creates nonconsecutive ranks",
+        "pass": true,
+        "test": "mutated_rank_rejected"
+      },
+      {
+        "detail": "side-specific multiset comparison rejects reversed reaction",
+        "pass": true,
+        "test": "reversed_direction_not_equal"
+      },
+      {
+        "detail": "eligibility gate rejects product-only even if strings were supplied",
+        "pass": true,
+        "test": "product_only_not_full_reaction"
+      }
+    ]
+  },
+  "answer_key_unlock": {
+    "answer_key_bytes": 4971,
+    "answer_key_sha256": "6f2d377afa443aae9806b78ba883dc6a12aae9426964aa11e2d82efc3cebd156",
+    "policy_frozen_before_unlock": true,
+    "policy_sha256": "d47be0cad2419174bd5775088c75582025ec15f6756cba3afd8ca345240148b4",
+    "status": "AUTHORIZED_AND_OPENED_AFTER_GATE_PASS"
+  },
+  "denominators": {
+    "diagnostic_product_targets": 7,
+    "invalid_cases": 1,
+    "valid_cases": 6
+  },
+  "input_identities": {
+    "answer_key_sha256": "6f2d377afa443aae9806b78ba883dc6a12aae9426964aa11e2d82efc3cebd156",
+    "frozen_input_sha256": "54861e7d7c4346fd4521d6dccfaea2e3fb4ae257c1c3631d4e7be60c3ef4cd3d",
+    "policy_sha256": "d47be0cad2419174bd5775088c75582025ec15f6756cba3afd8ca345240148b4",
+    "route_A_archive_sha256": "48f8253b3526dbfed99d731fcc40326361fc6f10fdd7133a84181c27fddc2b8a",
+    "route_B_archive_sha256": "4ce4b3955856c8abe29d3dbb86f8892e228b65bffb71a1d5b63dc70627f03856",
+    "route_C_exact_archive_sha256": "2998bee8b101c20a34872ef2ac8450629d72b46e756cbb0e3da6c515654dffba",
+    "route_C_exact_prediction_body_hash": "f463c5a516c9ffc80fc0e565a2cf000578df6ac260894aa356d28b043e9ca8f2"
+  },
+  "interpretation_limits": [
+    "This is a six-valid-case sanity/challenge pilot whose answers may occur in public model training data.",
+    "Route C-exact is database lookup, not novel reaction generalization.",
+    "Route A has no defensible native rank or confidence and is not Top-K scored.",
+    "Route B model/version labels are user supplied and not platform-attested.",
+    "Product recovery does not equal full biochemical reaction recovery.",
+    "A nonempty D4-valid enzyme pool does not establish that a correct enzyme is present or ranked first.",
+    "No final route selection is made by this scoring report."
+  ],
+  "report_version": "m3-p1-2-1-three-route-target-scoring-v0.1",
+  "route_A": {
+    "candidate_pool_recoverability": {
+      "status": "NOT_DIRECTLY_RECOVERABLE"
+    },
+    "direct_rhea_recovery": {
+      "status": "NOT_SCOREABLE_NO_RHEA_ID_OR_FULL_REACTION"
+    },
+    "ec_recovery": {
+      "status": "NOT_DIRECTLY_RECOVERABLE"
+    },
+    "formal_unranked_strict_diagnostic_product_recovery": {
+      "case_level": null,
+      "product_level": null,
+      "status": "NOT_SCOREABLE_FAIL_CLOSED_RAW_PRODUCT_PARSE_FAILURE"
+    },
+    "full_reaction_structure_match": {
+      "status": "NOT_SCOREABLE_NO_FULL_REACTION"
+    },
+    "invalid_input_rejection": {
+      "denominator": 1,
+      "evidence": {
+        "exit_code": 1,
+        "vendor_csv_present": false
+      },
+      "numerator": 1
+    },
+    "parsable_subset_diagnostic_not_formal_score": {
+      "case_level": {
+        "denominator": 6,
+        "numerator": 4
+      },
+      "product_level": {
+        "denominator": 7,
+        "numerator": 4
+      },
+      "warning": "Unparseable raw products were not repaired and were excluded only from this explicitly non-formal diagnostic."
+    },
+    "per_case": [
+      {
+        "canonical_unique_product_count": 5,
+        "case_id": "RP-P01",
+        "matched_diagnostic_products": [],
+        "raw_products": [
+          {
+            "canonical_product": "CCOP(=O)(OCC)Oc1ccc([N+](=O)[O-])c(O)c1O",
+            "product_smiles": "CCOP(=O)(OCC)OC1=C(C(=C([N+](=O)[O-])C=C1)O)O",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0654",
+            "row_index": 1,
+            "vendor_rule": "EAWAG_RULE_BT0005_PATTERN3"
+          },
+          {
+            "canonical_product": "CCOP(=O)(OCC)Oc1ccc(O)c(O)c1",
+            "product_smiles": "CCOP(=O)(OCC)OC1=CC(=C(C=C1)O)O",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0683",
+            "row_index": 2,
+            "vendor_rule": "EAWAG_RULE_BT0042"
+          },
+          {
+            "canonical_product": "CCOP(=O)(OCC)Oc1ccc(N)cc1",
+            "product_smiles": "CCOP(=O)(OCC)OC1=CC=C(N)C=C1",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0716",
+            "row_index": 3,
+            "vendor_rule": "EAWAG_RULE_BT0080"
+          },
+          {
+            "canonical_product": "CCOP(=O)(O)OCC",
+            "product_smiles": "CCOP(=O)(OCC)O",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0724",
+            "row_index": 4,
+            "vendor_rule": "EAWAG_RULE_BT0104_PATTERN2"
+          },
+          {
+            "canonical_product": "O=[N+]([O-])c1ccc(O)cc1",
+            "product_smiles": "C1(=CC=C([N+](=O)[O-])C=C1)O",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0724",
+            "row_index": 5,
+            "vendor_rule": "EAWAG_RULE_BT0104_PATTERN2"
+          }
+        ],
+        "raw_row_count": 5,
+        "rdkit_parse_pass_count": 5,
+        "target_diagnostic_products": [
+          "CCOP(=O)([O-])OCC",
+          "O=[N+]([O-])c1ccc([O-])cc1"
+        ],
+        "unranked_raw_product_set_hit": false
+      },
+      {
+        "canonical_unique_product_count": 2,
+        "case_id": "RP-P02",
+        "matched_diagnostic_products": [
+          "Oc1cccc2ccccc12"
+        ],
+        "raw_products": [
+          {
+            "canonical_product": "CN",
+            "product_smiles": "CN",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0892",
+            "row_index": 1,
+            "vendor_rule": "EAWAG_RULE_BT0389"
+          },
+          {
+            "canonical_product": "Oc1cccc2ccccc12",
+            "product_smiles": "OC1=C2C=CC=CC2=CC=C1",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0892",
+            "row_index": 2,
+            "vendor_rule": "EAWAG_RULE_BT0389"
+          }
+        ],
+        "raw_row_count": 2,
+        "rdkit_parse_pass_count": 2,
+        "target_diagnostic_products": [
+          "Oc1cccc2ccccc12"
+        ],
+        "unranked_raw_product_set_hit": true
+      },
+      {
+        "canonical_unique_product_count": 6,
+        "case_id": "RP-P03",
+        "matched_diagnostic_products": [
+          "CCNc1nc(O)nc(NC(C)C)n1"
+        ],
+        "raw_products": [
+          {
+            "canonical_product": "CCNc1ncnc(NC(C)C)n1",
+            "product_smiles": "CCNC1=NC=NC(NC(C)C)=N1",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0671",
+            "row_index": 1,
+            "vendor_rule": "EAWAG_RULE_BT0029"
+          },
+          {
+            "canonical_product": "CC=O",
+            "product_smiles": "CC=O",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0699",
+            "row_index": 2,
+            "vendor_rule": "EAWAG_RULE_BT0063_PATTERN2"
+          },
+          {
+            "canonical_product": "CC(C)Nc1nc(N)nc(Cl)n1",
+            "product_smiles": "NC1=NC(Cl)=NC(NC(C)C)=N1",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0699",
+            "row_index": 3,
+            "vendor_rule": "EAWAG_RULE_BT0063_PATTERN2"
+          },
+          {
+            "canonical_product": "CCNc1nc(N)nc(Cl)n1",
+            "product_smiles": "CCNC1=NC(Cl)=NC(N)=N1",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0699",
+            "row_index": 4,
+            "vendor_rule": "EAWAG_RULE_BT0063_PATTERN2"
+          },
+          {
+            "canonical_product": "CC(C)=O",
+            "product_smiles": "C(C)(C)=O",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0699",
+            "row_index": 5,
+            "vendor_rule": "EAWAG_RULE_BT0063_PATTERN2"
+          },
+          {
+            "canonical_product": "CCNc1nc(O)nc(NC(C)C)n1",
+            "product_smiles": "CCNC1=NC(=NC(NC(C)C)=N1)O",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0917",
+            "row_index": 6,
+            "vendor_rule": "EAWAG_RULE_BT0330_PATTERN4"
+          }
+        ],
+        "raw_row_count": 6,
+        "rdkit_parse_pass_count": 6,
+        "target_diagnostic_products": [
+          "CCNc1nc(O)nc(NC(C)C)n1"
+        ],
+        "unranked_raw_product_set_hit": true
+      },
+      {
+        "canonical_unique_product_count": 2,
+        "case_id": "RP-P04",
+        "matched_diagnostic_products": [
+          "OCCCl"
+        ],
+        "raw_products": [
+          {
+            "canonical_product": "OCCCl",
+            "product_smiles": "C(CCl)O",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0662",
+            "row_index": 1,
+            "vendor_rule": "EAWAG_RULE_BT0022_PATTERN1"
+          },
+          {
+            "canonical_product": "CCCl",
+            "product_smiles": "ClCC",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0671",
+            "row_index": 2,
+            "vendor_rule": "EAWAG_RULE_BT0029"
+          }
+        ],
+        "raw_row_count": 2,
+        "rdkit_parse_pass_count": 2,
+        "target_diagnostic_products": [
+          "OCCCl"
+        ],
+        "unranked_raw_product_set_hit": true
+      },
+      {
+        "canonical_unique_product_count": 4,
+        "case_id": "RP-P05",
+        "matched_diagnostic_products": [
+          "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+        ],
+        "raw_products": [
+          {
+            "canonical_product": "Cn1c(=O)[nH]c2ncn(C)c2c1=O",
+            "product_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0699",
+            "row_index": 1,
+            "vendor_rule": "EAWAG_RULE_BT0063_PATTERN2"
+          },
+          {
+            "canonical_product": "Cn1cnc2c1c(=O)[nH]c(=O)n2C",
+            "product_smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0699",
+            "row_index": 2,
+            "vendor_rule": "EAWAG_RULE_BT0063_PATTERN2"
+          },
+          {
+            "canonical_product": "Cn1c(=O)c2[nH]cnc2n(C)c1=O",
+            "product_smiles": "N1C=NC2=C1C(=O)N(C)C(=O)N2C",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0699",
+            "row_index": 3,
+            "vendor_rule": "EAWAG_RULE_BT0063_PATTERN2"
+          },
+          {
+            "canonical_product": "Cn1cnc2c1c(=O)[nH]c(=O)n2C",
+            "product_smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0777",
+            "row_index": 4,
+            "vendor_rule": "EAWAG_RULE_BT0243"
+          },
+          {
+            "canonical_product": "CO",
+            "product_smiles": "CO",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0777",
+            "row_index": 5,
+            "vendor_rule": "EAWAG_RULE_BT0243"
+          },
+          {
+            "canonical_product": "Cn1c(=O)[nH]c2ncn(C)c2c1=O",
+            "product_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0777",
+            "row_index": 6,
+            "vendor_rule": "EAWAG_RULE_BT0243"
+          }
+        ],
+        "raw_row_count": 6,
+        "rdkit_parse_pass_count": 6,
+        "target_diagnostic_products": [
+          "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+        ],
+        "unranked_raw_product_set_hit": true
+      },
+      {
+        "canonical_unique_product_count": 4,
+        "case_id": "RP-P06",
+        "matched_diagnostic_products": [],
+        "raw_products": [
+          {
+            "canonical_product": "O=[N+]([O-])c1cccc(O)c1O",
+            "product_smiles": "O=[N+]([O-])C1=C(C(=CC=C1)O)O",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0654",
+            "row_index": 1,
+            "vendor_rule": "EAWAG_RULE_BT0005_PATTERN3"
+          },
+          {
+            "canonical_product": "O=[N+]([O-])c1ccc(O)c(O)c1",
+            "product_smiles": "O=[N+]([O-])C1=CC(=C(C=C1)O)O",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0654",
+            "row_index": 2,
+            "vendor_rule": "EAWAG_RULE_BT0005_PATTERN3"
+          },
+          {
+            "canonical_product": "Oc1ccccc1O",
+            "product_smiles": "C1(=C(C=CC=C1)O)O",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0683",
+            "row_index": 3,
+            "vendor_rule": "EAWAG_RULE_BT0042"
+          },
+          {
+            "canonical_product": "Nc1ccccc1",
+            "product_smiles": "NC1=CC=CC=C1",
+            "rdkit_parse_error": null,
+            "rdkit_parse_pass": true,
+            "reaction_id": "BTMR0716",
+            "row_index": 4,
+            "vendor_rule": "EAWAG_RULE_BT0080"
+          },
+          {
+            "canonical_product": null,
+            "product_smiles": "O=[N+]([O-])C1=CC=C[CH](=[CH]1O)O",
+            "rdkit_parse_error": "RDKit molecule parse failed: O=[N+]([O-])C1=CC=C[CH](=[CH]1O)O",
+            "rdkit_parse_pass": false,
+            "reaction_id": "BTMR0825",
+            "row_index": 5,
+            "vendor_rule": "EAWAG_RULE_BT0353"
+          }
+        ],
+        "raw_row_count": 5,
+        "rdkit_parse_pass_count": 4,
+        "target_diagnostic_products": [
+          "ONc1ccccc1"
+        ],
+        "unranked_raw_product_set_hit": false
+      }
+    ],
+    "rdkit_raw_product_parse": {
+      "denominator": 26,
+      "numerator": 25
+    },
+    "route": "A",
+    "score_unit": "UNRANKED_RAW_PRODUCT_SET",
+    "top_k": "NOT_SCOREABLE_CONTRACT_INCOMPATIBLE"
+  },
+  "route_B": {
+    "aggregation": "THREE_MODELS_SCORED_SEPARATELY_NO_POOLED_RERANK",
+    "candidate_pool_recoverability": {
+      "status": "NOT_DIRECTLY_RECOVERABLE"
+    },
+    "direct_rhea_recovery": {
+      "status": "NOT_DIRECTLY_RECOVERABLE_NO_RHEA_ID_AND_PRODUCT_ONLY"
+    },
+    "ec_recovery": {
+      "status": "NOT_DIRECTLY_RECOVERABLE"
+    },
+    "full_reaction_structure_match": {
+      "status": "NOT_SCOREABLE_PRODUCT_ONLY_PARTIAL_UNBALANCED"
+    },
+    "route": "B",
+    "source_count": 3,
+    "sources": [
+      {
+        "case_level_strict_diagnostic_product_recovery": {
+          "top_1": {
+            "denominator": 6,
+            "numerator": 4
+          },
+          "top_3": {
+            "denominator": 6,
+            "numerator": 5
+          },
+          "top_5": {
+            "denominator": 6,
+            "numerator": 5
+          }
+        },
+        "full_reaction_eligibility": false,
+        "full_reaction_structure_match": {
+          "status": "NOT_SCOREABLE_PRODUCT_ONLY_OR_NO_FULL_REACTION"
+        },
+        "invalid_input_rejection": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "per_case": [
+          {
+            "candidate_count": 5,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "O=[N+]([O-])c1ccc(O)cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 1,
+                "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1>>OC1=CC=C([N+](=O)[O-])C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCOP(=O)(O)Oc1ccc([N+](=O)[O-])cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1>>CCOP(=O)(O)OC1=CC=C([N+](=O)[O-])C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCOP(=O)(OCC)Oc1ccc(N=O)cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1>>CCOP(=O)(OCC)OC1=CC=C(N=O)C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCOP(=O)(OCC)Oc1ccc(NO)cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 4,
+                "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1>>CCOP(=O)(OCC)OC1=CC=C(NO)C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCOP(=O)(OCC)Oc1ccc(N)cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 5,
+                "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1>>CCOP(=O)(OCC)OC1=CC=C(N)C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P01",
+            "first_target_hit_rank": null,
+            "target_diagnostic_products": [
+              "CCOP(=O)([O-])OCC",
+              "O=[N+]([O-])c1ccc([O-])cc1"
+            ]
+          },
+          {
+            "candidate_count": 3,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "Oc1cccc2ccccc12"
+                ],
+                "matched_diagnostic_products": [
+                  "Oc1cccc2ccccc12"
+                ],
+                "rank": 1,
+                "reaction_smiles": "CNC(=O)OC1=C2C=CC=CC2=CC=C1>>OC1=C2C=CC=CC2=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "NC(=O)Oc1cccc2ccccc12"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "CNC(=O)OC1=C2C=CC=CC2=CC=C1>>NC(=O)OC1=C2C=CC=CC2=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CNC(=O)Oc1cccc2cc(O)ccc12"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "CNC(=O)OC1=C2C=CC=CC2=CC=C1>>CNC(=O)OC1=C2C=CC(O)=CC2=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P02",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "Oc1cccc2ccccc12"
+            ]
+          },
+          {
+            "candidate_count": 4,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "CCNc1nc(O)nc(NC(C)C)n1"
+                ],
+                "matched_diagnostic_products": [
+                  "CCNc1nc(O)nc(NC(C)C)n1"
+                ],
+                "rank": 1,
+                "reaction_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1>>CCNC1=NC(O)=NC(NC(C)C)=N1",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CC(C)Nc1nc(N)nc(Cl)n1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1>>NC1=NC(Cl)=NC(NC(C)C)=N1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCNc1nc(N)nc(Cl)n1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1>>CCNC1=NC(Cl)=NC(N)=N1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CC(C)Nc1nc(Cl)nc(NCCO)n1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 4,
+                "reaction_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1>>OCCNC1=NC(Cl)=NC(NC(C)C)=N1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P03",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "CCNc1nc(O)nc(NC(C)C)n1"
+            ]
+          },
+          {
+            "candidate_count": 4,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "OCCCl"
+                ],
+                "matched_diagnostic_products": [
+                  "OCCCl"
+                ],
+                "rank": 1,
+                "reaction_smiles": "ClCCCl>>ClCCO",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCCl"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "ClCCCl>>CCCl",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "C=CCl"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "ClCCCl>>C=CCl",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "O=CCCl"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 4,
+                "reaction_smiles": "ClCCCl>>O=CCCl",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P04",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "OCCCl"
+            ]
+          },
+          {
+            "candidate_count": 3,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "Cn1c(=O)c2[nH]cnc2n(C)c1=O"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 1,
+                "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C>>N1C=NC2=C1C(=O)N(C)C(=O)N2C",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+                ],
+                "matched_diagnostic_products": [
+                  "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+                ],
+                "rank": 2,
+                "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C>>CN1C=NC2=C1C(=O)NC(=O)N2C",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "Cn1c(=O)[nH]c2ncn(C)c2c1=O"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C>>CN1C=NC2=C1C(=O)N(C)C(=O)N2",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P05",
+            "first_target_hit_rank": 2,
+            "target_diagnostic_products": [
+              "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+            ]
+          },
+          {
+            "candidate_count": 5,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "ONc1ccccc1"
+                ],
+                "matched_diagnostic_products": [
+                  "ONc1ccccc1"
+                ],
+                "rank": 1,
+                "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1>>ONC1=CC=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "Nc1ccccc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1>>NC1=CC=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "O=Nc1ccccc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1>>O=NC1=CC=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "O=[N+]([O-])c1ccc(O)cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 4,
+                "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1>>O=[N+]([O-])C1=CC=C(O)C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "O=[N+]([O-])c1cccc(O)c1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 5,
+                "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1>>O=[N+]([O-])C1=CC=CC(O)=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P06",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "ONc1ccccc1"
+            ]
+          }
+        ],
+        "product_level_strict_diagnostic_product_recovery": {
+          "top_1": {
+            "denominator": 7,
+            "numerator": 4
+          },
+          "top_3": {
+            "denominator": 7,
+            "numerator": 5
+          },
+          "top_5": {
+            "denominator": 7,
+            "numerator": 5
+          }
+        },
+        "provider_label": "ChatGPT / GPT-5.6 Thinking (user label)",
+        "raw_contract_status": "PASS",
+        "source_id": "chatgpt_5_6_thinking"
+      },
+      {
+        "case_level_strict_diagnostic_product_recovery": {
+          "top_1": {
+            "denominator": 6,
+            "numerator": 4
+          },
+          "top_3": {
+            "denominator": 6,
+            "numerator": 4
+          },
+          "top_5": {
+            "denominator": 6,
+            "numerator": 4
+          }
+        },
+        "full_reaction_eligibility": false,
+        "full_reaction_structure_match": {
+          "status": "NOT_SCOREABLE_PRODUCT_ONLY_OR_NO_FULL_REACTION"
+        },
+        "invalid_input_rejection": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "per_case": [
+          {
+            "candidate_count": 2,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "CCOP(=O)(O)O",
+                  "O=[N+]([O-])c1ccc(O)cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 1,
+                "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1>>CCOP(=O)(O)O.OC1=CC=C([N+](=O)[O-])C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCOP(=O)(OCC)Oc1ccc(N)cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1>>CCOP(=O)(OCC)OC1=CC=C(N)C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P01",
+            "first_target_hit_rank": null,
+            "target_diagnostic_products": [
+              "CCOP(=O)([O-])OCC",
+              "O=[N+]([O-])c1ccc([O-])cc1"
+            ]
+          },
+          {
+            "candidate_count": 2,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "CN",
+                  "Oc1cccc2ccccc12"
+                ],
+                "matched_diagnostic_products": [
+                  "Oc1cccc2ccccc12"
+                ],
+                "rank": 1,
+                "reaction_smiles": "CNC(=O)OC1=C2C=CC=CC2=CC=C1>>CN.OC1=C2C=CC=CC2=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CNC(=O)Oc1ccc2ccccc2c1O"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "CNC(=O)OC1=C2C=CC=CC2=CC=C1>>CNC(=O)OC1=CC=C2C=CC=CC2=C1O",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P02",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "Oc1cccc2ccccc12"
+            ]
+          },
+          {
+            "candidate_count": 1,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "CCNc1nc(O)nc(NC(C)C)n1"
+                ],
+                "matched_diagnostic_products": [
+                  "CCNc1nc(O)nc(NC(C)C)n1"
+                ],
+                "rank": 1,
+                "reaction_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1>>CCNC1=NC(O)=NC(NC(C)C)=N1",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P03",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "CCNc1nc(O)nc(NC(C)C)n1"
+            ]
+          },
+          {
+            "candidate_count": 2,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "OCCCl"
+                ],
+                "matched_diagnostic_products": [
+                  "OCCCl"
+                ],
+                "rank": 1,
+                "reaction_smiles": "ClCCCl>>ClCCO",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "OCCO"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "ClCCCl>>OCCO",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P04",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "OCCCl"
+            ]
+          },
+          {
+            "candidate_count": 1,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+                ],
+                "matched_diagnostic_products": [
+                  "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+                ],
+                "rank": 1,
+                "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C>>CN1C=NC2=C1C(=O)NC(=O)N2C",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P05",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+            ]
+          },
+          {
+            "candidate_count": 1,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "Nc1ccccc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 1,
+                "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1>>NC1=CC=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P06",
+            "first_target_hit_rank": null,
+            "target_diagnostic_products": [
+              "ONc1ccccc1"
+            ]
+          }
+        ],
+        "product_level_strict_diagnostic_product_recovery": {
+          "top_1": {
+            "denominator": 7,
+            "numerator": 4
+          },
+          "top_3": {
+            "denominator": 7,
+            "numerator": 4
+          },
+          "top_5": {
+            "denominator": 7,
+            "numerator": 4
+          }
+        },
+        "provider_label": "DeepSeek / V4 (user label)",
+        "raw_contract_status": "FAIL_INVALID_CASE_ERROR_MESSAGE_MISSING",
+        "source_id": "deepseek_v4_rerun_2"
+      },
+      {
+        "case_level_strict_diagnostic_product_recovery": {
+          "top_1": {
+            "denominator": 6,
+            "numerator": 4
+          },
+          "top_3": {
+            "denominator": 6,
+            "numerator": 4
+          },
+          "top_5": {
+            "denominator": 6,
+            "numerator": 5
+          }
+        },
+        "full_reaction_eligibility": false,
+        "full_reaction_structure_match": {
+          "status": "NOT_SCOREABLE_PRODUCT_ONLY_OR_NO_FULL_REACTION"
+        },
+        "invalid_input_rejection": {
+          "denominator": 1,
+          "numerator": 1
+        },
+        "per_case": [
+          {
+            "candidate_count": 4,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "O=[N+]([O-])c1ccc(O)cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 1,
+                "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1>>O=[N+]([O-])C1=CC=C(O)C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCOP(=O)(OCC)Oc1ccc(N)cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1>>CCOP(=O)(OCC)OC1=CC=C(N)C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCOP(=O)(O)Oc1ccc([N+](=O)[O-])cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1>>CCOP(=O)(O)OC1=CC=C([N+](=O)[O-])C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCOP(=O)(OCC)Oc1ccc([N+](=O)[O-])cc1O"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 4,
+                "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1>>CCOP(=O)(OCC)OC1=C(O)C=C([N+](=O)[O-])C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P01",
+            "first_target_hit_rank": null,
+            "target_diagnostic_products": [
+              "CCOP(=O)([O-])OCC",
+              "O=[N+]([O-])c1ccc([O-])cc1"
+            ]
+          },
+          {
+            "candidate_count": 3,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "Oc1cccc2ccccc12"
+                ],
+                "matched_diagnostic_products": [
+                  "Oc1cccc2ccccc12"
+                ],
+                "rank": 1,
+                "reaction_smiles": "CNC(=O)OC1=C2C=CC=CC2=CC=C1>>Oc1cccc2ccccc12",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "NC(=O)Oc1cccc2ccccc12"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "CNC(=O)OC1=C2C=CC=CC2=CC=C1>>NC(=O)OC1=C2C=CC=CC2=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "O=C(NCO)Oc1cccc2ccccc12"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "CNC(=O)OC1=C2C=CC=CC2=CC=C1>>OCNC(=O)OC1=C2C=CC=CC2=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P02",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "Oc1cccc2ccccc12"
+            ]
+          },
+          {
+            "candidate_count": 4,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "CCNc1nc(O)nc(NC(C)C)n1"
+                ],
+                "matched_diagnostic_products": [
+                  "CCNc1nc(O)nc(NC(C)C)n1"
+                ],
+                "rank": 1,
+                "reaction_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1>>CCNC1=NC(O)=NC(NC(C)C)=N1",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCNc1ncnc(NC(C)C)n1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1>>CCNC1=NC=NC(NC(C)C)=N1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CC(C)Nc1nc(N)nc(Cl)n1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1>>NC1=NC(Cl)=NC(NC(C)C)=N1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCNc1nc(N)nc(Cl)n1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 4,
+                "reaction_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1>>CCNC1=NC(Cl)=NC(N)=N1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P03",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "CCNc1nc(O)nc(NC(C)C)n1"
+            ]
+          },
+          {
+            "candidate_count": 5,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "OCCCl"
+                ],
+                "matched_diagnostic_products": [
+                  "OCCCl"
+                ],
+                "rank": 1,
+                "reaction_smiles": "ClCCCl>>OCCCl",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CCCl"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "ClCCCl>>CCCl",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "C=CCl"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "ClCCCl>>C=CCl",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "O=CCCl"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 4,
+                "reaction_smiles": "ClCCCl>>ClCC=O",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "CC"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 5,
+                "reaction_smiles": "ClCCCl>>CC",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P04",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "OCCCl"
+            ]
+          },
+          {
+            "candidate_count": 5,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+                ],
+                "matched_diagnostic_products": [
+                  "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+                ],
+                "rank": 1,
+                "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C>>CN1C=NC2=C1C(=O)NC(=O)N2C",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "Cn1c(=O)[nH]c2ncn(C)c2c1=O"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C>>CN1C=NC2=C1C(=O)N(C)C(=O)N2",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "Cn1c(=O)c2[nH]cnc2n(C)c1=O"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C>>N1C=NC2=C1C(=O)N(C)C(=O)N2C",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "Cn1c(=O)c2c(ncn2C)n(CO)c1=O"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 4,
+                "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C>>CN1C=NC2=C1C(=O)N(C)C(=O)N2CO",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "Cn1c(=O)c2c(nc(O)n2C)n(C)c1=O"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 5,
+                "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C>>CN1C(O)=NC2=C1C(=O)N(C)C(=O)N2C",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P05",
+            "first_target_hit_rank": 1,
+            "target_diagnostic_products": [
+              "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+            ]
+          },
+          {
+            "candidate_count": 5,
+            "candidates": [
+              {
+                "canonical_product_components": [
+                  "Nc1ccccc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 1,
+                "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1>>NC1=CC=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "O=[N+]([O-])c1ccc(O)cc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 2,
+                "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1>>O=[N+]([O-])C1=CC=C(O)C=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "O=Nc1ccccc1"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 3,
+                "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1>>O=NC1=CC=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "ONc1ccccc1"
+                ],
+                "matched_diagnostic_products": [
+                  "ONc1ccccc1"
+                ],
+                "rank": 4,
+                "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1>>ONC1=CC=CC=C1",
+                "source_record_id": null,
+                "strict_case_target_hit": true,
+                "strict_full_reaction_match": false
+              },
+              {
+                "canonical_product_components": [
+                  "O=[N+]([O-])c1ccccc1O"
+                ],
+                "matched_diagnostic_products": [],
+                "rank": 5,
+                "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1>>O=[N+]([O-])C1=CC=CC=C1O",
+                "source_record_id": null,
+                "strict_case_target_hit": false,
+                "strict_full_reaction_match": false
+              }
+            ],
+            "case_id": "RP-P06",
+            "first_target_hit_rank": 4,
+            "target_diagnostic_products": [
+              "ONc1ccccc1"
+            ]
+          }
+        ],
+        "product_level_strict_diagnostic_product_recovery": {
+          "top_1": {
+            "denominator": 7,
+            "numerator": 4
+          },
+          "top_3": {
+            "denominator": 7,
+            "numerator": 4
+          },
+          "top_5": {
+            "denominator": 7,
+            "numerator": 5
+          }
+        },
+        "provider_label": "Qwen / 3.8-Max (user label)",
+        "raw_contract_status": "WHOLE_FILE_PREFIX_FAIL_EMBEDDED_CONTRACT_PASS",
+        "source_id": "qwen_3_8_max_original"
+      }
+    ]
+  },
+  "route_C_exact": {
+    "case_level_strict_diagnostic_product_recovery": {
+      "top_1": {
+        "denominator": 6,
+        "numerator": 4
+      },
+      "top_3": {
+        "denominator": 6,
+        "numerator": 6
+      },
+      "top_5": {
+        "denominator": 6,
+        "numerator": 6
+      }
+    },
+    "directed_rhea_id_recovery": {
+      "top_1": {
+        "denominator": 6,
+        "numerator": 4
+      },
+      "top_3": {
+        "denominator": 6,
+        "numerator": 5
+      },
+      "top_5": {
+        "denominator": 6,
+        "numerator": 6
+      }
+    },
+    "full_reaction_directed_rhea_id_match": {
+      "denominator": 6,
+      "numerator": 6
+    },
+    "full_reaction_eligibility": true,
+    "full_reaction_structure_match": {
+      "crosscheck_directed_id_hit_count": 6,
+      "denominator": 6,
+      "numerator": 6,
+      "structure_hit_count": 6
+    },
+    "invalid_input_rejection": {
+      "denominator": 1,
+      "numerator": 1
+    },
+    "per_case": [
+      {
+        "candidate_count": 1,
+        "candidates": [
+          {
+            "canonical_product_components": [
+              "CCOP(=O)([O-])OCC",
+              "O=[N+]([O-])c1ccc([O-])cc1",
+              "[H+]"
+            ],
+            "matched_diagnostic_products": [
+              "CCOP(=O)([O-])OCC",
+              "O=[N+]([O-])c1ccc([O-])cc1"
+            ],
+            "rank": 1,
+            "reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1.[H]O[H]>>CCOP(=O)([O-])OCC.O=[N+]([O-])C1=CC=C([O-])C=C1.[H+].[H+]",
+            "source_record_id": "RHEA:18054",
+            "strict_case_target_hit": true,
+            "strict_full_reaction_match": true
+          }
+        ],
+        "case_id": "RP-P01",
+        "first_target_hit_rank": 1,
+        "target_diagnostic_products": [
+          "CCOP(=O)([O-])OCC",
+          "O=[N+]([O-])c1ccc([O-])cc1"
+        ],
+        "target_directed_rhea_id": "RHEA:18054",
+        "target_direction": "LR",
+        "target_master_rhea_id": "RHEA:18053",
+        "target_rhea_d4_valid_candidate_pool_nonempty": false,
+        "target_rhea_d4_valid_candidate_pool_size": 0,
+        "target_rhea_ec_ids_from_frozen_mapping": [
+          "3.1.8.1"
+        ],
+        "target_rhea_ec_null": false,
+        "target_rhea_first_hit_rank": 1,
+        "target_rhea_uniprot_uid_count": 0,
+        "technical_candidate_pools": [
+          {
+            "d4_valid_candidate_pool_size": 0,
+            "directed_rhea_id": "RHEA:18054",
+            "direction": "LR",
+            "ec_ids": [
+              "3.1.8.1"
+            ],
+            "master_rhea_id": "RHEA:18053",
+            "rank": 1
+          }
+        ]
+      },
+      {
+        "candidate_count": 1,
+        "candidates": [
+          {
+            "canonical_product_components": [
+              "C[NH3+]",
+              "O=C=O",
+              "Oc1cccc2ccccc12"
+            ],
+            "matched_diagnostic_products": [
+              "Oc1cccc2ccccc12"
+            ],
+            "rank": 1,
+            "reaction_smiles": "CNC(=O)OC1=C2C=CC=CC2=CC=C1.[H]O[H].[H+]>>OC1=CC=CC2=CC=CC=C12.C[NH3+].O=C=O",
+            "source_record_id": "RHEA:62381",
+            "strict_case_target_hit": true,
+            "strict_full_reaction_match": true
+          }
+        ],
+        "case_id": "RP-P02",
+        "first_target_hit_rank": 1,
+        "target_diagnostic_products": [
+          "Oc1cccc2ccccc12"
+        ],
+        "target_directed_rhea_id": "RHEA:62381",
+        "target_direction": "LR",
+        "target_master_rhea_id": "RHEA:62380",
+        "target_rhea_d4_valid_candidate_pool_nonempty": false,
+        "target_rhea_d4_valid_candidate_pool_size": 0,
+        "target_rhea_ec_ids_from_frozen_mapping": [],
+        "target_rhea_ec_null": true,
+        "target_rhea_first_hit_rank": 1,
+        "target_rhea_uniprot_uid_count": 0,
+        "technical_candidate_pools": [
+          {
+            "d4_valid_candidate_pool_size": 0,
+            "directed_rhea_id": "RHEA:62381",
+            "direction": "LR",
+            "ec_ids": [],
+            "master_rhea_id": "RHEA:62380",
+            "rank": 1
+          }
+        ]
+      },
+      {
+        "candidate_count": 1,
+        "candidates": [
+          {
+            "canonical_product_components": [
+              "CCNc1nc(O)nc(NC(C)C)n1",
+              "[Cl-]",
+              "[H+]"
+            ],
+            "matched_diagnostic_products": [
+              "CCNc1nc(O)nc(NC(C)C)n1"
+            ],
+            "rank": 1,
+            "reaction_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1.[H]O[H]>>CCNC1=NC(O)=NC(NC(C)C)=N1.[Cl-].[H+]",
+            "source_record_id": "RHEA:11313",
+            "strict_case_target_hit": true,
+            "strict_full_reaction_match": true
+          }
+        ],
+        "case_id": "RP-P03",
+        "first_target_hit_rank": 1,
+        "target_diagnostic_products": [
+          "CCNc1nc(O)nc(NC(C)C)n1"
+        ],
+        "target_directed_rhea_id": "RHEA:11313",
+        "target_direction": "LR",
+        "target_master_rhea_id": "RHEA:11312",
+        "target_rhea_d4_valid_candidate_pool_nonempty": true,
+        "target_rhea_d4_valid_candidate_pool_size": 1,
+        "target_rhea_ec_ids_from_frozen_mapping": [
+          "3.8.1.8"
+        ],
+        "target_rhea_ec_null": false,
+        "target_rhea_first_hit_rank": 1,
+        "target_rhea_uniprot_uid_count": 1,
+        "technical_candidate_pools": [
+          {
+            "d4_valid_candidate_pool_size": 1,
+            "directed_rhea_id": "RHEA:11313",
+            "direction": "LR",
+            "ec_ids": [
+              "3.8.1.8"
+            ],
+            "master_rhea_id": "RHEA:11312",
+            "rank": 1
+          }
+        ]
+      },
+      {
+        "candidate_count": 1,
+        "candidates": [
+          {
+            "canonical_product_components": [
+              "OCCCl",
+              "[Cl-]",
+              "[H+]"
+            ],
+            "matched_diagnostic_products": [
+              "OCCCl"
+            ],
+            "rank": 1,
+            "reaction_smiles": "ClCCCl.[H]O[H]>>OCCCl.[Cl-].[H+]",
+            "source_record_id": "RHEA:25186",
+            "strict_case_target_hit": true,
+            "strict_full_reaction_match": true
+          }
+        ],
+        "case_id": "RP-P04",
+        "first_target_hit_rank": 1,
+        "target_diagnostic_products": [
+          "OCCCl"
+        ],
+        "target_directed_rhea_id": "RHEA:25186",
+        "target_direction": "LR",
+        "target_master_rhea_id": "RHEA:25185",
+        "target_rhea_d4_valid_candidate_pool_nonempty": true,
+        "target_rhea_d4_valid_candidate_pool_size": 2,
+        "target_rhea_ec_ids_from_frozen_mapping": [
+          "3.8.1.5"
+        ],
+        "target_rhea_ec_null": false,
+        "target_rhea_first_hit_rank": 1,
+        "target_rhea_uniprot_uid_count": 2,
+        "technical_candidate_pools": [
+          {
+            "d4_valid_candidate_pool_size": 2,
+            "directed_rhea_id": "RHEA:25186",
+            "direction": "LR",
+            "ec_ids": [
+              "3.8.1.5"
+            ],
+            "master_rhea_id": "RHEA:25185",
+            "rank": 1
+          }
+        ]
+      },
+      {
+        "candidate_count": 5,
+        "candidates": [
+          {
+            "canonical_product_components": [
+              "C[S+](CC[C@H]([NH3+])C(=O)[O-])C[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1O",
+              "Cn1c(=O)[nH]c2ncn(C)c2c1=O"
+            ],
+            "matched_diagnostic_products": [],
+            "rank": 1,
+            "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C.NC1=NC=NC2=C1N=CN2[C@@H]1O[C@H](CSCC[C@H]([NH3+])C(=O)[O-])[C@@H](O)[C@H]1O.[H+]>>CN1C=NC2=C1C(=O)N(C)C(=O)N2.C[S+](CC[C@H]([NH3+])C(=O)[O-])C[C@H]1O[C@@H](N2C=NC3=C2N=CN=C3N)[C@H](O)[C@@H]1O",
+            "source_record_id": "RHEA:10282",
+            "strict_case_target_hit": false,
+            "strict_full_reaction_match": false
+          },
+          {
+            "canonical_product_components": [
+              "C[S+](CC[C@H]([NH3+])C(=O)[O-])C[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1O",
+              "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+            ],
+            "matched_diagnostic_products": [
+              "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+            ],
+            "rank": 2,
+            "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C.NC1=NC=NC2=C1N=CN2[C@@H]1O[C@H](CSCC[C@H]([NH3+])C(=O)[O-])[C@@H](O)[C@H]1O.[H+]>>CN1C=NC2=C1C(=O)NC(=O)N2C.C[S+](CC[C@H]([NH3+])C(=O)[O-])C[C@H]1O[C@@H](N2C=NC3=C2N=CN=C3N)[C@H](O)[C@@H]1O",
+            "source_record_id": "RHEA:20946",
+            "strict_case_target_hit": true,
+            "strict_full_reaction_match": false
+          },
+          {
+            "canonical_product_components": [
+              "COc1c(O)cc(C)c(O)c1OC",
+              "Cn1c(=O)c2c([nH]c(=O)n2C)n(C)c1=O"
+            ],
+            "matched_diagnostic_products": [],
+            "rank": 3,
+            "reaction_smiles": "COC1=C(OC)C(=O)C(C)=CC1=O.CN1C=NC2=C1C(=O)N(C)C(=O)N2C.[H]O[H]>>COC1=C(O)C=C(C)C(O)=C1OC.CN1C(=O)C2=C(NC(=O)N2C)N(C)C1=O",
+            "source_record_id": "RHEA:27903",
+            "strict_case_target_hit": false,
+            "strict_full_reaction_match": false
+          },
+          {
+            "canonical_product_components": [
+              "C=O",
+              "Cn1cnc2c1c(=O)[nH]c(=O)n2C",
+              "NC(=O)c1ccc[n+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](n4cnc5c(N)ncnc54)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O)c1",
+              "O"
+            ],
+            "matched_diagnostic_products": [
+              "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+            ],
+            "rank": 4,
+            "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C.NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1.O=O.[H+]>>CN1C=NC2=C1C(=O)NC(=O)N2C.[H]C([H])=O.NC(=O)C1=CC=C[N+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O)=C1.[H]O[H]",
+            "source_record_id": "RHEA:36268",
+            "strict_case_target_hit": true,
+            "strict_full_reaction_match": true
+          },
+          {
+            "canonical_product_components": [
+              "C=O",
+              "Cn1cnc2c1c(=O)[nH]c(=O)n2C",
+              "NC(=O)c1ccc[n+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](n4cnc5c(N)ncnc54)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)c1",
+              "O"
+            ],
+            "matched_diagnostic_products": [
+              "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+            ],
+            "rank": 5,
+            "reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C.NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1.O=O.[H+]>>CN1C=NC2=C1C(=O)NC(=O)N2C.[H]C([H])=O.NC(=O)C1=CC=C[N+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)=C1.[H]O[H]",
+            "source_record_id": "RHEA:36272",
+            "strict_case_target_hit": true,
+            "strict_full_reaction_match": false
+          }
+        ],
+        "case_id": "RP-P05",
+        "first_target_hit_rank": 2,
+        "target_diagnostic_products": [
+          "Cn1cnc2c1c(=O)[nH]c(=O)n2C"
+        ],
+        "target_directed_rhea_id": "RHEA:36268",
+        "target_direction": "LR",
+        "target_master_rhea_id": "RHEA:36267",
+        "target_rhea_d4_valid_candidate_pool_nonempty": true,
+        "target_rhea_d4_valid_candidate_pool_size": 1,
+        "target_rhea_ec_ids_from_frozen_mapping": [
+          "1.14.13.178"
+        ],
+        "target_rhea_ec_null": false,
+        "target_rhea_first_hit_rank": 4,
+        "target_rhea_uniprot_uid_count": 1,
+        "technical_candidate_pools": [
+          {
+            "d4_valid_candidate_pool_size": 0,
+            "directed_rhea_id": "RHEA:10282",
+            "direction": "RL",
+            "ec_ids": [
+              "2.1.1.160"
+            ],
+            "master_rhea_id": "RHEA:10280",
+            "rank": 1
+          },
+          {
+            "d4_valid_candidate_pool_size": 0,
+            "directed_rhea_id": "RHEA:20946",
+            "direction": "RL",
+            "ec_ids": [
+              "2.1.1.160"
+            ],
+            "master_rhea_id": "RHEA:20944",
+            "rank": 2
+          },
+          {
+            "d4_valid_candidate_pool_size": 0,
+            "directed_rhea_id": "RHEA:27903",
+            "direction": "LR",
+            "ec_ids": [
+              "1.17.5.2"
+            ],
+            "master_rhea_id": "RHEA:27902",
+            "rank": 3
+          },
+          {
+            "d4_valid_candidate_pool_size": 1,
+            "directed_rhea_id": "RHEA:36268",
+            "direction": "LR",
+            "ec_ids": [
+              "1.14.13.178"
+            ],
+            "master_rhea_id": "RHEA:36267",
+            "rank": 4
+          },
+          {
+            "d4_valid_candidate_pool_size": 1,
+            "directed_rhea_id": "RHEA:36272",
+            "direction": "LR",
+            "ec_ids": [
+              "1.14.13.178"
+            ],
+            "master_rhea_id": "RHEA:36271",
+            "rank": 5
+          }
+        ]
+      },
+      {
+        "candidate_count": 3,
+        "candidates": [
+          {
+            "canonical_product_components": [
+              "NC(=O)c1ccc[n+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](n4cnc5c(N)ncnc54)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O)c1",
+              "O=N[O-]",
+              "Oc1ccccc1O"
+            ],
+            "matched_diagnostic_products": [],
+            "rank": 1,
+            "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1.NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1.O=O>>OC1=C(O)C=CC=C1.O=N[O-].NC(=O)C1=CC=C[N+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O)=C1",
+            "source_record_id": "RHEA:46509",
+            "strict_case_target_hit": false,
+            "strict_full_reaction_match": false
+          },
+          {
+            "canonical_product_components": [
+              "NC(=O)c1ccc[n+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](n4cnc5c(N)ncnc54)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)c1",
+              "O",
+              "ONc1ccccc1"
+            ],
+            "matched_diagnostic_products": [
+              "ONc1ccccc1"
+            ],
+            "rank": 2,
+            "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1.NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1.NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1.[H+].[H+]>>ONC1=CC=CC=C1.NC(=O)C1=CC=C[N+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)=C1.NC(=O)C1=CC=C[N+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)=C1.[H]O[H]",
+            "source_record_id": "RHEA:52886",
+            "strict_case_target_hit": true,
+            "strict_full_reaction_match": true
+          },
+          {
+            "canonical_product_components": [
+              "NC(=O)c1ccc[n+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](n4cnc5c(N)ncnc54)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)c1",
+              "O",
+              "O=Nc1ccccc1"
+            ],
+            "matched_diagnostic_products": [],
+            "rank": 3,
+            "reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1.NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1.[H+]>>O=NC1=CC=CC=C1.NC(=O)C1=CC=C[N+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)=C1.[H]O[H]",
+            "source_record_id": "RHEA:52894",
+            "strict_case_target_hit": false,
+            "strict_full_reaction_match": false
+          }
+        ],
+        "case_id": "RP-P06",
+        "first_target_hit_rank": 2,
+        "target_diagnostic_products": [
+          "ONc1ccccc1"
+        ],
+        "target_directed_rhea_id": "RHEA:52886",
+        "target_direction": "RL",
+        "target_master_rhea_id": "RHEA:52884",
+        "target_rhea_d4_valid_candidate_pool_nonempty": true,
+        "target_rhea_d4_valid_candidate_pool_size": 2,
+        "target_rhea_ec_ids_from_frozen_mapping": [
+          "1.7.1.16"
+        ],
+        "target_rhea_ec_null": false,
+        "target_rhea_first_hit_rank": 2,
+        "target_rhea_uniprot_uid_count": 2,
+        "technical_candidate_pools": [
+          {
+            "d4_valid_candidate_pool_size": 0,
+            "directed_rhea_id": "RHEA:46509",
+            "direction": "LR",
+            "ec_ids": [
+              "1.14.12.23"
+            ],
+            "master_rhea_id": "RHEA:46508",
+            "rank": 1
+          },
+          {
+            "d4_valid_candidate_pool_size": 2,
+            "directed_rhea_id": "RHEA:52886",
+            "direction": "RL",
+            "ec_ids": [
+              "1.7.1.16"
+            ],
+            "master_rhea_id": "RHEA:52884",
+            "rank": 2
+          },
+          {
+            "d4_valid_candidate_pool_size": 0,
+            "directed_rhea_id": "RHEA:52894",
+            "direction": "RL",
+            "ec_ids": [],
+            "master_rhea_id": "RHEA:52892",
+            "rank": 3
+          }
+        ]
+      }
+    ],
+    "product_level_strict_diagnostic_product_recovery": {
+      "top_1": {
+        "denominator": 7,
+        "numerator": 5
+      },
+      "top_3": {
+        "denominator": 7,
+        "numerator": 7
+      },
+      "top_5": {
+        "denominator": 7,
+        "numerator": 7
+      }
+    },
+    "provider_label": "Rhea release 140 exact-structure lookup",
+    "raw_contract_status": "PASS",
+    "source_id": "c_exact_rhea_140",
+    "target_candidate_enzyme_pool_recoverability": {
+      "denominator": 6,
+      "numerator": 4,
+      "semantics": "Correct target Rhea recovered and frozen Rhea-to-UniProt mapping intersects complete D4 assets; does not assert a correct enzyme or rank."
+    },
+    "target_rhea_ec_mapping": {
+      "recovered_target_with_nonnull_rhea_ec": {
+        "denominator": 6,
+        "numerator": 5
+      },
+      "recovered_target_with_rhea_ec_null": {
+        "denominator": 6,
+        "numerator": 1
+      },
+      "semantics": "Availability from frozen rhea2ec.tsv after correct directed-Rhea recovery; not an independent EC prediction accuracy test."
+    },
+    "untied_technical_any_candidate_pool_recoverability": {
+      "denominator": 6,
+      "not_target_score": true,
+      "numerator": 4
+    }
+  },
+  "route_C_generic": {
+    "scoring_status": "NOT_SCORED",
+    "status": "NOT_READY"
+  },
+  "runtime": {
+    "canonical_isomeric_smiles": true,
+    "python": "3.12.13",
+    "rdkit": "2026.03.3",
+    "strict_match_relaxations": "NONE"
+  },
+  "scoring_date": "2026-07-26"
+}

@@ -1,0 +1,111 @@
+{
+  "contract_version": "rp-pilot-contract-v0.1",
+  "classification": "RESTRICTED_ANSWER_KEY_DO_NOT_SEND_TO_ROUTE_B",
+  "rhea_source": {
+    "release": "RHEA-140_2026-01-21",
+    "path": "data/raw/rhea/RHEA-140_2026-01-21/tsv/rhea-reaction-smiles.tsv",
+    "sha256": "34f7fb5eff7d230c2d0243b2a669b236b075a35ffda76ebe0137b0f5dd374e02"
+  },
+  "cases": [
+    {
+      "case_id": "RP-P01",
+      "substrate_name": "Paraoxon",
+      "substrate_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1",
+      "case_role": "project_split_unseen_challenge",
+      "target_rhea_id": "RHEA:18054",
+      "target_reaction_smiles": "CCOP(=O)(OCC)OC1=CC=C([N+](=O)[O-])C=C1.[H]O[H]>>CCOP(=O)([O-])OCC.O=[N+]([O-])C1=CC=C([O-])C=C1.[H+].[H+]",
+      "diagnostic_product_smiles": [
+        "CCOP(=O)([O-])OCC",
+        "O=[N+]([O-])C1=CC=C([O-])C=C1"
+      ],
+      "evidence_sources": [
+        "/home/a/EnzymeCAGE-Teacher-Deliverables/M3_EXT_CANDIDATE_SHORTLIST_v0.md",
+        "00_Authority_Teacher_Plan/8 个候选污染物降解反应证据包.md"
+      ]
+    },
+    {
+      "case_id": "RP-P02",
+      "substrate_name": "Carbaryl",
+      "substrate_smiles": "CNC(=O)OC1=C2C=CC=CC2=CC=C1",
+      "case_role": "project_split_unseen_ec_null_challenge",
+      "target_rhea_id": "RHEA:62381",
+      "target_reaction_smiles": "CNC(=O)OC1=C2C=CC=CC2=CC=C1.[H]O[H].[H+]>>OC1=CC=CC2=CC=CC=C12.C[NH3+].O=C=O",
+      "diagnostic_product_smiles": [
+        "OC1=CC=CC2=CC=CC=C12"
+      ],
+      "evidence_sources": [
+        "/home/a/EnzymeCAGE-Teacher-Deliverables/M3_EXT_CANDIDATE_SHORTLIST_v0.md"
+      ],
+      "rhea_140_ec": null,
+      "external_nomenclature_only": "IUBMB/BRENDA EC 3.5.1.137"
+    },
+    {
+      "case_id": "RP-P03",
+      "substrate_name": "Atrazine",
+      "substrate_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1",
+      "case_role": "simple_hydrolysis_sanity",
+      "target_rhea_id": "RHEA:11313",
+      "target_reaction_smiles": "CCNC1=NC(Cl)=NC(NC(C)C)=N1.[H]O[H]>>CCNC1=NC(O)=NC(NC(C)C)=N1.[Cl-].[H+]",
+      "diagnostic_product_smiles": [
+        "CCNC1=NC(O)=NC(NC(C)C)=N1"
+      ],
+      "evidence_sources": [
+        "00_Authority_Teacher_Plan/8 个候选污染物降解反应证据包.md"
+      ]
+    },
+    {
+      "case_id": "RP-P04",
+      "substrate_name": "1,2-Dichloroethane",
+      "substrate_smiles": "ClCCCl",
+      "case_role": "dehalogenation_sanity",
+      "target_rhea_id": "RHEA:25186",
+      "target_reaction_smiles": "ClCCCl.[H]O[H]>>OCCCl.[Cl-].[H+]",
+      "diagnostic_product_smiles": [
+        "OCCCl"
+      ],
+      "evidence_sources": [
+        "00_Authority_Teacher_Plan/8 个候选污染物降解反应证据包.md"
+      ]
+    },
+    {
+      "case_id": "RP-P05",
+      "substrate_name": "Caffeine",
+      "substrate_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C",
+      "case_role": "cofactor_complexity_and_demethylation",
+      "target_rhea_id": "RHEA:36268",
+      "target_reaction_smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C.NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1.O=O.[H+]>>CN1C=NC2=C1C(=O)NC(=O)N2C.[H]C([H])=O.NC(=O)C1=CC=C[N+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O)=C1.[H]O[H]",
+      "diagnostic_product_smiles": [
+        "CN1C=NC2=C1C(=O)NC(=O)N2C"
+      ],
+      "evidence_sources": [
+        "00_Authority_Teacher_Plan/8 个候选污染物降解反应证据包.md"
+      ]
+    },
+    {
+      "case_id": "RP-P06",
+      "substrate_name": "Nitrobenzene",
+      "substrate_smiles": "O=[N+]([O-])C1=CC=CC=C1",
+      "case_role": "direction_trap",
+      "target_rhea_id": "RHEA:52886",
+      "target_reaction_smiles": "O=[N+]([O-])C1=CC=CC=C1.NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1.NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1.[H+].[H+]>>ONC1=CC=CC=C1.NC(=O)C1=CC=C[N+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)=C1.NC(=O)C1=CC=C[N+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@@H](N4C=NC5=C4N=CN=C5N)[C@H](OP(=O)([O-])[O-])[C@@H]3O)[C@@H](O)[C@H]2O)=C1.[H]O[H]",
+      "diagnostic_product_smiles": [
+        "ONC1=CC=CC=C1"
+      ],
+      "direction_note": "Only the degradation direction RHEA:52886 counts; the reverse direction fails.",
+      "evidence_sources": [
+        "00_Authority_Teacher_Plan/8 个候选污染物降解反应证据包.md"
+      ]
+    },
+    {
+      "case_id": "RP-N01",
+      "substrate_name": null,
+      "substrate_smiles": "C1(CC",
+      "case_role": "invalid_smiles_fail_closed",
+      "target_rhea_id": null,
+      "target_reaction_smiles": null,
+      "diagnostic_product_smiles": [],
+      "expected_status": "rejected_invalid_input",
+      "evidence_sources": []
+    }
+  ]
+}
