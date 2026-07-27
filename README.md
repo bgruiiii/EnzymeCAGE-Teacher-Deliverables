@@ -1,16 +1,38 @@
 # EnzymeCAGE Teacher Deliverables
 
-## Pending biological route selection — 2026-07-27
+## Final 07-23/07-24 response and biological decision — 2026-07-27
+
+The complete item-by-item response is placed directly at repository root so
+earlier completed work is not missed:
+
+- [`M3_2026_07_23_24_TEACHER_TASK_LIST_FINAL_RESPONSE_2026-07-27.md`](M3_2026_07_23_24_TEACHER_TASK_LIST_FINAL_RESPONSE_2026-07-27.md)
+- [`M3_NEXT_ROUND_HUANG_TEACHER_ADJUDICATION_REQUEST_AFTER_BIOLOGICAL_DECISIONS_2026-07-27.md`](M3_NEXT_ROUND_HUANG_TEACHER_ADJUDICATION_REQUEST_AFTER_BIOLOGICAL_DECISIONS_2026-07-27.md)
+
+The biological meeting selected an A-first comparison of the internal model,
+BioTransformer 3.0–ENVMICRO and enviFormer. No tool has been declared the
+winner. enviFormer validation is still in progress, the internal model awaits
+handoff, and the existing BioTransformer result remains product-only. C becomes
+a research fallback only if all three tools fail the minimum contract.
+
+- decision record, audit and hashes:
+  [`2026-07-27_M3_P1_2_1_Reaction_Predictor_A_First_Three_Tool_Benchmark_Decision/`](2026-07-27_M3_P1_2_1_Reaction_Predictor_A_First_Three_Tool_Benchmark_Decision/)
+
+The cross-side response is duplicated byte-for-byte in the MetaTraits
+teacher-deliverables repository. Enzyme and microbe evidence assets remain
+separated by repository.
+
+## Historical pre-decision biological route material — 2026-07-27
 
 The detailed A/B/C biological selection card, visual meeting version and
-independent audits are now indexed without claiming that Liu-laoshi has made a
-selection:
+independent audits are retained as the evidence reviewed before the
+2026-07-27 meeting:
 
 - [`2026-07-27_M3_P1_2_1_Reaction_Predictor_Biological_Route_Selection_Pending/`](2026-07-27_M3_P1_2_1_Reaction_Predictor_Biological_Route_Selection_Pending/)
 
-Status: unified pilot and scoring complete; A/B/C selection pending; production
-`reaction_prediction_node` unchanged. Any selected next pilot still requires
-separate Huang-laoshi authorization.
+Status at the time of that package: unified pilot and scoring complete; route
+selection was pending. The current decision is recorded in the newer package
+above. Production `reaction_prediction_node` remains unchanged, and a formal
+new benchmark still requires Huang-laoshi scope confirmation.
 
 ## Current route adjudication request — 2026-07-26
 
