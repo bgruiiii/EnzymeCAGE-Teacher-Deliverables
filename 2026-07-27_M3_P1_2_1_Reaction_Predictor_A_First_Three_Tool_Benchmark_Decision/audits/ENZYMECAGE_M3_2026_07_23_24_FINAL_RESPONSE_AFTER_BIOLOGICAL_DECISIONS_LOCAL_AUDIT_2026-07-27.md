@@ -116,10 +116,17 @@ missing:
   0
 ```
 
-本轮新增 URL 尚未推送，因此本审计只主张本地目标 42/42 存在，不在推送前虚构远端
-HTTP 200。推送后需再次执行远端 URL 校验。
+2026-07-27 推送后逐一执行 `curl -L` 远端验证：
 
-结果：`LOCAL_LINK_TARGETS = PASS`。
+```text
+remote HTTP 200:
+  42/42
+
+remote non-200:
+  0
+```
+
+结果：`LOCAL_AND_REMOTE_LINK_TARGETS = PASS`。
 
 ## 6. 跨仓字节一致性
 
@@ -201,7 +208,7 @@ ID:
 该文件满足“一份 Markdown 对黄老师 07-23/07-24 清单逐项回答是否完成、结果、证据位置、
 剩余动作和授权边界”的要求。
 
-本地打包和提交前检查已经完成：
+本地打包、提交、推送和远端检查已经完成：
 
 ```text
 audits copied to split repositories:
@@ -215,10 +222,19 @@ enzyme Git worktree:
 
 microbe Git worktree:
   only expected README update, new decision package and two root entry files
+
+enzyme content publication commit:
+  86fe1ab49e958cf83c7a1173b25ba76c9b1c4a52
+
+microbe content publication commit:
+  2946487e16f75929ac96f6259126242a1fc5dd32
+
+remote main equals local content commit:
+  yes / yes
+
+remote GitHub URLs:
+  42/42 HTTP 200
 ```
 
-仍需：
-
-1. 经用户确认后再 commit/push；
-2. 推送后验证 42 个远端链接和两个 remote main；
-3. 将最终 commit 写入给老师的发送消息。
+内容交付无剩余本地动作。审计状态更新本身作为后续纯审计提交，不改变主回应、决定记录
+或授权选项；最终 remote main 由发送消息另行给出。
