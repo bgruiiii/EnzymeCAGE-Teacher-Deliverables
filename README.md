@@ -1,5 +1,17 @@
 # EnzymeCAGE Teacher Deliverables
 
+## Pending biological route selection — 2026-07-27
+
+The detailed A/B/C biological selection card, visual meeting version and
+independent audits are now indexed without claiming that Liu-laoshi has made a
+selection:
+
+- [`2026-07-27_M3_P1_2_1_Reaction_Predictor_Biological_Route_Selection_Pending/`](2026-07-27_M3_P1_2_1_Reaction_Predictor_Biological_Route_Selection_Pending/)
+
+Status: unified pilot and scoring complete; A/B/C selection pending; production
+`reaction_prediction_node` unchanged. Any selected next pilot still requires
+separate Huang-laoshi authorization.
+
 ## Current route adjudication request — 2026-07-26
 
 The three-route reaction-predictor pilot has passed answer-key unlock,
