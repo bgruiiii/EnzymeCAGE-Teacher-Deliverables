@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "normalization_note": {
+      "type": "string"
+    },
+    "normalization_status": {
+      "enum": [
+        "ok",
+        "invalid_smiles",
+        "tool_error",
+        "empty_prediction",
+        "not_normalized"
+      ],
+      "type": "string"
+    },
+    "parent_smiles": {
+      "type": "string"
+    },
+    "predicted_product_inchikey": {
+      "type": "string"
+    },
+    "predicted_product_smiles_canonical": {
+      "type": "string"
+    },
+    "predicted_product_smiles_original": {
+      "type": "string"
+    },
+    "prediction_rank": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "provenance": {
+      "type": "string"
+    },
+    "raw_confidence": {
+      "type": [
+        "number",
+        "string",
+        "null"
+      ]
+    },
+    "raw_output_ref": {
+      "type": "string"
+    },
+    "raw_score": {
+      "type": [
+        "number",
+        "string",
+        "null"
+      ]
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "tool_name": {
+      "type": "string"
+    },
+    "tool_version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "tool_name",
+    "tool_version",
+    "run_id",
+    "case_id",
+    "parent_smiles",
+    "prediction_rank",
+    "predicted_product_smiles_original",
+    "predicted_product_smiles_canonical",
+    "predicted_product_inchikey",
+    "raw_score",
+    "raw_confidence",
+    "provenance",
+    "raw_output_ref",
+    "normalization_status",
+    "normalization_note"
+  ],
+  "title": "EnzymeCAGE M3 P1.2.1 Three-Tool Normalized Product Prediction Row",
+  "type": "object"
+}

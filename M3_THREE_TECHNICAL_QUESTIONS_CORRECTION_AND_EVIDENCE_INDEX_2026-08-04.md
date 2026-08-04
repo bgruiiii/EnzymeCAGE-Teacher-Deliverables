@@ -1,6 +1,6 @@
 # M3 三个技术问题修复稿与证据包索引（2026-08-04）
 
-黄老师 2026-08-03 反馈中点名的 F1/F2/07-22 原件回传材料，以及后续已补齐的 F4/F5 证据，已集中放在：
+黄老师 2026-08-03 反馈中点名的 F1/F2/F3/F4/F5/07-22 原件回传材料，已集中放在：
 
 ```text
 2026-08-04_M3_Three_Technical_Questions_Corrections_and_Evidence/
@@ -10,6 +10,7 @@
 
 ```text
 M3_TEACHER_THREE_TECHNICAL_QUESTIONS_COMPREHENSIVE_RESPONSE_CORRECTED_2026-08-04.md
+M3_F3_LOCAL_ENZYME_ASSET_POOL_AND_EC_EXPANSION_GAP_AUDIT_2026-08-04.md
 M3_Q3_BIOTRANSFORMER_ENVMICRO_SOURCE_AND_JAR_IDENTITY_EVIDENCE_2026-08-04.md
 README.md
 DELIVERABLE_SHA256SUMS.txt
@@ -40,12 +41,16 @@ TEACHER_REPLY_M3_CASE1_RHEA11880_FAIRNESS_AND_KNOWN_POSITIVE_EVIDENCE_2026-07-22
    新增 BioTransformer ENVMICRO 源码摘录与 jar 身份证据；
    HPC 返回包记录 `actual_commit=7149f7ec6b2f32f9f789bab53aa4a71db49e59e2`，
    jar SHA256 为 `e5c3c27de7dfc87b448f1eed6fe986ef48ed90c53bad9b848f95378f08efee80`。
+
+7. 追加关闭 F3：
+   新增本地 Rhea 基线 missing-pocket / missing-D4 缺口基数估算；
+   统计边界为 release-pinned Rhea 140 / reviewed UniProt 本地基线，
+   不冒充 live UniProt 全库。
 ```
 
 仍在继续推进、不在本索引中冒充完成：
 
 ```text
-F3 全库缺口基数与可补齐率估算；
 F6 弓师兄模型 18 条 blind 评分。
 ```
 

@@ -38,6 +38,30 @@ Q3 BioTransformer ENVMICRO 源码摘录与 jar 身份证据；
 DELIVERABLE_SHA256SUMS.txt。
 ```
 
+### F3：全库 missing-pocket / missing-D4 缺口基数估算
+
+本目录新增：
+
+```text
+M3_F3_LOCAL_ENZYME_ASSET_POOL_AND_EC_EXPANSION_GAP_AUDIT_2026-08-04.md
+```
+
+当前统计边界为本地 release-pinned Rhea 140 / reviewed UniProt 基线，不冒充 live UniProt 全库。
+
+核心结论：
+
+```text
+raw Rhea-linked UID                  236,103
+strict cleaned main-table UID        195,743
+Rhea official complete-EC source UID 218,010
+uid2seq sequence coverage            236,103 / 236,103
+strict valid pocket rows             191,062 / 195,743
+strict UID missing valid pocket        4,681
+local ESM2-3B corrected features     107,705 UID
+strict UID missing local ESM2-3B      88,038
+complete-EC source UID missing local ESM2-3B 114,804 / 218,010
+```
+
 ### ①：07-22 原件回传
 
 本包内：
@@ -59,7 +83,6 @@ TEACHER_REPLY_M3_CASE1_RHEA11880_FAIRNESS_AND_KNOWN_POSITIVE_EVIDENCE_2026-07-22
 以下仍按老师优先级继续推进，不在本包冒充完成：
 
 ```text
-F3：全库 missing-pocket / missing-D4 缺口基数与可补齐率估算；
 F6：弓师兄模型 18 条 blind 评分。
 ```
 
