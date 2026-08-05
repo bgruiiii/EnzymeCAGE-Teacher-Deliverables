@@ -1,5 +1,21 @@
 # EnzymeCAGE Teacher Deliverables
 
+## Current final response to 2026-08-03 / 2026-08-04 teacher requirements — 2026-08-04
+
+The latest teacher-facing response and evidence packages have been pushed and
+are placed at repository root so the current status is visible from the GitHub
+homepage:
+
+- [`M3_2026_08_03_TEACHER_REQUIREMENTS_FINAL_RESPONSE_2026-08-04.md`](M3_2026_08_03_TEACHER_REQUIREMENTS_FINAL_RESPONSE_2026-08-04.md)
+- [`M3_THREE_TECHNICAL_QUESTIONS_CORRECTION_AND_EVIDENCE_INDEX_2026-08-04.md`](M3_THREE_TECHNICAL_QUESTIONS_CORRECTION_AND_EVIDENCE_INDEX_2026-08-04.md)
+- [`2026-08-04_M3_Three_Technical_Questions_Corrections_and_Evidence/`](2026-08-04_M3_Three_Technical_Questions_Corrections_and_Evidence/)
+
+Status: F1--F5 and the associated evidence-index corrections are complete and
+pushed. F6 remains pending only because Gong's model output has not returned.
+The 2026-08-04 M3-EXT Paraoxon/Carbaryl follow-up requirements are newer
+teacher instructions and are not claimed as completed in this 2026-08-04
+response.
+
 ## Final 07-23/07-24 response and biological decision — 2026-07-27
 
 The complete item-by-item response is placed directly at repository root so
