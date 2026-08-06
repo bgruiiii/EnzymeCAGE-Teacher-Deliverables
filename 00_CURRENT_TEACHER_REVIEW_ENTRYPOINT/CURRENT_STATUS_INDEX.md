@@ -1,6 +1,6 @@
 # EnzymeCAGE 当前状态索引
 
-日期：2026-08-05
+日期：2026-08-06
 
 ## 已完成并已 push
 
@@ -12,14 +12,15 @@
 | F4 Q2 行号 + ESM-2 3B 配置来源修复 | 完成 | [`../2026-08-04_M3_Three_Technical_Questions_Corrections_and_Evidence/M3_TEACHER_TECHNICAL_QUESTIONS_Q1_Q2_CORRECTED_DRAFT_2026-08-04.md`](../2026-08-04_M3_Three_Technical_Questions_Corrections_and_Evidence/M3_TEACHER_TECHNICAL_QUESTIONS_Q1_Q2_CORRECTED_DRAFT_2026-08-04.md) |
 | F5 BioTransformer ENVMICRO 源码与 jar 身份证据 | 完成 | [`../2026-08-04_M3_Three_Technical_Questions_Corrections_and_Evidence/M3_Q3_BIOTRANSFORMER_ENVMICRO_SOURCE_AND_JAR_IDENTITY_EVIDENCE_2026-08-04.md`](../2026-08-04_M3_Three_Technical_Questions_Corrections_and_Evidence/M3_Q3_BIOTRANSFORMER_ENVMICRO_SOURCE_AND_JAR_IDENTITY_EVIDENCE_2026-08-04.md) |
 | 18 条污染物 gold/schema/scorer 固化 | 完成 | [`../2026-08-04_M3_P1_2_1_Small_Pollutant_Gold_Standard_Schema_Scoring_Freeze/`](../2026-08-04_M3_P1_2_1_Small_Pollutant_Gold_Standard_Schema_Scoring_Freeze/) |
+| M3-EXT Paraoxon S1 Stage A | 完成；technical PASS，未跑模型 | [`../2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/`](../2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/) |
+| M3-EXT Paraoxon S2 正式案例文件草案 | 完成；标注 `B pool = 0` 和 `C pool / prediction fallback` 运行面 | [`../2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/M3_EXT_PARAOXON_FORMAL_CASE_DRAFT_AFTER_S1_STAGE_A_PASS_2026-08-06.md`](../2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/M3_EXT_PARAOXON_FORMAL_CASE_DRAFT_AFTER_S1_STAGE_A_PASS_2026-08-06.md) |
 
 ## 正在推进但尚未完成
 
 | 项 | 当前状态 | 下一步 |
 |---|---|---|
-| M3-EXT Paraoxon S1 | 本地前置复核和 Chenyu prompt 已准备；等待 Chenyu fresh run 回包 | 回包后本地审计，通过后再进入 S2 |
-| S2 Paraoxon 正式案例文件草案 | 等待 S1 | 不能先写最终版 |
 | F6 三工具横向评分 | 等待弓师兄模型输出 | 收到后用已冻结 18 条 schema/scorer 打分 |
+| M3-EXT Paraoxon 后续模型运行 | 尚未授权执行；S2 只建议另写 execution contract | 等老师接受 S2 后，再单独冻结 C pool / prediction fallback 执行合同 |
 
 ## 仍需老师后续裁定
 

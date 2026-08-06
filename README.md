@@ -1,12 +1,24 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-08-05
+## 老师当前优先审阅入口 — 2026-08-06
 
 请优先打开：
 
 - [`00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/`](00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/)
 
-该文件夹汇总了当前最新回应、已完成证据路径、正在推进的 S1/S2/F6 状态，以及仍需老师后续裁定的问题。根目录中保留历史文件是为了不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方最新回应为准。
+该文件夹汇总了当前最新回应、已完成证据路径、M3-EXT Paraoxon S1/S2 状态、F6 状态，以及仍需老师后续裁定的问题。根目录中保留历史文件是为了不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方最新回应为准。
+
+## Current M3-EXT Paraoxon S1/S2 package — 2026-08-06
+
+The 2026-08-04 teacher-authorized Paraoxon follow-up now has a dedicated
+teacher-facing package:
+
+- [`2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/`](2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/)
+
+Current status: S1 Stage A technical D4 constructability passed for the two
+authorized UIDs `P0A434` and `Q97VT7`; S2 Paraoxon formal case draft has been
+written. This package explicitly states that no model scoring, no production
+D4 merge, no pool mutation and no Paraoxon validation claim have been made.
 
 ## Current final response to 2026-08-03 / 2026-08-04 teacher requirements — 2026-08-04
 
