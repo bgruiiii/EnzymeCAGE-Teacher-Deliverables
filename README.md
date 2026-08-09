@@ -1,12 +1,24 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-08-06
+## 老师当前优先审阅入口 — 2026-08-09
 
 请优先打开：
 
 - [`00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/`](00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/)
 
 该文件夹汇总了当前最新回应、已完成证据路径、M3-EXT Paraoxon S1/S2 状态、F6 状态，以及仍需老师后续裁定的问题。根目录中保留历史文件是为了不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方最新回应为准。
+
+## Current M4 OnDemand D4 direction response — 2026-08-09
+
+The 2026-08-07 teacher feedback requested an M4 direction response before
+formal M4 authorization. The response is placed in a dedicated package:
+
+- [`2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/`](2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/)
+
+Current status: toolization design, workload/timeline estimate, and Phase 1
+acceptance UID subset policy have been written for teacher adjudication. This
+does not claim M4 implementation authorization, generated staged assets,
+production D4 merge, full 4,681 UID processing, or 340-host GVP recovery.
 
 ## Current M3-EXT Paraoxon S1/S2 package — 2026-08-06
 
