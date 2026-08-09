@@ -2,12 +2,11 @@
 
 Date: 2026-08-09
 
-Audited draft:
+Audited uploaded file:
 
 ```text
-01_Path_Contract_Objective/
-M4_OnDemand_D4_Backfill_Contract_Direction_Response_2026-08-09/
-M4_ONDEMAND_D4_BACKFILL_DIRECTION_RESPONSE_FINAL_COMBINED_DRAFT_2026-08-09.md
+2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/
+M4_ONDEMAND_D4_BACKFILL_DIRECTION_RESPONSE_2026-08-09.md
 ```
 
 Authority source:
@@ -25,9 +24,9 @@ Verdict:
 FINAL_COMBINED_DIRECTION_RESPONSE_LOCAL_DRAFT_PASS
 ```
 
-The draft is acceptable as the teacher-facing M4 direction-response file for the
-2026-08-09 package. This package contains the direction response and local audit
-only; it does not contain implementation output or staged D4 assets.
+The uploaded file is acceptable as the teacher-facing M4 direction-response file
+for the 2026-08-09 package. This package contains the direction response and
+local audit only; it does not contain implementation output or staged D4 assets.
 
 ## 2. Upload/location audit
 
@@ -60,7 +59,9 @@ This is not an interpretation that the teacher specified this exact folder.
 
 ## 3. Source drafts incorporated
 
-The combined draft is based on the three audited local preparation steps:
+The uploaded response is based on three local preparation steps. These filenames
+are listed for student-side traceability only and are not teacher-visible
+dependencies:
 
 ```text
 M4_ONDEMAND_D4_BACKFILL_DIRECTION_RESPONSE_STEP1_BOUNDARY_AND_EVIDENCE_BASE_2026-08-09.md
@@ -72,9 +73,9 @@ and their local audits.
 
 ## 4. Teacher-facing path audit
 
-The combined draft avoids local-only evidence paths. This is intentional because
-the teacher cannot see local filesystem paths unless they are later packaged
-into a GitHub-visible directory or tar-internal path.
+The uploaded response avoids local-only evidence paths. This is intentional
+because the teacher cannot see local filesystem paths unless they are later
+packaged into a GitHub-visible directory or tar-internal path.
 
 The draft does include generic output filenames expected in a future package,
 for example:
@@ -148,5 +149,5 @@ WORKLOAD_TWO_TIER_ESTIMATE_PASS
 ACCEPTANCE_SUBSET_POLICY_PASS
 CHENYU_340_DISTINCTION_PASS
 ESMC600M_NOT_SUBSTITUTE_PASS
-READY_FOR_USER_REVIEW_BEFORE_ANY_UPLOAD
+GITHUB_PACKAGE_UPLOADED_AND_REMOTE_HEAD_VERIFIED_PASS
 ```
