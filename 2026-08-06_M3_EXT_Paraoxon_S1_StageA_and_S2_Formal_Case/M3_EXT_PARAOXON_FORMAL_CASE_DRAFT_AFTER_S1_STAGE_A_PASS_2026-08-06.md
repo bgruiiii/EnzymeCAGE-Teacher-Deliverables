@@ -36,9 +36,9 @@ This draft is based on the following local evidence chain.
 |---|---|---|
 | Teacher ruling | `00_Authority_Teacher_Plan/TEACHER_REPLY_M3_COMBINED_THREE_QUESTIONS_AND_NEXT_STEPS_2026-08-04.md` | Paraoxon conditional promotion; Stage A authorization; B pool = 0 running-surface disclosure; S2 deliverable requirements |
 | Candidate shortlist | `M3_EXT_CANDIDATE_SHORTLIST_v0.md` | Paraoxon Rhea/EC/reaction definition, preliminary B/C pool sizes, evidence UID boundary, split-exclusion checks |
-| Second adjudication reaudit | `04_Local_Review_Audits/M3_EXT_SECOND_ADJUDICATION_MATERIALS_REAUDIT_2026-08-04.md` | Rechecked Paraoxon/Carbaryl/Nitrobenzene status and overclaim boundaries before teacher ruling |
-| S1 Stage A audit | `04_Local_Review_Audits/M3_EXT_PARAOXON_STAGE_A_P0A434_Q97VT7_ALPHAFILL8_D4_FEASIBILITY_RERUN3_ENVFIX_RETURN_LOCAL_AUDIT_2026-08-05.md` | P0A434/Q97VT7 staged D4 constructability PASS and no-production-mutation boundary |
-| S1 return package | `03_HPC_Returned_Result_Summaries/enzymecage_m3_ext_paraoxon_stage_a_p0a434_q97vt7_alphafill8_d4_feasibility_20260805_rerun3_envfix.tar.gz` | Raw/staged S1 evidence package; archive SHA256 listed in the audit |
+| Second adjudication reaudit | Teacher-facing package context; see `M3_EXT_CANDIDATE_SHORTLIST_v0.md` and the accepted 2026-08-07 teacher audit | Rechecked Paraoxon/Carbaryl/Nitrobenzene status and overclaim boundaries before teacher ruling |
+| S1 Stage A audit | `M3_EXT_PARAOXON_STAGE_A_P0A434_Q97VT7_ALPHAFILL8_D4_FEASIBILITY_RERUN3_ENVFIX_RETURN_LOCAL_AUDIT_2026-08-05.md` | P0A434/Q97VT7 staged D4 constructability PASS and no-production-mutation boundary |
+| S1 return package | `enzymecage_m3_ext_paraoxon_stage_a_p0a434_q97vt7_alphafill8_d4_feasibility_20260805_rerun3_envfix.tar.gz` internal path `enzymecage_m3_ext_paraoxon_stage_a_p0a434_q97vt7_alphafill8_d4_feasibility_20260805_rerun3_envfix/S1_STAGE_A_EXECUTION_REPORT.md` | Raw/staged S1 evidence package; archive SHA256 listed in the audit |
 
 ## 3. Formal case identity
 
