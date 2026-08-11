@@ -1,12 +1,35 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-08-09
+## 老师当前优先审阅入口 — 2026-08-11
 
 请优先打开：
 
 - [`00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/`](00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/)
 
-该文件夹汇总了当前最新回应、已完成证据路径、M3-EXT Paraoxon S1/S2 状态、F6 状态，以及仍需老师后续裁定的问题。根目录中保留历史文件是为了不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方最新回应为准。
+该文件夹汇总了当前最新 Phase 1 验收候选包、已完成证据路径、M4
+边界状态，以及仍需老师后续裁定的问题。根目录中保留历史文件是为了
+不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方
+最新回应为准。
+
+## Current M4 Phase 1 acceptance candidate — 2026-08-11
+
+The corrected Phase 1 100-UID frozen acceptance candidate package is placed in
+a dedicated folder:
+
+- [`2026-08-11_M4_Phase1_Acceptance_Candidate/`](2026-08-11_M4_Phase1_Acceptance_Candidate/)
+
+Main teacher-facing summary:
+
+- [`2026-08-11_M4_Phase1_Acceptance_Candidate/M4_PHASE1_ACCEPTANCE_RESULT_SUMMARY_TO_HUANG_2026-08-11.md`](2026-08-11_M4_Phase1_Acceptance_Candidate/M4_PHASE1_ACCEPTANCE_RESULT_SUMMARY_TO_HUANG_2026-08-11.md)
+
+Current local-audit result: 41/100 staged AFDB-only P2Rank predicted-pocket D4
+assets passed ESM-2 3B, same-pocket GVP and isolated loader validation;
+44/100 are P2Rank no-pocket blockers; 15/100 are AFDB structure fetch blockers;
+the previous CIF parser false-blocker class is cleared; F3 numeric
+reproduction passed on Chenyu with `strict_uid_missing_valid_pocket=4681`.
+
+Boundary: this package is not a full 4,681 UID backfill, not a production
+D4/pool merge, and not teacher adjudication of Phase 1 acceptance.
 
 ## Current M4 OnDemand D4 direction response — 2026-08-09
 
