@@ -10,17 +10,19 @@
 | 1 | 2026-08-13 陈浩然侧 M4 E2 第二里程碑方案 + BBD83 status-clean 审计包 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/) |
 | 2 | 08-13 陈浩然侧任务对齐索引 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/CHENHAORAN_2026_08_13_TEACHER_NEXT_STEPS_DELIVERY_INDEX.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/CHENHAORAN_2026_08_13_TEACHER_NEXT_STEPS_DELIVERY_INDEX.md) |
 | 3 | M4 第二里程碑 E2 full 4,681 staged status table 授权方案 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/M4_SECOND_MILESTONE_E2_STAGED_STATUS_TABLE_AUTHORIZATION_REQUEST_2026-08-13.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/M4_SECOND_MILESTONE_E2_STAGED_STATUS_TABLE_AUTHORIZATION_REQUEST_2026-08-13.md) |
-| 4 | M4 Phase 1 100 UID frozen acceptance package | [`../2026-08-11_M4_Phase1_Acceptance_Candidate/`](../2026-08-11_M4_Phase1_Acceptance_Candidate/) |
-| 5 | M4 D4 按需补资产工具化立项方向回应 | [`../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/`](../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/) |
-| 6 | M3-EXT Paraoxon S1 Stage A + S2 正式案例草案 | [`../2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/`](../2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/) |
+| 4 | BBD83 209a4b4 08-13 P1 closure re-check local audit | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md) |
+| 5 | M4 Phase 1 100 UID frozen acceptance package | [`../2026-08-11_M4_Phase1_Acceptance_Candidate/`](../2026-08-11_M4_Phase1_Acceptance_Candidate/) |
+| 6 | M4 D4 按需补资产工具化立项方向回应 | [`../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/`](../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/) |
+| 7 | M3-EXT Paraoxon S1 Stage A + S2 正式案例草案 | [`../2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/`](../2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/) |
 
 ## 2. 当前状态一句话
 
 截至 2026-08-13，老师已在 08-13 指导中确认 M4 Phase 1 验收通过；
 当前提交的是第二里程碑 E2 full 4,681 staged status table 授权方案，
 并附 1 个 cache-miss UID smoke 证据。BBD83 209a4b4 审计显示
-status-machine 修复通过，但科学覆盖仍低，且正式 transport archive /
-identity 在本地缺失，因此不写成 BBD83 全量科学闭环。
+08-13 P1 re-check 已完成；status-machine 修复通过，但科学覆盖仍低，
+且正式 transport archive / identity 在本地缺失，因此不写成 BBD83 全量
+科学闭环。
 
 ## 3. 当前不能误写成完成的内容
 

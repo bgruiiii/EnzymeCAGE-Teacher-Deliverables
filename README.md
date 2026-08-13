@@ -18,7 +18,7 @@ status-clean 审计状态、已完成证据路径，以及仍需老师后续裁�
 
 This package contains the Chen Haoran-side response to the 2026-08-13 guidance:
 the M4 second-milestone E2 authorization request, A3CST9 cache-miss smoke
-evidence, and BBD83 209a4b4 status-clean audit material.
+evidence, and the BBD83 209a4b4 2026-08-13 P1 re-check audit.
 
 Boundary: full 4,681 execution has not started, production D4/pool was not
 modified, and BBD83 is status-clean but still low-coverage rather than final

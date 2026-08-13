@@ -8,7 +8,7 @@
 |---|---|---|
 | M4 Phase 1 | 老师 2026-08-13 指导中确认验收通过；原 100 UID 证据包保留 | [`../2026-08-11_M4_Phase1_Acceptance_Candidate/`](../2026-08-11_M4_Phase1_Acceptance_Candidate/) |
 | M4 第二里程碑 E2 | 已写授权方案；含 A3CST9 cache-miss smoke、full 4,681 staged status table 计划、no-pocket 策略、8 非病毒 404 复核计划、时间线；尚未授权执行 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/) |
-| BBD83 209a4b4 status-clean 审计 | status-machine 修复通过；runtime_failure=0；科学覆盖仍低 7/83；正式 transport archive/identity 本地缺失 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/CHENHAORAN_2026_08_13_TEACHER_NEXT_STEPS_DELIVERY_INDEX.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/CHENHAORAN_2026_08_13_TEACHER_NEXT_STEPS_DELIVERY_INDEX.md) |
+| BBD83 209a4b4 status-clean 审计 | 08-13 P1 re-check 完成；status-machine 修复通过；runtime_failure=0；科学覆盖仍低 7/83；正式 transport archive/identity 本地缺失 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md) |
 
 ## 历史已完成并已 push
 

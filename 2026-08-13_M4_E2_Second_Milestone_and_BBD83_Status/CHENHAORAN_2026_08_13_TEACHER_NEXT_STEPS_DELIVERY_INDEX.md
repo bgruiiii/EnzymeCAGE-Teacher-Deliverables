@@ -20,7 +20,7 @@ tasks are not claimed here.
 |---|---|---|---|
 | P0-1 M4 second milestone E2 | 1 cache-miss UID smoke; full 4,681 staged status table plan; no-pocket strategy; 8 non-virus 404 accession review plan; workload/timeline | Ready for teacher review; authorization request only | `M4_SECOND_MILESTONE_E2_STAGED_STATUS_TABLE_AUTHORIZATION_REQUEST_2026-08-13.md` |
 | P0-2 M4b/C7 initiation | TraitFilterLayer implementation scope; input/output contract; acceptance criteria | Ready for teacher review; M4b implementation not started | `M4B_C7_TRAITFILTERLAYER_INITIATION_BLUEPRINT_2026-08-13.md` |
-| P1 BBD83 blind workflow closure | Local audit + normalized return for `bowen_demov2_209a4b4_status_clean_bbd83_rerun` | Local audit completed; status-machine fix accepted; scientific coverage remains low; formal transport archive/identity missing locally | `BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_RETURN_LOCAL_AUDIT_2026-08-12.md` |
+| P1 BBD83 blind workflow closure | Local audit + normalized return for `bowen_demov2_209a4b4_status_clean_bbd83_rerun` | 2026-08-13 re-check completed; status-machine fix accepted; scientific coverage remains low; formal transport archive/identity missing locally | `BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md` |
 
 ## 2. P0-1 summary: M4 second milestone E2
 
@@ -95,6 +95,7 @@ closure.
 Local audit result:
 
 ```text
+P1_RECHECK_PARTIAL_PASS_WITH_TRANSPORT_AND_SCIENTIFIC_COVERAGE_CAVEATS
 STATUS_MACHINE_FIX: PASS
 SCIENTIFIC_COVERAGE: STILL_LOW
 FORMAL_TRANSPORT_ACCEPTANCE: BLOCKED_BY_MISSING_ARCHIVE_AND_IDENTITY
