@@ -1,0 +1,58 @@
+=== Environment Information ===
+Date: 2026-08-12
+Repo: git@github.com:Water-Quality-Risk-Control-Engineering/depending.git
+Branch: demov2
+Commit: 209a4b4a5c02a7acee1e48fe1c108f5fab134743
+
+=== git rev-parse HEAD ===
+209a4b4a5c02a7acee1e48fe1c108f5fab134743
+
+=== git ls-remote --heads origin demov2 main ===
+209a4b4a5c02a7acee1e48fe1c108f5fab134743	refs/heads/demov2
+ee55753630f3dfb7290ff5a37b07a8ad58279db1	refs/heads/main
+
+=== git tag -l ===
+(none — 0 tags)
+
+=== git branch -r ===
+  origin/HEAD -> origin/main
+  origin/demov2
+  origin/main
+(3 lines including HEAD pointer)
+
+=== Ancestor check ===
+git merge-base --is-ancestor 429ab00c2ec2ffe02f683bbee978539f1279eebf HEAD
+ancestor_check_exit=0 (429ab00 IS ancestor of 209a4b4)
+
+=== git log --oneline -5 ===
+209a4b4 feat: E' batch runner + summary (R15 Round 3)
+c157cb7 feat: B-light' — source_evidence_eligibilities + source_snapshot_lanes (R15)
+25481e6 feat: A0+A — completed_with_warnings enum + kernel decision tree + CLI truth table (R12/R13)
+773e8bc fix: A0 — _site_smiles catch RDKit RuntimeError → TransformExtractionError (R12)
+429ab00 fix: R11-01 provenance snapshot_id from authority handle (B方案)
+
+=== git status --short ===
+(clean working tree)
+
+Python version: 3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]
+OS: linux 24.04
+
+=== requirements.lock.txt ANSI check ===
+ANSI escape codes found: NO (grep count = 0)
+
+=== Key package imports ===
+mcp: OK (imported successfully)
+anyio: OK (imported successfully)
+rdkit: OK (version=2026.03.4)
+pydantic: OK (version=2.13.4)
+
+=== Forbidden packages ===
+rxnmapper: NOT installed (correct)
+rxn4chemistry: NOT installed (correct)
+
+=== Exit code truth table (R12/R13) ===
+completed_with_warnings (candidates+warnings) -> exit 0
+completed + scientific stop (no candidates, typed rejection) -> exit 0
+blocked + typed system blocker (CAPABILITY_UNAVAILABLE) -> exit 1
+usage error (INVALID_INPUT) -> exit 1
+uncaught crash (no typed failure_code) -> exit 2

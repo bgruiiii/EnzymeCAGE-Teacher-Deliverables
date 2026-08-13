@@ -1,0 +1,51 @@
+=== Command Log ===
+Date: 2026-08-12
+Repo: /root/projects/depending
+Commit: 209a4b4a5c02a7acee1e48fe1c108f5fab134743
+
+=== Stage 0: Environment ===
+git fetch origin
+git checkout demov2
+git pull
+git rev-parse HEAD
+git ls-remote --heads origin demov2 main
+git tag -l
+git branch -r
+git merge-base --is-ancestor 429ab00c2ec2ffe02f683bbee978539f1279eebf HEAD
+git log --oneline -5
+git status --short
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.lock.txt
+python3 -c "import mcp,anyio,rdkit,pydantic; print('imports OK')"
+python3 -c "import rxnmapper" # expected to fail (forbidden)
+
+=== Stage 1: Preflight ===
+python3 /root/projects/EnzymeCAGE-master/scripts/generate_209a4b4_preflight.py
+
+=== Stage 2: Sanity checks ===
+python3 scripts/run_real_predict.py --smiles "CCCCCCCCCCO" --top-k 10
+python3 scripts/run_real_predict.py --smiles "Oc1ccccc1" --top-k 10
+python3 scripts/run_real_predict.py --smiles "ClCCCl" --top-k 10
+python3 scripts/run_real_predict.py --smiles "CCCCCCCCCCCCOS([O-])(=O)=O" --top-k 10
+python3 scripts/run_real_predict.py --smiles "CC(CCO)CCC=C(C)C" --top-k 10
+python3 scripts/run_real_predict.py --smiles "O=Cc1ccco1" --top-k 10
+
+=== Stage 3: BBD83 full run ===
+# Batch runner attempted with VENV_PYTHON patched:
+python3 -c "import scripts.run_bbd83_batch as b; b.VENV_PYTHON=sys.executable; b.main()"
+# Batch runner summary saved to RAW_OUTPUTS/bbd83_batch/summary.json
+
+# Direct fallback for full raw JSON (83 cases):
+python3 scripts/run_real_predict.py --smiles "<parent_smiles>" --top-k 10
+# (repeated for all 83 blind parent cases)
+# Results saved to RAW_OUTPUTS/bbd83_direct/case_XXX_<case_id>.json
+
+=== Stage 4: Normalization ===
+python3 /root/projects/EnzymeCAGE-master/scripts/normalize_bbd83_209a4b4.py
+
+=== Stage 5: Report and packaging ===
+tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner -czf ARCHIVE -C dirname RETURN_DIR basename RETURN_DIR
+sha256sum ARCHIVE
+stat -c '%s' ARCHIVE

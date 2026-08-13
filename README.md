@@ -1,15 +1,28 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-08-11
+## 老师当前优先审阅入口 — 2026-08-13
 
 请优先打开：
 
 - [`00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/`](00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/)
 
-该文件夹汇总了当前最新 Phase 1 验收候选包、已完成证据路径、M4
-边界状态，以及仍需老师后续裁定的问题。根目录中保留历史文件是为了
+该文件夹汇总了当前最新 M4 E2 第二里程碑授权方案、BBD83 209a4b4
+status-clean 审计状态、已完成证据路径，以及仍需老师后续裁定的问题。
+根目录中保留历史文件是为了
 不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方
 最新回应为准。
+
+## Current 2026-08-13 M4 E2 and BBD83 status package
+
+- [`2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/`](2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/)
+
+This package contains the Chen Haoran-side response to the 2026-08-13 guidance:
+the M4 second-milestone E2 authorization request, A3CST9 cache-miss smoke
+evidence, and BBD83 209a4b4 status-clean audit material.
+
+Boundary: full 4,681 execution has not started, production D4/pool was not
+modified, and BBD83 is status-clean but still low-coverage rather than final
+scientific closure.
 
 ## Current M4 Phase 1 acceptance candidate — 2026-08-11
 

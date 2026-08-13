@@ -1,7 +1,16 @@
 # 仍需老师后续裁定的问题（EnzymeCAGE 侧）
 
-日期：2026-08-06  
+日期：2026-08-13  
 说明：本文件只列“尚未正式裁定”的事项，避免把建议写成已经批准。
+
+## 0. 2026-08-13 新增待裁定
+
+| 问题 | 当前只可写成 | 不能写成 |
+|---|---|---|
+| M4 第二里程碑 E2 是否启动 full 4,681 staged status table | 已提交授权方案，含 A3CST9 smoke 和 full 4,681 状态表计划 | full 4,681 已运行或已补齐 |
+| P2Rank no-pocket 约 44% 如何处理 | 当前命令合同下作为明确 blocker 记录，除非老师另行授权 pocket 定义/参数变化 | 静默改 P2Rank 参数、静默换 pocket 定义 |
+| 8 个非病毒 404 accession 变体复核 | 建议只读复核并写 review table，发现 candidate 也不静默替换 | 已允许 UID/accession 自动替换 |
+| BBD83 209a4b4 下一步 | status-clean 通过但覆盖低，需扩 donor/reaction evidence、mapper、P4 score 和 blocker 语义 | BBD83 全量科学闭环或 F6 final acceptance |
 
 ## 1. 已有老师裁定但仍需执行闭环
 

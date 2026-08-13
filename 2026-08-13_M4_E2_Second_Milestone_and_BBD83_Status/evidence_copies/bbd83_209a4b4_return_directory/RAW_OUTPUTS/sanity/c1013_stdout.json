@@ -1,0 +1,701 @@
+{
+  "run_id": "run_04adc7703bde",
+  "status": "completed_with_warnings",
+  "query_id": "query_0c4270a35b5a",
+  "case_id": "real_smoke",
+  "fold_id": "fold_real_0",
+  "snapshot_id": "snap_19caddc6b312",
+  "snapshot_hash": "19caddc6b312f476d93db8744c79a7851d5cf8393ab12644cb7d3a8fae770b59",
+  "manifest": {
+    "run_id": "run_04adc7703bde",
+    "request": "CC(CCO)CCC=C(C)C",
+    "request_hash": "596c2e5b86c0f0a4532c24247d2d37a819d446b1e419a3316e6df8de577c1675",
+    "query_id": "query_0c4270a35b5a",
+    "case_id": "real_smoke",
+    "fold_id": "fold_real_0",
+    "snapshot_id": "snap_19caddc6b312",
+    "snapshot_hash": "19caddc6b312f476d93db8744c79a7851d5cf8393ab12644cb7d3a8fae770b59",
+    "config": {
+      "mode": "real",
+      "seed": "0",
+      "max_donors": "10"
+    },
+    "component_versions": [
+      {
+        "name": "p3_kernel",
+        "version": "p3-1",
+        "schema_version": "p3-1"
+      },
+      {
+        "name": "normalization",
+        "version": "p3-1",
+        "schema_version": "p3-1"
+      },
+      {
+        "name": "retrieval",
+        "version": "p3-1",
+        "schema_version": "p3-1"
+      },
+      {
+        "name": "transform",
+        "version": "p3-1",
+        "schema_version": "p3-1"
+      },
+      {
+        "name": "graph_edit",
+        "version": "p3-1",
+        "schema_version": "p3-1"
+      },
+      {
+        "name": "validation",
+        "version": "p3-1",
+        "schema_version": "p3-1"
+      },
+      {
+        "name": "candidate_store",
+        "version": "p3-1",
+        "schema_version": "p3-1"
+      }
+    ],
+    "seed": 0,
+    "kernel_version": "p3-1",
+    "schema_version": "p3-1",
+    "manifest_hash": "9dc084c348f176b2eebd43d15d428e5174b840139524f06ffa527d0a64b1473a"
+  },
+  "normalized_query": {
+    "query_id": "query_0c4270a35b5a",
+    "run_id": "run_04adc7703bde",
+    "case_id": "real_smoke",
+    "fold_id": "fold_real_0",
+    "snapshot_id": "",
+    "snapshot_hash": "",
+    "input_smiles": "CC(CCO)CCC=C(C)C",
+    "canonical_smiles": "CC(C)=CCCC(C)CCO",
+    "identity_hash": "3aeb53f65c568f79a6167025fd9f37a00526fdf4cf6b8eb1b3fa643b905ecf73",
+    "heavy_atom_count": 11,
+    "formal_charge": 0,
+    "fragment_count": 1,
+    "normalization_policy": {
+      "version": "p3-1",
+      "canonical_smiles": true,
+      "charge_policy": "keep_formal_charge",
+      "salt_policy": "preserve_multi_fragment",
+      "tautomer_policy": "no_tautomer_canonicalization",
+      "isotope_policy": "preserve_isotopes",
+      "stereo_policy": "ignore_stereo_for_identity"
+    },
+    "evidence_kind": "real"
+  },
+  "capability_status": {
+    "run_id": "run_04adc7703bde",
+    "query_id": "query_0c4270a35b5a",
+    "fold_id": "fold_real_0",
+    "case_id": "real_smoke",
+    "snapshot_id": "",
+    "snapshot_hash": "",
+    "components": [
+      {
+        "component": "chemistry_backend",
+        "state": "available",
+        "version": "2026.03.4",
+        "detail": "rdkit importable",
+        "evidence_kind": "real"
+      },
+      {
+        "component": "explicit_map_validator",
+        "state": "available",
+        "version": "rdkit",
+        "detail": "RealMapperAdapter validates explicit atom maps (formal, not mechanism)",
+        "evidence_kind": "real"
+      },
+      {
+        "component": "strict_atom_mapper",
+        "state": "unavailable",
+        "version": "",
+        "detail": "no learned atom mapper backend wired (rxnmapper/rxn4chemistry absent)",
+        "evidence_kind": "blocked"
+      },
+      {
+        "component": "mcs_diagnostic",
+        "state": "available",
+        "version": "rdkit",
+        "detail": "MCS is a diagnostic fallback; it never satisfies strict mapping",
+        "evidence_kind": "diagnostic"
+      },
+      {
+        "component": "real_snapshot",
+        "state": "available",
+        "version": "19caddc6b312f476d93db8744c79a7851d5cf8393ab12644cb7d3a8fae770b59",
+        "detail": "snapshot snap_19caddc6b312 loaded, hash verified",
+        "evidence_kind": "real"
+      },
+      {
+        "component": "automatic_donor",
+        "state": "available",
+        "version": "",
+        "detail": "real train-only donor view built from loader-verified snapshot",
+        "evidence_kind": "blocked"
+      }
+    ],
+    "chemistry_backend_available": true,
+    "explicit_map_validator_available": true,
+    "strict_atom_mapper_available": false,
+    "mcs_diagnostic_available": true,
+    "real_snapshot_available": true,
+    "automatic_donor_available": true
+  },
+  "candidates": [
+    {
+      "candidate_id": "cand_5125ed880354",
+      "run_id": "run_04adc7703bde",
+      "case_id": "real_smoke",
+      "query_id": "query_0c4270a35b5a",
+      "fold_id": "fold_real_0",
+      "snapshot_id": "snap_19caddc6b312",
+      "snapshot_hash": "19caddc6b312f476d93db8744c79a7851d5cf8393ab12644cb7d3a8fae770b59",
+      "canonical_product_identity": "CC(C)=CCCC(C)CC=O",
+      "lane": "strict",
+      "origin": "deterministic_kernel",
+      "generation_paths": [
+        {
+          "generation_id": "gen_83503609fc46",
+          "transformation_id": "tr_3701b450c39f",
+          "site_id": "site_bedf8edf2386",
+          "edit_application_log": [
+            {
+              "step": "bond_order_change",
+              "detail": "bond 9-10 order -> 2.0"
+            },
+            {
+              "step": "charge_change",
+              "detail": "atom 9 charge -> 0"
+            },
+            {
+              "step": "h_count_set",
+              "detail": "atom 9 H -> 1"
+            },
+            {
+              "step": "charge_change",
+              "detail": "atom 10 charge -> 0"
+            },
+            {
+              "step": "h_count_set",
+              "detail": "atom 10 H -> 0"
+            }
+          ],
+          "raw_product": "CC(C)=CCCC(C)CC=O",
+          "canonical_product": "CC(C)=CCCC(C)CC=O",
+          "changed_atoms": [
+            9,
+            10
+          ],
+          "changed_bonds": [
+            9
+          ],
+          "sanitize_report": "ok",
+          "dedup_key": "1e6aeac08a13d5b792aacf8cac2233088747c97678a42ed177f46b1102af4f32",
+          "failure_code": null,
+          "component_version": "p3-1"
+        }
+      ],
+      "support_lineage_ids": [
+        "lin_11eea47506c7"
+      ],
+      "transformation_ids": [
+        "tr_3701b450c39f"
+      ],
+      "site_ids": [
+        "site_bedf8edf2386"
+      ],
+      "validation": {
+        "valid_molecule": true,
+        "transform_fidelity": true,
+        "precondition_recheck": true,
+        "formal_source_accounting": true,
+        "candidate_ledger_valid": true,
+        "critical_contradiction": false,
+        "relaxation_used": false,
+        "critical_ambiguity": false,
+        "reason_codes": [],
+        "failure_code": null
+      },
+      "source_ledger_ids": [
+        "srl_b75b32184dfc"
+      ],
+      "candidate_analogy_ledger": {
+        "ledger_id": "cal_3822cf5ee948",
+        "source_ledger_id": "srl_b75b32184dfc",
+        "candidate_id": "cand_5125ed880354",
+        "query_candidate_adaptation": {
+          "donor_participant_id": "real_real_audit_case_001_reactant_0",
+          "query_atom_ids": [
+            9,
+            10
+          ],
+          "adaptation_method": "deterministic_graph_edit",
+          "adaptation_verification_status": "formally_mapped"
+        },
+        "inherited_donor_context": [
+          {
+            "donor_reaction_id": "real_real_audit_case_001",
+            "donor_participant_id": "real_real_audit_case_001_reactant_0",
+            "inherited_role": "unknown",
+            "is_assumption": true
+          }
+        ],
+        "inherited_assumptions": [
+          "donor_context_is_assumption_not_x_y_fact"
+        ],
+        "formal_atom_transfer_assignments": [],
+        "formal_balance_under_assumptions": {
+          "element_balances": [],
+          "charge_delta": 0,
+          "assumption_notes": [
+            "balance is DERIVED from the transform's transferred/removed/changed atoms (not hardcoded)",
+            "balance holds only under donor-derived assumptions"
+          ]
+        },
+        "unknown_actual_co_substrates": [
+          "unknown_actual_co_substrates"
+        ],
+        "unknown_actual_cofactors": [
+          "unknown_actual_cofactors"
+        ],
+        "unknown_actual_stoichiometry": [
+          "unknown_actual_stoichiometry"
+        ],
+        "candidate_balance_status": "partial_or_unbalanced_source",
+        "unknowns": [],
+        "evidence_ids": [
+          "real:real_audit_case_001:rec"
+        ]
+      },
+      "candidate_evidence_paths": [
+        {
+          "donor_id": "donor_d286bc4a391e",
+          "reaction_id": "real_real_audit_case_001",
+          "lineage_id": "lin_11eea47506c7",
+          "transformation_id": "tr_3701b450c39f",
+          "site_id": "site_bedf8edf2386",
+          "generation_report": {
+            "generation_id": "gen_83503609fc46",
+            "transformation_id": "tr_3701b450c39f",
+            "site_id": "site_bedf8edf2386",
+            "edit_application_log": [
+              {
+                "step": "bond_order_change",
+                "detail": "bond 9-10 order -> 2.0"
+              },
+              {
+                "step": "charge_change",
+                "detail": "atom 9 charge -> 0"
+              },
+              {
+                "step": "h_count_set",
+                "detail": "atom 9 H -> 1"
+              },
+              {
+                "step": "charge_change",
+                "detail": "atom 10 charge -> 0"
+              },
+              {
+                "step": "h_count_set",
+                "detail": "atom 10 H -> 0"
+              }
+            ],
+            "raw_product": "CC(C)=CCCC(C)CC=O",
+            "canonical_product": "CC(C)=CCCC(C)CC=O",
+            "changed_atoms": [
+              9,
+              10
+            ],
+            "changed_bonds": [
+              9
+            ],
+            "sanitize_report": "ok",
+            "dedup_key": "1e6aeac08a13d5b792aacf8cac2233088747c97678a42ed177f46b1102af4f32",
+            "failure_code": null,
+            "component_version": "p3-1"
+          },
+          "source_ledger_id": "srl_b75b32184dfc",
+          "candidate_analogy_ledger": {
+            "ledger_id": "cal_3822cf5ee948",
+            "source_ledger_id": "srl_b75b32184dfc",
+            "candidate_id": "cand_5125ed880354",
+            "query_candidate_adaptation": {
+              "donor_participant_id": "real_real_audit_case_001_reactant_0",
+              "query_atom_ids": [
+                9,
+                10
+              ],
+              "adaptation_method": "deterministic_graph_edit",
+              "adaptation_verification_status": "formally_mapped"
+            },
+            "inherited_donor_context": [
+              {
+                "donor_reaction_id": "real_real_audit_case_001",
+                "donor_participant_id": "real_real_audit_case_001_reactant_0",
+                "inherited_role": "unknown",
+                "is_assumption": true
+              }
+            ],
+            "inherited_assumptions": [
+              "donor_context_is_assumption_not_x_y_fact"
+            ],
+            "formal_atom_transfer_assignments": [],
+            "formal_balance_under_assumptions": {
+              "element_balances": [],
+              "charge_delta": 0,
+              "assumption_notes": [
+                "balance is DERIVED from the transform's transferred/removed/changed atoms (not hardcoded)",
+                "balance holds only under donor-derived assumptions"
+              ]
+            },
+            "unknown_actual_co_substrates": [
+              "unknown_actual_co_substrates"
+            ],
+            "unknown_actual_cofactors": [
+              "unknown_actual_cofactors"
+            ],
+            "unknown_actual_stoichiometry": [
+              "unknown_actual_stoichiometry"
+            ],
+            "candidate_balance_status": "partial_or_unbalanced_source",
+            "unknowns": [],
+            "evidence_ids": [
+              "real:real_audit_case_001:rec"
+            ]
+          },
+          "validation": {
+            "valid_molecule": true,
+            "transform_fidelity": true,
+            "precondition_recheck": true,
+            "formal_source_accounting": true,
+            "candidate_ledger_valid": true,
+            "critical_contradiction": false,
+            "relaxation_used": false,
+            "critical_ambiguity": false,
+            "reason_codes": [],
+            "failure_code": null
+          },
+          "path_id": "path_6af5c83e049f",
+          "path_hash": "6af5c83e049fe85f9f6fece8416713d041a3ccf818ab8bd4df9ca230a444395f"
+        }
+      ],
+      "provenance": [
+        "run:real_smoke",
+        "query:query_0c4270a35b5a",
+        "fold:fold_real_0",
+        "kernel:p3-1"
+      ],
+      "evidence_kind": "real",
+      "warnings": [
+        "implicit_h_e_policy"
+      ],
+      "source_evidence_eligibilities": [
+        "conditional_eligible"
+      ],
+      "source_snapshot_lanes": [
+        "production"
+      ]
+    }
+  ],
+  "trace": {
+    "run_id": "run_04adc7703bde",
+    "query_id": "query_0c4270a35b5a",
+    "case_id": "real_smoke",
+    "fold_id": "fold_real_0",
+    "snapshot_id": "snap_19caddc6b312",
+    "snapshot_hash": "19caddc6b312f476d93db8744c79a7851d5cf8393ab12644cb7d3a8fae770b59",
+    "stages": [
+      {
+        "stage": "RECEIVED",
+        "input_ref": "CC(CCO)CCC=C(C)C",
+        "output_ref": "",
+        "evidence_ids": [],
+        "content_hash": "596c2e5b86c0f0a4532c24247d2d37a819d446b1e419a3316e6df8de577c1675",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {}
+      },
+      {
+        "stage": "NORMALIZED",
+        "input_ref": "",
+        "output_ref": "CC(C)=CCCC(C)CCO",
+        "evidence_ids": [],
+        "content_hash": "3aeb53f65c568f79a6167025fd9f37a00526fdf4cf6b8eb1b3fa643b905ecf73",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {}
+      },
+      {
+        "stage": "BASELINE_EVIDENCE_LOADED",
+        "input_ref": "",
+        "output_ref": "top_7_distinct_donors_selected",
+        "evidence_ids": [
+          "donor_183ad0f3dff2",
+          "donor_71e0f475339e",
+          "donor_d286bc4a391e",
+          "donor_838a3ad8ea45",
+          "donor_4fc9af3fdc66",
+          "donor_de3ae857b2c5",
+          "donor_79464792ec0f"
+        ],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {
+          "distinct_donors": 7.0,
+          "dedup_skipped": 0.0,
+          "excluded_quarantine": 0.0
+        }
+      },
+      {
+        "stage": "HYPOTHESES_COMPILED",
+        "input_ref": "real_real_audit_case_012",
+        "output_ref": "",
+        "evidence_ids": [],
+        "content_hash": "",
+        "failure_code": "TRANSFORM_EXTRACTION_FAILED",
+        "component": "transform",
+        "detail": "RDKit Canon error in _site_smiles (stereo-sensitive MolFragmentToSmiles): Pre-condition Violation\n\tneither end atom traversed\n\tViolation occurred on line 364 in file Code/GraphMol/Canon.cpp\n\tFailed Expression: atomVisitOrders[dblBond->getBeginAtomIdx()] > 0 || atomVisitOrders[dblBond->getEndAtomIdx()] > 0\n\tRDKIT: 2026.03.4\n\tBOOST: 1_85",
+        "metrics": {}
+      },
+      {
+        "stage": "HYPOTHESES_COMPILED",
+        "input_ref": "",
+        "output_ref": "tr_d9a64d475756",
+        "evidence_ids": [
+          "donor_71e0f475339e",
+          "real_real_audit_case_002",
+          "tr_d9a64d475756"
+        ],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {}
+      },
+      {
+        "stage": "SITES_ENUMERATED",
+        "input_ref": "",
+        "output_ref": "",
+        "evidence_ids": [],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {
+          "sites": 0.0
+        }
+      },
+      {
+        "stage": "HYPOTHESES_COMPILED",
+        "input_ref": "",
+        "output_ref": "tr_3701b450c39f",
+        "evidence_ids": [
+          "donor_d286bc4a391e",
+          "real_real_audit_case_001",
+          "tr_3701b450c39f"
+        ],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {}
+      },
+      {
+        "stage": "SITES_ENUMERATED",
+        "input_ref": "",
+        "output_ref": "",
+        "evidence_ids": [
+          "site_bedf8edf2386"
+        ],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {
+          "sites": 1.0
+        }
+      },
+      {
+        "stage": "HYPOTHESES_COMPILED",
+        "input_ref": "",
+        "output_ref": "tr_d3e2500cf1bd",
+        "evidence_ids": [
+          "donor_838a3ad8ea45",
+          "real_real_audit_case_011",
+          "tr_d3e2500cf1bd"
+        ],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {}
+      },
+      {
+        "stage": "SITES_ENUMERATED",
+        "input_ref": "",
+        "output_ref": "",
+        "evidence_ids": [],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {
+          "sites": 0.0
+        }
+      },
+      {
+        "stage": "HYPOTHESES_COMPILED",
+        "input_ref": "",
+        "output_ref": "tr_fcd9a7c19e33",
+        "evidence_ids": [
+          "donor_4fc9af3fdc66",
+          "real_real_audit_case_013",
+          "tr_fcd9a7c19e33"
+        ],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {}
+      },
+      {
+        "stage": "SITES_ENUMERATED",
+        "input_ref": "",
+        "output_ref": "",
+        "evidence_ids": [],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {
+          "sites": 0.0
+        }
+      },
+      {
+        "stage": "HYPOTHESES_COMPILED",
+        "input_ref": "",
+        "output_ref": "tr_06028b7b0820",
+        "evidence_ids": [
+          "donor_de3ae857b2c5",
+          "real_real_audit_case_014",
+          "tr_06028b7b0820"
+        ],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {}
+      },
+      {
+        "stage": "SITES_ENUMERATED",
+        "input_ref": "",
+        "output_ref": "",
+        "evidence_ids": [],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {
+          "sites": 0.0
+        }
+      },
+      {
+        "stage": "HYPOTHESES_COMPILED",
+        "input_ref": "",
+        "output_ref": "tr_b45c1b68d2f6",
+        "evidence_ids": [
+          "donor_79464792ec0f",
+          "real_real_audit_case_003",
+          "tr_b45c1b68d2f6"
+        ],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {}
+      },
+      {
+        "stage": "SITES_ENUMERATED",
+        "input_ref": "",
+        "output_ref": "",
+        "evidence_ids": [],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {
+          "sites": 0.0
+        }
+      },
+      {
+        "stage": "CANDIDATES_VALIDATED",
+        "input_ref": "",
+        "output_ref": "",
+        "evidence_ids": [
+          "cand_5125ed880354"
+        ],
+        "content_hash": "",
+        "failure_code": null,
+        "component": "",
+        "detail": "",
+        "metrics": {
+          "candidates": 1.0,
+          "eligible_sites": 1.0,
+          "sites_found": 1.0
+        }
+      }
+    ],
+    "donor_ids": [
+      "donor_183ad0f3dff2",
+      "donor_71e0f475339e",
+      "donor_d286bc4a391e",
+      "donor_838a3ad8ea45",
+      "donor_4fc9af3fdc66",
+      "donor_de3ae857b2c5",
+      "donor_79464792ec0f"
+    ],
+    "transformation_ids": [
+      "tr_d9a64d475756",
+      "tr_3701b450c39f",
+      "tr_d3e2500cf1bd",
+      "tr_fcd9a7c19e33",
+      "tr_06028b7b0820",
+      "tr_b45c1b68d2f6"
+    ],
+    "site_ids": [
+      "site_bedf8edf2386"
+    ],
+    "generation_ids": [
+      "gen_83503609fc46"
+    ],
+    "candidate_ids": [
+      "cand_5125ed880354"
+    ],
+    "source_ledger_ids": [
+      "srl_424ce2d594e2",
+      "srl_b75b32184dfc",
+      "srl_721258b0b49e",
+      "srl_809c240ff0e0",
+      "srl_7766f15bda0b",
+      "srl_c2d6b7bb9d57"
+    ],
+    "evidence_kind": "real"
+  },
+  "failures": [
+    {
+      "failure_code": "TRANSFORM_EXTRACTION_FAILED",
+      "category": "system",
+      "reason": "donor reaction real_real_audit_case_012 could not be processed",
+      "component": "transform",
+      "detail": "RDKit Canon error in _site_smiles (stereo-sensitive MolFragmentToSmiles): Pre-condition Violation\n\tneither end atom traversed\n\tViolation occurred on line 364 in file Code/GraphMol/Canon.cpp\n\tFailed Expression: atomVisitOrders[dblBond->getBeginAtomIdx()] > 0 || atomVisitOrders[dblBond->getEndAtomIdx()] > 0\n\tRDKIT: 2026.03.4\n\tBOOST: 1_85"
+    }
+  ],
+  "evidence_kind": "real"
+}
