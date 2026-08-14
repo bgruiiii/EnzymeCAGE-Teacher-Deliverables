@@ -1,14 +1,14 @@
 # EnzymeCAGE 当前状态索引
 
-日期：2026-08-13
+日期：2026-08-14
 
 ## 当前优先审阅
 
 | 项 | 状态 | 老师查看路径 |
 |---|---|---|
 | M4 Phase 1 | 老师 2026-08-13 指导中确认验收通过；原 100 UID 证据包保留 | [`../2026-08-11_M4_Phase1_Acceptance_Candidate/`](../2026-08-11_M4_Phase1_Acceptance_Candidate/) |
-| M4 第二里程碑 E2 | 已写授权方案；含 A3CST9 cache-miss smoke、full 4,681 staged status table 计划、no-pocket 策略、8 非病毒 404 复核计划、时间线；尚未授权执行 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/) |
-| BBD83 209a4b4 status-clean 审计 | 08-13 P1 re-check 完成；status-machine 修复通过；runtime_failure=0；科学覆盖仍低 7/83；正式 transport archive/identity 本地缺失 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md) |
+| M4 第二里程碑 E2 | 08-13 授权方案和 A3CST9 cache-miss smoke 已提交；08-14 full 4,681 Chenyu 执行/回包仍在等待，不在本次 BBD83 transport 补交中声明完成 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/) |
+| BBD83 209a4b4 status-clean 审计 | 08-13 P1 re-check 完成；status-machine 修复通过；runtime_failure=0；科学覆盖仍低 7/83；08-14 正式 transport archive/identity 已补交并本地审计 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md); [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_TRANSPORT_PACKAGE_LOCAL_AUDIT_2026-08-14.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_TRANSPORT_PACKAGE_LOCAL_AUDIT_2026-08-14.md) |
 
 ## 历史已完成并已 push
 

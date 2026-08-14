@@ -20,7 +20,7 @@ tasks are not claimed here.
 |---|---|---|---|
 | P0-1 M4 second milestone E2 | 1 cache-miss UID smoke; full 4,681 staged status table plan; no-pocket strategy; 8 non-virus 404 accession review plan; workload/timeline | Ready for teacher review; authorization request only | `M4_SECOND_MILESTONE_E2_STAGED_STATUS_TABLE_AUTHORIZATION_REQUEST_2026-08-13.md` |
 | P0-2 M4b/C7 initiation | TraitFilterLayer implementation scope; input/output contract; acceptance criteria | Ready for teacher review; M4b implementation not started | `M4B_C7_TRAITFILTERLAYER_INITIATION_BLUEPRINT_2026-08-13.md` |
-| P1 BBD83 blind workflow closure | Local audit + normalized return for `bowen_demov2_209a4b4_status_clean_bbd83_rerun` | 2026-08-13 re-check completed; status-machine fix accepted; scientific coverage remains low; formal transport archive/identity missing locally | `BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md` |
+| P1 BBD83 blind workflow closure | Local audit + normalized return for `bowen_demov2_209a4b4_status_clean_bbd83_rerun`; 2026-08-14 transport sidecar supplement | 2026-08-13 re-check completed; status-machine fix accepted; scientific coverage remains low; formal transport archive/identity recovered and locally audited on 2026-08-14 | `BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md`; `BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_TRANSPORT_PACKAGE_LOCAL_AUDIT_2026-08-14.md` |
 
 ## 2. P0-1 summary: M4 second milestone E2
 
@@ -92,7 +92,7 @@ no hard filtering, no uncalibrated confidence float, no production mutation.
 The BBD83 audit confirms a status-machine improvement, not a final scientific
 closure.
 
-Local audit result:
+2026-08-13 re-check audit result before the transport sidecar was supplied:
 
 ```text
 P1_RECHECK_PARTIAL_PASS_WITH_TRANSPORT_AND_SCIENTIFIC_COVERAGE_CAVEATS
@@ -100,6 +100,15 @@ STATUS_MACHINE_FIX: PASS
 SCIENTIFIC_COVERAGE: STILL_LOW
 FORMAL_TRANSPORT_ACCEPTANCE: BLOCKED_BY_MISSING_ARCHIVE_AND_IDENTITY
 FINAL_F6_ACCEPTANCE: NOT_CLAIMED
+```
+
+2026-08-14 transport supplement:
+
+```text
+FORMAL_TRANSPORT_PACKAGE: PASS_WITH_MANIFEST_SELF_HASH_CAVEAT
+ARCHIVE_IDENTITY_MATCH: PASS
+ARCHIVE_ROOT_MATCH: PASS
+ARCHIVE_BODY_MATCHES_EXISTING_RETURN_DIRECTORY: PASS
 ```
 
 Key numbers:
@@ -124,14 +133,13 @@ It does not yet provide full BBD83 evaluability, because candidate coverage
 remains 7/83 and numeric P4 score is still absent.
 ```
 
-Formal transport caveat:
+Formal transport update:
 
 ```text
-The returned directory exists locally, but a matching .tar.gz and
-.tar.gz.identity.txt are absent locally. Therefore the directory can be
-reviewed and normalized, but formal Chenyu return transport acceptance is not
-claimed until the archive and identity sidecar are supplied or packaging is
-rerun.
+The previously missing Chenyu .tar.gz and .tar.gz.identity.txt were supplied on
+2026-08-14. Local SHA256 matches the identity sidecar, the archive extracts to
+the expected single root, and the extracted body matches the existing local
+return directory. The known MANIFEST.sha256 self-hash caveat remains recorded.
 ```
 
 ## 5. Current teacher requests

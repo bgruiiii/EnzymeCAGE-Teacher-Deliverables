@@ -1,6 +1,6 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-08-13
+## 老师当前优先审阅入口 — 2026-08-14
 
 请优先打开：
 
@@ -12,17 +12,20 @@ status-clean 审计状态、已完成证据路径，以及仍需老师后续裁�
 不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方
 最新回应为准。
 
-## Current 2026-08-13 M4 E2 and BBD83 status package
+## Current 2026-08-13 M4 E2 and BBD83 status package with 2026-08-14 transport supplement
 
 - [`2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/`](2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/)
 
 This package contains the Chen Haoran-side response to the 2026-08-13 guidance:
 the M4 second-milestone E2 authorization request, A3CST9 cache-miss smoke
-evidence, and the BBD83 209a4b4 2026-08-13 P1 re-check audit.
+evidence, the BBD83 209a4b4 2026-08-13 P1 re-check audit, and the 2026-08-14
+recovered `.tar.gz` + identity transport sidecar audit.
 
-Boundary: full 4,681 execution has not started, production D4/pool was not
-modified, and BBD83 is status-clean but still low-coverage rather than final
-scientific closure.
+Boundary: production D4/pool was not modified, and BBD83 is status-clean but
+still low-coverage rather than final scientific closure. The BBD83 formal
+transport sidecar is now present and locally audited, with the known
+MANIFEST.sha256 self-hash caveat retained. The full 4,681 final return is not
+part of this BBD83 transport supplement.
 
 ## Current M4 Phase 1 acceptance candidate — 2026-08-11
 
