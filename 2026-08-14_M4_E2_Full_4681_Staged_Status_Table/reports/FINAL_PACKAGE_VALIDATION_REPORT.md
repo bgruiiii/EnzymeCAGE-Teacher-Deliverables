@@ -1,0 +1,22 @@
+# Final Package Validation Report
+
+- `manifest_rows`: 4681
+- `manifest_rows_is_4681`: True
+- `status_table_rows`: 4681
+- `status_table_rows_is_4681`: True
+- `unique_uids_in_status_table`: 4681
+- `unique_uids_is_4681`: True
+- `all_statuses_authorized`: True
+- `status_counts_sum`: 4681
+- `status_counts_sum_is_4681`: True
+- `formal_assets_mutated_false`: True
+- `production_pool_mutated_false`: True
+- `production_d4_mutated_false`: True
+- `p2rank_command_contract`: prank predict -threads 4 -c alphafold -visualizations 0
+- `prohibited_strings_absent`: True
+- `prohibited_strings_found`: []
+- `evidence_tier`: lower_evidence_predicted_pocket
+- `pocket_source`: AFDB_P2RANK_TOP_PREDICTED_POCKET
+- `final_status_one_line`: True
+- `pass_uid_staged_assets_exist`: True
+- `overall_pass`: True

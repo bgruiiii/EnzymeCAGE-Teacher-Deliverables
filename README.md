@@ -12,6 +12,34 @@ status-clean 审计状态、已完成证据路径，以及仍需老师后续裁�
 不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方
 最新回应为准。
 
+## Current 2026-08-14 M4 E2 full 4,681 staged status table
+
+- [`2026-08-14_M4_E2_Full_4681_Staged_Status_Table/`](2026-08-14_M4_E2_Full_4681_Staged_Status_Table/)
+
+This package contains the reviewable GitHub-side tables, reports, identity
+sidecar copy and local audit for the completed Chenyu full 4,681 staged status
+table return.
+
+The original 658M Chenyu archive is not committed to GitHub. It is available on
+Chenyu at:
+
+```text
+/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_m4_e2_full_4681_4gpu_sharded_continuation_final_20260814.tar.gz
+```
+
+Core result:
+
+```text
+1704 staged PASS
+1324 P2Rank no-pocket blockers
+1650 AFDB structure fetch blockers
+3 ESM-2 3B extraction blockers
+```
+
+Boundary: this is a staged-only lower-evidence AFDB + P2Rank predicted-pocket
+return. It is not a production D4 merge, production pool mutation, or claim that
+all 4,681 UIDs were backfilled.
+
 ## Current 2026-08-13 M4 E2 and BBD83 status package with 2026-08-14 transport supplement
 
 - [`2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/`](2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/)
