@@ -1,16 +1,40 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-08-14
+## 老师当前优先审阅入口 — 2026-08-16
 
 请优先打开：
 
 - [`00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/`](00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/)
 
-该文件夹汇总了当前最新 M4 E2 第二里程碑授权方案、BBD83 209a4b4
-status-clean 审计状态、已完成证据路径，以及仍需老师后续裁定的问题。
+该文件夹汇总了当前最新 M4 E2 第二里程碑、1,650 fetch-failed accession
+二次复核、BBD83 209a4b4 status-clean 审计状态、已完成证据路径，以及仍需
+老师后续裁定的问题。
 根目录中保留历史文件是为了
 不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方
 最新回应为准。
+
+## Current 2026-08-16 M4 E2 1,650 fetch-failed accession secondary review
+
+- [`2026-08-16_M4_E2_Fetch_Failed_1650_Accession_Secondary_Review/`](2026-08-16_M4_E2_Fetch_Failed_1650_Accession_Secondary_Review/)
+
+This package contains the table-only secondary accession review for the 1,650
+`BLOCKED_AFDB_STRUCTURE_FETCH_FAILED` rows from the accepted M4 E2 full 4,681
+package.
+
+Core result:
+
+```text
+1650 reviewed
+5 accession candidates recorded for teacher review only
+1645 no available AFDB v6 accession candidate
+0 API retry exhausted
+no UID replacement
+no asset generation
+no formal / production mutation
+```
+
+Boundary: this is an accession review table only. It is not rescued assets,
+production backfill, UID replacement, D4/pool merge, or full asset completion.
 
 ## Current 2026-08-14 M4 E2 full 4,681 staged status table
 
