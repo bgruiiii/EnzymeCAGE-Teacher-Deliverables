@@ -1,13 +1,15 @@
 # EnzymeCAGE 当前状态索引
 
-日期：2026-08-14
+日期：2026-08-18
 
 ## 当前优先审阅
 
 | 项 | 状态 | 老师查看路径 |
 |---|---|---|
+| P18173/P80550 accession 存疑项澄清 | 已按 08-17 老师要求补充：P18173 的 Q8SXV0 为 deterministic probe order 首个 AFDB v6 200，不是生物偏好；P80550 38aa 溯源到 frozen 2026-01-21 processed snapshot；两者均保持 record-only unresolved | [`../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/`](../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/) |
 | M4 Phase 1 | 老师 2026-08-13 指导中确认验收通过；原 100 UID 证据包保留 | [`../2026-08-11_M4_Phase1_Acceptance_Candidate/`](../2026-08-11_M4_Phase1_Acceptance_Candidate/) |
 | M4 第二里程碑 E2 | 08-14 full 4,681 staged status table 已回包并通过本地核心审计；1,704 staged PASS、1,324 P2Rank no-pocket、1,650 AFDB fetch-failed、3 ESM-2 3B failed；不是 production merge | [`../2026-08-14_M4_E2_Full_4681_Staged_Status_Table/`](../2026-08-14_M4_E2_Full_4681_Staged_Status_Table/) |
+| 1,650 accession 二次复核 | 08-16 table-only 结案；5 candidate 仅记录，1,645 no-candidate；未替换、未补资产、未改 formal/production | [`../2026-08-16_M4_E2_Fetch_Failed_1650_Accession_Secondary_Review/`](../2026-08-16_M4_E2_Fetch_Failed_1650_Accession_Secondary_Review/) |
 | BBD83 209a4b4 status-clean 审计 | 08-13 P1 re-check 完成；status-machine 修复通过；runtime_failure=0；科学覆盖仍低 7/83；08-14 正式 transport archive/identity 已补交并本地审计 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md); [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_TRANSPORT_PACKAGE_LOCAL_AUDIT_2026-08-14.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_TRANSPORT_PACKAGE_LOCAL_AUDIT_2026-08-14.md) |
 
 ## 历史已完成并已 push

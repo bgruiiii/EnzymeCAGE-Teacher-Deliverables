@@ -1,17 +1,37 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-08-16
+## 老师当前优先审阅入口 — 2026-08-18
 
 请优先打开：
 
 - [`00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/`](00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/)
 
 该文件夹汇总了当前最新 M4 E2 第二里程碑、1,650 fetch-failed accession
-二次复核、BBD83 209a4b4 status-clean 审计状态、已完成证据路径，以及仍需
-老师后续裁定的问题。
+二次复核、P18173/P80550 accession 存疑项补充澄清、BBD83 209a4b4
+status-clean 审计状态、已完成证据路径，以及仍需老师后续裁定的问题。
 根目录中保留历史文件是为了
 不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方
 最新回应为准。
+
+## Current 2026-08-18 M4 E2 accession ambiguity clarification
+
+- [`2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/`](2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/)
+
+This package answers the two teacher-requested unresolved accession questions
+from the accepted 1,650 table-only review:
+
+```text
+P18173: Q8SXV0 was selected by deterministic accession probe order, not by
+        biological preference; original 625aa is not sequence-identical to
+        current canonical or either AFDB candidate structure.
+P80550: original 38aa is traced to the frozen 2026-01-21 processed enzyme
+        snapshot; it is not sequence-identical to current canonical or AFDB
+        F1RSB4.
+```
+
+Boundary: both cases remain record-only and unresolved; no UID replacement, no
+asset generation, no formal/production mutation and no candidate closure are
+claimed.
 
 ## Current 2026-08-16 M4 E2 1,650 fetch-failed accession secondary review
 

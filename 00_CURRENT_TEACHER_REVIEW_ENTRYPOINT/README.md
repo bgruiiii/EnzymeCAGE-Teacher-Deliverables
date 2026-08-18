@@ -1,26 +1,26 @@
 # 当前老师审阅入口（EnzymeCAGE 侧）
 
-更新时间：2026-08-16  
+更新时间：2026-08-18  
 用途：给黄老师打开 GitHub 后的第一入口，避免从根目录历史散文件中自行判断最新状态。
 
 ## 1. 老师优先看哪些文件
 
 | 优先级 | 内容 | 路径 |
 |---|---|---|
-| 1 | 2026-08-16 M4 E2 1,650 fetch-failed accession 二次复核 | [`../2026-08-16_M4_E2_Fetch_Failed_1650_Accession_Secondary_Review/`](../2026-08-16_M4_E2_Fetch_Failed_1650_Accession_Secondary_Review/) |
-| 2 | M4 E2 full 4,681 staged status table 回包与本地审计 | [`../2026-08-14_M4_E2_Full_4681_Staged_Status_Table/`](../2026-08-14_M4_E2_Full_4681_Staged_Status_Table/) |
-| 3 | 2026-08-13 陈浩然侧 M4 E2 第二里程碑方案 + BBD83 status-clean 审计包 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/) |
-| 4 | 08-13 陈浩然侧任务对齐索引 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/CHENHAORAN_2026_08_13_TEACHER_NEXT_STEPS_DELIVERY_INDEX.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/CHENHAORAN_2026_08_13_TEACHER_NEXT_STEPS_DELIVERY_INDEX.md) |
-| 5 | M4 第二里程碑 E2 full 4,681 staged status table 授权方案 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/M4_SECOND_MILESTONE_E2_STAGED_STATUS_TABLE_AUTHORIZATION_REQUEST_2026-08-13.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/M4_SECOND_MILESTONE_E2_STAGED_STATUS_TABLE_AUTHORIZATION_REQUEST_2026-08-13.md) |
-| 6 | BBD83 209a4b4 08-13 P1 closure re-check local audit | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md) |
-| 7 | BBD83 209a4b4 08-14 transport package supplement audit | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_TRANSPORT_PACKAGE_LOCAL_AUDIT_2026-08-14.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_TRANSPORT_PACKAGE_LOCAL_AUDIT_2026-08-14.md) |
-| 8 | M4 Phase 1 100 UID frozen acceptance package | [`../2026-08-11_M4_Phase1_Acceptance_Candidate/`](../2026-08-11_M4_Phase1_Acceptance_Candidate/) |
-| 9 | M4 D4 按需补资产工具化立项方向回应 | [`../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/`](../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/) |
-| 10 | M3-EXT Paraoxon S1 Stage A + S2 正式案例草案 | [`../2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/`](../2026-08-06_M3_EXT_Paraoxon_S1_StageA_and_S2_Formal_Case/) |
+| 1 | 2026-08-18 P18173/P80550 accession 存疑项补充澄清 | [`../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/`](../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/) |
+| 2 | 2026-08-16 M4 E2 1,650 fetch-failed accession 二次复核 | [`../2026-08-16_M4_E2_Fetch_Failed_1650_Accession_Secondary_Review/`](../2026-08-16_M4_E2_Fetch_Failed_1650_Accession_Secondary_Review/) |
+| 3 | M4 E2 full 4,681 staged status table 回包与本地审计 | [`../2026-08-14_M4_E2_Full_4681_Staged_Status_Table/`](../2026-08-14_M4_E2_Full_4681_Staged_Status_Table/) |
+| 4 | 2026-08-13 陈浩然侧 M4 E2 第二里程碑方案 + BBD83 status-clean 审计包 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/) |
+| 5 | 08-13 陈浩然侧任务对齐索引 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/CHENHAORAN_2026_08_13_TEACHER_NEXT_STEPS_DELIVERY_INDEX.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/CHENHAORAN_2026_08_13_TEACHER_NEXT_STEPS_DELIVERY_INDEX.md) |
+| 6 | M4 第二里程碑 E2 full 4,681 staged status table 授权方案 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/M4_SECOND_MILESTONE_E2_STAGED_STATUS_TABLE_AUTHORIZATION_REQUEST_2026-08-13.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/M4_SECOND_MILESTONE_E2_STAGED_STATUS_TABLE_AUTHORIZATION_REQUEST_2026-08-13.md) |
+| 7 | BBD83 209a4b4 08-13 P1 closure re-check local audit | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md) |
+| 8 | BBD83 209a4b4 08-14 transport package supplement audit | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_TRANSPORT_PACKAGE_LOCAL_AUDIT_2026-08-14.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_TRANSPORT_PACKAGE_LOCAL_AUDIT_2026-08-14.md) |
+| 9 | M4 Phase 1 100 UID frozen acceptance package | [`../2026-08-11_M4_Phase1_Acceptance_Candidate/`](../2026-08-11_M4_Phase1_Acceptance_Candidate/) |
+| 10 | M4 D4 按需补资产工具化立项方向回应 | [`../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/`](../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/) |
 
 ## 2. 当前状态一句话
 
-截至 2026-08-16，老师已在 08-13 指导中确认 M4 Phase 1 验收通过；
+截至 2026-08-18，老师已在 08-13 指导中确认 M4 Phase 1 验收通过；
 M4 E2 full 4,681 staged status table 已回包并通过本地核心审计：
 1,704 staged PASS、1,324 P2Rank no-pocket、1,650 AFDB fetch-failed、3 ESM-2
 3B failed。原始 658M 归档在 Chenyu，不提交到 GitHub；GitHub 包含可审阅
@@ -28,6 +28,10 @@ M4 E2 full 4,681 staged status table 已回包并通过本地核心审计：
 1,650 fetch-failed accession 二次复核已作为独立表格任务完成：5 个
 candidate accession 仅入表供老师审阅，1,645 个无可用 AFDB v6 candidate；
 未替换 UID，未生成资产，未改 formal/production。
+按 08-17 老师要求，`P18173` 与 `P80550` 两个存疑 candidate 已补充
+record-only 澄清：`P18173` 的 `Q8SXV0` 来自 deterministic probe order，
+不是生物偏好；`P80550` 的 38aa 已溯源到 frozen 2026-01-21 processed
+snapshot。两者均保持 unresolved，不进入收口路径。
 BBD83 209a4b4 审计显示
 08-13 P1 re-check 已完成；status-machine 修复通过；08-14 已补交并
 审计正式 transport archive / identity，但科学覆盖仍低，因此不写成
@@ -46,6 +50,7 @@ full 4,681 UID production D4 merge 尚未获老师另行授权；
 production D4/pool merge 尚未获老师另行授权；
 M4 第二里程碑 E2 只能写成 staged status table 回包，不可写成生产资产合并；
 1,650 accession 二次复核只能写成 candidate 记录入表，不能写成 UID 替换或补资产成功；
+P18173/P80550 accession 澄清只能写成 record-only explanation，不能写成 candidate closure；
 BBD83 209a4b4 只可写成 status-clean 通过、科学覆盖仍低；
 不可写成 BBD83 full scientific closure 或 F6/final acceptance；
 340 主机 GVP 历史资产尚未确认找到；
