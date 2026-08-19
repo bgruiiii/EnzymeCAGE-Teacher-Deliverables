@@ -1,0 +1,10 @@
+scope,route,type,denominator,coverage_or_valid_nonempty,hit_at_1,hit_at_3,hit_at_5,hit_at_10,mrr_at_10,product_labels_recovered_at_10,interpretation
+BBD83,BioTransformer ENVMICRO,blind_prediction,83 cases,76/83 any prediction,28/83,40/83,50/83,50/83,0.428,60/148,current best BBD83 blind-prediction baseline
+BBD83,enviPath BBD Rules,prediction_rule_route,83 cases,79/83 any prediction,20/83,35/83,42/83,43/83,0.343,60/148,second-line complementary prediction route
+BBD83,enviFormer latest-current,blind_prediction,83 cases,82/83 any prediction,1/83,1/83,2/83,3/83,0.016,4/148,current available checkpoint not suitable as main route
+BBD83,BBD-finetuned ECLIPSE PREDEC OOF parent-filtered,blind_prediction_oof,81 cases,81 OOF cases,26/81,38/81,38/81,38/81,0.389,45/145,conservative ECLIPSE estimate below BioTransformer
+BBD83,BBD-finetuned ECLIPSE PREDEC all-fold parent-filtered,blind_prediction_allfold,83 cases,83 cases,37/83,60/83,66/83,66/83,0.589,87/148,strong but optimistic because all-fold aggregate is less conservative
+Soil/Sludge,ECLIPSE NoEC,blind_prediction,1788 combined all-valid parent-filtered,1781/1788 valid non-empty,10.91%,18.85%,22.15%,23.15%,0.154,452/2924,NoEC baseline below PREDEC and BioTransformer
+Soil/Sludge,ECLIPSE PREDEC,blind_prediction,1788 combined all-valid parent-filtered,1785/1788 valid non-empty,11.35%,20.81%,25.11%,26.51%,0.167,514/2924,PREDEC improves over NoEC but remains below BioTransformer
+Soil/Sludge,BioTransformer ENVMICRO,blind_prediction,1788 combined all-valid parent-filtered,1679/1788 valid non-empty,10.63%,21.48%,27.52%,30.93%,0.172,663/2924,strongest current blind-prediction baseline on Soil/Sludge transfer
+Soil/Sludge,enviPath local snapshot lookup,known_pathway_lookup,1788 combined parents,1788/1788 parents found,NA,NA,NA,NA,NA,2924/2924,complete retrieval for known Soil/Sludge snapshot records; not prediction accuracy

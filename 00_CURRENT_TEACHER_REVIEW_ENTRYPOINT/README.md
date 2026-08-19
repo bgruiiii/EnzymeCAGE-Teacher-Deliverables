@@ -18,6 +18,34 @@
 | 9 | M4 Phase 1 100 UID frozen acceptance package | [`../2026-08-11_M4_Phase1_Acceptance_Candidate/`](../2026-08-11_M4_Phase1_Acceptance_Candidate/) |
 | 10 | M4 D4 按需补资产工具化立项方向回应 | [`../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/`](../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/) |
 
+## 1b. 2026-08-19 补充专题：污染物转化产物预测路线评估
+
+该专题是反应/产物预测侧的探索证据包，不替代上方 M4 E2 与 accession
+存疑项的当前审阅事项。
+
+- [`../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/`](../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/)
+
+建议先读：
+
+```text
+00_READ_FIRST/POLLUTANT_TP_PREDICTION_ROUTE_STAGE_REPORT_2026-08-19.md
+00_READ_FIRST/TEST_SET_CONSTRUCTION_NOTE_2026-08-19.md
+01_Key_Tables/tool_capability_comparison_2026-08-19.md
+06_Detailed_Result_Tables/README_DETAILED_RESULT_TABLES_2026-08-19.md
+```
+
+一句话结论：
+
+```text
+已知 parent/pathway：优先使用 enviPath 本地快照查询；
+未知 parent blind prediction：BioTransformer ENVMICRO 仍是当前主基线；
+BBD-finetuned ECLIPSE PREDEC：作为补充候选生成器；
+当前 enviFormer checkpoint：不作为主线。
+```
+
+边界：Soil/Sludge enviPath 100% recovery 是 known-pathway lookup，不是
+blind prediction accuracy；该专题不写入 production D4/pool。
+
 ## 2. 当前状态一句话
 
 截至 2026-08-18，老师已在 08-13 指导中确认 M4 Phase 1 验收通过；

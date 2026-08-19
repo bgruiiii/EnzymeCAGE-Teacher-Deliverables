@@ -13,6 +13,30 @@ status-clean 审计状态、已完成证据路径，以及仍需老师后续裁�
 不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方
 最新回应为准。
 
+## Supplementary 2026-08-19 pollutant transformation-product route evaluation
+
+- [`2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/`](2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/)
+
+This supplementary package summarizes the current pollutant transformation
+product prediction / known-pathway lookup route evaluation. It includes BBD83
+results, Soil/Sludge transfer results, enviPath known-pathway lookup checks,
+tool comparison tables, local audits, returned archives and directly browsable
+detail tables.
+
+Core conclusion:
+
+```text
+known parent/pathway records → use enviPath local snapshot lookup first
+unknown-parent blind prediction → BioTransformer ENVMICRO remains current baseline
+BBD-finetuned ECLIPSE PREDEC → useful complementary candidate generator
+current available enviFormer checkpoint → not a main route
+```
+
+Boundary: this is an exploratory reaction/product-prediction route evidence
+package. It does not replace the current M4 E2 / accession-ambiguity review
+items above, does not claim production D4/pool mutation, and does not claim
+that enviPath Soil/Sludge lookup is 100% blind prediction accuracy.
+
 ## Current 2026-08-18 M4 E2 accession ambiguity clarification
 
 - [`2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/`](2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/)
