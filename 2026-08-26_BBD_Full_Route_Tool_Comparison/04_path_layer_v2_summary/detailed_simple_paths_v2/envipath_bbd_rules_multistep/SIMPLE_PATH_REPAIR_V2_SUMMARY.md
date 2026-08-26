@@ -1,0 +1,21 @@
+# Simple-path repair v2 summary — envipath_bbd_rules_multistep
+
+- `route_id`: `envipath_bbd_rules_multistep`
+- `tool_id`: `envipath`
+- `optional_route`: `False`
+- `simple_path_rows`: `745`
+- `cases_with_any_simple_path`: `88`
+- `cases_with_nonempty_simple_path`: `88`
+- `cases_with_root_only_no_clean_path`: `5`
+- `cases_with_depth_1_simple_path`: `88`
+- `cases_with_depth_2_simple_path`: `83`
+- `cases_with_depth_3_simple_path`: `72`
+- `cases_with_depth_4_simple_path`: `63`
+- `cases_with_depth_5_simple_path`: `50`
+- `cases_with_depth_6_simple_path`: `39`
+- `max_simple_path_depth`: `6`
+- `repaired_repeated_node_path_count`: `0`
+- `repaired_repeated_smiles_path_count`: `0`
+- `repaired_repeated_edge_path_count`: `0`
+- `all_contains_parent_copy_edge_false`: `True`
+- `all_contains_source_self_loop_edge_false`: `True`

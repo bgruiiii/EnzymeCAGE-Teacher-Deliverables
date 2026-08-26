@@ -1,14 +1,49 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-08-18
+## Current 2026-08-26 BBD full-route pollutant degradation route tool comparison
+
+- [`2026-08-26_BBD_Full_Route_Tool_Comparison/`](2026-08-26_BBD_Full_Route_Tool_Comparison/)
+
+This package extends the earlier BBD83 one-step product prediction work into a
+BBD-local full-route benchmark: 93 parent pollutants / xenobiotics, with 92
+evaluable answer-graph cases. It compares BioTransformer ENVMICRO, enviPath BBD
+Rules, ECLIPSE PREDEC and ECLIPSE NoEC across one-step product prediction,
+bounded multistep route expansion and stricter Enviformer-style
+MG-Structural@K route-structure scoring.
+
+Core staged result:
+
+```text
+One-step Hit@10:
+ECLIPSE PREDEC 74/92 = 80.4%
+BioTransformer ENVMICRO 52/92 = 56.5%
+ECLIPSE NoEC 52/92 = 56.5%
+enviPath BBD Rules 45/92 = 48.9%
+
+Bounded multistep graph coverage:
+ECLIPSE PREDEC downstream-node case hit 89/92 = 96.7%
+ECLIPSE PREDEC BBD-local terminal-node case hit 67/92 = 72.8%
+
+Stricter all-92 MG-Structural@K Jaccard:
+BioTransformer ENVMICRO K=1/3/5 = 0.197 / 0.154 / 0.152
+ECLIPSE PREDEC K=1/3/5 = 0.178 / 0.106 / 0.070
+```
+
+Interpretation: ECLIPSE PREDEC has the strongest candidate coverage / recall,
+while BioTransformer gives the cleanest stricter route-structure match after
+penalizing extra branches. Boundary: this is bounded to BBD-local known routes
+with depth≤6; it is not a complete mineralization or CO2/H2O endpoint claim.
+
+## 老师当前优先审阅入口 — 2026-08-26
 
 请优先打开：
 
 - [`00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/`](00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/)
 
-该文件夹汇总了当前最新 M4 E2 第二里程碑、1,650 fetch-failed accession
-二次复核、P18173/P80550 accession 存疑项补充澄清、BBD83 209a4b4
-status-clean 审计状态、已完成证据路径，以及仍需老师后续裁定的问题。
+该文件夹汇总了当前最新 BBD full-route 污染物降解路线工具评估、M4 E2
+第二里程碑、1,650 fetch-failed accession 二次复核、P18173/P80550 accession
+存疑项补充澄清、BBD83 209a4b4 status-clean 审计状态、已完成证据路径，
+以及仍需老师后续裁定的问题。
 根目录中保留历史文件是为了
 不破坏此前已经发给老师的旧 GitHub 链接；当前审阅请以本入口和下方
 最新回应为准。

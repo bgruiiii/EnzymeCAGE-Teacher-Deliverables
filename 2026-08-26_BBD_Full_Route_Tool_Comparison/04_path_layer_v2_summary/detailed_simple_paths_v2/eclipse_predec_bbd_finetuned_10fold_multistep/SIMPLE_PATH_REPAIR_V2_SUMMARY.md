@@ -1,0 +1,21 @@
+# Simple-path repair v2 summary — eclipse_predec_bbd_finetuned_10fold_multistep
+
+- `route_id`: `eclipse_predec_bbd_finetuned_10fold_multistep`
+- `tool_id`: `eclipse_predec`
+- `optional_route`: `False`
+- `simple_path_rows`: `930`
+- `cases_with_any_simple_path`: `93`
+- `cases_with_nonempty_simple_path`: `93`
+- `cases_with_root_only_no_clean_path`: `0`
+- `cases_with_depth_1_simple_path`: `93`
+- `cases_with_depth_2_simple_path`: `93`
+- `cases_with_depth_3_simple_path`: `93`
+- `cases_with_depth_4_simple_path`: `93`
+- `cases_with_depth_5_simple_path`: `93`
+- `cases_with_depth_6_simple_path`: `93`
+- `max_simple_path_depth`: `6`
+- `repaired_repeated_node_path_count`: `0`
+- `repaired_repeated_smiles_path_count`: `0`
+- `repaired_repeated_edge_path_count`: `0`
+- `all_contains_parent_copy_edge_false`: `True`
+- `all_contains_source_self_loop_edge_false`: `True`
