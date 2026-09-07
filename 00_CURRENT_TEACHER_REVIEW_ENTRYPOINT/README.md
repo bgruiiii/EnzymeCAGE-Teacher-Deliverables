@@ -1,23 +1,20 @@
 # 当前老师审阅入口（EnzymeCAGE 侧）
 
-更新时间：2026-08-26  
+更新时间：2026-09-07
 用途：给黄老师打开 GitHub 后的第一入口，避免从根目录历史散文件中自行判断最新状态。
 
 ## 1. 老师优先看哪些文件
 
 | 优先级 | 内容 | 路径 |
 |---|---|---|
-| 1 | 2026-08-26 BBD full-route 污染物降解路线工具评估 | [`../2026-08-26_BBD_Full_Route_Tool_Comparison/`](../2026-08-26_BBD_Full_Route_Tool_Comparison/) |
-| 2 | 2026-08-18 P18173/P80550 accession 存疑项补充澄清 | [`../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/`](../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/) |
-| 3 | 2026-08-16 M4 E2 1,650 fetch-failed accession 二次复核 | [`../2026-08-16_M4_E2_Fetch_Failed_1650_Accession_Secondary_Review/`](../2026-08-16_M4_E2_Fetch_Failed_1650_Accession_Secondary_Review/) |
-| 4 | M4 E2 full 4,681 staged status table 回包与本地审计 | [`../2026-08-14_M4_E2_Full_4681_Staged_Status_Table/`](../2026-08-14_M4_E2_Full_4681_Staged_Status_Table/) |
-| 5 | 2026-08-13 陈浩然侧 M4 E2 第二里程碑方案 + BBD83 status-clean 审计包 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/) |
-| 6 | 08-13 陈浩然侧任务对齐索引 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/CHENHAORAN_2026_08_13_TEACHER_NEXT_STEPS_DELIVERY_INDEX.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/CHENHAORAN_2026_08_13_TEACHER_NEXT_STEPS_DELIVERY_INDEX.md) |
-| 7 | M4 第二里程碑 E2 full 4,681 staged status table 授权方案 | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/M4_SECOND_MILESTONE_E2_STAGED_STATUS_TABLE_AUTHORIZATION_REQUEST_2026-08-13.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/M4_SECOND_MILESTONE_E2_STAGED_STATUS_TABLE_AUTHORIZATION_REQUEST_2026-08-13.md) |
-| 8 | BBD83 209a4b4 08-13 P1 closure re-check local audit | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_BBD83_2026_08_13_P1_CLOSURE_RECHECK_LOCAL_AUDIT.md) |
-| 9 | BBD83 209a4b4 08-14 transport package supplement audit | [`../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_TRANSPORT_PACKAGE_LOCAL_AUDIT_2026-08-14.md`](../2026-08-13_M4_E2_Second_Milestone_and_BBD83_Status/audits/BOWEN_DEMOV2_209A4B4_STATUS_CLEAN_BBD83_RERUN_TRANSPORT_PACKAGE_LOCAL_AUDIT_2026-08-14.md) |
-| 10 | M4 Phase 1 100 UID frozen acceptance package | [`../2026-08-11_M4_Phase1_Acceptance_Candidate/`](../2026-08-11_M4_Phase1_Acceptance_Candidate/) |
-| 11 | M4 D4 按需补资产工具化立项方向回应 | [`../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/`](../2026-08-09_M4_OnDemand_D4_Backfill_Direction_Response/) |
+| 1 | 2026-09-07三模块staged集成阶段反馈总入口 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/) |
+| 2 | 当前工程进度、已完成部分与卡点 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/CURRENT_ENGINEERING_PROGRESS_AND_BLOCKERS.md`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/CURRENT_ENGINEERING_PROGRESS_AND_BLOCKERS.md) |
+| 3 | 专利11个概念智能体输入输出关系 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/PATENT_11_CONCEPTUAL_AGENTS_INPUT_OUTPUT_RELATIONSHIP.md`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/PATENT_11_CONCEPTUAL_AGENTS_INPUT_OUTPUT_RELATIONSHIP.md) |
+| 4 | 多轮修正原因说明 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/WHY_REPEATED_CORRECTIONS_WERE_NEEDED.md`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/WHY_REPEATED_CORRECTIONS_WERE_NEEDED.md) |
+| 5 | T4正式18条blind输入状态与请求 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/T4_FORMAL_18_BLIND_INPUT_STATUS_AND_REQUEST.md`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/T4_FORMAL_18_BLIND_INPUT_STATUS_AND_REQUEST.md) |
+| 6 | 2026-08-26 BBD full-route污染物降解路线工具评估 | [`../2026-08-26_BBD_Full_Route_Tool_Comparison/`](../2026-08-26_BBD_Full_Route_Tool_Comparison/) |
+| 7 | 2026-08-19污染物TP预测路线评估历史证据 | [`../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/`](../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/) |
+| 8 | 2026-08-18 P18173/P80550 accession存疑项澄清 | [`../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/`](../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/) |
 
 ## 1a. 2026-08-26 补充专题：BBD full-route 污染物降解路线工具评估
 
@@ -74,7 +71,15 @@ BBD-finetuned ECLIPSE PREDEC：作为补充候选生成器；
 边界：Soil/Sludge enviPath 100% recovery 是 known-pathway lookup，不是
 blind prediction accuracy；该专题不写入 production D4/pool。
 
-## 2. 当前状态一句话
+## 2. 当前状态一句话（2026-09-07）
+
+```text
+基础环境、既有M3回归、统一证据schema和T5性状staged合同链已形成；
+depending v3.2单SMILES技术adapter已带限制通过，正在进入T2C LangGraph接线；
+T2D/T3/T6仍待继续；T4正式18条blind因指定输入身份缺失而阻塞。
+```
+
+以下2026-08-18 M4 E2内容继续保留为历史可追溯状态：
 
 截至 2026-08-26，老师已在 08-13 指导中确认 M4 Phase 1 验收通过；
 M4 E2 full 4,681 staged status table 已回包并通过本地核心审计：

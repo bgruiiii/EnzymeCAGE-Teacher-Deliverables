@@ -1,5 +1,15 @@
 # EnzymeCAGE Teacher Deliverables
 
+## 老师当前优先审阅入口 — 2026-09-07
+
+请优先打开：
+
+- [`00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/`](00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/)
+- [`2026-09-07_Three_Module_Staged_Integration_Progress_Review/`](2026-09-07_Three_Module_Staged_Integration_Progress_Review/)
+
+2026-09-07最新阶段反馈说明三模块staged集成当前完成情况、T2多轮修正的真实原因、专利11个概念角色的输入输出
+关系，以及T4正式18条blind输入缺口。它不是production最终验收包，后续T2C/T2D/T3/T6仍继续执行。
+
 ## Current 2026-08-26 BBD full-route pollutant degradation route tool comparison
 
 - [`2026-08-26_BBD_Full_Route_Tool_Comparison/`](2026-08-26_BBD_Full_Route_Tool_Comparison/)
@@ -33,12 +43,6 @@ Interpretation: ECLIPSE PREDEC has the strongest candidate coverage / recall,
 while BioTransformer gives the cleanest stricter route-structure match after
 penalizing extra branches. Boundary: this is bounded to BBD-local known routes
 with depth≤6; it is not a complete mineralization or CO2/H2O endpoint claim.
-
-## 老师当前优先审阅入口 — 2026-08-26
-
-请优先打开：
-
-- [`00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/`](00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/)
 
 该文件夹汇总了当前最新 BBD full-route 污染物降解路线工具评估、M4 E2
 第二里程碑、1,650 fetch-failed accession 二次复核、P18173/P80550 accession

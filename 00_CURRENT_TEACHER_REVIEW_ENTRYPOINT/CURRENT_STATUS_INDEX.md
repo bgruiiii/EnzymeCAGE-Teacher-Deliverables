@@ -1,6 +1,15 @@
 # EnzymeCAGE 当前状态索引
 
-日期：2026-08-18
+日期：2026-09-07
+
+## 2026-09-07最新阶段反馈
+
+| 项 | 状态 | 老师查看路径 |
+|---|---|---|
+| 三模块staged集成总状态 | 基础/M3/schema/T5合同链已有证据；T2B已带限制通过；T2C/T2D/T3/T6继续 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/) |
+| 专利11个概念角色 | 已补完整I/O和关系；不要求工程上正好11节点 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/PATENT_11_CONCEPTUAL_AGENTS_INPUT_OUTPUT_RELATIONSHIP.md`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/PATENT_11_CONCEPTUAL_AGENTS_INPUT_OUTPUT_RELATIONSHIP.md) |
+| T2B depending v3.2 adapter | `PASS_WITH_LIMITATIONS_READY_FOR_T2C`；技术smoke，不是科学准确率或主基线晋级 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/EVIDENCE_STATUS_INDEX.md`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/EVIDENCE_STATUS_INDEX.md) |
+| T4正式18条blind | `BLOCKED_INPUT_MISSING`；不是未开展，而是缺本轮指定输入身份 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/T4_FORMAL_18_BLIND_INPUT_STATUS_AND_REQUEST.md`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/T4_FORMAL_18_BLIND_INPUT_STATUS_AND_REQUEST.md) |
 
 ## 当前优先审阅
 
