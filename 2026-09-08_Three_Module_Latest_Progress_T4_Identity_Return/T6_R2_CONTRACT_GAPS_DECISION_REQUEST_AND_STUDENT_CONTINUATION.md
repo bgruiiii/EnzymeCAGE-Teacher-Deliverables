@@ -110,10 +110,23 @@ organism aggregates=[]
 ### G5：M3 recall证据缺canonical reaction SMILES
 
 T1-R2-R1摘要只带`query_reaction_sha256`，没有G-SCHEMA要求的`parent>>product`字符串，导致S1/S2 schema失败。
-请您确认正式M3输出必须同时携带`reaction_smiles`和SHA。学生侧可先从冻结case源找回原字符串并做只读对应表，但不
-自行改变正式输出合同。
+本地现已从冻结M3证据中精确恢复原字符串，并用UTF-8原字符串重新计算SHA，2/2与既有记录一致：
 
-机器可读表见同目录`T6_R2_PUBLIC_IO_FIELD_GAPS_FOR_TEACHER.csv`。
+```text
+S1 / RHEA 11532
+NCC(=O)O.O.O=O>>N.O=CC(=O)O.OO
+SHA256=19fe5b26e16a1a8ca60628be8718d3162cabded0299e2276a8503aec787bcf15
+
+S2 / RHEA 46976
+CN1CCC[C@H]1c1ccc(O)nc1.O=O>>CN1CCC=C1c1ccc(O)nc1.OO
+SHA256=9737dd8c994296811f87278e33cc7c8b1743112ddf9ecb745ba6de1e1dc2971a
+```
+
+因此G5的数据定位问题已经关闭，当前只剩公共I/O合同问题。请您确认正式M3输出是否必须同时携带
+`reaction_smiles`和`reaction_sha256`；学生侧不自行改变正式输出合同。
+
+机器可读缺口表见`T6_R2_PUBLIC_IO_FIELD_GAPS_FOR_TEACHER.csv`；恢复来源与2/2重算见
+`T6_G5_REACTION_FIELD_RECOVERY_NOTE.md`和`T6_G5_REACTION_SHA_TO_CANONICAL_SMILES_RECOVERY.csv`。
 
 ## 五、当前另有一个纯工程环境问题
 
@@ -132,7 +145,7 @@ T2B v3.2环境：有LightGBM，无Torch。
 ```text
 1. 只读定位enzyme2organism服务程序、后台数据库和冻结身份；
 2. 核Torch/LightGBM兼容版本与可复现安装材料，不决定节点部署方式；
-3. 从M3冻结case源整理reaction SHA→canonical parent>>product对应表；
+3. M3 reaction SHA→canonical parent>>product对应表已2/2恢复；等待期间在晨羽交叉核其archive/member身份；
 4. 区分已被ReactionTaskG正式替代的旧测试与仍有效测试，保留替代断言证据；
 5. 修复测试执行时失效的/tmp G-SCHEMA路径，改为task-local冻结输入，不改production；
 6. 补收T6-R1/R2缺失的identity/validation sidecar；
