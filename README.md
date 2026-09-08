@@ -10,7 +10,8 @@
 
 2026-09-08最新增量反馈按老师回复回传A7/gold冻结包内18条parent-only输入与SHA，并更新T2/T3/T5/T6状态：
 T2D和T3B loader轨已有带限制staged证据，T6尚处执行检查点且G7未过。学生确认11个概念角色只作科学I/O解读，
-最终LangGraph拓扑和节点契约由老师裁定。2026-09-07目录继续保留为上一版完整阶段说明。
+最终LangGraph拓扑和节点契约由老师裁定。该目录现增补晨羽数据库、特征/映射数据和模型权重上云live清单：
+当前已知下限约52.650 GiB，模型版本和迁移波次请老师决定。2026-09-07目录继续保留为上一版完整阶段说明。
 
 ## Current 2026-08-26 BBD full-route pollutant degradation route tool comparison
 

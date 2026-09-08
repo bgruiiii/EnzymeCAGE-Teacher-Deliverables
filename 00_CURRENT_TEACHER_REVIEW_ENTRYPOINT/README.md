@@ -8,13 +8,14 @@
 | 优先级 | 内容 | 路径 |
 |---|---|---|
 | 1 | 2026-09-08最新进度与T4身份回传总入口 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/) |
-| 2 | T4正式18条parent-only清单与SHA | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md) |
-| 3 | 当前T2—T6进度及T6检查点 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/CURRENT_ENGINEERING_PROGRESS_AND_T6_CHECKPOINT.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/CURRENT_ENGINEERING_PROGRESS_AND_T6_CHECKPOINT.md) |
-| 4 | 对老师编排边界裁定的确认 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md) |
-| 5 | 2026-09-07上一版完整阶段反馈 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/) |
-| 6 | 2026-08-26 BBD full-route污染物降解路线工具评估 | [`../2026-08-26_BBD_Full_Route_Tool_Comparison/`](../2026-08-26_BBD_Full_Route_Tool_Comparison/) |
-| 7 | 2026-08-19污染物TP预测路线评估历史证据 | [`../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/`](../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/) |
-| 8 | 2026-08-18 P18173/P80550 accession存疑项澄清 | [`../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/`](../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/) |
+| 2 | 晨羽数据库与模型权重上云live清单 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md) |
+| 3 | T4正式18条parent-only清单与SHA | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md) |
+| 4 | 当前T2—T6进度及T6检查点 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/CURRENT_ENGINEERING_PROGRESS_AND_T6_CHECKPOINT.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/CURRENT_ENGINEERING_PROGRESS_AND_T6_CHECKPOINT.md) |
+| 5 | 对老师编排边界裁定的确认 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md) |
+| 6 | 2026-09-07上一版完整阶段反馈 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/) |
+| 7 | 2026-08-26 BBD full-route污染物降解路线工具评估 | [`../2026-08-26_BBD_Full_Route_Tool_Comparison/`](../2026-08-26_BBD_Full_Route_Tool_Comparison/) |
+| 8 | 2026-08-19污染物TP预测路线评估历史证据 | [`../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/`](../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/) |
+| 9 | 2026-08-18 P18173/P80550 accession存疑项澄清 | [`../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/`](../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/) |
 
 ## 1a. 2026-08-26 补充专题：BBD full-route 污染物降解路线工具评估
 

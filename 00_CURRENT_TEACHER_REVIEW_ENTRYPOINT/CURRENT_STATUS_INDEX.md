@@ -7,6 +7,7 @@
 | 项 | 状态 | 老师查看路径 |
 |---|---|---|
 | 三模块staged集成总状态 | T2D/G4、T3B/G5、T5/G6已有带限制轨；T6进行中，G7未过 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/) |
+| 数据库与模型权重上云调研 | 晨羽live路径/容量已盘点并本地纠正；当前已知下限52.650 GiB，迁移模型版本和波次待老师决定 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md) |
 | T4正式18条blind | 已定位A7/gold冻结包并回传parent-only清单+SHA，等待老师回签 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md) |
 | T6 | 执行中间快照尚未本地审计；3B forward/20项测试/终验未完成 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/CURRENT_ENGINEERING_PROGRESS_AND_T6_CHECKPOINT.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/CURRENT_ENGINEERING_PROGRESS_AND_T6_CHECKPOINT.md) |
 | 智能体编排 | 已确认11概念角色只作科学I/O；最终拓扑、拆并和编排由老师裁定 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md) |
