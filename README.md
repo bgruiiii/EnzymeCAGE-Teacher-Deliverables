@@ -1,14 +1,16 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-09-07
+## 老师当前优先审阅入口 — 2026-09-08
 
 请优先打开：
 
 - [`00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/`](00_CURRENT_TEACHER_REVIEW_ENTRYPOINT/)
+- [`2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/`](2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/)
 - [`2026-09-07_Three_Module_Staged_Integration_Progress_Review/`](2026-09-07_Three_Module_Staged_Integration_Progress_Review/)
 
-2026-09-07最新阶段反馈说明三模块staged集成当前完成情况、T2多轮修正的真实原因、专利11个概念角色的输入输出
-关系，以及T4正式18条blind输入缺口。它不是production最终验收包，后续T2C/T2D/T3/T6仍继续执行。
+2026-09-08最新增量反馈按老师回复回传A7/gold冻结包内18条parent-only输入与SHA，并更新T2/T3/T5/T6状态：
+T2D和T3B loader轨已有带限制staged证据，T6尚处执行检查点且G7未过。学生确认11个概念角色只作科学I/O解读，
+最终LangGraph拓扑和节点契约由老师裁定。2026-09-07目录继续保留为上一版完整阶段说明。
 
 ## Current 2026-08-26 BBD full-route pollutant degradation route tool comparison
 

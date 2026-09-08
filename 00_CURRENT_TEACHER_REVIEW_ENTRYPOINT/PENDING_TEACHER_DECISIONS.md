@@ -1,16 +1,16 @@
 # 仍需老师后续裁定的问题（EnzymeCAGE 侧）
 
-日期：2026-09-07
+日期：2026-09-08
 
-## 2026-09-07新增需要老师确认
+## 2026-09-08三模块事项
 
-| 问题 | 学生当前处理 | 请老师确认 |
+| 问题 | 老师09-08裁定/学生当前处理 | 后续 |
 |---|---|---|
-| 专利11个概念角色如何落到工程节点 | 已列清1个协调+10个专业角色的I/O和关系；不坚持11个独立节点 | 最终合并成几个LangGraph节点，哪些只作工具/adapter |
-| T4正式18条blind输入身份 | 未擅自用历史18条或学生自建集替代 | 请提供正式输入文件+SHA，或明确授权使用某一历史精确文件 |
-| depending v3.2模型角色 | 技术adapter通过带限制审计，只作evaluation candidate | T4同口径评分后再由老师复核是否调整主基线 |
+| 智能体编排 | 已裁定由老师负责；11概念角色只作科学I/O解读；学生不再提拓扑方案 | 等老师节点契约，下发后按约接线 |
+| T4正式18条blind输入身份 | 已裁定使用08-07接受的A7/gold 18 cases；学生已回传parent-only清单和SHA | 请老师核对回签后锁唯一身份 |
+| depending v3.2模型角色 | 技术adapter通过带限制审计，仍只作evaluation candidate | T4同口径评分后再由老师复核是否调整主基线 |
 
-详见：[`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/)。
+详见：[`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/)。
 
 说明：本文件只列“尚未正式裁定”的事项，避免把建议写成已经批准。
 

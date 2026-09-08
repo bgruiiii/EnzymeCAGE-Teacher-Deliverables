@@ -1,17 +1,17 @@
 # 当前老师审阅入口（EnzymeCAGE 侧）
 
-更新时间：2026-09-07
+更新时间：2026-09-08
 用途：给黄老师打开 GitHub 后的第一入口，避免从根目录历史散文件中自行判断最新状态。
 
 ## 1. 老师优先看哪些文件
 
 | 优先级 | 内容 | 路径 |
 |---|---|---|
-| 1 | 2026-09-07三模块staged集成阶段反馈总入口 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/) |
-| 2 | 当前工程进度、已完成部分与卡点 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/CURRENT_ENGINEERING_PROGRESS_AND_BLOCKERS.md`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/CURRENT_ENGINEERING_PROGRESS_AND_BLOCKERS.md) |
-| 3 | 专利11个概念智能体输入输出关系 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/PATENT_11_CONCEPTUAL_AGENTS_INPUT_OUTPUT_RELATIONSHIP.md`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/PATENT_11_CONCEPTUAL_AGENTS_INPUT_OUTPUT_RELATIONSHIP.md) |
-| 4 | 多轮修正原因说明 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/WHY_REPEATED_CORRECTIONS_WERE_NEEDED.md`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/WHY_REPEATED_CORRECTIONS_WERE_NEEDED.md) |
-| 5 | T4正式18条blind输入状态与请求 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/T4_FORMAL_18_BLIND_INPUT_STATUS_AND_REQUEST.md`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/T4_FORMAL_18_BLIND_INPUT_STATUS_AND_REQUEST.md) |
+| 1 | 2026-09-08最新进度与T4身份回传总入口 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/) |
+| 2 | T4正式18条parent-only清单与SHA | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md) |
+| 3 | 当前T2—T6进度及T6检查点 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/CURRENT_ENGINEERING_PROGRESS_AND_T6_CHECKPOINT.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/CURRENT_ENGINEERING_PROGRESS_AND_T6_CHECKPOINT.md) |
+| 4 | 对老师编排边界裁定的确认 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md) |
+| 5 | 2026-09-07上一版完整阶段反馈 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/) |
 | 6 | 2026-08-26 BBD full-route污染物降解路线工具评估 | [`../2026-08-26_BBD_Full_Route_Tool_Comparison/`](../2026-08-26_BBD_Full_Route_Tool_Comparison/) |
 | 7 | 2026-08-19污染物TP预测路线评估历史证据 | [`../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/`](../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/) |
 | 8 | 2026-08-18 P18173/P80550 accession存疑项澄清 | [`../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/`](../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/) |
@@ -71,12 +71,13 @@ BBD-finetuned ECLIPSE PREDEC：作为补充候选生成器；
 边界：Soil/Sludge enviPath 100% recovery 是 known-pathway lookup，不是
 blind prediction accuracy；该专题不写入 production D4/pool。
 
-## 2. 当前状态一句话（2026-09-07）
+## 2. 当前状态一句话（2026-09-08）
 
 ```text
-基础环境、既有M3回归、统一证据schema和T5性状staged合同链已形成；
-depending v3.2单SMILES技术adapter已带限制通过，正在进入T2C LangGraph接线；
-T2D/T3/T6仍待继续；T4正式18条blind因指定输入身份缺失而阻塞。
+T2路线桥和T3B三条真实反应native-loader轨已形成带限制staged证据；
+T5性状合同轨可用；T6正在执行但3B forward、20项测试和G7终验尚未完成；
+T4已定位老师08-07接受的A7/gold 18 cases，本次parent-only身份清单等待老师回签；
+11概念角色只作科学I/O解读，最终编排按老师后续节点契约执行。
 ```
 
 以下2026-08-18 M4 E2内容继续保留为历史可追溯状态：
