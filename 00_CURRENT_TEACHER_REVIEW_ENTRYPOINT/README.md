@@ -1,14 +1,14 @@
 # 当前老师审阅入口（EnzymeCAGE 侧）
 
-更新时间：2026-09-08
+更新时间：2026-09-10
 用途：给黄老师打开 GitHub 后的第一入口，避免从根目录历史散文件中自行判断最新状态。
 
 ## 1. 老师优先看哪些文件
 
 | 优先级 | 内容 | 路径 |
 |---|---|---|
-| 1 | 2026-09-08最新进度与T4身份回传总入口 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/) |
-| 2 | T6-R2 G1—G5真实缺口与裁定请求 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T6_R2_CONTRACT_GAPS_DECISION_REQUEST_AND_STUDENT_CONTINUATION.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T6_R2_CONTRACT_GAPS_DECISION_REQUEST_AND_STUDENT_CONTINUATION.md) |
+| 1 | 2026-09-10 T4最终封口阶段 + T6进入R3前microbe自查、返工和耗时说明 | [`../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/`](../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/) |
+| 2 | 2026-09-08最新进度与T4身份回传总入口 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/) |
 | 3 | 晨羽数据库与模型权重上云live清单 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md) |
 | 4 | T4正式18条parent-only清单与SHA | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md) |
 | 5 | 对老师编排边界裁定的确认 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md) |

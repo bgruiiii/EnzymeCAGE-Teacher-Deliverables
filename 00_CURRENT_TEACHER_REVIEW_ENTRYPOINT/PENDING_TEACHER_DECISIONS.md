@@ -1,6 +1,13 @@
 # 仍需老师后续裁定的问题（EnzymeCAGE 侧）
 
-日期：2026-09-08
+日期：2026-09-10
+
+## 2026-09-10当前新增裁定请求
+
+| 问题 | 当前只可写成 | 不能写成 |
+|---|---|---|
+| T4模型角色/是否追加严格OOF | runtime-blind in-domain结果、训练重合边界和中立A/B选项已完成；请老师裁定接受当前口径或另发held-out/OOF协议 | strict unseen已经建立，或学生已经自行选择主模型 |
+| T6-R3启动 | 进入R3前的8001/entryType/direct REST/frozen UID-map/TaxID/G-SCHEMA自查已通过 | T6-R3、20项终验或G7已经通过 |
 
 ## 2026-09-08三模块事项
 

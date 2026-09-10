@@ -1,6 +1,14 @@
 # EnzymeCAGE 当前状态索引
 
-日期：2026-09-08
+日期：2026-09-10
+
+## 2026-09-10最新增量反馈
+
+| 项 | 状态 | 老师查看路径 |
+|---|---|---|
+| T4正式18条 | depending v3.2和ECLIPSE评测内容已完成并通过内容审计；当前只剩R4 external closure，不再跑模型或改指标；模型角色/是否追加OOF仍请老师裁定 | [`../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/`](../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/) |
+| T6进入R3前自查 | 8001移除、4 UID/8 records reviewed、direct REST、冻结UID-map fallback、TaxID聚合、G-SCHEMA和三文件均本地审计通过；真实T6-R3/G7尚未运行 | [`../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/`](../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/) |
+| 返工和耗时 | 慢主要来自学生侧任务设计、报告生成器和validator反复纠正，不归因于学生操作，也不是后半段模型计算 | [`../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/T6_ITERATION_REASON_TIME_AND_OUTCOME.csv`](../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/T6_ITERATION_REASON_TIME_AND_OUTCOME.csv) |
 
 ## 2026-09-08最新增量反馈
 

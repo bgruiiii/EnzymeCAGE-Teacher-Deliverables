@@ -1,5 +1,17 @@
 # EnzymeCAGE Teacher Deliverables
 
+## 老师当前优先审阅入口 — 2026-09-10
+
+- [`2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/`](2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/)
+
+```text
+T4科学/评测内容已完成，目前只剩R4 external closure；
+T6进入R3前microbe/fallback/TaxID/G-SCHEMA自查已通过本地审计；
+真实T6-R3、C8→T5、20项终验和G7尚未完成。
+```
+
+该目录同时诚实说明多轮返工和耗时：必要production来源接线与可避免的提示词、报告生成器、validator错误分开记录；不把延迟归因于学生操作。
+
 ## 老师当前优先审阅入口 — 2026-09-08
 
 请优先打开：
