@@ -1,4 +1,4 @@
-# 2026-09-10 T4最终封口阶段 + T6进入R3前microbe自查
+# 2026-09-10 T4最终封口通过 + T6进入R3前microbe自查
 
 黄老师您好，本目录是陈浩然侧对您09-09回复的当前正式返回。
 
@@ -11,14 +11,20 @@
 ## 当前状态
 
 ```text
-T4科学/评测内容：已完成并通过内容审计；只剩R4 external closure三文件封口
+T4科学/评测内容：已完成并通过最终本地审计
+T4 external closure：archive/identity/validation三文件通过
 T6进入R3前microbe自查：已完成并通过本地审计
 T6-R3真实LangGraph invoke/stream：未运行
 C8→T5真实连续回归：未运行
 T6 overall/G7：未通过
 ```
 
-T4不是仍在跑模型。depending v3.2和ECLIPSE正式18条runtime-blind结果已冻结；R4只修最终交付顺序，不改变预测、指标、重合或ECLIPSE统计。
+T4不是仍在跑模型。depending v3.2和ECLIPSE正式18条runtime-blind结果已冻结；R4只修最终交付顺序，现已通过，未改变预测、指标、重合或ECLIPSE统计。
+
+T4老师优先审阅：
+
+1. [`T4_18_RESULT_OVERLAP_BOUNDARY_AND_EVALUATION_PROTOCOL_DECISION_REQUEST_2026-09-10.md`](T4_18_RESULT_OVERLAP_BOUNDARY_AND_EVALUATION_PROTOCOL_DECISION_REQUEST_2026-09-10.md)
+2. [`T4_R4_FINAL_LOCAL_AUDIT_2026-09-10.md`](T4_R4_FINAL_LOCAL_AUDIT_2026-09-10.md)
 
 T6本轮按老师要求关闭：8001依赖、4 UID/8 records entryType、direct REST、冻结reviewed UID map fallback、UNRESOLVED、NCBI TaxID聚合、host evidence和G-SCHEMA。三文件均在本目录。
 

@@ -5,7 +5,7 @@
 - [`2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/`](2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/)
 
 ```text
-T4科学/评测内容已完成，目前只剩R4 external closure；
+T4科学/评测内容与R4 external closure均已完成并通过本地审计；
 T6进入R3前microbe/fallback/TaxID/G-SCHEMA自查已通过本地审计；
 真实T6-R3、C8→T5、20项终验和G7尚未完成。
 ```

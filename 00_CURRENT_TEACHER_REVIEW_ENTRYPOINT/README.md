@@ -7,7 +7,7 @@
 
 | 优先级 | 内容 | 路径 |
 |---|---|---|
-| 1 | 2026-09-10 T4最终封口阶段 + T6进入R3前microbe自查、返工和耗时说明 | [`../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/`](../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/) |
+| 1 | 2026-09-10 T4最终封口通过 + T6进入R3前microbe自查、返工和耗时说明 | [`../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/`](../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/) |
 | 2 | 2026-09-08最新进度与T4身份回传总入口 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/) |
 | 3 | 晨羽数据库与模型权重上云live清单 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md) |
 | 4 | T4正式18条parent-only清单与SHA | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md) |
