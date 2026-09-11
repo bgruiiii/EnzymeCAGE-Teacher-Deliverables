@@ -1,0 +1,167 @@
+{
+ "utc": "2026-09-11T08:47:18Z",
+ "validator": "official validate_evidence_chain_schema.py semantics + Draft202012",
+ "jsonschema_version": "4.24.1",
+ "schema_url": "https://json-schema.org/draft/2020-12/schema",
+ "schema_check": "PASS",
+ "official_valid_example_errors": 0,
+ "official_negative_examples": {
+  "total": 15,
+  "caught": 15,
+  "detail": [
+   {
+    "index": 0,
+    "case_id": "missing_reaction_task_id",
+    "caught": true,
+    "first": "schema /routes/0/reaction_tasks/0: 'reaction_task_id' is a required property"
+   },
+   {
+    "index": 1,
+    "case_id": "proxy_masquerades_as_generated_asset",
+    "caught": true,
+    "first": "/routes/0/reaction_tasks/1 proxy object is only allowed for FROZEN_PROXY"
+   },
+   {
+    "index": 2,
+    "case_id": "f5_predicted_forbidden",
+    "caught": true,
+    "first": "/routes/0/organism_aggregates/0/traits/4 F5 availability must never be predicted"
+   },
+   {
+    "index": 3,
+    "case_id": "missing_one_of_f1_f15",
+    "caught": true,
+    "first": "schema /routes/0/organism_aggregates/0/traits: [{'trait_id': 'F1', 'trait_value': 'mesophilic', 'trait_evidence_class': 'OBSERVED', 'trait_resolution': 'EXACT_STRAIN', 'trait_source': 'MetaTraits', 'source_record_id': 'MT-example-F1', 'source_tool': 'MetaTraits_local_index', 'model_version': None, 'evidence_hash': '6666666666666666666666666666666666666666666666666666666666666666', 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': []}, {'trait_id': 'F2', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['No evidence']}, {'trait_id': 'F3', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['No evidence']}, {'trait_id': 'F4', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['No evidence']}, {'trait_id': 'F5', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['Availability is observed-only and was not found']}, {'trait_id': 'F6', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['No evidence']}, {'trait_id': 'F7', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['No evidence']}, {'trait_id': 'F8', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['Broad context only; never a direct target-degradation claim']}, {'trait_id': 'F9', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['No evidence']}, {'trait_id': 'F10', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['No evidence']}, {'trait_id': 'F11', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['No evidence']}, {'trait_id': 'F12', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['No evidence']}, {'trait_id': 'F13', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['No evidence']}, {'trait_id': 'F14', 'trait_value': None, 'trait_evidence_class': 'MISSING', 'trait_resolution': 'UNRESOLVED', 'trait_source': None, 'source_record_id': None, 'source_tool': None, 'model_version': None, 'evidence_hash': None, 'used_for_hard_filtering': False, 'used_for_ranking': False, 'direct_target_degradation_claim': False, 'trait_warning': ['No evidence']}] is too short"
+   },
+   {
+    "index": 4,
+    "case_id": "trait_score_forbidden",
+    "caught": true,
+    "first": "schema /selection_policy: Additional properties are not allowed ('trait_score' was unexpected)"
+   },
+   {
+    "index": 5,
+    "case_id": "species_host_masquerades_as_exact_strain_trait",
+    "caught": true,
+    "first": "/routes/0/organism_aggregates/0/traits/0 trait resolution cannot exceed host identity resolution"
+   },
+   {
+    "index": 6,
+    "case_id": "llm_changes_deterministic_order",
+    "caught": true,
+    "first": "schema /selection_policy/llm_changes_order: False was expected"
+   },
+   {
+    "index": 7,
+    "case_id": "ranked_enzyme_outside_selected_pool",
+    "caught": true,
+    "first": "/routes/0/reaction_tasks/0 ranked enzyme must belong to selected pool"
+   },
+   {
+    "index": 8,
+    "case_id": "duplicate_reaction_task_id",
+    "caught": true,
+    "first": "duplicate reaction_task_id RT-example-001-step-1"
+   },
+   {
+    "index": 9,
+    "case_id": "missing_evidence_hash",
+    "caught": true,
+    "first": "schema /evidence_records/0: 'evidence_hash' is a required property"
+   },
+   {
+    "index": 10,
+    "case_id": "matched_without_enzyme",
+    "caught": true,
+    "first": "/routes/0/reaction_tasks/0 MATCHED requires at least one enzyme"
+   },
+   {
+    "index": 11,
+    "case_id": "c_fallback_with_nonempty_b",
+    "caught": true,
+    "first": "/routes/0/reaction_tasks/1 C_FALLBACK requires empty B and selected pool equal C"
+   },
+   {
+    "index": 12,
+    "case_id": "uncalibrated_confidence_field_forbidden",
+    "caught": true,
+    "first": "schema /routes/0/reaction_tasks/1: Additional properties are not allowed ('confidence' was unexpected)"
+   },
+   {
+    "index": 13,
+    "case_id": "model_prediction_missing_raw_score",
+    "caught": true,
+    "first": "/routes/0/reaction_tasks/1 model_prediction requires rank/raw-score semantics/model_version"
+   },
+   {
+    "index": 14,
+    "case_id": "predicted_overrides_observed",
+    "caught": true,
+    "first": "schema /routes/0/organism_aggregates/0/trait_evidence_precedence: 'OBSERVED_OVER_PREDICTED' was expected"
+   }
+  ]
+ },
+ "real_evidence_chains": {
+  "total": 8,
+  "valid": 8,
+  "detail": [
+   {
+    "smoke_record_id": "S1",
+    "structural_errors": 0,
+    "semantic_errors": 0,
+    "first_errors": [],
+    "valid": true
+   },
+   {
+    "smoke_record_id": "S2",
+    "structural_errors": 0,
+    "semantic_errors": 0,
+    "first_errors": [],
+    "valid": true
+   },
+   {
+    "smoke_record_id": "S3",
+    "structural_errors": 0,
+    "semantic_errors": 0,
+    "first_errors": [],
+    "valid": true
+   },
+   {
+    "smoke_record_id": "S4",
+    "structural_errors": 0,
+    "semantic_errors": 0,
+    "first_errors": [],
+    "valid": true
+   },
+   {
+    "smoke_record_id": "S5",
+    "structural_errors": 0,
+    "semantic_errors": 0,
+    "first_errors": [],
+    "valid": true
+   },
+   {
+    "smoke_record_id": "S6",
+    "structural_errors": 0,
+    "semantic_errors": 0,
+    "first_errors": [],
+    "valid": true
+   },
+   {
+    "smoke_record_id": "S7",
+    "structural_errors": 0,
+    "semantic_errors": 0,
+    "first_errors": [],
+    "valid": true
+   },
+   {
+    "smoke_record_id": "S8",
+    "structural_errors": 0,
+    "semantic_errors": 0,
+    "first_errors": [],
+    "valid": true
+   }
+  ]
+ },
+ "status": "PASS"
+}

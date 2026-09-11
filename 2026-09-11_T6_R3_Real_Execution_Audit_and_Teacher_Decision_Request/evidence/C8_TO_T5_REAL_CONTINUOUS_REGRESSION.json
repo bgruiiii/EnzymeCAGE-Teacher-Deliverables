@@ -1,0 +1,136 @@
+{
+ "utc": "2026-09-11T08:47:12Z",
+ "chain": "real graph m5 stream -> real enzymecage forward -> real microbe node (production map_enzyme_hosts + OrganismAggregator) -> real checkpointed state -> production trait_filter_node -> build_trait_annotations -> production aggregate_route, all in this one process on this one thread",
+ "same_process_same_thread": {
+  "thread_id": "base_run1-SS1_CASE_B_M5_STREAM-CN1CCCCH1",
+  "process_id": 645272,
+  "separately_run_and_merged": false
+ },
+ "real_microbe_node_output": {
+  "organism_candidate_count": 4
+ },
+ "production_trait_filter_node": {
+  "callable": "src.nodes.trait_filter_node.trait_filter_node",
+  "input": "EnzymeCrewState rebuilt from compiled.get_state(thread=base_run1-SS1_CASE_B_M5_STREAM-CN1CCCCH1).values",
+  "wall_s": 4.184,
+  "trait_filter_passed": true,
+  "error": null,
+  "fail_closed": null,
+  "trait_record_count": 75,
+  "node_evidence": [
+   {
+    "stage": "trait",
+    "action": "c8_trait_annotation_readonly",
+    "data": {
+     "input_organism_candidates": 4,
+     "unique_enzyme_uids": 5,
+     "mapped_uids": 5,
+     "not_mapped_uids": [],
+     "unique_source_signatures": 4,
+     "observed_trait_count": 42,
+     "missing_trait_count": 33,
+     "identity_only_trait_count": 0,
+     "f1_f15_complete_per_mapped_source": true,
+     "annotation_semantics": "annotation_complete_no_hard_filter",
+     "asset_hashes": {
+      "uid_map_sha256": "7b92e8e625cb73f070c8e902687ea5bbdbf749f04a19828e550e3fe205684fe6",
+      "lookup_index_sha256": "d51a540db2f9798d65e25b46f22960ba29ae2d4b288be218c83c299f24f5d5af"
+     }
+    }
+   }
+  ],
+  "uncertainty_flags": [
+   "llm_reranking 回退原排序（原因: LLM API 未配置：请在 .env 里设置 LLM_API_BASE_URL 与 LLM_API_KEY）",
+   "organism_selection fail_closed: LLM API 未配置：请在 .env 里设置 LLM_API_BASE_URL 与 LLM_API_KEY",
+   "predicted_candidates_not_activated: see per-trait warnings"
+  ]
+ },
+ "annotation_equivalence": {
+  "why": "trait_filter_node returns flattened TraitRecord rows; the route-step aggregator consumes HostTraitAnnotation, so the same production function the node calls (src.tools.trait_query.build_trait_annotations) is invoked on the same real organism_candidates and the two views are compared field by field",
+  "node_view": {
+   "input_organism_candidates": 4,
+   "unique_enzyme_uids": 5,
+   "mapped_uids": 5,
+   "not_mapped_uids": [],
+   "unique_source_signatures": 4,
+   "observed_trait_count": 42,
+   "missing_trait_count": 33,
+   "identity_only_trait_count": 0,
+   "f1_f15_complete_per_mapped_source": true,
+   "annotation_semantics": "annotation_complete_no_hard_filter",
+   "asset_hashes": {
+    "uid_map_sha256": "7b92e8e625cb73f070c8e902687ea5bbdbf749f04a19828e550e3fe205684fe6",
+    "lookup_index_sha256": "d51a540db2f9798d65e25b46f22960ba29ae2d4b288be218c83c299f24f5d5af"
+   }
+  },
+  "annotation_view": {
+   "observed_trait_count": 42,
+   "missing_trait_count": 33,
+   "identity_only_trait_count": 0,
+   "unique_enzyme_uids": 5,
+   "mapped_uids": 5
+  },
+  "agree": true,
+  "asset_hashes": {
+   "uid_map_sha256": "7b92e8e625cb73f070c8e902687ea5bbdbf749f04a19828e550e3fe205684fe6",
+   "lookup_index_sha256": "d51a540db2f9798d65e25b46f22960ba29ae2d4b288be218c83c299f24f5d5af"
+  }
+ },
+ "t5_route_step_aggregation": {
+  "leg_graph_native": {
+   "reaction_task_ids": [
+    "NONE_SINGLE_STEP_M5"
+   ],
+   "annotation_rows": 5,
+   "raised": {
+    "type": "RouteAggregationError",
+    "message": "reaction_task_id must match RT-...: 'NONE_SINGLE_STEP_M5'"
+   }
+  },
+  "leg_bridge_ids": {
+   "reaction_task_ids": [
+    "R-c1c835a9948cf643:step1.B-e21fe79325d45e6c",
+    "R-c1c835a9948cf643:step2.B-e21fe79325d45e6c",
+    "R-c1c835a9948cf643:step1.B-f740ee40f27a9229",
+    "R-c1c835a9948cf643:step2.B-f740ee40f27a9229"
+   ],
+   "raised": {
+    "type": "RouteAggregationError",
+    "message": "reaction_task_id must match RT-...: 'R-c1c835a9948cf643:step1.B-e21fe79325d45e6c'"
+   }
+  },
+  "leg_reattached_typed_reattach": {
+   "ordered_reaction_task_ids": [
+    "RT-1a7bea59ede1acf0",
+    "RT-f00e98d322e2380e",
+    "RT-bbb9dc4b010674c1"
+   ],
+   "annotation_rows": 15,
+   "aggregates": 4,
+   "unresolved": 0,
+   "status": "PASS_REAL_CONTINUOUS_IN_PROCESS"
+  }
+ },
+ "run2_agreement": {
+  "trait_passed_equal": true,
+  "trait_records_equal": true,
+  "reattached_aggregates_equal": true,
+  "continuous_chain_ids_equal": true
+ },
+ "recorded_gaps": [
+  {
+   "kind": "T5_TASK_ID_SHAPE",
+   "message": "the fixed topology's own reaction_task_id cannot enter the T5 route-step aggregator: reaction_task_id must match RT-...: 'NONE_SINGLE_STEP_M5'"
+  },
+  {
+   "kind": "T5_TASK_ID_SHAPE",
+   "message": "bridge-produced ids are rejected by the T5 aggregator: reaction_task_id must match RT-...: 'R-c1c835a9948cf643:step1.B-e21fe79325d45e6c'"
+  }
+ ],
+ "f1_f15_completeness_observed": true,
+ "asset_hashes": {
+  "uid_map_sha256": "7b92e8e625cb73f070c8e902687ea5bbdbf749f04a19828e550e3fe205684fe6",
+  "lookup_index_sha256": "d51a540db2f9798d65e25b46f22960ba29ae2d4b288be218c83c299f24f5d5af"
+ },
+ "status": "PASS"
+}

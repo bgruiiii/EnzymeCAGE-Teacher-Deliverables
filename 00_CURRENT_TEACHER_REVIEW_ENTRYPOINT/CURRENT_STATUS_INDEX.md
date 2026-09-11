@@ -1,6 +1,15 @@
 # EnzymeCAGE 当前状态索引
 
-日期：2026-09-10
+日期：2026-09-11
+
+## 2026-09-11 T6-R3真实执行与本地审计
+
+| 项 | 状态 | 老师查看路径 |
+|---|---|---|
+| T6-R3真实执行 | 3/3 native load、6/6 forward、真实LangGraph四个最终子进程、8条smoke、5 UID宿主映射和75条C8 trait记录已完成 | [`../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/`](../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/) |
+| T6-R3总裁定 | 真实技术执行部分通过；20项、图内C8→T5、enviPath/depending、来源和task-ID合同未闭环；T6 overall=false、G7=false | [`../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/TEACHER_REQUIREMENT_COMPLIANCE_MATRIX.csv`](../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/TEACHER_REQUIREMENT_COMPLIANCE_MATRIX.csv) |
+| 耗时归因 | R3-R1约19h54m中17h20m无命令/写入；R3-R2最终成功运行约8m50s，前7轮为runner/validator现场修复 | [`../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/audits/T6_R3_R1_PHASE_TIMING_AND_BOTTLENECK_ATTRIBUTION_2026-09-11.csv`](../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/audits/T6_R3_R1_PHASE_TIMING_AND_BOTTLENECK_ATTRIBUTION_2026-09-11.csv) |
+| 下一动作 | 不重跑当前模型/图；先请老师裁定固定拓扑、来源、task ID、无LLM路由和SMILES入口六项差异 | [`../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/HUANG_TEACHER_T6_R3_REAL_EXECUTION_RESULTS_CONTRACT_GAPS_TIME_EXPLANATION_AND_DECISION_REQUEST_2026-09-11.md`](../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/HUANG_TEACHER_T6_R3_REAL_EXECUTION_RESULTS_CONTRACT_GAPS_TIME_EXPLANATION_AND_DECISION_REQUEST_2026-09-11.md) |
 
 ## 2026-09-10最新增量反馈
 

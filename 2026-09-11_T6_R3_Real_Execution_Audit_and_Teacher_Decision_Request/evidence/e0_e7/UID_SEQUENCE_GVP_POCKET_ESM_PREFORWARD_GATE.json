@@ -1,0 +1,688 @@
+{
+ "schema": "enzymecage.t6_r3_r1.uid_sequence_gvp_pocket_esm_preforward_gate.v1",
+ "step": "§6.3 native load与逐UID ESM硬门",
+ "task_id": "enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910",
+ "utc": "2026-09-10T19:13:09Z",
+ "status": "PASS",
+ "T3B_NATIVE_LOAD": "PASS_3_OF_3",
+ "UID_SEQUENCE_GVP_POCKET_ESM": "PASS",
+ "gate_position": "before any GPU runtime initialisation",
+ "run_once": {
+  "invocation_of_this_step": 3,
+  "native_loads_executed_in_this_invocation": false,
+  "native_loads_expected_for_the_whole_task": 3,
+  "raw_evidence_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/logs/p11_native_evidence.json",
+  "adopted_from_prior_invocation": true
+ },
+ "fixed_sample_purity": {
+  "reactions": [
+   {
+    "task_id": "RT-1a7bea59ede1acf0",
+    "smiles": "c1ccc2[nH]nnc2c1>>Nc1ccccc1C(=O)[O-]"
+   },
+   {
+    "task_id": "RT-f00e98d322e2380e",
+    "smiles": "Nc1ccccc1C(=O)[O-]>>Oc1ccccc1O"
+   },
+   {
+    "task_id": "RT-bbb9dc4b010674c1",
+    "smiles": "Nc1ccccc1C(=O)[O-]>>C=C(OC1C=C(C(=O)[O-])C=CC1O)C(=O)[O-]"
+   }
+  ],
+  "frozen_uid_order": [
+   "A0A011QK89",
+   "A0A017SP50",
+   "A0A017SR40"
+  ],
+  "per_reaction_candidate_uid_order": [
+   [
+    "A0A011QK89",
+    "A0A017SP50",
+    "A0A017SR40"
+   ],
+   [
+    "A0A011QK89",
+    "A0A017SP50",
+    "A0A017SR40"
+   ],
+   [
+    "A0A011QK89",
+    "A0A017SP50",
+    "A0A017SR40"
+   ]
+  ],
+  "samples_substituted": false,
+  "forward_uids": [
+   "A0A011QK89",
+   "A0A017SP50"
+  ],
+  "source_of_reactions_and_uid_order": "original contract, inherited unchanged"
+ },
+ "required_checks": {
+  "每个reaction dataset length=3": true,
+  "逐个dataset row关联真实UID": true,
+  "逐row保存seq/reaction_feature/node_xyz/esm_feature的shape/dtype/device/finite": true,
+  "逐UID核sequence非空和冻结SHA": true,
+  "UID在GVP": true,
+  "UID在pocket node": true,
+  "sequence在ESM mean": true,
+  "ESM mean绝对值和非零": true,
+  "解释并归属任何ESM feature not found日志": true,
+  "实际进入forward的两个UID不得有zero_missing_fallback": true
+ },
+ "failed_checks": [],
+ "check_evidence_map": {
+  "每个reaction dataset length=3": "reactions[].dataset_length + len(rows) in logs/p11_native_evidence.json",
+  "逐个dataset row关联真实UID": "per_row_tensor_evidence[].expected_uid_from_frame == data_uid (ds.uniprot_ids[i] vs data.uid)",
+  "逐row保存seq/reaction_feature/node_xyz/esm_feature的shape/dtype/device/finite": "NATIVE_LOAD_PER_ROW_TENSORS.csv, one row per (reaction, row index, tensor)",
+  "逐UID核sequence非空和冻结SHA": "sequence_identity_per_uid + CORRECTED_UID_AND_PROTEIN_ASSET_IDENTITIES.csv",
+  "UID在GVP": "uid_asset_gate[].in_gvp against load_protein_gvp_data(cfg['protein_gvp_feat'])",
+  "UID在pocket node": "uid_asset_gate[].in_pocket_node against load_pocket_node_feature_data(cfg['esm_node_feature'])",
+  "sequence在ESM mean": "uid_asset_gate[].sequence_in_esm_mean (key = the real sequence string)",
+  "ESM mean绝对值和非零": "uid_asset_gate[].esm_mean_vector.abs_sum/nonzero_elements/is_all_zero",
+  "解释并归属任何ESM feature not found日志": "per-row redirect_stdout capture + negative_control (geometric.py:357-363 zeros branch)",
+  "实际进入forward的两个UID不得有zero_missing_fallback": "per_row esm_feature_equals_esm_mean_lookup / esm_feature_is_zero_fallback for A0A011QK89 and A0A017SP50 in all three reactions"
+ },
+ "cuda_state": {
+  "initialised_before_gate": false,
+  "initialised_after_gate": false,
+  "note": "torch.cuda.is_available() was never called, so no CUDA context could be created while this gate ran"
+ },
+ "teacher_column_names": {
+  "UID_COL": "UniprotID",
+  "SEQ_COL": "sequence",
+  "RXN_COL": "CANO_RXN_SMILES",
+  "LABEL_COL": "Label"
+ },
+ "identity_provenance": {
+  "sequence_identity_and_asset_membership": "re-derived by this invocation (sections 1-5)",
+  "row_level_native_load": "adopted from the single run-once execution of load_geometric_dataset (logs/p11_native_evidence.json, invocation 1)",
+  "authority_pin_parsing": "the pin pattern is applied to the authority text in every invocation, so a stale non-match cannot survive a re-run",
+  "invocation_history": [
+   {
+    "utc": "2026-09-10T18:58:03Z",
+    "argv0": "scripts/p11_preforward.py",
+    "executable": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python",
+    "pid": 546364
+   },
+   {
+    "utc": "2026-09-10T19:04:07Z",
+    "argv0": "scripts/p11_preforward.py",
+    "executable": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python",
+    "pid": 547428
+   },
+   {
+    "utc": "2026-09-10T19:10:02Z",
+    "argv0": "scripts/p11_preforward.py",
+    "executable": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python",
+    "pid": 548439
+   }
+  ]
+ },
+ "overlay_config_fields": {
+  "rxn_fp": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/runtime_assets/t3/reaction_overlay/drfp/rxn2fp.pkl",
+  "mol_conformation": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/runtime_assets/t3/reaction_overlay/molecule_conformation",
+  "reaction_center": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/runtime_assets/t3/reaction_overlay/reacting_center/reacting_center.pkl"
+ },
+ "authority_sequence_pins": {
+  "A0A011QK89": {
+   "length": 388,
+   "sha256": "56aa09b9e047139105d8c71c805344380b5cb783d9db3725606535225e3f14e7"
+  },
+  "A0A017SP50": {
+   "length": 417,
+   "sha256": "6045b0f386d65e56fb4837a500e3580d203f5b9b1dd403f2537f35c6b968ca4e"
+  }
+ },
+ "sequence_identity_per_uid": {
+  "A0A011QK89": {
+   "uid": "A0A011QK89",
+   "is_forward_uid": true,
+   "split_row_hits": 11,
+   "distinct_sequence_count": 1,
+   "ambiguous": false,
+   "sequence_non_empty": true,
+   "sequence_length": 388,
+   "sequence_sha256_utf8": "56aa09b9e047139105d8c71c805344380b5cb783d9db3725606535225e3f14e7",
+   "sequence_charset_is_standard_aa": true,
+   "authority_pin": {
+    "length": 388,
+    "sha256": "56aa09b9e047139105d8c71c805344380b5cb783d9db3725606535225e3f14e7"
+   },
+   "matches_authority_pin": true,
+   "d4_frozen_sequence_sha256": "56aa09b9e047139105d8c71c805344380b5cb783d9db3725606535225e3f14e7",
+   "matches_d4_frozen_sha": true,
+   "frozen_sha_provenance": "authority R1 audit pin, cross-checked against D4",
+   "production_index_sequence_agrees_with_direct_read": true,
+   "production_index_sequence_length": 388,
+   "in_ambiguous_uids": false
+  },
+  "A0A017SP50": {
+   "uid": "A0A017SP50",
+   "is_forward_uid": true,
+   "split_row_hits": 11,
+   "distinct_sequence_count": 1,
+   "ambiguous": false,
+   "sequence_non_empty": true,
+   "sequence_length": 417,
+   "sequence_sha256_utf8": "6045b0f386d65e56fb4837a500e3580d203f5b9b1dd403f2537f35c6b968ca4e",
+   "sequence_charset_is_standard_aa": true,
+   "authority_pin": {
+    "length": 417,
+    "sha256": "6045b0f386d65e56fb4837a500e3580d203f5b9b1dd403f2537f35c6b968ca4e"
+   },
+   "matches_authority_pin": true,
+   "d4_frozen_sequence_sha256": "6045b0f386d65e56fb4837a500e3580d203f5b9b1dd403f2537f35c6b968ca4e",
+   "matches_d4_frozen_sha": true,
+   "frozen_sha_provenance": "authority R1 audit pin, cross-checked against D4",
+   "production_index_sequence_agrees_with_direct_read": true,
+   "production_index_sequence_length": 417,
+   "in_ambiguous_uids": false
+  },
+  "A0A017SR40": {
+   "uid": "A0A017SR40",
+   "is_forward_uid": false,
+   "split_row_hits": 1,
+   "distinct_sequence_count": 1,
+   "ambiguous": false,
+   "sequence_non_empty": true,
+   "sequence_length": 534,
+   "sequence_sha256_utf8": "0985b72348f8d864d94b0d0486589f2d853c96db8d7012c51535e1aacb292382",
+   "sequence_charset_is_standard_aa": true,
+   "authority_pin": {
+    "pin_available": false
+   },
+   "matches_authority_pin": false,
+   "d4_frozen_sequence_sha256": "0985b72348f8d864d94b0d0486589f2d853c96db8d7012c51535e1aacb292382",
+   "matches_d4_frozen_sha": true,
+   "frozen_sha_provenance": "D4 whitelist sequence_sha256 (the authority R1 audit carries no sequence pin for this UID)",
+   "production_index_sequence_agrees_with_direct_read": true,
+   "production_index_sequence_length": 534,
+   "in_ambiguous_uids": false
+  }
+ },
+ "uid_asset_gate": [
+  {
+   "uid": "A0A011QK89",
+   "is_forward_uid": true,
+   "sequence_non_empty": true,
+   "sequence_length": 388,
+   "sequence_sha256_utf8": "56aa09b9e047139105d8c71c805344380b5cb783d9db3725606535225e3f14e7",
+   "sequence_sha256_equals_independent_derivation": true,
+   "in_gvp": true,
+   "in_pocket_node": true,
+   "sequence_in_esm_mean": true,
+   "has_enzyme_through_production_path": true,
+   "d4_whitelist_present": true,
+   "d4_flags_failed": [],
+   "not_found_fallback_possible": false,
+   "d4_sequence_sha256_agrees": true,
+   "gvp_node_xyz": {
+    "name": "node_xyz",
+    "present": true,
+    "shape": [
+     49,
+     3
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "numel": 147,
+    "all_finite": true,
+    "abs_sum": 1014.7130126953125,
+    "nonzero_elements": 147,
+    "is_all_zero": false
+   },
+   "gvp_seq_field": {
+    "name": "seq",
+    "present": true,
+    "shape": [
+     49
+    ],
+    "dtype": "torch.int64",
+    "device": "cpu",
+    "numel": 49,
+    "min": 0,
+    "max": 19
+   },
+   "gvp_arity": 7,
+   "pocket_node_feature": {
+    "name": "esm_node_feature",
+    "present": true,
+    "shape": [
+     49,
+     2560
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "numel": 125440,
+    "all_finite": true,
+    "abs_sum": 18317.078125,
+    "nonzero_elements": 125440,
+    "is_all_zero": false
+   },
+   "pocket_nodes_equal_gvp_nodes": true,
+   "esm_mean_vector": {
+    "name": "esm_feature",
+    "present": true,
+    "shape": [
+     2560
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "numel": 2560,
+    "all_finite": true,
+    "abs_sum": 127.19587707519531,
+    "nonzero_elements": 2560,
+    "is_all_zero": false
+   },
+   "status": "PASS"
+  },
+  {
+   "uid": "A0A017SP50",
+   "is_forward_uid": true,
+   "sequence_non_empty": true,
+   "sequence_length": 417,
+   "sequence_sha256_utf8": "6045b0f386d65e56fb4837a500e3580d203f5b9b1dd403f2537f35c6b968ca4e",
+   "sequence_sha256_equals_independent_derivation": true,
+   "in_gvp": true,
+   "in_pocket_node": true,
+   "sequence_in_esm_mean": true,
+   "has_enzyme_through_production_path": true,
+   "d4_whitelist_present": true,
+   "d4_flags_failed": [],
+   "not_found_fallback_possible": false,
+   "d4_sequence_sha256_agrees": true,
+   "gvp_node_xyz": {
+    "name": "node_xyz",
+    "present": true,
+    "shape": [
+     60,
+     3
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "numel": 180,
+    "all_finite": true,
+    "abs_sum": 1212.6448974609375,
+    "nonzero_elements": 180,
+    "is_all_zero": false
+   },
+   "gvp_seq_field": {
+    "name": "seq",
+    "present": true,
+    "shape": [
+     60
+    ],
+    "dtype": "torch.int64",
+    "device": "cpu",
+    "numel": 60,
+    "min": 0,
+    "max": 19
+   },
+   "gvp_arity": 7,
+   "pocket_node_feature": {
+    "name": "esm_node_feature",
+    "present": true,
+    "shape": [
+     60,
+     2560
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "numel": 153600,
+    "all_finite": true,
+    "abs_sum": 20005.7578125,
+    "nonzero_elements": 153600,
+    "is_all_zero": false
+   },
+   "pocket_nodes_equal_gvp_nodes": true,
+   "esm_mean_vector": {
+    "name": "esm_feature",
+    "present": true,
+    "shape": [
+     2560
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "numel": 2560,
+    "all_finite": true,
+    "abs_sum": 127.98188781738281,
+    "nonzero_elements": 2560,
+    "is_all_zero": false
+   },
+   "status": "PASS"
+  },
+  {
+   "uid": "A0A017SR40",
+   "is_forward_uid": false,
+   "sequence_non_empty": true,
+   "sequence_length": 534,
+   "sequence_sha256_utf8": "0985b72348f8d864d94b0d0486589f2d853c96db8d7012c51535e1aacb292382",
+   "sequence_sha256_equals_independent_derivation": true,
+   "in_gvp": true,
+   "in_pocket_node": true,
+   "sequence_in_esm_mean": true,
+   "has_enzyme_through_production_path": true,
+   "d4_whitelist_present": true,
+   "d4_flags_failed": [],
+   "not_found_fallback_possible": false,
+   "d4_sequence_sha256_agrees": true,
+   "gvp_node_xyz": {
+    "name": "node_xyz",
+    "present": true,
+    "shape": [
+     61,
+     3
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "numel": 183,
+    "all_finite": true,
+    "abs_sum": 1168.4700927734375,
+    "nonzero_elements": 183,
+    "is_all_zero": false
+   },
+   "gvp_seq_field": {
+    "name": "seq",
+    "present": true,
+    "shape": [
+     61
+    ],
+    "dtype": "torch.int64",
+    "device": "cpu",
+    "numel": 61,
+    "min": 0,
+    "max": 19
+   },
+   "gvp_arity": 7,
+   "pocket_node_feature": {
+    "name": "esm_node_feature",
+    "present": true,
+    "shape": [
+     61,
+     2560
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "numel": 156160,
+    "all_finite": true,
+    "abs_sum": 21463.2890625,
+    "nonzero_elements": 156160,
+    "is_all_zero": false
+   },
+   "pocket_nodes_equal_gvp_nodes": true,
+   "esm_mean_vector": {
+    "name": "esm_feature",
+    "present": true,
+    "shape": [
+     2560
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "numel": 2560,
+    "all_finite": true,
+    "abs_sum": 121.14168548583984,
+    "nonzero_elements": 2560,
+    "is_all_zero": false
+   },
+   "status": "PASS"
+  }
+ ],
+ "native_loads": [
+  {
+   "reaction_task_id": "RT-1a7bea59ede1acf0",
+   "reaction_smiles": "c1ccc2[nH]nnc2c1>>Nc1ccccc1C(=O)[O-]",
+   "candidate_csv": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/runtime_assets/native_load/reactions/RT-1a7bea59ede1acf0.csv",
+   "candidate_uid_order": [
+    "A0A011QK89",
+    "A0A017SP50",
+    "A0A017SR40"
+   ],
+   "candidate_sequence_lengths": [
+    388,
+    417,
+    534
+   ],
+   "candidate_sequence_sha256": [
+    "56aa09b9e047139105d8c71c805344380b5cb783d9db3725606535225e3f14e7",
+    "6045b0f386d65e56fb4837a500e3580d203f5b9b1dd403f2537f35c6b968ca4e",
+    "0985b72348f8d864d94b0d0486589f2d853c96db8d7012c51535e1aacb292382"
+   ],
+   "written_under_work_root": true,
+   "status": "PASS",
+   "loader_stdout": "size of df_data: 3\nLoading reaction feature dict...\nLoading cached mol graph data...\n",
+   "dataset_length": 3,
+   "row_uids_in_order": [
+    "A0A011QK89",
+    "A0A017SP50",
+    "A0A017SR40"
+   ],
+   "esm_dim_from_pocket_node": 2560,
+   "esm_feat_dict_type": "dict",
+   "esm_feat_dict_entries": 87733,
+   "loader_reported_size_of_df_data": true,
+   "row_indexing": {
+    "getitem_owner": "torch_geometric.data.dataset.Dataset (inherited, GeometricDataset.get)",
+    "pyg_indices_is_none": true,
+    "indices_equal_range": true,
+    "teacher_len_method_equals_python_len": true,
+    "uids_after_indexing": [
+     "A0A011QK89",
+     "A0A017SP50",
+     "A0A017SR40"
+    ]
+   },
+   "not_found_lines_in_loader_stdout": 0,
+   "checks": {
+    "dataset_length_is_3": true,
+    "three_rows_materialised": true,
+    "uid_order_preserved": true,
+    "row_index_to_row_identity_is_the_pyg_identity_mapping": true,
+    "every_row_uid_associated": true,
+    "every_row_pocket_equals_gvp_nodes": true,
+    "every_row_reaction_is_the_frozen_smiles": true,
+    "no_esm_feature_not_found_log": true,
+    "every_row_esm_feature_equals_esm_mean_lookup": true,
+    "forward_uids_have_no_zero_esm_fallback": true
+   }
+  },
+  {
+   "reaction_task_id": "RT-f00e98d322e2380e",
+   "reaction_smiles": "Nc1ccccc1C(=O)[O-]>>Oc1ccccc1O",
+   "candidate_csv": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/runtime_assets/native_load/reactions/RT-f00e98d322e2380e.csv",
+   "candidate_uid_order": [
+    "A0A011QK89",
+    "A0A017SP50",
+    "A0A017SR40"
+   ],
+   "candidate_sequence_lengths": [
+    388,
+    417,
+    534
+   ],
+   "candidate_sequence_sha256": [
+    "56aa09b9e047139105d8c71c805344380b5cb783d9db3725606535225e3f14e7",
+    "6045b0f386d65e56fb4837a500e3580d203f5b9b1dd403f2537f35c6b968ca4e",
+    "0985b72348f8d864d94b0d0486589f2d853c96db8d7012c51535e1aacb292382"
+   ],
+   "written_under_work_root": true,
+   "status": "PASS",
+   "loader_stdout": "size of df_data: 3\nLoading reaction feature dict...\nLoading cached mol graph data...\n",
+   "dataset_length": 3,
+   "row_uids_in_order": [
+    "A0A011QK89",
+    "A0A017SP50",
+    "A0A017SR40"
+   ],
+   "esm_dim_from_pocket_node": 2560,
+   "esm_feat_dict_type": "dict",
+   "esm_feat_dict_entries": 87733,
+   "loader_reported_size_of_df_data": true,
+   "row_indexing": {
+    "getitem_owner": "torch_geometric.data.dataset.Dataset (inherited, GeometricDataset.get)",
+    "pyg_indices_is_none": true,
+    "indices_equal_range": true,
+    "teacher_len_method_equals_python_len": true,
+    "uids_after_indexing": [
+     "A0A011QK89",
+     "A0A017SP50",
+     "A0A017SR40"
+    ]
+   },
+   "not_found_lines_in_loader_stdout": 0,
+   "checks": {
+    "dataset_length_is_3": true,
+    "three_rows_materialised": true,
+    "uid_order_preserved": true,
+    "row_index_to_row_identity_is_the_pyg_identity_mapping": true,
+    "every_row_uid_associated": true,
+    "every_row_pocket_equals_gvp_nodes": true,
+    "every_row_reaction_is_the_frozen_smiles": true,
+    "no_esm_feature_not_found_log": true,
+    "every_row_esm_feature_equals_esm_mean_lookup": true,
+    "forward_uids_have_no_zero_esm_fallback": true
+   }
+  },
+  {
+   "reaction_task_id": "RT-bbb9dc4b010674c1",
+   "reaction_smiles": "Nc1ccccc1C(=O)[O-]>>C=C(OC1C=C(C(=O)[O-])C=CC1O)C(=O)[O-]",
+   "candidate_csv": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/runtime_assets/native_load/reactions/RT-bbb9dc4b010674c1.csv",
+   "candidate_uid_order": [
+    "A0A011QK89",
+    "A0A017SP50",
+    "A0A017SR40"
+   ],
+   "candidate_sequence_lengths": [
+    388,
+    417,
+    534
+   ],
+   "candidate_sequence_sha256": [
+    "56aa09b9e047139105d8c71c805344380b5cb783d9db3725606535225e3f14e7",
+    "6045b0f386d65e56fb4837a500e3580d203f5b9b1dd403f2537f35c6b968ca4e",
+    "0985b72348f8d864d94b0d0486589f2d853c96db8d7012c51535e1aacb292382"
+   ],
+   "written_under_work_root": true,
+   "status": "PASS",
+   "loader_stdout": "size of df_data: 3\nLoading reaction feature dict...\nLoading cached mol graph data...\n",
+   "dataset_length": 3,
+   "row_uids_in_order": [
+    "A0A011QK89",
+    "A0A017SP50",
+    "A0A017SR40"
+   ],
+   "esm_dim_from_pocket_node": 2560,
+   "esm_feat_dict_type": "dict",
+   "esm_feat_dict_entries": 87733,
+   "loader_reported_size_of_df_data": true,
+   "row_indexing": {
+    "getitem_owner": "torch_geometric.data.dataset.Dataset (inherited, GeometricDataset.get)",
+    "pyg_indices_is_none": true,
+    "indices_equal_range": true,
+    "teacher_len_method_equals_python_len": true,
+    "uids_after_indexing": [
+     "A0A011QK89",
+     "A0A017SP50",
+     "A0A017SR40"
+    ]
+   },
+   "not_found_lines_in_loader_stdout": 0,
+   "checks": {
+    "dataset_length_is_3": true,
+    "three_rows_materialised": true,
+    "uid_order_preserved": true,
+    "row_index_to_row_identity_is_the_pyg_identity_mapping": true,
+    "every_row_uid_associated": true,
+    "every_row_pocket_equals_gvp_nodes": true,
+    "every_row_reaction_is_the_frozen_smiles": true,
+    "no_esm_feature_not_found_log": true,
+    "every_row_esm_feature_equals_esm_mean_lookup": true,
+    "forward_uids_have_no_zero_esm_fallback": true
+   }
+  }
+ ],
+ "negative_control": {
+  "purpose": "show that an empty sequence column makes get_esm_feat print 'ESM feature not found' and return torch.zeros(esm_dim), and that the resulting tensor has the SAME shape as a genuine one, which is why a metadata-only record of dataset[0] could not close this gate",
+  "dataset_reloaded": false,
+  "files_written": false,
+  "uses_live_dataset_of": "RT-1a7bea59ede1acf0",
+  "teacher_source": "enzymecage/dataset/geometric.py:357-363",
+  "uid_under_control": "A0A011QK89",
+  "row_index_under_control": 0,
+  "real_sequence_row": {
+   "name": "esm_feature",
+   "present": true,
+   "shape": [
+    2560
+   ],
+   "dtype": "torch.float32",
+   "device": "cpu",
+   "numel": 2560,
+   "all_finite": true,
+   "abs_sum": 127.19587707519531,
+   "nonzero_elements": 2560,
+   "is_all_zero": false
+  },
+  "real_stdout": "",
+  "empty_sequence_row": {
+   "name": "esm_feature",
+   "present": true,
+   "shape": [
+    2560
+   ],
+   "dtype": "torch.float32",
+   "device": "cpu",
+   "numel": 2560,
+   "all_finite": true,
+   "abs_sum": 0.0,
+   "nonzero_elements": 0,
+   "is_all_zero": true
+  },
+  "empty_stdout": "ESM feature not found\n",
+  "empty_sequence_prints_not_found": true,
+  "real_sequence_prints_not_found": false,
+  "empty_sequence_returns_all_zero": true,
+  "real_sequence_returns_non_zero": true,
+  "real_control_equals_the_frozen_esm_mean_entry": true,
+  "shapes_are_identical_so_metadata_alone_cannot_tell_them_apart": true,
+  "sequence_restored_after_control": true,
+  "status": "PASS"
+ },
+ "row_counts": {
+  "total_rows": 9,
+  "forward_rows": 6,
+  "per_reaction": {
+   "RT-1a7bea59ede1acf0": 3,
+   "RT-f00e98d322e2380e": 3,
+   "RT-bbb9dc4b010674c1": 3
+  }
+ },
+ "first_round_deficiency_closed": {
+  "only_dataset_0_inspected": "now every row of every reaction dataset is materialised",
+  "empty_sequence_column": "the candidate CSV carries the frozen real sequences",
+  "metadata_only_record": "abs_sum/nonzero/is_all_zero plus equality against the ESM mean entry; the negative control shows the zero fallback has the same shape as a genuine vector",
+  "unattributed_log_line": "stdout is captured per row, so a 'ESM feature not found' line would name its reaction, row index and UID"
+ },
+ "problems": [],
+ "problem_count": 0,
+ "supersedes": {
+  "previous_status": "FAIL",
+  "previous_utc": "2026-09-10T19:07:32Z",
+  "previous_failed_checks": [
+   "逐UID核sequence非空和冻结SHA"
+  ],
+  "previous_problems": [
+   "gate"
+  ],
+  "preserved_at": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/logs/p11_gate_attempt_invocation_2.json",
+  "why_this_invocation_did_not_reload": "the raw native load evidence of the first invocation is adopted, so the three expensive load_geometric_dataset calls stay at exactly one for the whole task (§9)"
+ },
+ "evidence_files": [
+  "UID_SEQUENCE_GVP_POCKET_ESM_PREFORWARD_GATE.json",
+  "NATIVE_LOAD_PER_ROW_TENSORS.csv",
+  "CORRECTED_UID_AND_PROTEIN_ASSET_IDENTITIES.csv",
+  "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/PREFORWARD_GATE_STDOUT.txt",
+  "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/logs/p11_native_evidence.json",
+  "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/logs/p11_invocations.jsonl"
+ ]
+}

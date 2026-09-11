@@ -1,6 +1,18 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-09-10
+## 老师当前优先审阅入口 — 2026-09-11
+
+- [`2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/`](2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/)
+
+```text
+T6-R3已真实完成3/3 native load、6/6 forward、四个最终LangGraph子进程、8条smoke、宿主映射与C8 trait生产调用；
+本地逐项审计判定为真实技术执行部分通过，但enviPath/depending、来源字段、task ID、无LLM图内trait、20项语义和三文件原始交付仍未闭环；
+T6_OVERALL_READY=false，G7_PASSED=false，当前不重跑模型，等待老师六项合同裁定。
+```
+
+该目录包含两个原始返回archive、关键可浏览证据、老师要求逐项合规矩阵、完整本地审计、十几个小时耗时归因和可复用运行配方。R3-R1约19小时54分中有17小时20分无命令/文件写入证据；最终成功技术运行约8分50秒，主要延迟不是模型计算。
+
+## 上一审阅入口 — 2026-09-10
 
 - [`2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/`](2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/)
 

@@ -1,0 +1,3016 @@
+{
+  "task_id": "enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910",
+  "generated_utc": "2026-09-10T16:41:36Z",
+  "phase": "E0-L lightgbm close-out (operator adjudication 2026-09-10)",
+  "operator_ruling_verbatim": "裁定：允许继续完整链，但必须采用“冻结、只读、末位注入、兼容性先验”的T2B LightGBM能力补充。\n\n原因：\n- v3.2真实运行入口确实引用LightGBM；\n- ${PY}裸import真实失败，必须保留traceback，不能写成PASS；\n- 主机已有冻结T2B venv中的LightGBM 4.7.0；\n- 该处理不改变模型、ranker、老师拓扑或sys.executable，也不安装/下载任何东西。\n\n执行要求：\n1. 先记录：LIGHTGBM_BARE_IMPORT=FAIL / LIGHTGBM_REFERENCE_COUNT=>0 / 裸import完整traceback\n   / 全部引用path:line / T2B venv、site-packages、LightGBM 4.7.0来源路径及文件SHA。\n2. 核对${PY}与T2B venv：Python major.minor一致；SOABI兼容；CPU/CUDA架构兼容；\n   lightgbm Python包和lib_lightgbm共享库均存在、可读、身份固定。\n   任一不成立，立即BLOCKED_ENVIRONMENT_PREFLIGHT_LIGHTGBM并完成三文件，不进入大计算。\n3. 不允许让T2B site-packages遮蔽${PY}已有依赖。PYTHONPATH顺序必须保证${PY}原有\n   site-packages优先，T2B site-packages只作为最后补充；或在${PY}启动后用\n   sys.path.append(T2B_SITE_PACKAGES)末位加入。sys.executable必须仍精确等于\n   /usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python\n4. 注入前后比较ase、torch、torch_geometric、numpy、scipy、sklearn、pandas、rdkit、\n   pydantic、langgraph、xgboost等module.__file__与版本。除lightgbm外，任何模块来源\n   发生变化或被T2B环境遮蔽，立即BLOCK，不继续。\n5. 注入后记录：LIGHTGBM_OVERLAY_IMPORT=PASS / LIGHTGBM_VERSION=4.7.0 /\n   LIGHTGBM_MODULE_PATH=<冻结T2B路径> / LIGHTGBM_SHARED_LIBRARY_PATH=<真实路径> /\n   PYTHON_EXECUTABLE=<固定${PY}> /\n   ENVIRONMENT_STATUS=PASS_WITH_PINNED_READONLY_T2B_LIGHTGBM_OVERLAY\n   不得把裸import失败改写成PASS，也不得称xgboost替代LightGBM。\n6. 在读取16GB/37GB资产和启动GPU前，先用真实v3.2入口完成TEST-01及确定性重复，并真实\n   加载固定LightGBM ranker。若TEST-01失败，立即BLOCKED_AT_T2_V32_LIGHTGBM，不进入GPU。\n7. TEST-01通过后，按原合同继续：§4.3 → §5 → §6.1全部157项 → §6.2 → §6.3 → 6/6 forward\n   → real LangGraph → 8 smoke → TEST-01—20 → C8→T5 → 三文件。\n8. 在FINAL_STATUS、validation和报告中完整披露：裸import失败、真实引用、只读冻结能力来源、\n   兼容性检查、注入后module来源不变和TEST-01结果。\n   这是操作员明确裁定的环境能力补充，不是老师科学合同变更。\n\n禁止pip/conda/apt、下载、复制包进${PY}、修改模型代码、修改老师graph/state。",
+  "supersession_of_e0_provisional_keys": {
+    "supersedes": "PYTHON_RUNTIME_PREFLIGHT.json:operator_correction_lightgbm.status_keys",
+    "superseded_keys": {
+      "LIGHTGBM_IMPORT": "NOT_IMPORTABLE_UNREQUIRED",
+      "LIGHTGBM_REFERENCE_COUNT": "see LIGHTGBM_REFERENCE_AUDIT.json (final count is taken on the fresh tree)",
+      "LIGHTGBM_GATE": "NOT_APPLICABLE"
+    },
+    "why": "those three keys were issued by the operator's first correction under the stated premise that lightgbm had zero references and that the v3.2 entry used xgboost. The six-source audit below refutes that premise: the actually loaded frozen v3.2 runtime does import lightgbm at module scope. The operator issued a second ruling on 2026-09-10, recorded verbatim in this file, which replaces NOT_APPLICABLE with a frozen read-only last-position capability overlay.",
+    "environment_preflight_probe_ran": "once (p2_e0.py); this close-out is a separate gate that only reads identity data and imports a module, so the import gate itself was not re-run"
+  },
+  "bare_import": {
+    "rc": 1,
+    "stdout": "",
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'lightgbm'\n",
+    "verdict": "FAIL"
+  },
+  "reference_audit": {
+    "enzyme_cage_code_root": {
+      "root": "/root/projects/EnzymeCAGE-master",
+      "files_scanned": 32115,
+      "skipped_dir_names": [
+        ".git",
+        "HPC_Inputs",
+        "HPC_Returned_Result_Summaries",
+        "__pycache__",
+        "node_modules",
+        "site-packages"
+      ],
+      "per_file_scan_cap_bytes": 20971520,
+      "files_skipped_over_cap": [
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/portrait_sklearn_v1.2.2_micropherret/opt/conda/pkgs/cache/09cdf8bf.json",
+          "bytes": 136814879
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/portrait_sklearn_v1.2.2_micropherret/opt/conda/pkgs/cache/2a957770.json",
+          "bytes": 33277953
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/portrait_sklearn_v1.2.2_micropherret/opt/conda/pkgs/cache/497deca9.json",
+          "bytes": 344438076
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/portrait_sklearn_v1.2.2_micropherret/opt/conda/pkgs/cache/ffeee55f.json",
+          "bytes": 33123254
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/portrait_sklearn_v1.4.0_traitar_bacdive/opt/conda/pkgs/cache/09cdf8bf.json",
+          "bytes": 136838503
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/portrait_sklearn_v1.4.0_traitar_bacdive/opt/conda/pkgs/cache/2a957770.json",
+          "bytes": 33281425
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/portrait_sklearn_v1.4.0_traitar_bacdive/opt/conda/pkgs/cache/497deca9.json",
+          "bytes": 344485487
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/portrait_sklearn_v1.4.0_traitar_bacdive/opt/conda/pkgs/cache/ffeee55f.json",
+          "bytes": 33125422
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/data/ecmap/2_2048_fps.json",
+          "bytes": 519495537
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/data/ecmap.csv",
+          "bytes": 58255702
+        }
+      ],
+      "code_reference_count_total": 101,
+      "code_reference_count_production": 101,
+      "non_code_mention_count": 23,
+      "code_references": [
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r1_tmp/p11_boundary_matrix.py",
+          "line": 76,
+          "text": "\"3 LightGBM-style ranker parameter files (uspto 3623 lines, envipath 1932, retrieval 1968) are \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r2_tmp/p6_validator.py",
+          "line": 145,
+          "text": "\"LightGBM\", \"lgb\"}",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r3_tmp/p6_validator.py",
+          "line": 237,
+          "text": "\"LightGBM\", \"lgb\"}",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/_loss/loss.py",
+          "line": 537,
+          "text": "unit hessian (and is consistent with what is done in LightGBM). It is also",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/__init__.py",
+          "line": 4,
+          "text": "from LightGBM.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/gradient_boosting.py",
+          "line": 1196,
+          "text": "`LightGBM <https://github.com/Microsoft/LightGBM>`_.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/gradient_boosting.py",
+          "line": 1547,
+          "text": "`LightGBM <https://github.com/Microsoft/LightGBM>`_.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/grower.py",
+          "line": 625,
+          "text": "LightGBM uses the same logic for overlapping groups. See",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/grower.py",
+          "line": 626,
+          "text": "https://github.com/microsoft/LightGBM/issues/4481 for details.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 23,
+          "text": "# Make sure sklearn has the same predictions as lightgbm for easy targets.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 27,
+          "text": "# LightGBM and sklearn should be exactly identical.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 39,
+          "text": "#   LightGBM's computation of the median (used for the initial value of",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 45,
+          "text": "pytest.importorskip(\"lightgbm\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 70,
+          "text": "est_lightgbm = get_equivalent_estimator(est_sklearn, lib=\"lightgbm\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 103,
+          "text": "pytest.importorskip(\"lightgbm\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 136,
+          "text": "est_sklearn, lib=\"lightgbm\", n_classes=n_classes",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 177,
+          "text": "pytest.importorskip(\"lightgbm\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 212,
+          "text": "est_sklearn, lib=\"lightgbm\", n_classes=n_classes",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_grower.py",
+          "line": 431,
+          "text": "# Note that lightgbm \"fails\" here and will assign the inf sample to the",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_monotonic_contraints.py",
+          "line": 206,
+          "text": "# test adapted from lightgbm's test_monotone_constraint(), itself inspired",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/model_selection/tests/test_search.py",
+          "line": 2314,
+          "text": "# check support for scalar values in fit_params, for instance in LightGBM",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/utils/tests/test_pprint.py",
+          "line": 621,
+          "text": "# set_params and get_params. Here we mimic what LightGBM does.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6_r2_s8_matrix.py",
+          "line": 85,
+          "text": "T2B_CRASH = \"ModuleNotFoundError: No module named 'lightgbm' (single_smiles_v32 -> expand_bbd_routes)\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 1,
+          "text": "\"\"\"SS2 (E1): Torch/LightGBM unified-capability FACT preflight. Read-only.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 28,
+          "text": "MODULES = [\"torch\", \"torch_geometric\", \"rdkit\", \"lightgbm\", \"langgraph\", \"pydantic\", \"numpy\"]",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 66,
+          "text": "# ---------------- existing LightGBM artifact inventory ----------------",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 68,
+          "text": "gi = f\"{T2B_SITE}/lightgbm-4.7.0.dist-info\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 71,
+          "text": "so = f\"{T2B_SITE}/lightgbm/lib/lib_lightgbm.so\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 74,
+          "text": "\"loaded by lightgbm python wrapper at import\"])",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 78,
+          "text": "line = [l.strip() for l in open(p, encoding=\"utf-8\", errors=\"replace\") if \"lightgbm\" in l.lower()]",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 80,
+          "text": "(line or [\"no lightgbm line\"])[0][:100]])",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 86,
+          "text": "for pat in (\"/root/.cache/pip/**/*lightgbm*\", \"/usrdata/**/*lightgbm*.whl\"):",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 98,
+          "text": "# ---------------- option A: py312 sees existing LightGBM via read-only PYTHONPATH ----------------",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 101,
+          "text": "out = {\"attempt\": \"A: py312 + PYTHONPATH=<t2b site-packages> (read-only), import lightgbm \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 107,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 108,
+          "text": "out[\"lightgbm\"] = {\"version\": lgb.__version__, \"file\": lgb.__file__,",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 270,
+          "text": "| A (same-process) | py312 with read-only `PYTHONPATH={T2B_SITE}` importing existing lightgbm 4.7.0 (native lib) and loading the three per-source rankers + selector from `{STAGED_REPO}/data/bbd_v31` |",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 274,
+          "text": "* py312 stable env: torch {env_facts['py312_stable'].get('modules', {}).get('torch', {}).get('version')}, torch_geometric {env_facts['py312_stable'].get('modules', {}).get('torch_geometric', {}).get('",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 275,
+          "text": "* T2B venv: lightgbm {env_facts['t2b_v32_venv'].get('modules', {}).get('lightgbm', {}).get('version')}, torch: {env_facts['t2b_v32_venv'].get('modules', {}).get('torch', {}).get('import')} ({env_facts",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 276,
+          "text": "* Existing LightGBM artifacts: only the T2B venv dist-info + bundled `lib_lightgbm.so` and the frozen DEPENDENCY_LOCK_OR_FREEZE line (see LIGHTGBM_EXISTING_ARTIFACT_INVENTORY.csv). No wheel/pip-cache ",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 11,
+          "text": "site-packages) for the lightgbm-blocked modules, to separate environment from code causes",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 204,
+          "text": "# ---------------- E: env-exposure replay (existing LightGBM visible read-only) ----------------",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 323,
+          "text": "\"(lightgbm 4.7.0 + its native lib)\", envx.get(\"test_t2c_integration.py\")),",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 340,
+          "text": "# the lightgbm and ReactionTask import failures as generic implementation failures).",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 345,
+          "text": "if \"lightgbm\" in tb:",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 347,
+          "text": "\"ModuleNotFoundError: lightgbm is absent from py312 (E1 capability matrix) and exists \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 365,
+          "text": "(\"teacher node contract (deployment A/B)\" if \"lightgbm\" in tb else \"student\")])",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 404,
+          "text": "elif \"lightgbm\" in fix_reason:",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 412,
+          "text": "elif \"lightgbm\" in reason:",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 414,
+          "text": "ev = (\"ModuleNotFoundError in the baseline and no fix run for this module; E1 shows lightgbm \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 514,
+          "text": "cur_lines.append(f\"  lightgbm exposure : {item_summary(envx[mod])}\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 161,
+          "text": "### E1 Torch/LightGBM 统一运行能力（2 个环境，只读）",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 163,
+          "text": "**lightgbm ABSENT**。T2B venv：lightgbm 4.7.0（含 `lib/lightgbm/lib/lib_lightgbm.so`）有；**torch FAIL**。",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 165,
+          "text": "* 现有 LightGBM 制品只有 T2B venv 的 dist-info + 捆绑原生库与冻结依赖锁行（LIGHTGBM_EXISTING_ARTIFACT_INVENTORY.csv）；",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 208,
+          "text": "* 另外两条**不是** stale path：t2c/t2c_r1 的失败在只读暴露现有 lightgbm 之后变成",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 255,
+          "text": "把两个模块级导入失败误归为 REAL（截掉了决定性的 `lightgbm` / `ReactionTask` 异常行）；",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 276,
+          "text": "* E1 两环境逐包版本/import 事实、现有 LightGBM 制品定位、方案 A（同进程只读 PYTHONPATH）与",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 11,
+          "text": "xgboost is gated as the real gradient-boosting dependency; lightgbm keeps its real",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 234,
+          "text": "# ---------------------------------------------------------------- lightgbm adjudication pass 1",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 235,
+          "text": "lgb = import_results.get(\"lightgbm\", {})",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 244,
+          "text": "def count_refs(roots, needle=\"lightgbm\"):",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 272,
+          "text": "say(\"lightgbm reference audit pass 1 %s\" % json.dumps(ref_audit_pass1))",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 334,
+          "text": "\"reason\": (\"lightgbm is not a teacher-contract requirement and not a dependency of \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 340,
+          "text": "\"escalation_rule\": (\"if any real lightgbm reference is found that this interpreter \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 361,
+          "text": "\"lightgbm\": \"listed in the prompt module list; audited for real references\"}",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 366,
+          "text": "if name == \"lightgbm\":",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 2,
+          "text": "\"\"\"Operator-adjudicated LightGBM close-out gate (T6-R3-R1, 2026-09-10).",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 6,
+          "text": "T2B venv / site-packages / LightGBM 4.7.0 source identity;",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 8,
+          "text": "lightgbm python package and its native shared library exist, are readable and fixed;",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 12,
+          "text": "any source change other than lightgbm blocks;",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 41,
+          "text": "C.self_audit(__file__, -1, note=\"E0-L lightgbm six-source audit + T2B read-only overlay gate\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 42,
+          "text": "say(\"PHASE=E0-L lightgbm close-out gate\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 146,
+          "text": "then report lightgbm references (added lines and context lines separately).\"\"\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 192,
+          "text": "\"import lightgbm; print('IMPORTED', lightgbm.__version__)\"],",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 193,
+          "text": "note=\"E0-L bare lightgbm import under pinned ${PY}\",",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 227,
+          "text": "rc_g, out_g, err_g = C.run([\"git\", \"grep\", \"-n\", \"-I\", \"-e\", \"lightgbm\", C.BASE_COMMIT],",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 229,
+          "text": "note=\"E0-L git grep lightgbm at BASE_COMMIT (read-only)\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 306,
+          "text": "# first-round blocked package: how the previous round obtained lightgbm (disclosure only)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 308,
+          "text": "fr[\"note\"] = (\"the blocked first round additionally carried a pip-downloaded lightgbm 4.6.0 \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 339,
+          "text": "say(\"=== step 3: frozen T2B lightgbm capability identity ===\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 345,
+          "text": "LG_PKG = T2B_SITES / \"lightgbm\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 346,
+          "text": "DIST = sorted(T2B_SITES.glob(\"lightgbm-*.dist-info\"))",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 372,
+          "text": "say(\"T2B lightgbm dir=%s so=%s\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 444,
+          "text": "problems.append(\"T2B lightgbm compatibility failed: %s\" % \",\".join(FAILED_CHECKS))",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 460,
+          "text": "note=\"E0-L before/after module source matrix + lightgbm overlay import\",",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 477,
+          "text": "problems.append(\"overlay lightgbm import failed: %s\" % payload.get(\"overlay_error\"))",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 501,
+          "text": "\"replacement for LightGBM\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 517,
+          "text": "/ 全部引用path:line / T2B venv、site-packages、LightGBM 4.7.0来源路径及文件SHA。",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 519,
+          "text": "lightgbm Python包和lib_lightgbm共享库均存在、可读、身份固定。",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 552,
+          "text": "\"stated premise that lightgbm had zero references and that the v3.2 entry used \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 554,
+          "text": "\"frozen v3.2 runtime does import lightgbm at module scope. The operator issued \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 565,
+          "text": "\"phase\": \"E0-L lightgbm close-out (operator adjudication 2026-09-10)\",",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 2,
+          "text": "\"\"\"Last-position read-only LightGBM overlay probe (T6-R3-R1, operator requirement 3-5).",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 9,
+          "text": "3. import lightgbm through that overlay and record its real module and native library path",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 14,
+          "text": "5. hash the whole lightgbm package directory before and after the import to prove the",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 118,
+          "text": "pkg_dir = Path(T2B_SITES) / \"lightgbm\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 145,
+          "text": "lgb = importlib.import_module(\"lightgbm\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 164,
+          "text": "if \"lightgbm\" in line:",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/r1_common.py",
+          "line": 138,
+          "text": "\"pydantic\", \"langgraph\", \"jsonschema\", \"sklearn\", \"lightgbm\", \"joblib\",",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/r1_common.py",
+          "line": 140,
+          "text": "# the operator correction of 2026-09-10: lightgbm is not a teacher-contract requirement and",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/r1_common.py",
+          "line": 143,
+          "text": "NOT_APPLICABLE_MODULES = {\"lightgbm\": (\"LIGHTGBM_IMPORT\", \"LIGHTGBM_REFERENCE_COUNT\",",
+          "inside_archived_evidence": false
+        }
+      ],
+      "code_references_truncated": false,
+      "archived_evidence_code_references": [],
+      "non_code_mentions": [
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r1_tmp/p13_huang_decision_draft.md",
+          "line": 57,
+          "text": "- Ranker training identity: the 3 LightGBM ranker parameter files (uspto/envipath/retrieval) are",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r2_tmp/A2_HUANG_TEACHER_DRAFT_CORRECTED.md",
+          "line": 58,
+          "text": "也不自动判无泄漏，分类只看 locator。三个 LightGBM ranker 参数文件无可恢复训练行身份：",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r2_tmp/DEPENDING_OPAQUE_RANKER_LIMITATION_CORRECTED.md",
+          "line": 10,
+          "text": "The three depending_v32 ranker assets are LightGBM `.txt` parameter files whose bytes/SHA256 match",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/dataset/HPC_ENZYMECAGE_THREE_MODULE_T2B_V32_SINGLE_SMILES_RUNTIME_ADAPTER_STAGED_EXECUTOR_ONLY_PROMPT_2026-09-07.md",
+          "line": 98,
+          "text": "lightgbm（允许>=3,<5，安装后冻结精确版本和wheel/source身份）",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/dataset/HPC_ENZYMECAGE_THREE_MODULE_T2B_V32_SINGLE_SMILES_RUNTIME_ADAPTER_STAGED_EXECUTOR_ONLY_PROMPT_2026-09-07.md",
+          "line": 104,
+          "text": "staged `pyproject.toml`补齐实际runtime依赖，但不无界锁定整个环境。至少明确numpy/lightgbm；RDKit保留。",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/docs/DBP_P0_ZERO_MODEL_COMPUTE_REMOTE_IDENTITY_ENTRYPOINT_ASSET_PREFLIGHT_EXECUTOR_ONLY_PROMPT_DRAFT_2026-09-10.md",
+          "line": 134,
+          "text": "- call route prediction, LightGBM `Booster.predict`, ECLIPSE, BioTransformer, enviFormer, RXNMapper, DRFP generation, EnzymeCAGE wrapper `predict`, `infer.py`, training, feature extraction, UniProt/KE",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/docs/DBP_P0_ZERO_MODEL_COMPUTE_REMOTE_IDENTITY_ENTRYPOINT_ASSET_PREFLIGHT_EXECUTOR_ONLY_PROMPT_DRAFT_2026-09-10.md",
+          "line": 135,
+          "text": "- import `torch`, `lightgbm`, ECLIPSE model modules, EnzymeCAGE model/wrapper modules, RXNMapper, or any module that may initialize a model, CUDA context or large asset;",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/docs/DBP_P0_ZERO_MODEL_COMPUTE_REMOTE_IDENTITY_ENTRYPOINT_ASSET_PREFLIGHT_EXECUTOR_ONLY_PROMPT_DRAFT_2026-09-10.md",
+          "line": 267,
+          "text": "Locate the existing Python executable historically used for T2B and report package versions through package metadata (`importlib.metadata`, `pip show`, or conda list limited to requested packages) wit",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/docs/HPC_ENZYMECAGE_THREE_MODULE_T0_R1_SOURCE_ENVIRONMENT_ASSET_SECURITY_FREEZE_EXECUTOR_ONLY_PROMPT_2026-09-03.md",
+          "line": 526,
+          "text": "LightGBM、NumPy、RDKit、Pydantic、LangGraph 等关键依赖状态。",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/docs/HPC_ENZYMECAGE_THREE_MODULE_T0_R2_ENV_GIT_ASSET_AUDIT_CORRECTION_EXECUTOR_ONLY_PROMPT_2026-09-03.md",
+          "line": 403,
+          "text": "lightgbm",
+          "inside_archived_evidence": false
+        }
+      ],
+      "non_code_truncated": true,
+      "note": "walked twice conceptually: archived evidence directories are skipped for the production count but are still reported inside archived_evidence_code_references of the companion entry"
+    },
+    "enzyme_cage_code_root_including_archives": {
+      "root": "/root/projects/EnzymeCAGE-master",
+      "files_scanned": 89732,
+      "skipped_dir_names": [
+        ".git",
+        "__pycache__",
+        "node_modules",
+        "site-packages"
+      ],
+      "per_file_scan_cap_bytes": 20971520,
+      "files_skipped_over_cap": [
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Inputs/ecmap.csv",
+          "bytes": 58255702
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/.tmp_match_repair/bbd_full_route_v0_3_v3_1_bounded_multistep_route_expansion_supplement_20260825/03_ROUTE_EXPANSION/eclipse_noec_bbd_finetuned_10fold_multistep_optional/PREDICTED_ROUTE_EDGES.jsonl",
+          "bytes": 24440674
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/.tmp_match_repair/bbd_full_route_v0_3_v3_1_bounded_multistep_route_expansion_supplement_20260825/03_ROUTE_EXPANSION/eclipse_predec_bbd_finetuned_10fold_multistep/PREDICTED_ROUTE_EDGES.jsonl",
+          "bytes": 47605570
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/.tmp_simple_path_repair_payload/bbd_full_route_v0_3_v3_1_bounded_multistep_route_expansion_supplement_20260825/03_ROUTE_EXPANSION/eclipse_noec_bbd_finetuned_10fold_multistep_optional/PREDICTED_ROUTE_EDGES.jsonl",
+          "bytes": 24440674
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/.tmp_simple_path_repair_payload/bbd_full_route_v0_3_v3_1_bounded_multistep_route_expansion_supplement_20260825/03_ROUTE_EXPANSION/eclipse_predec_bbd_finetuned_10fold_multistep/PREDICTED_ROUTE_EDGES.jsonl",
+          "bytes": 47605570
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/bowen_demov2_74dd74e_real_predict_bbd83_20260811/bbd_full_route_v0_3_v3_1_bounded_multistep_route_expansion_supplement_20260825/03_ROUTE_EXPANSION/eclipse_noec_bbd_finetuned_10fold_multistep_optional/PREDICTED_ROUTE_EDGES.jsonl",
+          "bytes": 24440674
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/bowen_demov2_74dd74e_real_predict_bbd83_20260811/bbd_full_route_v0_3_v3_1_bounded_multistep_route_expansion_supplement_20260825/03_ROUTE_EXPANSION/eclipse_predec_bbd_finetuned_10fold_multistep/PREDICTED_ROUTE_EDGES.jsonl",
+          "bytes": 47605570
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/chenyu_c8p_scnet_clean_gtdb_extracted_transfer_20260826/GTDB_EXTRACTED_FILE_LIST.tsv",
+          "bytes": 34293934
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/chenyu_c8p_scnet_clean_gtdb_extracted_transfer_20260826/TRANSFER_TAR_LISTING.txt",
+          "bytes": 25586483
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/chenyu_c8p_scnet_portraits_asset_transfer_bundle_20260825/TRANSFER_TAR_LISTING.txt",
+          "bytes": 25661368
+        }
+      ],
+      "code_reference_count_total": 153,
+      "code_reference_count_production": 101,
+      "non_code_mention_count": 379,
+      "code_references": [
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r1_tmp/p11_boundary_matrix.py",
+          "line": 76,
+          "text": "\"3 LightGBM-style ranker parameter files (uspto 3623 lines, envipath 1932, retrieval 1968) are \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r2_tmp/p6_validator.py",
+          "line": 145,
+          "text": "\"LightGBM\", \"lgb\"}",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r3_tmp/p6_validator.py",
+          "line": 237,
+          "text": "\"LightGBM\", \"lgb\"}",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/_loss/loss.py",
+          "line": 537,
+          "text": "unit hessian (and is consistent with what is done in LightGBM). It is also",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/__init__.py",
+          "line": 4,
+          "text": "from LightGBM.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/gradient_boosting.py",
+          "line": 1196,
+          "text": "`LightGBM <https://github.com/Microsoft/LightGBM>`_.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/gradient_boosting.py",
+          "line": 1547,
+          "text": "`LightGBM <https://github.com/Microsoft/LightGBM>`_.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/grower.py",
+          "line": 625,
+          "text": "LightGBM uses the same logic for overlapping groups. See",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/grower.py",
+          "line": 626,
+          "text": "https://github.com/microsoft/LightGBM/issues/4481 for details.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 23,
+          "text": "# Make sure sklearn has the same predictions as lightgbm for easy targets.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 27,
+          "text": "# LightGBM and sklearn should be exactly identical.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 39,
+          "text": "#   LightGBM's computation of the median (used for the initial value of",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 45,
+          "text": "pytest.importorskip(\"lightgbm\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 70,
+          "text": "est_lightgbm = get_equivalent_estimator(est_sklearn, lib=\"lightgbm\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 103,
+          "text": "pytest.importorskip(\"lightgbm\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 136,
+          "text": "est_sklearn, lib=\"lightgbm\", n_classes=n_classes",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 177,
+          "text": "pytest.importorskip(\"lightgbm\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_compare_lightgbm.py",
+          "line": 212,
+          "text": "est_sklearn, lib=\"lightgbm\", n_classes=n_classes",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_grower.py",
+          "line": 431,
+          "text": "# Note that lightgbm \"fails\" here and will assign the inf sample to the",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/ensemble/_hist_gradient_boosting/tests/test_monotonic_contraints.py",
+          "line": 206,
+          "text": "# test adapted from lightgbm's test_monotone_constraint(), itself inspired",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/model_selection/tests/test_search.py",
+          "line": 2314,
+          "text": "# check support for scalar values in fit_params, for instance in LightGBM",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Work/enzymecage_c8_p6e_portraits_open_route_tiny_smoke_completion_20260824/rootfs/genomespot_main/usr/local/lib/python3.10/dist-packages/sklearn/utils/tests/test_pprint.py",
+          "line": 621,
+          "text": "# set_params and get_params. Here we mimic what LightGBM does.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6_r2_s8_matrix.py",
+          "line": 85,
+          "text": "T2B_CRASH = \"ModuleNotFoundError: No module named 'lightgbm' (single_smiles_v32 -> expand_bbd_routes)\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 1,
+          "text": "\"\"\"SS2 (E1): Torch/LightGBM unified-capability FACT preflight. Read-only.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 28,
+          "text": "MODULES = [\"torch\", \"torch_geometric\", \"rdkit\", \"lightgbm\", \"langgraph\", \"pydantic\", \"numpy\"]",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 66,
+          "text": "# ---------------- existing LightGBM artifact inventory ----------------",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 68,
+          "text": "gi = f\"{T2B_SITE}/lightgbm-4.7.0.dist-info\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 71,
+          "text": "so = f\"{T2B_SITE}/lightgbm/lib/lib_lightgbm.so\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 74,
+          "text": "\"loaded by lightgbm python wrapper at import\"])",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 78,
+          "text": "line = [l.strip() for l in open(p, encoding=\"utf-8\", errors=\"replace\") if \"lightgbm\" in l.lower()]",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 80,
+          "text": "(line or [\"no lightgbm line\"])[0][:100]])",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 86,
+          "text": "for pat in (\"/root/.cache/pip/**/*lightgbm*\", \"/usrdata/**/*lightgbm*.whl\"):",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 98,
+          "text": "# ---------------- option A: py312 sees existing LightGBM via read-only PYTHONPATH ----------------",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 101,
+          "text": "out = {\"attempt\": \"A: py312 + PYTHONPATH=<t2b site-packages> (read-only), import lightgbm \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 107,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 108,
+          "text": "out[\"lightgbm\"] = {\"version\": lgb.__version__, \"file\": lgb.__file__,",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 270,
+          "text": "| A (same-process) | py312 with read-only `PYTHONPATH={T2B_SITE}` importing existing lightgbm 4.7.0 (native lib) and loading the three per-source rankers + selector from `{STAGED_REPO}/data/bbd_v31` |",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 274,
+          "text": "* py312 stable env: torch {env_facts['py312_stable'].get('modules', {}).get('torch', {}).get('version')}, torch_geometric {env_facts['py312_stable'].get('modules', {}).get('torch_geometric', {}).get('",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 275,
+          "text": "* T2B venv: lightgbm {env_facts['t2b_v32_venv'].get('modules', {}).get('lightgbm', {}).get('version')}, torch: {env_facts['t2b_v32_venv'].get('modules', {}).get('torch', {}).get('import')} ({env_facts",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s2_e1_env.py",
+          "line": 276,
+          "text": "* Existing LightGBM artifacts: only the T2B venv dist-info + bundled `lib_lightgbm.so` and the frozen DEPENDENCY_LOCK_OR_FREEZE line (see LIGHTGBM_EXISTING_ARTIFACT_INVENTORY.csv). No wheel/pip-cache ",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 11,
+          "text": "site-packages) for the lightgbm-blocked modules, to separate environment from code causes",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 204,
+          "text": "# ---------------- E: env-exposure replay (existing LightGBM visible read-only) ----------------",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 323,
+          "text": "\"(lightgbm 4.7.0 + its native lib)\", envx.get(\"test_t2c_integration.py\")),",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 340,
+          "text": "# the lightgbm and ReactionTask import failures as generic implementation failures).",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 345,
+          "text": "if \"lightgbm\" in tb:",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 347,
+          "text": "\"ModuleNotFoundError: lightgbm is absent from py312 (E1 capability matrix) and exists \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 365,
+          "text": "(\"teacher node contract (deployment A/B)\" if \"lightgbm\" in tb else \"student\")])",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 404,
+          "text": "elif \"lightgbm\" in fix_reason:",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 412,
+          "text": "elif \"lightgbm\" in reason:",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 414,
+          "text": "ev = (\"ModuleNotFoundError in the baseline and no fix run for this module; E1 shows lightgbm \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s5_e4_tests.py",
+          "line": 514,
+          "text": "cur_lines.append(f\"  lightgbm exposure : {item_summary(envx[mod])}\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 161,
+          "text": "### E1 Torch/LightGBM 统一运行能力（2 个环境，只读）",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 163,
+          "text": "**lightgbm ABSENT**。T2B venv：lightgbm 4.7.0（含 `lib/lightgbm/lib/lib_lightgbm.so`）有；**torch FAIL**。",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 165,
+          "text": "* 现有 LightGBM 制品只有 T2B venv 的 dist-info + 捆绑原生库与冻结依赖锁行（LIGHTGBM_EXISTING_ARTIFACT_INVENTORY.csv）；",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 208,
+          "text": "* 另外两条**不是** stale path：t2c/t2c_r1 的失败在只读暴露现有 lightgbm 之后变成",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 255,
+          "text": "把两个模块级导入失败误归为 REAL（截掉了决定性的 `lightgbm` / `ReactionTask` 异常行）；",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/scripts/_t6w_s8_package.py",
+          "line": 276,
+          "text": "* E1 两环境逐包版本/import 事实、现有 LightGBM 制品定位、方案 A（同进程只读 PYTHONPATH）与",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 11,
+          "text": "xgboost is gated as the real gradient-boosting dependency; lightgbm keeps its real",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 234,
+          "text": "# ---------------------------------------------------------------- lightgbm adjudication pass 1",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 235,
+          "text": "lgb = import_results.get(\"lightgbm\", {})",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 244,
+          "text": "def count_refs(roots, needle=\"lightgbm\"):",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 272,
+          "text": "say(\"lightgbm reference audit pass 1 %s\" % json.dumps(ref_audit_pass1))",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 334,
+          "text": "\"reason\": (\"lightgbm is not a teacher-contract requirement and not a dependency of \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 340,
+          "text": "\"escalation_rule\": (\"if any real lightgbm reference is found that this interpreter \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 361,
+          "text": "\"lightgbm\": \"listed in the prompt module list; audited for real references\"}",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p2_e0.py",
+          "line": 366,
+          "text": "if name == \"lightgbm\":",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 2,
+          "text": "\"\"\"Operator-adjudicated LightGBM close-out gate (T6-R3-R1, 2026-09-10).",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 6,
+          "text": "T2B venv / site-packages / LightGBM 4.7.0 source identity;",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 8,
+          "text": "lightgbm python package and its native shared library exist, are readable and fixed;",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 12,
+          "text": "any source change other than lightgbm blocks;",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 41,
+          "text": "C.self_audit(__file__, -1, note=\"E0-L lightgbm six-source audit + T2B read-only overlay gate\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 42,
+          "text": "say(\"PHASE=E0-L lightgbm close-out gate\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 146,
+          "text": "then report lightgbm references (added lines and context lines separately).\"\"\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 192,
+          "text": "\"import lightgbm; print('IMPORTED', lightgbm.__version__)\"],",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 193,
+          "text": "note=\"E0-L bare lightgbm import under pinned ${PY}\",",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 227,
+          "text": "rc_g, out_g, err_g = C.run([\"git\", \"grep\", \"-n\", \"-I\", \"-e\", \"lightgbm\", C.BASE_COMMIT],",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 229,
+          "text": "note=\"E0-L git grep lightgbm at BASE_COMMIT (read-only)\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 306,
+          "text": "# first-round blocked package: how the previous round obtained lightgbm (disclosure only)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 308,
+          "text": "fr[\"note\"] = (\"the blocked first round additionally carried a pip-downloaded lightgbm 4.6.0 \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 339,
+          "text": "say(\"=== step 3: frozen T2B lightgbm capability identity ===\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 345,
+          "text": "LG_PKG = T2B_SITES / \"lightgbm\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 346,
+          "text": "DIST = sorted(T2B_SITES.glob(\"lightgbm-*.dist-info\"))",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 372,
+          "text": "say(\"T2B lightgbm dir=%s so=%s\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 444,
+          "text": "problems.append(\"T2B lightgbm compatibility failed: %s\" % \",\".join(FAILED_CHECKS))",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 460,
+          "text": "note=\"E0-L before/after module source matrix + lightgbm overlay import\",",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 477,
+          "text": "problems.append(\"overlay lightgbm import failed: %s\" % payload.get(\"overlay_error\"))",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 501,
+          "text": "\"replacement for LightGBM\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 517,
+          "text": "/ 全部引用path:line / T2B venv、site-packages、LightGBM 4.7.0来源路径及文件SHA。",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 519,
+          "text": "lightgbm Python包和lib_lightgbm共享库均存在、可读、身份固定。",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 552,
+          "text": "\"stated premise that lightgbm had zero references and that the v3.2 entry used \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 554,
+          "text": "\"frozen v3.2 runtime does import lightgbm at module scope. The operator issued \"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/p4_lightgbm.py",
+          "line": 565,
+          "text": "\"phase\": \"E0-L lightgbm close-out (operator adjudication 2026-09-10)\",",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 2,
+          "text": "\"\"\"Last-position read-only LightGBM overlay probe (T6-R3-R1, operator requirement 3-5).",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 9,
+          "text": "3. import lightgbm through that overlay and record its real module and native library path",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 14,
+          "text": "5. hash the whole lightgbm package directory before and after the import to prove the",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 118,
+          "text": "pkg_dir = Path(T2B_SITES) / \"lightgbm\"",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 145,
+          "text": "lgb = importlib.import_module(\"lightgbm\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/probe_lightgbm_overlay.py",
+          "line": 164,
+          "text": "if \"lightgbm\" in line:",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/r1_common.py",
+          "line": 138,
+          "text": "\"pydantic\", \"langgraph\", \"jsonschema\", \"sklearn\", \"lightgbm\", \"joblib\",",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/r1_common.py",
+          "line": 140,
+          "text": "# the operator correction of 2026-09-10: lightgbm is not a teacher-contract requirement and",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/t6r3r1_tmp/r1_common.py",
+          "line": 143,
+          "text": "NOT_APPLICABLE_MODULES = {\"lightgbm\": (\"LIGHTGBM_IMPORT\", \"LIGHTGBM_REFERENCE_COUNT\",",
+          "inside_archived_evidence": false
+        }
+      ],
+      "code_references_truncated": false,
+      "archived_evidence_code_references": [
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/chenyu_final_pipeline_runtime_database_cloud_migration_readonly_inventory_20260908/scripts/build_inventory.py",
+          "line": 323,
+          "text": "runtime_role=\"BBDB v3/v3.1 LightGBM rankers + hfix implicit-H templates\", pipeline_consumers=\"controlled prediction scoring (offline/candidate)\",",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/chenyu_final_pipeline_runtime_database_cloud_migration_readonly_inventory_20260908/scripts/build_inventory.py",
+          "line": 325,
+          "text": "format_summary=\"*.txt(LightGBM) in bbd_v3/bbd_v31 + bbd_v32/stats + bbd_v5 + hfix/templates_implicitH.jsonl\",",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/chenyu_final_pipeline_runtime_database_cloud_migration_readonly_inventory_20260908/scripts/build_inventory.py",
+          "line": 327,
+          "text": "read_pattern=\"full_load\", load_api=\"lightgbm.Booster / json\", current_runtime_required=\"UNVERIFIED_IN_FINAL_LANGGRAPH\",",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t0_environment_git_asset_audit_correction_20260903_r2/scripts/probe_python_environment_r2.py",
+          "line": 29,
+          "text": "\"pydantic\", \"lightgbm\", \"numpy\", \"rdkit\", \"torch\",",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t0_source_environment_asset_security_freeze_20260903_r1/scripts/run_t0_r1_source_environment_asset_security_freeze.py",
+          "line": 581,
+          "text": "key_pkgs = {\"lightgbm\", \"numpy\", \"rdkit\", \"pydantic\", \"langgraph\", \"torch\", \"pandas\", \"sklearn\", \"scipy\", \"pyyaml\", \"yaml\", \"openai\", \"langchain\"}",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t0_source_environment_asset_security_freeze_20260903_r1/scripts/run_t0_r1_source_environment_asset_security_freeze.py",
+          "line": 609,
+          "text": "if name.lower() in (\"lightgbm\", \"numpy\", \"rdkit\", \"pydantic\"):",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t2b_r4_evidence_only_access_instrument_external_three_file_closure_20260907/scripts/run_t2b_r4_instrumented_mutations.py",
+          "line": 13,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t4_r1_runtime_blindness_training_overlap_normalization_metric_delivery_evidence_correction_20260909/scripts/p11_boundary_matrix.py",
+          "line": 76,
+          "text": "\"3 LightGBM-style ranker parameter files (uspto 3623 lines, envipath 1932, retrieval 1968) are \"",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t4_r1_runtime_blindness_training_overlap_normalization_metric_delivery_evidence_correction_20260909/scripts/p6_asset_inventory.py",
+          "line": 439,
+          "text": "\"observed_schema\": \"LightGBM-style header (tree/version/num_class) + binary feature/score payload\",",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t4_r1_runtime_blindness_training_overlap_normalization_metric_delivery_evidence_correction_20260909/scripts/p9_hit_provenance.py",
+          "line": 211,
+          "text": "row[\"auditability_note\"] = (\"no auditable-asset locator; provenance depends on ranker (LightGBM .txt, \"",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t4_r1_runtime_blindness_training_overlap_normalization_metric_delivery_evidence_correction_20260909/scripts/p9_hit_provenance.py",
+          "line": 256,
+          "text": "\"q6_unknown_due_to_opaque_ranker_or_external_envipath\": {\"cases\": q6, \"note\": \"no auditable-asset locator; provenance not recoverable from OPAQUE_NOT_AUDITABLE rankers (LightGBM .txt) or external envi",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t4_r2_asset_local_overlap_semantic_report_validator_delivery_final_correction_20260909/scripts/p6_validator.py",
+          "line": 145,
+          "text": "\"LightGBM\", \"lgb\"}",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t4_r3_tiny_report_validator_sidecar_closure_20260910/scripts/p6_validator.py",
+          "line": 237,
+          "text": "\"LightGBM\", \"lgb\"}",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t4_r4_clean_external_closure_order_three_file_final_20260910/scripts/p6_validator.py",
+          "line": 237,
+          "text": "\"LightGBM\", \"lgb\"}",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/scripts/_t6_r2_s8_matrix.py",
+          "line": 85,
+          "text": "T2B_CRASH = \"ModuleNotFoundError: No module named 'lightgbm' (single_smiles_v32 -> expand_bbd_routes)\"",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/evidence/_probe_a.py",
+          "line": 3,
+          "text": "out = {\"attempt\": \"A: py312 + PYTHONPATH=<t2b site-packages> (read-only), import lightgbm \"",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/evidence/_probe_a.py",
+          "line": 9,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/evidence/_probe_a.py",
+          "line": 10,
+          "text": "out[\"lightgbm\"] = {\"version\": lgb.__version__, \"file\": lgb.__file__,",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 1,
+          "text": "\"\"\"SS2 (E1): Torch/LightGBM unified-capability FACT preflight. Read-only.",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 28,
+          "text": "MODULES = [\"torch\", \"torch_geometric\", \"rdkit\", \"lightgbm\", \"langgraph\", \"pydantic\", \"numpy\"]",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 66,
+          "text": "# ---------------- existing LightGBM artifact inventory ----------------",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 68,
+          "text": "gi = f\"{T2B_SITE}/lightgbm-4.7.0.dist-info\"",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 71,
+          "text": "so = f\"{T2B_SITE}/lightgbm/lib/lib_lightgbm.so\"",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 74,
+          "text": "\"loaded by lightgbm python wrapper at import\"])",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 78,
+          "text": "line = [l.strip() for l in open(p, encoding=\"utf-8\", errors=\"replace\") if \"lightgbm\" in l.lower()]",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 80,
+          "text": "(line or [\"no lightgbm line\"])[0][:100]])",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 86,
+          "text": "for pat in (\"/root/.cache/pip/**/*lightgbm*\", \"/usrdata/**/*lightgbm*.whl\"):",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 98,
+          "text": "# ---------------- option A: py312 sees existing LightGBM via read-only PYTHONPATH ----------------",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 101,
+          "text": "out = {\"attempt\": \"A: py312 + PYTHONPATH=<t2b site-packages> (read-only), import lightgbm \"",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 107,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 108,
+          "text": "out[\"lightgbm\"] = {\"version\": lgb.__version__, \"file\": lgb.__file__,",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 270,
+          "text": "| A (same-process) | py312 with read-only `PYTHONPATH={T2B_SITE}` importing existing lightgbm 4.7.0 (native lib) and loading the three per-source rankers + selector from `{STAGED_REPO}/data/bbd_v31` |",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 274,
+          "text": "* py312 stable env: torch {env_facts['py312_stable'].get('modules', {}).get('torch', {}).get('version')}, torch_geometric {env_facts['py312_stable'].get('modules', {}).get('torch_geometric', {}).get('",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 275,
+          "text": "* T2B venv: lightgbm {env_facts['t2b_v32_venv'].get('modules', {}).get('lightgbm', {}).get('version')}, torch: {env_facts['t2b_v32_venv'].get('modules', {}).get('torch', {}).get('import')} ({env_facts",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s2_e1_env.py",
+          "line": 276,
+          "text": "* Existing LightGBM artifacts: only the T2B venv dist-info + bundled `lib_lightgbm.so` and the frozen DEPENDENCY_LOCK_OR_FREEZE line (see LIGHTGBM_EXISTING_ARTIFACT_INVENTORY.csv). No wheel/pip-cache ",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s5_e4_tests.py",
+          "line": 11,
+          "text": "site-packages) for the lightgbm-blocked modules, to separate environment from code causes",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s5_e4_tests.py",
+          "line": 204,
+          "text": "# ---------------- E: env-exposure replay (existing LightGBM visible read-only) ----------------",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s5_e4_tests.py",
+          "line": 323,
+          "text": "\"(lightgbm 4.7.0 + its native lib)\", envx.get(\"test_t2c_integration.py\")),",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s5_e4_tests.py",
+          "line": 340,
+          "text": "# the lightgbm and ReactionTask import failures as generic implementation failures).",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s5_e4_tests.py",
+          "line": 345,
+          "text": "if \"lightgbm\" in tb:",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s5_e4_tests.py",
+          "line": 347,
+          "text": "\"ModuleNotFoundError: lightgbm is absent from py312 (E1 capability matrix) and exists \"",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s5_e4_tests.py",
+          "line": 365,
+          "text": "(\"teacher node contract (deployment A/B)\" if \"lightgbm\" in tb else \"student\")])",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s5_e4_tests.py",
+          "line": 404,
+          "text": "elif \"lightgbm\" in fix_reason:",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s5_e4_tests.py",
+          "line": 412,
+          "text": "elif \"lightgbm\" in reason:",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s5_e4_tests.py",
+          "line": 414,
+          "text": "ev = (\"ModuleNotFoundError in the baseline and no fix run for this module; E1 shows lightgbm \"",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s5_e4_tests.py",
+          "line": 514,
+          "text": "cur_lines.append(f\"  lightgbm exposure : {item_summary(envx[mod])}\")",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s8_package.py",
+          "line": 161,
+          "text": "### E1 Torch/LightGBM 统一运行能力（2 个环境，只读）",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s8_package.py",
+          "line": 163,
+          "text": "**lightgbm ABSENT**。T2B venv：lightgbm 4.7.0（含 `lib/lightgbm/lib/lib_lightgbm.so`）有；**torch FAIL**。",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s8_package.py",
+          "line": 165,
+          "text": "* 现有 LightGBM 制品只有 T2B venv 的 dist-info + 捆绑原生库与冻结依赖锁行（LIGHTGBM_EXISTING_ARTIFACT_INVENTORY.csv）；",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s8_package.py",
+          "line": 208,
+          "text": "* 另外两条**不是** stale path：t2c/t2c_r1 的失败在只读暴露现有 lightgbm 之后变成",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s8_package.py",
+          "line": 255,
+          "text": "把两个模块级导入失败误归为 REAL（截掉了决定性的 `lightgbm` / `ReactionTask` 异常行）；",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_waiting_teacher_non_topology_engineering_preflight_20260908/scripts/_t6w_s8_package.py",
+          "line": 276,
+          "text": "* E1 两环境逐包版本/import 事实、现有 LightGBM 制品定位、方案 A（同进程只读 PYTHONPATH）与",
+          "inside_archived_evidence": true
+        }
+      ],
+      "non_code_mentions": [
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r1_tmp/p13_huang_decision_draft.md",
+          "line": 57,
+          "text": "- Ranker training identity: the 3 LightGBM ranker parameter files (uspto/envipath/retrieval) are",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r2_tmp/A2_HUANG_TEACHER_DRAFT_CORRECTED.md",
+          "line": 58,
+          "text": "也不自动判无泄漏，分类只看 locator。三个 LightGBM ranker 参数文件无可恢复训练行身份：",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/.t4r2_tmp/DEPENDING_OPAQUE_RANKER_LIMITATION_CORRECTED.md",
+          "line": 10,
+          "text": "The three depending_v32 ranker assets are LightGBM `.txt` parameter files whose bytes/SHA256 match",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/chenyu_final_pipeline_runtime_database_cloud_migration_readonly_inventory_20260908/BASE_AND_DELTA_CLOUD_RELEASE_PLAN.csv",
+          "line": 25,
+          "text": "C02_bbdb_rankers,controlled_prediction,/usrdata/EnzymeCAGE_data/enzymecage_crew/data,IN_PROGRESS_DELTA,IN_PROGRESS_DELTA,P2,,,,*.txt(LightGBM) in bbd_v3/bbd_v31 + bbd_v32/stats + bbd_v5 + hfix/templat",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/chenyu_final_pipeline_runtime_database_cloud_migration_readonly_inventory_20260908/CURRENT_RUNTIME_ASSET_INVENTORY.csv",
+          "line": 25,
+          "text": "C02_bbdb_rankers,controlled_prediction,rankers,BBDB v3/v3.1 LightGBM rankers + hfix implicit-H templates,controlled prediction scoring (offline/candidate),/usrdata/EnzymeCAGE_data/enzymecage_crew/data",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t0_environment_git_asset_audit_correction_20260903_r2/PYTHON_KEY_MODULE_VISIBILITY_R2.tsv",
+          "line": 3,
+          "text": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python\tlightgbm\tFalse",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t0_environment_git_asset_audit_correction_20260903_r2/PYTHON_KEY_MODULE_VISIBILITY_R2.tsv",
+          "line": 13,
+          "text": "/usr/bin/python3\tlightgbm\tFalse",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t0_environment_git_asset_audit_correction_20260903_r2/PYTHON_KEY_MODULE_VISIBILITY_R2.tsv",
+          "line": 23,
+          "text": "/usr/bin/python\tlightgbm\tFalse",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t0_source_environment_asset_security_freeze_20260903_r1/DEPENDENCY_DECLARATION_AUDIT.md",
+          "line": 35,
+          "text": "| lightgbm | REVIEW_REQUIRED |",
+          "inside_archived_evidence": true
+        },
+        {
+          "path": "/root/projects/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t0_source_environment_asset_security_freeze_20260903_r1/DEPENDENCY_DECLARATION_AUDIT.md",
+          "line": 50,
+          "text": "- lightgbm: USED_IN_CODE",
+          "inside_archived_evidence": true
+        }
+      ],
+      "non_code_truncated": true
+    },
+    "fresh_teacher_tree": {
+      "requested_commit": "2d4cc766322a6a01b8a88491aed07536b3b0a320",
+      "requested_tree": "c0acb9bd30b985ad43bf969946842da97a68a400",
+      "object_store": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3a_r2a_r1_teacher_taxid_grouping_raw_row_bytes_delivery_closure_20260910/depending_exact_teacher_base",
+      "store_head": "2d4cc766322a6a01b8a88491aed07536b3b0a320",
+      "store_tree": "c0acb9bd30b985ad43bf969946842da97a68a400",
+      "head_equals_base_commit": true,
+      "tree_equals_base_tree": true,
+      "tracked_file_count": 154,
+      "git_grep_rc": 1,
+      "git_grep_note": "git grep exits 1 when nothing matches",
+      "code_references": [],
+      "code_reference_count": 0,
+      "xgboost_or_Booster_files": [],
+      "v32_runtime_present": false,
+      "verdict": "READABLE_EXACT_BASE"
+    },
+    "frozen_source_patch": {
+      "member": "SOURCE_PATCH.diff",
+      "archive": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_r3_teacher_fixed_topology_real_langgraph_20_test_final_20260910.tar.gz",
+      "bytes": 381120,
+      "expected_bytes": 381120,
+      "sha256": "074f5c31d516e1f699648008ed86767244e25fb128905e119366ad346f8f027a",
+      "expected_sha256": "074f5c31d516e1f699648008ed86767244e25fb128905e119366ad346f8f027a",
+      "verdict": "VERIFIED_MATCH",
+      "added_or_removed_references": [],
+      "context_only_references": [],
+      "reference_count_added_or_removed": 0,
+      "reference_count_total": 0
+    },
+    "frozen_t6_incremental_patch": {
+      "member": "T6_INCREMENTAL_PATCH.diff",
+      "archive": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_r3_teacher_fixed_topology_real_langgraph_20_test_final_20260910.tar.gz",
+      "bytes": 120528,
+      "expected_bytes": 120528,
+      "sha256": "c718f8d7df2b670b057122060e16d8c703d168234409602080437346f1d6154d",
+      "expected_sha256": "c718f8d7df2b670b057122060e16d8c703d168234409602080437346f1d6154d",
+      "verdict": "VERIFIED_MATCH",
+      "added_or_removed_references": [],
+      "context_only_references": [],
+      "reference_count_added_or_removed": 0,
+      "reference_count_total": 0
+    },
+    "d4_wrapper_dir": {
+      "root": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716/enzymecage_wrapper",
+      "files_scanned": 7,
+      "skipped_dir_names": [
+        ".git",
+        "__pycache__",
+        "node_modules",
+        "site-packages"
+      ],
+      "per_file_scan_cap_bytes": 20971520,
+      "files_skipped_over_cap": [],
+      "code_reference_count_total": 0,
+      "code_reference_count_production": 0,
+      "non_code_mention_count": 0,
+      "code_references": [],
+      "code_references_truncated": false,
+      "archived_evidence_code_references": [],
+      "non_code_mentions": [],
+      "non_code_truncated": false
+    },
+    "actually_loaded_v32_runtime": {
+      "root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo",
+      "files_scanned": 298,
+      "skipped_dir_names": [
+        ".git",
+        "__pycache__",
+        "node_modules",
+        "site-packages"
+      ],
+      "per_file_scan_cap_bytes": 20971520,
+      "files_skipped_over_cap": [
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/data/bbd_v5/eawag_candidates.jsonl",
+          "bytes": 59332381
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/data/corpus_v1/corpus_v1.jsonl",
+          "bytes": 47818894
+        }
+      ],
+      "code_reference_count_total": 29,
+      "code_reference_count_production": 29,
+      "non_code_mention_count": 26,
+      "code_references": [
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/bbd_v31_ranker.py",
+          "line": 9,
+          "text": "3 per-source LightGBM rankers (uspto / envipath / retrieval)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/bbd_v31_ranker.py",
+          "line": 12,
+          "text": "1 source-selector LightGBM (4-class: uspto / envipath / retrieval / none)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/bbd_v31_ranker.py",
+          "line": 27,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/expand_bbd_routes.py",
+          "line": 40,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/gnn_phase6_train_ranker_v3loop.py",
+          "line": 11,
+          "text": "评测口径、超参、下采样、LightGBM 确定性参数全部沿用原脚本（不改动）。",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/gnn_phase6_train_ranker_v3loop.py",
+          "line": 117,
+          "text": "ap.add_argument(\"--gbdt\", default=\"lightgbm\", choices=[\"lightgbm\", \"sklearn\"], help=\"GBDT 实现（lightgbm predict 快）\")",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/gnn_phase6_train_ranker_v3loop.py",
+          "line": 163,
+          "text": "if args.gbdt == \"lightgbm\":",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/gnn_phase6_train_ranker_v3loop.py",
+          "line": 164,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/gnn_phase6_train_ranker_v3loop.py",
+          "line": 168,
+          "text": "print(\"using LightGBM (predict 快，无 sklearn 64 线程开销)\", flush=True)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/gnn_phase6_train_ranker_v3loop.py",
+          "line": 251,
+          "text": "# 存模型（LightGBM 支持，供后续 Hit@K 重算免重训）",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/predict_bbd_hybrid.py",
+          "line": 297,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/predict_bbd_products_v3.py",
+          "line": 2,
+          "text": "\"\"\"BBD v3: three-engine candidate generation + LightGBM ranker inference.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/predict_bbd_products_v3.py",
+          "line": 10,
+          "text": "compute features (``bbd_v3_features``), load the LightGBM ranker, predict",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/predict_bbd_products_v3.py",
+          "line": 237,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/predict_bbd_products_v32.py",
+          "line": 4,
+          "text": "Pure inference — reuses the 4 existing v3.1 LightGBM models (no retraining).",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/predict_bbd_products_v32.py",
+          "line": 95,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/single_smiles_v32.py",
+          "line": 6,
+          "text": "- v3.2: per-source LightGBM ranker → ns_score = max(p_source)/3（no-selector）+ ion filter",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/single_smiles_v32.py",
+          "line": 31,
+          "text": "import lightgbm as lgb  # noqa: E402",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/train_bbd_ranker_v2.py",
+          "line": 4,
+          "text": "Task §4.1 (component A).  Retrains the 3 per-source LightGBM rankers",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/train_bbd_ranker_v2.py",
+          "line": 46,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/train_bbd_v31_ranker.py",
+          "line": 15,
+          "text": "3 per-source LightGBM rankers (uspto/envipath/retrieval)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/train_bbd_v31_ranker.py",
+          "line": 50,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/train_bbd_v31_ranker.py",
+          "line": 62,
+          "text": "_G_V3_MODEL = None  # LightGBM Booster, loaded per-worker via initializer (NOT fork-inherited)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/train_bbd_v31_ranker.py",
+          "line": 68,
+          "text": "LightGBM Booster objects are NOT fork-safe (internal C++ threads deadlock).",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/train_bbd_v31_ranker.py",
+          "line": 320,
+          "text": "# NOTE: _G_V3_MODEL is NOT set here — LightGBM Booster is not fork-safe.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/train_bbd_v3_ranker.py",
+          "line": 2,
+          "text": "\"\"\"BBD v3 LightGBM ranker training.",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/train_bbd_v3_ranker.py",
+          "line": 514,
+          "text": "# ---- Step 7: train LightGBM ----",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/train_bbd_v3_ranker.py",
+          "line": 515,
+          "text": "print(\"training LightGBM...\", flush=True)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/train_bbd_v3_ranker.py",
+          "line": 516,
+          "text": "import lightgbm as lgb",
+          "inside_archived_evidence": false
+        }
+      ],
+      "code_references_truncated": false,
+      "archived_evidence_code_references": [],
+      "non_code_mentions": [
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/data/T2_GENERATOR_BUNDLE_SOURCE_NOTE.md",
+          "line": 26,
+          "text": "- LightGBM（训练用版本见 `data/uspto_v3loop/` 各 ranker 日志; 推理侧 3.x 皆可）",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/data/T2_GENERATOR_BUNDLE_SOURCE_NOTE.md",
+          "line": 28,
+          "text": "- `pip freeze` 快照: 见 `reaction_analogy/environment.yml`（repo 内）——若与你的环境差异大，以 RDKit/LightGBM 版本对齐为优先",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/data/T2_GENERATOR_BUNDLE_SOURCE_NOTE.md",
+          "line": 32,
+          "text": "1. **生成链不含 MPNN**: v3.2 排序已删除 MPNN 特征（消融证明无效，见 `reaction_analogy/reports/BBD_MPNN_TRIAL_REPORT_2026-08-31.md`）。任意新 SMILES 走三引擎生成 + LightGBM 排序即可复现 v3.2 行为，**不需要 chenyu/GPU**。",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/data/uspto_v3loop/logs/ranker_v1_repro.log",
+          "line": 7,
+          "text": "using LightGBM (predict 快，无 sklearn 64 线程开销)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/data/uspto_v3loop/logs/ranker_v1_repro_nompnn.log",
+          "line": 7,
+          "text": "using LightGBM (predict 快，无 sklearn 64 线程开销)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/data/uspto_v3loop/logs/ranker_v3_mpnn.log",
+          "line": 7,
+          "text": "using LightGBM (predict 快，无 sklearn 64 线程开销)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/data/uspto_v3loop/logs/ranker_v3_mpnn_ctl.log",
+          "line": 7,
+          "text": "using LightGBM (predict 快，无 sklearn 64 线程开销)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/data/uspto_v3loop/logs/ranker_v3_mpnn_metal.log",
+          "line": 8,
+          "text": "using LightGBM (predict 快，无 sklearn 64 线程开销)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/data/uspto_v3loop/logs/ranker_v3_nompnn.log",
+          "line": 7,
+          "text": "using LightGBM (predict 快，无 sklearn 64 线程开销)",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/data/uspto_v3loop/logs/ranker_v3_nompnn_metal.log",
+          "line": 8,
+          "text": "using LightGBM (predict 快，无 sklearn 64 线程开销)",
+          "inside_archived_evidence": false
+        }
+      ],
+      "non_code_truncated": true,
+      "reference_entry_file": [
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/single_smiles_v32.py",
+          "line": 6,
+          "text": "- v3.2: per-source LightGBM ranker → ns_score = max(p_source)/3（no-selector）+ ion filter",
+          "inside_archived_evidence": false
+        },
+        {
+          "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/single_smiles_v32.py",
+          "line": 31,
+          "text": "import lightgbm as lgb  # noqa: E402",
+          "inside_archived_evidence": false
+        }
+      ],
+      "git_head": "9f5ad0bfa71c06471a53891ec7be40af4ff07fc2",
+      "dirty_records": [
+        " M pyproject.toml",
+        " A reaction_analogy/single_smiles_v32.py",
+        " M src/schemas/evidence.py",
+        " M src/tools/reaction_predictor.py",
+        " A tests/test_t2b_single_smiles.py"
+      ],
+      "entrypoint": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/repo/reaction_analogy/single_smiles_v32.py",
+      "entrypoint_bytes": 15310,
+      "entrypoint_sha256": "37e855c9df7648df22c52c83164193767c1be08d2244c3fefba9bca0c0ca537a",
+      "entrypoint_is_regular_non_symlink": true
+    },
+    "historical_6of6_forward_package": {
+      "tar": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_r1_two_to_three_single_gpu_worker_parallel_forward_recovery_20260908.tar.gz",
+      "text_members_scanned": 58,
+      "code_reference_count": 0,
+      "non_code_mention_count": 0,
+      "code_references": [],
+      "code_references_truncated": false,
+      "non_code_mentions": []
+    },
+    "historical_t6_r2_full_chain_package": {
+      "tar": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908.tar.gz",
+      "text_members_scanned": 52,
+      "code_reference_count": 1,
+      "non_code_mention_count": 12,
+      "code_references": [
+        {
+          "member": "enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/scripts/_t6_r2_s8_matrix.py",
+          "line": 85,
+          "text": "T2B_CRASH = \"ModuleNotFoundError: No module named 'lightgbm' (single_smiles_v32 -> expand_bbd_routes)\""
+        }
+      ],
+      "code_references_truncated": false,
+      "non_code_mentions": [
+        {
+          "member": "enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/PYTEST_OR_EQUIVALENT_FULL_OUTPUT.txt",
+          "line": 27,
+          "text": "import lightgbm as lgb"
+        },
+        {
+          "member": "enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/PYTEST_OR_EQUIVALENT_FULL_OUTPUT.txt",
+          "line": 28,
+          "text": "ModuleNotFoundError: No module named 'lightgbm'"
+        },
+        {
+          "member": "enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/PYTEST_OR_EQUIVALENT_FULL_OUTPUT.txt",
+          "line": 38,
+          "text": "FAIL tc06_explicit_backend_real_smoke: ModuleNotFoundError: No module named 'lightgbm'"
+        },
+        {
+          "member": "enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/PYTEST_OR_EQUIVALENT_FULL_OUTPUT.txt",
+          "line": 39,
+          "text": "FAIL tc07_node_predicted_to_candidate_counts: ModuleNotFoundError: No module named 'lightgbm'"
+        },
+        {
+          "member": "enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/PYTEST_OR_EQUIVALENT_FULL_OUTPUT.txt",
+          "line": 40,
+          "text": "FAIL tc08_lossless_field_bridge: ModuleNotFoundError: No module named 'lightgbm'"
+        },
+        {
+          "member": "enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/PYTEST_OR_EQUIVALENT_FULL_OUTPUT.txt",
+          "line": 41,
+          "text": "FAIL tc09_raw_score_not_similarity: ModuleNotFoundError: No module named 'lightgbm'"
+        },
+        {
+          "member": "enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/PYTEST_OR_EQUIVALENT_FULL_OUTPUT.txt",
+          "line": 42,
+          "text": "FAIL tc10_no_confidence: ModuleNotFoundError: No module named 'lightgbm'"
+        },
+        {
+          "member": "enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/PYTEST_OR_EQUIVALENT_FULL_OUTPUT.txt",
+          "line": 46,
+          "text": "FAIL tc14_predicted_fields_preserved: ModuleNotFoundError: No module named 'lightgbm'"
+        },
+        {
+          "member": "enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/PYTEST_OR_EQUIVALENT_FULL_OUTPUT.txt",
+          "line": 47,
+          "text": "FAIL tc15_enzyme_pool_entry_sees_predicted: ModuleNotFoundError: No module named 'lightgbm'"
+        },
+        {
+          "member": "enzymecage_three_module_t6_r2_remainder_real_graph_20_test_eight_record_schema_closure_20260908/PYTEST_OR_EQUIVALENT_FULL_OUTPUT.txt",
+          "line": 48,
+          "text": "FAIL tc16_depth1_frozen_sha: ModuleNotFoundError: No module named 'lightgbm'"
+        }
+      ]
+    },
+    "blocked_first_round_package": {
+      "tar": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_three_module_t6_r3_teacher_fixed_topology_real_langgraph_20_test_final_20260910.tar.gz",
+      "text_members_scanned": 64,
+      "code_reference_count": 0,
+      "non_code_mention_count": 0,
+      "code_references": [],
+      "code_references_truncated": false,
+      "non_code_mentions": [],
+      "note": "the blocked first round additionally carried a pip-downloaded lightgbm 4.6.0 tree under runtime_assets/python_packages plus a pip-cache; this round is forbidden to pip/download, so that route is rejected and recorded only"
+    }
+  },
+  "lightgbm_reference_count_total": 130,
+  "t2b_capability_identity": {
+    "t2b_env_root": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907",
+    "t2b_site_packages": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages",
+    "t2b_pyvenv_cfg": "home = /usr/bin\ninclude-system-site-packages = false\nversion = 3.12.3\nexecutable = /usr/bin/python3.12\ncommand = /usr/bin/python3 -m venv /usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907\n",
+    "lightgbm_package_dir": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm",
+    "lightgbm_package_is_regular_non_symlink": true,
+    "dist_info": [
+      "lightgbm-4.7.0.dist-info"
+    ],
+    "init_py": {
+      "path": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/__init__.py",
+      "bytes": 1599,
+      "sha256": "ebdcaed150dcbec52107d6c0e696031dfd5120c7231d05c9ad5fdf7ce21ff94e",
+      "readable": true
+    },
+    "shared_library": [
+      {
+        "path": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.so",
+        "bytes": 9247120,
+        "sha256": "573d57e8a2c6290c2271b99b87afa7a802e796eafc9e8d66aefa0913cbc1616a",
+        "readable": true,
+        "magic": "7f454c46"
+      }
+    ],
+    "package_file_count": 21,
+    "package_total_bytes": 10216023,
+    "writable_by_this_task": true,
+    "disclosed_note": "writable flag is informational only; this task never writes there (see the read-only probe that re-hashes every file after injection)"
+  },
+  "compatibility": {
+    "pinned": {
+      "executable": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python",
+      "prefix": "/usrdata/EnzymeCAGE_envs/enzymecage_py312",
+      "version": "3.12.3",
+      "major_minor": [
+        3,
+        12
+      ],
+      "soabi": "cpython-312-x86_64-linux-gnu",
+      "ext_suffix": ".cpython-312-x86_64-linux-gnu.so",
+      "pyd": null,
+      "implementation": "cpython",
+      "machine": "x86_64",
+      "libc": [
+        "glibc",
+        "2.39"
+      ],
+      "abi": ""
+    },
+    "t2b": {
+      "executable": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/bin/python",
+      "prefix": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907",
+      "version": "3.12.3",
+      "major_minor": [
+        3,
+        12
+      ],
+      "soabi": "cpython-312-x86_64-linux-gnu",
+      "ext_suffix": ".cpython-312-x86_64-linux-gnu.so",
+      "pyd": null,
+      "implementation": "cpython",
+      "machine": "x86_64",
+      "libc": [
+        "glibc",
+        "2.39"
+      ],
+      "abi": ""
+    },
+    "checks": {
+      "python_major_minor_equal": true,
+      "soabi_equal": true,
+      "ext_suffix_equal": true,
+      "implementation_equal": true,
+      "cpu_arch_equal": true,
+      "glibc_equal": true,
+      "shared_library_x86_64": true
+    },
+    "probe_rc": {
+      "pinned": 0,
+      "t2b": 0
+    },
+    "shared_library_elf": {
+      "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.so": {
+        "elf_class": "ELF32",
+        "elf_data": "little",
+        "e_machine": 62,
+        "e_machine_name": "x86-64"
+      }
+    },
+    "ldd": "linux-vdso.so.1 (0x00007fff619b3000)\n\tlibdl.so.2 => /usr/lib/x86_64-linux-gnu/libdl.so.2 (0x00007fc4e4f32000)\n\tlibstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fc4e4cb4000)\n\tlibm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6 (0x00007fc4e4bcb000)\n\tlibgomp.so.1 => /usr/lib/x86_64-linux-gnu/libgomp.so.1 (0x00007fc4e4b75000)\n\tlibgcc_s.so.1 => /usr/lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fc4e4b47000)\n\tlibpthread.so.0 => /usr/lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fc4e4b40000)\n\tlibc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6 (0x00007fc4e492e000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fc4e5814000)",
+    "cuda_linked_shared_library": false,
+    "host_cpu_machine": "x86_64"
+  },
+  "overlay_probe": {
+    "sys_executable": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python",
+    "equals_pinned_py": true,
+    "t2b_sites": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages",
+    "sys_prefix": "/usrdata/EnzymeCAGE_envs/enzymecage_py312",
+    "dont_write_bytecode": true,
+    "sys_path_at_entry": [
+      "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/scripts",
+      "/usr/lib/python312.zip",
+      "/usr/lib/python3.12",
+      "/usr/lib/python3.12/lib-dynload",
+      "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages",
+      "/usr/local/lib/python3.12/dist-packages",
+      "/usr/local/lib/python3.12/site-packages",
+      "/usr/lib/python3/dist-packages"
+    ],
+    "allowed_code_root_inserted": true,
+    "before_snapshot": [
+      {
+        "module": "ase",
+        "imported_in_this_phase": true,
+        "version": "3.29.0",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/ase/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "torch",
+        "imported_in_this_phase": true,
+        "version": "2.7.1+cu126",
+        "file": "/usr/local/lib/python3.12/dist-packages/torch/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "torch_geometric",
+        "imported_in_this_phase": true,
+        "version": "2.8.0",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/torch_geometric/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "numpy",
+        "imported_in_this_phase": false,
+        "version": "2.3.1",
+        "file": "/usr/local/lib/python3.12/dist-packages/numpy/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "scipy",
+        "imported_in_this_phase": false,
+        "version": "1.18.0",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/scipy/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "sklearn",
+        "imported_in_this_phase": true,
+        "version": "1.9.0",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/sklearn/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "pandas",
+        "imported_in_this_phase": false,
+        "version": "2.3.1",
+        "file": "/usr/local/lib/python3.12/dist-packages/pandas/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "rdkit",
+        "imported_in_this_phase": true,
+        "version": "2026.03.3",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/rdkit/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "pydantic",
+        "imported_in_this_phase": true,
+        "version": "2.12.5",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/pydantic/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "langgraph",
+        "imported_in_this_phase": true,
+        "version": "1.2.9",
+        "file": "",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "langgraph.graph",
+        "imported_in_this_phase": true,
+        "version": "",
+        "file": "/usr/local/lib/python3.12/site-packages/langgraph/graph/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "jsonschema",
+        "imported_in_this_phase": true,
+        "version": "4.24.1",
+        "file": "/usr/local/lib/python3.12/dist-packages/jsonschema/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "yaml",
+        "imported_in_this_phase": true,
+        "version": "6.0.2",
+        "file": "/usr/local/lib/python3.12/dist-packages/yaml/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "joblib",
+        "imported_in_this_phase": false,
+        "version": "1.5.3",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/joblib/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "xgboost",
+        "imported_in_this_phase": true,
+        "version": "3.3.0",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/xgboost/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "enzymecage",
+        "imported_in_this_phase": true,
+        "version": "",
+        "file": "/root/projects/EnzymeCAGE-master/enzymecage/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "enzymecage.model",
+        "imported_in_this_phase": true,
+        "version": "",
+        "file": "/root/projects/EnzymeCAGE-master/enzymecage/model.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "enzymecage.schnet",
+        "imported_in_this_phase": false,
+        "version": "",
+        "file": "/root/projects/EnzymeCAGE-master/enzymecage/schnet.py",
+        "in_pinned_prefix": false
+      }
+    ],
+    "sys_path_before": [
+      "/root/projects/EnzymeCAGE-master",
+      "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/scripts",
+      "/usr/lib/python312.zip",
+      "/usr/lib/python3.12",
+      "/usr/lib/python3.12/lib-dynload",
+      "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages",
+      "/usr/local/lib/python3.12/dist-packages",
+      "/usr/local/lib/python3.12/site-packages",
+      "/usr/lib/python3/dist-packages",
+      "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/tmp/tmp0pu4wofk"
+    ],
+    "already_on_path": false,
+    "append_index": 10,
+    "sys_path_after": [
+      "/root/projects/EnzymeCAGE-master",
+      "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/scripts",
+      "/usr/lib/python312.zip",
+      "/usr/lib/python3.12",
+      "/usr/lib/python3.12/lib-dynload",
+      "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages",
+      "/usr/local/lib/python3.12/dist-packages",
+      "/usr/local/lib/python3.12/site-packages",
+      "/usr/lib/python3/dist-packages",
+      "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/tmp/tmp0pu4wofk",
+      "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages"
+    ],
+    "t2b_is_last_entry": true,
+    "code_root_index": 0,
+    "t2b_index": 10,
+    "pinned_prefix_path_indices": [
+      5
+    ],
+    "pinned_paths_before_t2b": true,
+    "prefix_before_equals_after": true,
+    "overlay_import_ok": true,
+    "version": "4.7.0",
+    "module_path": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/__init__.py",
+    "module_path_is_symlink": false,
+    "module_path_under_t2b": true,
+    "booster_api_present": true,
+    "proc_self_maps_lightgbm": [
+      "746a124a9000-746a125d2000 r--p 00000000 00:30 238197038                  /usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.so",
+      "746a125d2000-746a12ca0000 r-xp 00129000 00:30 238197038                  /usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.so",
+      "746a12ca0000-746a12d6a000 r--p 007f7000 00:30 238197038                  /usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.so",
+      "746a12d6a000-746a12d6b000 ---p 008c1000 00:30 238197038                  /usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.so",
+      "746a12d6b000-746a12d76000 r--p 008c1000 00:30 238197038                  /usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.so",
+      "746a12d76000-746a12d7c000 rw-p 008cc000 00:30 238197038                  /usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.so"
+    ],
+    "shared_library_path": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.so",
+    "shared_library_paths_all": [
+      "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.so"
+    ],
+    "after_snapshot": [
+      {
+        "module": "ase",
+        "imported_in_this_phase": false,
+        "version": "3.29.0",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/ase/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "torch",
+        "imported_in_this_phase": false,
+        "version": "2.7.1+cu126",
+        "file": "/usr/local/lib/python3.12/dist-packages/torch/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "torch_geometric",
+        "imported_in_this_phase": false,
+        "version": "2.8.0",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/torch_geometric/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "numpy",
+        "imported_in_this_phase": false,
+        "version": "2.3.1",
+        "file": "/usr/local/lib/python3.12/dist-packages/numpy/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "scipy",
+        "imported_in_this_phase": false,
+        "version": "1.18.0",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/scipy/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "sklearn",
+        "imported_in_this_phase": false,
+        "version": "1.9.0",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/sklearn/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "pandas",
+        "imported_in_this_phase": false,
+        "version": "2.3.1",
+        "file": "/usr/local/lib/python3.12/dist-packages/pandas/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "rdkit",
+        "imported_in_this_phase": false,
+        "version": "2026.03.3",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/rdkit/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "pydantic",
+        "imported_in_this_phase": false,
+        "version": "2.12.5",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/pydantic/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "langgraph",
+        "imported_in_this_phase": false,
+        "version": "1.2.9",
+        "file": "",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "langgraph.graph",
+        "imported_in_this_phase": false,
+        "version": "",
+        "file": "/usr/local/lib/python3.12/site-packages/langgraph/graph/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "jsonschema",
+        "imported_in_this_phase": false,
+        "version": "4.24.1",
+        "file": "/usr/local/lib/python3.12/dist-packages/jsonschema/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "yaml",
+        "imported_in_this_phase": false,
+        "version": "6.0.2",
+        "file": "/usr/local/lib/python3.12/dist-packages/yaml/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "joblib",
+        "imported_in_this_phase": false,
+        "version": "1.5.3",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/joblib/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "xgboost",
+        "imported_in_this_phase": false,
+        "version": "3.3.0",
+        "file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/xgboost/__init__.py",
+        "in_pinned_prefix": true
+      },
+      {
+        "module": "enzymecage",
+        "imported_in_this_phase": false,
+        "version": "",
+        "file": "/root/projects/EnzymeCAGE-master/enzymecage/__init__.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "enzymecage.model",
+        "imported_in_this_phase": false,
+        "version": "",
+        "file": "/root/projects/EnzymeCAGE-master/enzymecage/model.py",
+        "in_pinned_prefix": false
+      },
+      {
+        "module": "enzymecage.schnet",
+        "imported_in_this_phase": false,
+        "version": "",
+        "file": "/root/projects/EnzymeCAGE-master/enzymecage/schnet.py",
+        "in_pinned_prefix": false
+      }
+    ],
+    "after_resolution": [
+      {
+        "module": "ase",
+        "resolved_origin": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/ase/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "torch",
+        "resolved_origin": "/usr/local/lib/python3.12/dist-packages/torch/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "torch_geometric",
+        "resolved_origin": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/torch_geometric/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "numpy",
+        "resolved_origin": "/usr/local/lib/python3.12/dist-packages/numpy/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "scipy",
+        "resolved_origin": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/scipy/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "sklearn",
+        "resolved_origin": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/sklearn/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "pandas",
+        "resolved_origin": "/usr/local/lib/python3.12/dist-packages/pandas/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "rdkit",
+        "resolved_origin": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/rdkit/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "pydantic",
+        "resolved_origin": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/pydantic/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "langgraph",
+        "resolved_origin": "",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "langgraph.graph",
+        "resolved_origin": "/usr/local/lib/python3.12/site-packages/langgraph/graph/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "jsonschema",
+        "resolved_origin": "/usr/local/lib/python3.12/dist-packages/jsonschema/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "yaml",
+        "resolved_origin": "/usr/local/lib/python3.12/dist-packages/yaml/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "joblib",
+        "resolved_origin": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/joblib/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "xgboost",
+        "resolved_origin": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/xgboost/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "enzymecage",
+        "resolved_origin": "/root/projects/EnzymeCAGE-master/enzymecage/__init__.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "enzymecage.model",
+        "resolved_origin": "/root/projects/EnzymeCAGE-master/enzymecage/model.py",
+        "resolves_from_t2b": false
+      },
+      {
+        "module": "enzymecage.schnet",
+        "resolved_origin": "/root/projects/EnzymeCAGE-master/enzymecage/schnet.py",
+        "resolves_from_t2b": false
+      }
+    ],
+    "modules": [
+      {
+        "module": "ase",
+        "before_version": "3.29.0",
+        "before_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/ase/__init__.py",
+        "after_version": "3.29.0",
+        "after_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/ase/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": true,
+        "after_in_pinned_prefix": true,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "torch",
+        "before_version": "2.7.1+cu126",
+        "before_file": "/usr/local/lib/python3.12/dist-packages/torch/__init__.py",
+        "after_version": "2.7.1+cu126",
+        "after_file": "/usr/local/lib/python3.12/dist-packages/torch/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": false,
+        "after_in_pinned_prefix": false,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "torch_geometric",
+        "before_version": "2.8.0",
+        "before_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/torch_geometric/__init__.py",
+        "after_version": "2.8.0",
+        "after_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/torch_geometric/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": true,
+        "after_in_pinned_prefix": true,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "numpy",
+        "before_version": "2.3.1",
+        "before_file": "/usr/local/lib/python3.12/dist-packages/numpy/__init__.py",
+        "after_version": "2.3.1",
+        "after_file": "/usr/local/lib/python3.12/dist-packages/numpy/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": false,
+        "after_in_pinned_prefix": false,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "scipy",
+        "before_version": "1.18.0",
+        "before_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/scipy/__init__.py",
+        "after_version": "1.18.0",
+        "after_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/scipy/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": true,
+        "after_in_pinned_prefix": true,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "sklearn",
+        "before_version": "1.9.0",
+        "before_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/sklearn/__init__.py",
+        "after_version": "1.9.0",
+        "after_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/sklearn/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": true,
+        "after_in_pinned_prefix": true,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "pandas",
+        "before_version": "2.3.1",
+        "before_file": "/usr/local/lib/python3.12/dist-packages/pandas/__init__.py",
+        "after_version": "2.3.1",
+        "after_file": "/usr/local/lib/python3.12/dist-packages/pandas/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": false,
+        "after_in_pinned_prefix": false,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "rdkit",
+        "before_version": "2026.03.3",
+        "before_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/rdkit/__init__.py",
+        "after_version": "2026.03.3",
+        "after_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/rdkit/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": true,
+        "after_in_pinned_prefix": true,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "pydantic",
+        "before_version": "2.12.5",
+        "before_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/pydantic/__init__.py",
+        "after_version": "2.12.5",
+        "after_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/pydantic/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": true,
+        "after_in_pinned_prefix": true,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "langgraph",
+        "before_version": "1.2.9",
+        "before_file": "",
+        "after_version": "1.2.9",
+        "after_file": "",
+        "changed": false,
+        "before_in_pinned_prefix": false,
+        "after_in_pinned_prefix": false,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "langgraph.graph",
+        "before_version": "",
+        "before_file": "/usr/local/lib/python3.12/site-packages/langgraph/graph/__init__.py",
+        "after_version": "",
+        "after_file": "/usr/local/lib/python3.12/site-packages/langgraph/graph/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": false,
+        "after_in_pinned_prefix": false,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "jsonschema",
+        "before_version": "4.24.1",
+        "before_file": "/usr/local/lib/python3.12/dist-packages/jsonschema/__init__.py",
+        "after_version": "4.24.1",
+        "after_file": "/usr/local/lib/python3.12/dist-packages/jsonschema/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": false,
+        "after_in_pinned_prefix": false,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "yaml",
+        "before_version": "6.0.2",
+        "before_file": "/usr/local/lib/python3.12/dist-packages/yaml/__init__.py",
+        "after_version": "6.0.2",
+        "after_file": "/usr/local/lib/python3.12/dist-packages/yaml/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": false,
+        "after_in_pinned_prefix": false,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "joblib",
+        "before_version": "1.5.3",
+        "before_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/joblib/__init__.py",
+        "after_version": "1.5.3",
+        "after_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/joblib/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": true,
+        "after_in_pinned_prefix": true,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "xgboost",
+        "before_version": "3.3.0",
+        "before_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/xgboost/__init__.py",
+        "after_version": "3.3.0",
+        "after_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/xgboost/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": true,
+        "after_in_pinned_prefix": true,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "enzymecage",
+        "before_version": "",
+        "before_file": "/root/projects/EnzymeCAGE-master/enzymecage/__init__.py",
+        "after_version": "",
+        "after_file": "/root/projects/EnzymeCAGE-master/enzymecage/__init__.py",
+        "changed": false,
+        "before_in_pinned_prefix": false,
+        "after_in_pinned_prefix": false,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "enzymecage.model",
+        "before_version": "",
+        "before_file": "/root/projects/EnzymeCAGE-master/enzymecage/model.py",
+        "after_version": "",
+        "after_file": "/root/projects/EnzymeCAGE-master/enzymecage/model.py",
+        "changed": false,
+        "before_in_pinned_prefix": false,
+        "after_in_pinned_prefix": false,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      },
+      {
+        "module": "enzymecage.schnet",
+        "before_version": "",
+        "before_file": "/root/projects/EnzymeCAGE-master/enzymecage/schnet.py",
+        "after_version": "",
+        "after_file": "/root/projects/EnzymeCAGE-master/enzymecage/schnet.py",
+        "changed": false,
+        "before_in_pinned_prefix": false,
+        "after_in_pinned_prefix": false,
+        "before_error": "",
+        "after_error": "",
+        "verdict": "UNCHANGED"
+      }
+    ],
+    "shadowed_or_drifted_modules": [],
+    "digest_pre_import": {
+      "file_count": 21,
+      "total_bytes": 10216023,
+      "tree_sha256": "e44d36a997c47153442194fe5aa99dac98a5bc0d9b0eea2178a6484204df4e2b"
+    },
+    "digest_post_import": {
+      "file_count": 21,
+      "total_bytes": 10216023,
+      "tree_sha256": "e44d36a997c47153442194fe5aa99dac98a5bc0d9b0eea2178a6484204df4e2b"
+    },
+    "capability_tree_unchanged": true,
+    "sys_executable_final": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python",
+    "verdict": "PASS"
+  },
+  "gate_keys": {
+    "LIGHTGBM_BARE_IMPORT": "FAIL",
+    "LIGHTGBM_REFERENCE_COUNT": "130",
+    "LIGHTGBM_REFERENCE_COUNT_GT_ZERO": "True",
+    "LIGHTGBM_OVERLAY_IMPORT": "PASS",
+    "LIGHTGBM_VERSION": "4.7.0",
+    "LIGHTGBM_MODULE_PATH": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/__init__.py",
+    "LIGHTGBM_SHARED_LIBRARY_PATH": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/lib/lib_lightgbm.so",
+    "PYTHON_EXECUTABLE": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python",
+    "LIGHTGBM_CAPABILITY_SOURCE": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages",
+    "LIGHTGBM_INJECTION_METHOD": "sys.path.append(<frozen T2B site-packages>) - last position, read-only, no pip/conda/apt, no download, no copy into ${PY}",
+    "LIGHTGBM_NOT_A_SUBSTITUTION": "xgboost 3.3.0 is gated as its own real dependency; it is NOT presented as a replacement for LightGBM"
+  },
+  "environment_status": "PASS_WITH_PINNED_READONLY_T2B_LIGHTGBM_OVERLAY",
+  "verdict": "PASS",
+  "problems": []
+}

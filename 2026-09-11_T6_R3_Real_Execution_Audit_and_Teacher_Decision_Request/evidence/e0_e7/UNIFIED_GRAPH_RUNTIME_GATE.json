@@ -1,0 +1,759 @@
+{
+  "task_id": "enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910",
+  "generated_utc": "2026-09-10T17:00:06Z",
+  "phase": "§4.3 unified graph runtime gate",
+  "interp": {
+    "sys_executable": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python",
+    "realpath": "/usr/bin/python3.12",
+    "argv0": "p7_graph_runtime.py",
+    "prefix": "/usrdata/EnzymeCAGE_envs/enzymecage_py312",
+    "base_prefix": "/usr",
+    "version": "3.12.3",
+    "equals_pinned_py": true,
+    "venv_prefix_ok": true
+  },
+  "pinned_py": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python",
+  "sys_prefix": "/usrdata/EnzymeCAGE_envs/enzymecage_py312",
+  "sys_base_prefix": "/usr",
+  "staged_repo": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+  "cwd": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/scripts",
+  "sys_path_at_end": [
+    "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+    "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/scripts",
+    "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/scripts",
+    "/usr/lib/python312.zip",
+    "/usr/lib/python3.12",
+    "/usr/lib/python3.12/lib-dynload",
+    "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages",
+    "/usr/local/lib/python3.12/dist-packages",
+    "/usr/local/lib/python3.12/site-packages",
+    "/usr/lib/python3/dist-packages",
+    "/root/projects/EnzymeCAGE-master",
+    "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716",
+    "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/tmp/tmp1jbbla20",
+    "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages"
+  ],
+  "sys_path_additions": [
+    {
+      "path": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "index": 0,
+      "reason": "§4.3 fresh staged teacher tree; first entry so that `src` and the `config` namespace package resolve there"
+    },
+    {
+      "path": "/root/projects/EnzymeCAGE-master",
+      "index": 10,
+      "reason": "§4.2 sanctioned EnzymeCAGE code root; appended after the teacher imports so that its config.py cannot shadow the teacher config package"
+    },
+    {
+      "path": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716",
+      "index": 11,
+      "reason": "§4.2 sanctioned D4 wrapper package directory; appended after the teacher imports so that its config.py cannot shadow the teacher config package"
+    }
+  ],
+  "stategraph": {
+    "qualname": "langgraph.graph.state.StateGraph",
+    "module": "langgraph.graph.state",
+    "module_file": "/usr/local/lib/python3.12/site-packages/langgraph/graph/state.py",
+    "under_pinned_prefix": true,
+    "defined_in_task_dirs": false
+  },
+  "stategraph_is_library_symbol": true,
+  "graph_builder": {
+    "build_graph_callable": true,
+    "build_graph_t6_callable": false,
+    "compile_graph_callable": true,
+    "defined_in": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/graph.py",
+    "source_sha256": "736362c5cd7c4e307c453cb44dfa328d3e5a40a6f15489e6e3c04970623ba5f0"
+  },
+  "built_graph_order": {
+    "builder_return_type": "langgraph.graph.state.StateGraph",
+    "is_real_StateGraph": true,
+    "nodes": [
+      "orchestrator",
+      "substrate",
+      "reaction",
+      "reaction_prediction",
+      "enzyme_pool",
+      "enzymecage",
+      "reranking",
+      "microbe",
+      "organism_selection",
+      "trait",
+      "synthesis",
+      "bridge"
+    ],
+    "edges": [
+      [
+        "__start__",
+        "orchestrator"
+      ],
+      [
+        "synthesis",
+        "__end__"
+      ]
+    ],
+    "conditional_source_nodes": [
+      "orchestrator",
+      "bridge",
+      "substrate",
+      "reaction",
+      "reaction_prediction",
+      "enzyme_pool",
+      "enzymecage",
+      "reranking",
+      "microbe",
+      "organism_selection",
+      "trait"
+    ],
+    "source_declaration": {
+      "add_node_order": [
+        "orchestrator",
+        "substrate",
+        "reaction",
+        "reaction_prediction",
+        "enzyme_pool",
+        "enzymecage",
+        "reranking",
+        "microbe",
+        "organism_selection",
+        "trait",
+        "synthesis",
+        "bridge"
+      ],
+      "set_entry_point": "orchestrator",
+      "add_conditional_edges_source_order": [
+        "orchestrator",
+        "bridge",
+        "substrate",
+        "reaction",
+        "reaction_prediction",
+        "enzyme_pool",
+        "enzymecage",
+        "reranking",
+        "microbe",
+        "organism_selection",
+        "trait"
+      ],
+      "add_edge_pairs": [
+        [
+          "synthesis",
+          "__end__"
+        ]
+      ]
+    },
+    "node_order_matches_source": true,
+    "conditional_order_matches_source": true,
+    "entry_edge_declared_and_present": true,
+    "plain_edges_exactly_as_declared": true
+  },
+  "modules": [
+    {
+      "module": "src.graph",
+      "role": "teacher graph module",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/graph.py",
+      "file_sha256": "736362c5cd7c4e307c453cb44dfa328d3e5a40a6f15489e6e3c04970623ba5f0",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.state",
+      "role": "teacher public state contract",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/state.py",
+      "file_sha256": "578c44f997e8e90e5e7d4bbe68afb5a11bb60bbe22a7b86b50785e448f8df775",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.orchestrator_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/orchestrator_node.py",
+      "file_sha256": "555131b949a468b553d90a540d011afe8b3ffc0a2f7c68dec74420189c2eddc6",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.substrate_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/substrate_node.py",
+      "file_sha256": "c027a207f123c76456b7aa59c29e14fc16f9e806163a66a962e9eadcbda41c60",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.reaction_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/reaction_node.py",
+      "file_sha256": "1392de0b4f69b01d3ceedc4c896e5256b1becb787349664bb6e157604a358b71",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.reaction_prediction_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/reaction_prediction_node.py",
+      "file_sha256": "6dc0853cf30ea40d2325c7a296200bfac65805564231a9dfef3118a622ef25ba",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.enzyme_pool_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/enzyme_pool_node.py",
+      "file_sha256": "f1ef88a38129b6e23ef31af7dff71dfa73a0f2ee84ffd71db326b178574bae89",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.enzymecage_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/enzymecage_node.py",
+      "file_sha256": "5e35dd06a27f7ab9cd71911379bd3d4c85e6fcff3e1d3c926c85a0d92eaf492f",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.llm_reranking_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/llm_reranking_node.py",
+      "file_sha256": "f41ed31e954334ef2e5c5f054754249a2ad3ebed632517388876f4ca8b7470a6",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.multi_step_bridge_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/multi_step_bridge_node.py",
+      "file_sha256": "f5f97836f1e02af3a8f2155d1323eb5d7f02d86e8c628c1672ce283ceae30364",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.microbe_selection_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/microbe_selection_node.py",
+      "file_sha256": "365e9824f7933c818882293b1388d9b499f179e00443b70b4f5300dd527a8071",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.organism_selection_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/organism_selection_node.py",
+      "file_sha256": "91db611ebda3dab1e7e691d377dfad9259ba0e341d537f06a619aefd8f1c45db",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.trait_filter_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/trait_filter_node.py",
+      "file_sha256": "0368d3778addefa07f73c776123e8d56ede48bf4ac8b69f476497802c21633ec",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.nodes.evidence_synthesis_node",
+      "role": "teacher/staged graph node",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/nodes/evidence_synthesis_node.py",
+      "file_sha256": "3c4c26fbe5b811675243887cb61c8656948560181bff335fa3a11265c126c480",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.tools.depending_v32_adapter",
+      "role": "staged production tool",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/tools/depending_v32_adapter.py",
+      "file_sha256": "fce500204b2aadd46fef0dc83a39278904c4782d79728b341de822a839c12418",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.tools.enzymecage_client",
+      "role": "staged production tool",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/tools/enzymecage_client.py",
+      "file_sha256": "a5d38aa5e453feceae9f2d5c2cde3cedf923bf00b8d14aa7cc088a94299086e1",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.tools.microbe_recommender",
+      "role": "staged production tool",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/tools/microbe_recommender.py",
+      "file_sha256": "0e74b384f056b4b9054d865a1df9b494ab16abe7ea4a96baffed64ca3d39419a",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.tools.trait_query",
+      "role": "staged production tool",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/tools/trait_query.py",
+      "file_sha256": "b31d9d81f10f76abe9b00c5cca292d91746e3881ec4ebd9c67c792a7534dcabb",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.tools.reaction_retriever",
+      "role": "staged production tool",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/tools/reaction_retriever.py",
+      "file_sha256": "648455f1b4aec34dac1f7de9353fbcae499588d21666c3ad429ef7801bff37de",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.tools.reaction_predictor",
+      "role": "staged production tool",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/tools/reaction_predictor.py",
+      "file_sha256": "860d582ca6b9f18270748e8f35ebab00ed56446218307fac27e33193e83da308",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.schemas.evidence",
+      "role": "staged schema",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/schemas/evidence.py",
+      "file_sha256": "3bd1cfd8c80b65ba18060a9a9c3884453b598b5f750792090196559e3a67fbcd",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "src.schemas.bridge",
+      "role": "staged schema",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src/schemas/bridge.py",
+      "file_sha256": "a26fa402e5461940c61ca39d88db191d93f8603982fcfccf3affe6f2efa5060e",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "config",
+      "role": "teacher settings namespace package",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/config/__init__.py (namespace)",
+      "file_sha256": "",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "config.settings",
+      "role": "teacher production entrypoint settings",
+      "expected_root": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/config/settings.py",
+      "file_sha256": "64db6355e49a2eb40ecdebf9be46abe53ea73ea31f8dce2297cc2e70c378688f",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "enzymecage",
+      "role": "EnzymeCAGE code root package",
+      "expected_root": "/root/projects/EnzymeCAGE-master",
+      "status": "IMPORTED",
+      "module_file": "/root/projects/EnzymeCAGE-master/enzymecage/__init__.py",
+      "file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "enzymecage.model",
+      "role": "EnzymeCAGE model module",
+      "expected_root": "/root/projects/EnzymeCAGE-master",
+      "status": "IMPORTED",
+      "module_file": "/root/projects/EnzymeCAGE-master/enzymecage/model.py",
+      "file_sha256": "005037a1d2c063bd7d71b8ff08ed4361c139ba37be3b822c87c8fa2d84890348",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "enzymecage.schnet",
+      "role": "EnzymeCAGE schnet module (ase consumer)",
+      "expected_root": "/root/projects/EnzymeCAGE-master",
+      "status": "IMPORTED",
+      "module_file": "/root/projects/EnzymeCAGE-master/enzymecage/schnet.py",
+      "file_sha256": "4c581c3e4a4ed4d8bf699d1b3dd0f02641c5188a491ca5abfa3af9c0de56d22c",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "enzymecage_wrapper",
+      "role": "frozen D4 wrapper package",
+      "expected_root": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716/enzymecage_wrapper/__init__.py",
+      "file_sha256": "7e0e44d8dc49c0aad0ad95bb6e71471b74cbc1782d8851fb5a75d7982b33101d",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "enzymecage_wrapper.predictor",
+      "role": "wrapper runtime constructor",
+      "expected_root": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716/enzymecage_wrapper/predictor.py",
+      "file_sha256": "b9877649deea4f929778331453a0f1f4eb73d72529e3f1c4b95d0a56c4ab82d3",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "enzymecage_wrapper.schema",
+      "role": "wrapper request schema",
+      "expected_root": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716/enzymecage_wrapper/schema.py",
+      "file_sha256": "a27f33adf78bb2c7a9961d4372cfea0f7728ca91eb89e3b0a6cc7a1e6488fc35",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "enzymecage_wrapper.utils",
+      "role": "wrapper utils",
+      "expected_root": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716/enzymecage_wrapper/utils.py",
+      "file_sha256": "732fb1ca4ba19c0a2238b9b7fb7a551d29893c518890199156521af7ba68cfc2",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "ase",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/ase/__init__.py",
+      "file_sha256": "92ce3cc614521afe055e962ccb4254e8fbf342f3ef86111fa4abc0b017a9963e",
+      "version": "3.29.0",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "torch",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usr/local/lib/python3.12/dist-packages/torch/__init__.py",
+      "file_sha256": "9801e75447c7f585545f989f8a21940b60e0c4cc888effb2f08e739664b4b904",
+      "version": "2.7.1+cu126",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "torch_geometric",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/torch_geometric/__init__.py",
+      "file_sha256": "5ab935bc6636e2f36e83ce818668155d5d66960f4af2b5ede800754a538a2a8d",
+      "version": "2.8.0",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "rdkit",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/rdkit/__init__.py",
+      "file_sha256": "eca4a895c02c16eadbe7887ed1463c7ed75b86b222f0843d1c090c331e7c40a7",
+      "version": "2026.03.3",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "pydantic",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/pydantic/__init__.py",
+      "file_sha256": "e62127278c07bf5384cdd2903f368a69929f3b8a524000bae4e0eb608ebf4bc6",
+      "version": "2.12.5",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "numpy",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usr/local/lib/python3.12/dist-packages/numpy/__init__.py",
+      "file_sha256": "8236a753805db34c29ef9cd03694e0af883b6325eb4fd246cc83d2be0b847e89",
+      "version": "2.3.1",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "pandas",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usr/local/lib/python3.12/dist-packages/pandas/__init__.py",
+      "file_sha256": "108be8ca3ae1a2a5c765ee6f87e8867d87c2fb5a89107e6c2d3a6acc96612b7b",
+      "version": "2.3.1",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "scipy",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/scipy/__init__.py",
+      "file_sha256": "39ccae300a4739cc53719bd3b39ce3f8f66e736c6eb672006e338a4c5cc3dc76",
+      "version": "1.18.0",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "sklearn",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/sklearn/__init__.py",
+      "file_sha256": "ce663dfdb31bdbd4292166527e43a4f861b31b445d2ee894e725e82c1e738f78",
+      "version": "1.9.0",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "joblib",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/joblib/__init__.py",
+      "file_sha256": "5bed10f143569bbad2266640f5eabe8a172428ce8944abce9b597c48de38a624",
+      "version": "1.5.3",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "xgboost",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/lib/python3.12/site-packages/xgboost/__init__.py",
+      "file_sha256": "0d4c5d73d45da08ec871a6219ba2ae95a0673d09ac4dda20800500a65d4659c0",
+      "version": "3.3.0",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "jsonschema",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usr/local/lib/python3.12/dist-packages/jsonschema/__init__.py",
+      "file_sha256": "a7e470e134bfd0e3c76482722260d6b1d5a099de823d61cc5cbabb06e4314c67",
+      "version": "4.24.1",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "yaml",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": "/usr/local/lib/python3.12/dist-packages/yaml/__init__.py",
+      "file_sha256": "377e52d351cc7ac1537b469144c5a43e3d0f6bc2046c7a44f452bb72be4176dc",
+      "version": "6.0.2",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    },
+    {
+      "module": "langgraph",
+      "role": "hard-gate third-party module",
+      "expected_root": "installed site-packages (never task dirs)",
+      "status": "IMPORTED",
+      "module_file": null,
+      "file_sha256": "",
+      "version": "",
+      "under_expected_root": true,
+      "fake_stub_mock_path": false,
+      "verdict": "PASS"
+    }
+  ],
+  "wrapper_api": {
+    "initialize_runtime": true,
+    "EnzymeCAGERequest": true,
+    "model_version": "v1_20260714",
+    "runtime_initialized_in_this_gate": false
+  },
+  "shadow_scan": [
+    {
+      "name": "src",
+      "candidates": [
+        "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/src"
+      ],
+      "single_expected": true
+    },
+    {
+      "name": "enzymecage",
+      "candidates": [
+        "/root/projects/EnzymeCAGE-master/enzymecage"
+      ],
+      "single_expected": true
+    },
+    {
+      "name": "enzymecage_wrapper",
+      "candidates": [
+        "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716/enzymecage_wrapper"
+      ],
+      "single_expected": true
+    }
+  ],
+  "config_shadow_analysis": {
+    "teacher_config_package": [
+      "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/config"
+    ],
+    "teacher_config_settings_file": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/depending_teacher_fixed_r1/config/settings.py",
+    "code_root_config_candidates": [
+      "/root/projects/EnzymeCAGE-master/config",
+      "/root/projects/EnzymeCAGE-master/config.py"
+    ],
+    "code_root_has_regular_config_module": true,
+    "model_side_files_importing_top_level_config": [],
+    "teacher_binding_drift_after_model_roots": [],
+    "resolution": "the staged `config` namespace package is bound before the EnzymeCAGE code root is appended, and neither the enzymecage package nor the frozen D4 wrapper imports a top-level `config`, so no module of either side is shadowed; verified by the zero-drift snapshot above"
+  },
+  "teacher_entrypoint_wiring": {
+    "D4_WRAPPER_ROOT": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716",
+    "ENZYMECAGE_CODE_ROOT": "/root/projects/EnzymeCAGE-master",
+    "ENZYMECAGE_V1_PACKAGE_ROOT": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_three_module_t6_r3_r1_pinned_python_forward_real_langgraph_20_test_final_20260910/runtime_assets/v1_overlay",
+    "ENZYMECAGE_DRY_RUN": "0"
+  },
+  "lightgbm_overlay": {
+    "applied_after_all_graph_imports": true,
+    "reason": "operator ruling 2026-09-10 requirement 3: last-position read-only append, never ahead of the pinned site-packages",
+    "t2b_sites": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages",
+    "index": 13,
+    "path_length": 14,
+    "is_last": true,
+    "pinned_prefix_indices_before": [
+      6
+    ],
+    "lightgbm": {
+      "version": "4.7.0",
+      "file": "/usrdata/EnzymeCAGE_envs/enzymecage_three_module_t2b_v32_single_smiles_runtime_adapter_staged_20260907/lib/python3.12/site-packages/lightgbm/__init__.py"
+    },
+    "drift_after_overlay": [],
+    "no_drift": true
+  },
+  "verdict": "PASS",
+  "problems": []
+}

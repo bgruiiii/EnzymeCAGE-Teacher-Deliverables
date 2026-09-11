@@ -1,0 +1,180 @@
+{
+ "utc": "2026-09-11T08:49:16.276908+00:00",
+ "baseline_all_pass": true,
+ "baseline_gate_values": {
+  "checkpoint_manifest_lines_367": true,
+  "source_patch_identity": true,
+  "smoke_inputs_identity": true,
+  "pinned_interpreter_children": true,
+  "driver_argv_and_exit": true,
+  "ase_import": true,
+  "worker_argv_pinned": true,
+  "worker_gpu_uuid": true,
+  "worker_exit_zero": true,
+  "unique_forward_pairs_6": true,
+  "preforward_gate_no_problems": true,
+  "esm_nonzero_per_row": true,
+  "real_compile": true,
+  "real_invoke": true,
+  "real_stream_to_terminal": true,
+  "smoke_8_of_8": true,
+  "staged_hash_vs_section7_frozen": true,
+  "c8_to_t5_continuous": true,
+  "determinism_two_runs": true,
+  "gschema": true,
+  "test_matrix_exactly_20": true,
+  "test_matrix_no_component_only_pass": true,
+  "test_matrix_nonpass_only_teacher_gap": true,
+  "test_matrix_rows_have_real_observed_and_rawlog": true,
+  "access_no_8001": true,
+  "access_no_external_hosts": true,
+  "access_no_write_to_frozen_inputs": true,
+  "persistent_nonmutation": true,
+  "children_zero_problems": true,
+  "controls_c1_c4_pass": true,
+  "invoke_stream_equivalence": true
+ },
+ "total": 13,
+ "all_mutations_rejected": true,
+ "results": [
+  {
+   "mutation_id": "__BASELINE_REAL_EVIDENCE__",
+   "exit_expected": 0,
+   "gate_expected": null,
+   "exit": 0,
+   "hit_gates": [],
+   "correct": true
+  },
+  {
+   "mutation_id": "M01_executable_to_system_python",
+   "exit_expected": 1,
+   "gate_expected": "pinned_interpreter_children",
+   "exit": 1,
+   "hit_gates": [
+    "pinned_interpreter_children"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M02_ase_import_fail",
+   "exit_expected": 1,
+   "gate_expected": "ase_import",
+   "exit": 1,
+   "hit_gates": [
+    "ase_import"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M03_worker_bare_python",
+   "exit_expected": 1,
+   "gate_expected": "worker_argv_pinned",
+   "exit": 1,
+   "hit_gates": [
+    "worker_argv_pinned"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M04_worker_gpu_uuid_wrong",
+   "exit_expected": 1,
+   "gate_expected": "worker_gpu_uuid",
+   "exit": 1,
+   "hit_gates": [
+    "worker_gpu_uuid"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M05_esm_all_zero",
+   "exit_expected": 1,
+   "gate_expected": "esm_nonzero_per_row",
+   "exit": 1,
+   "hit_gates": [
+    "esm_nonzero_per_row"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M06_forward_executed_false",
+   "exit_expected": 1,
+   "gate_expected": "unique_forward_pairs_6",
+   "exit": 1,
+   "hit_gates": [
+    "unique_forward_pairs_6"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M07_missing_unique_pair",
+   "exit_expected": 1,
+   "gate_expected": "unique_forward_pairs_6",
+   "exit": 1,
+   "hit_gates": [
+    "unique_forward_pairs_6"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M08_component_only_counted",
+   "exit_expected": 1,
+   "gate_expected": "test_matrix_no_component_only_pass",
+   "exit": 1,
+   "hit_gates": [
+    "test_matrix_no_component_only_pass",
+    "test_matrix_nonpass_only_teacher_gap"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M09_manifest_missing_self",
+   "exit_expected": 1,
+   "gate_expected": "closure_order",
+   "exit": 1,
+   "hit_gates": [
+    "closure_order"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M10_validation_precreated",
+   "exit_expected": 1,
+   "gate_expected": "closure_order",
+   "exit": 1,
+   "hit_gates": [
+    "closure_order"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M11_staged_hash_vs_frozen_break",
+   "exit_expected": 1,
+   "gate_expected": "staged_hash_vs_section7_frozen",
+   "exit": 1,
+   "hit_gates": [
+    "staged_hash_vs_section7_frozen"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M12_run_order_differs",
+   "exit_expected": 1,
+   "gate_expected": "determinism_two_runs",
+   "exit": 1,
+   "hit_gates": [
+    "determinism_two_runs"
+   ],
+   "correct": true
+  },
+  {
+   "mutation_id": "M13_stream_not_terminal",
+   "exit_expected": 1,
+   "gate_expected": "real_stream_to_terminal",
+   "exit": 1,
+   "hit_gates": [
+    "real_stream_to_terminal"
+   ],
+   "correct": true
+  }
+ ]
+}

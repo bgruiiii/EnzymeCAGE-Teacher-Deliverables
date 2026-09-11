@@ -1,6 +1,17 @@
 # 仍需老师后续裁定的问题（EnzymeCAGE 侧）
 
-日期：2026-09-10
+日期：2026-09-11
+
+## 2026-09-11 T6-R3真实执行后新增裁定请求
+
+| # | 当前实证 | 请老师裁定 |
+|---|---|---|
+| T6-1 | 固定图无enviPath node，调用0次；Route C 4051相似检索存在 | 是否增加known-route lookup HIT/MISS，或修改合同声明当前无lookup-first |
+| T6-2 | reaction prediction真实路径未到达；实现fallback为BioTransformer；depending graph调用0次 | MISS后的正式predictor为depending v3.2还是BioTransformer |
+| T6-3 | retrieved `source_tag/source_tool=null`；bridge默认enviPath | 来源字段在哪个公共类型强制非空，如何去除错误默认来源 |
+| T6-4 | graph `NONE_SINGLE_STEP_M5`、bridge `R-*`均被只接受`RT-*`的T5拒绝 | 统一reaction task ID公共合同 |
+| T6-5 | 无LLM时`organism_selection` fail-closed，graph在trait前结束 | 是否允许确定性降级继续trait/synthesis，或指定受控LLM配置 |
+| T6-6 | canonical lowercase aromatic SMILES被入口误判；Kekule仅为runner绕行 | parser直接接受canonical SMILES，还是上游必须统一Kekule |
 
 ## 2026-09-10当前新增裁定请求
 
