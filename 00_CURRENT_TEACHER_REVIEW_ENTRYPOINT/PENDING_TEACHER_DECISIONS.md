@@ -1,6 +1,18 @@
 # 仍需老师后续裁定的问题（EnzymeCAGE 侧）
 
-日期：2026-09-11
+日期：2026-10-08
+
+## 2026-10-08 BIOSYSMOdb150新增裁定请求
+
+| # | 当前实证 | 请老师裁定 |
+|---|---|---|
+| B150-1 | 四模型121题484槽已提交并冻结评分；469 usable；敏感性排名稳定 | 是否接受本轮为正式四模型裸LLM基线，或降级为探索性基线 |
+| B150-2 | 统一四模型pilot为37/40，低于原98%意图；后续GLM/Kimi定向验证通过但不能替代统一pilot | 是否接受带披露的前置门偏差 |
+| B150-3 | GLM从high改为low后正式110/121可用、速度显著提升但JSON失败11例 | 是否接受GLM-low作为本轮正式参数，而非原条件记录中的high |
+| B150-4 | 分阶段预算和三模型/Kimi分拆发车由用户授权；正式成本约618.31元 | 是否接受该预算与执行时序口径 |
+| B150-5 | 每模型2题人工形态审阅8/8 PASS，但在正式采集后完成 | 是否接受post-hoc形态审阅关闭该门 |
+
+完整影响分析见：[`../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/PROTOCOL_DEVIATIONS_AND_TEACHER_ADJUDICATION_REQUEST_20261008.md`](../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/PROTOCOL_DEVIATIONS_AND_TEACHER_ADJUDICATION_REQUEST_20261008.md)。
 
 ## 2026-09-11 T6-R3真实执行后新增裁定请求
 

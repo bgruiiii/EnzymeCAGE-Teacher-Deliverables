@@ -1,22 +1,23 @@
 # 当前老师审阅入口（EnzymeCAGE 侧）
 
-更新时间：2026-09-11
+更新时间：2026-10-08
 用途：给黄老师打开 GitHub 后的第一入口，避免从根目录历史散文件中自行判断最新状态。
 
 ## 1. 老师优先看哪些文件
 
 | 优先级 | 内容 | 路径 |
 |---|---|---|
-| 1 | 2026-09-11 T6-R3真实执行、逐项合同审计、十几个小时耗时解释及老师决策请求 | [`../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/`](../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/) |
-| 2 | 2026-09-10 T4最终封口通过 + T6进入R3前microbe自查 | [`../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/`](../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/) |
-| 3 | 2026-09-08最新进度与T4身份回传总入口 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/) |
-| 3 | 晨羽数据库与模型权重上云live清单 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md) |
-| 4 | T4正式18条parent-only清单与SHA | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md) |
-| 5 | 对老师编排边界裁定的确认 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md) |
-| 6 | 2026-09-07上一版完整阶段反馈 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/) |
-| 7 | 2026-08-26 BBD full-route污染物降解路线工具评估 | [`../2026-08-26_BBD_Full_Route_Tool_Comparison/`](../2026-08-26_BBD_Full_Route_Tool_Comparison/) |
-| 8 | 2026-08-19污染物TP预测路线评估历史证据 | [`../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/`](../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/) |
-| 9 | 2026-08-18 P18173/P80550 accession存疑项澄清 | [`../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/`](../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/) |
+| 1 | 2026-10-08 BIOSYSMOdb150四模型121题正式采集、冻结评分、人工形态审阅及协议偏差裁定请求 | [`../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/`](../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/) |
+| 2 | 2026-09-11 T6-R3真实执行、逐项合同审计、十几个小时耗时解释及老师决策请求 | [`../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/`](../2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/) |
+| 3 | 2026-09-10 T4最终封口通过 + T6进入R3前microbe自查 | [`../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/`](../2026-09-10_T4_Final_Stage_and_T6_PreR3_Selfcheck/) |
+| 4 | 2026-09-08最新进度与T4身份回传总入口 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/) |
+| 5 | 晨羽数据库与模型权重上云live清单 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/DATABASE_AND_MODEL_WEIGHT_CLOUD_MIGRATION_LIVE_INVENTORY.md) |
+| 6 | T4正式18条parent-only清单与SHA | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/T4_FORMAL_18_PARENT_INPUT_IDENTITY_RETURN.md) |
+| 7 | 对老师编排边界裁定的确认 | [`../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md`](../2026-09-08_Three_Module_Latest_Progress_T4_Identity_Return/ORCHESTRATION_BOUNDARY_ACKNOWLEDGEMENT.md) |
+| 8 | 2026-09-07上一版完整阶段反馈 | [`../2026-09-07_Three_Module_Staged_Integration_Progress_Review/`](../2026-09-07_Three_Module_Staged_Integration_Progress_Review/) |
+| 9 | 2026-08-26 BBD full-route污染物降解路线工具评估 | [`../2026-08-26_BBD_Full_Route_Tool_Comparison/`](../2026-08-26_BBD_Full_Route_Tool_Comparison/) |
+| 10 | 2026-08-19污染物TP预测路线评估历史证据 | [`../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/`](../2026-08-19_Pollutant_TP_Prediction_Route_Evaluation/) |
+| 11 | 2026-08-18 P18173/P80550 accession存疑项澄清 | [`../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/`](../2026-08-18_M4_E2_Accession_Ambiguity_Clarification_P18173_P80550/) |
 
 ## 1a. 2026-08-26 补充专题：BBD full-route 污染物降解路线工具评估
 

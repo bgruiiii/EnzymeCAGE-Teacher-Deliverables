@@ -1,0 +1,122 @@
+{
+  "generated_utc": "2026-10-08T02:10:39Z",
+  "api_calls": 0,
+  "validator": "code/validate_g9_formal_scoring.py",
+  "all_mutations_detected": true,
+  "results": [
+    {
+      "mutation": "control_no_mutation",
+      "expected": "PASS",
+      "got": "PASS",
+      "validator_exit": 0,
+      "verdict": "DETECTED",
+      "total_checks": 8974,
+      "total_failures": 0,
+      "sample_failed_checks": []
+    },
+    {
+      "mutation": "M1_duplicate_key",
+      "expected": "FAIL",
+      "got": "FAIL",
+      "validator_exit": 1,
+      "verdict": "DETECTED",
+      "total_checks": 8981,
+      "total_failures": 9,
+      "sample_failed_checks": [
+        "rows_484",
+        "unique_keys",
+        "model_121_qwen3.8-max",
+        "model_case_set_qwen3.8-max",
+        "model_case_order_qwen3.8-max",
+        "terminal_482"
+      ]
+    },
+    {
+      "mutation": "M2_replaced_failure_answer",
+      "expected": "FAIL",
+      "got": "FAIL",
+      "validator_exit": 1,
+      "verdict": "DETECTED",
+      "total_checks": 8974,
+      "total_failures": 18,
+      "sample_failed_checks": [
+        "usable_469",
+        "invalid_11",
+        "content_failures_13",
+        "usable_ZHIPU/GLM-5.3",
+        "faillist_ZHIPU/GLM-5.3_INVALID_JSON",
+        "usable_json_dict_G8P1-S060"
+      ]
+    },
+    {
+      "mutation": "M3_pilot_contamination",
+      "expected": "FAIL",
+      "got": "FAIL",
+      "validator_exit": 1,
+      "verdict": "DETECTED",
+      "total_checks": 8974,
+      "total_failures": 2,
+      "sample_failed_checks": [
+        "vis_sha_G8P1-S001",
+        "binding_sha_G8P1-S001"
+      ]
+    },
+    {
+      "mutation": "M4_denominator_120",
+      "expected": "FAIL",
+      "got": "FAIL",
+      "validator_exit": 1,
+      "verdict": "DETECTED",
+      "total_checks": 8961,
+      "total_failures": 11,
+      "sample_failed_checks": [
+        "rows_484",
+        "unique_keys",
+        "model_121_kimi/kimi-k3",
+        "model_case_set_kimi/kimi-k3",
+        "model_case_order_kimi/kimi-k3",
+        "terminal_482"
+      ]
+    },
+    {
+      "mutation": "M5_weights_changed",
+      "expected": "FAIL",
+      "got": "FAIL",
+      "validator_exit": 1,
+      "verdict": "DETECTED",
+      "total_checks": 8974,
+      "total_failures": 3,
+      "sample_failed_checks": [
+        "pms_macro_weighted_total_qwen3.8-max",
+        "bound_base_weights",
+        "variant_rule_pathway+5pp"
+      ]
+    },
+    {
+      "mutation": "M6_scorer_sha_changed",
+      "expected": "FAIL",
+      "got": "FAIL",
+      "validator_exit": 1,
+      "verdict": "DETECTED",
+      "total_checks": 8974,
+      "total_failures": 1,
+      "sample_failed_checks": [
+        "srm_binding_scorer.py"
+      ]
+    },
+    {
+      "mutation": "M7_swapped_review_sample",
+      "expected": "FAIL",
+      "got": "FAIL",
+      "validator_exit": 1,
+      "verdict": "DETECTED",
+      "total_checks": 8972,
+      "total_failures": 3,
+      "sample_failed_checks": [
+        "sample_reproducible",
+        "export_exists_qwen3.8-max__BIOPATH150_001__G8P1-S001.visible_answer.txt",
+        "export_exists_qwen3.8-max__BIOPATH150_002__G8P1-S004.visible_answer.txt"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,15 @@
 # EnzymeCAGE 当前状态索引
 
-日期：2026-09-11
+日期：2026-10-08
+
+## 2026-10-08 BIOSYSMOdb150四模型121题正式评估
+
+| 项 | 状态 | 老师查看路径 |
+|---|---|---|
+| 正式API采集 | 4模型×121题=484槽全部提交；482终态、469可用、13内容失败、2 held、零正式重试 | [`../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/`](../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/) |
+| 冻结评分 | G3 scorer与RDKit身份匹配；主分数Kimi 17.9131 > DeepSeek 12.2099 > Qwen 11.9753 > GLM-low 8.7215 | [`../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/reports/BIOSYSMODB150_FOUR_MODEL_121_FINAL_EVALUATION_REPORT_20261008.md`](../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/reports/BIOSYSMODB150_FOUR_MODEL_121_FINAL_EVALUATION_REPORT_20261008.md) |
+| 形态审阅 | 固定seed每模型2题，用户人工8/8 PASS；两项DeepSeek备注保留 | [`../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/shape_review/HUMAN_SHAPE_REVIEW_RECORD_20261008.md`](../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/shape_review/HUMAN_SHAPE_REVIEW_RECORD_20261008.md) |
+| 当前边界 | 数值结果有效；统一pilot、GLM改low、预算金额与审阅时点存在偏差，等待老师接受/降级裁定 | [`../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/PROTOCOL_DEVIATIONS_AND_TEACHER_ADJUDICATION_REQUEST_20261008.md`](../2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/PROTOCOL_DEVIATIONS_AND_TEACHER_ADJUDICATION_REQUEST_20261008.md) |
 
 ## 2026-09-11 T6-R3真实执行与本地审计
 

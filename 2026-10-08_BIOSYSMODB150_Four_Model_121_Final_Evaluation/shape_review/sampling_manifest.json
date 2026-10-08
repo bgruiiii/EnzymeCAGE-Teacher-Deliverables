@@ -1,0 +1,82 @@
+{
+  "algorithm": "random.Random(20261006); for each model in fixed order: rng.sample(sorted_121_case_ids, 2) without replacement; single rng instance sequentially across models; sampled failed/held slots are never replaced",
+  "api_calls": 0,
+  "case_id_source": {
+    "n_cases": 121,
+    "path": "G2_questions/main_cases.jsonl",
+    "sha256": "aa5d368c5d54b28dc64810a5838cf9bfc967c08d0c96b666dc63803285532a7e"
+  },
+  "generated_utc": "2026-10-08T01:57:44Z",
+  "model_order": [
+    "qwen3.8-max",
+    "deepseek-v4.1-flash",
+    "ZHIPU/GLM-5.3",
+    "kimi/kimi-k3"
+  ],
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python_implementation": "CPython",
+  "python_version": "3.10.12",
+  "replacement_policy": "NONE - sampled failed/held slots are kept and exported as status notes",
+  "sample_flat_order": [
+    {
+      "case_id": "BIOPATH150_077",
+      "draw_index": 0,
+      "model_exact_id": "qwen3.8-max"
+    },
+    {
+      "case_id": "BIOPATH150_012",
+      "draw_index": 1,
+      "model_exact_id": "qwen3.8-max"
+    },
+    {
+      "case_id": "BIOPATH150_105",
+      "draw_index": 0,
+      "model_exact_id": "deepseek-v4.1-flash"
+    },
+    {
+      "case_id": "BIOPATH150_044",
+      "draw_index": 1,
+      "model_exact_id": "deepseek-v4.1-flash"
+    },
+    {
+      "case_id": "BIOPATH150_145",
+      "draw_index": 0,
+      "model_exact_id": "ZHIPU/GLM-5.3"
+    },
+    {
+      "case_id": "BIOPATH150_044",
+      "draw_index": 1,
+      "model_exact_id": "ZHIPU/GLM-5.3"
+    },
+    {
+      "case_id": "BIOPATH150_080",
+      "draw_index": 0,
+      "model_exact_id": "kimi/kimi-k3"
+    },
+    {
+      "case_id": "BIOPATH150_028",
+      "draw_index": 1,
+      "model_exact_id": "kimi/kimi-k3"
+    }
+  ],
+  "sampled": {
+    "ZHIPU/GLM-5.3": [
+      "BIOPATH150_145",
+      "BIOPATH150_044"
+    ],
+    "deepseek-v4.1-flash": [
+      "BIOPATH150_105",
+      "BIOPATH150_044"
+    ],
+    "kimi/kimi-k3": [
+      "BIOPATH150_080",
+      "BIOPATH150_028"
+    ],
+    "qwen3.8-max": [
+      "BIOPATH150_077",
+      "BIOPATH150_012"
+    ]
+  },
+  "sampling_input_note": "sampling executed after scoring; sampler read only sorted case IDs and selection was uniquely determined by frozen seed/model order; no answer content used for selection and no resampling",
+  "seed": 20261006
+}

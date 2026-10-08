@@ -1,0 +1,125 @@
+{
+  "api_calls": 0,
+  "base_macro_weighted_total": {
+    "ZHIPU/GLM-5.3": 8.721483471074379,
+    "deepseek-v4.1-flash": 12.209983471074374,
+    "kimi/kimi-k3": 17.913367768595034,
+    "qwen3.8-max": 11.975392561983467
+  },
+  "base_ranking": {
+    "ZHIPU/GLM-5.3": 4,
+    "deepseek-v4.1-flash": 2,
+    "kimi/kimi-k3": 1,
+    "qwen3.8-max": 3
+  },
+  "checks": 71,
+  "copied": [
+    "base_weights_pp",
+    "renorm rule",
+    "10 variant weight vectors"
+  ],
+  "derived_from": "G9_reporting_preflight/sensitivity_spec.json (math rule only)",
+  "failure_list": [],
+  "failures": 0,
+  "fixture_label": "FORMAL_FOUR_MODEL_121_20261008",
+  "generated_utc": "2026-10-08T01:56:41Z",
+  "layer_score_source": {
+    "path": "scores/per_slot_scores.jsonl",
+    "sha256": "815a7fc1490a5db937c24bb44b0bba283dea56f676582280677c46d513ba949a"
+  },
+  "model_set": [
+    "qwen3.8-max",
+    "deepseek-v4.1-flash",
+    "ZHIPU/GLM-5.3",
+    "kimi/kimi-k3"
+  ],
+  "not_copied": [
+    "SYNTHETIC scores",
+    "five-model lineup",
+    "fixture_label SYNTHETIC_OFFLINE_FIXTURE"
+  ],
+  "ranking_stability": "STABLE_ALL_10_VARIANTS",
+  "renorm": "sum==100.0 verified programmatically for all 10 variants",
+  "rule": "primary weight w_i +/-5 percentage points; remaining four weights scaled proportionally to (100-w_i-/+5); sum renormalized to exactly 100",
+  "scorer_binding": {
+    "g3_gate_sha256": "32c155201a360db8de229e40a9d9cb14bd152993fd0356fd8b0eb8c9001ccaa2",
+    "g3_manifest_sha256": "24f1004cab0afca4707bbbd34f26f4b7ead074da723651af73f1fe95ad562e8a",
+    "score_recipe_sha256": "8b79daf906f04e31589ad77bd93998f9a12649575bd4d476447c43028c338392",
+    "scorer_sha256": "a326eee63258cd0a2706bfd8a1dc6907d6f9fc6aa24b101a7192312c6ed39c61",
+    "validators_sha256": "c302164433e37127854eefdf25c44a5939201375873833d51846c3c127083899"
+  },
+  "scorer_rerun": false,
+  "spec_sha256": "c90a3d9725448d43b76185cdf09508a8dbf58a2113bf5d197f8d2464c3bde62c",
+  "variants": {
+    "enzyme+5pp": {
+      "enzyme": 25.0,
+      "microbial_identity": 14.0625,
+      "pathway": 42.1875,
+      "smiles": 9.375,
+      "traits": 9.375
+    },
+    "enzyme-5pp": {
+      "enzyme": 15.0,
+      "microbial_identity": 15.9375,
+      "pathway": 47.8125,
+      "smiles": 10.625,
+      "traits": 10.625
+    },
+    "microbial_identity+5pp": {
+      "enzyme": 18.823529411764707,
+      "microbial_identity": 20.0,
+      "pathway": 42.35294117647059,
+      "smiles": 9.411764705882353,
+      "traits": 9.411764705882353
+    },
+    "microbial_identity-5pp": {
+      "enzyme": 21.176470588235293,
+      "microbial_identity": 10.0,
+      "pathway": 47.64705882352941,
+      "smiles": 10.588235294117647,
+      "traits": 10.588235294117647
+    },
+    "pathway+5pp": {
+      "enzyme": 18.181818181818183,
+      "microbial_identity": 13.636363636363637,
+      "pathway": 50.0,
+      "smiles": 9.090909090909092,
+      "traits": 9.090909090909092
+    },
+    "pathway-5pp": {
+      "enzyme": 21.818181818181817,
+      "microbial_identity": 16.363636363636363,
+      "pathway": 40.0,
+      "smiles": 10.909090909090908,
+      "traits": 10.909090909090908
+    },
+    "smiles+5pp": {
+      "enzyme": 18.88888888888889,
+      "microbial_identity": 14.166666666666666,
+      "pathway": 42.5,
+      "smiles": 15.0,
+      "traits": 9.444444444444445
+    },
+    "smiles-5pp": {
+      "enzyme": 21.11111111111111,
+      "microbial_identity": 15.833333333333334,
+      "pathway": 47.5,
+      "smiles": 5.0,
+      "traits": 10.555555555555555
+    },
+    "traits+5pp": {
+      "enzyme": 18.88888888888889,
+      "microbial_identity": 14.166666666666666,
+      "pathway": 42.5,
+      "smiles": 9.444444444444445,
+      "traits": 15.0
+    },
+    "traits-5pp": {
+      "enzyme": 21.11111111111111,
+      "microbial_identity": 15.833333333333334,
+      "pathway": 47.5,
+      "smiles": 10.555555555555555,
+      "traits": 5.0
+    }
+  }
+}

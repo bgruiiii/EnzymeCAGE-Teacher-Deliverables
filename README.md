@@ -1,5 +1,20 @@
 # EnzymeCAGE Teacher Deliverables
 
+## 老师当前优先审阅入口 — 2026-10-08
+
+- [`2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/`](2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/)
+
+```text
+BIOSYSMOdb150四模型×121题已完成484次正式提交与冻结G3评分：
+469/484可用，主分数Kimi 17.9131 > DeepSeek 12.2099 > Qwen 11.9753 > GLM-low 8.7215；
+±5pp十组敏感性排名不变，8份固定样本人工形态审阅8/8 PASS。
+结果与评分证据链已闭合，但统一pilot、GLM high→low、预算签核和审阅时点存在已披露协议偏差，
+请老师裁定是否接受为正式四模型121题裸LLM基线；不建议选择性补跑失败槽。
+```
+
+建议先读该目录的`BIOSYSMODB150_FOUR_MODEL_121_FINAL_FEEDBACK_TO_HUANG_20261008.md`，再看
+`PROTOCOL_DEVIATIONS_AND_TEACHER_ADJUDICATION_REQUEST_20261008.md`和逐项合规矩阵。
+
 ## 老师当前优先审阅入口 — 2026-09-11
 
 - [`2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/`](2026-09-11_T6_R3_Real_Execution_Audit_and_Teacher_Decision_Request/)

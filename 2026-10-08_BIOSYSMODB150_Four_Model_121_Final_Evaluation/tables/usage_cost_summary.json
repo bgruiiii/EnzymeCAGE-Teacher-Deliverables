@@ -1,0 +1,154 @@
+{
+  "api_calls": 0,
+  "audit_reference_match": {
+    "deepseek_25.9615": true,
+    "glm_17.7004": true,
+    "grand_approx_618.31": true,
+    "kimi_435.86014_incl_held": true,
+    "qwen_136.3089": true
+  },
+  "basis": {
+    "excluded": "probe/smoke/pilot engineering calls are excluded from the formal total and not deducted",
+    "formula": "terminal: (prompt*in + completion*out)/1e6; held: worst-case reserve (10000*in + 65536*out)/1e6",
+    "held_reserves_cny": {
+      "G8P1-S208": 2.479296,
+      "G8P2-K042": 6.7536
+    },
+    "ignored_runtime_files": [
+      "global_calls.json.tmp",
+      "global_calls.json.lock",
+      "kimi_calls.json.tmp",
+      "kimi_calls.json.lock",
+      ".runner.lock files"
+    ],
+    "price_source": [
+      "source/three_model/release/G8P1_FORMAL_STAGE_RELEASE.json budget.unit_price_cny_per_1M",
+      "source/kimi/release/G8P2_FORMAL_RELEASE.json budget.unit_price_cny_per_1M"
+    ],
+    "quantile_method": "nearest-rank on sorted terminal values (p90 index = round(0.9*(n-1)))",
+    "unit_price_cny_per_1M": {
+      "ZHIPU/GLM-5.3": {
+        "input": 8.0,
+        "output": 28.0
+      },
+      "deepseek-v4.1-flash": {
+        "input": 2.0,
+        "output": 8.0
+      },
+      "kimi/kimi-k3": {
+        "input": 20.0,
+        "output": 100.0
+      },
+      "qwen3.8-max": {
+        "input": 12.0,
+        "output": 36.0
+      }
+    }
+  },
+  "checks": 9,
+  "failure_list": [],
+  "failures": 0,
+  "formal_grand_total_cny": 618.3102440000001,
+  "generated_utc": "2026-10-08T01:55:41Z",
+  "ledger_cross_check": {
+    "kimi_ledger_spent_cny": 435.86014000000006,
+    "kimi_recomputed_total_cny": 435.8601400000001,
+    "ledger_sha256": {
+      "global_calls.json": "53c2ce214ea9f2c1af75721d8c49f8ad1cb64ca291a513ec1fccc000816d276b",
+      "kimi_calls.json": "25f3eba061cb92145eb79b541efa291dff42d8b2963ddcc60fa652050344ffdc"
+    },
+    "three_model_formal_portion_cny": 182.45010399999998,
+    "three_model_ledger_spent_cny": 184.78027600000001,
+    "three_model_nonformal_engineering_cny": 2.330172000000033
+  },
+  "per_model": {
+    "ZHIPU/GLM-5.3": {
+      "completion_tokens_max": 15620,
+      "completion_tokens_mean": 3622.1404958677685,
+      "completion_tokens_median": 3305,
+      "completion_tokens_p90": 4993,
+      "duration_s_max": 234.568,
+      "duration_s_mean": 42.16213223140496,
+      "duration_s_median": 37.507,
+      "duration_s_p90": 62.107,
+      "formal_total_cost_cny": 17.700436,
+      "formal_usage_cost_cny": 17.700436,
+      "held": 0,
+      "held_reserve_cny": 0,
+      "invalid_json": 11,
+      "length_empty": 0,
+      "model_exact_id": "ZHIPU/GLM-5.3",
+      "prompt_tokens_mean": 5608.082644628099,
+      "slots": 121,
+      "terminal_measured_n": 121,
+      "unit_price_cny_per_1M_in_out": "8/28",
+      "usable": 110
+    },
+    "deepseek-v4.1-flash": {
+      "completion_tokens_max": 65536,
+      "completion_tokens_mean": 25317.710743801654,
+      "completion_tokens_median": 24655,
+      "completion_tokens_p90": 33851,
+      "duration_s_max": 382.774,
+      "duration_s_mean": 160.55452066115714,
+      "duration_s_median": 154.575,
+      "duration_s_p90": 229.142,
+      "formal_total_cost_cny": 25.961496,
+      "formal_usage_cost_cny": 25.961496,
+      "held": 0,
+      "held_reserve_cny": 0,
+      "invalid_json": 0,
+      "length_empty": 1,
+      "model_exact_id": "deepseek-v4.1-flash",
+      "prompt_tokens_mean": 6008.06611570248,
+      "slots": 121,
+      "terminal_measured_n": 121,
+      "unit_price_cny_per_1M_in_out": "2/8",
+      "usable": 120
+    },
+    "kimi/kimi-k3": {
+      "completion_tokens_max": 65536,
+      "completion_tokens_mean": 34641.558333333334,
+      "completion_tokens_median": 34661.0,
+      "completion_tokens_p90": 51260,
+      "duration_s_max": 1614.841,
+      "duration_s_mean": 835.0534000000001,
+      "duration_s_median": 808.2750000000001,
+      "duration_s_p90": 1273.42,
+      "formal_total_cost_cny": 435.8601400000001,
+      "formal_usage_cost_cny": 429.1065400000001,
+      "held": 1,
+      "held_reserve_cny": 6.7536,
+      "invalid_json": 0,
+      "length_empty": 1,
+      "model_exact_id": "kimi/kimi-k3",
+      "prompt_tokens_mean": 5586.6,
+      "slots": 121,
+      "terminal_measured_n": 120,
+      "unit_price_cny_per_1M_in_out": "20/100",
+      "usable": 119
+    },
+    "qwen3.8-max": {
+      "completion_tokens_max": 48165,
+      "completion_tokens_mean": 29592.233333333334,
+      "completion_tokens_median": 29235.5,
+      "completion_tokens_p90": 39269,
+      "duration_s_max": 1098.188,
+      "duration_s_mean": 673.4322083333336,
+      "duration_s_median": 654.7004999999999,
+      "duration_s_p90": 941.276,
+      "formal_total_cost_cny": 138.78817199999997,
+      "formal_usage_cost_cny": 136.30887599999997,
+      "held": 1,
+      "held_reserve_cny": 2.479296,
+      "invalid_json": 0,
+      "length_empty": 0,
+      "model_exact_id": "qwen3.8-max",
+      "prompt_tokens_mean": 5882.241666666667,
+      "slots": 121,
+      "terminal_measured_n": 120,
+      "unit_price_cny_per_1M_in_out": "12/36",
+      "usable": 120
+    }
+  }
+}
