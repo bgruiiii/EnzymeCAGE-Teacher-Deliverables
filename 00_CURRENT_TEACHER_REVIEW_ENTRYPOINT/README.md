@@ -13,8 +13,9 @@
 4. [原始逐维统计](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/tables/DESCRIPTIVE_AGREEMENT_BY_DIMENSION.tsv)
 5. [公开材料边界](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/CONTENTS_AND_ACCESS_BOUNDARIES.md)
 
-本期整理统计已核对，但未宣布严格双人H1达标或量表冻结；请确认材料用途、B001科学保留处理及定稿解释口径。
-不是请老师重打30项分；120题/480份正式主表和正式分层人工评价没有用当前32份校准材料冒充完成。
+本期整理统计已核对；当前恳请老师在认可v0.4后，同步授权120题/480份全量AI辅助评分与证据核验，尽快出主表。
+人工抽查的样本量、人员和时间请老师统筹，尽量并行；若有不可豁免前置请一次列最小范围，不由执行器新增整轮人工门。
+见[条件式执行申请](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/FULL_SCORING_AUTHORIZATION_REQUEST_20261028.md)。不冒称现有来源限制消失、量表已冻结或全量已获准。
 
 ## 1. 历史审阅入口（按原时点保留）
 

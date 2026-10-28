@@ -9,8 +9,8 @@
 | 本轮材料 | 候选量表、32份匿名原题/答、原始评分与理由、裁决/证据/统计/审计可浏览 | [日期目录](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/) |
 | 原始对照 | 32份224维、219数值对；统计性质明确为已收意见的描述性对照 | [统计与有效n](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/tables/DESCRIPTIVE_AGREEMENT_BY_DIMENSION.tsv) |
 | 第三人记录 | 30维候选裁决，确认后3分数/2KE更正，KE=9是/11否/10待核；原分不改 | [裁决层](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/tables/ADJUDICATION_30_DECISIONS.tsv) |
-| 待确认 | 材料用途/最小补充、B001机理保留、定稿说明；尚未冻结 | [三项请示](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/DECISION_REQUESTS.tsv) |
-| 正式评价 | 120/480主表与正式分层人工评价本轮未执行；核验仍是原型 | [要求对照](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/TEACHER_REQUIREMENT_DELIVERY_MATRIX.tsv) |
+| 当前请求 | 若v0.4可用，请尽快授权480份全量AI评分；B001保留与非实质小修不拖整批 | [全量申请](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/FULL_SCORING_AUTHORIZATION_REQUEST_20261028.md) |
+| 人工安排 | 抽查范围/人员/时间由老师统筹，建议并行；未获批准前不自行替换原方案 | [要求对照](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/TEACHER_REQUIREMENT_DELIVERY_MATRIX.tsv) |
 
 以下历史各节保留其原日期含义，不作为本期“全部最新进度”或重新申请旧事项的依据。
 
