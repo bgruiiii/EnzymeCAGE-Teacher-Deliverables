@@ -1,9 +1,22 @@
 # 当前老师审阅入口（EnzymeCAGE 侧）
 
-更新时间：2026-10-08
+更新时间：2026-10-28
 用途：给黄老师打开 GitHub 后的第一入口，避免从根目录历史散文件中自行判断最新状态。
 
-## 1. 老师优先看哪些文件
+## 0. 当前优先审阅：v0.4校准收尾与定稿边界
+
+请先打开[2026-10-28完整日期目录](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/README.md)，再读：
+
+1. [详细反馈](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/TEACHER_REPORT.md)
+2. [老师要求—交付对照](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/TEACHER_REQUIREMENT_DELIVERY_MATRIX.tsv)
+3. [候选量表](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/rubric/LIKERT_v0_4_CANDIDATE_R2_RATER_CLEAN_R1.docx)
+4. [原始逐维统计](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/tables/DESCRIPTIVE_AGREEMENT_BY_DIMENSION.tsv)
+5. [公开材料边界](../2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/CONTENTS_AND_ACCESS_BOUNDARIES.md)
+
+本期整理统计已核对，但未宣布严格双人H1达标或量表冻结；请确认材料用途、B001科学保留处理及定稿解释口径。
+不是请老师重打30项分；120题/480份正式主表和正式分层人工评价没有用当前32份校准材料冒充完成。
+
+## 1. 历史审阅入口（按原时点保留）
 
 | 优先级 | 内容 | 路径 |
 |---|---|---|

@@ -1,0 +1,423 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_125",
+  "pollutant_name_zh": "甲基叔丁基醚",
+  "pollutant_name_en": "Methyl tert-butyl ether",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methyl tert-butyl ether degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面氧条件为 null；本主链按证据较充分的好氧微生物 MTBE→tert-butyl formate→tert-butanol 主序列给出。厌氧 MTBE 转化常报道停滞于 tert-butanol，未选作被评分主链。"
+  },
+  "route_summary": "主链为：Methyl tert-butyl ether 经单加氧氧化生成 tert-butyl formate；后者水解为 tert-butanol 并副产 formate；tert-butanol 的一个甲基羟基化生成 2-methylpropane-1,2-diol；该二醇的一级醇脱氢生成 2-hydroxyisobutyraldehyde，再氧化为 2-hydroxyisobutyrate。2-hydroxyisobutyrate 进入乙酰-CoA 的延伸反应列入 downstream_continuation/central_metabolism_entry，不另展开为评分步。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Methyl tert-butyl ether",
+          "smiles": "COC(C)(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "tert-butyl formate",
+          "smiles": "CC(C)(C)OC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation; oxidation of the methoxy methyl group to a formate ester",
+      "enzyme": {
+        "name": "methyl tert-butyl ether monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "初始氧化酶的精确 EC 编号、基因/蛋白归属与电子供体在常用数据库中表述不一；为遵守不编造原则，ec_number 与 gene_or_protein 置 null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "tert-butyl formate",
+          "smiles": "CC(C)(C)OC=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "tert-butanol",
+          "smiles": "CC(C)(C)O",
+          "role": "main"
+        },
+        {
+          "name": "formate",
+          "smiles": "[O-]C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ester hydrolysis",
+      "enzyme": {
+        "name": "carboxylesterase",
+        "ec_number": "3.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "tert-butyl formate 水解可由酯酶催化，也有一定非酶水解可能；此处按主链酶促水解处理。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "tert-butanol",
+          "smiles": "CC(C)(C)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-methylpropane-1,2-diol",
+          "smiles": "CC(C)(CO)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation; hydroxylation of one tert-butyl methyl group",
+      "enzyme": {
+        "name": "tert-butanol monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "tert-butanol 为三级醇，需经甲基羟基化而非普通醇脱氢进入下游；该羟化酶精确 EC 未确定，故置 null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-methylpropane-1,2-diol",
+          "smiles": "CC(C)(CO)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxyisobutyraldehyde",
+          "smiles": "CC(C)(O)C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "alcohol oxidation; primary alcohol dehydrogenation",
+      "enzyme": {
+        "name": "alcohol dehydrogenase",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "采用醇脱氢酶通用 EC；是否存在更专一的 2-methylpropane-1,2-diol dehydrogenase 编号未确认。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxyisobutyraldehyde",
+          "smiles": "CC(C)(O)C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxyisobutyric acid",
+          "smiles": "CC(C)(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldehyde oxidation to carboxylic acid",
+      "enzyme": {
+        "name": "aldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "2-hydroxyisobutyrate 之后进入中心代谢的延伸反应未展开为评分步，见 downstream_continuation。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Methylibium petroleiphilum",
+      "strain": "PM1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温；常规培养约 30 °C（非耐受极限）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧",
+          "raw_text": "aerobic",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "BAA-1232"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "aerobic",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以 methyl tert-butyl ether（MTBE）或 tert-butyl alcohol 为唯一碳源和能源生长",
+          "raw_text": "a novel methyl tert-butyl ether-degrading methylotroph",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可矿化 MTBE，并降解 tert-butyl alcohol 等燃料含氧化合物相关中间体",
+          "raw_text": "methyl tert-butyl ether-degrading",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "MTBE/TBA 氧化降解相关的单加氧、酯水解和脱氢活性（逐步对应见 steps）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性，报道为极生鞭毛运动",
+          "raw_text": "motile by means of a single polar flagellum",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状细胞",
+          "raw_text": "straight rods",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Gram-negative",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": "non-spore-forming",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "CP000555",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性证据有限；可靠报道集中在受燃料含氧化合物/石油烃影响的水-土环境及生物处理系统，不宜据此认定为广适菌",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "acetyl-CoA"
+    ],
+    "explanation": "主链终点 2-hydroxyisobutyrate 通常经 CoA 活化、2-hydroxyisobutyryl-CoA 重排以及 3-hydroxyacyl-CoA 氧化/硫解汇入 acetoacetyl-CoA/acetyl-CoA；该延伸未作为新增评分 step 展开。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2-hydroxyisobutyrate to acetyl-CoA",
+      "summary": "2-hydroxyisobutyrate 先活化为 2-hydroxyisobutyryl-CoA，再经 B12 依赖的碳骨架重排生成 3-hydroxybutyryl-CoA 类中间体，随后氧化为 acetoacetyl-CoA 并硫解为 acetyl-CoA；具体酶与 EC 未纳入本论评分主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD/UM-BBD",
+      "record_id": null,
+      "locator": "Methyl tert-Butyl Ether (MTBE) Pathway Map",
+      "claim_scope": [
+        "MTBE main aerobic sequence",
+        "compound identities: MTBE, tert-butyl formate, tert-butanol, 2-methylpropane-1,2-diol, 2-hydroxyisobutyraldehyde, 2-hydroxyisobutyric acid"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Nakatsu et al. 2006, International Journal of Systematic and Evolutionary Microbiology 56:983-989, Methylibium petroleiphilum gen. nov., sp. nov.",
+      "claim_scope": [
+        "organism identity and type-strain context",
+        "aerobic Gram-negative non-spore-forming rod description",
+        "MTBE-degrading methylotroph claim"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Kane et al. 2007, Journal of Bacteriology, whole-genome analysis of Methylibium petroleiphilum PM1",
+      "claim_scope": [
+        "PM1 genome context",
+        "genome accession CP000555",
+        "routine cultivation context for PM1"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "LPSN",
+      "record_id": "Methylibium petroleiphilum",
+      "locator": "species and type-strain page",
+      "claim_scope": [
+        "type strain PM1",
+        "culture collection accession ATCC BAA-1232"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz/KEGG ENZYME",
+      "record_id": "EC 3.1.1.1; EC 1.1.1.1; EC 1.2.1.3",
+      "locator": "enzyme class entries",
+      "claim_scope": [
+        "generic carboxylesterase class",
+        "generic alcohol dehydrogenase class",
+        "generic aldehyde dehydrogenase NAD+ class"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "S1 与 S3 的单加氧酶精确 EC 编号、基因/蛋白名和电子供体未确认，故 ec_number/gene_or_protein 置 null。",
+    "题面未指定氧条件；本答案选择证据较强的 MTBE→tert-butyl formate→tert-butanol 好氧主链，未把厌氧停滞型转化列为评分主链。",
+    "ORG_001 的 pH、盐度、温度上下限、基因组大小与 GC% 未见可核验摘录或记忆不确定，按要求置 null。",
+    "F5 的 ATCC BAA-1232 与 F14 的 CP000555 为中等置信；若采集方能访问 LPSN/NCBI，应以数据库记录复核。"
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_125",
+  "pollutant_name_zh": "甲基叔丁基醚",
+  "pollutant_name_en": "Methyl tert-butyl ether",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methyl tert-butyl ether degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；本答案按已知好氧甲基叔丁基醚降解主链填写，route_scope.oxygen_condition 保持 null。"
+  },
+  "route_summary": "在已知甲基叔丁基醚降解菌 Methylibium petroleiphilum PM1 中，甲基叔丁基醚先经单加氧酶发生脱甲基/醚键裂解，生成叔丁醇和甲醛；叔丁醇进一步羟基化为 2-甲基-2-羟基-1-丙醇，再经脱氢生成 2-羟基异丁醛并氧化为 2-羟基异丁酸。2-羟基异丁酸经辅酶A激活、变位和脱氢进入乙酰辅酶A相关中心代谢。氧条件未指定，辅酶A依赖下游步骤及多数酶EC编号置信度较低。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "methyl tert-butyl ether",
+          "smiles": "COC(C)(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "tert-butyl alcohol",
+          "smiles": "CC(C)(C)O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "methyl tert-butyl ether monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "tert-butyl alcohol",
+          "smiles": "CC(C)(C)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-methyl-2-hydroxy-1-propanol",
+          "smiles": "OCC(C)(C)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "tert-butyl alcohol hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-methyl-2-hydroxy-1-propanol",
+          "smiles": "OCC(C)(C)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxyisobutyraldehyde",
+          "smiles": "O=CC(C)(C)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "2-methyl-2-hydroxy-1-propanol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxyisobutyraldehyde",
+          "smiles": "O=CC(C)(C)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxyisobutyric acid",
+          "smiles": "O=C(O)C(C)(C)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "2-hydroxyisobutyraldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-hydroxyisobutyric acid",
+          "smiles": "O=C(O)C(C)(C)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxyisobutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "CoA thioesterification",
+      "enzyme": {
+        "name": "2-hydroxyisobutyrate CoA-transferase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "2-羟基异丁酸的辅酶A激活步骤具体酶类与EC编号不确定。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "2-hydroxyisobutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxybutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "intramolecular rearrangement",
+      "enzyme": {
+        "name": "2-hydroxyisobutyryl-CoA mutase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "2-羟基异丁酰辅酶A变位酶步骤证据置信度较低。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "3-hydroxybutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetoacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "3-hydroxybutyryl-CoA dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "3-羟基丁酰辅酶A脱氢酶步骤的EC编号未填写。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "acetoacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolysis",
+      "enzyme": {
+        "name": "acetoacetyl-CoA thiolase",
+        "ec_number": "2.3.1.9",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步属于中心代谢硫解步骤，并非甲基叔丁基醚降解特异反应。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Methylibium petroleiphilum",
+      "strain": "PM1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes methyl tert-butyl ether and tert-butyl alcohol as carbon sources",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades methyl tert-butyl ether via tert-butyl alcohol to 2-hydroxyisobutyryl-CoA and central metabolites",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "exhibits methyl tert-butyl ether monooxygenase and tert-butyl alcohol hydroxylase activities",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "adapted to gasoline-contaminated groundwater environments and capable of aerobic degradation of fuel oxygenates",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA"],
+    "explanation": "主链末端形成乙酰辅酶A，可进入三羧酸循环等中心代谢；S1生成的甲醛可进入C1同化或氧化途径。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "formaldehyde oxidation/assimilation",
+      "summary": "S1生成的甲醛可被进一步氧化为甲酸和CO2，或进入甲基营养菌的C1同化途径。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Aerobic methyl tert-butyl ether degradation pathway in Methylibium petroleiphilum PM1",
+      "claim_scope": [
+        "steps S1-S8",
+        "enzyme names",
+        "microorganism identity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "General phenotypic traits of Methylibium petroleiphilum PM1",
+      "claim_scope": [
+        "organism traits"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；本答案依据已知好氧甲基叔丁基醚降解体系填写。",
+    "多数醚单加氧酶、羟基化酶和脱氢酶缺少明确EC编号。",
+    "2-羟基异丁酸之后的辅酶A依赖步骤证据置信度较低。",
+    "菌株温度、pH、盐度、保藏编号和基因组等性状未知。"
+  ]
+}

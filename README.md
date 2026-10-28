@@ -1,6 +1,21 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-10-08
+## 老师当前优先审阅入口 — 2026-10-28
+
+- [v0.4完整校准收尾审阅包](2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/)
+- [给老师的详细反馈](2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/TEACHER_REPORT.md)
+- [老师要求与交付逐项对照](2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/TEACHER_REQUIREMENT_DELIVERY_MATRIX.tsv)
+- [完整候选量表](2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/rubric/LIKERT_v0_4_CANDIDATE_R2_RATER_CLEAN_R1.docx)
+- [整体下载](2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/archives/LIKERT_V04_PUBLIC_TEACHER_REVIEW_20261028.tar.gz)
+
+本期不是只交MD：32份匿名题面/答案、A原评分与理由、B原汇总、224维对照、30维第三人意见/修订、
+76条补证登记、统计、脚本和审计均可审阅。量表尚未正式冻结；B原文自述AI预评分，
+记录来源边界和B001单项科学保留如实列明，不冒称严格独立H1达标，也不宣布四模型最终排名。
+私有模型映射、完整gold原表、通信密钥和许可未确认的第三方raw不公开；访问边界见日期目录说明。
+
+以下入口按历史原时点保留，不代表其旧状态/待裁定事项仍是今天的最新结论。
+
+## 历史审阅入口 — 2026-10-08
 
 - [`2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/`](2026-10-08_BIOSYSMODB150_Four_Model_121_Final_Evaluation/)
 

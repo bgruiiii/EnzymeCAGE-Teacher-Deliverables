@@ -1,0 +1,338 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_006",
+  "pollutant_name_zh": "1,2-二氯乙烷",
+  "pollutant_name_en": "1,2-Dichloroethane",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "1,2-Dichloroethane degradation pathway",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "1,2-二氯乙烷在好氧条件下经 Xanthobacter autotrophicus GJ10 的 haloalkane dehalogenase (DhlA) 水解为 2-氯乙醇，随后经醇脱氢酶和醛脱氢酶氧化为氯乙醛和氯乙酸，最后由 haloacid dehalogenase (DhlB) 脱氯生成乙醇酸，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "1,2-Dichloroethane",
+          "smiles": "ClCCCl",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Chloroethanol",
+          "smiles": "OCCCl",
+          "role": "main"
+        },
+        {
+          "name": "Chloride",
+          "smiles": "[Cl-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis/dehalogenation",
+      "enzyme": {
+        "name": "Haloalkane dehalogenase DhlA",
+        "ec_number": "3.8.1.5",
+        "gene_or_protein": "dhlA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Xanthobacter autotrophicus",
+        "strain": "GJ10",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-Chloroethanol",
+          "smiles": "OCCCl",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Chloroacetaldehyde",
+          "smiles": "ClCC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Alcohol dehydrogenase",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Xanthobacter autotrophicus",
+        "strain": "GJ10",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "酶为推测的醇脱氢酶，具体基因未确定"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Chloroacetaldehyde",
+          "smiles": "ClCC=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Chloroacetate",
+          "smiles": "ClCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Aldehyde dehydrogenase",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Xanthobacter autotrophicus",
+        "strain": "GJ10",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "酶为推测的醛脱氢酶，具体基因未确定"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "Chloroacetate",
+          "smiles": "ClCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Glycolate",
+          "smiles": "OCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Chloride",
+          "smiles": "[Cl-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis/dehalogenation",
+      "enzyme": {
+        "name": "Haloacid dehalogenase DhlB",
+        "ec_number": "3.8.1.2",
+        "gene_or_protein": "dhlB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Xanthobacter autotrophicus",
+        "strain": "GJ10",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Xanthobacter autotrophicus",
+      "strain": "GJ10",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSMZ",
+            "accession": "3875"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "Utilizes 1,2-dichloroethane and methanol as carbon and energy sources",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "Degrades 1,2-dichloroethane and its chlorinated intermediates",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "Haloalkane dehalogenase (DhlA) and haloacid dehalogenase (DhlB) activities",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "Found in soil, water, and activated sludge",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Glycolate"],
+    "explanation": "乙醇酸可进入中心代谢，例如经乙醛酸途径进一步代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "1,2-dichloroethane degradation pathway",
+        "Xanthobacter autotrophicus GJ10",
+        "DhlA",
+        "DhlB",
+        "aerobic"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Xanthobacter autotrophicus GJ10 strain traits"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "alcohol dehydrogenase step",
+        "aldehyde dehydrogenase step"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "醇脱氢酶和醛脱氢酶的具体酶/基因未确定，使用通用 EC 编号",
+    "部分菌株性状未知，已填 null"
+  ]
+}

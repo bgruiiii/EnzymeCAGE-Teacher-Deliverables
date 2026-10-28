@@ -1,0 +1,260 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_020",
+  "pollutant_name_zh": "甲苯",
+  "pollutant_name_en": "Toluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Toluene degradation to benzoate",
+    "is_single_continuous_route": true,
+    "notes": "好氧条件下经甲苯单加氧/氧化生成苯甲醇，再经脱氢逐步氧化为苯甲酸（苯甲酸盐）"
+  },
+  "route_summary": "好氧条件下，甲苯经二甲苯单加氧酶（xylM/xylA，甲苯→苯甲醇）、苯甲醇脱氢酶（xylB，苯甲醇→苯甲醛）和苯甲醛脱氢酶（xylC，苯甲醛→苯甲酸）三步连续氧化，最终生成苯甲酸盐，进入下游苯甲酸盐降解途径。代表菌株为 Pseudomonas putida mt-2（含 TOL pWW0 质粒）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "Toluene", "smiles": "Cc1ccccc1", "role": "main"},
+        {"name": "O2", "smiles": "O=O", "role": "cofactor"},
+        {"name": "NADH", "smiles": "NC1=NC=NC2=C1N=CN2[C@@H]3O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]3O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Benzyl alcohol", "smiles": "OCc1ccccc1", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "byproduct"}
+      ],
+      "reaction_type": "monooxygenation (hydroxylation of methyl group)",
+      "enzyme": {
+        "name": "xylene monooxygenase (toluene methyl-monooxygenase complex)",
+        "ec_number": "1.14.13.-",
+        "gene_or_protein": "xylMA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2 (ATCC 33015)",
+        "ncbi_taxid": 319,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 编号为未完全分类的 1.14.13.-"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "Benzyl alcohol", "smiles": "OCc1ccccc1", "role": "main"},
+        {"name": "NAD+", "smiles": "NC1=NC=NC2=C1N=CN(C2=O)[C@@H]3O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]3O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Benzaldehyde", "smiles": "O=Cc1ccccc1", "role": "main"},
+        {"name": "NADH", "smiles": "NC1=NC=NC2=C1N=CN2[C@@H]3O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]3O", "role": "byproduct"}
+      ],
+      "reaction_type": "oxidation of alcohol to aldehyde",
+      "enzyme": {
+        "name": "benzyl alcohol dehydrogenase",
+        "ec_number": "1.1.1.224",
+        "gene_or_protein": "xylB",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2 (ATCC 33015)",
+        "ncbi_taxid": 319,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "Benzaldehyde", "smiles": "O=Cc1ccccc1", "role": "main"},
+        {"name": "NAD+", "smiles": "NC1=NC=NC2=C1N=CN(C2=O)[C@@H]3O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]3O", "role": "cofactor"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Benzoate", "smiles": "OC(=O)c1ccccc1", "role": "main"},
+        {"name": "NADH", "smiles": "NC1=NC=NC2=C1N=CN2[C@@H]3O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]3O", "role": "byproduct"}
+      ],
+      "reaction_type": "oxidation of aldehyde to carboxylate",
+      "enzyme": {
+        "name": "benzaldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.28",
+        "gene_or_protein": "xylC",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2 (ATCC 33015)",
+        "ncbi_taxid": 319,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2 (ATCC 33015)",
+      "ncbi_taxid": 319,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": 28, "maximum_c": null, "preference": "中温生长，最适约28 °C"},
+          "raw_text": "P. putida grows optimally at around 28 °C",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧菌，需氧呼吸，不能厌氧生长",
+          "raw_text": "Pseudomonas putida is an aerobic bacterium",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": "低盐度非嗜盐菌"},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": 7.0, "maximum": null},
+          "raw_text": "growth optimal near pH 7",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": "ATCC", "accession": "33015"},
+          "raw_text": "Pseudomonas putida mt-2 = ATCC 33015",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2"},
+          "raw_text": "aerobic respiration with oxygen as terminal electron acceptor",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用甲苯、二甲苯等芳香烃及多种有机酸作为碳源",
+          "raw_text": "mt-2 degrades toluene and xylenes via the TOL plasmid pWW0",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "能降解甲苯、间/对二甲苯、苯甲酸等芳香化合物（依赖 TOL pWW0 质粒）",
+          "raw_text": "the TOL pWW0 plasmid encodes degradation of toluene, xylenes and benzoate",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "含二甲苯单加氧酶、苯甲醇脱氢酶、苯甲醛脱氢酶（xylMA/xylB/xylC）活性",
+          "raw_text": "xylMABC genes encode xylene monooxygenase, benzyl alcohol dehydrogenase and benzaldehyde dehydrogenase",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动性，具鞭毛",
+          "raw_text": "Pseudomonas putida is motile by flagella",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细胞",
+          "raw_text": "rod-shaped cells",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Gram-negative",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": "Pseudomonas putida is non-spore-forming",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性土壤/水生环境细菌，常见于受石油烃污染的土壤",
+          "raw_text": "Pseudomonas putida is a ubiquitous soil and water bacterium",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Benzoate"],
+    "explanation": "主链终点为苯甲酸盐（benzoate），可进一步经苯甲酸盐双加氧酶转化为儿茶酚后进入β-酮己二酸途径进入中央代谢，但超出本题指定的路线范围"
+  },
+  "downstream_continuation": [
+    {"name": "Benzoate degradation via catechol", "summary": "苯甲酸盐经苯甲酸盐1,2-双加氧酶生成儿茶酚，再经开环进入中央碳代谢"}
+  ],
+  "alternative_branches": [
+    {"name": "Toluene dioxygenase pathway", "summary": "经甲苯双加氧酶生成顺-甲苯二氢二醇再到3-甲基儿茶酚，不经苯甲酸盐", "is_part_of_scored_main_route": false}
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UniProt",
+      "record_id": null,
+      "locator": "xylM/xylA xylene monooxygenase of Pseudomonas putida mt-2, TOL pWW0 plasmid",
+      "claim_scope": ["step S1 reaction", "organism", "carbon substrate utilization", "degradation capacity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Worsey & Williams 1975, J. Bacteriol., TOL plasmid pWW0 in P. putida mt-2 (xylMABC upper pathway)",
+      "claim_scope": ["step S2 reaction", "step S3 reaction", "enzyme activities"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["organism general physiology traits (Gram, morphology, motility, oxygen, temperature, pH, habitat, collection)"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "S1 的二甲苯单加氧酶 EC 编号为未完全指定的 1.14.13.-",
+    "多数生理性状来自内部知识，来源等级为 medium/low"
+  ]
+}

@@ -1,0 +1,407 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_146",
+  "pollutant_name_zh": "6-磺酸基-β-D-奎诺糖",
+  "pollutant_name_en": "6-sulfo-beta-D-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation VI",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，oxygen_condition 按题面填 null；路线名按题面原样保留。"
+  },
+  "route_summary": "主链按磺基糖酵解型处理：6-sulfo-beta-D-quinovose 先异构化为 6-sulfo-D-fructose，再经 ATP 依赖的 1-磷酸化生成 6-sulfo-D-fructose-1-phosphate；随后醛缩裂解为 glycerone phosphate 与 3-sulfolactaldehyde，3-sulfolactaldehyde 再被还原为 2,3-dihydroxypropane-1-sulfonate。glycerone phosphate 可进入糖酵解/糖异生，磺基部分以有机磺酸盐形式留在 2,3-dihydroxypropane-1-sulfonate 中。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-sulfo-beta-D-quinovose",
+          "smiles": "C([C@@H]([C@H]([C@@H]([C@H](C=O)O)O)O)S(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-sulfo-D-fructose",
+          "smiles": "C([C@@H]([C@H]([C@@H](C(=O)CO)O)O)S(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldose-ketose isomerization",
+      "enzyme": {
+        "name": "6-sulfo-D-quinovose isomerase",
+        "ec_number": "5.3.1.34",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Bacteroides thetaiotaomicron",
+        "strain": "VPI-5482",
+        "ncbi_taxid": 226186,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "EC 编号按磺基糖酵解酶命名填写；未核到可引用的数据库记录号。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-fructose",
+          "smiles": "C([C@@H]([C@H]([C@@H](C(=O)CO)O)O)S(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-sulfo-D-fructose-1-phosphate",
+          "smiles": "C([C@@H]([C@H]([C@@H](C(=O)COP(=O)(O)O)O)O)S(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "ATP-dependent phosphorylation",
+      "enzyme": {
+        "name": "6-sulfo-D-fructose kinase",
+        "ec_number": "2.7.1.106",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Bacteroides thetaiotaomicron",
+        "strain": "VPI-5482",
+        "ncbi_taxid": 226186,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "ATP/ADP 列为辅因子但未填 SMILES；酶基因名未确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-fructose-1-phosphate",
+          "smiles": "C([C@@H]([C@H]([C@@H](C(=O)COP(=O)(O)O)O)O)S(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycerone phosphate",
+          "smiles": "O=P(O)(O)OCC(=O)CO",
+          "role": "main"
+        },
+        {
+          "name": "3-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "retro-aldol cleavage",
+      "enzyme": {
+        "name": "6-sulfo-D-fructose-1-phosphate aldolase",
+        "ec_number": "4.1.2.55",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Bacteroides thetaiotaomicron",
+        "strain": "VPI-5482",
+        "ncbi_taxid": 226186,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "3-sulfolactaldehyde 的立体构型未在 SMILES 中指定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "3-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-dihydroxypropane-1-sulfonate",
+          "smiles": "OCC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "reduction",
+      "enzyme": {
+        "name": "3-sulfolactaldehyde reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bacteroides thetaiotaomicron",
+        "strain": "VPI-5482",
+        "ncbi_taxid": 226186,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "该还原步的首选酶 EC 编号、基因名及电子供体未确定；因此未把 NADH/NADPH 列为必需辅因子。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Bacteroides thetaiotaomicron",
+      "strain": "VPI-5482",
+      "ncbi_taxid": 226186,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温；人肠道来源共生菌，常规培养温度约 37°C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格厌氧（obligate anaerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "29148"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧发酵型代谢",
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用 sulfoquinovose（6-磺基奎诺糖）以及多种植物/宿主来源碳水化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "以多糖利用位点（PUL）介导的复杂植物多糖和宿主聚糖降解能力著称，并包含含磺基糖底物利用",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "磺基奎诺糖异构化、磺基果糖磷酸化及磺基果糖-1-磷酸醛缩裂解等磺基糖酵解活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆菌，可呈多形性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性；diderm 细胞包膜，具外膜",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_004663.1",
+            "genome_size_bp": 6260361,
+            "gc_percent": 42.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要为人/动物肠道共生环境；据本地字段判断更偏向肠道优势共生，而非广适环境菌",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "glycerone phosphate"
+    ],
+    "explanation": "醛缩步产生的 glycerone phosphate（dihydroxyacetone phosphate）是糖酵解/糖异生的中心三碳糖磷酸；另一产物 2,3-dihydroxypropane-1-sulfonate 为有机磺酸盐，不在本主链内继续进入中心碳代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway name: sulfoquinovose degradation VI",
+      "claim_scope": [
+        "chosen route name",
+        "main reaction sequence",
+        "sulfosugar intermediates",
+        "route-organism association"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Bacteroides thetaiotaomicron VPI-5482 sulfoquinovose utilization with formation of 2,3-dihydroxypropane-1-sulfonate; bibliographic record not supplied",
+      "claim_scope": [
+        "3-sulfolactaldehyde reduction",
+        "2,3-dihydroxypropane-1-sulfonate formation",
+        "route-organism association"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "226186",
+      "locator": "Bacteroides thetaiotaomicron VPI-5482",
+      "claim_scope": [
+        "organism identity",
+        "ncbi_taxid",
+        "habitat context"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "29148",
+      "locator": "Bacteroides thetaiotaomicron VPI-5482",
+      "claim_scope": [
+        "culture collection accession",
+        "growth temperature context",
+        "anaerobic culture context"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_004663.1",
+      "locator": "Bacteroides thetaiotaomicron VPI-5482 complete genome",
+      "claim_scope": [
+        "genome accession",
+        "genome size",
+        "GC percent"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "General phenotypic description of Bacteroides thetaiotaomicron VPI-5482; no primary excerpt supplied",
+      "claim_scope": [
+        "oxygen tolerance",
+        "respiration mode",
+        "motility",
+        "cell morphology",
+        "Gram cell envelope",
+        "sporulation",
+        "broad polysaccharide degradation capacity"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；本回答不改选路线，route_scope.oxygen_condition 保持 null。",
+    "MetaCyc 证据仅能以路线名作为 locator，未提供可核验 record_id；因此步骤反应与 EC 5.3.1.34、2.7.1.106、4.1.2.55 的置信度设为 medium。",
+    "第4步还原生成 2,3-dihydroxypropane-1-sulfonate 的首选还原酶 EC/基因及电子供体不确定，enzyme.ec_number 填 null，且未列入 NADH/NADPH。",
+    "ATP 与 ADP 在第2步列为辅因子，但为避免复杂核苷酸 SMILES 误写，smiles 填 null。"
+  ]
+}

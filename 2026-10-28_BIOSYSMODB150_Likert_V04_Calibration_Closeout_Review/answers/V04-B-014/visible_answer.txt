@@ -1,0 +1,354 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_020",
+  "pollutant_name_zh": "甲苯",
+  "pollutant_name_en": "Toluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Toluene degradation to benzoate",
+    "is_single_continuous_route": true,
+    "notes": "按题面仅取甲苯甲基侧链氧化至苯甲酸盐的好氧主链；不纳入环羟化/甲酚分支，也不把苯甲酸盐之后的下游裂解途径计入评分主链。"
+  },
+  "route_summary": "主链为经典 TOL 上段途径：甲苯经 xylene monooxygenase（XylMA）氧化甲基生成苯甲醇，苯甲醇经 aryl-alcohol/benzyl alcohol dehydrogenase（XylB）生成苯甲醛，苯甲醛再经 benzaldehyde dehydrogenase（XylC）生成苯甲酸盐。代表菌为携带 TOL 质粒 pWW0 的 Pseudomonas putida mt-2。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Toluene",
+          "smiles": "Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Benzyl alcohol",
+          "smiles": "OCc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "methyl side-chain monooxygenation",
+      "enzyme": {
+        "name": "xylene monooxygenase (XylMA)",
+        "ec_number": "1.14.15.28",
+        "gene_or_protein": "xylM/xylA",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "XylMA 为双组分单加氧酶；EC 按复合酶条目填写。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Benzyl alcohol",
+          "smiles": "OCc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Benzaldehyde",
+          "smiles": "O=Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD+-dependent aromatic alcohol oxidation",
+      "enzyme": {
+        "name": "aryl-alcohol dehydrogenase / benzyl alcohol dehydrogenase (XylB)",
+        "ec_number": "1.1.1.90",
+        "gene_or_protein": "xylB",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "Benzaldehyde",
+          "smiles": "O=Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Benzoate",
+          "smiles": "O=C([O-])c1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD+-dependent aldehyde oxidation to carboxylate",
+      "enzyme": {
+        "name": "benzaldehyde dehydrogenase (NAD+) (XylC)",
+        "ec_number": "1.2.1.28",
+        "gene_or_protein": "xylC",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温；甲苯降解与培养常采用约30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧/专性好氧，呼吸型代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "33015"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲苯为碳源进行好氧降解",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "TOL质粒介导的芳香烃降解：甲苯经苯甲醇、苯甲醛氧化为苯甲酸盐",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "xylene monooxygenase–benzyl alcohol dehydrogenase–benzaldehyde dehydrogenase（XylMABC）上段酶活",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性；极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状/短杆菌细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative（革兰氏阴性，具外膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢/内生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "环境广适的荧光假单胞菌成员；常见于土壤、根际、水体及芳香烃污染场地，而非单一专一生境",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG PATHWAY",
+      "record_id": "map00623",
+      "locator": "Toluene degradation; methyl side-chain oxidation branch to benzoate",
+      "claim_scope": [
+        "route_scope",
+        "reaction_order",
+        "substrate_product"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG ENZYME",
+      "record_id": "1.1.1.90",
+      "locator": "aryl-alcohol dehydrogenase; TOL upper pathway xylB",
+      "claim_scope": [
+        "enzyme",
+        "reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG ENZYME",
+      "record_id": "1.2.1.28",
+      "locator": "benzaldehyde dehydrogenase (NAD+); TOL upper pathway xylC",
+      "claim_scope": [
+        "enzyme",
+        "reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG ENZYME",
+      "record_id": "1.14.15.28",
+      "locator": "xylene monooxygenase; TOL upper pathway xylMA",
+      "claim_scope": [
+        "enzyme",
+        "reaction"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "GenBank",
+      "record_id": "AJ344068",
+      "locator": "Pseudomonas putida plasmid pWW0 complete sequence; xyl upper-pathway genes",
+      "claim_scope": [
+        "organism-pathway association",
+        "gene_or_protein",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "F1_oxygen_tolerance",
+        "F6_respiration_electron_acceptor",
+        "F10_motility",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation",
+        "F15_habitat_generalism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "33015",
+      "locator": "Pseudomonas putida mt-2",
+      "claim_scope": [
+        "F5_culture_collection",
+        "F2_temperature"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "第一步 XylMA 为双组分单加氧酶；本答案按数据库复合酶条目给 EC 1.14.15.28，若按电子供体或组分拆分，个别数据库表述可能不同。",
+    "Pseudomonas putida mt-2 的染色体级基因组 accession 未填写；pWW0 为质粒，未计入 F14_genome_basic。",
+    "盐度、pH 范围与精确温度极限无可靠菌株级来源，按规则置 null。"
+  ]
+}

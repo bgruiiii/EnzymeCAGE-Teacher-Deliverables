@@ -1,0 +1,330 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_007",
+  "pollutant_name_zh": "1,3-二氯-2-丙醇",
+  "pollutant_name_en": "1,3-Dichloro-2-propanol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "1,3-Dichloro-2-propanol pathway",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "1,3-二氯-2-丙醇经 HheC 脱卤生成环氧氯丙烷，再经 EchA 水解生成 3-氯-1,2-丙二醇，再由 HheC 脱卤生成缩水甘油，最后经 EchA 水解生成甘油。该主链在好氧条件下由 Agrobacterium radiobacter AD1 完成。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "1,3-Dichloro-2-propanol",
+          "smiles": "ClCC(O)CCl",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Epichlorohydrin",
+          "smiles": "ClCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "Hydrogen chloride",
+          "smiles": "Cl",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehalogenation",
+      "enzyme": {
+        "name": "Haloalcohol dehalogenase HheC",
+        "ec_number": "4.5.1.1",
+        "gene_or_protein": "HheC",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Agrobacterium radiobacter",
+        "strain": "AD1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Epichlorohydrin",
+          "smiles": "ClCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Chloro-1,2-propanediol",
+          "smiles": "OCC(O)CCl",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "epoxide hydrolysis",
+      "enzyme": {
+        "name": "Epoxide hydrolase EchA",
+        "ec_number": "3.3.2.10",
+        "gene_or_protein": "EchA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Agrobacterium radiobacter",
+        "strain": "AD1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "3-Chloro-1,2-propanediol",
+          "smiles": "OCC(O)CCl",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Glycidol",
+          "smiles": "OCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "Hydrogen chloride",
+          "smiles": "Cl",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehalogenation",
+      "enzyme": {
+        "name": "Haloalcohol dehalogenase HheC",
+        "ec_number": "4.5.1.1",
+        "gene_or_protein": "HheC",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Agrobacterium radiobacter",
+        "strain": "AD1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "Glycidol",
+          "smiles": "OCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Glycerol",
+          "smiles": "OCC(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "epoxide hydrolysis",
+      "enzyme": {
+        "name": "Epoxide hydrolase EchA",
+        "ec_number": "3.3.2.10",
+        "gene_or_protein": "EchA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Agrobacterium radiobacter",
+        "strain": "AD1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Agrobacterium radiobacter",
+      "strain": "AD1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes epichlorohydrin and 1,3-dichloro-2-propanol as carbon and energy sources",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades epichlorohydrin and 1,3-dichloro-2-propanol via haloalcohol dehalogenase and epoxide hydrolase",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "haloalcohol dehalogenase (HheC) and epoxide hydrolase (EchA)",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "soil and rhizosphere",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Glycerol"],
+    "explanation": "甘油是 1,3-二氯-2-丙醇降解主链的末端产物，可进入中心代谢（如甘油激酶途径）。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "1,3-DCP degradation steps",
+        "enzymes HheC and EchA",
+        "Agrobacterium radiobacter AD1 pathway"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "traits of Agrobacterium radiobacter AD1"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "酶 EC 编号和菌株性状基于一般文献知识；未核对原始文献中菌株 AD1 的完整表型。"
+  ]
+}

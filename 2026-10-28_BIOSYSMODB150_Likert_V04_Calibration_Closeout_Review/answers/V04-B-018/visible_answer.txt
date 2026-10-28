@@ -1,0 +1,333 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_021",
+  "pollutant_name_zh": "甲苯",
+  "pollutant_name_en": "Toluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Toluene degradation to 2-hydroxypentadienoate (via toluene-cis-diol)",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "甲苯在好氧条件下经甲苯双加氧酶氧化为顺式甲苯二氢二醇，再经脱氢生成3-甲基邻苯二酚，随后通过间位开环和水解生成2-羟基五-2,4-二烯酸酯。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Toluene",
+          "smiles": "Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis-Toluene dihydrodiol",
+          "smiles": "CC1=CC=CC(O)C1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dioxygenation",
+      "enzyme": {
+        "name": "toluene dioxygenase",
+        "ec_number": "1.14.12.11",
+        "gene_or_protein": "TodC1C2BA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "cis-Toluene dihydrodiol",
+          "smiles": "CC1=CC=CC(O)C1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Methylcatechol",
+          "smiles": "Cc1cccc(O)c1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "cis-toluene dihydrodiol dehydrogenase",
+        "ec_number": "1.3.1.19",
+        "gene_or_protein": "TodD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "3-Methylcatechol",
+          "smiles": "Cc1cccc(O)c1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "meta-cleavage",
+      "enzyme": {
+        "name": "3-methylcatechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "TodE",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Acetate",
+          "smiles": "CC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxohepta-2,4-dienoate hydrolase",
+        "ec_number": "3.7.1.11",
+        "gene_or_protein": "TodF",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 351746,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（mesophilic）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性需氧（obligate aerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用甲苯、苯、乙苯等芳香烃作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解甲苯、苯、乙苯、氯苯等多种芳香族污染物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有甲苯双加氧酶、顺式甲苯二氢二醇脱氢酶、儿茶酚2,3-双加氧酶等活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_009512.1",
+            "genome_size_bp": 5959964,
+            "gc_percent": 61.9
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "常见于土壤、水体和植物根际，能适应多种环境并降解芳香烃",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["2-Hydroxypenta-2,4-dienoate"],
+    "explanation": "2-羟基五-2,4-二烯酸酯进入间位裂解途径下游，进一步转化为乙酰辅酶A和丙酮酸等中心代谢中间体。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "toluene degradation via toluene-cis-diol to 2-hydroxypentadienoate",
+        "enzymes TodC1C2BA, TodD, TodE, TodF",
+        "Pseudomonas putida F1 as representative organism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida F1 physiological and genomic traits"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI",
+      "record_id": "NC_009512.1",
+      "locator": null,
+      "claim_scope": [
+        "genome accession, size, GC content of Pseudomonas putida F1"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

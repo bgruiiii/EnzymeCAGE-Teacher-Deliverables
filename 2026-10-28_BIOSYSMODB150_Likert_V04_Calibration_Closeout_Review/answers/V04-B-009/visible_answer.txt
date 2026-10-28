@@ -1,0 +1,420 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_006",
+  "pollutant_name_zh": "1,2-二氯乙烷",
+  "pollutant_name_en": "1,2-Dichloroethane",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "1,2-Dichloroethane degradation pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线作答：好氧条件下1,2-二氯乙烷的经典水解脱卤主链（EAWAG-BBD/KEGG所载的Xanthobacter autotrophicus GJ10型路线）。好氧条件下文献还存在以单加氧酶直接氧化起始的替代路线，已列入alternative_branches，不作为本次评分主链。"
+  },
+  "route_summary": "好氧主链：1,2-二氯乙烷经卤代烷脱卤酶DhlA水解脱卤生成2-氯乙醇（脱去一分子HCl）；2-氯乙醇经醇脱氢酶氧化为氯乙醛；氯乙醛经醛脱氢酶氧化为氯乙酸；氯乙酸经卤代酸脱卤酶DhlB水解脱氯生成乙醇酸；乙醇酸再氧化为乙醛酸并进入中心碳代谢。整条路线以Xanthobacter autotrophicus GJ10为典型代表菌。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "1,2-Dichloroethane",
+          "smiles": "ClCCCl",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Chloroethanol",
+          "smiles": "OCCCl",
+          "role": "main"
+        },
+        {
+          "name": "Hydrogen chloride",
+          "smiles": "Cl",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解型脱卤（亲核取代，脱氯化氢）",
+      "enzyme": {
+        "name": "Haloalkane dehalogenase DhlA",
+        "ec_number": "3.8.1.5",
+        "gene_or_protein": "dhlA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Xanthobacter autotrophicus",
+        "strain": "GJ10",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-Chloroethanol",
+          "smiles": "OCCCl",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Chloroacetaldehyde",
+          "smiles": "O=CCCl",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醇氧化脱氢（生成醛）",
+      "enzyme": {
+        "name": "Alcohol dehydrogenase",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Xanthobacter autotrophicus",
+        "strain": "GJ10",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "GJ10中催化该步的醇脱氢酶在数据库路线图中以通用EC 1.1.1.1标注，具体基因/蛋白身份不确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Chloroacetaldehyde",
+          "smiles": "O=CCCl",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Chloroacetate",
+          "smiles": "O=C(O)CCl",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛氧化（生成羧酸）",
+      "enzyme": {
+        "name": "Aldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Xanthobacter autotrophicus",
+        "strain": "GJ10",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "醛脱氢酶的具体基因未明确，EC编号依据数据库路线图的通用标注。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "Chloroacetate",
+          "smiles": "O=C(O)CCl",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Glycolate",
+          "smiles": "O=C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "Hydrogen chloride",
+          "smiles": "Cl",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解型脱卤（脱氯生成羟基酸）",
+      "enzyme": {
+        "name": "Haloacid dehalogenase DhlB (2-haloacid dehalogenase)",
+        "ec_number": "3.8.1.2",
+        "gene_or_protein": "dhlB",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Xanthobacter autotrophicus",
+        "strain": "GJ10",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "DhlB兼具卤代乙酸脱卤活性，部分数据库将该反应标注为EC 3.8.1.3（haloacetate dehalogenase），此处按DhlB常用归类填EC 3.8.1.2。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "Glycolate",
+          "smiles": "O=C(O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Glyoxylate",
+          "smiles": "O=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "羟基酸氧化（生成乙醛酸，进入中心代谢）",
+      "enzyme": {
+        "name": "Glycolate oxidase",
+        "ec_number": "1.1.3.15",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Xanthobacter autotrophicus",
+        "strain": "GJ10",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该步属通用中心碳代谢，细菌中亦可能由乙醇酸脱氢酶（EC 1.1.99.14）催化；在GJ10中的具体酶未确证。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Xanthobacter autotrophicus",
+      "strain": "GJ10",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（嗜常温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic，以氧气为末端电子受体进行生长并好氧降解1,2-二氯乙烷）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "43050"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以1,2-二氯乙烷等卤代脂肪族化合物为碳源与能源进行异养生长；该属亦报道可利用甲醇、甲酸盐等一碳化合物及H2/CO2进行自养生长",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种卤代脂肪族化合物，包括1,2-二氯乙烷、卤代醇、卤代乙醛与卤代乙酸盐等",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有卤代烷脱卤酶（DhlA，EC 3.8.1.5）与卤代酸脱卤酶（DhlB，EC 3.8.1.2）活性，分别催化1,2-二氯乙烷与氯乙酸的水解脱卤",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（鞭毛运动）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细菌，可呈多形性（膨大或丝状细胞），产生黄色类胡萝卜素色素",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自受氯代脂肪烃污染的土壤环境，适应土壤/淡水生境，能在含氯代溶剂污染的环境中定殖并作为专性降解者发挥功能",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Glyoxylate"],
+    "explanation": "主链末端产物乙醛酸（glyoxylate）可进入乙醛酸循环或经甘油酸途径进入三羧酸循环等中心碳代谢，从而实现1,2-二氯乙烷碳骨架的完全矿化。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "Oxidative (monooxygenase) route of aerobic 1,2-dichloroethane degradation",
+      "summary": "好氧条件下部分菌（如某些Mycobacterium、Pseudomonas等）以可溶性单加氧酶直接氧化1,2-二氯乙烷起始降解，不经DhlA水解脱卤步骤；该路线不属于本题被评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD / UM-BBD (Biocatalysis/Biodegradation Database)",
+      "record_id": "1,2-Dichloroethane Pathway Map (aerobic)",
+      "locator": "https://eawag-bbd.ethz.ch/dca/dca_map.html",
+      "claim_scope": ["主链反应序列", "各步酶与反应类型", "代表微生物Xanthobacter autotrophicus GJ10"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG PATHWAY",
+      "record_id": "map00625",
+      "locator": "https://www.kegg.jp/pathway/map00625",
+      "claim_scope": ["Chloroalkane and chloroalkene degradation中1,2-二氯乙烷降解反应及通用EC编号"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Janssen DB, Scheper A, Dijkhuizen L, Witholt B. Degradation of halogenated aliphatic compounds by Xanthobacter autotrophicus GJ10. Applied and Environmental Microbiology. 1985;49(3):673-677.",
+      "claim_scope": ["Xanthobacter autotrophicus GJ10好氧降解1,2-二氯乙烷", "菌株来源与利用卤代脂肪烃的能力"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "van der Ploeg J, van Hall G, Janssen DB. Characterization of the haloacid dehalogenase from Xanthobacter autotrophicus GJ10 and sequencing of the dhlB gene. Journal of Bacteriology. 1991;173(24):7925-7933.",
+      "claim_scope": ["DhlB卤代酸脱卤酶催化氯乙酸脱卤", "dhlB基因与酶学特征"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Xanthobacter autotrophicus GJ10一般生理与形态性状（无直接来源，按内部知识填写）"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "ATCC 43050",
+      "locator": "https://www.atcc.org/products/43050",
+      "claim_scope": ["Xanthobacter autotrophicus GJ10的菌种保藏编号"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "S2（2-氯乙醇→氯乙醛）与S3（氯乙醛→氯乙酸）所用脱氢酶在GJ10中的具体基因/蛋白身份未确证，EC编号采用数据库路线图的通用标注（1.1.1.1与1.2.1.3）。",
+    "S5（乙醇酸→乙醛酸）在细菌中可能由乙醇酸脱氢酶（EC 1.1.99.14）而非乙醇酸氧化酶（EC 1.1.3.15）催化，且该步与GJ10的对应关系置信度低。",
+    "Xanthobacter autotrophicus GJ10的NCBI TaxID与基因组组装信息未能可靠确认，相关字段按规则填null。",
+    "盐度、部分生理数值（温度、pH范围、运动性细节）缺乏直接来源，按内部知识以低置信度填写或留null。"
+  ]
+}

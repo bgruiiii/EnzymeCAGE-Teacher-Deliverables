@@ -1,0 +1,312 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_016",
+  "pollutant_name_zh": "对伞花烃",
+  "pollutant_name_en": "p-CYMENE",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "p-Cymene degradation to p-cumate",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "好氧条件下，p-cymene 经 p-cymene monooxygenase 羟化甲基生成 p-cumic alcohol，再经 p-cumic alcohol dehydrogenase 氧化为 p-cumaldehyde，最后由 p-cumaldehyde dehydrogenase 氧化为 p-cumate。代表菌为 Pseudomonas putida F1。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "p-cymene",
+          "smiles": "CC1=CC=C(C=C1)C(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "p-cumic alcohol",
+          "smiles": "CC(C)c1ccc(CO)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation (methyl hydroxylation)",
+      "enzyme": {
+        "name": "p-cymene monooxygenase",
+        "ec_number": "1.14.13.157",
+        "gene_or_protein": "CymA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "p-cumic alcohol",
+          "smiles": "CC(C)c1ccc(CO)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "p-cumaldehyde",
+          "smiles": "CC(C)c1ccc(C=O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation (alcohol to aldehyde)",
+      "enzyme": {
+        "name": "p-cumic alcohol dehydrogenase",
+        "ec_number": "1.1.1.90",
+        "gene_or_protein": "CymB",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "p-cumaldehyde",
+          "smiles": "CC(C)c1ccc(C=O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "p-cumate",
+          "smiles": "CC(C)c1ccc(cc1)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation (aldehyde to carboxylic acid)",
+      "enzyme": {
+        "name": "p-cumaldehyde dehydrogenase",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": "CymC",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 351746,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（mesophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic (obligate aerobe)",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "p-cymene, toluene, and other aromatic hydrocarbons",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades toluene, p-cymene, and related aromatic hydrocarbons",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "p-cymene monooxygenase, alcohol dehydrogenase, aldehyde dehydrogenase",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile by polar flagella",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_009512.1",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "widely distributed in soil, water, and rhizosphere; metabolically versatile",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["p-cymene is converted to p-cumic alcohol by p-cymene monooxygenase", "Pseudomonas putida F1 carries out this step"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["p-cumic alcohol is converted to p-cumaldehyde by p-cumic alcohol dehydrogenase", "Pseudomonas putida F1 carries out this step"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["p-cumaldehyde is converted to p-cumate by p-cumaldehyde dehydrogenase", "Pseudomonas putida F1 carries out this step"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida F1 general traits: aerobic, mesophilic, Gram-negative, motile rod, non-sporulating, degrades aromatic hydrocarbons"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida F1 genome accession NC_009512.1"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

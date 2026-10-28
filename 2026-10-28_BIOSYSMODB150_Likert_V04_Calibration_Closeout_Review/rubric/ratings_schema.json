@@ -1,0 +1,235 @@
+{
+  "ai_boundary": "AI（导航会话）不得填写或建议任何judgment字段；转录仅限人明确口述值且经确认（见导航提示词合同）",
+  "build_date": "2026-10-26",
+  "cross_record_contract": "FIELD_PROJECTION_CONTRACT_R2.md（包内根目录）：评审MD与评分TSV重复判断字段的投影与归一化规则；矛盾列出两边值并拒绝，工具不选边、不自动改分",
+  "fields": {
+    "D1..D6": {
+      "note": "七维各一列（D1,D2,D3a,D3b,D4,D5,D6）；1–10整数。score_status=SCORED→填实际分；=MISSING→分数列填1（R1规则，非留空）；=NE/NA→分数列留空并填对应依据字段",
+      "prefilled": false,
+      "type": "integer_1_to_10_or_empty"
+    },
+    "best_content": {
+      "prefilled": false,
+      "type": "string"
+    },
+    "case_id": {
+      "prefilled": true,
+      "type": "string"
+    },
+    "completed_utc": {
+      "note": "运行时UTC仅入工作/冻结记录，不进包构建",
+      "prefilled": false,
+      "type": "string"
+    },
+    "confidence": {
+      "prefilled": false,
+      "type": "enum",
+      "values": [
+        "高",
+        "中",
+        "低"
+      ]
+    },
+    "coverage_enzyme": {
+      "prefilled": false,
+      "same_as": "coverage_pathway",
+      "type": "enum"
+    },
+    "coverage_microorganism": {
+      "prefilled": false,
+      "same_as": "coverage_pathway",
+      "type": "enum"
+    },
+    "coverage_pathway": {
+      "prefilled": false,
+      "type": "enum",
+      "values": [
+        "已给出",
+        "部分给出",
+        "明确未知",
+        "未提供",
+        "任务不要求"
+      ]
+    },
+    "coverage_source": {
+      "prefilled": false,
+      "type": "enum",
+      "values": [
+        "已给出",
+        "部分给出",
+        "未提供"
+      ]
+    },
+    "coverage_traits": {
+      "note": "格式：要求15项、实际填写x项、明确未知y项、遗漏z项",
+      "prefilled": false,
+      "type": "string"
+    },
+    "coverage_uncertainty": {
+      "prefilled": false,
+      "type": "enum",
+      "values": [
+        "已给出",
+        "部分给出",
+        "未提供"
+      ]
+    },
+    "d5_aggregate_summary": {
+      "note": "人类文字总结：决定维度分的关键组、覆盖与cap理由；不由工具按最坏状态代生成",
+      "prefilled": false,
+      "type": "string"
+    },
+    "d5_claim_group_registry_ref": {
+      "note": "指向case_reviews第5节D5组登记表",
+      "prefilled": false,
+      "type": "string"
+    },
+    "d5_severity": {
+      "note": "仅适用于已核实错引；无已核实错引填NOT_APPLICABLE_NO_VERIFIED_MIS_CITATION；顺序仅限错引严重度",
+      "prefilled": false,
+      "type": "enum",
+      "values": [
+        "NOT_APPLICABLE_NO_VERIFIED_MIS_CITATION",
+        "NA",
+        "LOCAL",
+        "CRITICAL",
+        "SYSTEMIC"
+      ]
+    },
+    "d5_source_status_set": {
+      "note": "六状态按claim group集合登记，分号分隔逐组：group:status[:basis_ref]；不压单一总标签、无全序",
+      "prefilled": false,
+      "type": "string"
+    },
+    "d5_verification_basis": {
+      "prefilled": false,
+      "type": "string"
+    },
+    "engineering_class": {
+      "prefilled": true,
+      "type": "enum",
+      "values": [
+        "USABLE",
+        "INVALID_JSON",
+        "LENGTH_EMPTY"
+      ]
+    },
+    "evidence_snapshot_sha": {
+      "note": "=evidence/MANIFEST.json的SHA256",
+      "prefilled": true,
+      "type": "sha256"
+    },
+    "fact_verification_register_ref": {
+      "note": "指向case_reviews/<item_id>.md第3节声称-事实对照表；三态逐精确声称：SUPPORTED/CONTRADICTED/UNRESOLVED；程序事实卡只提供事实，判定由人登记",
+      "prefilled": false,
+      "type": "string"
+    },
+    "gold_slice_manifest_sha": {
+      "prefilled": true,
+      "type": "sha256"
+    },
+    "human_attestation": {
+      "note": "本人确认独立填写、AI未报分未代填",
+      "prefilled": false,
+      "type": "string"
+    },
+    "item_id": {
+      "prefilled": true,
+      "type": "string"
+    },
+    "key_error_dims": {
+      "note": "分号分隔维度列表；每维须在case_reviews写明原文位置、核验条目、支持范围、为何主要结论失效",
+      "prefilled": false,
+      "type": "string"
+    },
+    "key_error_verified": {
+      "note": "Y必须附冻结证据定位；维度分>4与该维KE=Y不允许并存",
+      "prefilled": false,
+      "type": "enum",
+      "values": [
+        "Y",
+        "N",
+        ""
+      ]
+    },
+    "machine_readable": {
+      "prefilled": true,
+      "type": "bool_string"
+    },
+    "na_basis": {
+      "prefilled": false,
+      "type": "string"
+    },
+    "ne_basis": {
+      "prefilled": false,
+      "type": "string"
+    },
+    "ne_unverified": {
+      "note": "与ne_basis成对",
+      "prefilled": false,
+      "type": "string"
+    },
+    "rater_id": {
+      "note": "槽位标识（RATER_A/RATER_B），署名由attestation完成",
+      "prefilled": true,
+      "type": "string"
+    },
+    "revision_priority": {
+      "prefilled": false,
+      "type": "string"
+    },
+    "root_error_event_ids": {
+      "note": "同根错误跨维度关联ID（如RE-01），各维独立写依据",
+      "prefilled": false,
+      "type": "string"
+    },
+    "rubric_sha": {
+      "prefilled": true,
+      "type": "sha256"
+    },
+    "scientific_subscore": {
+      "note": "=(25×D2+10×D3a+10×D3b+15×D4)/60",
+      "prefilled": false,
+      "type": "number_or_NOT_COMPARABLE"
+    },
+    "score_status_D*": {
+      "note": "按R1规则：MISSING=模块完全缺失，分数记1；NE=暂不能评价，分数留空且ne_unverified/ne_basis成对必填（final）；NA=任务事先不要求，na_basis必填（final）；SCORED=正常评分",
+      "prefilled": false,
+      "type": "enum",
+      "values": [
+        "SCORED",
+        "MISSING",
+        "NE",
+        "NA"
+      ]
+    },
+    "weighted_total": {
+      "note": "=15×D1/10+25×D2/10+10×D3a/10+10×D3b/10+15×D4/10+15×D5/10+10×D6/10；任一维NE/NA→填NOT_COMPARABLE，不重归一；LENGTH_EMPTY空答案按MISSING规则各缺失维记1分时总分=10（仅当全部必需模块缺失且无科学KE推断）",
+      "prefilled": false,
+      "type": "number_or_NOT_COMPARABLE"
+    }
+  },
+  "freeze_confirmation_contract": "每item须有ITEM_SHOWN_FULLY（先于首次确认）与SAVE_CONFIRMED；两者必须由tools/record_confirmation.py --i-confirm在本人明确确认后生成（不得手写）：工具在SAVE_CONFIRMED前先运行--partial一致性校验（含双记录交叉比对），content_sha=SHA256(评分行+\\x00+评审文件字节)绑定已通过校验的当前内容；修改后须重新确认；无content_sha的旧格式事件、摘要与当前内容不符、修改晚于最近确认均被冻结器拒绝",
+  "rubric_binding": "LIKERT_v0_4_CANDIDATE_R2 评分者净化展示版 RATER_CLEAN_R1（权重15/25/10/10/15/15/10；公式与阈值见量表第五节；规范性正文与协调端完整版一致）",
+  "schema_id": "M4_R2_RATINGS_SCHEMA_v3",
+  "schema_revision": "M4_R2：新增双记录交叉一致性、gold逐文件实SHA核验、冻结参照清单与确认工具协议条款（均为非科学数据合同；七维度/权重/公式/档位/阈值/合成锚点与用户科学决定不变）",
+  "validation_rules": [
+    "所有分数为1–10整数；score_status=SCORED须有分数，MISSING分数=1，NE/NA分数留空",
+    "final模式七维score_status全部明确非空",
+    "key_error_verified=Y时key_error_dims非空且所列维度分≤4；final必须明确Y或N",
+    "任一维NE/NA时weighted_total与scientific_subscore=NOT_COMPARABLE（非空、不重归一）",
+    "全维有分数时weighted_total/scientific_subscore为有限数（NaN/Inf拒绝）且与公式重算一致（±0.01）",
+    "d5_severity∈{LOCAL,CRITICAL,SYSTEMIC}时d5_source_status_set必含对应VERIFIED_MIS_CITATION_*状态且严重度=集合中最高档；无错引时=NOT_APPLICABLE_NO_VERIFIED_MIS_CITATION",
+    "d5_source_status_set逐条解析为CG01–CG20:六状态枚举（子串匹配不算）",
+    "CRITICAL/SYSTEMIC必须在评审文件第5节填写cap决定与主要结论失效依据；LOCAL不自动cap",
+    "fact/registry引用必须指向本item的work/case_reviews/<item_id>.md且相应表格已实质填写（空白/HTML注释/仅标题不算）",
+    "evidence_snapshot_sha与包内evidence/MANIFEST.json实测SHA一致；证据树逐文件与evidence/SHA256SUMS一致",
+    "coverage枚举合法；coverage_traits符合'要求15项、实际填写x项、明确未知y项、遗漏z项'且x+y+z=15",
+    "LENGTH_EMPTY最终记录：全维MISSING=1、总分10、KE=N（不推断科学关键错误）；INVALID_JSON按可辨认内容正常评分",
+    "SYSTEMIC无默认档区间；不设1–3默认",
+    "双记录交叉一致性（R2）：case_review第2/4/5/6/7节与ratings_initial.tsv按FIELD_PROJECTION_CONTRACT_R2逐项比对——七维status/分数（NE/NA零值表示等价集见合同§1）、覆盖登记、traits计数三元组、D5组集合/严重度/总结、KE维度集合、同根事件ID、把握度；矛盾拒绝final与冻结，由本人纠正两边并重新确认",
+    "gold内容逐文件核验（R2）：GOLD_SLICE_MANIFEST.files所列9文件（8张case表+crosswalk）以其中sha256字段（非source_sha256）逐一核对实际字节；缺失/变化/危险路径拒绝；不得重写manifest使误改合法",
+    "冻结参照清单（R2）：FROZEN_REFERENCE_MANIFEST.json（其SHA由PACKAGE_MANIFEST.frozen_reference_manifest_sha256绑定）逐文件核验并做范围完整性检查，覆盖items/rubric/gold/schemas/templates/tools/case_reviews与入口文档；work/、logs/、H1_FREEZE_*是运行时记录，不是冻结输入，列入清单即拒绝",
+    "确认事件协议（R2）：ITEM_SHOWN_FULLY与SAVE_CONFIRMED只能由record_confirmation.py生成（含content_sha与recorded_via字段）；导航AI与直接人工编辑入口使用同一命令协议"
+  ]
+}

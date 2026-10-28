@@ -1,0 +1,406 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_146",
+  "pollutant_name_zh": "6-磺酸基-β-D-奎诺糖",
+  "pollutant_name_en": "6-sulfo-beta-D-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation VI",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "6-sulfo-beta-D-quinovose 经 sulfoquinovose degradation VI 途径被 Bacteroides thetaiotaomicron VPI-5482 降解：首先氧化为 6-sulfo-D-gluconolactone，水解为 6-sulfo-D-gluconate，脱水生成 2-dehydro-3-deoxy-6-sulfo-D-gluconate，醛缩裂解为 pyruvate 和 3-sulfolactaldehyde，后者氧化为 3-sulfolactate，最后脱磺酸生成 pyruvate 和 sulfite。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-sulfo-beta-D-quinovose",
+          "smiles": "O[C@@H]1O[C@H](CS(=O)(=O)O)[C@@H](O)[C@H](O)[C@H]1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-sulfo-D-gluconolactone",
+          "smiles": "O=C1O[C@H](CS(=O)(=O)O)[C@@H](O)[C@H](O)[C@H]1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "sulfoquinovose dehydrogenase",
+        "ec_number": "1.1.1.375",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bacteroides thetaiotaomicron",
+        "strain": "VPI-5482",
+        "ncbi_taxid": 226186,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-gluconolactone",
+          "smiles": "O=C1O[C@H](CS(=O)(=O)O)[C@@H](O)[C@H](O)[C@H]1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-sulfo-D-gluconate",
+          "smiles": "OC(=O)C(O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "6-sulfo-D-gluconolactonase",
+        "ec_number": "3.1.1.17",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bacteroides thetaiotaomicron",
+        "strain": "VPI-5482",
+        "ncbi_taxid": 226186,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-gluconate",
+          "smiles": "OC(=O)C(O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-6-sulfo-D-gluconate",
+          "smiles": "OC(=O)C(=O)CC(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydration",
+      "enzyme": {
+        "name": "6-sulfo-D-gluconate dehydratase",
+        "ec_number": "4.2.1.155",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bacteroides thetaiotaomicron",
+        "strain": "VPI-5482",
+        "ncbi_taxid": 226186,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-6-sulfo-D-gluconate",
+          "smiles": "OC(=O)C(=O)CC(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "3-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxy-6-sulfo-D-gluconate aldolase",
+        "ec_number": "4.1.2.58",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bacteroides thetaiotaomicron",
+        "strain": "VPI-5482",
+        "ncbi_taxid": 226186,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "3-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-sulfolactate",
+          "smiles": "OC(=O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "3-sulfolactaldehyde dehydrogenase",
+        "ec_number": "1.2.1.83",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bacteroides thetaiotaomicron",
+        "strain": "VPI-5482",
+        "ncbi_taxid": 226186,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "3-sulfolactate",
+          "smiles": "OC(=O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "sulfite",
+          "smiles": "[O-]S([O-])=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "desulfonation",
+      "enzyme": {
+        "name": "3-sulfolactate sulfolyase",
+        "ec_number": "4.4.1.23",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bacteroides thetaiotaomicron",
+        "strain": "VPI-5482",
+        "ncbi_taxid": 226186,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Bacteroides thetaiotaomicron",
+      "strain": "VPI-5482",
+      "ncbi_taxid": 226186,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "obligate anaerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "29148"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "fermentation",
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "sulfoquinovose",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades sulfoquinovose",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "sulfoquinovose dehydrogenase",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "non-motile",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_004663.1",
+            "genome_size_bp": 6260361,
+            "gc_percent": 42.9
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "human gut commensal, specialized to mammalian gastrointestinal tract",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "最终生成丙酮酸进入中心代谢，亚硫酸盐作为副产物释放。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["organism_traits"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["pathway_steps"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

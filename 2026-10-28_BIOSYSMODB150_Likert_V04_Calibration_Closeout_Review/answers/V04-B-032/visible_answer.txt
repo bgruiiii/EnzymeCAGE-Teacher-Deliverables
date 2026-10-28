@@ -1,0 +1,625 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_029",
+  "pollutant_name_zh": "环己醇",
+  "pollutant_name_en": "Cyclohexanol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "cyclohexanol degradation",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "环己醇经环己醇脱氢酶氧化为环己酮，再经环己酮单加氧酶进行Baeyer-Villiger氧化生成ε-己内酯，随后水解、氧化生成己二酸，进而通过β-氧化途径转化为琥珀酰辅酶A和乙酰辅酶A进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Cyclohexanol",
+          "smiles": "OC1CCCCC1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Cyclohexanone",
+          "smiles": "O=C1CCCCC1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Cyclohexanol dehydrogenase",
+        "ec_number": "1.1.1.245",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Cyclohexanone",
+          "smiles": "O=C1CCCCC1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "ε-Caprolactone",
+          "smiles": "O=C1CCCCCO1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Baeyer-Villiger oxidation",
+      "enzyme": {
+        "name": "Cyclohexanone monooxygenase",
+        "ec_number": "1.14.13.22",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "ε-Caprolactone",
+          "smiles": "O=C1CCCCCO1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-Hydroxyhexanoic acid",
+          "smiles": "OCCCCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "6-Hexanolactone lactonohydrolase",
+        "ec_number": "3.1.1.25",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "6-Hydroxyhexanoic acid",
+          "smiles": "OCCCCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-Oxohexanoic acid",
+          "smiles": "O=CCCCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "6-Hydroxyhexanoate dehydrogenase",
+        "ec_number": "1.1.1.258",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "6-Oxohexanoic acid",
+          "smiles": "O=CCCCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Adipic acid",
+          "smiles": "O=C(O)CCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "6-Oxohexanoate dehydrogenase",
+        "ec_number": "1.2.1.63",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "Adipic acid",
+          "smiles": "O=C(O)CCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Adipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "CoA activation",
+      "enzyme": {
+        "name": "Adipate-CoA ligase",
+        "ec_number": "6.2.1.14",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_007"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_007",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "Adipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-Dehydroadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Adipyl-CoA dehydrogenase",
+        "ec_number": "1.3.8.7",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_008"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_008",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "2,3-Dehydroadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Hydroxyadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "Enoyl-CoA hydratase",
+        "ec_number": "4.2.1.17",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_009",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S9",
+      "order": 9,
+      "branch_id": null,
+      "predecessor_step_ids": ["S8"],
+      "substrates": [
+        {
+          "name": "3-Hydroxyadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "3-Hydroxyadipyl-CoA dehydrogenase",
+        "ec_number": "1.1.1.259",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_010"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_010",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S10",
+      "order": 10,
+      "branch_id": null,
+      "predecessor_step_ids": ["S9"],
+      "substrates": [
+        {
+          "name": "3-Oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Succinyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolysis",
+      "enzyme": {
+        "name": "β-Ketoadipyl-CoA thiolase",
+        "ec_number": "2.3.1.16",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_011"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_011",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter calcoaceticus",
+      "strain": "NCIMB 9871",
+      "ncbi_taxid": 471,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "obligate aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "NCIMB",
+            "accession": "9871"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "cyclohexanol, adipate",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades cyclohexanol to adipate and central metabolites",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "cyclohexanone monooxygenase",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "non-motile",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "coccobacilli",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "soil and water, widely distributed",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Succinyl-CoA", "Acetyl-CoA"],
+    "explanation": "这两个产物进入三羧酸循环。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Acinetobacter calcoaceticus NCIMB 9871 general microbiology",
+      "claim_scope": ["organism_profile"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "cyclohexanol dehydrogenase reaction",
+      "claim_scope": ["reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "cyclohexanone monooxygenase reaction",
+      "claim_scope": ["reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "6-hexanolactone lactonohydrolase reaction",
+      "claim_scope": ["reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "6-hydroxyhexanoate dehydrogenase reaction",
+      "claim_scope": ["reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "6-oxohexanoate dehydrogenase reaction",
+      "claim_scope": ["reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "adipate-CoA ligase reaction",
+      "claim_scope": ["reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "adipyl-CoA dehydrogenase reaction",
+      "claim_scope": ["reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "enoyl-CoA hydratase reaction",
+      "claim_scope": ["reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_010",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "3-hydroxyadipyl-CoA dehydrogenase reaction",
+      "claim_scope": ["reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_011",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "β-ketoadipyl-CoA thiolase reaction",
+      "claim_scope": ["reaction"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}
