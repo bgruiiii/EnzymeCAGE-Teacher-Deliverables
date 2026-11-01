@@ -1,6 +1,19 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 老师当前优先审阅入口 — 2026-10-28
+## 老师当前优先审阅入口 — 2026-11-02
+
+- [四模型双批与Likert v0.4全量阶段交付](2026-11-02_BIOSYSMODB150_Likert_V04_Full_Scoring/)
+- [给黄老师的汇总报告](2026-11-02_BIOSYSMODB150_Likert_V04_Full_Scoring/TEACHER_REPORT.md)
+- [任务书逐项交付对照](2026-11-02_BIOSYSMODB150_Likert_V04_Full_Scoring/TEACHER_REQUIREMENT_DELIVERY_MATRIX.tsv)
+- [Excel总表](2026-11-02_BIOSYSMODB150_Likert_V04_Full_Scoring/LIKERT_V04_TEACHER_TABLES_20261102.xlsx)
+- [整体下载](2026-11-02_BIOSYSMODB150_Likert_V04_Full_Scoring/archives/LIKERT_V04_FULL_SCORING_TEACHER_20261102.tar.gz)
+
+A批四模型各固定121题，B批共同120题及共同非恢复100题视图分开；480份AI辅助Likert与3360维数据已交，原475份不变，最后5份同模型技术澄清救援分列版本。
+人类效度验证进行中，B001科学保留仍OPEN；不将阶段主表完成冒称人类外部效度研究全部完成。数据、统计、图、方法、成本/重试历史及SHA齐全；原通信raw、密钥、原盲映射、真实评价者声明与完整gold不公开。
+
+以下内容是2026-10-28及更早的历史时点，不代表当前授权或执行状态。
+
+## 历史审阅入口 — 2026-10-28
 
 - [v0.4完整校准收尾审阅包](2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/)
 - [给老师的详细反馈](2026-10-28_BIOSYSMODB150_Likert_V04_Calibration_Closeout_Review/TEACHER_REPORT.md)

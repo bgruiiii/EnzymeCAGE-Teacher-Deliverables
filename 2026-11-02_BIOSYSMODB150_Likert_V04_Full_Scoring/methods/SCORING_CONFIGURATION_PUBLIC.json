@@ -1,0 +1,104 @@
+{
+  "original_config_sha256": "31a12cc6d845379f090cc833bb0c7b6f881dde6ab30377a31e930b01a0a9841b",
+  "rescue_config_sha256": "9c4d9a190381302ef868ab2e32d2e256297b6dc63b7c4b3dd5c182fef6e86c10",
+  "scoring_ai": {
+    "provider": "aliyun_bailian_dashscope_openai_compatible",
+    "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+    "endpoint_evidence": "ACCOUNT_MODEL_CATALOG_CHECK.json (2026-10-31 authenticated GET /models HTTP200 on THIS legacy compatible-mode domain, sha 0b1fd314716523502dd8a88c97d4aea5f73a661c3e358597d2f44ee2d007255a) + 24_ collector 484 real calls same gateway; region cn-beijing matches the price basis",
+    "exact_model_id": "deepseek-v4.1-flash-1017",
+    "model_id_verification": "teacher requirement relayed by user 2026-10-31 (00 decision doc); exact ID listed in account catalog (184 models); public official API page mentions exact ID; NOT the undated deepseek-v4.1-flash, NOT pro-0813, NOT 0731",
+    "revision_snapshot": "-1017 is the dated snapshot ID; no deeper server-side revision lock → every response model compared, drift = FAILED_MODEL_DRIFT + stop run",
+    "server_snapshot_lockable": false,
+    "status": "CONFIRMED_BY_USER_20261031"
+  },
+  "model_parameters": {
+    "temperature": {
+      "value": 0,
+      "status": "FROZEN_ENGINEERING_UNDER_USER_AUTH_20261031",
+      "basis": "scoring-plan parity (draft froze 0) + real historical precedent: 24_ models.collection_v2.json used temperature 0 for actual calls through this same gateway; official range [0,2) legal; official advisory '不建议取值为0，无意义' DISCLOSED — kept for determinism parity, not score-based tuning"
+    },
+    "top_p": {
+      "value": "OMIT",
+      "basis": "temperature=0 frozen; explicit OMIT (contract §7.2)"
+    },
+    "enable_thinking": {
+      "value": true,
+      "status": "FROZEN_ENGINEERING_UNDER_USER_AUTH_20261031",
+      "basis": "official deepseek-api page (preserved sha 6848359b945a9d5f4f8b5848ff9acb3431f237fb014e32dc7dad8605c4f74e27): 1017 supports thinking; enable_thinking documented for DeepSeek models; service default NOT published for exact ID → explicit true (draft plan parity); thinking billed once inside completion"
+    },
+    "reasoning_effort": {
+      "value": "OMIT",
+      "basis": "not a DeepSeek parameter on this page; never inherited from Pro"
+    },
+    "thinking_budget": {
+      "value": "OMIT",
+      "basis": "official default table shows '-' for 1017 = no default and NOT settable; never inherited from Pro"
+    },
+    "response_format": {
+      "value": {
+        "type": "json_object"
+      },
+      "status": "FROZEN_ENGINEERING_UNDER_USER_AUTH_20261031",
+      "basis": "official: 1017 supports JSON Object, does NOT support JSON Schema; full schema text embedded verbatim in the frozen system prompt"
+    },
+    "max_tokens": {
+      "value": 65536,
+      "status": "FROZEN_ENGINEERING_UNDER_USER_AUTH_20261031",
+      "basis": "official: deepseek-v4 series max_tokens shares a 393,216 max-output bound → 65536 legal; equals the audited cost-model output budget; caps worst-case spend per call"
+    },
+    "max_input_tokens_bound": {
+      "value": 400000,
+      "status": "MEASURED_FINAL_PRODUCTION_max295902",
+      "basis": "final 480 PRODUCTION bodies max approx 295,902 heuristic tokens (ASSEMBLY_RESULTS.json; R1_2_1 TEST-mode max was 295,800); oversize refused, never truncated"
+    },
+    "stream": {
+      "value": true,
+      "basis": "wire_protocol frozen (SSE, byte-faithful receiver)"
+    },
+    "stream_options": {
+      "value": {
+        "include_usage": true
+      }
+    },
+    "enable_search": {
+      "value": false,
+      "basis": "rubric §四.6/P74 frozen evidence snapshot; official: 1017 supports web search → explicit false is valid and required"
+    },
+    "context_window_tokens": {
+      "value": "NOT_PUBLISHED_FOR_EXACT_ID_CONSOLE_ONLY",
+      "basis": "official page defers context length to the console; NO exact-ID number inherited from Pro's 1M; declared UNKNOWN — provider context errors (if any) surface as technical failures, never silent truncation"
+    },
+    "full_question_answer_fits": "system prompt 98,005B (rubric+schema verbatim) + question + answer max 35,578B + gold slice + scope rows + v2 evidence; measured mean 112,476 / max 295,800 approx input tokens; bound 400,000"
+  },
+  "price_basis": {
+    "source": "official model-pricing page 2026-10-31 (preserved raw sha 073a864226226fcef969a64f2d5a35fb67b7018b9335fb0e2d017bf9bd5ff00d)",
+    "region": "cn-beijing",
+    "evidence_date": "2026-10-31 (verified this round; drift rule below still applies)",
+    "input_busy_cny_per_1M": 2.0,
+    "input_idle_cny_per_1M": 1.0,
+    "output_busy_cny_per_1M": 8.0,
+    "output_idle_cny_per_1M": 4.0,
+    "busy_window": "北京时间08:00-22:00（闲时22:00-08:00）",
+    "reasoning_billing": "思维链按输出Token计费，含于completion只计一次（官方页）",
+    "cached_input": "隐式缓存官方支持但折扣不预扣；预留一律按忙时全价保守计",
+    "drift_rule": "任一单价漂移=暂停重新批准；出账以provider实际usage为准（usage-first结算已实装）"
+  },
+  "global_caps": {
+    "CNY": 2700,
+    "transmissions": 960
+  },
+  "rescue": {
+    "targets": 5,
+    "actual_calls": 6,
+    "concurrency": 2,
+    "finite_grant_limit": 50,
+    "finite_stage_cost_limit_CNY": 50,
+    "actual_new_usage_cost_CNY": 3.1287379999999985,
+    "actual_cumulative_calls": 805,
+    "actual_cumulative_usage_cost_CNY": 427.39548600000023,
+    "same_scientific_prompt_schema_evidence": true,
+    "old_scores_not_sent": true,
+    "source_template_sha256": "54fa7368917133b3eaccb22d23f137226b19d9974f716a3fde6121279974cf0f"
+  },
+  "review_status": "Execution self-check, not a separate-window independent re-audit"
+}

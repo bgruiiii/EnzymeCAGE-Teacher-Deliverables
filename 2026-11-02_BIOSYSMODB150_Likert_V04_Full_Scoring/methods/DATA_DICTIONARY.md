@@ -1,0 +1,9 @@
+# 数据字典
+
+batch必须分A原生/B补齐。b_slot_uid仅逻辑槽，case_id为配对统计单位，tested_model_config_id/model_config_id为被测配置；scoring_model是评分AI，两者角色不混。
+程序layer_*和science_weighted_total_100为0-100尺度，权重45/10/20/15/10；oldgold_*为A历史主值，newgold_*为新gold衍生敏感性，不混排名。recovered为TRUE/FALSE字符串，不作truthy判断。
+Likert score为1-10整数；score_status=SCORED/MISSING/NE/NA；MISSING=1，NE/NA空数值不作0。weighted_total_program为七维加权复算，weighted_total_model为原模型声明；total_correction_applied保留纠算。key_error=Y/N/UNRESOLVED，科学未核与来源状态不混。rating_version分475原版/5技术澄清救援，不声称同一prompt。human_validity=PENDING。
+3360维表包含所有维度理由、定位、证据支持范围及局部未核字段。SCIENTIFIC_REVIEW_QUEUE是实质待核理由/validator flags，不等同技术失败队列；480技术有效不等于所有科学事实已核实。
+逐调用成本是确认价2/8元每百万input/output tokens（reasoning已含completion，不双计）；未知cost为空且留reserve_cny，不填0，不冒充供应商账单核销。slot_cumulative_call_index从历史首次累计，不因新版本清零。
+公共JSON的anonymous_item_id重新分配9001-9480，仅为公开派生标识，不提供原盲编号映射。source_rating_sha256绑定本地原评分内容；公共派生件不是原始wire。
+统计n、median、q1/q3为有效数值分布；CI为case级bootstrap均值区间，KE Wilson另列；NOT_ESTIMABLE不是无差异。旧G3证据标签/性状completeness不等于官方事实核验/整链完整率。

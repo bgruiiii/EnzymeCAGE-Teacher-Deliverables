@@ -1,0 +1,145 @@
+{
+ "analysis_domains": {
+  "likert_480": "F4/F6 domain; 480 rows / 3360 dimension records coverage table; per-dimension valid n and NE/NA/failed reported; not part of F1",
+  "program_A_native": {
+   "denominator": "fixed 121 per configuration (484 main-config slots)",
+   "derived_sensitivity_gold": "G1_gold_identity_corrected_20261026",
+   "glm_low_reference": "A_GLM_LOW_REFERENCE_AXES_121.tsv, REFERENCE_ONLY_NOT_ONE_OF_MAIN_4, never ranked with the main four",
+   "historical_primary_gold": "G1_gold_historical",
+   "no_default_paid_likert_rescore": true,
+   "rule": "old-gold historical values and new-gold derived sensitivity stay in separate columns; the two gold versions must never be mixed into one ranking",
+   "table": "batchA_native_single_shot_FINAL_AXES.tsv"
+  },
+  "program_B_primary": {
+   "denominator": "fixed common 120 cases per model (480 slots)",
+   "gold": "G1_gold_identity_corrected_20261026",
+   "gold_manifest_sha256": "30257bde8f76f0afbafcbb84c9b0bd58ae1fcd19e73f0c7b5ee01f3a947f9d58",
+   "table": "batchB_recovery_inclusive_PROGRAM_480.tsv",
+   "unit_of_inference": "case (paired/clustered); the four answers of one case and multiple layers are NOT independent samples"
+  }
+ },
+ "authority": [
+  "MASTER_CONTRACT_LIKERT_V04_FULL_SCORING_AND_HUMAN_ANCHORS_20261029.md section 6.6 and section 11.1 (sha256 73dfc012d902f9223cb887fdaaedca22d55860c968572a6d7d65351e203f5844)",
+  "LOCAL_AI_LIKERT_V04_F1_OFFLINE_PROGRAM_TABLES_EXECUTOR_ONLY_20261029.md (sha256 55cb80fb5625e44257b23442aedb94998cf9c4cd696f09aee910f14d9e7a275d)"
+ ],
+ "bootstrap_spec": {
+  "B": 2000,
+  "library": "numpy (present: 2.2.6) via np.random.default_rng(20261029)",
+  "record": "number of undefined replicates (e.g., zero-variance kappa) recorded, not silently dropped",
+  "resample": "case_ids with replacement within the analysis domain; statistic = mean paired difference; CI = percentile 2.5/97.5"
+ },
+ "clustering_and_missing_data": {
+  "cluster_unit": "case_id",
+  "missing": "numeric missingness compared only on the actual paired set; sample selection and coverage differences reported",
+  "rule": "four answers of the same case and seven Likert dimensions of one answer are never treated as independent samples"
+ },
+ "dependency_gap": {
+  "impact_on_F1_deliverables": "none: F1 delivers descriptives only; p-values are computed at F6",
+  "install_plan_pending_user_authorization": "python3 -m pip install 'scipy>=1.11' (NETWORK=0 during F1; installation is a user-authorized step, not performed offline)",
+  "missing": [
+   "scipy",
+   "statsmodels"
+  ]
+ },
+ "dependency_status_at_F1_freeze": {
+  "numpy": "2.2.6",
+  "pandas": "MISSING",
+  "python": "3.10.12",
+  "rdkit": "2026.03.5 (verified at scoring runs)",
+  "scipy": "MISSING",
+  "statsmodels": "MISSING"
+ },
+ "families": {
+  "A_batch_program": {
+   "denominator": "fixed 121",
+   "family": "6 pairwise on old-gold historical weighted_total (primary), Holm",
+   "mechanics": "same as M family with equivalence threshold 100/121 = 0.8264",
+   "new_gold_view": "descriptive sensitivity only; separate columns; no mixed-gold ranking",
+   "when": "only if ranking/significance claims are made on batch A"
+  },
+  "H_human_anchor_external_validity": {
+   "additional": [
+    "exact agreement",
+    "within-1 agreement",
+    "MAE",
+    "signed mean difference",
+    "valid n per dimension"
+   ],
+   "ci": "case-level bootstrap B=2000 seed=20261029, resampling within the original sampling strata; undefined replicate count recorded",
+   "kappa": "linear weighted Cohen's kappa, weights 1-|i-j|/9, fixed integer categories 1..10",
+   "missing": "excluded per pairwise-complete with n reported per dimension; zero-variance kappa = UNDEFINED (never 0)",
+   "pairs": [
+    "H1_vs_H2",
+    "AI_vs_H1",
+    "AI_vs_H2"
+   ],
+   "primary_values": "original independent human scores first; third-person adjudicated values only as subsequent reference",
+   "threshold_rule": "no kappa pass threshold is invented; teacher has not set one",
+   "weighting": "in-sample descriptives AND sampling-probability-weighted whole-frame estimates reported separately if extrapolation is attempted; the stratified 72-answer mean is not passed off as the 480 population accuracy",
+   "when": "F5/F6 after real human scores return; frozen now"
+  },
+  "L_layer_pairwise_B_secondary": {
+   "ci": "same bootstrap spec as M family",
+   "comparisons": "6 pairs x 5 layers = 30 tests, own Holm family, labelled SECONDARY",
+   "endpoints": "5 science layers separately"
+  },
+  "M_model_pairwise_B_primary": {
+   "ci": "case-level bootstrap, B=2000, seed=20261029, resample cases with replacement, percentile 2.5/97.5",
+   "comparisons": "6 pairwise model comparisons, case-level paired differences",
+   "endpoint": "science_weighted_total_100 (new gold, common 120)",
+   "equivalence_wording_rule": "|delta mean| < 100/N (N=120 -> 0.8333) is less than one full-mark question equivalent; report as INDISTINGUISHABLE, not as equality",
+   "multiplicity": "Holm over the 6 tests if significance is claimed, alpha=0.05"
+  },
+  "R_recovery_sensitivity": {
+   "causality_rule": "recovery was selective, not randomized; no causal claim that recovery raised scores",
+   "data": "B480 new-gold program scores split by recovered flag (20 recovered vs 460 non-recovered)",
+   "dual_view_rule": "both the recovery-inclusive 120-case view and the common all-four-native 100-case subset view are delivered whether or not tests are significant; if a signal exists the main conclusion highlights the common non-recovered subset per teacher 2026-10-15",
+   "eligibility": "run only when both group n >= 2; otherwise NOT_ESTIMABLE (never reported as 'no difference')",
+   "mandatory_descriptives": "n, mean, median, min, q1, q3, max per group per model regardless of test eligibility (delivered in RECOVERY_SENSITIVITY.tsv)",
+   "multiplicity": "Holm step-down over the estimable tests of this family, alpha=0.05",
+   "planned_tests": "4 models x 6 endpoints (5 science layers + science_weighted_total_100) = 24 planned tests, one family",
+   "preregistered_eligibility_from_F1_data": {
+    "ZHIPU_GLM53_MAX_128K_JSON_OBJECT_CORRECTED": {
+     "estimable": true,
+     "non_recovered_n": 104,
+     "recovered_n": 16
+    },
+    "deepseek-v4.1-flash": {
+     "estimable": false,
+     "non_recovered_n": 119,
+     "recovered_n": 1
+    },
+    "estimable_tests": 12,
+    "kimi/kimi-k3": {
+     "estimable": true,
+     "non_recovered_n": 118,
+     "recovered_n": 2
+    },
+    "not_estimable_tests": 12,
+    "qwen3.8-max": {
+     "estimable": false,
+     "non_recovered_n": 119,
+     "recovered_n": 1
+    }
+   },
+   "test": "two-sided Mann-Whitney U"
+  },
+  "hit_rates": {
+   "interval": "95% Wilson score interval for proportions"
+  }
+ },
+ "frozen_utc": "2026-10-29T05:40:03Z",
+ "network_and_api": {
+  "MODEL_API_ATTEMPTS": 0,
+  "NETWORK_ATTEMPTS": 0
+ },
+ "plan_id": "F1_STATISTICAL_PLAN_20261029",
+ "principle": "Methods are pre-registered here before any Likert or human-anchor result exists; F6 must not select tests, families or endpoints after seeing results; unplanned comparisons must be flagged EXPLORATORY.",
+ "status": "FROZEN_BY_F1_PENDING_INDEPENDENT_REVIEW",
+ "task_id": "F1",
+ "test_library_requirements": {
+  "mannwhitneyu": "scipy.stats.mannwhitneyu (two-sided, exact or asymptotic per scipy default with ties handling documented at F6)",
+  "policy": "use existing mature libraries; if a dependency is still missing at F6, report the version and installation plan and wait for user-authorized network; do NOT hand-roll unverified test implementations (contract 11.1)",
+  "wilson": "statsmodels.stats.proportion.proportion_confint(method='wilson') or scipy-based equivalent"
+ }
+}
