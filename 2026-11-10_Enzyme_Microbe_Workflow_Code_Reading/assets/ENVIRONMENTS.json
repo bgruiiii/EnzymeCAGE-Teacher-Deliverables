@@ -1,0 +1,64 @@
+{
+  "recorded_for": "PATH_ENZYME_MICROBE_CODE_REVIEW_20261110 (names/versions only; no env dumps, no private pip URLs)",
+  "run_environments": {
+    "enzymecage_py312": {
+      "python": "3.12.3",
+      "torch": "2.7.1+cu126",
+      "used_by": "all five scorer/evaluator lanes"
+    },
+    "esm_extraction_py312": {
+      "python": "3.12.3",
+      "torch": "2.7.1+cu126",
+      "used_by": "ESM-C600M feature extraction lanes"
+    },
+    "enzgfm650m_official_20260920": {
+      "python": "3.10.14",
+      "torch": "2.1.2+cu118",
+      "used_by": "EnzGFM encoder extraction only (never the scorer)"
+    }
+  },
+  "environment_paths": "/usrdata/EnzymeCAGE_envs/<name> — ENVIRONMENT DIRECTORIES EXCLUDED from payload",
+  "key_third_party_packages": [
+    {
+      "name": "rdkit",
+      "version": "unknown (as installed in envs)",
+      "role": "fingerprints/canonicalization/conformers"
+    },
+    {
+      "name": "torch / torch_geometric",
+      "version": "torch pinned per ENVIRONMENT_ENCODER_IDENTITY.json; PyG version unrecorded",
+      "role": "model forward + Dataset/DataLoader"
+    },
+    {
+      "name": "drfp",
+      "version": "unknown",
+      "role": "reaction fingerprints (feature/main.py via Pool)"
+    },
+    {
+      "name": "fair-esm (esm2) / esmc SDK (EvolutionaryScale hub path)",
+      "version": "unrecorded",
+      "role": "PLM encoders (extraction only)"
+    },
+    {
+      "name": "hydra-core, omegaconf",
+      "version": "unrecorded",
+      "role": "upstream config system"
+    },
+    {
+      "name": "langgraph, pydantic, httpx",
+      "version": "unrecorded (crew pyproject not exported this card)",
+      "role": "t6 orchestration host chain"
+    },
+    {
+      "name": "pandas, pyarrow",
+      "version": "unknown",
+      "role": "pools/knowledge base reads"
+    },
+    {
+      "name": "mlcrate",
+      "version": "unknown",
+      "role": "legacy GVP-paper preprocessing (superseded)"
+    }
+  ],
+  "notes": "Historical names/versions, not a reproducible lockfile. Not installed or activated by this assembly."
+}

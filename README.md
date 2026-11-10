@@ -1,5 +1,15 @@
 # EnzymeCAGE Teacher Deliverables
 
+## 酶／微生物线代码阅读入口 — 2026-11-10
+
+- [完整说明与代码导航](2026-11-10_Enzyme_Microbe_Workflow_Code_Reading/README.md)
+- [给定路径→酶排序→宿主与性状的实际流程](2026-11-10_Enzyme_Microbe_Workflow_Code_Reading/docs/WORKFLOW.md)
+- [五模型与训练说明](2026-11-10_Enzyme_Microbe_Workflow_Code_Reading/docs/MODELS_AND_TRAINING.md)
+- [晨羽数据库、模型权重及特征资产位置](2026-11-10_Enzyme_Microbe_Workflow_Code_Reading/docs/ASSETS_ON_CHENYU.md)
+- [完整下载ZIP](archives/EnzymeCAGE-Enzyme-Microbe-Workflow_20261110.zip) · [SHA256](archives/EnzymeCAGE-Enzyme-Microbe-Workflow_20261110.zip.sha256)
+
+供协作者及其AI从上到下理解我方酶排序／微生物工作；关键源码、输入输出、版本和未接通边界已整理，数据库／权重／张量只留位置与身份，不含真实Gold或凭据。五模型均保留，3B与新版EnzGFM仅为当前建议比较候选，未定最终选型。代码阅读快照不是整链可部署产品；原许可与共享代码权利不因上传改变。
+
 ## 老师当前优先审阅入口 — 2026-11-02
 
 - [四模型双批与Likert v0.4全量阶段交付](2026-11-02_BIOSYSMODB150_Likert_V04_Full_Scoring/)

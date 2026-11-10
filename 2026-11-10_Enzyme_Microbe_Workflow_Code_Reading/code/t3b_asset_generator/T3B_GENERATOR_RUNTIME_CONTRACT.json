@@ -1,0 +1,122 @@
+{
+  "contract": "T3B reaction-asset generator reusable entrypoint (recovery build v1)",
+  "authorised_by": "byte-exact reproduction of the frozen historical CPU AAM plus a complete DBP AAM/reaction-centre asset set; NOT by package-version similarity",
+  "created_utc": "2026-09-11T11:01:13Z",
+  "promotion_preconditions": {
+    "stage_exists": true,
+    "genenv_exists_before_promotion": false,
+    "runtime_root_exists_before_promotion": false,
+    "runner_sha": "1f0481ce522a9e69310645c09a2497aa3ce09fb4c200bf2eaf8e28e0cc2b41a7",
+    "frozen_sha": "bfb293456016868ca34ae7ff3cb84c69f416b7326dc9c9c5930ae770804e8e05",
+    "devices": {
+      "stage": 48,
+      "envs": 48,
+      "stage_rt": 48,
+      "tools": 48
+    },
+    "same_filesystem": true
+  },
+  "paths": {
+    "environment_stage": "/usrdata/EnzymeCAGE_envs/.staging_enzymecage_t3b_generator_v1_20260911_dbp_recovery",
+    "environment_final": "/usrdata/EnzymeCAGE_envs/enzymecage_t3b_generator_v1_20260911",
+    "runtime_stage": "/usrdata/EnzymeCAGE_data/workspaces/dbp_t3b_env_recover_aam_center_enzymecage84_20260911/work/t3b_reaction_asset_generator_v1_stage",
+    "runtime_final": "/usrdata/EnzymeCAGE_data/tools/t3b_reaction_asset_generator_v1_20260911",
+    "runner_final": "/usrdata/EnzymeCAGE_data/tools/t3b_reaction_asset_generator_v1_20260911/run_reaction_asset_v1.py",
+    "frozen_source_final": "/usrdata/EnzymeCAGE_data/tools/t3b_reaction_asset_generator_v1_20260911/frozen_source/run_t3b.py"
+  },
+  "cli_contract": {
+    "flags": [
+      "--reaction-task-json",
+      "--output-root",
+      "--mode full|aam_center"
+    ],
+    "input_json_keys": [
+      "reaction_task_id",
+      "reaction_smiles",
+      "depth",
+      "evidence_hash",
+      "source_record_id"
+    ],
+    "output_root_must_be_fresh": true,
+    "full_mode_outputs": [
+      "staged_assets/drfp/rxn2fp.pkl",
+      "staged_assets/aam/rxn2aam.pkl",
+      "staged_assets/reacting_center/reacting_center.pkl",
+      "staged_assets/molecule_conformation/mol2id.csv",
+      "staged_assets/molecule_conformation/<ID>.sdf",
+      "STAGED_REACTION_ASSET_INDEX.csv",
+      "STAGED_REACTION_ASSET_MANIFEST.csv",
+      "FULL_ASSET_RESULT.json"
+    ],
+    "implementation": "imports the SHA-verified frozen run_t3b.py and calls generate_all_assets() and build_staged_index(); scientific logic is never rewritten; frozen main() is never invoked"
+  },
+  "runner_sha256_stage": "1f0481ce522a9e69310645c09a2497aa3ce09fb4c200bf2eaf8e28e0cc2b41a7",
+  "frozen_source_sha256": "bfb293456016868ca34ae7ff3cb84c69f416b7326dc9c9c5930ae770804e8e05",
+  "accepted_environment_identity": {
+    "python_executable": "/usrdata/EnzymeCAGE_envs/enzymecage_t3b_generator_v1_20260911/bin/python",
+    "sys_prefix_at_probe": "/usrdata/EnzymeCAGE_envs/.staging_enzymecage_t3b_generator_v1_20260911_dbp_recovery",
+    "python": "Python 3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "pip": "pip 26.1.2 from /usrdata/EnzymeCAGE_envs/.staging_enzymecage_t3b_generator_v1_20260911_dbp_recovery/lib/python3.12/site-packages/pip (python 3.12)",
+    "key_versions": {
+      "drfp": "0.3.7",
+      "rdkit": "2026.3.4",
+      "regex": "2026.9.10",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.20.3",
+      "hf-xet": "1.6.0",
+      "filelock": "3.18.0",
+      "transformers": "4.46.3",
+      "pandas": "2.3.1",
+      "PyYAML": "6.0.2",
+      "numpy": "2.3.1",
+      "torch": "2.7.1+cu126"
+    },
+    "pip_freeze_sha256": "5ddb0e574ad92a756cff4695b003aeb517e4133b71d39ed2fa43aa9276c74393",
+    "installed_this_build_only": {
+      "transformers": "4.46.3",
+      "tokenizers": "0.20.3",
+      "huggingface-hub": "0.36.2",
+      "safetensors": "0.8.0",
+      "hf-xet": "1.6.0",
+      "regex": "2026.9.10"
+    },
+    "version_relaxation_note": "historical transformers version was never recorded; 4.46.3 was chosen because it is the version already present in the unrelated esm_extraction environment and installable without touching torch/RDKit/NumPy/pandas/DRFP. Acceptance rests on behaviour, and the deviation from the historical fingerprint (torch 2.7.1+cu126 not 2.8.0+cu128; RDKit 2026.03.3 not 2024.09.6; NumPy 2.3.1 not 2.5.2; pandas 2.3.1 not 2.3.3) is recorded, not hidden."
+  },
+  "behavior_gate_evidence_hashes": {
+    "historical_gate_result_file": "/usrdata/EnzymeCAGE_data/workspaces/dbp_t3b_env_recover_aam_center_enzymecage84_20260911/evidence/HISTORICAL_AAM_REPRODUCTION.json",
+    "historical_full_asset_result_sha256": "4744695025ed9bf2995a4ef302322440fbd6e4dae3b5a60fa09791bf8a12cb14",
+    "historical_mapped_sha256_oracle": "83e9af58b24257d565e04823dce34a3e1a1b5afa47619bcb24a76f1f881f4781",
+    "historical_mapped_sha256_observed": "83e9af58b24257d565e04823dce34a3e1a1b5afa47619bcb24a76f1f881f4781",
+    "historical_gate_all_checks_pass": true,
+    "dbp_gate_result_file": "/usrdata/EnzymeCAGE_data/workspaces/dbp_t3b_env_recover_aam_center_enzymecage84_20260911/evidence/DBP_AAM_CENTER_PROBE.json",
+    "dbp_full_asset_result_sha256": "00c934fbfaf443de94c3c5245c80f89997d50b21a232597c967289e57a43cc02",
+    "dbp_mapped_reaction_sha256": "cdcdd0a58616b947fab917a42255cc7d0037a385a724d46a6d829210a03d1225",
+    "dbp_gate_all_checks_pass": true,
+    "dbp_reacting_center": {
+      "substrate": [
+        5
+      ],
+      "product": [
+        13
+      ]
+    }
+  },
+  "isolation_guarantee": {
+    "transformers_installed_into_enzymecage_py312": false,
+    "enzymecage_forward_uses_this_environment": false,
+    "forward_python_remains": "/usrdata/EnzymeCAGE_envs/enzymecage_py312/bin/python",
+    "source_environment_mutated": false
+  },
+  "separation_of_duties": {
+    "generator_env_does_only": "DRFP/RXNMapper/AAM/reaction-centre/SDF generation",
+    "forward_env_does_only": "native EnzymeCAGE asset consumption and five-seed forward"
+  },
+  "acceptance_status": "ACCEPTED_BY_HISTORICAL_AAM_EXACT_REPRODUCTION_AND_DBP_AAM_CENTER",
+  "status_if_promotion_verified": "ACCEPTED_BY_HISTORICAL_AAM_EXACT_REPRODUCTION_AND_DBP_AAM_CENTER",
+  "promoted_sha256": {
+    "runner": "1f0481ce522a9e69310645c09a2497aa3ce09fb4c200bf2eaf8e28e0cc2b41a7",
+    "frozen_source": "bfb293456016868ca34ae7ff3cb84c69f416b7326dc9c9c5930ae770804e8e05",
+    "runtime_manifest": "eb88b8ccdcbf7c981b38e80e37f317973f9942b67fa2a4b5ba77d0ac51412fb9"
+  },
+  "promotion_verified_utc": "2026-09-11T11:02:55Z"
+}
