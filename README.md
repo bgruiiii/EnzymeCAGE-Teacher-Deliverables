@@ -1,5 +1,12 @@
 # EnzymeCAGE Teacher Deliverables
 
+## 国外模型同题扩展采集与最终审计 — 2026-11-11
+
+- [给黄老师的完整报告](2026-11-11_BIOSYSMODB121_Foreign_Model_Collection_Final_Audit/TEACHER_REPORT.md)
+- [交付目录、逐题状态、重答映射与费用](2026-11-11_BIOSYSMODB121_Foreign_Model_Collection_Final_Audit/README.md)
+
+沿原121题：Grok120题完整、119题结构有效；GPT-5.6首次114题结构有效，另7题授权第二答全部通过，回收视图121题；GPT-6保留35题部分结果。仅采集与结构审计结项，不代表科学正确性或模型排名。报告和证据汇总可在线阅读，不含原始答卷、完整Gold或凭据。
+
 ## 酶／微生物线代码阅读入口 — 2026-11-10
 
 - [完整说明与代码导航](2026-11-10_Enzyme_Microbe_Workflow_Code_Reading/README.md)
