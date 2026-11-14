@@ -1,0 +1,1082 @@
+{
+  "$id": "LIKERT_V05_AI_RATING_OUTPUT_SCHEMA_CANDIDATE_R3",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "definitions": {
+    "claim_group_entry": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "claim_group": {
+          "description": "预定义表CG01–CG20组名（原样引用组ID前缀CGnn）。",
+          "pattern": "^CG[0-9]{2}",
+          "type": "string"
+        },
+        "claim_summary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "condition_met_echo": {
+          "description": "原样回显CASE_CLAIM_GROUP_SCOPE_120登记值；不得改写。BIOPATH150_013的CG04/CG10保持UNRESOLVED_NO_APPROVED_PRECEDENT，转TRUE/FALSE即违例（验证器拒绝）。",
+          "enum": [
+            "TRUE",
+            "FALSE",
+            "CLAIM_LEVEL_REGISTERED",
+            "UNRESOLVED_NO_APPROVED_PRECEDENT",
+            "NOT_APPLICABLE_UNCONDITIONAL"
+          ]
+        },
+        "criticality": {
+          "description": "原样回显scope登记的active_criticality（含UNRESOLVED_QUEUED_FOR_TEACHER_BIO_DECISION与CLAIM_CONDITIONAL文本）。",
+          "minLength": 1,
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "$ref": "#/definitions/evidence_ref"
+          },
+          "type": "array"
+        },
+        "fact_status": {
+          "description": "本组事实核验汇总三态（与来源状态分栏；E0未含相应核验时NOT_CHECKED_IN_E0并说明）。",
+          "enum": [
+            "SUPPORTED",
+            "CONTRADICTED",
+            "UNRESOLVED",
+            "NOT_CHECKED_IN_E0"
+          ]
+        },
+        "severity": {
+          "description": "本组错引严重度；含VERIFIED_MIS_CITATION_*时=最高档且与状态一致；CRITICAL/SYSTEMIC→D5 score≤4。",
+          "enum": [
+            "NOT_APPLICABLE_NO_VERIFIED_MIS_CITATION",
+            "NA",
+            "LOCAL",
+            "CRITICAL",
+            "SYSTEMIC"
+          ]
+        },
+        "source_status_set": {
+          "description": "六状态集合（可多状态并存，逐组列明；无全序）。",
+          "items": {
+            "enum": [
+              "MISSING_SOURCE",
+              "GENERIC_SOURCE",
+              "UNRESOLVED_SOURCE",
+              "VERIFIED_MIS_CITATION_LOCAL",
+              "VERIFIED_MIS_CITATION_CRITICAL",
+              "VERIFIED_MIS_CITATION_SYSTEMIC"
+            ]
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "task_condition": {
+          "description": "题面条件原文（TASK_CONDITIONAL组）；UNCONDITIONAL组可为空串。",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim_group",
+        "claim_summary",
+        "task_condition",
+        "condition_met_echo",
+        "criticality",
+        "source_status_set",
+        "fact_status",
+        "severity",
+        "basis"
+      ],
+      "type": "object"
+    },
+    "dimension": {
+      "additionalProperties": false,
+      "properties": {
+        "answer_locator": {
+          "description": "支持该评分的答案原文位置（字段路径/步骤号/引文片段）；SCORED与MISSING必填实质内容，NE/NA可为空串。",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "description": "冻结证据/gold定位引用；只允许引用请求内已提供的evidence_id/gold行/题面-答案定位，不得编造（验证器对E0清单核验）。",
+          "items": {
+            "$ref": "#/definitions/evidence_ref"
+          },
+          "type": "array"
+        },
+        "key_error": {
+          "description": "本维关键错误是否经核实。Y必须有逐维失效论证+可定位核验证据且score≤4；一个引用错误不自动连坐其他维（OBS-D3A-D5：错引归D5，不作D3a KE依据）；UNRESOLVED=疑似但冻结证据不足以核实（不cap、不计已核实KE）。",
+          "enum": [
+            "Y",
+            "N",
+            "UNRESOLVED"
+          ]
+        },
+        "key_error_argument": {
+          "additionalProperties": false,
+          "description": "key_error=Y时必填：失效论证四要素。",
+          "properties": {
+            "capped": {
+              "const": true
+            },
+            "invalidation_argument": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "support_scope": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "verification_evidence": {
+              "items": {
+                "$ref": "#/definitions/evidence_ref"
+              },
+              "minItems": 1,
+              "type": "array"
+            }
+          },
+          "required": [
+            "invalidation_argument",
+            "verification_evidence",
+            "support_scope",
+            "capped"
+          ],
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "missing_basis": {
+          "description": "score_status=MISSING时必填非空，须指明答案确实未交付的具体模块；其他状态必须为null。",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "na_basis": {
+          "description": "score_status=NA时必填非空，且NA仅限任务事先约定的不要求范围（如DECISION_016的S04–S08背景段）；其他状态必须为null。",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ne_basis": {
+          "description": "score_status=NE时必填非空（与ne_unverified成对）；score_status=SCORED时可成对填写承载\"局部未核与数值分并存\"（rubric四.4/P48，两者必须同现或同为null）；MISSING/NA状态必须为null。",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ne_unverified": {
+          "description": "score_status=NE时必填非空；SCORED时与ne_basis成对出现（局部待核子断言）；MISSING/NA必须为null。",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nine_ten_blocked_by_evidence_gate": {
+          "type": "boolean"
+        },
+        "rationale": {
+          "description": "可核查的简要判据（档位选择+档内取分理由）；不索取私有思维链。",
+          "minLength": 1,
+          "type": "string"
+        },
+        "root_error_event_ids": {
+          "description": "引用的同根事件ID（须存在于root_error_events且affected_dims含本维）。",
+          "items": {
+            "pattern": "^RE-[0-9]{2}$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "route_gate_effect": {
+          "enum": [
+            "NONE",
+            "CAP4_TASK_DEVIATION",
+            "CAP4_DIRECTION_CHEMISTRY",
+            "RANGE_BY_COVERAGE",
+            "HELD_BOUNDARY",
+            "HELD_REFERENCE_INPUT_SIDE",
+            "TARGET_CREDIT_BLOCKED_PER_STEP",
+            "CAP4_FROZEN_RECORD_CONTRADICTION"
+          ]
+        },
+        "rule_ids_cited": {
+          "items": {
+            "pattern": "^(R05-[A-Z]{2}-[0-9]{2}[a-z]?|SDT-[A-Z0-9-]+|R2-[0-9]{2}|F[0-9]{2})$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "score": {
+          "description": "1–10整数（严格整数：7.0/\"7\"/true/NaN均被验证器拒绝）；SCORED→实际分；MISSING→1；NE/NA→null。",
+          "maximum": 10,
+          "minimum": 1,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "score_status": {
+          "description": "SCORED=正常评分；MISSING=该维对应模块确未交付（分数必须=1）；NE=暂不能评价（分数必须null+ne_basis/ne_unverified成对）；NA=任务事先明确不要求（仅限预先约定范围，na_basis必填）。调用失败是runner层system_run_status，不出现在这里，也不得把调用失败写成MISSING。 R1注：MISSING=1参与加权总分（权重保留），不等于NE。",
+          "enum": [
+            "SCORED",
+            "MISSING",
+            "NE",
+            "NA"
+          ]
+        },
+        "unverified_subclaims": {
+          "description": "维度可评但含未核实子断言（rubric四.4/P48三层区分）：逐条写明为何不妨碍整维评价；未核事实不得在报告中变成确定正确/错误。",
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "claim": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "reason_unverified": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "why_dim_still_scorable": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "claim",
+              "reason_unverified",
+              "why_dim_still_scorable"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "score_status",
+        "score",
+        "rationale",
+        "answer_locator",
+        "evidence_refs",
+        "key_error",
+        "root_error_event_ids",
+        "unverified_subclaims",
+        "ne_basis",
+        "ne_unverified",
+        "na_basis",
+        "missing_basis",
+        "route_gate_effect",
+        "rule_ids_cited",
+        "nine_ten_blocked_by_evidence_gate"
+      ],
+      "type": "object"
+    },
+    "evidence_ref": {
+      "additionalProperties": false,
+      "properties": {
+        "locator": {
+          "type": "string"
+        },
+        "ref_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "ref_type": {
+          "description": "只允许引用请求内实际提供的材料；E0_EVIDENCE的ref_id必须存在于冻结证据清单（验证器核验，防伪造引用/作用范围）。",
+          "enum": [
+            "E0_EVIDENCE",
+            "GOLD_SLICE",
+            "QUESTION_TEXT",
+            "ANSWER_TEXT",
+            "SCOPE_ROW",
+            "RUBRIC_CLAUSE"
+          ]
+        },
+        "support_scope": {
+          "description": "该证据支持什么、不支持什么（rubric四.6/P72）；不得把证据自动扩展到未声称内容。",
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "ref_type",
+        "ref_id",
+        "support_scope"
+      ],
+      "type": "object"
+    }
+  },
+  "description": "F2冻结的AI评分响应schema。模型对每一份匿名题答只输出一个符合本schema的JSON对象，不输出JSON以外的任何文本。语义级规则（加权和复算、KE cap、D5集合一致性、traits计数闭合、NE/NA与总分联动、013 UNRESOLVED不转布尔等）由f2_response_validator.py执行，比本schema更严格；两者共同构成结构化输出合同（RULE_TO_VALIDATOR_MATRIX.tsv逐条映射）。本schema按UPD-01沿用M4 R2已落地的六状态+集合语义+FACT_VERIFICATION_STATUS分栏，不新增状态、不改名。rater_type恒为AI；不存在human_attestation字段，出现任何人类确认字段即违例（验证器拒绝）。 R1变更（审计F2-P1-05/P2-01）：①input_identity_echo新增evidence_case_slice_sha256（逐case证据切片内容绑定，10字段）；②SCORED维度允许成对ne_basis+ne_unverified承载局部未核（rubric四.4/P48无损映射，禁止为过schema强迫整维NE）；③MISSING=1按共享totals合同参与加权总分与科学子分（validator/canonical/投影同一算法）。 || V05_CANDIDATE_R1：新增route_alignment_echo/step_evidence_matrix/high_tier_gate_attestation/accepted_set_binding_echo/base_range_compliance；dimension新增route_gate_effect/rule_ids_cited/nine_ten_blocked_by_evidence_gate。枚举与VOCABULARY_V05.json一致。未冻结，不得用于付费调用。",
+  "properties": {
+    "accepted_set_binding_echo": {
+      "additionalProperties": false,
+      "properties": {
+        "accepted_set_sha256": {
+          "type": "string"
+        },
+        "multi_isoenzyme_policy_acknowledged": {
+          "const": "同一目标反应多个真实可接受酶均可命中；绑定不等于唯一标准答案"
+        }
+      },
+      "required": [
+        "accepted_set_sha256",
+        "multi_isoenzyme_policy_acknowledged"
+      ],
+      "type": "object"
+    },
+    "anonymous_item_id": {
+      "description": "匿名条目ID（协调侧映射，不含被测模型身份）；由请求注入，模型原样回显。",
+      "pattern": "^F4I-[0-9]{4}$",
+      "type": "string"
+    },
+    "base_range_compliance": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_ranges_sha256": {
+          "type": "string"
+        },
+        "within_range_or_review": {
+          "enum": [
+            "WITHIN_RANGE",
+            "REVIEW_REQUESTED_OUT_OF_RANGE"
+          ]
+        }
+      },
+      "required": [
+        "allowed_ranges_sha256",
+        "within_range_or_review"
+      ],
+      "type": "object"
+    },
+    "batch": {
+      "const": "batchB_recovery_inclusive"
+    },
+    "best_content": {
+      "type": "string"
+    },
+    "case_id": {
+      "description": "协调join用case_id（题面本身含case_id，不属于被测模型身份信息）。",
+      "pattern": "^BIOPATH150_[0-9]{3}$",
+      "type": "string"
+    },
+    "confidence": {
+      "description": "评分者对本次判断的把握及原因（原因写入confidence_reason）。",
+      "enum": [
+        "高",
+        "中",
+        "低"
+      ]
+    },
+    "confidence_reason": {
+      "type": "string"
+    },
+    "coverage": {
+      "additionalProperties": false,
+      "description": "评分前输出覆盖登记（rubric二）；枚举与M4 R2人类schema一致。",
+      "properties": {
+        "enzyme": {
+          "enum": [
+            "已给出",
+            "部分给出",
+            "明确未知",
+            "未提供",
+            "任务不要求"
+          ]
+        },
+        "microorganism": {
+          "enum": [
+            "已给出",
+            "部分给出",
+            "明确未知",
+            "未提供",
+            "任务不要求"
+          ]
+        },
+        "pathway": {
+          "enum": [
+            "已给出",
+            "部分给出",
+            "明确未知",
+            "未提供",
+            "任务不要求"
+          ]
+        },
+        "source": {
+          "enum": [
+            "已给出",
+            "部分给出",
+            "未提供"
+          ]
+        },
+        "traits": {
+          "enum": [
+            "已给出",
+            "部分给出",
+            "明确未知",
+            "未提供",
+            "任务不要求"
+          ]
+        },
+        "traits_counts": {
+          "additionalProperties": false,
+          "description": "任务要求15项性状（answer schema v2 F1..F15）；filled+explicit_unknown+omitted=15由验证器强制；明确未知≠遗漏≠错误。",
+          "properties": {
+            "explicit_unknown": {
+              "maximum": 15,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "filled": {
+              "maximum": 15,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "omitted": {
+              "maximum": 15,
+              "minimum": 0,
+              "type": "integer"
+            },
+            "required": {
+              "const": 15
+            }
+          },
+          "required": [
+            "required",
+            "filled",
+            "explicit_unknown",
+            "omitted"
+          ],
+          "type": "object"
+        },
+        "uncertainty": {
+          "enum": [
+            "已给出",
+            "部分给出",
+            "未提供"
+          ]
+        }
+      },
+      "required": [
+        "pathway",
+        "enzyme",
+        "microorganism",
+        "traits",
+        "source",
+        "uncertainty",
+        "traits_counts"
+      ],
+      "type": "object"
+    },
+    "d5_registry": {
+      "additionalProperties": false,
+      "description": "D5按claim group登记（rubric四.3/P41-P42）：状态集合逐组列明，不压单一总标签，六状态间不设全序；severity四档顺序仅限错引严重度。claim_groups必须覆盖本题CASE_CLAIM_GROUP_SCOPE登记的6个条件组+答案实际涉及的其他预定义组（至少CG01/CG02/CG03/CG05/CG07）。",
+      "properties": {
+        "aggregate_summary": {
+          "description": "评分者文字总结：决定维度分的关键组、状态覆盖与cap理由；不由工具按最坏状态代生成。",
+          "minLength": 1,
+          "type": "string"
+        },
+        "claim_groups": {
+          "items": {
+            "$ref": "#/definitions/claim_group_entry"
+          },
+          "minItems": 6,
+          "type": "array"
+        },
+        "severity_overall": {
+          "description": "仅适用于已核实错引；=各组错引严重度最高档（验证器核对集合一致性）；无已核实错引时=NOT_APPLICABLE_NO_VERIFIED_MIS_CITATION。",
+          "enum": [
+            "NOT_APPLICABLE_NO_VERIFIED_MIS_CITATION",
+            "NA",
+            "LOCAL",
+            "CRITICAL",
+            "SYSTEMIC"
+          ]
+        },
+        "verification_basis": {
+          "description": "核验依据：所用统一冻结证据条目及其内容；无法核验→写明UNRESOLVED原因。",
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim_groups",
+        "aggregate_summary",
+        "verification_basis",
+        "severity_overall"
+      ],
+      "type": "object"
+    },
+    "dimensions": {
+      "additionalProperties": false,
+      "description": "七维各一对象；全维必填（final语义）。",
+      "properties": {
+        "D1": {
+          "$ref": "#/definitions/dimension"
+        },
+        "D2": {
+          "$ref": "#/definitions/dimension"
+        },
+        "D3a": {
+          "$ref": "#/definitions/dimension"
+        },
+        "D3b": {
+          "$ref": "#/definitions/dimension"
+        },
+        "D4": {
+          "$ref": "#/definitions/dimension"
+        },
+        "D5": {
+          "$ref": "#/definitions/dimension"
+        },
+        "D6": {
+          "$ref": "#/definitions/dimension"
+        }
+      },
+      "required": [
+        "D1",
+        "D2",
+        "D3a",
+        "D3b",
+        "D4",
+        "D5",
+        "D6"
+      ],
+      "type": "object"
+    },
+    "fact_verification_register": {
+      "description": "事实核验三态逐精确声称登记（SUPPORTED/CONTRADICTED/UNRESOLVED）；与D5来源状态分栏，不压缩、不替代（UPD-01/OBS-POS-LOCATABLE：正向可定位支持登记在本层，不回填原交付状态）。无核verify动作时可为空数组，但UNRESOLVED子断言必须同时出现在对应维度unverified_subclaims。",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "claim": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "claim_id": {
+            "pattern": "^FV-[0-9]{2,3}$",
+            "type": "string"
+          },
+          "dim_links": {
+            "items": {
+              "enum": [
+                "D1",
+                "D2",
+                "D3a",
+                "D3b",
+                "D4",
+                "D5",
+                "D6"
+              ]
+            },
+            "type": "array"
+          },
+          "evidence_refs": {
+            "items": {
+              "$ref": "#/definitions/evidence_ref"
+            },
+            "type": "array"
+          },
+          "note": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "SUPPORTED",
+              "CONTRADICTED",
+              "UNRESOLVED"
+            ]
+          },
+          "support_scope": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "claim_id",
+          "claim",
+          "status",
+          "evidence_refs",
+          "support_scope"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "high_tier_gate_attestation": {
+      "additionalProperties": false,
+      "properties": {
+        "gate_basis": {
+          "description": "引用矩阵行与证据locator；空泛理由validator复核",
+          "type": "string"
+        },
+        "key_steps_all_confirmed_at_required_granularity": {
+          "type": "boolean"
+        },
+        "nine_ten_eligible": {
+          "type": "boolean"
+        },
+        "no_key_unresolved_or_contradicted": {
+          "type": "boolean"
+        },
+        "policy_applied": {
+          "enum": [
+            "POLICY_A_CURATION_SUFFICIENT",
+            "POLICY_B_EXPERIMENTAL_REQUIRED"
+          ]
+        }
+      },
+      "required": [
+        "policy_applied",
+        "key_steps_all_confirmed_at_required_granularity",
+        "no_key_unresolved_or_contradicted",
+        "nine_ten_eligible",
+        "gate_basis"
+      ],
+      "type": "object"
+    },
+    "input_identity_echo": {
+      "additionalProperties": false,
+      "description": "模型原样回显请求中给出的输入身份SHA；验证器逐一与请求侧登记比对，不一致=FAILED_INPUT_IDENTITY_MISMATCH（防错case/重复槽/内容漂移）。 R1:10字段（含逐case证据切片SHA）。",
+      "properties": {
+        "accepted_sets_sha256": {
+          "type": "string"
+        },
+        "answer_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "base_ranges_sha256": {
+          "type": "string"
+        },
+        "evidence_case_slice_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "evidence_snapshot_sha": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "gold_slice_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "input_manifest_sha": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "item_template_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "question_rendered_prompt_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "route_diagnosis_sha256": {
+          "type": "string"
+        },
+        "rubric_text_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "scope_rows_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "system_prompt_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "task_scope_sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "input_manifest_sha",
+        "question_rendered_prompt_sha256",
+        "answer_sha256",
+        "rubric_text_sha256",
+        "gold_slice_manifest_sha256",
+        "scope_rows_sha256",
+        "evidence_snapshot_sha",
+        "system_prompt_sha256",
+        "item_template_sha256",
+        "evidence_case_slice_sha256",
+        "task_scope_sha256",
+        "route_diagnosis_sha256",
+        "accepted_sets_sha256",
+        "base_ranges_sha256"
+      ],
+      "type": "object"
+    },
+    "most_needed_revision": {
+      "type": "string"
+    },
+    "output_format_observation": {
+      "additionalProperties": false,
+      "description": "评分前客观登记（rubric二/九）：答案是否JSON可解析、schema是否通过、工程痕迹。B480全部USABLE，此登记不改变工程类别，只服务D1分轴。",
+      "properties": {
+        "answer_json_parseable": {
+          "type": "boolean"
+        },
+        "answer_schema_pass": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "engineering_note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "answer_json_parseable",
+        "answer_schema_pass",
+        "engineering_note"
+      ],
+      "type": "object"
+    },
+    "rater_type": {
+      "const": "AI",
+      "description": "恒为AI（合同§7.3）；不得伪造human_attestation或任何人类确认字段。"
+    },
+    "review_queue": {
+      "additionalProperties": false,
+      "properties": {
+        "flag": {
+          "type": "boolean"
+        },
+        "reasons": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "flag",
+        "reasons"
+      ],
+      "type": "object"
+    },
+    "root_error_events": {
+      "description": "同根错误事件登记（rubric四.1）：一个根本错误=一个事件ID；各受影响维度引用同一ID并各自独立写依据；不重复计数。无则空数组。",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "affected_dims": {
+            "items": {
+              "enum": [
+                "D1",
+                "D2",
+                "D3a",
+                "D3b",
+                "D4",
+                "D5",
+                "D6"
+              ]
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "event_id": {
+            "pattern": "^RE-[0-9]{2}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "event_id",
+          "description",
+          "affected_dims"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "route_alignment_echo": {
+      "additionalProperties": false,
+      "description": "回显输入的路线诊断身份；评分者不得自行改判路线状态，异议走dispute",
+      "properties": {
+        "coverage_C": {
+          "type": [
+            "number",
+            "string"
+          ]
+        },
+        "dispute": {
+          "additionalProperties": false,
+          "properties": {
+            "has_dispute": {
+              "type": "boolean"
+            },
+            "reason": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "has_dispute"
+          ],
+          "type": "object"
+        },
+        "route_result_sha256": {
+          "type": "string"
+        },
+        "route_status": {
+          "enum": [
+            "CONFORMS",
+            "DEVIATES",
+            "INCOMPLETE",
+            "BOUNDARY_REVIEW",
+            "REFERENCE_HOLD"
+          ]
+        },
+        "task_conformance_status": {
+          "enum": [
+            "OK",
+            "VIOLATED"
+          ]
+        }
+      },
+      "required": [
+        "route_status",
+        "coverage_C",
+        "route_result_sha256",
+        "dispute"
+      ],
+      "type": "object"
+    },
+    "schema_id": {
+      "const": "LIKERT_V05_AI_RATING_OUTPUT_SCHEMA_CANDIDATE_R3",
+      "description": "输出合同版本标识；与本文件$id一致。schema变更=新run/version（合同§13），不得静默混用。 || V05候选R1：schema_id随版本升级，validator按const校验，防版本混用。"
+    },
+    "scientific_shortfall": {
+      "additionalProperties": false,
+      "properties": {
+        "dims": {
+          "description": "D2/D3a/D3b/D4任一SCORED且<5须列入（rubric五/P81）；验证器复核。",
+          "items": {
+            "enum": [
+              "D2",
+              "D3a",
+              "D3b",
+              "D4"
+            ]
+          },
+          "type": "array"
+        },
+        "flag": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "flag",
+        "dims"
+      ],
+      "type": "object"
+    },
+    "scientific_subscore": {
+      "description": "=(25×D2+10×D3a+10×D3b+15×D4)/60；与weighted_total同条件NOT_COMPARABLE。",
+      "oneOf": [
+        {
+          "maximum": 10,
+          "minimum": 1,
+          "type": "number"
+        },
+        {
+          "const": "NOT_COMPARABLE"
+        }
+      ]
+    },
+    "step_evidence_matrix": {
+      "description": "每必答参考步一行；行数=该案必答步数（validator G2核对）",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "credit_class": {
+            "enum": [
+              "CONFIRMED_TARGET",
+              "CANDIDATE_ONLY",
+              "PAIR_UNVERIFIED",
+              "UNRESOLVED_NONACCEPTED",
+              "CREDIT_CONTRADICTED",
+              "MISSING_ENZYME_INFO",
+              "ROUTE_BLOCKED_NONMATCH",
+              "ROUTE_BLOCKED_MISSING",
+              "ROUTE_HOLD_REPRESENTATION",
+              "ROUTE_HOLD_REFERENCE"
+            ]
+          },
+          "enzyme_name_or_null": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_entry_and_version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence_five_state": {
+            "enum": [
+              "SUPPORTED",
+              "CANDIDATE",
+              "UNRESOLVED",
+              "CONTRADICTED",
+              "MISSING"
+            ]
+          },
+          "evidence_supports_substrate_product": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "explicit_ec_or_null": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "gold_reaction_directed": {
+            "type": "string"
+          },
+          "gold_step_id": {
+            "type": "string"
+          },
+          "highest_support_granularity": {
+            "enum": [
+              "G0_NONE",
+              "G1_ECHO",
+              "G2_EXISTENCE",
+              "G3_NAME_LEVEL",
+              "G4_REFERENCE_CURATED_REACTION_FUNCTION",
+              "G5_OFFICIAL_REACTION_RECORD",
+              "G6_PROTEIN_SUBSTRATE_SPECIFICITY",
+              "G7_EXPERIMENTAL_ACTIVITY",
+              "G8_STRAIN_CAPABILITY"
+            ]
+          },
+          "mapped_ec_status": {
+            "enum": [
+              "ACCEPTED_EXACT",
+              "ACCEPTED_FAMILY_PREFIX",
+              "NONMATCH_UNRESOLVED",
+              "NOT_OBSERVED_ONLY_NULL_OK",
+              "ABSENT",
+              "DISPUTED_PENDING"
+            ]
+          },
+          "pred_step_id_or_null": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "step_conclusion_7class": {
+            "enum": [
+              "VERIFIED_FUNCTION_MATCH",
+              "VERIFIED_FUNCTION_CONTRADICTION",
+              "REFERENCE_EC_NONMATCH_UNRESOLVED",
+              "CANDIDATE_ONLY",
+              "INCOMPLETE_EC",
+              "MISSING_ENZYME",
+              "MISSING_EC",
+              "REACTION_MISSING_OR_WRONG",
+              "REFERENCE_OR_EVIDENCE_UNAVAILABLE"
+            ]
+          },
+          "structure_match_and_direction": {
+            "enum": [
+              "MATCH",
+              "NONMATCH",
+              "UNKNOWN",
+              "MISSING"
+            ]
+          },
+          "target_credit_usable": {
+            "enum": [
+              "YES",
+              "NO_ROUTE_BLOCKED",
+              "NO_EVIDENCE",
+              "HOLD_PENDING_REPRESENTATION_REVIEW"
+            ]
+          }
+        },
+        "required": [
+          "gold_step_id",
+          "gold_reaction_directed",
+          "structure_match_and_direction",
+          "evidence_five_state",
+          "step_conclusion_7class",
+          "target_credit_usable",
+          "highest_support_granularity"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "total_status": {
+      "enum": [
+        "COMPARABLE",
+        "NOT_COMPARABLE"
+      ]
+    },
+    "weighted_total": {
+      "description": "=1.5·D1+2.5·D2+D3a+D3b+1.5·D4+1.5·D5+D6（范围10–100）；任一维NE/未约定NA→NOT_COMPARABLE，不重归一。程序复算为准；模型算错→保留原输出+更正日志，不改维度分。NaN/Inf由验证器显式拒绝。 R1：SCORED与MISSING(=1)共同参与；validator/canonical/投影共用同一totals合同（f2r1_common.totals_contract）。",
+      "oneOf": [
+        {
+          "maximum": 100,
+          "minimum": 10,
+          "type": "number"
+        },
+        {
+          "const": "NOT_COMPARABLE"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_id",
+    "rater_type",
+    "anonymous_item_id",
+    "batch",
+    "case_id",
+    "input_identity_echo",
+    "output_format_observation",
+    "coverage",
+    "dimensions",
+    "d5_registry",
+    "fact_verification_register",
+    "root_error_events",
+    "confidence",
+    "weighted_total",
+    "total_status",
+    "scientific_subscore",
+    "scientific_shortfall",
+    "review_queue",
+    "best_content",
+    "most_needed_revision",
+    "route_alignment_echo",
+    "step_evidence_matrix",
+    "high_tier_gate_attestation",
+    "accepted_set_binding_echo",
+    "base_range_compliance"
+  ],
+  "title": "Likert V0.5 AI评分输出schema（候选R1，DRAFT_NOT_FROZEN；V0.4冻结schema+V05增量合并）",
+  "type": "object"
+}

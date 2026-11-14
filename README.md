@@ -1,5 +1,15 @@
 # EnzymeCAGE Teacher Deliverables
 
+## Likert V0.5实际评分代码 — 2026-11-14
+
+- [评分代码说明与阅读入口](2026-11-14_Likert_V05_Scoring_Code/README.md)
+- [实际执行顺序：程序事实→AI评分→后验验证→复算](2026-11-14_Likert_V05_Scoring_Code/docs/WORKFLOW.md)
+- [代码／函数导航](2026-11-14_Likert_V05_Scoring_Code/docs/CODE_MAP.md)
+- [本机离线验证与运行命令](2026-11-14_Likert_V05_Scoring_Code/docs/RUNNING.md)
+- [人工复核与效度边界](2026-11-14_Likert_V05_Scoring_Code/docs/HUMAN_REVIEW_AND_LIMITS.md)
+
+新增实际全量运行时、后续NE／主链范围／格式恢复源码，以及可运行的相对路径评分接口。不是只有量表文档，也不是路径侧程序命中评分器；前置程序范围和返回后校验分别在代码中定位。15项离线测试及随机目录验证通过，未新增API调用。原始题答／Gold／SSE与真实密钥不公开；人类效度尚不能称完成。本次以可浏览文件夹提交，不新增压缩包，不改变depending仓库。
+
 ## 国外模型同题扩展采集与最终审计 — 2026-11-11
 
 - [给黄老师的完整报告](2026-11-11_BIOSYSMODB121_Foreign_Model_Collection_Final_Audit/TEACHER_REPORT.md)
