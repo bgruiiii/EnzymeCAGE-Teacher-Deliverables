@@ -1,5 +1,18 @@
 # EnzymeCAGE Teacher Deliverables
 
+## Likert V0.5评分结果与V0.4→V0.5变化归因 — 2026-11-15
+
+- [给黄老师的完整报告](2026-11-15_BIOSYSMODB121_Likert_V05_Results_And_Attribution/TEACHER_REPORT.md)
+- [材料入口与要求逐项回应](2026-11-15_BIOSYSMODB121_Likert_V05_Results_And_Attribution/README.md)
+- [121题逐题在线浏览](2026-11-15_BIOSYSMODB121_Likert_V05_Results_And_Attribution/case_reviews/INDEX.md)
+- [Excel总表](2026-11-15_BIOSYSMODB121_Likert_V05_Results_And_Attribution/LIKERT_V05_TEACHER_TABLES_20261115.xlsx)
+- [3360维新旧变化及理由](2026-11-15_BIOSYSMODB121_Likert_V05_Results_And_Attribution/data/V04_V05_DIMENSION_CHANGE_3360.tsv)
+- [六模型共同118题汇总](2026-11-15_BIOSYSMODB121_Likert_V05_Results_And_Attribution/data/SIX_MODEL_COMMON118_SUMMARY.tsv)
+- [离线复算与公开边界](2026-11-15_BIOSYSMODB121_Likert_V05_Results_And_Attribution/methods/REPRODUCIBILITY.md)
+
+六模型121题共726位置，723份完整评分、已评分NE=0，六模型共同118题；原四模型B120的480份与3360维新旧对照完成。060/094参考修正单列，首答/恢复版按答案SHA对齐。剩余3个未评分位置、人类独立效度待补和题004范围复审如实保留；这些结果不是全部科学验证闭环。本次为可浏览目录，无新增压缩包；原通信、完整Gold、原答案、私有路径和密钥不公开。
+
+
 ## Likert V0.5实际评分代码 — 2026-11-14
 
 - [评分代码说明与阅读入口](2026-11-14_Likert_V05_Scoring_Code/README.md)
