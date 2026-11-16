@@ -1,0 +1,567 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_023",
+  "pollutant_name_zh": "4-羟基苯乙酸根",
+  "pollutant_name_en": "4-Hydroxyphenylacetate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-hydroxyphenylacetate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；本答案按文献中常见的 Escherichia coli K-12 好氧 hpa meta-fission 主链填写，羧酸盐 SMILES 按共轭碱形式表示。"
+  },
+  "route_summary": "4-羟基苯乙酸根先由 HpaBC 单加氧酶羟化为 3,4-二羟基苯乙酸（homoprotocatechuate），再经 HpaD 外二醇开环、HpaE 醛脱氢、HpaF 异构、HpaG 脱羧、HpaH 水合和 HpaI 醛醇裂解，生成丙酮酸与琥珀酸半醛；琥珀酸半醛进一步氧化为琥珀酸进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "O=C([O-])Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,4-dihydroxyphenylacetate",
+          "smiles": "O=C([O-])Cc1cc(O)c(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation; aromatic hydroxylation",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetate 3-monooxygenase",
+        "ec_number": "1.14.14.9",
+        "gene_or_protein": "hpaB/hpaC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3,4-dihydroxyphenylacetate",
+          "smiles": "O=C([O-])Cc1cc(O)c(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-carboxymethyl-2-hydroxymuconate semialdehyde",
+          "smiles": "O=C([O-])C(O)=CC=C(CC(=O)[O-])C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol oxidative ring cleavage",
+      "enzyme": {
+        "name": "3,4-dihydroxyphenylacetate 2,3-dioxygenase",
+        "ec_number": "1.13.11.15",
+        "gene_or_protein": "hpaD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "开环产物的 SMILES 按名称推断为共轭二烯醛/羧酸盐形式；立体双键构型未指定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "5-carboxymethyl-2-hydroxymuconate semialdehyde",
+          "smiles": "O=C([O-])C(O)=CC=C(CC(=O)[O-])C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-carboxymethyl-2-hydroxymuconate",
+          "smiles": "O=C([O-])C(O)=CC=C(CC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldehyde dehydrogenation",
+      "enzyme": {
+        "name": "5-carboxymethyl-2-hydroxymuconate semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.60",
+        "gene_or_protein": "hpaE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "开环中间体 SMILES 为按名称构建的非立体指定形式。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "5-carboxymethyl-2-hydroxymuconate",
+          "smiles": "O=C([O-])C(O)=CC=C(CC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-carboxymethyl-2-oxohex-3-enedioate",
+          "smiles": "O=C([O-])C(=O)C=CC(CC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization; enol-to-keto delta-isomerization",
+      "enzyme": {
+        "name": "5-carboxymethyl-2-hydroxymuconate delta-isomerase",
+        "ec_number": "5.3.3.10",
+        "gene_or_protein": "hpaF",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "产物双键构型未指定。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "5-carboxymethyl-2-oxohex-3-enedioate",
+          "smiles": "O=C([O-])C(=O)C=CC(CC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxohept-3-enedioate",
+          "smiles": "O=C([O-])C(=O)C=CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "5-carboxymethyl-2-oxo-hex-3-ene-1,6-dioate decarboxylase",
+        "ec_number": "4.1.1.68",
+        "gene_or_protein": "hpaG",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "脱羧位点按 hpa 主链常用命名处理；产物 SMILES 未指定双键立体化学。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "2-oxohept-3-enedioate",
+          "smiles": "O=C([O-])C(=O)C=CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxoheptanedioate",
+          "smiles": "O=C([O-])C(=O)CC(O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "2-oxo-hepta-3-ene-1,7-dioate hydratase",
+        "ec_number": null,
+        "gene_or_protein": "hpaH",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步 EC 编号未把握，按要求填 null；水合位置按产物名称 4-hydroxy-2-oxoheptanedioate 表示。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxoheptanedioate",
+          "smiles": "O=C([O-])C(=O)CC(O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "succinate semialdehyde",
+          "smiles": "O=CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxoheptane-1,7-dioate aldolase",
+        "ec_number": null,
+        "gene_or_protein": "hpaI",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步 EC 编号未把握，按要求填 null；丙酮酸与琥珀酸半醛均作为主链通向中心代谢的产物列出。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S7"
+      ],
+      "substrates": [
+        {
+          "name": "succinate semialdehyde",
+          "smiles": "O=CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinate",
+          "smiles": "O=C([O-])CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldehyde oxidation to carboxylate",
+      "enzyme": {
+        "name": "succinate-semialdehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.24",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": null,
+      "uncertainty": "该步为琥珀酸半醛进入三羧酸循环前的中心代谢衔接；未指定具体基因。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温；实验室常规培养温度约 37°C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": "NaCl % (w/v)",
+            "category": "非嗜盐；近中性淡水/肠道样环境"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧：可有氧呼吸，也可发酵或在合适受体下无氧呼吸",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用 4-hydroxyphenylacetate 经 hpa 途径作为碳源；为常见异养肠杆菌，亦可利用葡萄糖等碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具备 hpa meta-fission 芳香酸降解能力，主链针对 4-hydroxyphenylacetate；同属途径亦涉及羟基苯乙酸类底物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "HpaBC 单加氧酶、HpaD 外二醇双加氧酶及后续 HpaE/HpaF/HpaG/HpaH/HpaI 转化活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状细菌（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative；肠杆菌科型细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "来源背景为脊椎动物肠道相关的 K-12 实验室菌株；相对环境广适菌更偏肠道/实验室培养条件，不宜视为广泛环境栖息菌",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "succinate"
+    ],
+    "explanation": "hpa 主链在 HpaI 醛醇裂解处产生丙酮酸和琥珀酸半醛；丙酮酸直接进入中心碳代谢，琥珀酸半醛经琥珀酸半醛脱氢酶氧化为琥珀酸后进入三羧酸循环。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway: 4-hydroxyphenylacetate degradation I; organism: Escherichia coli K-12",
+      "claim_scope": [
+        "route_sequence",
+        "reaction_assignments",
+        "hpa_enzyme_gene_assignments",
+        "organism_pathway_role"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI GenBank",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655, complete genome",
+      "claim_scope": [
+        "genome_accession",
+        "genome_size_bp",
+        "gc_percent"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "511145",
+      "locator": "Escherichia coli str. K-12 substr. MG1655",
+      "claim_scope": [
+        "organism_identity",
+        "ncbi_taxid"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "Escherichia coli K-12 MG1655 culture accession",
+      "claim_scope": [
+        "culture_collection"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "general_phenotype_of_Escherichia_coli_K-12"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 1.2.1.24",
+      "locator": "succinate-semialdehyde dehydrogenase (NAD+)",
+      "claim_scope": [
+        "enzyme_ec",
+        "succinate_semialdehyde_to_succinate"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为 null；所填 hpa 主链本质为好氧/需氧开环路径。",
+    "S2–S6 开环后中间体 SMILES 按通用名称构建，未指定烯烃立体化学；若评分需要数据库规范 SMILES，应以 MetaCyc/KEGG 对应化合物记录复核。",
+    "hpaH 与 hpaI 对应酶的 EC 编号未把握，按纪律填 null。",
+    "Escherichia coli K-12 MG1655 的运动性具有菌株/培养条件依赖性，未强行填写。"
+  ]
+}

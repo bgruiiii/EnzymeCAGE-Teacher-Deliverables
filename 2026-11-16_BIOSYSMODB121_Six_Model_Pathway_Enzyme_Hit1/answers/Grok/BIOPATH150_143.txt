@@ -1,0 +1,452 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_143",
+  "pollutant_name_zh": "4-(三甲基铵基)丁酸根",
+  "pollutant_name_en": "4-(Trimethylammonio)butanoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "γ-butyrobetaine degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本答案将γ-butyrobetaine degradation I对应为经典好氧主链：γ-丁酰甜菜碱经2-氧戊二酸依赖双加氧羟化为L-肉碱，再脱氢为3-脱氢肉碱并裂解。第一步依赖分子氧。各步酶学证据来自不同假单胞菌，不能确认由同一菌株完成全程。第三步酶与菌未确认。"
+  },
+  "route_summary": "在γ-butyrobetaine degradation I中，4-(三甲基铵基)丁酸根先由γ-丁酰甜菜碱双加氧酶羟化为L-肉碱，再由肉碱3-脱氢酶氧化为3-脱氢肉碱，随后裂解为甘氨酸甜菜碱并释放两碳单元。第一步证据菌为Pseudomonas sp. AK 1，第二步证据菌为Pseudomonas aeruginosa；第三步酶与对应微生物未知。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-(trimethylammonio)butanoate",
+          "smiles": "C[N+](C)(C)CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "2-oxoglutarate",
+          "smiles": "[O-]C(=O)CCC(=O)C(=O)[O-]",
+          "role": "cofactor"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-carnitine",
+          "smiles": "C[N+](C)(C)CC(O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "succinate",
+          "smiles": "[O-]C(=O)CCC(=O)[O-]",
+          "role": "byproduct"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "2-oxoglutarate-dependent dioxygenation",
+      "enzyme": {
+        "name": "γ-butyrobetaine dioxygenase",
+        "ec_number": "1.14.11.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "AK 1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步还需要Fe(II)作为酶辅因子，未作为化学计量底物列出。Pseudomonas sp. AK 1的现代分类地位不明。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "L-carnitine",
+          "smiles": "C[N+](C)(C)CC(O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD-dependent dehydrogenation",
+      "enzyme": {
+        "name": "carnitine 3-dehydrogenase",
+        "ec_number": "1.1.1.108",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": null,
+        "ncbi_taxid": 287,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "肉碱3-脱氢酶在Pseudomonas aeruginosa中有文献证据，但是否与AK 1的γ-丁酰甜菜碱降解在同一菌株内连续发生未能确认，故未指定菌株。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "3-dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycine betaine",
+          "smiles": "C[N+](C)(C)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetate",
+          "smiles": "CC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic C-C cleavage",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": null,
+      "uncertainty": "3-脱氢肉碱裂解为甘氨酸甜菜碱见于好氧肉碱分解的综述性描述，但首选酶、EC编号和对应微生物均未能确认，故酶与菌记为null。两碳共产物按原子守恒写为乙酸，不能排除实际为乙酰辅酶A或其他两碳单元。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "AK 1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用γ-丁酰甜菜碱",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解γ-丁酰甜菜碱（4-三甲基铵基丁酸）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有γ-丁酰甜菜碱双加氧酶（EC 1.14.11.1）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas aeruginosa",
+      "strain": null,
+      "ncbi_taxid": 287,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温菌，最适约37°C，42°C仍可生长"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧，不能发酵，但可进行硝酸盐呼吸",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用L-肉碱",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解L-肉碱等季铵化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有肉碱3-脱氢酶（EC 1.1.1.108）活性，催化L-肉碱脱氢生成3-脱氢肉碱",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "以单极鞭毛运动",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤、水体及动植物相关环境中均常见的广适性机会致病菌，栖息地范围较广",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["acetate"],
+    "explanation": "若3-脱氢肉碱裂解释放乙酸，该两碳产物可活化为乙酰辅酶A后进入中心代谢。甘氨酸甜菜碱不是中心代谢中间体，需经下游去甲基化。第一步副产物琥珀酸来自辅底物2-氧戊二酸，不属于污染物碳骨架。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "glycine betaine demethylation",
+      "summary": "甘氨酸甜菜碱可经连续去甲基化生成二甲基甘氨酸、肌氨酸和甘氨酸，再进入中心代谢。该过程通常作为独立途径，不计入本主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "Rieske oxygenase cleavage to trimethylamine",
+      "summary": "部分细菌（如大肠杆菌YeaW/YeaX）可用Rieske型加氧酶将γ-丁酰甜菜碱直接裂解为三甲胺和琥珀酸半醛。该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": "EC 1.14.11.1",
+      "locator": "EC 1.14.11.1 γ-butyrobetaine dioxygenase: 4-trimethylammoniobutanoate + 2-oxoglutarate + O2 = L-carnitine + succinate + CO2",
+      "claim_scope": ["enzyme_identity", "ec_number", "reaction_stoichiometry"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Lindstedt et al., Biochemistry, 1977: purification of γ-butyrobetaine hydroxylase from Pseudomonas sp. AK 1",
+      "claim_scope": ["microorganism", "enzyme_source", "degradation_capacity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": "EC 1.1.1.108",
+      "locator": "EC 1.1.1.108 carnitine 3-dehydrogenase: L-carnitine + NAD+ = 3-dehydrocarnitine + NADH + H+",
+      "claim_scope": ["enzyme_identity", "ec_number", "reaction_stoichiometry"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Carnitine 3-dehydrogenase (EC 1.1.1.108) characterized from Pseudomonas aeruginosa in bacterial L-carnitine catabolism literature",
+      "claim_scope": ["microorganism", "enzyme_activity", "carbon_substrate"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Standard species description of Pseudomonas aeruginosa: Gram-negative motile rod, non-spore-forming, aerobic organism capable of nitrate respiration, mesophile with optimum near 37°C and growth at 42°C, broad environmental distribution",
+      "claim_scope": ["morphology", "gram", "motility", "sporulation", "oxygen", "respiration", "habitat", "temperature"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Secondary descriptions of aerobic L-carnitine catabolism report cleavage of 3-dehydrocarnitine to glycine betaine; acetate is the atom-balanced C2 coproduct. No EC number or enzyme was confirmed.",
+      "claim_scope": ["reaction_products"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "第三步3-脱氢肉碱裂解的酶名称、EC编号和对应微生物未能确认，酶与菌均记为null。",
+    "第三步两碳共产物写成乙酸依据原子守恒和综述性描述，不能排除实际产物为乙酰辅酶A或其他两碳单元。",
+    "第一步与第二步证据分别来自Pseudomonas sp. AK 1和Pseudomonas aeruginosa，不能确认同一菌株携带完整主链。",
+    "Pseudomonas sp. AK 1缺少可靠TaxID、保藏号、基因组和生理范围数据，相应性状记为null。",
+    "题面路线名按经典好氧羟化-脱氢-裂解顺序对应；若来源数据库对该名称的反应边界不同，步骤范围可能有偏差。",
+    "另有Rieske型加氧酶直接裂解生成三甲胺的路线，已标为非评分分支。"
+  ]
+}

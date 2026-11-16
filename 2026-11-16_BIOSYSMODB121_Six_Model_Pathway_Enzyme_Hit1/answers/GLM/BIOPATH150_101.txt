@@ -1,0 +1,438 @@
+
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_101",
+  "pollutant_name_zh": "2,2'-联苯酚",
+  "pollutant_name_en": "2,2'-Biphenol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2,2'-dihydroxybiphenyl degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故 oxygen_condition 保持 null；该途径本质为好氧（依赖单加氧酶与双加氧酶）。主链在 S3 水解后分为 2-hydroxypenta-2,4-dienoate 支与 salicylate/gentisate 支，两者均为主链延续。"
+  },
+  "route_summary": "2,2'-联苯酚（2,2'-dihydroxybiphenyl）在好氧条件下先经 2-hydroxybiphenyl 3-monooxygenase（HbpA）在一个苯环的 3 位邻位羟化，生成 2,2',3-trihydroxybiphenyl；随后经 2,2',3-trihydroxybiphenyl 1,2-dioxygenase 间位开环生成 2-hydroxy-6-oxo-6-(2-hydroxyphenyl)hexa-2,4-dienoate，再经 C-C 水解酶裂解为 salicylate 与 2-hydroxypenta-2,4-dienoate。2-hydroxypenta-2,4-dienoate 经水合酶生成 4-hydroxy-2-oxopentanoate，再经醛缩酶裂解为丙酮酸与乙醛；salicylate 经 salicylate 5-hydroxylase 转化为 gentisate，依次经 gentisate 1,2-dioxygenase、maleylpyruvate isomerase、fumarylpyruvate hydrolase 生成延胡索酸与丙酮酸，最终以 pyruvate、fumarate、acetaldehyde 进入中心代谢。该下游与二苯并呋喃角位双加氧途径中 2,2',3-三羟基联苯的下游一致。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "2,2'-Dihydroxybiphenyl", "smiles": "Oc1ccccc1-c2ccccc2O", "role": "main"},
+        {"name": "NADPH", "smiles": null, "role": "cofactor"},
+        {"name": "O2", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2,2',3-Trihydroxybiphenyl", "smiles": "Oc1c(O)cccc1-c2ccccc2O", "role": "main"},
+        {"name": "NADP+", "smiles": null, "role": "byproduct"},
+        {"name": "H2O", "smiles": "O", "role": "byproduct"}
+      ],
+      "reaction_type": "邻位单加氧羟化",
+      "enzyme": {
+        "name": "2-hydroxybiphenyl 3-monooxygenase",
+        "ec_number": "1.14.13.-",
+        "gene_or_protein": "hbpA",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "HBP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "HbpA 以 2,2'-dihydroxybiphenyl 为底物并生成 2,2',3-trihydroxybiphenyl 的依据为内部知识回忆，强度有限；辅酶（NADPH 或 NADH）、hbpA 完整 EC 编号及 HBP1 种级鉴定（或为 Pseudomonas azelaica）均未核实。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "2,2',3-Trihydroxybiphenyl", "smiles": "Oc1c(O)cccc1-c2ccccc2O", "role": "main"},
+        {"name": "O2", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2-Hydroxy-6-oxo-6-(2-hydroxyphenyl)hexa-2,4-dienoate", "smiles": "OC(=O)C(O)=CC=CC(=O)c1ccccc1O", "role": "main"}
+      ],
+      "reaction_type": "间位（外二醇型）开环双加氧",
+      "enzyme": {
+        "name": "2,2',3-trihydroxybiphenyl 1,2-dioxygenase",
+        "ec_number": "1.13.11.-",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas wittichii",
+        "strain": "RW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "RW1 中该酶的基因命名未核实（文献中见 dxnB/dxdB 等写法），EC 无完整编号；菌株亦常写作 Sphingomonas sp. RW1 或 Sphingobium sp. RW1。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "2-Hydroxy-6-oxo-6-(2-hydroxyphenyl)hexa-2,4-dienoate", "smiles": "OC(=O)C(O)=CC=CC(=O)c1ccccc1O", "role": "main"},
+        {"name": "H2O", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Salicylate", "smiles": "OC(=O)c1ccccc1O", "role": "main"},
+        {"name": "2-Hydroxypenta-2,4-dienoate", "smiles": "OC(=O)C(O)=CC=C", "role": "main"}
+      ],
+      "reaction_type": "环裂解产物 C-C 键水解",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxo-6-(2-hydroxyphenyl)hexa-2,4-dienoate hydrolase",
+        "ec_number": "3.7.1.-",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas wittichii",
+        "strain": "RW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "基因命名（dxnC/dxdC）与 EC 编号未核实。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "2-Hydroxypenta-2,4-dienoate", "smiles": "OC(=O)C(O)=CC=C", "role": "main"},
+        {"name": "H2O", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "4-Hydroxy-2-oxopentanoate", "smiles": "OC(=O)C(=O)CC(O)C", "role": "main"}
+      ],
+      "reaction_type": "烯醇酸水合",
+      "enzyme": {
+        "name": "2-hydroxypenta-2,4-dienoate hydratase",
+        "ec_number": "4.2.1.-",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas wittichii",
+        "strain": "RW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "将该步归于 RW1 系由其完全矿化 dibenzofuran 作出的推断，未见直接文献。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {"name": "4-Hydroxy-2-oxopentanoate", "smiles": "OC(=O)C(=O)CC(O)C", "role": "main"}
+      ],
+      "products": [
+        {"name": "Pyruvate", "smiles": "CC(=O)C(=O)O", "role": "main"},
+        {"name": "Acetaldehyde", "smiles": "CC=O", "role": "main"}
+      ],
+      "reaction_type": "羟酮醛缩裂解（C-C 断裂）",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxopentanoate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas wittichii",
+        "strain": "RW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "EC 4.1.3.39 为记忆性给出，置信度中等；该步归于 RW1 为推断。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "Salicylate", "smiles": "OC(=O)c1ccccc1O", "role": "main"},
+        {"name": "NADH", "smiles": null, "role": "cofactor"},
+        {"name": "O2", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Gentisate", "smiles": "OC(=O)c1cc(O)ccc1O", "role": "main"},
+        {"name": "NAD+", "smiles": null, "role": "byproduct"},
+        {"name": "H2O", "smiles": "O", "role": "byproduct"}
+      ],
+      "reaction_type": "5 位单加氧羟化",
+      "enzyme": {
+        "name": "salicylate 5-hydroxylase",
+        "ec_number": "1.14.13.-",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas wittichii",
+        "strain": "RW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "RW1 走 gentisate 支路的记忆较可信，但部分水杨酸降解菌走 catechol 支路（见 alternative_branches）；辅酶为 NADH 或 NADPH 未核实。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {"name": "Gentisate", "smiles": "OC(=O)c1cc(O)ccc1O", "role": "main"},
+        {"name": "O2", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Maleylpyruvate", "smiles": "OC(=O)/C=C\\C(=O)CC(=O)C(=O)O", "role": "main"}
+      ],
+      "reaction_type": "龙胆酸 1,2-开环双加氧",
+      "enzyme": {
+        "name": "gentisate 1,2-dioxygenase",
+        "ec_number": "1.13.11.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas wittichii",
+        "strain": "RW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "maleylpyruvate 的 SMILES 为按反应推导的酮式结构，未与数据库核实。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {"name": "Maleylpyruvate", "smiles": "OC(=O)/C=C\\C(=O)CC(=O)C(=O)O", "role": "main"}
+      ],
+      "products": [
+        {"name": "Fumarylpyruvate", "smiles": "OC(=O)/C=C/C(=O)CC(=O)C(=O)O", "role": "main"}
+      ],
+      "reaction_type": "顺反异构（谷胱甘肽依赖）",
+      "enzyme": {
+        "name": "maleylpyruvate isomerase",
+        "ec_number": "5.2.1.-",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas wittichii",
+        "strain": "RW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S9",
+      "order": 9,
+      "branch_id": null,
+      "predecessor_step_ids": ["S8"],
+      "substrates": [
+        {"name": "Fumarylpyruvate", "smiles": "OC(=O)/C=C/C(=O)CC(=O)C(=O)O", "role": "main"},
+        {"name": "H2O", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Fumarate", "smiles": "OC(=O)/C=C/C(=O)O", "role": "main"},
+        {"name": "Pyruvate", "smiles": "CC(=O)C(=O)O", "role": "main"}
+      ],
+      "reaction_type": "C-C 键水解",
+      "enzyme": {
+        "name": "fumarylpyruvate hydrolase",
+        "ec_number": "3.7.1.-",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas wittichii",
+        "strain": "RW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "HBP1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {"value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F1_oxygen_tolerance": {"value": "好氧（需氧生长）", "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F4_salinity": {"value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F3_pH": {"value": {"minimum": null, "optimum": null, "maximum": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F5_culture_collection": {"value": {"collection": null, "accession": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F6_respiration_electron_acceptor": {"value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2"}, "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F7_carbon_substrate_utilization": {"value": "能以 2-hydroxybiphenyl（邻苯基苯酚）及 3-hydroxybiphenyl 为唯一碳源与能源生长", "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F8_degradation_capacity_broad": {"value": "可降解 2- 与 3-hydroxybiphenyl，并能转化 2,2'-dihydroxybiphenyl 等羟基联苯类化合物", "raw_text": null, "evidence_id": "EVID_006", "confidence": "low"},
+        "F9_enzyme_activity": {"value": "2-hydroxybiphenyl 3-monooxygenase（HbpA，FAD 型单加氧酶）活性", "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F10_motility": {"value": null, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F11_cell_morphology": {"value": "杆状", "raw_text": null, "evidence_id": "EVID_005", "confidence": "low"},
+        "F12_gram_cell_envelope": {"value": "革兰氏阴性", "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F13_sporulation": {"value": "不产芽孢", "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F14_genome_basic": {"value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F15_habitat_generalism": {"value": "自由生活的土壤/水体异养菌，能适应并利用人为源羟基联苯类底物，栖息广适性较高", "raw_text": null, "evidence_id": "EVID_006", "confidence": "low"}
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Sphingomonas wittichii",
+      "strain": "RW1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {"value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F1_oxygen_tolerance": {"value": "专性好氧", "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F4_salinity": {"value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F3_pH": {"value": {"minimum": null, "optimum": null, "maximum": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F5_culture_collection": {"value": {"collection": null, "accession": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F6_respiration_electron_acceptor": {"value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2"}, "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F7_carbon_substrate_utilization": {"value": "能以 dibenzofuran 为唯一碳源生长，并可利用 salicylate、gentisate 等芳香中间体", "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F8_degradation_capacity_broad": {"value": "可降解/矿化 dibenzofuran、dibenzo-p-dioxin、dibenzothiophene 等二环杂环芳烃及多种芳香化合物（二噁英矿化菌株）", "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F9_enzyme_activity": {"value": "具 dibenzofuran 角位双加氧酶、2,2',3-trihydroxybiphenyl 1,2-dioxygenase 及 gentisate 途径酶系活性", "raw_text": null, "evidence_id": "EVID_001", "confidence": "medium"},
+        "F10_motility": {"value": null, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F11_cell_morphology": {"value": "杆状", "raw_text": null, "evidence_id": "EVID_005", "confidence": "low"},
+        "F12_gram_cell_envelope": {"value": "革兰氏阴性；细胞外膜含糖鞘脂（glycosphingolipid）而非脂多糖", "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F13_sporulation": {"value": "不产芽孢", "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F14_genome_basic": {"value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F15_habitat_generalism": {"value": "自由生活的环境水体/土壤细菌，可利用多种持久性芳烃，栖息广适性中等偏广", "raw_text": null, "evidence_id": "EVID_006", "confidence": "low"}
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "fumarate", "acetaldehyde"],
+    "explanation": "丙酮酸与延胡索酸直接进入三羧酸循环；乙醛可经乙醛脱氢酶氧化为乙酸/乙酰辅酶A后进入中心代谢，实现完全矿化。"
+  },
+  "downstream_continuation": [
+    {"name": "三羧酸循环（TCA cycle）", "summary": "pyruvate 经丙酮酸脱氢酶复合体生成乙酰辅酶A，fumarate 直接进入 TCA 循环，最终氧化为 CO2 与 H2O。"}
+  ],
+  "alternative_branches": [
+    {
+      "name": "水杨酸经儿茶酚的 β-酮己二酸支路",
+      "summary": "salicylate 亦可经 salicylate 1-monooxygenase（脱羧羟化）生成 catechol，再经儿茶酚 1,2-/2,3-双加氧酶进入 β-酮己二酸途径；本答案主链采用 RW1 特征性的 gentisate 支路，故该分支不计入被评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：Sphingomonas（Sphingobium）sp. RW1 的 dibenzofuran 降解途径——2,2',3-trihydroxybiphenyl 经间位开环与 C-C 水解生成 salicylate 与 2-hydroxypenta-2,4-dienoate；该下游同样适用于 2,2'-dihydroxybiphenyl 的降解。",
+      "claim_scope": ["S2_reaction", "S2_enzyme", "S2_organism", "S3_reaction", "S3_organism", "ORG_002_F9"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：Pseudomonas sp. HBP1 的 HbpA（2-hydroxybiphenyl 3-monooxygenase）底物谱包含 2,2'-dihydroxybiphenyl，羟化产物为 2,2',3-trihydroxybiphenyl。",
+      "claim_scope": ["S1_reaction", "S1_enzyme", "S1_organism"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：芳烃间位裂解途径的通用下游——2-hydroxypenta-2,4-dienoate 经水合酶生成 4-hydroxy-2-oxopentanoate，再经 4-hydroxy-2-oxopentanoate aldolase 裂解为丙酮酸与乙醛。",
+      "claim_scope": ["S4_reaction", "S5_reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：gentisate 途径——salicylate 经 salicylate 5-hydroxylase 生成 gentisate；gentisate 1,2-dioxygenase 开环为 maleylpyruvate，经 maleylpyruvate isomerase 与 fumarylpyruvate hydrolase 生成延胡索酸与丙酮酸；RW1 经该途径代谢水杨酸。",
+      "claim_scope": ["S6_reaction", "S6_organism", "S7_reaction", "S8_reaction", "S9_reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识（属级通用性状）：Pseudomonas 属与 Sphingomonas 属均为革兰氏阴性、好氧、不产芽孢的杆菌；Sphingomonas 外膜含糖鞘脂。",
+      "claim_scope": ["ORG_001_F1", "ORG_001_F6", "ORG_001_F11", "ORG_001_F12", "ORG_001_F13", "ORG_002_F1", "ORG_002_F6", "ORG_002_F11", "ORG_002_F12", "ORG_002_F13"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：HBP1 经 2-hydroxybiphenyl 富集分离并携带 hbp 代谢基因；RW1 为可矿化 dibenzofuran/dibenzo-p-dioxin 类化合物的环境菌株。",
+      "claim_scope": ["ORG_001_F7", "ORG_001_F8", "ORG_001_F9", "ORG_001_F15", "ORG_002_F7", "ORG_002_F8", "ORG_002_F15", "S4_organism", "S5_organism"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "S1 的酶（HbpA）及其对 2,2'-dihydroxybiphenyl 的转化依据为内部知识回忆，强度有限；hbpA 完整 EC 编号、辅酶与 HBP1 的种级鉴定均未核实。",
+    "S2/S3 中 RW1 的基因命名与 EC 编号未核实（文献中见 dxnB/dxdB、dxnC/dxdC 等写法）；菌株亦常被称为 Sphingomonas sp. RW1 或 Sphingobium sp. RW1。",
+    "S4/S5 归于 RW1 属推断性分配（由其完全矿化 dibenzofuran 推得），未见直接文献。",
+    "salicylate 下游主链选取 RW1 特征性的 gentisate 支路；catechol/β-酮己二酸支路作为备选列于 alternative_branches。",
+    "maleylpyruvate 与 fumarylpyruvate 的 SMILES 为按反应推导的酮式结构，未与数据库核实。",
+    "两株菌的温度、pH、盐度、保藏编号、基因组信息、运动性等性状均无可靠记忆来源，按未知处理填 null。"
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_143",
+  "pollutant_name_zh": "4-(三甲基铵基)丁酸根",
+  "pollutant_name_en": "4-(Trimethylammonio)butanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "γ-butyrobetaine degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面已指定路线范围；氧条件未指定。"
+  },
+  "route_summary": "在指定的 γ-butyrobetaine degradation I 路线下，4-(trimethylammonio)butanoate 先脱氢生成 crotonobetaine，再水合生成 (R)-carnitine，随后 3 位羟基脱氢生成 3-dehydrocarnitine，最后裂解为 acetoacetate 与 trimethylamine；acetoacetate 可进入中心碳代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-(Trimethylammonio)butanoate",
+          "smiles": "C[N+](C)(C)CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "crotonobetaine",
+          "smiles": "C[N+](C)(C)CC=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "脱氢",
+      "enzyme": {
+        "name": "gamma-butyrobetaine dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. 13CM",
+        "strain": "13CM",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步电子受体与正式 EC 编号未知；氧条件未指定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "crotonobetaine",
+          "smiles": "C[N+](C)(C)CC=CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(R)-carnitine",
+          "smiles": "C[N+](C)(C)CC(O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合",
+      "enzyme": {
+        "name": "carnitine dehydratase",
+        "ec_number": "4.2.1.149",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. 13CM",
+        "strain": "13CM",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "官方酶名常按脱水方向写作 carnitine dehydratase；此处按路线方向表示其水合活性，立体化学按 (R)-carnitine 推断。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "(R)-carnitine",
+          "smiles": "C[N+](C)(C)CC(O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "脱氢",
+      "enzyme": {
+        "name": "carnitine 3-dehydrogenase",
+        "ec_number": "1.1.1.108",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. 13CM",
+        "strain": "13CM",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "辅因子按 NAD+/NADH 填写；未单独列出 H+。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "3-dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetoacetate",
+          "smiles": "CC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "裂解",
+      "enzyme": {
+        "name": "3-dehydrocarnitine aldolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. 13CM",
+        "strain": "13CM",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "裂解酶的正式名称与 EC 编号不确定；产物计量未显式配平质子。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp. 13CM",
+      "strain": "13CM",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用 γ-butyrobetaine 作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解 γ-butyrobetaine，经 crotonobetaine、(R)-carnitine、3-dehydrocarnitine 生成 acetoacetate 与 trimethylamine",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 gamma-butyrobetaine dehydrogenase、carnitine dehydratase、carnitine 3-dehydrogenase 和 3-dehydrocarnitine aldolase 活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "acetoacetate"
+    ],
+    "explanation": "3-dehydrocarnitine 裂解产生的 acetoacetate 可进入中心碳代谢；trimethylamine 通常进入甲基胺或一碳代谢途径。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "γ-butyrobetaine degradation I: gamma-butyrobetaine -> crotonobetaine -> (R)-carnitine -> 3-dehydrocarnitine -> acetoacetate + trimethylamine",
+      "claim_scope": [
+        "pathway",
+        "reaction",
+        "enzyme"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas sp. 13CM as organism capable of gamma-butyrobetaine degradation",
+      "claim_scope": [
+        "organism",
+        "trait"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，无法判断该路线是否严格好氧或兼性。",
+    "gamma-butyrobetaine dehydrogenase 与 3-dehydrocarnitine aldolase 的正式 EC 编号未知。",
+    "第一步脱氢的末端电子受体未知。",
+    "Pseudomonas sp. 13CM 的多数生理生化性状、保藏编号、基因组信息与分类学 TaxID 未填写。",
+    "(R)-carnitine 的 SMILES 未指定立体化学。"
+  ]
+}

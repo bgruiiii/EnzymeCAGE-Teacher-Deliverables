@@ -1,0 +1,536 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_123",
+  "pollutant_name_zh": "丙烷",
+  "pollutant_name_en": "Propane",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "propane degradation I",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "好氧丙烷降解主链：丙烷经丙烷1-单加氧酶氧化为1-丙醇，再经醇脱氢、醛脱氢生成丙酸，随后转化为丙酰-CoA，经甲基丙二酰-CoA 途径进入中心代谢（琥珀酰-CoA）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Propane",
+          "smiles": "CCC",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-Propanol",
+          "smiles": "CCCO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": null,
+      "enzyme": {
+        "name": "propane 1-monooxygenase",
+        "ec_number": "1.14.13.229",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus sp. BCP1",
+        "strain": "BCP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "1-Propanol",
+          "smiles": "CCCO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Propanal",
+          "smiles": "CCC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": null,
+      "enzyme": {
+        "name": "alcohol dehydrogenase",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus sp. BCP1",
+        "strain": "BCP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "Propanal",
+          "smiles": "CCC=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Propanoate",
+          "smiles": "CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": null,
+      "enzyme": {
+        "name": "aldehyde dehydrogenase",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus sp. BCP1",
+        "strain": "BCP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "Propanoate",
+          "smiles": "CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Propionyl-CoA",
+          "smiles": "CCC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OC1C(O)C(COP(=O)(O)O)OC1n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "reaction_type": null,
+      "enzyme": {
+        "name": "propionate--CoA ligase",
+        "ec_number": "6.2.1.17",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus sp. BCP1",
+        "strain": "BCP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "Propionyl-CoA",
+          "smiles": "CCC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OC1C(O)C(COP(=O)(O)O)OC1n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-Methylmalonyl-CoA",
+          "smiles": "C[C@H](C(=O)O)C(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OC1C(O)C(COP(=O)(O)O)OC1n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "reaction_type": null,
+      "enzyme": {
+        "name": "propionyl-CoA carboxylase",
+        "ec_number": "6.4.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus sp. BCP1",
+        "strain": "BCP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-Methylmalonyl-CoA",
+          "smiles": "C[C@H](C(=O)O)C(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OC1C(O)C(COP(=O)(O)O)OC1n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(R)-Methylmalonyl-CoA",
+          "smiles": "C[C@@H](C(=O)O)C(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OC1C(O)C(COP(=O)(O)O)OC1n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "reaction_type": null,
+      "enzyme": {
+        "name": "methylmalonyl-CoA epimerase",
+        "ec_number": "5.1.99.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus sp. BCP1",
+        "strain": "BCP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "(R)-Methylmalonyl-CoA",
+          "smiles": "C[C@@H](C(=O)O)C(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OC1C(O)C(COP(=O)(O)O)OC1n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Succinyl-CoA",
+          "smiles": "O=C(O)CCC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OC1C(O)C(COP(=O)(O)O)OC1n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "reaction_type": null,
+      "enzyme": {
+        "name": "methylmalonyl-CoA mutase",
+        "ec_number": "5.4.99.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_007"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus sp. BCP1",
+        "strain": "BCP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_007",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Rhodococcus sp. BCP1",
+      "strain": "BCP1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "chemoorganotroph; utilizes a wide range of organic substrates",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades propane and other hydrocarbons",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "propane monooxygenase, alcohol dehydrogenase, aldehyde dehydrogenase, propionate-CoA ligase, propionyl-CoA carboxylase, methylmalonyl-CoA mutase",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "non-motile",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-positive",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "widely distributed in soil and aquatic environments; generalist",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Succinyl-CoA"
+    ],
+    "explanation": "终产物琥珀酰-CoA 进入三羧酸循环（TCA）。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "reaction: propane to 1-propanol by propane 1-monooxygenase"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "reaction: 1-propanol to propanal by alcohol dehydrogenase"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "reaction: propanal to propanoate by aldehyde dehydrogenase"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "reaction: propanoate to propionyl-CoA by propionate--CoA ligase"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "reaction: propionyl-CoA to (S)-methylmalonyl-CoA by propionyl-CoA carboxylase"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "reaction: (S)-methylmalonyl-CoA to (R)-methylmalonyl-CoA by methylmalonyl-CoA epimerase"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "reaction: (R)-methylmalonyl-CoA to succinyl-CoA by methylmalonyl-CoA mutase"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "organism traits: Rhodococcus sp. BCP1 general characteristics"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "organism identity: Rhodococcus sp. BCP1"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

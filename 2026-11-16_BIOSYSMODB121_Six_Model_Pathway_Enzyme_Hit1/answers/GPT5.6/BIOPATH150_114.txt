@@ -1,0 +1,349 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_114",
+  "pollutant_name_zh": "Naphthalene",
+  "pollutant_name_en": "Naphthalene",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "naphthalene degradation (anaerobic)",
+    "is_single_continuous_route": true,
+    "notes": "该主链概括厌氧条件下以羧化、CoA活化和还原性芳环转化为核心的萘降解路线。"
+  },
+  "route_summary": "萘在厌氧条件下先被羧化为2-naphthoic acid，随后经CoA活化形成2-naphthoyl-CoA，并进一步发生还原性芳环转化和碳骨架裂解，进入benzoyl-CoA等中心代谢相关中间体。已知路线通常与硫酸盐还原过程相关。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Naphthalene",
+          "smiles": "c1ccc2ccccc2c1",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Naphthoic acid",
+          "smiles": "O=C(O)c1ccc2ccccc2c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "厌氧羧化",
+      "enzyme": {
+        "name": "Naphthalene carboxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacterium sp.",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "萘羧化反应及其专一酶的EC归类在不同资料中并不统一。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-Naphthoic acid",
+          "smiles": "O=C(O)c1ccc2ccccc2c1",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Naphthoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "羧酸CoA活化",
+      "enzyme": {
+        "name": "2-Naphthoate-CoA ligase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacterium sp.",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "2-naphthoate的CoA活化步骤被认为是主路线步骤，但具体酶名称和EC编号尚未确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-Naphthoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5,6,7,8-Tetrahydro-2-naphthoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "厌氧还原性芳环加氢",
+      "enzyme": {
+        "name": "2-Naphthoyl-CoA reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacterium sp.",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该还原步骤的具体氢化程度、立体化学和酶学命名存在资料差异。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "5,6,7,8-Tetrahydro-2-naphthoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Benzoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Acetyl-CoA",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原性芳环裂解与碳骨架重排",
+      "enzyme": {
+        "name": "Tetrahydro-2-naphthoyl-CoA ring-cleavage enzyme",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacterium sp.",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该步为路线层面的概括，具体逐步中间体和裂解反应顺序尚未确定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Desulfobacterium sp.",
+      "strain": "NaphS2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "硫酸盐还原型厌氧呼吸",
+            "terminal_electron_acceptor": "Sulfate",
+            "raw_text": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用Naphthalene作为厌氧碳源和电子供体",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "能够进行厌氧萘降解",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有与萘羧化、CoA活化及还原性芳环转化相关的活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Benzoyl-CoA",
+      "Acetyl-CoA"
+    ],
+    "explanation": "Benzoyl-CoA可继续进入厌氧芳香族化合物降解的中心代谢网络，Acetyl-CoA可进入乙酰辅酶A相关代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Desulfobacterium sp. NaphS2与厌氧萘降解",
+        "萘厌氧羧化为2-naphthoic acid",
+        "2-naphthoate-CoA活化及后续还原性芳环转化",
+        "硫酸盐还原型厌氧呼吸"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "各反应步骤的专一酶名称、基因名称和EC编号缺乏统一的直接实验证据。",
+    "2-naphthoyl-CoA之后的逐步中间体和芳环裂解顺序可能包含未列出的短寿命中间体。",
+    "Desulfobacterium sp. NaphS2的部分培养、生理和基因组性状未可靠确定。"
+  ]
+}

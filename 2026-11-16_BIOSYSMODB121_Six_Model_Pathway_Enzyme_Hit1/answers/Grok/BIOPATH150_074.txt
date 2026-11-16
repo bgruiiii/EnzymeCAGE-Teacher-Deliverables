@@ -1,0 +1,490 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_074",
+  "pollutant_name_zh": "2-氨基苯酚",
+  "pollutant_name_en": "2-Aminophenol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-aminophenol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。文献确立的2-aminophenol degradation主链为好氧间位开环：第一步依赖分子氧。本回答不改选其他路线。"
+  },
+  "route_summary": "2-氨基苯酚的微生物降解主链为好氧1,6-双加氧开环途径：2-氨基苯酚开环为2-氨基粘康酸半醛，经NAD+依赖脱氢生成2-氨基粘康酸，再水解脱氨生成4-草酰巴豆酸并释放氨；随后经脱羧、水合和醛缩裂解生成丙酮酸与乙醛，进入中心代谢。该连续途径在Pseudomonas pseudoalcaligenes JS45中被阐明。2-氨基粘康酸半醛若不被及时脱氢，可自发环化为吡啶甲酸，该死端分支不计入主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-aminophenol",
+          "smiles": "Nc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminomuconate semialdehyde",
+          "smiles": "O=CC=CC=C(N)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "芳香环1,6-双加氧开环",
+      "enzyme": {
+        "name": "2-aminophenol 1,6-dioxygenase",
+        "ec_number": "1.13.11.74",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas pseudoalcaligenes",
+        "strain": "JS45",
+        "ncbi_taxid": 330,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-aminomuconate semialdehyde",
+          "smiles": "O=CC=CC=C(N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminomuconate",
+          "smiles": "OC(=O)C=CC=C(N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+依赖的醛脱氢",
+      "enzyme": {
+        "name": "2-aminomuconate-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.32",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas pseudoalcaligenes",
+        "strain": "JS45",
+        "ncbi_taxid": 330,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "若本步脱氢不及时，2-氨基粘康酸半醛可自发环化为吡啶甲酸；该竞争反应不是本酶催化步骤。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-aminomuconate",
+          "smiles": "OC(=O)C=CC=C(N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-oxalocrotonate",
+          "smiles": "OC(=O)C(=O)C=CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱氨",
+      "enzyme": {
+        "name": "2-aminomuconate deaminase",
+        "ec_number": "3.5.99.5",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas pseudoalcaligenes",
+        "strain": "JS45",
+        "ncbi_taxid": 330,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "氨基是在2-氨基粘康酸上被脱去，而不是在半醛上直接脱氨；主链按这一修订顺序书写。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-oxalocrotonate",
+          "smiles": "OC(=O)C(=O)C=CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "C=CCC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "4-oxalocrotonate decarboxylase",
+        "ec_number": "4.1.1.77",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas pseudoalcaligenes",
+        "strain": "JS45",
+        "ncbi_taxid": 330,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "JS45下游与间位裂解公共途径衔接；脱羧直接产物在部分体系中先为2-羟基戊-2,4-二烯酸，再互变异构为2-氧代戊-4-烯酸。本主链按常规合并书写，未单列互变异构酶。菌株特异性纯化证据弱于前三步。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "C=CCC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合",
+      "enzyme": {
+        "name": "2-oxopent-4-enoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas pseudoalcaligenes",
+        "strain": "JS45",
+        "ncbi_taxid": 330,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该步为间位裂解下游公共反应，JS45中以途径连续性支持，未在本回答中单独核对纯化酶文献。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛缩裂解",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxovalerate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas pseudoalcaligenes",
+        "strain": "JS45",
+        "ncbi_taxid": 330,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "丙酮酸与乙醛均为该步主产物。乙醛继续氧化为乙酰辅酶A属于下游衔接，未列入本主链步骤。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas pseudoalcaligenes",
+      "strain": "JS45",
+      "ncbi_taxid": 330,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以硝基苯为碳源、氮源和能源生长，并代谢中间体2-氨基苯酚",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解硝基苯及2-氨基苯酚",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有已纯化的2-氨基苯酚1,6-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetaldehyde"],
+    "explanation": "主链止于4-羟基-2-氧代戊酸的醛缩裂解。丙酮酸可进入中心碳代谢；乙醛通常再转化为乙酰辅酶A，但该步未列入评分主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "acetaldehyde oxidation to acetyl-CoA",
+      "summary": "乙醛可经乙酰化乙醛脱氢酶（EC 1.2.1.10）生成乙酰辅酶A后进入中心代谢。该反应属于主链之后的衔接，不作为本路线评分步骤。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "spontaneous cyclization of 2-aminomuconate semialdehyde to picolinate",
+      "summary": "2-氨基粘康酸半醛可非酶自发环化为吡啶甲酸，为不进入中心代谢的死端分支，不属于被评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Nishino SF, Spain JC. Degradation of nitrobenzene by a Pseudomonas pseudoalcaligenes. Applied and Environmental Microbiology. 1993;59:2520-2525.",
+      "claim_scope": ["organism:JS45", "trait:F1_oxygen_tolerance", "trait:F6_respiration_electron_acceptor", "trait:F7_carbon_substrate_utilization", "trait:F8_degradation_capacity_broad", "pathway_context"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Lendenmann U, Spain JC. 2-Aminophenol 1,6-dioxygenase: a novel aromatic ring cleavage enzyme purified from Pseudomonas pseudoalcaligenes JS45. Journal of Bacteriology. 1996;178:6227-6232.",
+      "claim_scope": ["step:S1", "enzyme:1.13.11.74", "trait:F9_enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "He Z, Spain JC. Studies of the catabolic pathway of degradation of nitrobenzene by Pseudomonas pseudoalcaligenes JS45: removal of the amino group from 2-aminomuconic semialdehyde. Applied and Environmental Microbiology. 1997.",
+      "claim_scope": ["step:S2", "enzyme:1.2.1.32"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "He Z, Spain JC. A novel 2-aminomuconate deaminase in the nitrobenzene degradation pathway of Pseudomonas pseudoalcaligenes JS45. Journal of Bacteriology. 1998;180:2502-2506.",
+      "claim_scope": ["step:S3", "enzyme:3.5.99.5"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "JS45的2-氨基苯酚/硝基苯途径在脱氨之后进入间位裂解公共下游：4-oxalocrotonate decarboxylase（EC 4.1.1.77）、2-oxopent-4-enoate hydratase（EC 4.2.1.80）、4-hydroxy-2-oxovalerate aldolase（EC 4.1.3.39），产物为丙酮酸与乙醛。",
+      "claim_scope": ["step:S4", "step:S5", "step:S6", "enzyme:4.1.1.77", "enzyme:4.2.1.80", "enzyme:4.1.3.39"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas属分类学特征：革兰氏阴性杆菌，不形成内生芽孢。此为属级推断，非JS45菌株实测摘录。",
+      "claim_scope": ["trait:F11_cell_morphology", "trait:F12_gram_cell_envelope", "trait:F13_sporulation"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI Taxonomy",
+      "record_id": "330",
+      "locator": "NCBI Taxonomy species Pseudomonas pseudoalcaligenes, TaxID 330；为物种级ID，非JS45菌株专属TaxID。",
+      "claim_scope": ["ncbi_taxid"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为未指定；主链按文献中的好氧1,6-双加氧途径填写，未描述厌氧路线。",
+    "氨基去除发生在2-氨基粘康酸而非半醛直接脱氨；主链采用先脱氢再脱氨的顺序。",
+    "脱羧、水合和醛缩三步与间位裂解公共下游途径一致，JS45菌株特异性纯化证据把握低于前三步，相应confidence为medium。",
+    "脱羧产物可能先形成2-羟基戊-2,4-二烯酸再互变异构为2-氧代戊-4-烯酸，主链未单列互变异构步骤。",
+    "ncbi_taxid 330为物种级分类ID，不是菌株专属编号。",
+    "JS45的保藏编号、基因组登录号以及温度、pH、盐度实测范围未核实，相关性状为null。",
+    "运动性和栖息地广适性无菌株级来源，置null。",
+    "形态、革兰氏染色和不产芽孢来自Pseudomonas属级特征推断，不是菌株实测原文。"
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_104",
+  "pollutant_name_zh": "S-1,2-丙二醇",
+  "pollutant_name_en": "S-1,2-Propanediol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "(S)-propane-1,2-diol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本主链采用文献中的好氧氧化路线：(S)-propane-1,2-diol经(S)-乳醛和(S)-乳酸生成丙酮酸，不采用钴胺素依赖的丙二醇脱水酶路线。"
+  },
+  "route_summary": "(S)-1,2-丙二醇好氧降解主链为三步连续氧化：乳醛还原酶将(S)-propane-1,2-diol氧化为(S)-乳醛，乳醛脱氢酶再氧化为(S)-乳酸，L-乳酸脱氢酶最终生成丙酮酸并进入中心代谢。该路线由大肠杆菌K-12的岩藻糖代谢酶与乳酸利用酶在调控突变后招募实现。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(S)-propane-1,2-diol",
+          "smiles": "C[C@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-lactaldehyde",
+          "smiles": "C[C@H](O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD-dependent dehydrogenation",
+      "enzyme": {
+        "name": "lactaldehyde reductase",
+        "ec_number": "1.1.1.77",
+        "gene_or_protein": "fucO",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该氧化方向在野生型中通常不是组成型表达；好氧以1,2-丙二醇为碳源依赖fuc调控突变，使丙二醇氧化还原酶在有氧条件下表达。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "(S)-lactaldehyde",
+          "smiles": "C[C@H](O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-lactate",
+          "smiles": "C[C@H](O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD-dependent dehydrogenation",
+      "enzyme": {
+        "name": "lactaldehyde dehydrogenase",
+        "ec_number": "1.2.1.22",
+        "gene_or_protein": "aldA",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "AldA也可作用于其他醛；此处采用其对(S)-乳醛的脱氢酶活性。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "(S)-lactate",
+          "smiles": "C[C@H](O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ubiquinone",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ubiquinol",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "quinone-dependent dehydrogenation",
+      "enzyme": {
+        "name": "L-lactate dehydrogenase (cytochrome)",
+        "ec_number": "1.1.2.3",
+        "gene_or_protein": "lldD",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "大肠杆菌好氧氧化L-乳酸的酶为醌依赖的LldD，常用EC号为1.1.2.3；IUBMB该EC反应式写的是细胞色素c，与生理醌受体不完全一致。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "调控突变后可以L-1,2-丙二醇作为碳源进行分解代谢",
+          "raw_text": "Evolution of L-1,2-propanediol catabolism in Escherichia coli by recruitment of enzymes for L-fucose and L-lactate metabolism.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "通过招募L-岩藻糖与L-乳酸代谢酶降解L-1,2-丙二醇",
+          "raw_text": "Evolution of L-1,2-propanediol catabolism in Escherichia coli by recruitment of enzymes for L-fucose and L-lactate metabolism.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "铁激活的NAD连接型1,2-丙二醇脱氢酶，可氧化1,2-丙二醇",
+          "raw_text": "Ferrous-activated nicotinamide adenine dinucleotide-linked dehydrogenase from a mutant of Escherichia coli capable of growth on 1,2-propanediol.",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "以温血动物肠道为主要生境，可在水体、土壤和食物中短暂存活，属于宿主相关、环境广适性有限的细菌",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "丙酮酸是本降解主链进入中心代谢的节点，可经丙酮酸脱氢酶生成乙酰辅酶A并进入三羧酸循环，也可用于糖异生与生物合成。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "pyruvate oxidation to acetyl-CoA",
+      "summary": "丙酮酸可经丙酮酸脱氢酶复合体氧化脱羧生成乙酰辅酶A，随后进入三羧酸循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "cobalamin-dependent propanediol dehydratase route",
+      "summary": "在沙门氏菌等微生物中，(S)-1,2-丙二醇也可经腺苷钴胺素依赖的丙二醇脱水酶生成丙醛，再转化为丙酰辅酶A或丙酸。该分支不是本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": "4595201",
+      "locator": "Cocks GT, Aguilar J, Lin EC. J Bacteriol. 1974;118(1):83-88",
+      "claim_scope": ["pathway", "reaction", "organism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": "4306322",
+      "locator": "Sridhara S, Wu TT, Chused TM, Lin EC. J Bacteriol. 1969;98(1):87-95",
+      "claim_scope": ["enzyme", "reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UniProt",
+      "record_id": "P0A9S1",
+      "locator": "FucO_ECOLI; gene fucO; EC 1.1.1.77",
+      "claim_scope": ["enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UniProt",
+      "record_id": "P25553",
+      "locator": "ALDA_ECOLI; gene aldA; EC 1.2.1.22",
+      "claim_scope": ["enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UniProt",
+      "record_id": "P33232",
+      "locator": "LLDD_ECOLI; gene lldD; L-lactate dehydrogenase",
+      "claim_scope": ["enzyme"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "standard microbiological description of Escherichia coli K-12",
+      "claim_scope": ["traits"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655 chromosome; TaxID 511145",
+      "claim_scope": ["genome", "taxonomy"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "ATCC 700926 Escherichia coli MG1655",
+      "claim_scope": ["culture_collection"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；本答案给出的是好氧氧化主链，不是厌氧或微好氧的pdu丙二醇脱水酶路线。",
+    "以(S)-1,2-丙二醇为唯一碳源的好氧生长表型确立于大肠杆菌K-12调控突变株；MG1655含fucO、aldA和lldD，但野生型不一定组成型表达该路线。",
+    "第三步LldD常用EC号为1.1.2.3，生理电子受体为醌，与IUBMB细胞色素c反应式不完全一致。"
+  ]
+}

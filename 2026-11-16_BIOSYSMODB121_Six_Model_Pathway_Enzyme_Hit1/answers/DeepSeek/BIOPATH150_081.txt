@@ -1,0 +1,293 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_081",
+  "pollutant_name_zh": "2-氨基-5-胍基戊酸",
+  "pollutant_name_en": "2-Amino-5-guanidinovaleric acid",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-arginine degradation XIV (oxidative Stickland reaction)",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "L-精氨酸通过氧化性Stickland反应降解，依次经2-酮精氨酸、2-酮鸟氨酸、1-吡咯啉-2-羧酸，最终生成2-酮戊二酸进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-arginine",
+          "smiles": "N[C@@H](CCCNC(=N)N)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-ketoarginine",
+          "smiles": "O=C(O)C(=O)CCCNC(=N)N",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative deamination",
+      "enzyme": {
+        "name": "L-arginine dehydrogenase",
+        "ec_number": "1.4.1.24",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sticklandii",
+        "strain": "ATCC 12634",
+        "ncbi_taxid": 1511,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-ketoarginine",
+          "smiles": "O=C(O)C(=O)CCCNC(=N)N",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-ketoornithine",
+          "smiles": "O=C(O)C(=O)CCCN",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2-ketoarginine hydrolase",
+        "ec_number": "3.5.3.23",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sticklandii",
+        "strain": "ATCC 12634",
+        "ncbi_taxid": 1511,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-ketoornithine",
+          "smiles": "O=C(O)C(=O)CCCN",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-pyrroline-2-carboxylate",
+          "smiles": "O=C(O)C1=NCCC1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "spontaneous cyclization",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Clostridium sticklandii",
+        "strain": "ATCC 12634",
+        "ncbi_taxid": 1511,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "1-pyrroline-2-carboxylate",
+          "smiles": "O=C(O)C1=NCCC1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-ketoglutarate",
+          "smiles": "O=C(O)C(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative deamination",
+      "enzyme": {
+        "name": "1-pyrroline-2-carboxylate dehydrogenase",
+        "ec_number": "1.5.1.12",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sticklandii",
+        "strain": "ATCC 12634",
+        "ncbi_taxid": 1511,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Clostridium sticklandii",
+      "strain": "ATCC 12634",
+      "ncbi_taxid": 1511,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "obligate anaerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-positive",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["2-oxoglutarate"],
+    "explanation": "2-酮戊二酸是中心代谢中间产物，可进入TCA循环。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["F1_oxygen_tolerance", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation", "microorganism_identity"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S1", "S2", "S3", "S4", "pathway"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": []
+}

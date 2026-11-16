@@ -1,0 +1,1057 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_124",
+  "pollutant_name_zh": "异丁烯",
+  "pollutant_name_en": "Isobutylene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-methylpropene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null），按好氧降解途径作答；路线名称按题面原样填写为 2-methylpropene degradation。该主链为单一线性连续路线。"
+  },
+  "route_summary": "好氧条件下，异丁烯（2-methylpropene）首先经含双铁中心的烷烯单加氧酶环氧化为 2,2-dimethyloxirane（异丁烯环氧化物）；环氧化物经环氧化物水解酶水合生成 2-methylpropane-1,2-diol；再经醇脱氢酶与醛脱氢酶两级氧化生成 2-hydroxy-2-methylpropanoic acid（2-hydroxyisobutyrate）；随后经 CoA 连接酶活化为 2-hydroxyisobutyryl-CoA，由维生素 B12 依赖的 2-hydroxyisobutyryl-CoA 变位酶（HcmAB）重排为 3-hydroxybutyryl-CoA，最终经 3-hydroxyacyl-CoA 脱氢酶与硫解酶（β-氧化）裂解为乙酰-CoA 进入中央代谢。该主链综合了气态烯烃降解（丙烯/异戊二烯先环氧化）与叔丁基类化合物降解（MTBE/TBA 经 2-羟基异丁酸变位酶支路）的既有证据；除 S6 变位酶外，多数步骤的菌株指派为类比推断，整体证据水平偏低。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-methylpropene",
+          "smiles": "CC(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,2-dimethyloxirane",
+          "smiles": "CC1(C)CO1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "环氧化（依赖 NADH 的单加氧反应）",
+      "enzyme": {
+        "name": "alkene monooxygenase",
+        "ec_number": "1.14.13.69",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Xanthobacter autotrophicus",
+        "strain": "Py2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "Xanthobacter autotrophicus Py2 的烯烃单加氧酶对 2-methylpropene（支链末端烯烃）的环氧化活性系由其对丙烯等末端烯烃的已知底物谱外推，未见直接文献记载。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2,2-dimethyloxirane",
+          "smiles": "CC1(C)CO1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-methylpropane-1,2-diol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解（环氧化物水解）",
+      "enzyme": {
+        "name": "epoxide hydrolase",
+        "ec_number": "3.3.2.3",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Agrobacterium radiobacter",
+        "strain": "AD1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "2,2-dimethyloxirane 的酶促水解无专门文献记载；Agrobacterium radiobacter AD1 以其对环氧氯丙烷、环氧丙烷等环氧化物的水解酶活性作类比指派。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-methylpropane-1,2-diol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-2-methylpropanal",
+          "smiles": "CC(C)(O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化（伯醇脱氢）",
+      "enzyme": {
+        "name": "alcohol dehydrogenase (NAD+)",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_003",
+        "confidence": "low",
+        "evidence_id": "EVID_008"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "催化该步的脱氢酶系按 MTBE/叔丁醇降解菌中 2-methylpropane-1,2-diol 氧化的类比推断，EC 1.1.1.1 为通用醇脱氢酶编号，非该底物专一酶。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxy-2-methylpropanal",
+          "smiles": "CC(C)(O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-2-methylpropanoic acid",
+          "smiles": "CC(C)(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化（醛脱氢）",
+      "enzyme": {
+        "name": "aldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_003",
+        "confidence": "low",
+        "evidence_id": "EVID_008"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "EC 1.2.1.3 为通用醛脱氢酶编号；在 Methylibium petroleiphilum PM1 中针对 2-hydroxy-2-methylpropanal 的专一酶未确证。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxy-2-methylpropanoic acid",
+          "smiles": "CC(C)(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@H]1OP(=O)(O)O)n1cnc2c(N)ncnc12",
+          "role": "cofactor"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxyisobutyryl-CoA",
+          "smiles": "CC(C)(O)C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@H]1OP(=O)(O)O)n1cnc2c(N)ncnc12",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA 硫酯化（酰基-CoA 连接）",
+      "enzyme": {
+        "name": "2-hydroxyisobutyryl-CoA ligase (acyl-CoA synthetase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Aquincola tertiaricarbonis",
+        "strain": "L108",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_004",
+        "confidence": "low",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "负责 2-hydroxyisobutyrate 活化的连接酶（或 CoA 转移酶）的具体 EC 编号与基因未见可靠记载，故 ec_number 置 null。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxyisobutyryl-CoA",
+          "smiles": "CC(C)(O)C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@H]1OP(=O)(O)O)n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxybutyryl-CoA",
+          "smiles": "CC(O)CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@H]1OP(=O)(O)O)n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "碳骨架重排异构化（维生素 B12 依赖的分子内变位反应）",
+      "enzyme": {
+        "name": "2-hydroxyisobutyryl-CoA mutase",
+        "ec_number": "5.4.99.64",
+        "gene_or_protein": "hcmA/hcmB",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Aquincola tertiaricarbonis",
+        "strain": "L108",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_004",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "EC 编号 5.4.99.64 凭记忆给出，建议核对 IUBMB；变位反应产物的立体化学（3S/3R）未指定。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "3-hydroxybutyryl-CoA",
+          "smiles": "CC(O)CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@H]1OP(=O)(O)O)n1cnc2c(N)ncnc12",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetoacetyl-CoA",
+          "smiles": "CC(=O)CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@H]1OP(=O)(O)O)n1cnc2c(N)ncnc12",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化（β-羟基酰基-CoA 脱氢）",
+      "enzyme": {
+        "name": "3-hydroxyacyl-CoA dehydrogenase",
+        "ec_number": "1.1.1.35",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Aquincola tertiaricarbonis",
+        "strain": "L108",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_004",
+        "confidence": "low",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "3-hydroxybutyryl-CoA 的氧化为通用 β-氧化步骤，参与的具体同工酶在 Aquincola tertiaricarbonis L108 中未逐一确证。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S7"
+      ],
+      "substrates": [
+        {
+          "name": "acetoacetyl-CoA",
+          "smiles": "CC(=O)CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@H]1OP(=O)(O)O)n1cnc2c(N)ncnc12",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@H]1OP(=O)(O)O)n1cnc2c(N)ncnc12",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@H]1OP(=O)(O)O)n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "硫解（β-酮硫解酶催化的 C-C 键断裂，生成两分子乙酰-CoA）",
+      "enzyme": {
+        "name": "acetyl-CoA C-acetyltransferase (thiolase)",
+        "ec_number": "2.3.1.9",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Aquincola tertiaricarbonis",
+        "strain": "L108",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_004",
+        "confidence": "low",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "硫解为通用 β-氧化步骤；参与的具体硫解酶基因在 L108 中未确证。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Xanthobacter autotrophicus",
+      "strain": "Py2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（专性需氧菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌（土壤/淡水生境来源）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（兼性化能无机自养，可利用氢气）",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以丙烯（propene）为唯一碳源与能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解短链气态烯烃（如丙烯），经烯烃单加氧酶途径先行环氧化",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "烷烯单加氧酶（alkene monooxygenase，含双铁中心的多组分酶）活性，催化末端烯烃环氧化",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（短杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（α-变形菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广布于土壤与淡水环境的α-变形菌，栖息地广适性中等",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Agrobacterium radiobacter",
+      "strain": "AD1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（专性需氧菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用环氧氯丙烷（epichlorohydrin）等环氧化合物及相关底物生长",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "水解多种环氧化物（如环氧氯丙烷、1,2-环氧丙烷/环氧丁烷类）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "环氧化物水解酶（epoxide hydrolase）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（α-变形菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤/根际相关细菌，自然界分布较广，栖息地广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Methylibium petroleiphilum",
+      "strain": "PM1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（专性需氧菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲基叔丁基醚（MTBE）及其降解中间体（如叔丁醇 TBA）为碳源与能源",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解汽油含氧添加剂 MTBE 及叔丁醇（TBA）等叔丁基类化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "MTBE/TBA 氧化降解酶系（单加氧酶类）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（β-变形菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自受 MTBE 污染的环境（生物膜/污泥来源），为污染生境适应型菌株，生态位相对特化，栖息广适性偏低",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_004",
+      "organism_name": "Aquincola tertiaricarbonis",
+      "strain": "L108",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（专性需氧菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌（地下水/淡水生境）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以 2-hydroxyisobutyrate、叔丁醇（TBA）及 MTBE 等含叔碳基团的化合物为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解叔丁基类化合物（MTBE、TBA 等），经 2-hydroxyisobutyryl-CoA 变位酶支路进入中央代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "维生素 B12 依赖的 2-hydroxyisobutyryl-CoA 变位酶（HcmAB）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（β-变形菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自受污染含水层/地下水的环境菌，适应污染生境，栖息地广适性一般",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "acetyl-CoA"
+    ],
+    "explanation": "主链终点为乙酰-CoA（S8 硫解产物，每分子异丁烯骨架最终给出两分子乙酰-CoA）；乙酰-CoA 可进入 TCA 循环彻底氧化为 CO2 与 H2O，或经乙醛酸循环/合成代谢分流。此外 S6 的产物 3-hydroxybutyryl-CoA 本身即属中央代谢（β-氧化/聚羟基丁酸酯 PHB 代谢）的中间物。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA 循环（三羧酸循环）",
+      "summary": "乙酰-CoA 进入三羧酸循环被彻底氧化为 CO2 与 H2O，为细胞提供还原当量与能量。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "环氧烷烃:CoM 转移-羧化支路（Xanthobacter autotrophicus Py2 型）",
+      "summary": "在丙烯降解菌 Xanthobacter autotrophicus Py2 中，环氧丙烷经环氧烷烃:辅酶 M（CoM）转移酶及依赖 CoM 的羧化系统直接生成乙酰乙酸进入中央代谢；该系统对 2,2-dimethyloxirane 的作用未见报道，本答案未将其纳入评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "谷胱甘肽结合支路（Rhodococcus sp. AD45 型）",
+      "summary": "异戊二烯降解菌 Rhodococcus sp. AD45 以谷胱甘肽转移酶开环环氧化物并进一步代谢；其对异丁烯环氧化物（2,2-dimethyloxirane）的适用性未知，未纳入评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "step S1 反应：2-methylpropene 经 alkene monooxygenase（EC 1.14.13.69，源自 Xanthobacter sp. Py2）环氧化为 2,2-dimethyloxirane"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "step S2 反应：2,2-dimethyloxirane 经 epoxide hydrolase（EC 3.3.2.3）水合为 2-methylpropane-1,2-diol；Agrobacterium radiobacter AD1 具环氧化物水解酶活性"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "steps S3/S4 反应：2-methylpropane-1,2-diol 经 2-hydroxy-2-methylpropanal 氧化为 2-hydroxyisobutyrate（参照 MTBE/叔丁醇降解途径中已记载的同一中间体序列）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "step S6 反应：2-hydroxyisobutyryl-CoA 经维生素 B12 依赖变位酶 HcmA/HcmB（EC 5.4.99.64）重排为 3-hydroxybutyryl-CoA；该酶已记载于 Aquincola tertiaricarbonis L108"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "steps S5/S7/S8 反应：2-hydroxyisobutyrate 的 CoA 活化及 3-hydroxybutyryl-CoA 经 β-氧化（3-hydroxyacyl-CoA dehydrogenase EC 1.1.1.35、thiolase EC 2.3.1.9）裂解为乙酰-CoA"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_001 Xanthobacter autotrophicus Py2 的菌株性状（好氧、革兰氏阴性、以丙烯为碳源、烯烃单加氧酶等）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_002 Agrobacterium radiobacter AD1 的菌株性状（好氧、革兰氏阴性、环氧化物水解酶活性等）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_003 Methylibium petroleiphilum PM1 的菌株性状（好氧、革兰氏阴性、降解 MTBE/TBA 等）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_004 Aquincola tertiaricarbonis L108 的菌株性状（好氧、革兰氏阴性、降解叔丁基类化合物、2-hydroxyisobutyryl-CoA 变位酶等）"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "尚无经完整分子层面验证的'单一菌株完整降解异丁烯'的连续文献链；本主链由气态烯烃降解（丙烯/异戊二烯的环氧化）与 MTBE/TBA 降解（2-羟基异丁酸-变位酶支路）两段既有证据重构拼接，菌株在步骤间不连续。",
+    "S1：Xanthobacter autotrophicus Py2 的烯烃单加氧酶对 2-methylpropene 的底物特异性未经直接文献验证。",
+    "S2：以 Agrobacterium radiobacter AD1 的环氧化物水解酶作类比指派，其对 2,2-dimethyloxirane 的实际活性未知。",
+    "S3/S4：EC 1.1.1.1 与 1.2.1.3 为通用脱氢酶编号，并非针对该底物的专一酶； Methylibium petroleiphilum PM1 的指派系基于其降解 2-methylpropane-1,2-diol 类中间体的能力推断。",
+    "S5：2-hydroxyisobutyryl-CoA 连接酶（或 CoA 转移酶）的具体 EC 编号与基因未知，故 ec_number 置 null。",
+    "S6：EC 5.4.99.64 系凭记忆给出，宜核对 IUBMB 权威记录；产物立体化学未指定。",
+    "S7/S8：β-氧化酶系按通用途径指派，未在 Aquincola tertiaricarbonis L108 菌株层面逐一确证。",
+    "各菌株 15 项生理性状大多缺乏可引用的原始文献，仅按一般细菌学常识填写，缺失项均如实置 null；所有 ncbi_taxid、保藏编号与基因组信息因不确定而置 null。",
+    "题面氧条件未指定（null），本答案按好氧主链作答；厌氧条件下的可能激活方式未纳入主链。"
+  ]
+}

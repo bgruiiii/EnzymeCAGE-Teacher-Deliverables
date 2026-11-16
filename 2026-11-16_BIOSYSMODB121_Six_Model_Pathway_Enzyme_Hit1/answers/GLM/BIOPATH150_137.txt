@@ -1,0 +1,599 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_137",
+  "pollutant_name_zh": "吡啶-2-甲酸根",
+  "pollutant_name_en": "Picolinate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "picolinate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（按题面填null）；该主链本身为好氧途径，其中2,5-二羟基吡啶的双加氧开环步骤依赖分子氧。"
+  },
+  "route_summary": "吡啶-2-甲酸（皮考啉酸）的微生物好氧降解主链共5步：第1步由皮考啉酸脱氢酶（picolinate dehydrogenase，EC 1.17.1.5）催化氧化脱羧，生成2,5-二羟基吡啶并释放CO2；第2步2,5-二羟基吡啶5,6-双加氧酶开环生成N-甲酰马来酰胺酸；第3步N-甲酰马来酰胺酸脱甲酰基酶水解释放甲酸生成马来酰胺酸；第4步马来酰胺酸酰胺酶水解释放氨生成马来酸；第5步马来酸顺反异构酶（EC 5.2.1.1）将马来酸转化为富马酸，进入TCA循环。首步对应经典降解菌Arthrobacter picolinophagus；下游步骤在Pseudomonas putida S16（尼古丁/烟酸经2,5-二羟基吡啶的下游途径）中有酶学表征。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Picolinate",
+          "smiles": "O=C([O-])c1ccccn1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,5-Dihydroxypyridine",
+          "smiles": "Oc1ccc(O)cn1",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱羧（脱羧性羟化，脱氢反应）",
+      "enzyme": {
+        "name": "picolinate dehydrogenase",
+        "ec_number": "1.17.1.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter picolinophagus",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC编号（1.17.1.5）与反应式来自内部知识记忆，未核对原始文献；2,5-二羟基吡啶在文献中亦常以其内酰胺互变异构体（5-羟基-2-吡啶酮）形式书写；原始菌株编号与TaxID未知。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2,5-Dihydroxypyridine",
+          "smiles": "Oc1ccc(O)cn1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-Formylmaleamic acid",
+          "smiles": "O=CNC(=O)C=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "杂环双加氧开环（C5-C6键断裂）",
+      "enzyme": {
+        "name": "2,5-dihydroxypyridine 5,6-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "S16",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该酶的正式EC编号未能确定（可能尚未分配）；产物亦有文献写作N-formylmaleamate；在Pseudomonas putida中该步骤属于烟酸/尼古降解的下游共用途径。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "N-Formylmaleamic acid",
+          "smiles": "O=CNC(=O)C=CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Maleamic acid",
+          "smiles": "NC(=O)C=CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Formate",
+          "smiles": "O=C[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解（脱甲酰基）",
+      "enzyme": {
+        "name": "N-formylmaleamate deformylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "S16",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC编号未知；该酶在Pseudomonas putida中的基因名与生化表征细节未核对原文；部分文献中该步可能被简化并入下一步描述。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "Maleamic acid",
+          "smiles": "NC(=O)C=CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Maleate",
+          "smiles": "O=C([O-])/C=C\\C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解（脱酰胺，释放氨）",
+      "enzyme": {
+        "name": "maleamate amidohydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "S16",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC编号未知；该酰胺酶的原始酶学表征来自降解烟酸的经典Pseudomonas研究，具体菌株与基因未核对。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "Maleate",
+          "smiles": "O=C([O-])/C=C\\C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Fumarate",
+          "smiles": "O=C([O-])/C=C/C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "顺反异构化（Z→E）",
+      "enzyme": {
+        "name": "maleate cis-trans isomerase",
+        "ec_number": "5.2.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "S16",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 5.2.1.1 依据记忆填写，未核对原文；该酶在Pseudomonas putida S16中的具体基因未核对。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter picolinophagus",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（需氧型，好氧条件下降解吡啶-2-甲酸）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以吡啶-2-甲酸（皮考啉酸）为唯一碳源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "以吡啶杂环降解为特征：可将吡啶-2-甲酸经2,5-二羟基吡啶开环途径完全矿化；更广谱的降解能力未表征",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "皮考啉酸脱氢酶（EC 1.17.1.5）活性：催化吡啶-2-甲酸氧化脱羧生成2,5-二羟基吡啶并释放CO2",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆菌—球菌生长循环：对数生长期为不规则杆菌，稳定期呈球形细胞（属级典型特征）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（属级典型特征）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（属级典型特征）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤来源的自由生活细菌；栖息地广适性程度未表征",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "S16",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温性（最适约30 °C，种级典型值）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（不发酵，缺氧条件下不能生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（土壤/淡水生境菌，种级典型）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以尼古丁（烟碱）为唯一碳源、氮源和能源生长，经烟酸/2,5-二羟基吡啶途径降解",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解尼古丁、烟酸等吡啶类化合物，经2,5-二羟基吡啶开环至富马酸完全矿化并进入TCA循环",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "含2,5-二羟基吡啶5,6-双加氧酶活性（催化2,5-DHP开环生成N-甲酰马来酰胺酸），并具有下游脱甲酰基酶、酰胺酶和马来酸顺反异构酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动性阳性，极生鞭毛（种级典型）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直或微弯的杆状细胞，单个或成对排列（种级典型）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（典型外膜—肽聚糖—内膜包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": 61.6
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性种：分布于土壤、淡水、植物根际及烟草废弃物等多样生境，环境适应与代谢通性强",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Fumarate",
+      "Formate"
+    ],
+    "explanation": "主链终点为富马酸（延胡索酸），直接进入TCA循环（经延胡索酸酶水化为苹果酸后彻底氧化为CO2和水）；副产物甲酸可经甲酸脱氢酶进入呼吸链/C1代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA循环（柠檬酸循环）",
+      "summary": "富马酸在延胡索酸酶作用下水化为苹果酸，进入三羧酸循环被彻底氧化。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "烟酸/尼古丁与吡啶降解在2,5-二羟基吡啶的汇合",
+      "summary": "烟酸（经6-羟基烟酸）、尼古丁及吡啶等的好氧降解同样汇聚于2,5-二羟基吡啶，并共用本主链S2–S5的下游开环步骤；该汇合关系不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Arthrobacter picolinophagus 为吡啶-2-甲酸降解菌，可利用其生长",
+        "picolinate dehydrogenase 催化吡啶-2-甲酸氧化脱羧生成2,5-二羟基吡啶并释放CO2"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida S16 经2,5-二羟基吡啶开环至富马酸的尼古丁/烟酸下游途径（2,5-二羟基吡啶5,6-双加氧酶、N-甲酰马来酰胺酸脱甲酰基酶、马来酰胺酸酰胺酶、马来酸顺反异构酶）",
+        "S16以尼古丁为唯一碳氮源生长"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida 种级典型性状：好氧、革兰氏阴性、极生鞭毛运动、不产芽孢、非嗜盐、最适约30 °C、pH约7、G+C约61.6%"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Arthrobacter 属级典型性状：好氧、革兰氏阳性、杆菌-球菌循环、不产芽孢、土壤生境"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.17.1.5",
+      "locator": null,
+      "claim_scope": [
+        "picolinate dehydrogenase 的 EC 编号归属"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 5.2.1.1",
+      "locator": null,
+      "claim_scope": [
+        "maleate cis-trans isomerase 的 EC 编号归属"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "picolinate dehydrogenase 的 EC 编号（1.17.1.5）及直接生成2,5-二羟基吡啶的反应式依据内部记忆，未核对原始文献，置信度中等；不排除文献中存在经6-羟基皮考啉酸中间体的多步版本。",
+    "Arthrobacter picolinophagus 的菌株编号、保藏号、TaxID及培养性状（温度、pH、盐度）均未知，多数性状按Arthrobacter属级典型特征以中等/低置信度填写。",
+    "2,5-二羟基吡啶5,6-双加氧酶、N-甲酰马来酰胺酸脱甲酰基酶、马来酰胺酸酰胺酶的正式EC编号未能确定，均填null。",
+    "下游步骤的微生物对应关系基于Pseudomonas putida S16（尼古丁/烟酸降解下游途径）的内部知识，各步基因名未核对原文。",
+    "Pseudomonas putida S16 的部分性状（最适温度30 °C、pH 7、G+C 61.6%）为种级典型值推断，非该菌株实测数据。"
+  ]
+}

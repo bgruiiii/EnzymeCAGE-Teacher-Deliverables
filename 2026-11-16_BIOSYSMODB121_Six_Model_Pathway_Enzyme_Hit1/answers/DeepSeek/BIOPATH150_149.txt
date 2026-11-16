@@ -1,0 +1,269 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_149",
+  "pollutant_name_zh": "L-刀豆氨酸(1+)",
+  "pollutant_name_en": "L-canavanine(1+)",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-canavanine degradation II",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "L-刀豆氨酸(1+) 经两步水解：首先由精氨酸酶/刀豆氨酸脒基水解酶催化生成 L-刀豆氨酸（L-canaline）和尿素；随后由刀豆氨酸水解酶催化 L-canaline 水解生成 L-高丝氨酸和羟胺。主要碳骨架进入 L-高丝氨酸代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-canavanine(1+)",
+          "smiles": "C(C[C@@H](C(=O)[O-])[NH3+])ONC(=[NH2+])N",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-canaline",
+          "smiles": "C(C[C@@H](C(=O)O)N)ON",
+          "role": "main"
+        },
+        {
+          "name": "urea",
+          "smiles": "NC(=O)N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "arginase",
+        "ec_number": "3.5.3.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sinorhizobium meliloti",
+        "strain": "1021",
+        "ncbi_taxid": 266834,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "L-canaline",
+          "smiles": "C(C[C@@H](C(=O)O)N)ON",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-homoserine",
+          "smiles": "C(C[C@@H](C(=O)O)N)O",
+          "role": "main"
+        },
+        {
+          "name": "hydroxylamine",
+          "smiles": "NO",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "canaline hydrolase",
+        "ec_number": "3.5.3.17",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sinorhizobium meliloti",
+        "strain": "1021",
+        "ncbi_taxid": 266834,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sinorhizobium meliloti",
+      "strain": "1021",
+      "ncbi_taxid": 266834,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（mesophilic）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "53121"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用多种碳水化合物、有机酸和氨基酸（如甘露醇、葡萄糖、琥珀酸）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解 L-刀豆氨酸等精氨酸类似物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有精氨酸酶（arginase）和刀豆氨酸水解酶（canaline hydrolase）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "GCF_000006965.1",
+            "genome_size_bp": 6691694,
+            "gc_percent": 62.7
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性中等，主要存在于土壤和根际，并作为共生菌在豆科植物（如苜蓿）根瘤中生活",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["L-homoserine"],
+    "explanation": "L-高丝氨酸可进入氨基酸分解代谢和中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["L-canavanine degradation II pathway", "enzyme assignments", "microorganism assignment"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Sinorhizobium meliloti 1021 traits"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "L-canavanine degradation II 的完整步骤可能还包括 L-高丝氨酸进一步代谢，本回答仅列出该路线中的两个核心水解步骤。",
+    "酶名称和 EC 编号在不同数据库中可能存在同义词。"
+  ]
+}

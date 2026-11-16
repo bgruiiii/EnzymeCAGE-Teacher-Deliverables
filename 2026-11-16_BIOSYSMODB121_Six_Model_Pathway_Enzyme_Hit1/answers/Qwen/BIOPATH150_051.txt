@@ -1,0 +1,254 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_051",
+  "pollutant_name_zh": "(2Z)-2-羟基戊-2,4-二烯酸根",
+  "pollutant_name_en": "(2Z)-2-hydroxypenta-2,4-dienoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-hydroxypenta-2,4-dienoate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；按已知的 2-hydroxypenta-2,4-dienoate 降解下途径填写主链。"
+  },
+  "route_summary": "在指定路线下，(2Z)-2-hydroxypenta-2,4-dienoate 先经 2-hydroxypenta-2,4-dienoate hydratase 水合生成 4-hydroxy-2-oxopentanoate，再经 4-hydroxy-2-oxovalerate aldolase 裂解为丙酮酸和乙醛，从而进入中心代谢。代表微生物为 Pseudomonas putida mt-2。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(2Z)-2-hydroxypenta-2,4-dienoate",
+          "smiles": "O=C([O-])C(O)=CC=C",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(4S)-4-hydroxy-2-oxopentanoate",
+          "smiles": "O=C([O-])C(=O)CC(O)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "2-hydroxypenta-2,4-dienoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "底物双键构型与产物立体化学按已知酶反应记录填写；未单独列出可能的酮-烯醇互变或异构化步骤。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "(4S)-4-hydroxy-2-oxopentanoate",
+          "smiles": "O=C([O-])C(=O)CC(O)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxovalerate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "乙醛的后续氧化步骤不属于本题面指定的主链范围。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "33015"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "芳香烃及其代谢中间体（如甲苯/苯甲酸盐类）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经间位裂解途径降解芳香烃/酚类化合物，并代谢 2-hydroxypenta-2,4-dienoate 中间体",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 2-hydroxypenta-2,4-dienoate hydratase 活性（间位裂解途径）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动（通常具极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢/不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性环境菌，常见于土壤、水体、植物根际及烃污染环境",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "acetaldehyde"
+    ],
+    "explanation": "本路线末端生成丙酮酸与乙醛；丙酮酸可直接进入中心代谢，乙醛通常经后续氧化进入乙酸/乙酰辅酶A代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "芳香烃间位裂解下途径中 2-hydroxypenta-2,4-dienoate hydratase (EC 4.2.1.80) 与 4-hydroxy-2-oxovalerate aldolase (EC 4.1.3.39) 的已知反应及代表菌 Pseudomonas putida mt-2",
+      "claim_scope": [
+        "route",
+        "steps",
+        "enzymes",
+        "microorganism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida mt-2 的一般生理特征与保藏信息（ATCC 33015）",
+      "claim_scope": [
+        "organism_traits"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未在题面指定，故 route_scope.oxygen_condition 保留为 null。",
+    "未填写 NCBI TaxID、基因组信息与温度、pH、盐度等缺乏可靠来源的性状。",
+    "2-hydroxypenta-2,4-dienoate 可能先发生酮-烯醇互变或异构化，再进入水合反应；本答案按常见主链将其归入 hydratase 步骤。",
+    "基因或蛋白名称未填写，以避免不确定信息。"
+  ]
+}

@@ -1,0 +1,477 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_057",
+  "pollutant_name_zh": "2-硝基甲苯",
+  "pollutant_name_en": "2-Nitrotoluene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-nitrotoluene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null），chosen_route_name按题面原样填写为'2-nitrotoluene degradation'；该路线在文献中表征最充分的分支为好氧条件下Pseudomonas sp. JS42经3-methylcatechol的间位裂解途径，本答案据此给出单条连续主链。"
+  },
+  "route_summary": "好氧条件下，2-硝基甲苯被Pseudomonas sp. JS42的多组分Rieske型加双氧酶2-nitrotoluene 2,3-dioxygenase氧化，氧加到苯环2,3位后自发消除亚硝酸，净反应生成3-methylcatechol并释放亚硝酸根（其可被同化为菌体氮源）；3-methylcatechol经catechol 2,3-dioxygenase间位开环生成2-hydroxy-6-oxohepta-2,4-dienoate；后者被2-hydroxymuconic-semialdehyde hydrolase水解为2-hydroxypenta-2,4-dienoate和乙酸；2-hydroxypenta-2,4-dienoate经酮-烯醇互变生成2-oxopent-4-enoate，再经水合生成4-hydroxy-2-oxopentanoate，最后经醛醇裂解生成丙酮酸和乙醛，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-nitrotoluene",
+          "smiles": "Cc1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-methylcatechol",
+          "smiles": "Cc1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "nitrite",
+          "smiles": "[O-]N=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Rieske型非血红素铁2,3-加双氧氧化（经顺式二氢二醇自发消除亚硝酸的净反应）",
+      "enzyme": {
+        "name": "2-nitrotoluene 2,3-dioxygenase",
+        "ec_number": "1.14.12.12",
+        "gene_or_protein": "ntdAa ntdAb ntdAc ntdAd（还原酶/铁氧还蛋白/末端加氧酶大亚基和小亚基）",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. JS42",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "反应实际先生成2-硝基甲苯顺式-2,3-二氢二醇，随后自发消除亚硝酸生成3-methylcatechol，本步按净反应计为一步；EC编号1.14.12.12按记忆填写，建议核对。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-methylcatechol",
+          "smiles": "Cc1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "间位开环裂解",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. JS42",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "3-methylcatechol的2,3-间位裂解由metapyrocatechase型开环加双氧酶催化，JS42中该酶的具体基因与酶学细节未在本答案中逐一核实。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetate",
+          "smiles": "CC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-C键水解（环裂解产物的酮水解）",
+      "enzyme": {
+        "name": "2-hydroxymuconic-semialdehyde hydrolase",
+        "ec_number": "3.7.1.9",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. JS42",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该水解酶（可作用于2-hydroxy-6-oxohepta-2,4-dienoate的xylF型酮水解酶）在JS42中的具体性质未直接核实；EC编号3.7.1.9为记忆填写。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "C=CCC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "酮-烯醇互变异构（烯醇式转化为酮式）",
+      "enzyme": {
+        "name": "4-oxalocrotonate tautomerase",
+        "ec_number": "5.3.2.6",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. JS42",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该互变异构在部分文献中被描述为可自发进行，4-oxalocrotonate tautomerase（或其同源酶）为可能的催化酶；其在JS42中未确认，EC编号为记忆填写。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "C=CCC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合反应（共轭烯酮水合）",
+      "enzyme": {
+        "name": "2-oxopent-4-enoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. JS42",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "JS42中该步酶由与经典间位裂解途径（xyl/dmp型）的同源性推断；EC编号4.2.1.80为记忆填写，建议核对。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛醇裂解（逆醛醇缩合）",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxopentanoate aldolase",
+        "ec_number": "4.1.2.28",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. JS42",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "JS42中该步酶由与经典间位裂解途径（xyl/dmp型）的同源性推断；EC编号4.1.2.28为记忆填写，建议核对。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp. JS42",
+      "strain": "JS42",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧菌：需氧生长，2-硝基甲苯降解依赖分子氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以2-nitrotoluene为唯一碳源、氮源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "所含2-nitrotoluene 2,3-dioxygenase底物谱较宽，可氧化多种硝基芳烃（如硝基苯等）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2-硝基甲苯2,3-加双氧酶活性：催化2-nitrotoluene氧化生成3-methylcatechol并释放亚硝酸根",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆菌",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetaldehyde", "acetate"],
+    "explanation": "主链终点产物为pyruvate与acetaldehyde：pyruvate可经丙酮酸脱氢酶复合体生成乙酰辅酶A进入TCA循环；acetaldehyde可经乙醛脱氢酶氧化为乙酸并经乙酰辅酶A合成酶途径进入中心代谢；S3步骤的副产物acetate同样可转变为乙酰辅酶A进入TCA循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "pyruvate → acetyl-CoA → TCA循环",
+      "summary": "丙酮酸经丙酮酸脱氢酶复合体氧化脱羧为乙酰辅酶A，进入三羧酸循环彻底氧化。"
+    },
+    {
+      "name": "acetaldehyde → acetate/乙酰辅酶A → TCA循环",
+      "summary": "乙醛经乙醛脱氢酶氧化为乙酸，再由乙酰辅酶A合成酶活化后进入中心代谢。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "厌氧还原为邻甲苯胺分支",
+      "summary": "在缺氧/厌氧环境中，硝基芳烃可经硝基→亚硝基→羟氨基→氨基逐级还原，2-硝基甲苯可被还原为邻甲苯胺；该分支不属于本题评分的主链，具体微生物与酶未在本答案中确认。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "Lessner DJ, Johnson GR, Parales RE, Spain JC, Gibson DT. 2002, Appl Environ Microbiol 68(2):634-641",
+      "locator": "'Molecular characterization and substrate specificity of nitrobenzene dioxygenase from Comamonas sp. strain JS765 in comparison to 2-nitrotoluene dioxygenases from Pseudomonas sp. strains JS42 and DNT'",
+      "claim_scope": ["S1酶与反应：Pseudomonas sp. JS42含2-nitrotoluene 2,3-dioxygenase，催化2-硝基甲苯氧化为3-methylcatechol并释放亚硝酸根", "菌株身份：Pseudomonas sp. JS42为2-硝基甲苯降解菌", "性状：JS42以2-硝基甲苯为碳氮源生长及其2NT加双氧酶的底物特异性"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": null,
+      "locator": "KEGG PATHWAY: Nitrotoluene degradation（2-nitrotoluene经3-methylcatechol的好氧间位裂解路线；下游水解、互变、水合、醛醇裂解各步参照间位裂解代谢图）",
+      "claim_scope": ["S2-S6反应与酶：3-methylcatechol间位开环及其下游转化为丙酮酸与乙醛的各步反应与酶"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["JS42为好氧菌并以O2为末端电子受体行好氧呼吸", "JS42为革兰氏阴性、不产芽孢的杆菌（基于Pseudomonas属典型特征的推断）"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "S3-S6各步酶（2-hydroxymuconic-semialdehyde hydrolase、4-oxalocrotonate tautomerase、2-oxopent-4-enoate hydratase、4-hydroxy-2-oxopentanoate aldolase）在JS42中的存在主要由其以2-硝基甲苯为唯一碳/氮源生长的表型及与经典间位裂解途径（xyl/dmp型）的同源性推断，未逐一核实JS42的原始酶学文献。",
+    "EC编号1.14.12.12、3.7.1.9、5.3.2.6、4.2.1.80、4.1.2.28为凭记忆给出的最可能编号，建议与IUBMB/ExPASy核对。",
+    "S1反应实际经由2-硝基甲苯顺式二氢二醇中间体后自发消除亚硝酸，本答案按净反应表示为一步。",
+    "部分后续文献将JS42归入Acidovorax属（Acidovorax sp. JS42），本答案采用原始文献中的经典命名Pseudomonas sp. JS42；其NCBI TaxID未查到，填null。",
+    "JS42菌株水平的生理性状（生长温度、pH、盐度、菌种保藏编号、基因组信息、运动性、栖息地）未见可靠来源，均填null。"
+  ]
+}

@@ -1,0 +1,363 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_012",
+  "pollutant_name_zh": "硝化甘油",
+  "pollutant_name_en": "Nitroglycerin",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Nitroglycerin degradation pathway",
+    "is_single_continuous_route": false,
+    "notes": "题面路线名称原样采用。好氧细菌主链为NADPH依赖的逐步还原脱硝。Agrobacterium radiobacter甘油三硝酸酯还原酶优先脱去C-2硝酸酯，主产物为1,3-二硝基甘油；1,2-二硝基甘油为次要区域异构产物，故完整途径在第一步即分支，评分主链只沿主产物连续书写。该菌现用异名多为Rhizobium radiobacter。"
+  },
+  "route_summary": "好氧条件下硝化甘油的微生物降解主链是三次还原脱硝：硝化甘油在甘油三硝酸酯还原酶催化下优先生成1,3-二硝基甘油和亚硝酸盐，再生成1-单硝基甘油，最终生成甘油和亚硝酸盐。代表菌为Agrobacterium radiobacter，辅因子为NADPH。甘油可进入中心碳代谢；亚硝酸盐的进一步转化不属于该主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Nitroglycerin",
+          "smiles": "O=[N+]([O-])OCC(O[N+](=O)[O-])CO[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1,3-dinitroglycerin",
+          "smiles": "O=[N+]([O-])OCC(O)CO[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "nitrite",
+          "smiles": "[O-]N=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "1,2-dinitroglycerin",
+          "smiles": "OCC(O[N+](=O)[O-])CO[N+](=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NADPH-dependent reductive denitration",
+      "enzyme": {
+        "name": "glycerol trinitrate reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Agrobacterium radiobacter",
+        "strain": null,
+        "ncbi_taxid": 358,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "同一酶同时生成少量1,2-二硝基甘油，已标为副产物，不纳入评分主链的后续步骤。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "1,3-dinitroglycerin",
+          "smiles": "O=[N+]([O-])OCC(O)CO[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-mononitroglycerin",
+          "smiles": "OCC(O)CO[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "nitrite",
+          "smiles": "[O-]N=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "NADPH-dependent reductive denitration",
+      "enzyme": {
+        "name": "glycerol trinitrate reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Agrobacterium radiobacter",
+        "strain": null,
+        "ncbi_taxid": 358,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "1-mononitroglycerin",
+          "smiles": "OCC(O)CO[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycerol",
+          "smiles": "OCC(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "nitrite",
+          "smiles": "[O-]N=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "NADPH-dependent reductive denitration",
+      "enzyme": {
+        "name": "glycerol trinitrate reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Agrobacterium radiobacter",
+        "strain": null,
+        "ncbi_taxid": 358,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "纯化甘油三硝酸酯还原酶对单硝基甘油的脱硝明显慢于前两步。好氧细菌可将硝化甘油完全脱硝至甘油，但是否始终由同一酶完成并未完全证实，故本步酶与菌的置信度低于前两步。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Agrobacterium radiobacter",
+      "strain": null,
+      "ncbi_taxid": 358,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种糖类和有机酸",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可将硝化甘油逐步还原脱硝为二硝基甘油和单硝基甘油并释放亚硝酸盐",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "NADPH依赖的甘油三硝酸酯还原酶活性，属于老黄酶家族黄素蛋白",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动，具周生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "种级上可分布于土壤和植物根际等不止一类生境，具有限生态幅度，但不能据此认定历史脱硝分离株是极端环境广适菌",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["glycerol", "sn-glycerol 3-phosphate", "dihydroxyacetone phosphate"],
+    "explanation": "主链终产物甘油可经甘油激酶生成sn-甘油-3-磷酸，再氧化为磷酸二羟丙酮，进入糖酵解或糖异生。该同化步骤不属于硝化甘油专属脱硝主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "甘油同化",
+      "summary": "甘油经甘油激酶（EC 2.7.1.30）进入中心碳代谢，随后可导向糖酵解或糖异生。"
+    },
+    {
+      "name": "亚硝酸盐去向",
+      "summary": "脱硝释放的亚硝酸盐可被同化，或在好氧条件下由其他硝化微生物氧化为硝酸盐；这不是硝化甘油主链反应。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "1,2-dinitroglycerin branch",
+      "summary": "同一还原酶的次要区域选择性或其它硝酸酯还原酶可先脱去末端硝酸酯，生成1,2-二硝基甘油，再形成1-单硝基甘油或2-单硝基甘油，最终仍可汇合为甘油。该分支不是本条评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Snape JR, Walkley NA, Morby AP, Nicklin S, White GF. 1997. Purification, properties, and sequence of glycerol trinitrate reductase from Agrobacterium radiobacter. Journal of Bacteriology.",
+      "claim_scope": ["S1_reaction", "S2_reaction", "enzyme_identity", "organism_identity", "regioselectivity_1_3_dinitroglycerin", "NADPH_dependence"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Marshall SJ, White GF. 2001. Complete denitration of nitroglycerin by bacteria isolated from a washwater soakaway. Applied and Environmental Microbiology.",
+      "claim_scope": ["S3_complete_denitration_to_glycerol"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Agrobacterium radiobacter（现多归为Rhizobium radiobacter）种级常规描述；非该脱硝历史分离株的实测档案",
+      "claim_scope": ["oxygen_tolerance", "temperature_preference", "respiration", "carbon_substrate_general", "motility", "morphology", "gram_stain", "sporulation", "habitat_generalism"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "甘油三硝酸酯还原酶属于老黄酶家族，未见可稳妥引用的单一IUBMB EC编号，故EC置null。",
+    "NADPH与NADP+只写名称，不填写SMILES，以避免辅因子立体化学写错。",
+    "经典文献菌株的保藏号、基因组登录号、温度、pH和盐度数值没有可核对来源，相关性状置null。",
+    "种级形态和生理性状不能自动等同于该脱硝分离株的实测值。",
+    "单硝基甘油到甘油这一步由同一纯化酶高效催化的证据弱于前两步，未把该菌标为可独立完成全程矿化的菌株。"
+  ]
+}

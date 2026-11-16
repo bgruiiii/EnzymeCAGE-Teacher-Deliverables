@@ -1,0 +1,607 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_126",
+  "pollutant_name_zh": "丁烷",
+  "pollutant_name_en": "Butane",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "butane degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本答案采用文献中表征最充分的好氧正丁烷末端氧化后接一轮β-氧化的连续主链；异丁烷、次末端氧化和厌氧延胡索酸加成不计入评分主链。"
+  },
+  "route_summary": "好氧条件下，正丁烷由丁烷单加氧酶末端羟化为1-丁醇，再经醇脱氢和醛脱氢生成丁酸；丁酸活化为丁酰辅酶A后，经一轮β-氧化生成乙酰辅酶A并进入中心代谢。代表菌为可在正丁烷上生长的Thauera butanivorans（原名Pseudomonas butanovora）ATCC 43655。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "n-butane",
+          "smiles": "CCCC",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-butanol",
+          "smiles": "CCCCO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧羟化",
+      "enzyme": {
+        "name": "butane monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": "bmoX",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "主产物为1-丁醇，该酶亦可少量生成2-丁醇。可溶性丁烷单加氧酶无专用EC编号，故ec_number为null；bmoX表示羟化酶α亚基。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "1-butanol",
+          "smiles": "CCCCO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "butanal",
+          "smiles": "CCCC=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "醇脱氢",
+      "enzyme": {
+        "name": "alcohol dehydrogenase",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该菌丁烷代谢中NAD依赖型醇脱氢酶与醌血色蛋白醇脱氢酶均参与；此处以EC 1.1.1.1代表1-丁醇到丁醛的脱氢，它未必是唯一生理主酶。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "butanal",
+          "smiles": "CCCC=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "butyrate",
+          "smiles": "CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "醛脱氢",
+      "enzyme": {
+        "name": "aldehyde dehydrogenase",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC按NAD依赖型醛脱氢酶1.2.1.3填写；该菌株相应基因未在此指定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "butyrate",
+          "smiles": "CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "butyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "辅酶A连接",
+      "enzyme": {
+        "name": "butyrate-CoA ligase",
+        "ec_number": "6.2.1.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "按AMP形成型丁酸–辅酶A连接酶填写。该酶未在ATCC 43655中单独纯化，依据该菌能以丁烷/丁酸生长及标准脂肪酸活化途径推断。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "butyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "FAD",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "crotonyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "FADH2",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "酰基辅酶A脱氢",
+      "enzyme": {
+        "name": "short-chain acyl-CoA dehydrogenase",
+        "ec_number": "1.3.8.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "生理电子受体为电子转移黄素蛋白，此处氧化还原辅因子写作FAD/FADH2。该酶未在此菌株单独纯化。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "crotonyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-3-hydroxybutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "烯酰辅酶A水合",
+      "enzyme": {
+        "name": "enoyl-CoA hydratase",
+        "ec_number": "4.2.1.17",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该菌株中未单独纯化，按标准β-氧化的巴豆酸酶反应填写。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "(S)-3-hydroxybutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetoacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "3-羟酰基辅酶A脱氢",
+      "enzyme": {
+        "name": "3-hydroxyacyl-CoA dehydrogenase",
+        "ec_number": "1.1.1.35",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该菌株中未单独纯化，按标准β-氧化填写。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "acetoacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "硫解",
+      "enzyme": {
+        "name": "acetyl-CoA C-acetyltransferase",
+        "ec_number": "2.3.1.9",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "化学计量产物为两分子乙酰辅酶A，数组中只列一个主产物条目。该酶未在此菌株单独纯化。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Thauera butanivorans",
+      "strain": "ATCC 43655",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "43655"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以正丁烷及C2–C9正构烷烃为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解正丁烷等短链正构烷烃",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "丁烷单加氧酶活性，将正丁烷羟化为1-丁醇",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA"],
+    "explanation": "一轮β-氧化将丁酰辅酶A硫解为两分子乙酰辅酶A，乙酰辅酶A进入三羧酸循环，从而接入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "三羧酸循环",
+      "summary": "乙酰辅酶A与草酰乙酸缩合进入TCA循环，可被彻底氧化并提供生物合成前体与还原力。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "次末端氧化",
+      "summary": "丁烷单加氧酶亦可将正丁烷羟化为2-丁醇，再氧化为2-丁酮；该分支不是本评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "厌氧延胡索酸加成",
+      "summary": "某些硫酸盐还原菌可在厌氧条件下把丁烷加成到延胡索酸上，再进一步降解；氧条件与活化机制均不同于本好氧主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas butanovora ATCC 43655 soluble butane monooxygenase, hydroxylase alpha subunit bmoX; Sluis, Sayavedra-Soto and Arp, Microbiology 2002",
+      "claim_scope": ["S1_reaction", "S1_enzyme", "bmoX", "butane_to_1_butanol"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Butane-grown Pseudomonas butanovora oxidizes 1-butanol and butanal to butyrate; Arp, Microbiology 1999; Vangnai, Arp and Sayavedra-Soto, J Bacteriol 2002",
+      "claim_scope": ["S2_reaction", "S3_reaction", "butanol_butanal_oxidation"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Thauera butanivorans, basonym Pseudomonas butanovora, type strain ATCC 43655; Gram-negative rod, aerobic C2-C9 n-alkane oxidizer",
+      "claim_scope": ["organism_identity", "culture_collection", "oxygen", "carbon_substrate", "morphology", "gram", "sporulation", "degradation_capacity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Aerobic n-butane terminal oxidation continues by butyrate activation and one round of beta-oxidation to acetyl-CoA; ATCC 43655 grows on butane as sole carbon source",
+      "claim_scope": ["S4_reaction", "S5_reaction", "S6_reaction", "S7_reaction", "S8_reaction", "beta_oxidation_inference"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB Enzyme Nomenclature",
+      "record_id": null,
+      "locator": "EC 1.1.1.1; EC 1.2.1.3; EC 6.2.1.2; EC 1.3.8.1; EC 4.2.1.17; EC 1.1.1.35; EC 2.3.1.9",
+      "claim_scope": ["enzyme_ec", "S2_enzyme", "S3_enzyme", "S4_enzyme", "S5_enzyme", "S6_enzyme", "S7_enzyme", "S8_enzyme"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，主链按好氧正丁烷末端氧化填写。",
+    "丁烷单加氧酶没有专用EC编号，S1的ec_number因此为null。",
+    "1-丁醇氧化的生理酶可能是醌血色蛋白醇脱氢酶而非单一的EC 1.1.1.1。",
+    "丁酸活化及β-氧化各酶未在ATCC 43655中逐一纯化，后四步为途径推断。",
+    "辅酶A硫酯未填写SMILES，以避免连接方式或立体化学错误。",
+    "NCBI TaxID、基因组登录号、温度、pH、盐度、运动性和栖息地广适性无可靠来源，已置null。",
+    "本主链描述正丁烷，不覆盖异丁烷。"
+  ]
+}

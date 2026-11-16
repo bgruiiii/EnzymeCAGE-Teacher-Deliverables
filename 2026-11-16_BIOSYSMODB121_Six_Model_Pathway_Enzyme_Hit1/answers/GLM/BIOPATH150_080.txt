@@ -1,0 +1,542 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_080",
+  "pollutant_name_zh": "(2E)-3-(4-羟基-3-甲氧基苯基)丙-2-烯酸根",
+  "pollutant_name_en": "(2E)-3-(4-hydroxy-3-methoxyphenyl)prop-2-enoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "ferulate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故按 null 记录；该主链本身为好氧路径（依赖加双氧酶/单加氧酶与好氧呼吸）。"
+  },
+  "route_summary": "阿魏酸的经典好氧微生物降解主链：ferulate 先经 feruloyl-CoA 合成酶（Fcs）活化生成 feruloyl-CoA，再经 enoyl-CoA 水合酶/醛缩酶非氧化断裂侧链生成香草醛并回收乙酰-CoA；香草醛经香草醛脱氢酶氧化为香草酸，香草酸经香草酸 O-脱甲基酶脱甲基生成原儿茶酸；原儿茶酸经 3,4-加双氧酶开环为 3-carboxy-cis,cis-muconate，进入β-酮己二酸途径，依次经环化异构、脱羧与内酯水解生成 3-oxoadipate，再经 CoA 转移酶与硫解酶生成琥珀酰-CoA 和乙酰-CoA 进入 TCA 循环。整条主链可由 Pseudomonas putida KT2440 单菌完成。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "ferulate", "smiles": "COc1cc(/C=C/C(=O)[O-])ccc1O", "role": "main"},
+        {"name": "coenzyme A", "smiles": "SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c2ncnc3N)[C@H](O)[C@@H]1OP(=O)(O)O", "role": "cofactor"},
+        {"name": "ATP", "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C1O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "feruloyl-CoA", "smiles": "COc1cc(/C=C/C(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@H](n3cnc4c3ncnc4N)[C@H](O)[C@@H]2OP(=O)(O)O)ccc1O", "role": "main"},
+        {"name": "AMP", "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)O)C(O)C1O", "role": "byproduct"},
+        {"name": "diphosphate", "smiles": "OP(=O)(O)OP(=O)(O)O", "role": "byproduct"}
+      ],
+      "reaction_type": "底物活化：CoA硫酯化（腺苷酸形成连接酶反应）",
+      "enzyme": {
+        "name": "feruloyl-CoA synthetase (ferulate—CoA ligase)",
+        "ec_number": "6.2.1.34",
+        "gene_or_protein": "fcs",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160487,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "feruloyl-CoA", "smiles": "COc1cc(/C=C/C(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@H](n3cnc4c3ncnc4N)[C@H](O)[C@@H]2OP(=O)(O)O)ccc1O", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "vanillin", "smiles": "COc1cc(C=O)ccc1O", "role": "main"},
+        {"name": "acetyl-CoA", "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c2ncnc3N)[C@H](O)[C@@H]1OP(=O)(O)O", "role": "byproduct"}
+      ],
+      "reaction_type": "非氧化性侧链断裂：水合-醛缩裂解（β-氧化样硫酯断裂）",
+      "enzyme": {
+        "name": "hydroxycinnamoyl-CoA hydratase-lyase (enoyl-CoA hydratase/aldolase)",
+        "ec_number": "4.2.1.101",
+        "gene_or_protein": "ech",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160487,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "vanillin", "smiles": "COc1cc(C=O)ccc1O", "role": "main"},
+        {"name": "NAD+", "smiles": "NC(=O)c1c[n+](C2OC(COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H](n4cnc5c4ncnc5N)[C@H](O)[C@@H]3O)C(O)C2O)ccc1", "role": "cofactor"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "vanillate", "smiles": "COc1cc(C(=O)[O-])ccc1O", "role": "main"},
+        {"name": "NADH", "smiles": "NC(=O)C1=CN(C2OC(COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H](n4cnc5c4ncnc5N)[C@H](O)[C@@H]3O)C(O)C2O)C=CC1", "role": "byproduct"}
+      ],
+      "reaction_type": "醛氧化（脱氢）",
+      "enzyme": {
+        "name": "vanillin dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "vdh",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160487,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "香草醛脱氢酶的专属EC编号未能可靠确认（文献中亦有按普通醛脱氢酶归类者），ec_number 填 null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "vanillate", "smiles": "COc1cc(C(=O)[O-])ccc1O", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"},
+        {"name": "NADH", "smiles": "NC(=O)C1=CN(C2OC(COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H](n4cnc5c4ncnc5N)[C@H](O)[C@@H]3O)C(O)C2O)C=CC1", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "protocatechuate", "smiles": "O=C([O-])c1cc(O)c(O)cc1", "role": "main"},
+        {"name": "formaldehyde", "smiles": "C=O", "role": "byproduct"},
+        {"name": "NAD+", "smiles": "NC(=O)c1c[n+](C2OC(COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H](n4cnc5c4ncnc5N)[C@H](O)[C@@H]3O)C(O)C2O)ccc1", "role": "byproduct"}
+      ],
+      "reaction_type": "O-脱甲基（Rieske型单加氧反应）",
+      "enzyme": {
+        "name": "vanillate O-demethylase (two-component Rieske monooxygenase VanA/VanB)",
+        "ec_number": null,
+        "gene_or_protein": "vanAB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160487,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "vanillate O-demethylase 为双组分 Rieske 型单加氧酶，专属 EC 编号未确认，ec_number 填 null。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {"name": "protocatechuate", "smiles": "O=C([O-])c1cc(O)c(O)cc1", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-carboxy-cis,cis-muconate", "smiles": "O=C([O-])C=C(C(=O)[O-])C=CC(=O)[O-]", "role": "main"}
+      ],
+      "reaction_type": "儿茶酚型芳香环3,4-位双加氧裂解",
+      "enzyme": {
+        "name": "protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": "pcaGH",
+        "confidence": "high",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160487,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {"name": "3-carboxy-cis,cis-muconate", "smiles": "O=C([O-])C=C(C(=O)[O-])C=CC(=O)[O-]", "role": "main"}
+      ],
+      "products": [
+        {"name": "beta-carboxymuconolactone", "smiles": "O=C1OC(CC(=O)[O-])C(C(=O)[O-])=C1", "role": "main"}
+      ],
+      "reaction_type": "环化异构（内酯化）",
+      "enzyme": {
+        "name": "3-carboxy-cis,cis-muconate cycloisomerase",
+        "ec_number": null,
+        "gene_or_protein": "pcaB",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160487,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "环化异构酶的 EC 编号未确认（ec_number 填 null）；beta-carboxymuconolactone 的 SMILES 为按反应机制推导的结构。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {"name": "beta-carboxymuconolactone", "smiles": "O=C1OC(CC(=O)[O-])C(C(=O)[O-])=C1", "role": "main"}
+      ],
+      "products": [
+        {"name": "3-oxoadipate enol-lactone", "smiles": "O=C1OC(=CC(=O)[O-])CC1", "role": "main"},
+        {"name": "carbon dioxide", "smiles": "O=C=O", "role": "byproduct"}
+      ],
+      "reaction_type": "脱羧（伴随异构）",
+      "enzyme": {
+        "name": "beta-carboxymuconolactone decarboxylase",
+        "ec_number": null,
+        "gene_or_protein": "pcaC",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160487,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "脱羧酶的 EC 编号未确认（可能与 EC 4.1.1.44 相关），ec_number 填 null。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {"name": "3-oxoadipate enol-lactone", "smiles": "O=C1OC(=CC(=O)[O-])CC1", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-oxoadipate", "smiles": "O=C([O-])CC(=O)CCC(=O)[O-]", "role": "main"}
+      ],
+      "reaction_type": "内酯水解",
+      "enzyme": {
+        "name": "3-oxoadipate enol-lactonase",
+        "ec_number": "3.1.1.24",
+        "gene_or_protein": "pcaD",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160487,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S9",
+      "order": 9,
+      "branch_id": null,
+      "predecessor_step_ids": ["S8"],
+      "substrates": [
+        {"name": "3-oxoadipate", "smiles": "O=C([O-])CC(=O)CCC(=O)[O-]", "role": "main"},
+        {"name": "succinyl-CoA", "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c2ncnc3N)[C@H](O)[C@@H]1OP(=O)(O)O)CCC(=O)[O-]", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-oxoadipyl-CoA", "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c2ncnc3N)[C@H](O)[C@@H]1OP(=O)(O)O)CC(=O)CCC(=O)[O-]", "role": "main"},
+        {"name": "succinate", "smiles": "O=C([O-])CCC(=O)[O-]", "role": "byproduct"}
+      ],
+      "reaction_type": "CoA基转移",
+      "enzyme": {
+        "name": "3-oxoadipate CoA-transferase",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": "pcaIJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160487,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S10",
+      "order": 10,
+      "branch_id": null,
+      "predecessor_step_ids": ["S9"],
+      "substrates": [
+        {"name": "3-oxoadipyl-CoA", "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c2ncnc3N)[C@H](O)[C@@H]1OP(=O)(O)O)CC(=O)CCC(=O)[O-]", "role": "main"},
+        {"name": "coenzyme A", "smiles": "SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c2ncnc3N)[C@H](O)[C@@H]1OP(=O)(O)O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "succinyl-CoA", "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c2ncnc3N)[C@H](O)[C@@H]1OP(=O)(O)O)CCC(=O)[O-]", "role": "main"},
+        {"name": "acetyl-CoA", "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c2ncnc3N)[C@H](O)[C@@H]1OP(=O)(O)O", "role": "main"}
+      ],
+      "reaction_type": "硫解（thiolysis）",
+      "enzyme": {
+        "name": "3-oxoadipyl-CoA thiolase",
+        "ec_number": null,
+        "gene_or_protein": "pcaF",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160487,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "硫解酶的 EC 编号未确认（可能为 EC 2.3.1.174），ec_number 填 null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160487,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": 30, "maximum_c": null, "preference": "中温性，最适生长约28-30 °C（常规培养温度30 °C）"},
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（obligately aerobic，缺氧条件下不能生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": 7, "maximum": null},
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": "ATCC", "accession": "47054"},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2（分子氧）"},
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种碳源：有机酸、氨基酸及多种芳香族化合物（阿魏酸、香草醛、香草酸、原儿茶酸、4-羟基苯甲酸、苯甲酸等），经β-酮己二酸途径进入中枢代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱芳香族化合物降解能力：可降解木质素衍生单体（阿魏酸、香草酸、原儿茶酸、香豆酸等）及羟基苯甲酸类，是好氧芳香族化合物降解研究的模式菌株",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "含完整的阿魏酸代谢酶系与β-酮己二酸途径酶系活性（feruloyl-CoA合成酶、香草醛脱氢酶、香草酸O-脱甲基酶、原儿茶酸3,4-加双氧酶、3-酮己二酸烯醇内酯水解酶等）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具运动性，极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "直或略弯的杆状细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性；典型革兰氏阴性细胞包膜（内膜-肽聚糖-含LPS外膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": "NC_002947", "genome_size_bp": 6183863, "gc_percent": 61.5},
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适：土壤与根际来源并可定殖植物根部，亦见于水体等多种生境；代谢谱宽、环境适应性强",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA", "succinate"],
+    "explanation": "主链末端经β-酮己二酸途径的 3-oxoadipate CoA-转移酶（PcaIJ）与 3-oxoadipyl-CoA 硫解酶（PcaF）生成琥珀酰-CoA和乙酰-CoA，直接进入TCA循环；第9步生成的琥珀酸亦为TCA循环中间物。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA cycle（三羧酸循环）",
+      "summary": "琥珀酰-CoA、乙酰-CoA与琥珀酸进入三羧酸循环，彻底氧化为CO2与H2O。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "ferulate 非氧化脱羧为 4-vinylguaiacol",
+      "summary": "部分微生物（如某些芽孢杆菌与酵母）经 ferulate decarboxylase 将 ferulate 直接脱羧为4-乙烯基愈创木酚，再经侧链氧化进入香草醛节点；该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ferulate 好氧降解主链的总体结构（ferulate→feruloyl-CoA→vanillin→vanillate→protocatechuate→β-酮己二酸途径→succinyl-CoA/acetyl-CoA）",
+        "香草酸经O-脱甲基生成原儿茶酸的反应",
+        "Pseudomonas putida KT2440 一般生理性状（好氧、革兰氏阴性、杆状、极生鞭毛运动、不产芽孢、最适约30 °C、pH约中性、土壤/根际广适）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Nelson K.E., Weinel C., Paulsen I.T., Dodson R.J., et al. (2002). Complete genome sequence and comparative analysis of the metabolically versatile Pseudomonas putida KT2440. Environmental Microbiology 4(12): 799-808.",
+      "claim_scope": [
+        "P. putida KT2440 的菌株身份与基因组完成测序",
+        "KT2440 的代谢多样性与芳香族化合物利用能力",
+        "菌株背景（土壤来源衍生株）与环境适应性强"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_002947",
+      "locator": null,
+      "claim_scope": [
+        "P. putida KT2440 染色体基因组登录号、大小约6,183,863 bp、GC含量约61.5%"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "160487",
+      "locator": null,
+      "claim_scope": [
+        "P. putida KT2440 的NCBI TaxID"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Overhage J., Priefert H., Steinbüchel A. (1999). Biochemical and genetic analyses of ferulic acid catabolism in Pseudomonas sp. strain HR199. Applied and Environmental Microbiology 65(11): 4837-4847.",
+      "claim_scope": [
+        "ferulate 经 feruloyl-CoA 合成酶、enoyl-CoA 水合酶/醛缩酶与香草醛脱氢酶降解为香草酸的顺序",
+        "fcs/ech/vdh 基因的功能与产物"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Harwood C.S., Parales R.E. (1996). The beta-ketoadipate pathway, the workhorse of aromatic compound degradation by bacteria. Microbiology and Molecular Biology Reviews 60(3): 553-590.",
+      "claim_scope": [
+        "原儿茶酸经β-酮己二酸途径氧化为琥珀酰-CoA与乙酰-CoA的酶促顺序（PcaGH/PcaB/PcaC/PcaD/PcaIJ/PcaF）"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "香草醛脱氢酶、香草酸O-脱甲基酶、3-carboxy-cis,cis-muconate 环化异构酶、beta-carboxymuconolactone 脱羧酶与 3-oxoadipyl-CoA 硫解酶的 EC 编号未能可靠确认，均填 null。",
+    "P. putida KT2440 的 ATCC 保藏编号（ATCC 47054）为低置信记忆，需核对。",
+    "beta-carboxymuconolactone 与 3-carboxy-cis,cis-muconate 的 SMILES 为按化学机制推导给出，未与数据库逐原子核对。",
+    "各步反应证据以模式菌株的经典文献与内部知识为主，未逐条核对原始数据库记录。"
+  ]
+}

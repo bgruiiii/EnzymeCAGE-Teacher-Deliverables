@@ -1,0 +1,349 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_061",
+  "pollutant_name_zh": "亚甲基琥珀酸根（衣康酸根）",
+  "pollutant_name_en": "Methylenesuccinate(2-)",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "itaconate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；该 CoA 依赖性主链本身不直接消耗 O2。"
+  },
+  "route_summary": "衣康酸根先接受琥珀酰-CoA 的 CoA 形成 itaconyl-CoA，再经水合生成 (S)-citramalyl-CoA，最后裂解为 pyruvate 与 acetyl-CoA；两个末端产物均可进入中心碳代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Methylenesuccinate(2-)",
+          "smiles": "C=C(CC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Succinyl-CoA",
+          "smiles": "O=C(O)CCC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Itaconyl-CoA",
+          "smiles": "C=C(CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Succinate(2-)",
+          "smiles": "O=C([O-])CCC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA 转移反应",
+      "enzyme": {
+        "name": "succinyl-CoA:itaconate CoA-transferase",
+        "ec_number": "2.8.3.27",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "E-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Itaconyl-CoA",
+          "smiles": "C=C(CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-Citramalyl-CoA",
+          "smiles": "CC(O)(C(=O)O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合反应",
+      "enzyme": {
+        "name": "itaconyl-CoA hydratase",
+        "ec_number": "4.2.1.56",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "E-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-Citramalyl-CoA",
+          "smiles": "CC(O)(C(=O)O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "C–C 裂解反应",
+      "enzyme": {
+        "name": "(S)-citramalyl-CoA lyase",
+        "ec_number": "4.1.3.25",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "E-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "E-3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用 itaconate（衣康酸根）作为碳源",
+          "raw_text": "The utilization of itaconate by Pseudomonas sp.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具有衣康酸根降解能力，经 itaconyl-CoA 与 (S)-citramalyl-CoA 生成 pyruvate 和 acetyl-CoA",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 succinyl-CoA:itaconate CoA-transferase、itaconyl-CoA hydratase 和 (S)-citramalyl-CoA lyase 活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Pyruvate",
+      "Acetyl-CoA"
+    ],
+    "explanation": "第三步生成的 pyruvate 可进入糖异生或进一步氧化代谢，acetyl-CoA 可进入三羧酸循环或乙醛酸循环等中心碳代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "10.1042/bj0910082",
+      "locator": "Cooper RA, Kornberg HL. The utilization of itaconate by Pseudomonas sp. Biochemical Journal 91(1):82-91 (1964); https://doi.org/10.1042/bj0910082",
+      "claim_scope": [
+        "完整三步衣康酸降解主链",
+        "Pseudomonas sp. E-3 的衣康酸利用",
+        "三种连续酶活性"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz",
+      "record_id": "EC 2.8.3.27",
+      "locator": "https://www.enzyme-database.org/query.php?ec=2.8.3.27",
+      "claim_scope": [
+        "S1 反应式",
+        "succinyl-CoA:itaconate CoA-transferase 酶名",
+        "EC 编号"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz",
+      "record_id": "EC 4.2.1.56",
+      "locator": "https://www.enzyme-database.org/query.php?ec=4.2.1.56",
+      "claim_scope": [
+        "S2 反应式",
+        "itaconyl-CoA hydratase 酶名",
+        "EC 编号"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz",
+      "record_id": "EC 4.1.3.25",
+      "locator": "https://www.enzyme-database.org/query.php?ec=4.1.3.25",
+      "claim_scope": [
+        "S3 反应式",
+        "(S)-citramalyl-CoA lyase 酶名",
+        "EC 编号"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "Pseudomonas sp. E-3 缺乏可核验的现代分类学、基因组及多数生理性状记录，因此相关性状均按 null 或 unknown 记录。",
+    "题面未指定氧条件；本答案不将该路线限定为好氧或厌氧。"
+  ]
+}

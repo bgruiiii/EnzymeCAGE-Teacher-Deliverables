@@ -1,0 +1,273 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_141",
+  "pollutant_name_zh": "S-[1-(2-羟乙基)-1-甲基丁基]-L-半胱氨酰甘氨酸",
+  "pollutant_name_en": "S-[1-(2-hydroxyethyl)-1-methylbutyl]-(l)-cysteinylglycine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteinylglycine degradation",
+    "is_single_continuous_route": true,
+    "notes": "氧条件未指定；路线名称按题面原样保留。"
+  },
+  "route_summary": "在指定路线下，该 S-取代胱氨酰甘氨酸先被二肽酶水解为相应的 S-取代半胱氨酸并释放甘氨酸；随后 S-取代半胱氨酸经半胱氨酸结合物 β-裂解酶裂解 C-S 键，生成对应硫醇、丙酮酸和氨。甘氨酸与丙酮酸可进入中心代谢；硫醇后续氧化/脱硫缺乏可靠来源，未纳入主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteinylglycine",
+          "smiles": "N[C@@H](CSC(CCC)(C)CCO)C(=O)NCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteine",
+          "smiles": "N[C@@H](CSC(CCC)(C)CCO)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "glycine",
+          "smiles": "NCC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "cysteinylglycine dipeptidase",
+        "ec_number": "3.4.13.19",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步为谷胱甘肽/胱氨酰甘氨酸结合物降解的常见水解步骤；针对本底物的专属实验证据未确认，微生物归属为低置信度推断。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteine",
+          "smiles": "N[C@@H](CSC(CCC)(C)CCO)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-hydroxy-4-methylhexane-4-thiol",
+          "smiles": "CCC(C)(CCO)S",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "byproduct"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "beta-elimination (C-S lyase)",
+      "enzyme": {
+        "name": "cysteine conjugate beta-lyase",
+        "ec_number": "4.4.1.13",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步为 S-取代半胱氨酸的常见 β-裂解反应；针对本底物的具体酶与菌株证据未确认，按低置信度推断。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "化能异养，可利用多种有机酸、醇类和芳香族化合物作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种有机污染物，包括芳香族化合物及部分含硫有机物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有肽酶及半胱氨酸结合物裂解相关酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "常见于土壤与水体等环境，具有较广的腐生适应范围",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "glycine"
+    ],
+    "explanation": "水解产生甘氨酸，β-裂解产生丙酮酸；二者均可进入中心代谢。硫醇产物的后续转化未纳入本路线。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1 reaction",
+        "S2 reaction",
+        "enzyme assignment"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida general traits"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未找到针对 S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteinylglycine 的专属实验降解路线文献，主链按胱氨酰甘氨酸结合物的一般生物降解机制推断。",
+    "微生物归属为 Pseudomonas putida 的低置信度推断，未确认具体菌株或保藏编号。",
+    "硫醇产物 6-hydroxy-4-methylhexane-4-thiol 的后续氧化、脱硫或环化途径缺乏可靠来源，未列入主链。"
+  ]
+}

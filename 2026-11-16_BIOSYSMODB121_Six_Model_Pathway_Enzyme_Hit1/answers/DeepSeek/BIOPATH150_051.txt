@@ -1,0 +1,274 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_051",
+  "pollutant_name_zh": "(2Z)-2-羟基戊-2,4-二烯酸根",
+  "pollutant_name_en": "(2Z)-2-hydroxypenta-2,4-dienoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-hydroxypenta-2,4-dienoate degradation",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "2-hydroxypenta-2,4-dienoate is hydrated to 4-hydroxy-2-oxopentanoate, which is then cleaved to pyruvate and acetaldehyde via the meta-cleavage pathway.",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(2Z)-2-hydroxypenta-2,4-dienoate",
+          "smiles": "O/C(=C\\C=C)/C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "2-hydroxypenta-2,4-dienoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": "xylH",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxovalerate aldolase",
+        "ec_number": "4.1.2.43",
+        "gene_or_protein": "xylI",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "mesophilic"
+          },
+          "raw_text": "Pseudomonas putida is a mesophilic bacterium with optimal growth around 30°C.",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": "Pseudomonas putida is an obligate aerobic bacterium.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": "Pseudomonas putida grows optimally at neutral pH.",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "33015"
+          },
+          "raw_text": "Pseudomonas putida mt-2 is available as ATCC 33015.",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "Pseudomonas putida uses oxygen as terminal electron acceptor.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes toluene, m-xylene, p-xylene, and related aromatic hydrocarbons",
+          "raw_text": "Pseudomonas putida mt-2 can utilize toluene and xylenes as carbon sources.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades aromatic hydrocarbons via meta-cleavage pathway",
+          "raw_text": "Pseudomonas putida mt-2 degrades aromatic hydrocarbons through the meta-cleavage pathway.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "catechol 2,3-dioxygenase, 2-hydroxypenta-2,4-dienoate hydratase, 4-hydroxy-2-oxovalerate aldolase",
+          "raw_text": "The TOL plasmid of Pseudomonas putida mt-2 encodes meta-cleavage enzymes including hydratase and aldolase.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "motile by polar flagella",
+          "raw_text": "Pseudomonas putida is motile by means of polar flagella.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": "Pseudomonas putida cells are rod-shaped.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": "Pseudomonas putida is a Gram-negative bacterium.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": "Pseudomonas putida does not form spores.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "found in soil, rhizosphere, and aquatic environments",
+          "raw_text": "Pseudomonas putida is commonly found in soil and water.",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "acetaldehyde"
+    ],
+    "explanation": "Pyruvate enters central metabolism (e.g., TCA cycle); acetaldehyde can be further oxidized to acetyl-CoA or acetate."
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "organism traits",
+        "microorganism identity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "step1 reaction",
+        "enzyme"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "step2 reaction",
+        "enzyme"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": []
+}

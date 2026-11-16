@@ -1,0 +1,378 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_065",
+  "pollutant_name_zh": "3-(甲硫基)丙酸根",
+  "pollutant_name_en": "3-(Methylthio)propionate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methylthiopropanoate degradation I (cleavage)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；按 3-(methylthio)propionate 经 dmdB-dmdC-dmdD 的 CoA 活化、脱氢与水合/裂解连续主链填写。"
+  },
+  "route_summary": "3-(甲硫基)丙酸根在 Ruegeria pomeroyi DSS-3 的代表性裂解路线中，先由 DmdB 形成 3-(甲硫基)丙酰-CoA，再由 DmdC 脱氢生成 3-(甲硫基)丙烯酰-CoA，最后由 DmdD 进行水合/裂解，产生乙醛与甲硫醇，并伴随 CO2 和游离 CoA 释放。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3-(Methylthio)propionate",
+          "smiles": "CSCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-(methylthio)propionyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "[O-]P(=O)([O-])OP(=O)([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "AMP-forming acid--CoA ligation",
+      "enzyme": {
+        "name": "3-(methylthio)propionate--CoA ligase",
+        "ec_number": "6.2.1.44",
+        "gene_or_protein": "dmdB / DmdB",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": 246200,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "CoA 硫酯中间体的完整 SMILES 未填写，以避免构造不精确的长链辅酶 A 结构。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-(methylthio)propionyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-(methylthio)acryloyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "acyl-CoA dehydrogenation",
+      "enzyme": {
+        "name": "3-(methylthio)propionyl-CoA dehydrogenase",
+        "ec_number": "1.3.8.13",
+        "gene_or_protein": "dmdC / DmdC",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": 246200,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "未显式列出 FAD/电子转移黄素蛋白等电子受体，仅保留主碳链底物与产物。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-(methylthio)acryloyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        },
+        {
+          "name": "methanethiol",
+          "smiles": "CS",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydration/C-S cleavage with thioester release",
+      "enzyme": {
+        "name": "methylthioacryloyl-CoA hydratase",
+        "ec_number": "4.2.1.150",
+        "gene_or_protein": "dmdD / DmdD",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": 246200,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "DmdD 末端计量在不同数据库表述中可能不尽一致；此处按裂解主链记为乙醛、甲硫醇、CO2 与游离 CoA。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Ruegeria pomeroyi",
+      "strain": "DSS-3",
+      "ncbi_taxid": 246200,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700808"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "heterotrophic use of organic carbon, including DMSP-derived 3-(methylthio)propionate/methylmercaptopropionate in organosulfur catabolism",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degradation of DMSP/organosulfur compounds via the dmd demethylation and 3-(methylthio)propionate cleavage pathway",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "DmdB CoA ligase, DmdC acyl-CoA dehydrogenase and DmdD methylthioacryloyl-CoA hydratase/cleavage activities",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "CP000031",
+            "genome_size_bp": 4109442,
+            "gc_percent": 64.1
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "marine coastal/phytoplankton-associated roseobacter with broad heterotrophic capability, but primarily associated with marine organic-sulfur cycling rather than a non-marine generalist habitat",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "acetaldehyde"
+    ],
+    "explanation": "主链碳产物乙醛可进一步转入乙酸/乙酰-CoA 相关中心碳代谢；甲硫醇通常进入微生物硫氧化/同化代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway name: methylthiopropanoate degradation I (cleavage); dmdB/dmdC/dmdD reaction sequence",
+      "claim_scope": [
+        "chosen_route",
+        "reaction_sequence",
+        "terminal_products"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Reisch/Moran/Whitman literature on bacterial DMSP catabolism and the dmd pathway in Ruegeria/Silicibacter pomeroyi DSS-3",
+      "claim_scope": [
+        "dmd_pathway",
+        "organism_role",
+        "degradation_capacity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": null,
+      "locator": "KEGG Orthology entries for dmdB, dmdC and dmdD; organism spo/Ruegeria pomeroyi DSS-3",
+      "claim_scope": [
+        "enzyme_names",
+        "ec_numbers",
+        "genes"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Moran et al. 2004 Nature, genome sequence of Silicibacter pomeroyi DSS-3 and marine-environment adaptations",
+      "claim_scope": [
+        "genome",
+        "marine_habitat",
+        "gram_negative",
+        "aerobic_heterotroph"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "246200",
+      "locator": "Ruegeria pomeroyi DSS-3; synonym Silicibacter pomeroyi DSS-3",
+      "claim_scope": [
+        "organism_identity",
+        "ncbi_taxid"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700808",
+      "locator": "ATCC 700808; Silicibacter/Ruegeria pomeroyi DSS-3",
+      "claim_scope": [
+        "culture_collection"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，route_scope.oxygen_condition 按 null 保留。",
+    "温度、pH、盐度与产孢等性状未获得可引用数值，按 null/unknown 处理。",
+    "DmdD 步的 EC 归属与末端计量在数据库表述中可能不完全一致；本答案按 dmdB-dmdC-dmdD 裂解主链填写。"
+  ]
+}

@@ -1,0 +1,400 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_109",
+  "pollutant_name_zh": "6-磺酸基-α-D-奎诺糖",
+  "pollutant_name_en": "6-sulfo-alpha-D-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线名称原样填写为 sulfoquinovose degradation I，按既有知识判定其对应大肠杆菌 K-12 的硫糖酵解（sulphoglycolysis，sulfo-EMP）途径。氧条件题面未指定：该途径为糖酵解型，好氧与厌氧条件下均可运行；本题按原始文献记载的培养体系（好氧）描述主链。"
+  },
+  "route_summary": "SQ（6-磺酸基-α-D-奎诺糖，光合膜磺脂 sulfoquinovosyl diacylglycerol 的极性头基）在大肠杆菌 K-12 中经 4 步硫糖酵解主链降解：第 1 步 sulfoquinovose isomerase（YihS）将 SQ 异构为 6-sulfo-D-fructose；第 2 步 6-sulfofructose kinase（YihV）以 ATP 将其磷酸化为 6-sulfo-D-fructose 1-phosphate；第 3 步 6-sulfofructose-1-phosphate aldolase（YihR）将其裂解为二羟基丙酮磷酸（DHAP）与 (S)-磺乳乙醛；第 4 步 (S)-sulfolactaldehyde dehydrogenase（YihU）将 (S)-磺乳乙醛氧化为磺乳酸并外排。DHAP 进入糖酵解产能，菌体可以 SQ 为唯一碳源与能源生长；但 C3-磺酸基部分不被该菌脱磺，以磺乳酸形式交给环境中其他微生物，从而衔接生物地球硫循环。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-sulfo-alpha-D-quinovose",
+          "smiles": "OC1C(O)C(O)C(O)C(CS(=O)(=O)O)O1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-sulfo-D-fructose",
+          "smiles": "OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛酮异构化（aldose-ketose isomerization）",
+      "enzyme": {
+        "name": "sulfoquinovose isomerase",
+        "ec_number": null,
+        "gene_or_protein": "yihS",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "底物与产物的 SMILES 未编码立体化学（异头物/绝对构型），产物以开链式表示，胞内实际可能以呋喃糖式存在。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-fructose",
+          "smiles": "OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2C3OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C3O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-sulfo-D-fructose 1-phosphate",
+          "smiles": "O=P(O)(O)OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "Nc1ncnc2c1ncn2C3OC(COP(=O)(O)OP(=O)(O)O)C(O)C3O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磷酸化（消耗 ATP 生成 ADP，磷酸基转移至 C1 位）",
+      "enzyme": {
+        "name": "6-sulfofructose kinase",
+        "ec_number": null,
+        "gene_or_protein": "yihV",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "酶的 EC 编号未能确认，填 null；SMILES 未编码立体化学。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-fructose 1-phosphate",
+          "smiles": "O=P(O)(O)OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "O=C(COP(=O)(O)O)CO",
+          "role": "main"
+        },
+        {
+          "name": "(S)-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛醇裂解（C3–C4 碳碳键可逆断裂，类 I 型醛缩酶反应）",
+      "enzyme": {
+        "name": "6-sulfofructose-1-phosphate aldolase",
+        "ec_number": null,
+        "gene_or_protein": "yihR",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "醛缩酶基因名（yihR）与酶名按文献记忆填写，未逐条核对原始数据库；EC 编号未分配/未确认。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](C2OC(COP(=O)(O)OP(=O)(O)OCC3OC(n4cnc5c(N)ncnc54)C(O)C3O)C(O)C2O)c1",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-sulfolactate",
+          "smiles": "O=C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "N1(C2OC(COP(=O)(O)OP(=O)(O)OCC3OC(n4cnc5c(N)ncnc54)C(O)C3O)C(O)C2O)C=C(C(N)=O)CC=C1",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱氢氧化（醛氧化为羧酸，NAD+ 为电子受体）",
+      "enzyme": {
+        "name": "(S)-sulfolactaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "yihU",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "本步末端产物按文献记忆记为磺乳酸（氧化产物）并外排；其他微生物中存在磺乳乙醛被还原为 DHPS 的替代走向，yihU 的催化方向（氧化/还原）与辅因子（NAD+/NADP+）未能最终确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12",
+      "ncbi_taxid": 83333,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 10,
+            "optimum_c": 37,
+            "maximum_c": 45,
+            "preference": "中温性，最适约 37°C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧：有氧与无氧条件下均可生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌（常规培养基含约 0.5–1% NaCl 即可正常生长）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "10798"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧：有氧时行有氧呼吸，无氧时行发酵或厌氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可以 6-磺酸基-D-奎诺糖（SQ）为唯一碳源与能源生长（经硫糖酵解）；亦利用葡萄糖等多种常规糖类",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱糖类/有机酸代谢的模式肠杆菌；具备磺化糖 SQ 的专用降解途径，但自身不脱磺，C3-磺酸盐以外排终产物形式释放",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "硫糖酵解酶系：sulfoquinovose isomerase (yihS)、6-sulfofructose kinase (yihV)、6-sulfofructose-1-phosphate aldolase (yihR)、(S)-sulfolactaldehyde dehydrogenase (yihU)",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动，周生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状，约 0.5 × 1–3 μm",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性；内膜–肽聚糖–含 LPS 的外膜包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性强：主要栖居于人及温血动物肠道，亦常见于淡水、土壤等环境（肠道共生与自由生活兼性）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "dihydroxyacetone phosphate"
+    ],
+    "explanation": "醛缩酶产生的二羟基丙酮磷酸（DHAP）经 triosephosphate isomerase 转入经典糖酵解（EMP 途径），进一步生成丙酮酸并产能，实现 SQ 碳骨架 C1–C3 的产能利用；C4–C6 以磺乳酸形式外排，不进入中央代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "glycolysis (EMP pathway)",
+      "summary": "DHAP 经 triosephosphate isomerase 转为 glyceraldehyde-3-phosphate，沿糖酵解下游步骤生成丙酮酸，为菌体提供碳骨架与能量。"
+    },
+    {
+      "name": "磺乳酸外排与种间交叉喂养",
+      "summary": "末端 C3-磺酸盐（磺乳酸）被外排至培养基/环境，可被其他微生物进一步脱磺（生成丙酮酸与亚硫酸）；该环节不属于本菌主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "磺乳乙醛还原为 2,3-dihydroxypropane-1-sulfonate (DHPS)",
+      "summary": "据文献报道，在部分其他微生物的磺基糖代谢中，磺乳乙醛被还原为 DHPS 而非氧化为磺乳酸；该分支不属于本题评分主链，在此仅作对照记录。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "Nature",
+      "record_id": null,
+      "locator": "Denger K. et al., Sulphoglycolysis in Escherichia coli K-12 closes a gap in the biogeochemical sulphur cycle, Nature, 2014（标题、期刊与年份按记忆引用，未能核对卷页与编号）",
+      "claim_scope": [
+        "S1 反应及酶 sulfoquinovose isomerase (yihS)",
+        "S2 反应及酶 6-sulfofructose kinase (yihV)",
+        "S3 反应及酶 6-sulfofructose-1-phosphate aldolase (yihR)",
+        "S4 反应及酶 (S)-sulfolactaldehyde dehydrogenase (yihU)",
+        "大肠杆菌 K-12 执行硫糖酵解途径",
+        "F7：以 SQ 为唯一碳源生长",
+        "F9：硫糖酵解酶系"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli K-12 的常规微生物学性状（温度、氧耐受、pH、盐度、保藏、呼吸、形态、革兰氏、芽孢、基因组、运动性、栖息地广适性）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "路线名 sulfoquinovose degradation I 对应大肠杆菌 K-12 硫糖酵解（sulfo-EMP）途径的判定"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "路线识别：sulfoquinovose degradation I 依据知识判定为大肠杆菌 K-12 的硫糖酵解（sulfo-EMP）途径，未能直接核对数据库原始条目。",
+    "第 4 步末端产物按记忆定为磺乳酸（氧化产物）；文献中亦存在磺乳乙醛被还原为 DHPS 的替代走向，该步产物、yihU 的催化方向及辅因子（NAD+/NADP+）均存在不确定性。",
+    "yihR（醛缩酶）与 yihU（末端氧化还原酶）的基因归属基于文献记忆填写，未逐条核对；四个酶的 EC 编号均未能确认，填 null。",
+    "所有 SMILES 均未编码立体化学（异头物构型与绝对构型），仅表达连接关系；立体信息以化合物英文名为准。",
+    "菌株仅记到 K-12 亚株水平，未指明具体亚株；F14 基因组数据按 K-12 MG1655（NC_000913）填写，可能与原始文献所用亚株不完全一致。",
+    "E. coli K-12 的各项生理性状为教科书级常识，未经文献逐条核对，置信度相应标为 medium 或 low。"
+  ]
+}

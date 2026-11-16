@@ -1,0 +1,522 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_025",
+  "pollutant_name_zh": "对甲苯甲酸根",
+  "pollutant_name_en": "p-Toluate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-toluenecarboxylate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）。该路线为经典的好氧间位裂解途径，由TOL质粒pWW0编码，代表菌为Pseudomonas putida mt-2；主链为线性连续反应序列。"
+  },
+  "route_summary": "对甲苯甲酸根（4-methylbenzoate）在携带TOL质粒pWW0的Pseudomonas putida mt-2中经好氧间位裂解途径降解：S1 甲苯甲酸1,2-双加氧酶（xylXYZ）将芳环双加氧生成顺式二氢二醇；S2 顺式二氢二醇脱氢酶（xylL）氧化脱羧芳构化为4-甲基儿茶酚并释放CO2；S3 儿茶酚2,3-双加氧酶（xylE）进行间位开环，生成5-methyl-2-hydroxymuconic semialdehyde；S4 2-hydroxymuconic semialdehyde hydrolase（xylF）水解C-C键，释放甲酸并生成2-hydroxyhexa-2,4-dienoate（即2-hydroxy-5-methylpenta-2,4-dienoate）；S5 水合酶将其水合为4-hydroxy-2-oxohexanoate；S6 醛缩酶逆醛醇裂解生成丙酮酸与丙醛，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-methylbenzoate (p-toluate)",
+          "smiles": "Cc1ccc(C(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis-1,2-dihydroxy-4-methylcyclohexa-3,5-diene-1-carboxylate (4-methylbenzoate cis-dihydrodiol)",
+          "smiles": "O=C([O-])C1(O)C(O)C=C(C)C=C1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "芳环顺式双加氧（Rieske型双加氧酶反应，生成cis-二氢二醇）",
+      "enzyme": {
+        "name": "toluate 1,2-dioxygenase",
+        "ec_number": "1.14.12.10",
+        "gene_or_protein": "xylXYZ",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "cis-1,2-dihydroxy-4-methylcyclohexa-3,5-diene-1-carboxylate",
+          "smiles": "O=C([O-])C1(O)C(O)C=C(C)C=C1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-methylcatechol",
+          "smiles": "Cc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱羧芳构化（二氢二醇脱氢生成儿茶酚并释放CO2）",
+      "enzyme": {
+        "name": "cis-1,2-dihydroxycyclohexa-3,5-diene-1-carboxylate dehydrogenase",
+        "ec_number": "1.3.1.25",
+        "gene_or_protein": "xylL",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "EC 1.3.1.25对甲基化底物的适用性基于苯甲酸同源途径推断；脱氢与脱羧在该酶反应中的偶联细节未逐条核实。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-methylcatechol",
+          "smiles": "Cc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-methyl-2-hydroxymuconic semialdehyde (2-hydroxy-5-methyl-6-oxohexa-2,4-dienoate)",
+          "smiles": "O=C([O-])C(O)=CC=C(C)C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "儿茶酚2,3-位间位开环裂解（extradiol裂解）",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "xylE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "5-methyl-2-hydroxymuconic semialdehyde",
+          "smiles": "O=C([O-])C(O)=CC=C(C)C=O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxyhexa-2,4-dienoate (2-hydroxy-5-methylpenta-2,4-dienoate)",
+          "smiles": "O=C([O-])C(O)=CC=CC",
+          "role": "main"
+        },
+        {
+          "name": "formate",
+          "smiles": "O=C[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-C键水解裂解（酮醛水解，末端醛碳以甲酸形式释放）",
+      "enzyme": {
+        "name": "2-hydroxymuconic semialdehyde hydrolase",
+        "ec_number": "3.7.1.9",
+        "gene_or_protein": "xylF",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-hydroxyhexa-2,4-dienoate",
+          "smiles": "O=C([O-])C(O)=CC=CC",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxohexanoate",
+          "smiles": "O=C([O-])C(=O)CC(O)CC",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "共轭烯酸水合（伴随烯醇-酮互变异构，对C4=C5双键加水）",
+      "enzyme": {
+        "name": "2-hydroxypenta-2,4-dienoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该水合酶在TOL质粒上的具体xyl基因命名未确证，EC 4.2.1.80为中等置信。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxohexanoate",
+          "smiles": "O=C([O-])C(=O)CC(O)CC",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "propanal",
+          "smiles": "CCC=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "逆醛醇缩合裂解（C3-C4键断裂生成两个羰基片段）",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxopentanoate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该酶文献中亦称4-hydroxy-2-oxovalerate aldolase；其对6碳底物裂解生成丙酮酸与丙醛属经典延展推断，EC 4.1.3.39为中等置信。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温性，最适生长约30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧，需分子氧进行有氧呼吸，无氧条件不能生长",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（土壤/淡水来源，常规培养基无需添加NaCl）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "专性有氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲苯、间二甲苯、对二甲苯、间/对甲苯甲酸根及苯甲酸等为唯一碳源与能源（TOL质粒pWW0介导），亦利用多种有机酸；不利用邻二甲苯/邻甲苯甲酸",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "携带TOL质粒pWW0（约117 kb），编码完整间位裂解酶系，可降解多种甲基取代的芳香化合物（甲苯、间/对二甲苯、间/对甲苯甲酸根及其苄醇/苄醛中间体）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "在甲苯或甲苯甲酸根上生长时诱导高水平儿茶酚2,3-双加氧酶（metapyrocatechase, XylE）与甲苯甲酸1,2-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动性阳性（借极生鞭毛运动）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆菌，约0.5×1.5-2.0 μm，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，典型γ-变形菌外膜/肽聚糖细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002947",
+            "genome_size_bp": 6181873,
+            "gc_percent": 61.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性腐生菌，广泛分布于土壤、淡水及根际等多种生境，代谢与底物利用谱宽",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "propanal", "formate"],
+    "explanation": "S6醛缩酶产生丙酮酸（直接进入TCA循环等中心碳代谢）与丙醛（可经醛脱氢酶氧化为丙酸并活化成丙酰-CoA，经甲基丙二酰-CoA途径汇入琥珀酰-CoA）；S4副产甲酸可经甲酸脱氢酶氧化为CO2。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "pyruvate → acetyl-CoA → TCA cycle",
+      "summary": "丙酮酸经丙酮酸脱氢酶复合体或其它入口途径氧化为乙酰-CoA，进入三羧酸循环与中心碳代谢。"
+    },
+    {
+      "name": "propanal → propionyl-CoA → succinyl-CoA",
+      "summary": "丙醛被醛脱氢酶氧化为丙酸，再经酰基CoA连接酶活化生成丙酰-CoA，经甲基丙二酰-CoA变位酶转化为琥珀酰-CoA进入TCA循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "4-oxalocrotonate（脱氢酶）分支",
+      "summary": "5-methyl-2-hydroxymuconic semialdehyde亦可被2-hydroxymuconic semialdehyde dehydrogenase（xylG）氧化为相应二羧酸，再经4-oxalocrotonate tautomerase（xylH）、4-oxalocrotonate decarboxylase（xylI）脱羧及水合，生成4-hydroxy-2-oxohexanoate，与主链在S5/S6处汇合。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "厌氧4-methylbenzoyl-CoA途径",
+      "summary": "在反硝化菌（如Thauera、Azoarcus属菌株）中，4-methylbenzoate先经CoA活化生成4-methylbenzoyl-CoA，再经还原脱芳化途径在无氧条件下降解；与本题好氧间位裂解主链不同。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1-S4反应与酶：toluate 1,2-dioxygenase（xylXYZ, EC 1.14.12.10）、cis-1,2-dihydroxycyclohexa-3,5-diene-1-carboxylate dehydrogenase（xylL, EC 1.3.1.25）、catechol 2,3-dioxygenase（xylE, EC 1.13.11.2）、2-hydroxymuconic semialdehyde hydrolase（xylF, EC 3.7.1.9）",
+        "Pseudomonas putida mt-2经TOL质粒pWW0降解对甲苯甲酸根的经典反应序列"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S5-S6反应与酶：2-hydroxypenta-2,4-dienoate hydratase（EC 4.2.1.80）、4-hydroxy-2-oxopentanoate aldolase（EC 4.1.3.39）及丙酮酸+丙醛的生成"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "P. putida（mt-2）形态与生理性状：革兰氏阴性杆菌、运动、不产芽孢、专性好氧、最适约30 °C、近中性pH、非嗜盐、土壤来源广适性",
+        "mt-2底物利用范围（甲苯、间/对二甲苯、间/对甲苯甲酸根）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "P. putida KT2440（mt-2的pWW0质粒消除衍生株）基因组：6,181,873 bp，G+C 61.51%（NC_002947）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "TOL质粒pWW0约117 kb，携带完整xyl降解基因簇"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "本回答基于TOL质粒途径的经典教科书级知识（INTERNAL_KNOWLEDGE_ONLY），未引用可核验的外部数据库记录编号。",
+    "S5、S6两步酶的EC编号（4.2.1.80与4.1.3.39）及其在pWW0上的具体基因命名未确证，置信度中等。",
+    "F14基因组数据取自mt-2的质粒消除衍生株KT2440（NC_002947）；mt-2本身另携带约117 kb的TOL质粒pWW0，总基因组略大于该数值。",
+    "P. putida mt-2无独立的菌株级NCBI TaxID，故填种级TaxID 303；菌株保藏编号未知（F5为null）。",
+    "中间代谢物命名存在同义名：5-methyl-2-hydroxymuconic semialdehyde即2-hydroxy-5-methyl-6-oxohexa-2,4-dienoate；2-hydroxyhexa-2,4-dienoate即2-hydroxy-5-methylpenta-2,4-dienoate。"
+  ]
+}

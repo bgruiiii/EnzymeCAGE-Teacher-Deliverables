@@ -1,0 +1,386 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_015",
+  "pollutant_name_zh": "苔黑酚",
+  "pollutant_name_en": "Orcinol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Orcinol degradation pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定的好氧苔黑酚降解主链填写：羟基化、芳香环1,2-开环及两步水解，至丙酮酸与乙酸进入中心代谢。代表菌为Pseudomonas putida；开环酶与第一步水解酶无确认EC，未臆造编号。"
+  },
+  "route_summary": "好氧条件下，苔黑酚由苔黑酚2-单加氧酶羟基化为2,3,5-三羟基甲苯，再经1,2-双加氧开环生成2,4,6-三氧代庚酸；该开环产物水解为乙酸和乙酰丙酮酸，乙酰丙酮酸再水解为乙酸和丙酮酸，从而进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "orcinol",
+          "smiles": "Cc1cc(O)cc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3,5-trihydroxytoluene",
+          "smiles": "Cc1c(O)c(O)cc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "orcinol 2-monooxygenase",
+        "ec_number": "1.14.13.6",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2,3,5-trihydroxytoluene",
+          "smiles": "Cc1c(O)c(O)cc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,4,6-trioxoheptanoate",
+          "smiles": "CC(=O)CC(=O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aromatic ring cleavage",
+      "enzyme": {
+        "name": "2,3,5-trihydroxytoluene 1,2-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "开环酶活性见于经典途径，但无已确认的EC编号与基因名，故相应字段为null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2,4,6-trioxoheptanoate",
+          "smiles": "CC(=O)CC(=O)CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetylpyruvate",
+          "smiles": "CC(=O)CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetate",
+          "smiles": "CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2,4,6-trioxoheptanoate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "水解方向按经典苔黑酚途径记载；该水解酶无确认EC与基因名。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "acetylpyruvate",
+          "smiles": "CC(=O)CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetate",
+          "smiles": "CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "acetylpyruvate hydrolase",
+        "ec_number": "3.7.1.6",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "EC 3.7.1.6对应乙酰丙酮酸水解为乙酸和丙酮酸；其在苔黑酚降解菌株中的专一基因未确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "降解菌株能以苔黑酚作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解苔黑酚，经2,3,5-三羟基甲苯开环",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有苔黑酚2-单加氧酶及后续开环与水解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动，具极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "常见于土壤与水体，可利用多种有机底物，生境适应性较广",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetate"],
+    "explanation": "主链末端生成丙酮酸和乙酸。丙酮酸可进入丙酮酸代谢并转化为乙酰辅酶A，乙酸可活化为乙酰辅酶A，随后进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "丙酮酸与乙酸汇入中心代谢",
+      "summary": "丙酮酸可经丙酮酸脱氢酶生成乙酰辅酶A，乙酸可经乙酰辅酶A合成酶或乙酸激酶-磷酸转乙酰酶途径活化为乙酰辅酶A，二者进入三羧酸循环。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB/ExplorEnz",
+      "record_id": "1.14.13.6",
+      "locator": "EC 1.14.13.6 orcinol 2-monooxygenase",
+      "claim_scope": ["enzyme", "ec_number", "reaction", "microorganism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida aerobic orcinol catabolic pathway in classical biodegradation literature",
+      "claim_scope": ["reaction", "enzyme", "microorganism", "carbon_substrate", "degradation_capacity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB/ExplorEnz",
+      "record_id": "3.7.1.6",
+      "locator": "EC 3.7.1.6 acetylpyruvate hydrolase",
+      "claim_scope": ["enzyme", "ec_number", "reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI Taxonomy",
+      "record_id": "303",
+      "locator": "Pseudomonas putida species description",
+      "claim_scope": ["taxonomy", "oxygen_tolerance", "temperature", "respiration", "motility", "morphology", "gram", "sporulation", "habitat"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "途径在Pseudomonas putida中阐明，但具体菌株保藏号与基因组登录号未能可靠定位，故菌株、保藏编号和基因组字段为null。",
+    "2,3,5-三羟基甲苯1,2-双加氧酶和2,4,6-三氧代庚酸水解酶无确认EC编号，未用近似EC占位。",
+    "温度仅能判断为中温，缺乏该降解菌株的基数温度；盐度、pH与运动性以外的定量生理参数未填写。",
+    "NADH与NAD+仅给出名称，未填写SMILES，以避免复杂辅因子结构写错。",
+    "可能存在的真菌转化支路未核实，未纳入评分主链。"
+  ]
+}

@@ -1,0 +1,350 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_020",
+  "pollutant_name_zh": "甲苯",
+  "pollutant_name_en": "Toluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Toluene degradation to benzoate",
+    "is_single_continuous_route": true,
+    "notes": "本题指定路线对应好氧TOL质粒上游途径的侧链甲基氧化：甲苯经苯甲醇、苯甲醛至苯甲酸。不包括芳环双加氧（TOD）或甲酚单加氧等不生成苯甲酸的路线。三步可由携带pWW0的同一菌株连续催化。"
+  },
+  "route_summary": "好氧条件下，甲苯的甲基被二甲苯单加氧酶羟化为苯甲醇，再由芳醇脱氢酶和NAD+依赖的苯甲醛脱氢酶依次氧化为苯甲醛和苯甲酸。该主链是Pseudomonas putida mt-2 TOL质粒pWW0上游操纵子（xyl）编码的经典侧链氧化途径。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "toluene",
+          "smiles": "Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "benzyl alcohol",
+          "smiles": "OCc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "侧链单加氧羟化",
+      "enzyme": {
+        "name": "xylene monooxygenase",
+        "ec_number": "1.14.15.-",
+        "gene_or_protein": "xylMA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "活性酶由羟化酶亚基XylM与电子传递组分XylA组成。KEGG给出的EC为不完整编号1.14.15.-，未另填猜测的完整EC号；质子计量未写入以免化学计量错误。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "benzyl alcohol",
+          "smiles": "OCc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "benzaldehyde",
+          "smiles": "O=Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "醇脱氢",
+      "enzyme": {
+        "name": "aryl-alcohol dehydrogenase",
+        "ec_number": "1.1.1.90",
+        "gene_or_protein": "xylB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "benzaldehyde",
+          "smiles": "O=Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "benzoate",
+          "smiles": "[O-]C(=O)c1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "醛脱氢",
+      "enzyme": {
+        "name": "benzaldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.28",
+        "gene_or_protein": "xylC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "产物按生理pH下的苯甲酸根书写。释放质子的精确计量未写入。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲苯为碳源和能源，并可利用该侧链氧化途径的苯甲醇、苯甲醛和苯甲酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "TOL质粒pWW0编码甲苯及间/对二甲苯等烷基苯的侧链氧化，生成苯甲酸或甲基苯甲酸后再进入下游芳香环裂解",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有二甲苯单加氧酶、芳醇脱氢酶和NAD+依赖苯甲醛脱氢酶活性（xylMA、xylB、xylC）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动，极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤、淡水及根际均可分离到该种，环境分布较广，不属于单一生境专性菌",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本评分主链止于苯甲酸，苯甲酸本身不是中心代谢物。其后需经苯甲酸双加氧生成儿茶酚，再经meta或ortho裂解才进入乙酰辅酶A、琥珀酰辅酶A和丙酮酸等中心代谢中间体。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "苯甲酸至儿茶酚及meta裂解",
+      "summary": "同一TOL质粒还可编码苯甲酸1,2-双加氧酶等，将苯甲酸转化为儿茶酚，再经meta裂解进入中心代谢。该段超出本题“至苯甲酸”的路线范围。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "TOD芳环双加氧途径",
+      "summary": "甲苯经甲苯双加氧酶生成顺式二氢二醇，再转化为3-甲基儿茶酚，不经过苯甲酸。代表菌为Pseudomonas putida F1。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "甲酚单加氧途径",
+      "summary": "甲苯可经环单加氧生成邻甲酚、间甲酚或对甲酚；对甲酚途径进入对羟基苯甲酸而非苯甲酸。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "KEGG",
+      "record_id": "map00623",
+      "locator": "Toluene degradation upper pathway: toluene to benzyl alcohol (xylene monooxygenase, EC 1.14.15.-, xylMA), benzyl alcohol to benzaldehyde (aryl-alcohol dehydrogenase, EC 1.1.1.90, xylB), benzaldehyde to benzoate (benzaldehyde dehydrogenase NAD+, EC 1.2.1.28, xylC)",
+      "claim_scope": ["reaction", "enzyme", "ec_number", "gene"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Worsey MJ, Williams PA. 1975. Metabolism of toluene and xylenes by Pseudomonas putida (arvilla) mt-2: evidence for a new function of the TOL plasmid. J Bacteriol 124:7-13. TOL plasmid pWW0 upper pathway operon xylUWCMABN.",
+      "claim_scope": ["microorganism", "carbon_substrate", "degradation_capacity", "enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida species-level description: Gram-negative rod, polar flagella, non-spore-forming, obligate aerobe using O2 as terminal electron acceptor, mesophilic and non-halophilic, isolated from soil, freshwater and rhizosphere.",
+      "claim_scope": ["oxygen_tolerance", "temperature_preference", "salinity_category", "respiration", "motility", "morphology", "gram", "sporulation", "habitat_generalism"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "二甲苯单加氧酶仅采用不完整EC号1.14.15.-，未猜测完整编号。",
+    "NADH/NAD+的SMILES及各步质子计量未填写，以避免不准确结构或化学计量。",
+    "mt-2的保藏编号、pH与盐度数值范围、精确生长温度以及染色体基因组登录号未核实，相应字段为null；未把TOL质粒pWW0当作该菌完整基因组填写。",
+    "形态、运动性和栖息地广适性主要依据物种水平知识，并非本菌株实测数据的逐字引用。",
+    "KT2440是mt-2消除TOL质粒后的衍生株，不能代表本路线，故未采用。"
+  ]
+}

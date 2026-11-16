@@ -1,0 +1,458 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_100",
+  "pollutant_name_zh": "4-氨基-3-羟基苯甲酸根",
+  "pollutant_name_en": "4-Amino-3-hydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-amino-3-hydroxybenzoate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；本答案严格按指定路线名称填写，不改选其他路线。"
+  },
+  "route_summary": "在指定路线范围内，4-氨基-3-羟基苯甲酸根先经4-氨基-3-羟基苯甲酸脱氨酶水解脱氨生成原儿茶酸；原儿茶酸由原儿茶酸3,4-双加氧酶邻位开环生成3-羧基顺,顺-粘康酸；随后经3-羧基粘康酸环异构酶生成4-羧基粘康内酯，再由4-羧基粘康内酯脱羧酶脱羧为3-氧代己二酸烯醇内酯，最后经3-氧代己二酸烯醇内酯水解酶生成3-氧代己二酸。3-氧代己二酸进入β-酮己二酸途径汇入中心代谢。题面氧条件未指定，故route_scope保持null。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Amino-3-hydroxybenzoate",
+          "smiles": "O=C([O-])c1cc(O)c(N)cc1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,4-Dihydroxybenzoate",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic deamination",
+      "enzyme": {
+        "name": "4-amino-3-hydroxybenzoate deaminase",
+        "ec_number": "3.5.99.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": null,
+        "ncbi_taxid": 287,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "脱氨酶与菌株关联基于内部知识；未指定具体菌株。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3,4-Dihydroxybenzoate",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-carboxy-cis,cis-muconate",
+          "smiles": "O=C([O-])C=CC(=CC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "intradiol ring cleavage",
+      "enzyme": {
+        "name": "protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": null,
+        "ncbi_taxid": 287,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "开环产物SMILES为简化表示，立体化学未完全指定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-carboxy-cis,cis-muconate",
+          "smiles": "O=C([O-])C=CC(=CC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-carboxymuconolactone",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "cyclization/isomerization",
+      "enzyme": {
+        "name": "3-carboxymuconate cycloisomerase",
+        "ec_number": "5.5.1.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": null,
+        "ncbi_taxid": 287,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "内酯中间体结构不确定，未给出SMILES。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-carboxymuconolactone",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "4-carboxymuconolactone decarboxylase",
+        "ec_number": "5.3.3.12",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": null,
+        "ncbi_taxid": 287,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "脱羧步骤的EC编号基于内部知识，未附外部记录。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "O=C([O-])CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "lactone hydrolysis",
+      "enzyme": {
+        "name": "3-oxoadipate enol-lactonase",
+        "ec_number": "3.1.1.24",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": null,
+        "ncbi_taxid": 287,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "烯醇内酯底物结构未给出SMILES。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas aeruginosa",
+      "strain": null,
+      "ncbi_taxid": 287,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温，常见于哺乳动物体温附近"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "需氧为主，可在硝酸盐等替代电子受体下进行厌氧生长",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "化能异养，可利用有机酸和多种芳香族化合物作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解芳香族化合物，包括4-氨基-3-羟基苯甲酸、原儿茶酸等",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有4-氨基-3-羟基苯甲酸脱氨酶、原儿茶酸3,4-双加氧酶、3-羧基粘康酸环异构酶、4-羧基粘康内酯脱羧酶和3-氧代己二酸烯醇内酯水解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动，通常具有单极鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、水体、污水和医院环境，也可定植于动植物表面，属于机会致病菌",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "acetyl-CoA",
+      "succinyl-CoA"
+    ],
+    "explanation": "3-氧代己二酸进入β-酮己二酸途径后，经辅酶A转移酶和硫解酶作用生成乙酰辅酶A与琥珀酰辅酶A，进入三羧酸循环。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1 reaction: 4-amino-3-hydroxybenzoate to 3,4-dihydroxybenzoate",
+        "enzyme 4-amino-3-hydroxybenzoate deaminase EC 3.5.99.2"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2 reaction: protocatechuate ortho-cleavage to 3-carboxy-cis,cis-muconate",
+        "enzyme protocatechuate 3,4-dioxygenase EC 1.13.11.3"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S3 reaction: 3-carboxy-cis,cis-muconate to 4-carboxymuconolactone",
+        "enzyme 3-carboxymuconate cycloisomerase EC 5.5.1.2"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S4 reaction: 4-carboxymuconolactone to 3-oxoadipate enol-lactone with decarboxylation",
+        "enzyme 4-carboxymuconolactone decarboxylase EC 5.3.3.12"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S5 reaction: 3-oxoadipate enol-lactone hydrolysis to 3-oxoadipate",
+        "enzyme 3-oxoadipate enol-lactonase EC 3.1.1.24"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas aeruginosa participates in 4-amino-3-hydroxybenzoate degradation",
+        "Pseudomonas aeruginosa NCBI taxid 287"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas aeruginosa general physiological traits",
+        "species-level temperature, oxygen tolerance, pH, respiration, carbon utilization, degradation capacity, enzyme activity, motility, morphology, Gram stain, sporulation, habitat generalism"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定；步骤S2双加氧酶实际需要分子氧。",
+    "3-羧基顺,顺-粘康酸及内酯类中间体的SMILES未完全确定，部分填为null或简化结构。",
+    "下游辅酶A转移与硫解步骤未列入评分主链，仅在中心代谢入口说明。",
+    "微生物与酶关联基于内部知识，未附外部文献或数据库记录。",
+    "性状为物种水平概括，非特定菌株测定值。"
+  ]
+}

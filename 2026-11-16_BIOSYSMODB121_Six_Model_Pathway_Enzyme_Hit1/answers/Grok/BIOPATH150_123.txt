@@ -1,0 +1,334 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_123",
+  "pollutant_name_zh": "丙烷",
+  "pollutant_name_en": "Propane",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "propane degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；本路线含单加氧步骤，故填好氧。路线名称按题面原样填写。文献常将末端氧化称为途径I、亚末端氧化称为途径II，本答案据此把propane degradation I对应末端氧化主链。"
+  },
+  "route_summary": "丙烷降解I按末端氧化主链：丙烷经单加氧酶羟化为1-丙醇，1-丙醇经醇脱氢酶氧化为丙醛，丙醛经醛脱氢酶氧化为丙酸。丙酸可再活化为丙酰辅酶A，经甲基丙二酰辅酶A途径生成琥珀酰辅酶A并进入TCA循环。代表菌为Rhodococcus rhodochrous PNKb1。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "propane",
+          "smiles": "CCC",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-propanol",
+          "smiles": "CCCO",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧羟化",
+      "enzyme": {
+        "name": "propane monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus rhodochrous",
+        "strain": "PNKb1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "PNKb1具有丙烷末端羟化活性并生成1-丙醇，但该单加氧酶的EC编号、基因名和生理电子供体没有可靠的克隆级证据，故EC、基因置null，且不填写NADH以免把惯例辅因子当成实测值。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "1-propanol",
+          "smiles": "CCCO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "propanal",
+          "smiles": "CCC=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醇脱氢",
+      "enzyme": {
+        "name": "alcohol dehydrogenase",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus rhodochrous",
+        "strain": "PNKb1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "丙烷培养的PNKb1细胞提取物中有NAD+依赖的伯醇脱氢酶活性，EC 1.1.1.1是该活性的标准酶学归类，具体基因与同工酶未确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "propanal",
+          "smiles": "CCC=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "propanoate",
+          "smiles": "CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛脱氢",
+      "enzyme": {
+        "name": "aldehyde dehydrogenase",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus rhodochrous",
+        "strain": "PNKb1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "丙醛至丙酸由NAD+依赖型醛脱氢酶完成，EC 1.2.1.3为该类酶的标准编号；PNKb1中对应同工酶基因未确定。质子数目在条目中只表示物种存在，不表示计量系数。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Rhodococcus rhodochrous",
+      "strain": "PNKb1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用丙烷作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经末端氧化将丙烷降解为丙酸，同时具有亚末端氧化能力",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "丙烷培养细胞具有丙烷单加氧酶、醇脱氢酶和醛脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["propanoate", "succinyl-CoA"],
+    "explanation": "主链终点为丙酸。丙酸活化为丙酰辅酶A后，经甲基丙二酰辅酶A途径转化为琥珀酰辅酶A，进入TCA循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "丙酰辅酶A至琥珀酰辅酶A途径",
+      "summary": "丙酸活化为丙酰辅酶A后，依次经羧化、差向异构和变位生成琥珀酰辅酶A。该段是丙酸的通用中心代谢途径，不是丙烷专属步骤，故不计入本题评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "丙烷亚末端氧化",
+      "summary": "丙烷在C2位羟化生成2-丙醇，再脱氢为丙酮。丙酮在Gordonia sp. TY-5中可经Baeyer-Villiger单加氧生成乙酸甲酯，再水解为甲醇和乙酸；其他菌也可经羟基丙酮和甲基乙二醛进入丙酮酸。该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Stephens & Dalton, 1986, J. Gen. Microbiol. 132:2453-2462; Woods & Murrell, 1989, J. Gen. Microbiol., Rhodococcus rhodochrous PNKb1 propane metabolism; Ashraf, Mihdhir & Murrell, 1994, FEMS Microbiol. Lett.",
+      "claim_scope": ["step:S1", "step:S2", "step:S3", "organism:ORG_001", "trait:F1_oxygen_tolerance", "trait:F7_carbon_substrate_utilization", "trait:F8_degradation_capacity_broad", "trait:F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB enzyme nomenclature: EC 1.1.1.1 alcohol dehydrogenase (NAD+); EC 1.2.1.3 aldehyde dehydrogenase (NAD+)",
+      "claim_scope": ["enzyme:S2", "enzyme:S3", "ec:1.1.1.1", "ec:1.2.1.3"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Rhodococcus rhodochrous genus-level taxonomic description",
+      "claim_scope": ["trait:F6_respiration_electron_acceptor", "trait:F10_motility", "trait:F11_cell_morphology", "trait:F12_gram_cell_envelope", "trait:F13_sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "propane degradation I按文献常见编号对应末端氧化（丙烷→1-丙醇→丙醛→丙酸）。若来源数据库把该名称赋予亚末端氧化（2-丙醇/丙酮），则主链化学应整体替换。",
+    "PNKb1的丙烷单加氧酶没有可靠EC编号和基因名，相关字段为null。",
+    "EC 1.1.1.1与EC 1.2.1.3是根据NAD+依赖活性作的酶学归类，不是该菌株已克隆同工酶的直接编号。",
+    "单加氧步骤未填写电子供体，以避免把NADH惯例误写成该菌株实测辅因子。",
+    "PNKb1的温度、pH、盐度、保藏号、TaxID、基因组登录号和栖息地广适性无可靠来源，已置null。"
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_129",
+  "pollutant_name_zh": "赤藓糖醇",
+  "pollutant_name_en": "Erythritol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "erythritol degradation II",
+    "is_single_continuous_route": true,
+    "notes": "氧条件题面未指定，保持null。主链按糖醇降解编号中“II=先氧化后磷酸化”的惯例重建为连续三步，至中心代谢入口为止；该编号对应关系置信度低。"
+  },
+  "route_summary": "erythritol degradation II按先氧化、后磷酸化、再裂解重建：赤藓糖醇脱氢生成L-赤藓酮糖，L-赤藓酮糖磷酸化为L-赤藓酮糖-1-磷酸，再裂解为磷酸二羟丙酮与甲醛。磷酸二羟丙酮进入中心代谢。未能可靠绑定该编号路线的EC编号与模式微生物，酶仅给出反应对应的功能名且置信度为low，微生物置null。布鲁氏菌中已阐明的先磷酸化路线不作为本条评分主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "erythritol",
+          "smiles": "OC[C@H](O)[C@@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-erythrulose",
+          "smiles": "OCC(=O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱氢反应",
+      "enzyme": {
+        "name": "erythritol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "首步定为赤藓糖醇氧化为L-赤藓酮糖，辅因子取NAD+而非NADP+，二者均未得到该编号路线的实验确认；未能绑定代表菌。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "L-erythrulose",
+          "smiles": "OCC(=O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-erythrulose 1-phosphate",
+          "smiles": "O=C(COP(=O)(O)O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "磷酸化反应",
+      "enzyme": {
+        "name": "L-erythrulose kinase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "磷酸化位点按1-磷酸书写，激酶及其EC、对应微生物均未知，不编造编号。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "L-erythrulose 1-phosphate",
+          "smiles": "O=C(COP(=O)(O)O)C(O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "O=C(CO)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛缩酶裂解反应",
+      "enzyme": {
+        "name": "L-erythrulose-1-phosphate aldolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "裂解为磷酸二羟丙酮与甲醛是酮糖-1-磷酸的经典反应，但是否被erythritol degradation II收录不确定；另一可能终点是D-赤藓糖-4-磷酸。酶与菌未知。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["dihydroxyacetone phosphate"],
+    "explanation": "若主链第三步成立，磷酸二羟丙酮可异构为甘油醛-3-磷酸并进入糖酵解/糖异生；甲醛不是直接的中心碳骨架。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "formaldehyde oxidation",
+      "summary": "甲醛可再氧化为甲酸并进一步氧化为二氧化碳。该下游是否列入erythritol degradation II不确定，故未写入评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "Brucella phosphorylation-first erythritol catabolism",
+      "summary": "Brucella abortus的ery途径为先磷酸化再氧化：赤藓糖醇生成L-赤藓糖醇-1-磷酸和L-赤藓酮糖-1-磷酸，并进入磷酸戊糖途径。该路线很可能对应另一编号而非本题指定的erythritol degradation II。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["route_assignment", "reaction_sequence"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "不能确认erythritol degradation II一定是先氧化后磷酸化路线；若该编号实际对应布鲁氏菌先磷酸化路线，则主链中间体应为L-赤藓糖醇-1-磷酸、L-赤藓酮糖-1-磷酸和D-赤藓糖-4-磷酸。",
+    "未可靠对应首选酶的EC编号、基因名、模式菌株、TaxID与保藏号，这些字段按要求置null，未用近似值占位。",
+    "L-赤藓酮糖与L-赤藓酮糖-1-磷酸仅给出连接性SMILES，未写入无把握的立体SMILES。",
+    "第三步裂解产物以及NAD+对NADP+的选择均属低置信类推。"
+  ]
+}

@@ -1,0 +1,334 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_125",
+  "pollutant_name_zh": "甲基叔丁基醚",
+  "pollutant_name_en": "Methyl tert-butyl ether",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methyl tert-butyl ether degradation",
+    "is_single_continuous_route": null,
+    "notes": "以已报道的Methylibium petroleiphilum PM1相关MTBE氧化降解主链为依据；题面未指定氧条件。"
+  },
+  "route_summary": "MTBE首先被单加氧酶氧化并醚键裂解，生成tert-butanol和formaldehyde；tert-butanol进一步羟基化为2-methyl-1,2-propanediol，再氧化为2-hydroxyisobutyraldehyde和2-hydroxyisobutyric acid。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Methyl tert-butyl ether",
+          "smiles": "CC(C)(C)OC",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "tert-Butanol",
+          "smiles": "CC(C)(C)O",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Oxidative ether cleavage by monooxygenation",
+      "enzyme": {
+        "name": "Methyl tert-butyl ether monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": "MdpA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该反应的酶学名称和EC编号在本回答所用来源中未明确给出。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "tert-Butanol",
+          "smiles": "CC(C)(C)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Methyl-1,2-propanediol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Hydroxylation of tertiary alcohol",
+      "enzyme": {
+        "name": "tert-Butanol hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步骤在MTBE降解途径中被描述为tert-butanol进一步氧化/羟基化，但具体酶、基因和EC编号不确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-Methyl-1,2-propanediol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxyisobutyraldehyde",
+          "smiles": "CC(C)(O)C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Alcohol oxidation",
+      "enzyme": {
+        "name": "2-Methyl-1,2-propanediol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "具体脱氢酶名称、基因和EC编号未确定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-Hydroxyisobutyraldehyde",
+          "smiles": "CC(C)(O)C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxyisobutyric acid",
+          "smiles": "CC(C)(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Aldehyde oxidation",
+      "enzyme": {
+        "name": "2-Hydroxyisobutyraldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Methylibium petroleiphilum",
+        "strain": "PM1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该中间体氧化步骤的具体酶学注释和EC编号未确定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Methylibium petroleiphilum",
+      "strain": "PM1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解methyl tert-butyl ether及相关醚类或石油烃污染物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有与MTBE初始氧化相关的单加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "2-Hydroxyisobutyric acid之后的中心代谢接入步骤在本回答中未确定。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Methylibium petroleiphilum PM1参与MTBE降解",
+        "MTBE初始氧化生成tert-butanol和formaldehyde",
+        "tert-butanol经连续氧化形成2-methyl-1,2-propanediol、2-hydroxyisobutyraldehyde和2-hydroxyisobutyric acid"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，因此route_scope.oxygen_condition保持null。",
+    "各步具体EC编号及部分酶基因未能可靠确定。",
+    "2-hydroxyisobutyric acid之后的中心代谢接入未纳入主链。"
+  ]
+}

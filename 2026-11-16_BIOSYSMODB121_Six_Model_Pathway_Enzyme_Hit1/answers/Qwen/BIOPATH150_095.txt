@@ -1,0 +1,478 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_095",
+  "pollutant_name_zh": "抗坏血酸根",
+  "pollutant_name_en": "Ascorbate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-ascorbate degradation V",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；路线名称按题面原样保留，不得改选其他路线。"
+  },
+  "route_summary": "在指定路线 L-ascorbate degradation V 下，抗坏血酸根经磷酸化转运进入细胞，随后经内酯水解/脱磷酸、脱羧、还原与氧化转换为木糖醇和 D-木酮糖，最终磷酸化为 D-木酮糖-5-磷酸并进入中心代谢。氧条件未指定；本答案按已知大肠杆菌相关路线填写，部分酶与性状来源不足，置信度较低。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-ascorbate",
+          "smiles": "OC[C@H](O)[C@H]1OC(=O)C(O)=C1O",
+          "role": "main"
+        },
+        {
+          "name": "phosphoenolpyruvate",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-ascorbate 6-phosphate",
+          "smiles": "OP(=O)(O)OC[C@H](O)[C@H]1OC(=O)C(O)=C1O",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "phosphotransferase",
+      "enzyme": {
+        "name": "L-ascorbate phosphotransferase",
+        "ec_number": "2.7.1.194",
+        "gene_or_protein": "UlaA/UlaB/UlaC",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "氧条件未指定；PTS 组分与反应计量基于内部知识，置信度较低。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "L-ascorbate 6-phosphate",
+          "smiles": "OP(=O)(O)OC[C@H](O)[C@H]1OC(=O)C(O)=C1O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-keto-L-gulonate",
+          "smiles": "O=C(O)[C@H](O)C(=O)[C@H](O)[C@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "phosphate",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis/dephosphorylation",
+      "enzyme": {
+        "name": "L-ascorbate 6-phosphate lactonase",
+        "ec_number": null,
+        "gene_or_protein": "UlaG",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步是否直接生成游离 3-keto-L-gulonate 以及对应 EC 编号存在不确定性。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-keto-L-gulonate",
+          "smiles": "O=C(O)[C@H](O)C(=O)[C@H](O)[C@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-xylulose",
+          "smiles": "OCC(=O)C(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "3-keto-L-gulonate decarboxylase",
+        "ec_number": "4.1.1.107",
+        "gene_or_protein": "UlaD",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "脱羧步骤的底物磷酸化状态存在不确定性。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "L-xylulose",
+          "smiles": "OCC(=O)C(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "xylitol",
+          "smiles": "OCC(O)C(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "reduction",
+      "enzyme": {
+        "name": "L-xylulose reductase",
+        "ec_number": "1.1.1.10",
+        "gene_or_protein": "UlaE",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "辅因子计量与质子平衡未完全展开。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "xylitol",
+          "smiles": "OCC(O)C(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-xylulose",
+          "smiles": "OCC(=O)C(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "xylitol dehydrogenase",
+        "ec_number": "1.1.1.9",
+        "gene_or_protein": "UlaF",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "辅因子计量与质子平衡未完全展开。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "D-xylulose",
+          "smiles": "OCC(=O)C(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-xylulose 5-phosphate",
+          "smiles": "OCC(=O)C(O)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": {
+        "name": "D-xylulokinase",
+        "ec_number": "2.7.1.17",
+        "gene_or_protein": "XylB",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "D-xylulose 5-phosphate 进入中心代谢的下游归属明确，但本步酶与基因来源证据较弱。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温，最适约37℃"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧呼吸/发酵",
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用 L-ascorbate 作为碳源和能源；也可利用多种糖类",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 L-ascorbate phosphotransferase、L-xylulose reductase、xylitol dehydrogenase 等活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "U00096.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "D-xylulose 5-phosphate"
+    ],
+    "explanation": "D-xylulose 5-phosphate 可作为磷酸戊糖途径中间体进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "Pentose phosphate pathway",
+      "summary": "D-xylulose 5-phosphate 进入磷酸戊糖途径后被进一步代谢。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "L-ascorbate degradation V 主链反应",
+        "Escherichia coli K-12 substr. MG1655 作为步骤微生物",
+        "碳源利用与酶活性状"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli K-12 substr. MG1655 基础生理性状",
+        "基因组基本信息"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，无法确认该路线在好氧/厌氧下的适用性。",
+    "L-ascorbate 6-phosphate 水解步骤是否直接生成游离 3-keto-L-gulonate 及对应 EC 存在不确定性。",
+    "部分酶 EC 编号与基因归属基于内部知识，缺乏直接外部来源。",
+    "多数微生物性状缺乏直接来源，已按要求填 null；已填性状置信度较低。",
+    "SMILES 为简化表示，未完全指定质子化状态与全部立体化学。"
+  ]
+}

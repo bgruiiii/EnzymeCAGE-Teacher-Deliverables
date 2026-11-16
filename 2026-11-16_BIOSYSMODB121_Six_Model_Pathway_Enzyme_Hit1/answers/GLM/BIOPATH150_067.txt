@@ -1,0 +1,464 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_067",
+  "pollutant_name_zh": "4-乙基苯酚",
+  "pollutant_name_en": "4-Ethylphenol",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "4-ethylphenol degradation (anaerobic)",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线名称原样填写；描述厌氧（硝酸盐还原）条件下4-乙基苯酚的微生物降解主链，代表菌为脱氮菌Aromatoleum aromaticum EbN1。"
+  },
+  "route_summary": "厌氧（硝酸盐还原）条件下，Aromatoleum aromaticum EbN1（早期文献称Azoarcus sp. EbN1）将4-乙基苯酚的乙基侧链苄位氧化为乙酰基，生成4-羟基苯乙酮（4-hydroxyacetophenone）；随后经ATP依赖的羧化生成4-hydroxybenzoylacetate，活化为其CoA硫酯（4-hydroxybenzoylacetyl-CoA）后经硫解释放乙酰-CoA并生成4-hydroxybenzoyl-CoA；再由4-hydroxybenzoyl-CoA reductase（dehydroxylating）还原脱羟基生成benzoyl-CoA，汇入厌氧芳香代谢中枢途径，最终经苯甲酰-CoA还原/β-氧化矿化为乙酰-CoA与CO2。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Ethylphenol",
+          "smiles": "CCc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxyacetophenone",
+          "smiles": "CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "侧链苄位氧化脱氢（乙基氧化为乙酰基，4电子氧化）",
+      "enzyme": {
+        "name": "4-ethylphenol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "起始脱氢酶的命名、EC编号与生理电子受体记载有限；苄位氧化也可能经4-(1-羟基乙基)苯酚分两步进行。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-Hydroxyacetophenone",
+          "smiles": "CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "ATP",
+          "smiles": "OP(=O)(O)OP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxybenzoylacetate",
+          "smiles": "O=C([O-])CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "OP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "Phosphate",
+          "smiles": "OP(=O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP依赖的酮基羧化（CO2/HCO3-加成到酮羰基）",
+      "enzyme": {
+        "name": "4-hydroxyacetophenone carboxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该步参照苯乙酮厌氧降解的酮基羧化机理推断；EbN1中具体酶（是否即苯乙酮羧化酶类复合物）尚未完全确证。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-Hydroxybenzoylacetate",
+          "smiles": "O=C([O-])CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        },
+        {
+          "name": "ATP",
+          "smiles": "OP(=O)(O)OP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxybenzoylacetyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "Diphosphate",
+          "smiles": "OP(=O)(O)OP(=O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA硫酯化活化（芳香β-酮酸，ATP→AMP+PPi）",
+      "enzyme": {
+        "name": "4-hydroxybenzoylacetate-CoA ligase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "由CoA连接酶（ATP→AMP+PPi）或CoA转移酶完成活化的细节未完全确证。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-Hydroxybenzoylacetyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxybenzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "硫解（β-酮硫酯C-C键断裂）",
+      "enzyme": {
+        "name": "acetyl-CoA C-acyltransferase",
+        "ec_number": "2.3.1.9",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "对应β-酮硫解酶类反应；EbN1中是否存在底物特异性的硫解酶同工酶未确定。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "4-Hydroxybenzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Benzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原脱羟基（对位酚羟基被氢取代，恢复未取代苯环）",
+      "enzyme": {
+        "name": "4-hydroxybenzoyl-CoA reductase (dehydroxylating)",
+        "ec_number": "1.97.1.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC编号采用传统编号EC 1.97.1.2，新EC分类体系下该酶可能已改列为EC 1.3.7.x；生理电子供体（如还原型铁氧还蛋白）未确定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Aromatoleum aromaticum",
+      "strain": "EbN1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "厌氧（硝酸盐呼吸型，未见以O2生长的报道）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（淡水来源）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧呼吸（反硝化/硝酸盐呼吸）",
+            "terminal_electron_acceptor": "硝酸盐（NO3-）"
+          },
+          "raw_text": "Anaerobic degradation of ethylbenzene and other aromatic hydrocarbons by new denitrifying bacteria",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以硝酸盐为电子受体，厌氧氧化多种芳香化合物（乙苯、甲苯、苯乙酮、4-乙基苯酚、对甲酚、苯酚、4-羟基苯甲酸、苯甲酸等）及多种有机酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱厌氧芳香族降解菌：烷基苯（乙苯/甲苯）、酚类（苯酚、对甲酚、4-乙基苯酚）、芳香酮（苯乙酮）与苯甲酸类等均经苯甲酰-CoA中枢途径厌氧矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "含乙苯脱氢酶、苯甲酰-CoA还原酶、4-羟基苯甲酰-CoA还原酶（脱羟基）等厌氧芳香化合物降解关键酶系",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "自由生活的广适性菌：分离自缺氧淡水沉积物，非共生、不依赖宿主，可利用底物谱广",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Benzoyl-CoA",
+      "Acetyl-CoA"
+    ],
+    "explanation": "主链经侧链苄位氧化、羧化、CoA硫酯化、硫解与还原脱羟基后，在S5汇入厌氧芳香代谢中枢中间物benzoyl-CoA，后者再经经典苯甲酰-CoA还原/β-氧化途径最终转化为乙酰-CoA（并释放CO2）进入中心代谢；S4硫解一步同时直接释放1分子乙酰-CoA进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "benzoyl-CoA degradation (anaerobic)",
+      "summary": "benzoyl-CoA经class I苯甲酰-CoA还原酶脱芳构化为环己-1,5-二烯-1-羰基-CoA，再经烯酰-CoA水合酶（Dch）、羟环己烯甲酰-CoA脱氢酶（Had）与开环水解酶（Oah）生成3-羟基庚二酰-CoA，经β-氧化最终产生3分子乙酰-CoA与CO2。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "4-ethylphenol degradation (aerobic)",
+      "summary": "好氧条件下4-乙基苯酚可经单加氧酶/羟化酶羟化为4-乙基儿茶酚，再经邻位或间位开环途径降解；该分支不属于本题厌氧主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Aromatoleum aromaticum EbN1（早期文献称Azoarcus sp. EbN1）为反硝化、革兰氏阴性的厌氧芳香化合物降解菌",
+        "EbN1可在硝酸盐还原（厌氧）条件下以4-乙基苯酚为生长底物",
+        "EbN1生理性状：淡水沉积物来源、自由生活、广谱芳香底物利用、杆状细胞"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "4-乙基苯酚厌氧降解主链各步反应（苄位氧化、羧化、CoA硫酯化、硫解、还原脱羟基）及对应酶"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Rabus R, Widdel F (1995). Anaerobic degradation of ethylbenzene and other aromatic hydrocarbons by new denitrifying bacteria. Archives of Microbiology 163: 204–211",
+      "claim_scope": [
+        "EbN1为反硝化细菌（硝酸盐呼吸）",
+        "EbN1分离自缺氧沉积物并具厌氧芳香化合物降解能力"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "S1起始脱氢酶的正式命名、EC编号与生理电子受体在文献中记载有限，苄位氧化也可能经4-(1-羟基乙基)苯酚分两步进行。",
+    "S2–S4（ATP依赖羧化、CoA硫酯化、硫解）主要依据苯乙酮厌氧降解的类似途径与化学合理性推断，EbN1中相应基因与酶学性质未完全确证。",
+    "S5酶4-羟基苯甲酰-CoA还原酶（脱羟基）采用传统EC编号1.97.1.2，新EC分类体系下可能已改列为EC 1.3.7.x。",
+    "菌株名称沿革：Azoarcus sp. EbN1现归为Aromatoleum aromaticum EbN1，早期文献使用旧名。",
+    "EbN1的温度、pH、盐度等数值性状及保藏编号、基因组信息来源不详，均填null。"
+  ]
+}

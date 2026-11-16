@@ -1,0 +1,162 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_084",
+  "pollutant_name_zh": "咖啡因",
+  "pollutant_name_en": "Caffeine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "caffeine degradation I (main, plants)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故 oxygen_condition 保持 null。本路线为植物咖啡因降解主链：咖啡因经 N7-去甲基化生成茶碱，再经 N1-、N3-去甲基化至黄嘌呤；不改选细菌常见的可可碱途径或 C8 氧化途径。去甲基化机制与是否严格需氧尚未在该命名路线中完全确定。"
+  },
+  "route_summary": "咖啡因降解 I 主链（植物）的特征步骤为连续 N-去甲基化：咖啡因先在 N7 位去甲基生成茶碱（1,3-二甲基黄嘌呤），茶碱再在 N1 位去甲基生成 3-甲基黄嘌呤，最后在 N3 位去甲基生成黄嘌呤。黄嘌呤之后进入常规嘌呤分解并最终可汇入乙醛酸，但不属于该命名路线的特征主链，故不写入 steps。该主链的催化活性主要在咖啡属等植物中描述，对应微生物酶与菌株不能可靠指定。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "caffeine",
+          "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "theophylline",
+          "smiles": "CN1C(=O)N(C)C2=C(C1=O)NC=N2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N7-去甲基化",
+      "enzyme": {
+        "name": "caffeine 7-N-demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "植物中该步以活性描述为主，酶未纯化到可指定 EC 与基因；甲基离去形式（甲醛或其他）未确证，故不列入副产物。无可靠对应微生物。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "theophylline",
+          "smiles": "CN1C(=O)N(C)C2=C(C1=O)NC=N2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-methylxanthine",
+          "smiles": "CN1C(=O)NC2=C(C1=O)NC=N2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N1-去甲基化",
+      "enzyme": {
+        "name": "theophylline 1-N-demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "主产物为 3-甲基黄嘌呤；1-甲基黄嘌呤仅为次要产物，不计入主链。酶无 EC，无可靠对应微生物。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "3-methylxanthine",
+          "smiles": "CN1C(=O)NC2=C(C1=O)NC=N2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "xanthine",
+          "smiles": "C1=NC2=C(N1)C(=O)NC(=O)N2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N3-去甲基化",
+      "enzyme": {
+        "name": "3-methylxanthine N3-demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "本命名路线的特征主链止于黄嘌呤。后续嘌呤分解见 downstream_continuation。酶无 EC，无可靠对应微生物。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["glyoxylate"],
+    "explanation": "本主链止于黄嘌呤，黄嘌呤本身不是中心代谢物。经下游常规嘌呤分解，尿囊酸进一步裂解后以乙醛酸进入中心代谢，并可能释放尿素或铵；咖啡属具体使用哪一种尿囊酸下游酶未在此锁定。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "purine catabolism from xanthine",
+      "summary": "黄嘌呤可经黄嘌呤脱氢酶生成尿酸，再经 5-羟基异尿酸和 OHCU 生成尿囊素，随后经尿囊酸生成乙醛酸并释放尿素或铵。此为常规嘌呤分解，不是 caffeine degradation I 的特征步骤。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "caffeine to theobromine (minor, plants)",
+      "summary": "植物次要途径：咖啡因经 N1-去甲基化生成可可碱，通量远低于经茶碱的主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "caffeine to paraxanthine (minor, plants)",
+      "summary": "植物痕量途径：咖啡因经 N3-去甲基化生成副黄嘌呤。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["main_route_reaction_sequence", "substrate_product_identity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["enzyme_activity_name_only"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "指定路线是植物主链，不是细菌常见的咖啡因到可可碱再到 7-甲基黄嘌呤途径，也不是 C8 氧化到三甲基尿酸的途径。",
+    "三步 N-去甲基化仅有酶活性名称，无已指定 EC、基因或纯化蛋白可可靠填写。",
+    "不能把咖啡属等植物填入 microorganism；也没有可可靠对应到本主链各步的微生物菌株，故微生物与 organism_profiles 为空，性状不作推测。",
+    "去甲基化的辅底物、氧依赖性以及甲基以甲醛、甲醇还是其他形式释放，均未确证，故未写入辅因子或副产物。",
+    "黄嘌呤之后的嘌呤分解酶系清楚，但不属于该命名主链，未放入 steps。"
+  ]
+}

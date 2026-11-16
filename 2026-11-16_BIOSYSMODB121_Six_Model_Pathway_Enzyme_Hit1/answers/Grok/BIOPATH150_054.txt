@@ -1,0 +1,302 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_054",
+  "pollutant_name_zh": "(R)-S-乳酰谷胱甘肽(1-)",
+  "pollutant_name_en": "(R)-S-lactoylglutathionate(1-)",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methylglyoxal degradation VIII",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。该化合物的明确微生物降解反应为谷胱甘肽依赖型乙二醛酶II对硫酯的水解，反应本身不消耗分子氧。途径名称按题面原样填写；本次未能独立核验MetaCyc中methylglyoxal degradation VIII的原始反应边界与注释来源菌，主链只写入已明确的水解步。"
+  },
+  "route_summary": "(R)-S-乳酰谷胱甘肽(1-)经羟基酰基谷胱甘肽水解酶（glyoxalase II，EC 3.1.2.6）水解硫酯键，生成(R)-乳酸并再生谷胱甘肽，同时释放质子；该步不依赖分子氧。代表菌取已实验表征gloB的Escherichia coli K-12 MG1655。(R)-乳酸可再氧化为丙酮酸进入中心代谢，但该氧化是否属于指定路线未能确认，故不写入评分主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(R)-S-lactoylglutathionate(1-)",
+          "smiles": "C[C@@H](O)C(=O)SC[C@H](NC(=O)CC[C@H]([NH3+])C(=O)[O-])C(=O)NCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(R)-lactate",
+          "smiles": "C[C@@H](O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "glutathionate(1-)",
+          "smiles": "[NH3+][C@@H](CCC(=O)N[C@@H](CS)C(=O)NCC(=O)[O-])C(=O)[O-]",
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "thioester hydrolysis",
+      "enzyme": {
+        "name": "hydroxyacylglutathione hydrolase",
+        "ec_number": "3.1.2.6",
+        "gene_or_protein": "gloB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该水解是(R)-S-乳酰谷胱甘肽的已知降解反应；指定路线methylglyoxal degradation VIII是否还包含(R)-乳酸至丙酮酸的氧化未能确认，故主链仅保留此步。gloB为大肠杆菌中首选的glyoxalase II，同菌另有同工酶gloC，此处只取一个首选基因。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "葡萄糖",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具有乙二醛酶系统，可解毒甲基乙二醛并水解(R)-S-乳酰谷胱甘肽；能利用多种糖与有机酸，但不是广谱异生物质降解菌",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "羟基酰基谷胱甘肽水解酶（GloB，glyoxalase II，EC 3.1.2.6）可水解(R)-S-乳酰谷胱甘肽生成(R)-乳酸与谷胱甘肽",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "周生鞭毛运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "碳源谱较广且兼性厌氧，可在温血动物肠道以及多种体外环境中生存，栖息地广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate"
+    ],
+    "explanation": "(R)-乳酸可经D-乳酸脱氢酶氧化为丙酮酸后进入中心代谢；谷胱甘肽在水解步已再生。该氧化未计入评分主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "D-lactate oxidation to pyruvate",
+      "summary": "(R)-乳酸可被D-乳酸脱氢酶氧化为丙酮酸。大肠杆菌中主要相应酶为膜结合、醌依赖的Dld（EC 1.1.5.12），而非NAD依赖的EC 1.1.1.28。该步通常单独成途径，是否纳入methylglyoxal degradation VIII未能确认。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB Enzyme Nomenclature",
+      "record_id": "3.1.2.6",
+      "locator": "EC 3.1.2.6 hydroxyacylglutathione hydrolase; (R)-S-lactoylglutathione + H2O = (R)-lactate + glutathione",
+      "claim_scope": [
+        "reaction",
+        "enzyme_name",
+        "ec_number",
+        "substrates",
+        "products"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "EcoCyc",
+      "record_id": null,
+      "locator": "Escherichia coli K-12 gloB, hydroxyacylglutathione hydrolase / glyoxalase II",
+      "claim_scope": [
+        "microorganism",
+        "gene_or_protein",
+        "enzyme_activity",
+        "degradation_capacity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000913.3",
+      "locator": "NCBI Taxonomy 511145; RefSeq NC_000913.3 Escherichia coli str. K-12 substr. MG1655",
+      "claim_scope": [
+        "ncbi_taxid",
+        "genome_accession",
+        "genome_size_bp",
+        "gc_percent"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Escherichia coli K-12 standard bacteriological description",
+      "claim_scope": [
+        "oxygen_tolerance",
+        "respiration",
+        "carbon_substrate",
+        "motility",
+        "cell_morphology",
+        "gram_stain",
+        "sporulation"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "ATCC 700926 Escherichia coli MG1655",
+      "claim_scope": [
+        "culture_collection"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Escherichia coli K-12 general physiological description; exact range limits not retained as verbatim source text",
+      "claim_scope": [
+        "temperature",
+        "pH",
+        "salinity",
+        "habitat_generalism"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "未能在本次作答中核验MetaCyc途径methylglyoxal degradation VIII的原始反应列表与注释来源菌；主链依据(R)-S-乳酰谷胱甘肽已知的微生物降解反应（glyoxalase II，EC 3.1.2.6）填写。",
+    "(R)-乳酸氧化为丙酮酸是否属于该指定路线未能确认，故未写入steps。",
+    "代表菌Escherichia coli K-12 MG1655确有gloB并催化该反应，但是否为途径VIII的注释来源菌未能确认，因此complete_pathway_organism_profile_id置null。",
+    "温度上下限、pH范围与盐度数值缺少可引用原文，相关子字段为null。",
+    "SMILES手性按标准谷胱甘肽与(R)-乳酸写法重建，未对照某一次数据库导出文件逐字符核验；生理pH下(1-)物种的水解需释放H+以保持电荷平衡。"
+  ]
+}

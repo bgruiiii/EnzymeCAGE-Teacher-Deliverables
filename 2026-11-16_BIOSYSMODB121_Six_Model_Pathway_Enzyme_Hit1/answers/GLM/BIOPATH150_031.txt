@@ -1,0 +1,544 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_031",
+  "pollutant_name_zh": "醛式-D-半乳糖醛酸根",
+  "pollutant_name_en": "aldehydo-D-galacturonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-galacturonate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "氧条件题面未指定，按 null 填写。D-galacturonate degradation I 为丝状真菌中表征的还原型D-半乳糖醛酸降解路线；该路线本身不依赖分子氧，携带菌株主要为好氧真菌。"
+  },
+  "route_summary": "本路线即 MetaCyc 的 D-galacturonate degradation I，为丝状真菌（曲霉 Aspergillus、木霉/ Hypocrea jecorina 等）中表征的还原型D-半乳糖醛酸利用途径。主链共四步：醛式-D-半乳糖醛酸经NADPH依赖的D-半乳糖醛酸还原酶（EC 1.1.1.365）还原为L-半乳糖酸；L-半乳糖酸经L-半乳糖酸脱水酶脱水生成2-脱氢-3-脱氧-L-半乳糖酸；后者经2-脱氢-3-脱氧-L-半乳糖酸醛缩酶裂解为丙酮酸与L-甘油醛；L-甘油醛再经NADPH依赖的L-甘油醛还原酶还原为甘油。丙酮酸与甘油进入糖酵解及三羧酸循环等中心代谢，实现果胶质单糖构件D-半乳糖醛酸的完全同化。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "aldehydo-D-galacturonate",
+          "smiles": "O=C[C@H](O)[C@@H](O)[C@@H](O)[C@H](O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": "O=C(N)C1=CN(C=CC1)C2OC(COP(=O)(O)OP(=O)(O)OCC3OC(n4cnc5c(N)ncnc45)C(OP(=O)(O)O)C3O)C(O)C2O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-galactonate",
+          "smiles": "O=C([O-])[C@@H](O)[C@H](O)[C@H](O)[C@@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": "O=C(N)c1ccc[n+](c1)C2OC(COP(=O)(O)OP(=O)(O)OCC3OC(n4cnc5c(N)ncnc45)C(OP(=O)(O)O)C3O)C(O)C2O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化还原（NADPH依赖的醛基还原为伯醇，同时将C1端还原并按COOH端重新编号为L-半乳糖酸）",
+      "enzyme": {
+        "name": "D-galacturonate reductase",
+        "ec_number": "1.1.1.365",
+        "gene_or_protein": "gaaA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": null,
+        "ncbi_taxid": 5061,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "EC 1.1.1.365 的指定及 gaaA 基因名来自文献记忆，未能实时核对。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "L-galactonate",
+          "smiles": "O=C([O-])[C@@H](O)[C@H](O)[C@H](O)[C@@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-L-galactonate",
+          "smiles": "O=C([O-])C(=O)C[C@H](O)[C@@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱水（C2-C3位消除水，生成2-酮-3-脱氧结构）",
+      "enzyme": {
+        "name": "L-galactonate dehydratase",
+        "ec_number": null,
+        "gene_or_protein": "gaaB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": null,
+        "ncbi_taxid": 5061,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "L-galactonate dehydratase 未见正式EC编号，填null；基因名 gaaB 来自文献记忆。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-L-galactonate",
+          "smiles": "O=C([O-])C(=O)C[C@H](O)[C@@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "L-glyceraldehyde",
+          "smiles": "O=C[C@@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛醇裂解（retro-aldol，C3-C4键断裂生成丙酮酸与L-甘油醛）",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxy-L-galactonate aldolase",
+        "ec_number": null,
+        "gene_or_protein": "gaaC",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": null,
+        "ncbi_taxid": 5061,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该醛缩酶未见正式EC编号，填null；基因名 gaaC 来自文献记忆。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "L-glyceraldehyde",
+          "smiles": "O=C[C@@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": "O=C(N)C1=CN(C=CC1)C2OC(COP(=O)(O)OP(=O)(O)OCC3OC(n4cnc5c(N)ncnc45)C(OP(=O)(O)O)C3O)C(O)C2O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycerol",
+          "smiles": "OCC(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": "O=C(N)c1ccc[n+](c1)C2OC(COP(=O)(O)OP(=O)(O)OCC3OC(n4cnc5c(N)ncnc45)C(OP(=O)(O)O)C3O)C(O)C2O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化还原（NADPH依赖的醛基还原为伯醇）",
+      "enzyme": {
+        "name": "L-glyceraldehyde reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Trichoderma reesei",
+        "strain": null,
+        "ncbi_taxid": 51453,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该步（L-甘油醛→甘油）是否包含于MetaCyc该途径边界内略有不确定；木霉中相应基因名无法确证，填null；物种按有性型 Hypocrea jecorina 文献记载处理。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Aspergillus niger",
+      "strain": null,
+      "ncbi_taxid": 5061,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温型（嗜中温，常规室温至约30°C培养生长）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（好氧真菌，生长需要氧气）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐真菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "分子氧（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用D-半乳糖醛酸（果胶的单糖构件）作为碳源/能源，并利用葡萄糖、蔗糖等多种糖类",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具强植物生物质多糖降解能力（分泌果胶酶、纤维素酶、木聚糖酶等多种水解酶），为典型的果胶降解真菌",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "NADPH依赖的D-半乳糖醛酸还原酶（GaaA）活性：将D-半乳糖醛酸还原为L-半乳糖酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动（丝状真菌，无运动细胞阶段）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "有隔菌丝形成菌丝体；分生孢子梗顶端膨大成泡囊并辐射状着生瓶梗，产生大量分生孢子，分生孢子头黑褐色",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "不适用（真菌细胞壁，主要成分为几丁质与β-1,3-葡聚糖，不能用革兰氏染色归类）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "无性繁殖产生大量黑色分生孢子；罕见或未见有性孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "世界性分布的广栖息腐生真菌，常见于土壤、腐烂植物残体及各类食品饲料中，亦为常见室内空气真菌，栖息广适性强",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Trichoderma reesei",
+      "strain": null,
+      "ncbi_taxid": 51453,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温型（嗜中温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（好氧真菌，生长需要氧气）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐真菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "分子氧（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用D-半乳糖醛酸（果胶组分）作为碳源；亦可高效利用纤维素、乳糖等碳源（诱导纤维素酶产生）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "高效纤维素/半纤维素降解能力（经典工业纤维素酶产生菌），并参与果胶组分（D-半乳糖醛酸）代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "NADPH依赖的L-甘油醛还原酶活性：将L-甘油醛还原为甘油；并具D-半乳糖醛酸途径中L-半乳糖酸脱水酶（Lga1）等相关活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动（丝状真菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "有隔菌丝形成菌丝体，分生孢子梗聚伞状分枝、着生绿色分生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "不适用（真菌细胞壁，主要成分为几丁质与β-葡聚糖，不能用革兰氏染色归类）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "无性繁殖产生绿色分生孢子；有性型 Hypocrea jecorina 可形成子囊孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤及腐木腐生真菌，适应多种陆地腐烂植物残体环境，栖息广适性较广",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_002",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "glycerol"
+    ],
+    "explanation": "主链后段将D-半乳糖醛酸裂解为丙酮酸与L-甘油醛，L-甘油醛进一步被还原为甘油。丙酮酸可经丙酮酸脱氢酶生成乙酰CoA进入三羧酸循环；甘油可经甘油激酶与甘油-3-磷酸脱氢酶转化为磷酸二羟丙酮进入糖酵解，从而汇入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "甘油代谢（glycerol catabolism）",
+      "summary": "甘油经甘油激酶磷酸化为甘油-3-磷酸，再经甘油-3-磷酸脱氢酶氧化为磷酸二羟丙酮，进入糖酵解。"
+    },
+    {
+      "name": "丙酮酸氧化与三羧酸循环",
+      "summary": "丙酮酸经丙酮酸脱氢酶复合体氧化脱羧生成乙酰CoA，进入TCA循环彻底氧化产能。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "氧化分支（D-半乳糖醛酸经尿苷酸脱氢酶氧化为D-半乳糖二酸）",
+      "summary": "部分细菌（如农杆菌、假单胞菌等）先经尿苷酸脱氢酶（EC 1.1.1.203）将D-半乳糖醛酸氧化为D-半乳糖二酸，再经脱水、裂解等步骤进一步降解。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "细菌异构酶分支（经D-塔格糖酮酸/D-阿卓糖酸）",
+      "summary": "大肠杆菌等肠杆菌先将D-半乳糖醛酸异构化为D-塔格糖酮酸，还原为D-阿卓糖酸，再脱水生成2-脱氢-3-脱氧-D-葡糖酸并裂解为丙酮酸与D-甘油醛。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "关于曲霉（Aspergillus spp.）与木霉/ Hypocrea jecorina 的D-半乳糖醛酸分解代谢途径的生化表征文献（含 gaaA/gaaB/gaaC 等基因的克隆与酶学表征，约2005-2007年，作者如 Kuorelahti、Liepins、Martens-Uzunova、Richard 等，具体卷期无法在此核实）",
+      "claim_scope": [
+        "S1 反应及酶 D-galacturonate reductase（EC 1.1.1.365，gaaA）",
+        "S2 反应及酶 L-galactonate dehydratase（gaaB）",
+        "S3 反应及酶 2-dehydro-3-deoxy-L-galactonate aldolase（gaaC）",
+        "S4 反应及酶 L-glyceraldehyde reductase",
+        "Aspergillus niger 与 Trichoderma reesei 对 D-半乳糖醛酸的利用"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc 途径记录 'D-galacturonate degradation I'（凭记忆，未实时访问）",
+      "claim_scope": [
+        "route_scope.chosen_route_name",
+        "route_summary 与主链步骤顺序"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "黑曲霉的普通真菌学常识（形态、好氧性、生态分布、果胶基质利用等）",
+      "claim_scope": [
+        "ORG_001 的 F1、F2、F4、F6、F8、F10、F11、F12、F13、F15 性状"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "里氏木霉/ Hypocrea jecorina 的普通真菌学常识（形态、好氧性、纤维素酶产生、生态分布等）",
+      "claim_scope": [
+        "ORG_002 的 F1、F2、F4、F6、F8、F10、F11、F12、F13、F15 性状"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "MetaCyc 'D-galacturonate degradation I' 的具体定义（是否即丝状真菌的L-半乳糖酸还原途径）系凭记忆判断，无法实时核对数据库；若编号对应关系有误，主链需重核。",
+    "最后一步（L-甘油醛→甘油）是否属于该途径的边界略有不确定。",
+    "L-galactonate dehydratase、2-dehydro-3-deoxy-L-galactonate aldolase 与 L-glyceraldehyde reductase 未确认到正式EC编号，均填null。",
+    "gaaA/gaaB/gaaC 基因名及 EC 1.1.1.365、TaxID（5061、51453）均来自记忆，未实时核对；黑曲霉未给菌株，保藏号、基因组信息留空。",
+    "各菌株温度、pH、盐度、基因组等数值性状缺乏可引用来源，全部留空；其余性状基于普通微生物学常识（INTERNAL_KNOWLEDGE_ONLY），置信度至多medium。",
+    "糖类化合物的立体化学SMILES为人工推导，可能存在立体标记误差；辅酶NADPH/NADP+的SMILES省略了立体化学。"
+  ]
+}

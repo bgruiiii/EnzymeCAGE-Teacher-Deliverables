@@ -1,0 +1,639 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_138",
+  "pollutant_name_zh": "甲萘威",
+  "pollutant_name_en": "Carbaryl",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "carbaryl degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本主链采用文献中最常见的好氧水解—芳香环氧化开环路线，止于儿茶酚；厌氧转化及儿茶酚之后的开环分支不纳入评分主链。各步微生物为该步对应菌株，不表示同一菌株完成全部反应。"
+  },
+  "route_summary": "甲萘威经氨基甲酸酯水解生成1-萘酚，并净释放甲胺与二氧化碳（酶促直接产物甲基氨基甲酸可自发分解）。1-萘酚在2位羟化生成1,2-二羟基萘，随后双加氧开环为2-羟基色烯-2-羧酸，异构为反式邻羟基亚苄基丙酮酸，再水合醛缩裂解为水杨醛与丙酮酸；水杨醛脱氢为水杨酸，水杨酸1-单加氧酶氧化脱羧生成儿茶酚。丙酮酸可直接进入中心代谢，儿茶酚之后存在邻位与间位开环分支。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "carbaryl",
+          "smiles": "CNC(=O)Oc1cccc2ccccc12",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-naphthol",
+          "smiles": "Oc1cccc2ccccc12",
+          "role": "main"
+        },
+        {
+          "name": "methylamine",
+          "smiles": "CN",
+          "role": "byproduct"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解",
+      "enzyme": {
+        "name": "carbaryl hydrolase",
+        "ec_number": null,
+        "gene_or_protein": "cehA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Rhizobium sp.",
+        "strain": "AC100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "酶促直接产物为1-萘酚和甲基氨基甲酸，后者自发分解为甲胺和二氧化碳；此处按常见净反应列出。该水解酶无已确认的唯一四位EC编号。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "1-naphthol",
+          "smiles": "Oc1cccc2ccccc12",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1,2-dihydroxynaphthalene",
+          "smiles": "Oc1ccc2ccccc2c1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "单加氧羟化",
+      "enzyme": {
+        "name": "1-naphthol 2-hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该单加氧反应还需还原型烟酰胺辅酶；NADH与NADPH偏好及EC编号均未确认，故未写入辅酶与EC。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "1,2-dihydroxynaphthalene",
+          "smiles": "Oc1ccc2ccccc2c1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxychromene-2-carboxylate",
+          "smiles": "O=C(O)C1(O)C=Cc2ccccc2O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧开环",
+      "enzyme": {
+        "name": "1,2-dihydroxynaphthalene dioxygenase",
+        "ec_number": "1.13.11.56",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该反应与萘下游途径相同；未断言Pseudomonas sp. C5中的对应基因符号。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxychromene-2-carboxylate",
+          "smiles": "O=C(O)C1(O)C=Cc2ccccc2O1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "trans-o-hydroxybenzylidenepyruvate",
+          "smiles": "O=C(O)C(=O)/C=C/c1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "异构化",
+      "enzyme": {
+        "name": "2-hydroxychromene-2-carboxylate isomerase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "酶名对应萘下游途径的标准异构酶，但唯一四位EC编号未确认，故EC置null。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "trans-o-hydroxybenzylidenepyruvate",
+          "smiles": "O=C(O)C(=O)/C=C/c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "salicylaldehyde",
+          "smiles": "O=Cc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合-醛缩裂解",
+      "enzyme": {
+        "name": "trans-o-hydroxybenzylidenepyruvate hydratase-aldolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "丙酮酸在此步离开芳香主链并进入中心代谢；该酶的唯一四位EC编号未确认。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "salicylaldehyde",
+          "smiles": "O=Cc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "salicylate",
+          "smiles": "O=C(O)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "脱氢",
+      "enzyme": {
+        "name": "salicylaldehyde dehydrogenase",
+        "ec_number": "1.2.1.65",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "未断言该菌株中的基因符号；NAD辅酶SMILES未列出。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "salicylate",
+          "smiles": "O=C(O)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱羧",
+      "enzyme": {
+        "name": "salicylate 1-monooxygenase",
+        "ec_number": "1.14.13.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "主链止于儿茶酚。部分菌株改走水杨酸5-羟化至龙胆酸，不作为本主链。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Rhizobium sp.",
+      "strain": "AC100",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "甲萘威可作为水解底物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "水解甲萘威生成1-萘酚",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "甲萘威水解酶CehA活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "C5",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用甲萘威作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解甲萘威，并转化1-萘酚、水杨酸和儿茶酚",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有甲萘威水解酶与1-萘酚羟化酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_002",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "catechol"],
+    "explanation": "第5步释放的丙酮酸可直接进入中心代谢。芳香环碳骨架在本主链终点为儿茶酚，需再经邻位或间位开环后分别进入β-酮己二酸途径或间位裂解途径，最终汇入TCA循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "catechol ring cleavage to central metabolism",
+      "summary": "儿茶酚之后不纳入评分主链；邻位裂解进入β-酮己二酸途径，间位裂解进入间位途径，二者均可汇入中心代谢。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "catechol ortho-cleavage",
+      "summary": "儿茶酚可由儿茶酚1,2-双加氧酶（EC 1.13.11.1）开环为顺,顺-己二烯二酸，再进入β-酮己二酸途径。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "catechol meta-cleavage",
+      "summary": "儿茶酚也可由儿茶酚2,3-双加氧酶（EC 1.13.11.2）开环为2-羟基粘康酸半醛，进入间位裂解途径；萘质粒途径常见此分支。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "salicylate to gentisate",
+      "summary": "部分菌株将水杨酸5-羟化为龙胆酸后再开环，而不是由水杨酸1-单加氧酶生成儿茶酚。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas sp. C5甲萘威矿化及1-萘酚至水杨酸/儿茶酚路线的文献认识（Phale等）；与萘下游途径共用的开环序列",
+      "claim_scope": ["reaction", "enzyme", "microorganism", "trait"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Hashimoto等报道的Rhizobium sp. AC100质粒携带甲萘威水解酶基因cehA",
+      "claim_scope": ["reaction", "enzyme", "microorganism", "trait"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB/KEGG中回忆的EC 1.13.11.56、EC 1.2.1.65、EC 1.14.13.1",
+      "claim_scope": ["enzyme", "ec_number"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas与Rhizobium的属级细胞学特征：革兰氏阴性杆菌、不形成内生芽孢",
+      "claim_scope": ["trait"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；本主链为好氧路线，不代表该物质不存在其他氧条件下的转化。",
+    "甲萘威水解酶、1-萘酚2-羟化酶、2-羟基色烯-2-羧酸异构酶和反式邻羟基亚苄基丙酮酸水合醛缩酶未填写EC，因为无法确认唯一正式编号。",
+    "1-萘酚羟化步骤的NADH/NADPH偏好未确认，故未列入辅酶。",
+    "S1使用表征最充分的CehA来源菌，S2–S7使用可矿化甲萘威的Pseudomonas sp. C5；这是复合主链，不是单一菌株的基因水平重建。",
+    "未断言Pseudomonas sp. C5各步的基因符号，也未核实Rhizobium sp. AC100后续分类修订。",
+    "两菌株的TaxID、保藏编号、基因组登录号以及温度、pH、盐度等数值均未确认，相应字段为null。",
+    "儿茶酚的邻位与间位开环，以及水杨酸至龙胆酸路线，均不纳入评分主链。"
+  ]
+}

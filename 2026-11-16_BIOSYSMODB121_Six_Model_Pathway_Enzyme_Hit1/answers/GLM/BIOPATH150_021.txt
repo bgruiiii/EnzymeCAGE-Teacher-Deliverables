@@ -1,0 +1,440 @@
+
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_021",
+  "pollutant_name_zh": "甲苯",
+  "pollutant_name_en": "Toluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Toluene degradation to 2-hydroxypentadienoate (via toluene-cis-diol)",
+    "is_single_continuous_route": true,
+    "notes": "题面指定的好氧路线：甲苯经顺式二氢二醇（toluene-cis-diol）到2-hydroxypentadienoate的线性4步主链，由Pseudomonas putida F1的tod操纵子编码的酶依次催化。"
+  },
+  "route_summary": "好氧条件下，Pseudomonas putida F1（tod操纵子）降解甲苯的主链共4步：①toluene dioxygenase（EC 1.14.12.11，todC1C2BA）以NADH和O2将甲苯双加氧为toluene-cis-2,3-dihydrodiol；②cis-toluene dihydrodiol dehydrogenase（todD，EC 1.3.1.82）以NAD+将其脱氢芳构化为3-methylcatechol；③catechol 2,3-dioxygenase（todE，EC 1.13.11.2）对3-methylcatechol进行间位（2,3-）裂解生成2-hydroxy-6-oxohepta-2,4-dienoate；④2-hydroxy-6-oxohepta-2,4-dienoate hydrolase（todF，EC 3.7.1.9）将其水解为2-hydroxypenta-2,4-dienoate和乙酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "toluene",
+          "smiles": "Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "toluene-cis-2,3-dihydrodiol",
+          "smiles": "CC1=CC=CC(O)C1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aromatic dioxygenation（芳香环双加氧：O2的两个氧加到苯环2,3位生成顺式二氢二醇）",
+      "enzyme": {
+        "name": "toluene dioxygenase",
+        "ec_number": "1.14.12.11",
+        "gene_or_protein": "todC1C2BA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "toluene-cis-2,3-dihydrodiol",
+          "smiles": "CC1=CC=CC(O)C1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-methylcatechol",
+          "smiles": "Cc1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+-dependent dehydrogenation（脱氢芳构化：cis-二氢二醇脱氢生成芳香儿茶酚）",
+      "enzyme": {
+        "name": "cis-toluene dihydrodiol dehydrogenase",
+        "ec_number": "1.3.1.82",
+        "gene_or_protein": "todD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该酶完整EC编号（1.3.1.82）为中等置信记忆；部分数据库以EC 1.3.1.-（cis-dihydrodiol dehydrogenase）表示该酶。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-methylcatechol",
+          "smiles": "Cc1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "O=C(O)C(O)=CC=CC(=O)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol (meta) ring-cleavage dioxygenation（间位裂解：儿茶酚环在2,3位被O2裂解开环）",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "todE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "作用于3-methylcatechol的该酶在文献中亦被称为3-methylcatechol 2,3-dioxygenase。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "O=C(O)C(O)=CC=CC(=O)C",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "O=C(O)C(O)=CC=C",
+          "role": "main"
+        },
+        {
+          "name": "acetate",
+          "smiles": "CC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-C bond hydrolysis（水解裂解C-C键，生成2-hydroxypenta-2,4-dienoate与乙酸）",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxohepta-2,4-dienoate hydrolase",
+        "ec_number": "3.7.1.9",
+        "gene_or_protein": "todF",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该酶在文献中亦称2-hydroxymuconate-semialdehyde hydrolase（对应EC 3.7.1.5）；本回答按其生理底物（7碳的2-hydroxy-6-oxohepta-2,4-dienoate）选用EC 3.7.1.9，中等置信。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌；实验室常规于30°C培养"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧（obligate aerobe），生长依赖O2",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（土壤/淡水来源）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲苯为唯一碳源与能源生长；亦可利用苯、乙苯等单环芳烃",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解苯、甲苯、乙苯等单环芳烃；其甲苯双加氧酶还可共代谢三氯乙烯（TCE）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "甲苯双加氧酶活性：催化甲苯+O2+NADH生成cis-甲苯-2,3-二氢二醇（tod途径第一步）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "具运动性，借极生鞭毛运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，典型外膜-肽聚糖-细胞质膜细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性腐生菌：广泛分布于土壤、水体等多种环境，可利用多种有机底物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "主链终点为2-hydroxypenta-2,4-dienoate（间位裂解途径中间体），尚未直接进入中央代谢；其下游经水合与醛缩反应生成丙酮酸和乙醛后进入TCA循环，但超出本题指定路线范围。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2-hydroxypentadienoate的下游代谢",
+      "summary": "2-hydroxypenta-2,4-dienoate经2-hydroxypentadienoate水合酶水合为4-hydroxy-2-oxopentanoate，再经4-hydroxy-2-oxoacid aldolase（EC 4.1.3.39）裂解为丙酮酸和乙醛，随后进入TCA循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "甲苯单加氧酶（xyl上路径）分支",
+      "summary": "如Pseudomonas putida mt-2（TOL质粒pWW0）经xylMABC将甲苯氧化为苯甲醇，进而经苯甲醛、苯甲酸进入儿茶酚裂解；该分支不经过toluene-cis-diol。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "3-methylcatechol邻位（ortho）裂解分支",
+      "summary": "部分菌株经儿茶酚-1,2-双加氧酶将3-methylcatechol邻位裂解进入β-ketoadipate途径；不属于本题指定的间位裂解主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Zylstra GJ, Gibson DT (1989) J Biol Chem 264:14940-14946. Toluene degradation by Pseudomonas putida F1: nucleotide sequence of the todC1C2BADE genes.",
+      "claim_scope": [
+        "microorganism:Pseudomonas putida F1 carries the tod operon",
+        "enzyme:toluene dioxygenase (todC1C2BA, EC 1.14.12.11)",
+        "enzyme:cis-toluene dihydrodiol dehydrogenase (todD)",
+        "enzyme:catechol 2,3-dioxygenase (todE)",
+        "trait:F7 toluene as carbon source"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Gibson DT, Hensley M, Yoshioka H, Mabry TJ (1970) Biochemistry 9:1626-1630. Formation of (+)-cis-2,3-dihydroxy-1-methylcyclohexa-4,6-diene from toluene by Pseudomonas putida.",
+      "claim_scope": [
+        "reaction:S1 toluene to (+)-cis-toluene-2,3-dihydrodiol",
+        "microorganism:Pseudomonas putida F1 performs S1",
+        "trait:F9 toluene dioxygenase activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UM-BBD (University of Minnesota Biocatalysis/Biodegradation Database)",
+      "record_id": null,
+      "locator": "Aerobic toluene (tod) pathway page: toluene → toluene-cis-2,3-dihydrodiol → 3-methylcatechol → 2-hydroxy-6-oxohepta-2,4-dienoate → 2-hydroxypenta-2,4-dienoate + acetate",
+      "claim_scope": [
+        "route:S1-S4 main chain reactions",
+        "reaction:S2 toluene-cis-2,3-dihydrodiol to 3-methylcatechol",
+        "reaction:S3 3-methylcatechol to 2-hydroxy-6-oxohepta-2,4-dienoate",
+        "reaction:S4 HOD hydrolysis to 2-hydroxypenta-2,4-dienoate + acetate",
+        "enzyme:2-hydroxy-6-oxohepta-2,4-dienoate hydrolase"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "traits:Pseudomonas putida general microbiology (Gram-negative rods, motile with polar flagella, obligately aerobic, non-spore-forming, mesophilic ~30°C, neutral pH, non-halophilic, ubiquitous soil/water saprophyte)"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Wackett LP, Gibson DT (1988) Appl Environ Microbiol: degradation of trichloroethylene by toluene dioxygenase in Pseudomonas putida F1.",
+      "claim_scope": [
+        "trait:F8 broad degradation capacity (TCE cometabolism by toluene dioxygenase of P. putida F1)"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "S2酶的EC编号（1.3.1.82）为中等置信记忆；部分数据库将该酶记为EC 1.3.1.-（cis-dihydrodiol dehydrogenase）。",
+    "S4酶在不同来源中亦称2-hydroxymuconate-semialdehyde hydrolase（EC 3.7.1.5）；本回答按其生理底物（2-hydroxy-6-oxohepta-2,4-dienoate）选用EC 3.7.1.9，中等置信。",
+    "Pseudomonas putida F1的菌株级NCBI TaxID、保藏编号与基因组数据未能确证：TaxID按物种级303填写，保藏与基因组性状为null。",
+    "ORG_001的多数性状基于P. putida种级一般常识（INTERNAL_KNOWLEDGE_ONLY），非F1菌株的实测值，置信度较低。",
+    "toluene-cis-2,3-dihydrodiol的SMILES仅给出连接性，未标注顺式立体化学。"
+  ]
+}

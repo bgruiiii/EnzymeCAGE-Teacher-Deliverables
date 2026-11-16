@@ -1,0 +1,527 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_122",
+  "pollutant_name_zh": "2,6-二羟基苯甲酸根",
+  "pollutant_name_en": "2,6-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "γ-resorcylate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面给定路线名称原样填写，氧条件题面未指定（null）。从生物化学判断该路线为好氧代谢途径，主链为连续的4步反应。"
+  },
+  "route_summary": "γ-resorcylate（2,6-二羟基苯甲酸根）在γ-resorcylate decarboxylase（2,6-二羟基苯甲酸脱羧酶，来源Rhizobium sp.）作用下脱羧生成resorcinol（间苯二酚）与CO2；resorcinol经resorcinol hydroxylase（NADH依赖单加氧酶）羟基化为hydroxyquinol（1,2,4-三羟基苯）；hydroxyquinol经hydroxyquinol 1,2-dioxygenase邻位裂环生成maleylacetate；再经maleylacetate reductase（EC 1.3.1.32）还原为3-oxoadipate（β-酮己二酸），随后进入β-ketoadipate途径，最终以乙酰CoA与琥珀酰CoA汇入中央代谢（TCA循环）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "2,6-dihydroxybenzoate", "smiles": "O=C([O-])c1c(O)cccc1O", "role": "main"}
+      ],
+      "products": [
+        {"name": "resorcinol", "smiles": "Oc1cccc(O)c1", "role": "main"},
+        {"name": "carbon dioxide", "smiles": "O=C=O", "role": "byproduct"}
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "γ-resorcylate decarboxylase (2,6-dihydroxybenzoate decarboxylase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Rhizobium sp.",
+        "strain": null,
+        "ncbi_taxid": 354,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该步脱羧反应与γ-resorcylate decarboxylase（2,6-DHBD，见于Rhizobium）的对应基于内部知识；酶的EC编号及Rhizobium具体菌株未能确认，均填null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "resorcinol", "smiles": "Oc1cccc(O)c1", "role": "main"},
+        {"name": "NADH", "smiles": null, "role": "cofactor"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "hydroxyquinol", "smiles": "Oc1c(O)cc(O)cc1", "role": "main"},
+        {"name": "NAD+", "smiles": null, "role": "byproduct"},
+        {"name": "water", "smiles": "O", "role": "byproduct"}
+      ],
+      "reaction_type": "hydroxylation (NADH-dependent monooxygenation)",
+      "enzyme": {
+        "name": "resorcinol hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Trichosporon cutaneum",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "resorcinol经resorcinol hydroxylase转化为hydroxyquinol为已确立的生物化学步骤；该酶的EC编号及Trichosporon cutaneum的菌株信息未能确认，填null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "hydroxyquinol", "smiles": "Oc1c(O)cc(O)cc1", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "maleylacetate", "smiles": "O=C([O-])C=CC(=O)CC(=O)[O-]", "role": "main"}
+      ],
+      "reaction_type": "aromatic ring cleavage (intradiol 1,2-dioxygenation)",
+      "enzyme": {
+        "name": "hydroxyquinol 1,2-dioxygenase",
+        "ec_number": "1.13.11.37",
+        "gene_or_protein": "PnpC",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "DLL-E4",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "PnpC（hydroxyquinol 1,2-dioxygenase）在Pseudomonas putida DLL-E4中于对硝基苯酚代谢（pnp基因簇）背景下表征，此处沿用其催化功能；EC编号依据内部知识填写。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "maleylacetate", "smiles": "O=C([O-])C=CC(=O)CC(=O)[O-]", "role": "main"},
+        {"name": "NADH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-oxoadipate", "smiles": "O=C([O-])CCC(=O)CC(=O)[O-]", "role": "main"},
+        {"name": "NAD+", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "reduction (NADH-dependent reduction of the C=C bond)",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": "PnpD",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "DLL-E4",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Rhizobium sp.",
+      "strain": null,
+      "ncbi_taxid": 354,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": "中温"},
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（需氧生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": null, "maximum": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": null, "accession": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2"},
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能利用γ-resorcylate（2,6-二羟基苯甲酸）及间苯二酚作为碳源生长（由其2,6-二羟基苯甲酸脱羧酶活性推断）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具2,6-二羟基苯甲酸脱羧酶（γ-resorcylate decarboxylase），可催化2,6-二羟基苯甲酸与间苯二酚之间的可逆脱羧/羧化反应，降解γ-resorcylate",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2,6-二羟基苯甲酸脱羧酶（γ-resorcylate decarboxylase）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动（具鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（外膜-肽聚糖细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤及豆科植物根际/根瘤环境中广泛分布的α-变形菌，栖息地广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Trichosporon cutaneum",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": "中温"},
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（需氧生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": null, "maximum": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": null, "accession": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2"},
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以苯酚、间苯二酚等酚类芳香化合物作为碳源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解苯酚、间苯二酚等多种酚类/芳香族化合物（好氧矿化）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "间苯二酚羟化酶（resorcinol hydroxylase，黄素依赖单加氧酶）活性，将resorcinol转化为hydroxyquinol",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动（无鞭毛的酵母细胞）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "酵母样真菌：出芽细胞并可形成假菌丝/真菌丝",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "真菌细胞包膜（几丁质细胞壁）；革兰氏染色反应呈阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成细菌型芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "常见于土壤、水体、空气及人与动物皮肤的普遍生境酵母，栖息地广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Pseudomonas putida",
+      "strain": "DLL-E4",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": "中温"},
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（严格好氧、氧化型代谢）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": null, "maximum": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": null, "accession": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2"},
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以4-硝基苯酚（对硝基苯酚）等多种芳香族化合物作为碳源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解对硝基苯酚及多种芳香族污染物，经hydroxyquinol-maleylacetate-β-酮己二酸途径完全矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "对硝基苯酚代谢酶系活性：PnpC（hydroxyquinol 1,2-dioxygenase）与PnpD（maleylacetate reductase）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（外膜-肽聚糖细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "典型环境广适性细菌：广泛分布于土壤、淡水、根际及污染场地，代谢底物谱广",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["3-oxoadipate"],
+    "explanation": "主链终点产物为3-oxoadipate（β-酮己二酸），是β-ketoadipate（3-oxoadipate）途径的枢纽代谢物；其经3-oxoadipate CoA-transferase与β-ketoadipyl-CoA thiolase转化为乙酰CoA和琥珀酰CoA进入TCA循环，实现完全矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-oxoadipate degradation（β-ketoadipate途径后段）",
+      "summary": "3-oxoadipate与琥珀酰CoA经3-oxoadipate CoA-transferase作用生成3-oxoadipyl-CoA和琥珀酸；3-oxoadipyl-CoA再经β-ketoadipyl-CoA thiolase硫解为乙酰CoA和琥珀酰CoA，进入TCA循环。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["reaction: 2,6-dihydroxybenzoate → resorcinol + CO2（γ-resorcylate decarboxylase催化，主链第1步）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["enzyme: γ-resorcylate decarboxylase（2,6-dihydroxybenzoate decarboxylase）", "organism: Rhizobium sp.（2,6-二羟基苯甲酸脱羧酶来源菌）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["reaction: resorcinol + NADH + O2 → hydroxyquinol（resorcinol hydroxylase催化，主链第2步）", "enzyme: resorcinol hydroxylase", "organism: Trichosporon cutaneum（resorcinol hydroxylase来源）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["reaction: hydroxyquinol + O2 → maleylacetate（主链第3步）", "reaction: maleylacetate + NADH → 3-oxoadipate（主链第4步）", "enzyme: hydroxyquinol 1,2-dioxygenase（PnpC，EC 1.13.11.37）", "enzyme: maleylacetate reductase（PnpD，EC 1.3.1.32）", "organism: Pseudomonas putida DLL-E4（pnp基因簇）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Rhizobium sp. 一般微生物学性状（革兰氏阴性、杆状、好氧、不产芽孢、可运动、土壤/根际栖息、中温）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Trichosporon cutaneum 一般性状（好氧酵母、酵母样形态、不运动、酚类底物利用、广泛生境）"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida 一般微生物学性状（革兰氏阴性、杆状、好氧、运动、环境广适）及菌株DLL-E4的芳香族化合物降解能力"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "主链与题面给定名称γ-resorcylate degradation I 的对应关系依据内部知识重构：2,6-二羟基苯甲酸经脱羧→resorcinol→hydroxyquinol→maleylacetate→3-oxoadipate是γ-resorcylate好氧降解的经典路线之一，但与数据库原始条目中I/II变体的具体划分可能存在出入。",
+    "第1步酶的EC编号与Rhizobium的具体菌株未能确认，按规则填null。",
+    "第2步resorcinol hydroxylase的EC编号及Trichosporon cutaneum的菌株与TaxID未能确认，填null。",
+    "全部证据均为内部知识（INTERNAL_KNOWLEDGE_ONLY），未能提供数据库记录编号或文献定位信息。",
+    "各菌的15项性状中，温度、盐度、pH、菌种保藏、基因组等数值型或登记型信息缺少可靠来源，多为null；已填性状多为属/种水平的一般性知识，置信度较低。"
+  ]
+}

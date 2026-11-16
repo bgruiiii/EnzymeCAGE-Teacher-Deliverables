@@ -1,0 +1,532 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_137",
+  "pollutant_name_zh": "吡啶-2-甲酸根",
+  "pollutant_name_en": "Picolinate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "picolinate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；本主链包含明确消耗O2的氧化开环步骤，实验文献通常在好氧培养体系中描述，但oxygen_condition仍按题面保留为null。"
+  },
+  "route_summary": "主链为连续六步：picolinate先在吡啶环C-6位羟基化生成6-hydroxypicolinate，再经氧化脱羧/羟基化生成2,5-dihydroxypyridine；后者双加氧开环生成N-formylmaleamate，随后脱甲酰生成maleamate和formate，maleamate水解生成maleate和ammonia，最后maleate异构化为可进入三羧酸循环的fumarate。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Picolinate",
+          "smiles": "[O-]C(=O)c1ccccn1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-Hydroxypicolinate",
+          "smiles": "[O-]C(=O)c1cccc(O)n1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "芳香环C-6羟基化",
+      "enzyme": {
+        "name": "Picolinate hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter picolinophilus",
+        "strain": "ATCC 27854",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "路线证据支持该羟基化步骤和首选酶名称，但未能确认唯一EC编号及电子供体，故ec_number与gene_or_protein填null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "6-Hydroxypicolinate",
+          "smiles": "[O-]C(=O)c1cccc(O)n1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,5-Dihydroxypyridine",
+          "smiles": "Oc1ccc(O)cn1",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱羧/羟基化",
+      "enzyme": {
+        "name": "6-Hydroxypicolinate decarboxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter picolinophilus",
+        "strain": "ATCC 27854",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "该步为脱羧性羟基化过程；还原力来源和唯一EC编号未能确认，故相应字段填null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2,5-Dihydroxypyridine",
+          "smiles": "Oc1ccc(O)cn1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-Formylmaleamate",
+          "smiles": "O=CNC(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧开环",
+      "enzyme": {
+        "name": "2,5-Dihydroxypyridine 5,6-dioxygenase",
+        "ec_number": "1.13.11.9",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter picolinophilus",
+        "strain": "ATCC 27854",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "部分资料会将本步与后续脱甲酰步骤合并表示为直接生成maleamate和formate；本答案保留N-formylmaleamate中间体。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "N-Formylmaleamate",
+          "smiles": "O=CNC(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Maleamate",
+          "smiles": "NC(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Formate",
+          "smiles": "O=C[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱甲酰水解",
+      "enzyme": {
+        "name": "N-Formylmaleamate deformylase",
+        "ec_number": "3.5.1.68",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter picolinophilus",
+        "strain": "ATCC 27854",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "Maleamate",
+          "smiles": "NC(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Maleate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "酰胺水解",
+      "enzyme": {
+        "name": "Maleamate amidase",
+        "ec_number": "3.5.1.107",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter picolinophilus",
+        "strain": "ATCC 27854",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "Maleate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Fumarate",
+          "smiles": "[O-]C(=O)/C=C/C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "顺反异构化",
+      "enzyme": {
+        "name": "Maleate isomerase",
+        "ec_number": "5.2.1.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter picolinophilus",
+        "strain": "ATCC 27854",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter picolinophilus",
+      "strain": "ATCC 27854",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": "aerobic culture conditions",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "27854"
+          },
+          "raw_text": "ATCC 27854",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": "aerobic",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用吡啶-2-甲酸根作为降解底物",
+          "raw_text": "picolinic acid degradation pathway",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "已证实降解吡啶-2-甲酸根；现有证据集中于该含氮杂环羧酸，未据此扩展为广谱降解谱",
+          "raw_text": "Picolinic Acid Pathway",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "picolinate hydroxylase及后续picolinate降解途径酶活性",
+          "raw_text": "picolinic acid hydroxylase; 6-hydroxypicolinic acid decarboxylase",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": "non-motile",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "不规则杆状至球状细胞，具有杆—球形态转变",
+          "raw_text": "rod-coccus cycle",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": "Gram-positive",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": "non-spore-forming",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "已报道来源为土壤；现有资料只能确认土壤环境记录，不能据此判定其具有广泛栖息地适应性",
+          "raw_text": "soil",
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Fumarate"
+    ],
+    "explanation": "主链最终生成的Fumarate是三羧酸循环中间体，可进一步转化为malate并进入常规中心碳代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD",
+      "record_id": null,
+      "locator": "Picolinic Acid Pathway Map",
+      "claim_scope": [
+        "picolinate degradation sequence",
+        "6-hydroxypicolinate and 2,5-dihydroxypyridine intermediates",
+        "N-formylmaleamate to fumarate conversion",
+        "pathway-associated enzyme names",
+        "Arthrobacter picolinophilus pathway association"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 1.13.11.9",
+      "locator": "ExplorEnz entry for 2,5-dihydroxypyridine 5,6-dioxygenase",
+      "claim_scope": [
+        "enzyme accepted name",
+        "EC number",
+        "dioxygenolytic ring-cleavage reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 3.5.1.68",
+      "locator": "ExplorEnz entry for N-formylmaleamate deformylase",
+      "claim_scope": [
+        "enzyme accepted name",
+        "EC number",
+        "deformylation reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 3.5.1.107",
+      "locator": "ExplorEnz entry for maleamate amidase",
+      "claim_scope": [
+        "enzyme accepted name",
+        "EC number",
+        "maleamate hydrolysis reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 5.2.1.1",
+      "locator": "ExplorEnz entry for maleate isomerase",
+      "claim_scope": [
+        "enzyme accepted name",
+        "EC number",
+        "maleate-to-fumarate isomerization"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "ATCC 27854",
+      "locator": "ATCC product record for Arthrobacter picolinophilus ATCC 27854",
+      "claim_scope": [
+        "culture collection accession",
+        "strain identity",
+        "aerobic culture condition"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": null,
+      "locator": "BacDive record or search result for Arthrobacter picolinophilus ATCC 27854",
+      "claim_scope": [
+        "cell morphology",
+        "Gram reaction",
+        "motility",
+        "sporulation",
+        "oxygen phenotype",
+        "isolation habitat"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为null；本答案未因主链含双加氧酶而擅自将oxygen_condition改写为aerobic。",
+    "picolinate hydroxylase和6-hydroxypicolinate decarboxylase未能从本题采用的直接来源确认唯一EC编号，故对应ec_number填null。",
+    "部分资料可能将2,5-dihydroxypyridine开环与脱甲酰合并呈现为maleamate和formate；本主链按N-formylmaleamate中间体展开。",
+    "Arthrobacter picolinophilus ATCC 27854的NCBI TaxID、基因组登录号、基因组大小、GC含量以及完整温度、pH和盐度范围未确认，均填null。"
+  ]
+}

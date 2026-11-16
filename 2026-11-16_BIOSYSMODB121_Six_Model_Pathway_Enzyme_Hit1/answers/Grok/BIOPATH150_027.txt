@@ -1,0 +1,387 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_027",
+  "pollutant_name_zh": "儿茶酚",
+  "pollutant_name_en": "Catechol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "catechol degradation to β-ketoadipate",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。该指定路线为儿茶酚邻位开环进入β-酮己二酸途径，第一步由双加氧酶消耗分子氧，故按好氧连续主链填写。"
+  },
+  "route_summary": "儿茶酚经邻位开环的β-酮己二酸途径降解至3-氧代己二酸（β-酮己二酸）：儿茶酚1,2-双加氧酶将儿茶酚氧化开环为顺,顺-粘康酸，粘康酸环异构酶将其内酯化为粘康酸内酯，粘康酸内酯异构酶再异构为3-氧代己二酸烯醇内酯，最后由烯醇内酯水解酶水解得到3-氧代己二酸。代表菌Acinetobacter baylyi ADP1具备该连续四步主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis,cis-muconate",
+          "smiles": "OC(=O)/C=C\\C=C/C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "邻位双加氧开环",
+      "enzyme": {
+        "name": "catechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": "catA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "cis,cis-muconate",
+          "smiles": "OC(=O)/C=C\\C=C/C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(+)-muconolactone",
+          "smiles": "O=C1C=CC(CC(=O)O)O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环异构化",
+      "enzyme": {
+        "name": "muconate cycloisomerase",
+        "ec_number": "5.5.1.1",
+        "gene_or_protein": "catB",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "产物SMILES未标注天然(S)立体化学。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "(+)-muconolactone",
+          "smiles": "O=C1C=CC(CC(=O)O)O1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": "O=C(O)C=C1CCC(=O)O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双键异构",
+      "enzyme": {
+        "name": "muconolactone isomerase",
+        "ec_number": "5.3.3.4",
+        "gene_or_protein": "catC",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "烯醇内酯SMILES未标注环外双键几何异构。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": "O=C(O)C=C1CCC(=O)O1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "O=C(O)CC(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "烯醇内酯水解",
+      "enzyme": {
+        "name": "3-oxoadipate enol-lactone hydrolase",
+        "ec_number": "3.1.1.24",
+        "gene_or_protein": "pcaD",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "ADP1中该水解酶由pcaD编码，与原儿茶酸分支共用，并非儿茶酚分支专有基因。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter baylyi",
+      "strain": "ADP1",
+      "ncbi_taxid": 62977,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "33305"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用儿茶酚作为碳源并经β-酮己二酸途径同化",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具备儿茶酚与原儿茶酸分支汇合的β-酮己二酸途径，可降解多种芳香化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "儿茶酚1,2-双加氧酶（CatA，EC 1.13.11.1）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动（无鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "球杆菌，短杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "CR543861",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤来源且芳香化合物利用谱较宽，但现有信息不足以判定其栖息地广适性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "3-氧代己二酸本身尚未进入TCA循环；下游经CoA转移与硫解生成琥珀酰-CoA和乙酰-CoA后进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-oxoadipate to succinyl-CoA and acetyl-CoA",
+      "summary": "3-氧代己二酸由3-氧代己二酸CoA转移酶（EC 2.8.3.6）转化为3-氧代己二酰-CoA，再由3-氧代己二酰-CoA硫解酶（EC 2.3.1.174）裂解为琥珀酰-CoA与乙酰-CoA。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "catechol meta-cleavage",
+      "summary": "儿茶酚亦可由儿茶酚2,3-双加氧酶（EC 1.13.11.2）间位开环生成2-羟基粘康酸半醛并进入间位裂解途径，不汇入β-酮己二酸。该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": "EC 1.13.11.1",
+      "locator": "catechol 1,2-dioxygenase; catechol + O2 = cis,cis-muconate",
+      "claim_scope": ["S1_reaction", "S1_enzyme", "S1_ec"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": "EC 5.5.1.1",
+      "locator": "muconate cycloisomerase; cis,cis-muconate = (+)-muconolactone",
+      "claim_scope": ["S2_reaction", "S2_enzyme", "S2_ec"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": "EC 5.3.3.4",
+      "locator": "muconolactone isomerase; (+)-muconolactone = 3-oxoadipate enol-lactone",
+      "claim_scope": ["S3_reaction", "S3_enzyme", "S3_ec"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": "EC 3.1.1.24",
+      "locator": "3-oxoadipate enol-lactone hydrolase; 3-oxoadipate enol-lactone + H2O = 3-oxoadipate",
+      "claim_scope": ["S4_reaction", "S4_enzyme", "S4_ec"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Acinetobacter baylyi ADP1 catechol branch of the beta-ketoadipate pathway: catA, catB, catC, pcaD",
+      "claim_scope": ["organism_pathway", "gene_assignment", "carbon_substrate", "degradation_capacity", "enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI",
+      "record_id": "CR543861",
+      "locator": "Acinetobacter baylyi ADP1 genome accession CR543861; species TaxID 62977; culture collection ATCC 33305",
+      "claim_scope": ["taxonomy", "culture_collection", "genome_accession"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Acinetobacter baylyi species characters: Gram-negative coccobacillus, nonmotile, nonsporeforming, obligate aerobe, mesophile",
+      "claim_scope": ["oxygen_tolerance", "temperature_preference", "respiration", "motility", "morphology", "gram", "sporulation", "habitat_note"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为未指定；因主链含儿茶酚1,2-双加氧酶，oxygen_condition按aerobic填写。",
+    "粘康酸内酯与3-氧代己二酸烯醇内酯的SMILES未写入立体化学或双键几何。",
+    "温度范围、最适温度、pH、盐度、基因组大小和GC含量无本次可核对的原始数值，故留空，未用培养常用温度或近似值占位。",
+    "ncbi_taxid填写物种级62977；菌株级TaxID未另行填写。",
+    "ATCC 33305与ADP1的保藏对应关系按常用等同关系填写，置信度为medium。",
+    "pcaD编码的烯醇内酯水解酶同时用于原儿茶酸分支。"
+  ]
+}

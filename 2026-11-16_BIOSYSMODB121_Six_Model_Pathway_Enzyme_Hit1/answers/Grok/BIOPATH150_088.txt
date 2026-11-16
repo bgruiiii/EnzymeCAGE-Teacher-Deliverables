@@ -1,0 +1,218 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_088",
+  "pollutant_name_zh": "2-羟基-3-磺酸基丙酸根",
+  "pollutant_name_en": "2-Hydroxy-3-sulfonatopropanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfolactate degradation III",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本主链按与另外两条经由3-磺基丙酮酸的路线相区分的直接磺酸裂解机理填写：一步C-S裂解，反应本身不消耗氧气。罗马数字与该机理的对应关系见uncertainties。"
+  },
+  "route_summary": "在Paracoccus pantotrophus NKNCYSA中，(2R)-2-羟基-3-磺酸基丙酸根由磺基乳酸磺酸裂解酶SuyAB（EC 4.4.1.24）直接裂解为丙酮酸和亚硫酸氢盐，不经过3-磺基丙酮酸、L-磺基丙氨酸或磺基乙醛。丙酮酸进入中心碳代谢，磺酸基以无机亚硫酸盐形式释放。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(2R)-2-hydroxy-3-sulfonatopropanoate",
+          "smiles": "C(C(C(=O)[O-])O)S(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "hydrogen sulfite",
+          "smiles": "OS(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "C-S lyase desulfonation",
+      "enzyme": {
+        "name": "(2R)-sulfolactate sulfo-lyase",
+        "ec_number": "4.4.1.24",
+        "gene_or_protein": "SuyAB",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Paracoccus pantotrophus",
+        "strain": "NKNCYSA",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "裂解酶立体专一性为(2R)；SMILES未标注立体化学。该反应氧非依赖。将其作为题面sulfolactate degradation III的主链，是依据它与经由L-磺基丙氨酸或磺基乙醛的两条路线在机理上相互独立所作的归类。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Paracoccus pantotrophus",
+      "strain": "NKNCYSA",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "L-cysteate",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解C3-有机磺酸盐（L-cysteate，并经SuyAB裂解3-sulfolactate）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "磺基乳酸磺酸裂解酶SuyAB可裂解(2R)-3-sulfolactate生成丙酮酸与亚硫酸氢盐",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "球菌",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "丙酮酸可进入中心碳代谢，例如转化为乙酰辅酶A后进入TCA循环。亚硫酸氢盐的氧化不属于碳骨架主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "sulfite oxidation",
+      "summary": "亚硫酸氢盐可经亚硫酸盐氧化系统转化为硫酸盐并排出胞外；该过程在来源文献中与硫酸盐外排一并描述，但不改变污染物碳骨架。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "sulfolactate degradation via L-cysteate",
+      "summary": "(2R)-磺基乳酸氧化为3-磺基丙酮酸后转氨生成L-磺基丙氨酸，再由L-磺基丙氨酸磺酸裂解酶CuyA裂解为丙酮酸、亚硫酸盐和氨。代表菌包括Roseovarius nubinhibens ISM。不是本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "sulfolactate degradation via sulfoacetaldehyde",
+      "summary": "(2R)-磺基乳酸氧化为3-磺基丙酮酸后脱羧为磺基乙醛，再由磺基乙醛乙酰转移酶Xsc生成乙酰磷酸和亚硫酸盐。代表菌包括Roseovarius nubinhibens ISM。不是本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Rein U, Gueta R, Denger K, Ruff J, Hollemeyer K, Cook AM. 2005. Dissimilation of cysteate via 3-sulfolactate sulfo-lyase and a sulfate exporter in Paracoccus pantotrophus NKNCYSA. Applied and Environmental Microbiology.",
+      "claim_scope": ["reaction", "microorganism", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "4.4.1.24",
+      "locator": "EC 4.4.1.24 (2R)-sulfolactate sulfo-lyase; reaction (2R)-3-sulfolactate = pyruvate + hydrogensulfite",
+      "claim_scope": ["enzyme_name", "ec_number", "reaction_stoichiometry"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Robertson LA, Kuenen JG. 1983. Thiosphaera pantotropha gen. nov. sp. nov., a facultatively anaerobic, facultatively autotrophic sulphur bacterium. Journal of General Microbiology 129:2847-2855. Species-level morphology later retained for Paracoccus pantotrophus; applied to strain NKNCYSA only for conserved envelope and cell-shape traits.",
+      "claim_scope": ["F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面路线名sulfolactate degradation III与直接磺酸裂解机理的对应，是根据三条已知机理中该路线与两条3-磺基丙酮酸路线相互独立、且MetaCyc式罗马数字通常按不同反应序列编号所作的归类，未能在本次回答中直接核对到来源数据库记录，存在编号对调风险。",
+    "若来源数据库将Chromohalobacter salexigens DSM 3043中由(S)/(R)-磺基乳酸脱氢酶进入3-磺基丙酮酸、再经磺基乙醛到乙酰磷酸的序列编号为III，则本题主链应改为该多步序列而非SuyAB一步裂解。",
+    "EC 4.4.1.24与EC 4.4.1.25分别对应磺基乳酸磺酸裂解酶和L-磺基丙氨酸磺酸裂解酶，依据常用酶学归属，存在极小对调可能。",
+    "菌株NKNCYSA的TaxID、温度、pH、盐度、氧耐受定量范围、保藏编号、运动性、基因组登录号和栖息地广适性没有可核对的菌株级数据，已置null；形态与革兰氏性状来自物种描述而非该菌株原文。",
+    "底物SMILES为非立体写法，立体化学仅写在名称中。"
+  ]
+}

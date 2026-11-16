@@ -1,0 +1,282 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_110",
+  "pollutant_name_zh": "2,5-二羟基苯甲酸根",
+  "pollutant_name_en": "2,5-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "gentisate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面氧条件未指定。gentisate degradation II按龙胆酸好氧降解的水解变体理解：首步为依赖分子氧的1,2-双加氧开环，故oxygen_condition填aerobic。主链止于马来酸与丙酮酸；马来酸再异构为富马酸未确认为该命名路线的正式步骤，故未放入评分主链。"
+  },
+  "route_summary": "2,5-二羟基苯甲酸根经龙胆酸1,2-双加氧酶氧化开环生成马来酰丙酮酸，再由马来酰丙酮酸水解酶直接水解为马来酸与丙酮酸。该路线不经过富马酰丙酮酸，也不依赖谷胱甘肽，以此区别于异构酶型龙胆酸降解。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,5-dihydroxybenzoate",
+          "smiles": "[O-]C(=O)c1cc(O)ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylpyruvate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "芳香环双加氧裂解",
+      "enzyme": {
+        "name": "gentisate 1,2-dioxygenase",
+        "ec_number": "1.13.11.4",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas alcaligenes",
+        "strain": "NCIMB 9867",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该开环步骤亦为异构酶型龙胆酸降解所共享，并非路线II的区分步骤。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "maleylpyruvate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解",
+      "enzyme": {
+        "name": "maleylpyruvate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas alcaligenes",
+        "strain": "NCIMB 9867",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "马来酰丙酮酸水解酶尚无已确认的正式EC编号，故ec_number为null。本次未能联机核对MetaCyc中gentisate degradation II的反应列表。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas alcaligenes",
+      "strain": "NCIMB 9867",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "NCIMB",
+            "accession": "9867"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用2,5-二羟基苯甲酸（龙胆酸）作为碳源并经其降解",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "芳香化合物降解，经龙胆酸途径代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有gentisate 1,2-dioxygenase与maleylpyruvate hydrolase活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "maleate"],
+    "explanation": "评分主链终止于丙酮酸与马来酸。丙酮酸可直接进入中心碳代谢；马来酸通常需再异构为富马酸后进入TCA循环，该后续步骤未列入本命名路线主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "maleate isomerization",
+      "summary": "马来酸可经马来酸异构酶（EC 5.2.1.1）转化为富马酸并进入TCA循环。该步是否属于gentisate degradation II正式反应列表证据不足，故不放入评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "gentisate degradation I",
+      "summary": "马来酰丙酮酸经马来酰丙酮酸异构酶（常为谷胱甘肽依赖，EC 5.2.1.4）异构为富马酰丙酮酸，再由富马酰丙酮酸水解酶（EC 3.7.2.5）水解为富马酸与丙酮酸。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "ExplorEnz",
+      "record_id": "1.13.11.4",
+      "locator": "EC 1.13.11.4 gentisate 1,2-dioxygenase：2,5-dihydroxybenzoate + O2 = maleylpyruvate",
+      "claim_scope": ["reaction", "enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "龙胆酸降解水解变体：maleylpyruvate hydrolase将马来酰丙酮酸水解为马来酸与丙酮酸",
+      "claim_scope": ["reaction", "enzyme", "route"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCIMB",
+      "record_id": "9867",
+      "locator": "Pseudomonas alcaligenes NCIMB 9867（文献中亦作NCIB 9867）的龙胆酸1,2-双加氧酶与马来酰丙酮酸水解酶",
+      "claim_scope": ["microorganism", "culture_collection", "enzyme", "degradation"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas alcaligenes物种水平的细胞学与呼吸性状",
+      "claim_scope": ["traits"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为未指定；本路线因首步双加氧酶依赖分子氧而按好氧填写。",
+    "gentisate degradation II按马来酰丙酮酸直接水解变体解释，本次未能联机核对MetaCyc路径对象，若该罗马数字路线在数据库中指其他变体则步骤归属需修正。",
+    "马来酰丙酮酸水解酶无已确认正式EC编号，未用近似EC占位。",
+    "菌株保藏号在旧文献中常写作NCIB 9867，与NCIMB 9867视为同一编号沿革；未填写不确定的NCBI TaxID与基因组登录号。",
+    "马来酸异构为富马酸是进入TCA的合理后续反应，但未确认为该命名路线主链步骤，故仅写入downstream_continuation。"
+  ]
+}

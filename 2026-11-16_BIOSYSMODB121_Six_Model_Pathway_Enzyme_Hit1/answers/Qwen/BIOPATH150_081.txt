@@ -1,0 +1,366 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_081",
+  "pollutant_name_zh": "2-氨基-5-胍基戊酸",
+  "pollutant_name_en": "2-Amino-5-guanidinovaleric acid",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-arginine degradation XIV (oxidative Stickland reaction)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；按指定路线填写氧化 Stickland 主链。"
+  },
+  "route_summary": "在指定路线中，2-氨基-5-胍基戊酸即精氨酸先经转氨生成 5-guanidino-2-oxopentanoate，再经氧化脱羧形成 4-guanidinobutanoyl-CoA，水解为 4-guanidinobutanoate，最后由 guanidinobutyrase 生成 4-aminobutanoate 与尿素。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-arginine (2-amino-5-guanidinovaleric acid)",
+          "smiles": "N[C@@H](CCCNC(=N)N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "2-oxoglutarate",
+          "smiles": "O=C(O)C(=O)CCC(=O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-guanidino-2-oxopentanoate",
+          "smiles": "O=C(O)C(=O)CCCNC(=N)N",
+          "role": "main"
+        },
+        {
+          "name": "L-glutamate",
+          "smiles": "N[C@@H](CCC(=O)O)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "transamination",
+      "enzyme": {
+        "name": "arginine transaminase",
+        "ec_number": "2.6.1.84",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium botulinum",
+        "strain": null,
+        "ncbi_taxid": 1491,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "第一步也可能存在脱氢酶路线；此处按指定路线的转氨酶首选记录。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "5-guanidino-2-oxopentanoate",
+          "smiles": "O=C(O)C(=O)CCCNC(=N)N",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-guanidinobutanoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative decarboxylation",
+      "enzyme": {
+        "name": "2-oxoacid:ferredoxin oxidoreductase",
+        "ec_number": "1.2.7.7",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium botulinum",
+        "strain": null,
+        "ncbi_taxid": 1491,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "电子受体（ferredoxin/NAD+）与辅因子细节未完全核实。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-guanidinobutanoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-guanidinobutanoate",
+          "smiles": "NC(=N)NCCCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "thioester hydrolysis",
+      "enzyme": {
+        "name": "acyl-CoA hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium botulinum",
+        "strain": null,
+        "ncbi_taxid": 1491,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "具体酰基-CoA 水解酶及其 EC 未知。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-guanidinobutanoate",
+          "smiles": "NC(=N)NCCCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-aminobutanoate",
+          "smiles": "NCCCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "urea",
+          "smiles": "NC(=O)N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "amidinohydrolase reaction",
+      "enzyme": {
+        "name": "guanidinobutyrase",
+        "ec_number": "3.5.3.21",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium botulinum",
+        "strain": null,
+        "ncbi_taxid": 1491,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "尿素生成为胍基水解的常见产物，但具体酶来源细节需进一步核实。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Clostridium botulinum",
+      "strain": null,
+      "ncbi_taxid": 1491,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "嗜温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧发酵",
+            "terminal_electron_acceptor": "氨基酸（Stickland 反应）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "氨基酸（如 L-arginine）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经氧化 Stickland 反应降解氨基酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "arginine transaminase activity",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动性阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-positive",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤、沉积物及食品等环境",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "指定路线范围内止于 4-aminobutanoate；未明确其进入中心代谢的步。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway name: L-arginine degradation XIV (oxidative Stickland reaction)",
+      "claim_scope": [
+        "route existence",
+        "chosen route name",
+        "main reactions",
+        "organism assignment"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "organism traits",
+        "taxonomy"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，未判断该路线在有氧/厌氧下的适用性。",
+    "第一步存在转氨酶与脱氢酶两种可能记录；本答案按转氨酶作为首选酶。",
+    "酰基-CoA 中间体、水解酶及辅因子细节未完全核实。",
+    "微生物性状多为属/种水平的一般知识，未逐条绑定到具体菌株或文献。"
+  ]
+}

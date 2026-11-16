@@ -1,0 +1,315 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_047",
+  "pollutant_name_zh": "吲哚-3-乙酸根",
+  "pollutant_name_en": "Indole-3-acetate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "indole-3-acetate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；本回答按题面给定的路线名称处理，不将氧条件外推为有氧或厌氧。"
+  },
+  "route_summary": "以 Aromatoleum aromaticum EbN1 为代表的主链首先由 indole-3-acetate—CoA ligase 将 indole-3-acetate 活化为 indole-3-acetyl-CoA，随后经尚未完全解析的开环/重排转化生成 2-aminobenzoyl-CoA，进入氨基苯甲酰-CoA 相关芳烃降解网络。第二步为多步反应的总体表示，具体酶序列仍不确定。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "indole-3-acetate",
+          "smiles": "O=C([O-])Cc1c[nH]c2ccccc12",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2C3OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C3O",
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "indole-3-acetyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1O)C(=O)NCCC(=O)NCCSC(=O)Cc1c[nH]c2ccccc12",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "Nc1ncnc2c1ncn2C3OC(COP(=O)(O)O)C(O)C3O",
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "O=P([O-])([O-])OP(=O)([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP 依赖的酸-CoA 连接（生成 AMP）",
+      "enzyme": {
+        "name": "indole-3-acetate-CoA ligase",
+        "ec_number": "6.2.1.30",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "EC 6.2.1.30 为酸-CoA 连接反应所对应的通用芳基乙酸-CoA ligase 编号；该菌催化酶的高度专一编号未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "indole-3-acetyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1O)C(=O)NCCC(=O)NCCSC(=O)Cc1c[nH]c2ccccc12",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminobenzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1O)C(=O)NCCC(=O)NCCSC(=O)c1ccccc1N",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "吲哚环开环及重排（总体转化，详细机制未完全解析）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "此节点表示 indole-3-acetyl-CoA 到 2-aminobenzoyl-CoA 的总体转化；未能可靠确定单一的中间产物序列、首选酶和 EC 编号。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Aromatoleum aromaticum",
+      "strain": "EbN1",
+      "ncbi_taxid": 76114,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 28,
+            "maximum_c": null,
+            "preference": "中温型；28°C 为常用培养或最适温度"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧；可进行硝酸盐呼吸",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.2,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSMZ",
+            "accession": "DSM 6274"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "呼吸型，主要包括硝酸盐呼吸",
+            "terminal_electron_acceptor": "nitrate"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "indole-3-acetate，可作为芳香族碳源和能源利用",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具有芳香族化合物降解能力，能够降解 indole-3-acetate 以及其他芳香族底物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "indole-3-acetate-CoA ligase 活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动性，具鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_006513.1",
+            "genome_size_bp": 4296291,
+            "gc_percent": 67.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要与沉积物等缺氧或微需氧环境及芳香族化合物污染环境相关；可降解多种芳香底物，但栖息地广适性的系统证据有限",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "2-aminobenzoyl-CoA"
+    ],
+    "explanation": "本题主链终点为 2-aminobenzoyl-CoA；该中间体可进入氨基苯甲酰-CoA/anthranilate 相关芳烃中心降解网络，但后续步骤不属于本回答展开的指定主链。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway: indole-3-acetate degradation I",
+      "claim_scope": [
+        "route_scope",
+        "main_route",
+        "S1_reaction",
+        "S2_overall_transformation",
+        "route_organism"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 6.2.1.30",
+      "locator": "phenylacetate—CoA ligase / acid—CoA ligase reaction",
+      "claim_scope": [
+        "S1_enzyme",
+        "S1_ec_number",
+        "S1_reaction_type"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "76114",
+      "locator": "Aromatoleum aromaticum EbN1",
+      "claim_scope": [
+        "organism_identity",
+        "strain_identity",
+        "ncbi_taxid"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "DSMZ BacDive",
+      "record_id": null,
+      "locator": "Aromatoleum aromaticum EbN1, DSM 6274",
+      "claim_scope": [
+        "culture_collection",
+        "physiology",
+        "morphology",
+        "oxygen_tolerance",
+        "temperature",
+        "pH",
+        "habitat"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Nucleotide",
+      "record_id": "NC_006513.1",
+      "locator": "Aromatoleum aromaticum EbN1 chromosome",
+      "claim_scope": [
+        "genome_accession",
+        "genome_size",
+        "gc_content"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面未给出氧条件，因此 route_scope.oxygen_condition 保留为 null；菌株的兼性厌氧生理没有被用于改写路线条件。",
+    "S2 是 indole-3-acetyl-CoA 到 2-aminobenzoyl-CoA 的总体转化；中间产物和催化酶序列未完全确认，因此 enzyme 整体填 null。",
+    "Aromatoleum aromaticum EbN1 的盐度范围及部分培养生理界限未获得可靠来源，相关性状保留为 null。"
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_075",
+  "pollutant_name_zh": "4-氯苯甲酸根",
+  "pollutant_name_en": "4-Chlorobenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-chlorobenzoate degradation",
+    "is_single_continuous_route": true,
+    "notes": "本题主链指好氧菌中经典的CoA依赖型水解脱卤路线，三步依次为连接、水解脱氯和硫酯水解，终止于4-羟基苯甲酸。脱卤化学本身不消耗分子氧，但该命名路线的典型宿主及完全矿化属于好氧代谢；厌氧还原脱氯和双加氧生成4-氯儿茶酚的路线不计入主链。"
+  },
+  "route_summary": "4-氯苯甲酸根先被4-氯苯甲酸-CoA连接酶活化为4-氯苯甲酰-CoA，再由4-氯苯甲酰-CoA脱卤酶水解脱氯生成4-羟基苯甲酰-CoA，最后由4-羟基苯甲酰-CoA硫酯酶水解释放4-羟基苯甲酸。三步均以Pseudomonas sp. CBS3为代表菌。4-羟基苯甲酸之后的原儿茶酸及β-酮己二酸途径不计入本路线评分主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-chlorobenzoate",
+          "smiles": "[O-]C(=O)c1ccc(Cl)cc1",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-chlorobenzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc(Cl)cc1",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)O)C(O)C1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "OP(=O)(O)OP(=O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA连接",
+      "enzyme": {
+        "name": "4-chlorobenzoate-CoA ligase",
+        "ec_number": "6.2.1.33",
+        "gene_or_protein": "fcbA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CBS3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-chlorobenzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc(Cl)cc1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "chloride",
+          "smiles": "[Cl-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱卤",
+      "enzyme": {
+        "name": "4-chlorobenzoyl-CoA dehalogenase",
+        "ec_number": "3.8.1.7",
+        "gene_or_protein": "fcbB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CBS3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoate",
+          "smiles": "[O-]C(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCS",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "硫酯水解",
+      "enzyme": {
+        "name": "4-hydroxybenzoyl-CoA thioesterase",
+        "ec_number": "3.1.2.23",
+        "gene_or_protein": "fcbC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CBS3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "CBS3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以4-氯苯甲酸作为碳源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可将4-氯苯甲酸经CoA硫酯中间体水解脱卤为4-羟基苯甲酸并继续降解",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有4-氯苯甲酸-CoA连接酶、4-氯苯甲酰-CoA脱卤酶和4-羟基苯甲酰-CoA硫酯酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "本主链的直接产物是4-羟基苯甲酸，本身不是中心代谢物。它可经4-羟基苯甲酸3-单加氧生成原儿茶酸，再走β-酮己二酸途径，典型中心代谢入口产物为琥珀酰-CoA和乙酰-CoA。该下游不计入评分主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "4-hydroxybenzoate degradation",
+      "summary": "4-羟基苯甲酸经3-单加氧生成原儿茶酸。"
+    },
+    {
+      "name": "beta-ketoadipate pathway",
+      "summary": "原儿茶酸经邻位开环进入β-酮己二酸途径，生成琥珀酰-CoA和乙酰-CoA。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "dioxygenative conversion to 4-chlorocatechol",
+      "summary": "部分菌株以双加氧方式把4-氯苯甲酸转化为4-氯儿茶酚后再开环降解。该分支不是本题指定的CoA水解脱卤主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "anaerobic reductive dechlorination",
+      "summary": "厌氧条件下4-氯苯甲酸可经还原脱氯生成苯甲酸后再降解。该路线不是本题主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB EC 6.2.1.33、EC 3.8.1.7、EC 3.1.2.23所对应的4-氯苯甲酸CoA依赖型水解脱卤三步反应",
+      "claim_scope": ["reaction", "enzyme_name", "ec_number"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas sp. CBS3（文献亦写作CBS-3）的fcbABC操纵子：fcbA连接酶、fcbB脱卤酶、fcbC硫酯酶",
+      "claim_scope": ["microorganism", "gene", "substrate_utilization", "enzyme_activity", "degradation_capacity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "该菌株作为好氧4-氯苯甲酸降解菌被研究，完整矿化依赖好氧条件",
+      "claim_scope": ["oxygen_tolerance", "respiration"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "Pseudomonas sp. CBS3的NCBI TaxID、保藏编号和基因组登录号未核实，故为null；文献中菌株名亦写作CBS-3。",
+    "温度、pH、盐度、运动性、细胞形态、革兰氏染色、产孢和栖息地广适性没有可核对的菌株级原文，未按属级特征猜测。",
+    "ATP、CoA及其硫酯的SMILES为非立体、酸式质子化近似写法，未对照具体数据库记录。",
+    "oxygen_condition标为aerobic是因为该命名路线的典型微生物和完全矿化属于好氧代谢；三步脱卤反应本身不消耗分子氧。",
+    "fcbA、fcbB、fcbC与三步酶的对应关系来自既有知识，本回答未重新检索序列记录。"
+  ]
+}

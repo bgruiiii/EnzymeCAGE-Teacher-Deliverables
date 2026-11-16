@@ -1,0 +1,361 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_121",
+  "pollutant_name_zh": "2,6-二羟基苯甲酸根",
+  "pollutant_name_en": "2,6-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "γ-resorcylate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；该路线为好氧微生物路线（含 O2 依赖的单加氧酶与开环双加氧酶步骤）。"
+  },
+  "route_summary": "主链共 4 步：2,6-二羟基苯甲酸（γ-resorcylate）经可逆的非氧化型 γ-resorcylate 脱羧酶脱羧生成 resorcinol 与 CO2；resorcinol 经黄素类 resorcinol 羟化酶（单加氧酶）羟化为 hydroxyquinol（1,2,4-苯三酚）；hydroxyquinol 经 hydroxyquinol 1,2-双加氧酶氧化开环生成 maleylacetate；maleylacetate 经 maleylacetate 还原酶还原为 3-氧代己二酸（3-oxoadipate），随后进入 β-酮己二酸途径生成琥珀酰-CoA 与乙酰-CoA 汇入中心代谢。代表菌株：Rhizobium sp. 菌株 MTP-10005。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,6-dihydroxybenzoate (γ-resorcylate)",
+          "smiles": "O=C([O-])c1c(O)cccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "resorcinol",
+          "smiles": "Oc1cccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "non-oxidative decarboxylation (reversible)",
+      "enzyme": {
+        "name": "γ-resorcylate decarboxylase (2,6-dihydroxybenzoate decarboxylase)",
+        "ec_number": "4.1.1.106",
+        "gene_or_protein": "GRDC",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Rhizobium sp.",
+        "strain": "MTP-10005",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 4.1.1.106 的编号归属存在少量不确定性；该酶为不含辅助因子的可逆脱羧酶/羧化酶。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "resorcinol",
+          "smiles": "Oc1cccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "[O][O]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "hydroxyquinol (1,2,4-benzenetriol)",
+          "smiles": "Oc1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "monooxygenation (hydroxylation)",
+      "enzyme": {
+        "name": "resorcinol hydroxylase (resorcinol monooxygenase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhizobium sp.",
+        "strain": "MTP-10005",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该步酶属黄素单加氧酶家族，但无确定 EC 编号；还原力来源为 NAD(P)H（未单列）。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "hydroxyquinol (1,2,4-benzenetriol)",
+          "smiles": "Oc1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "[O][O]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylacetate",
+          "smiles": "O=C([O-])/C=C\\C(=O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative ring cleavage (dioxygenation)",
+      "enzyme": {
+        "name": "hydroxyquinol 1,2-dioxygenase",
+        "ec_number": "1.13.11.37",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhizobium sp.",
+        "strain": "MTP-10005",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "maleylacetate",
+          "smiles": "O=C([O-])/C=C\\C(=O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate (β-ketoadipate)",
+          "smiles": "O=C([O-])CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD(P)H-dependent reduction",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhizobium sp.",
+        "strain": "MTP-10005",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该步还原酶是否确由该菌株 γ-resorcylate 降解基因簇编码存在不确定性。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Rhizobium sp.",
+      "strain": "MTP-10005",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以 2,6-二羟基苯甲酸（γ-resorcylate）为碳源好氧生长（经该底物富集分离获得）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解芳香族化合物 γ-resorcylate，经 resorcinol → hydroxyquinol → maleylacetate → 3-oxoadipate 途径矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "γ-resorcylate decarboxylase（2,6-二羟基苯甲酸脱羧酶）活性：催化 γ-resorcylate 可逆脱羧为 resorcinol，亦能催化 resorcinol 的区域选择性羧化",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（Rhizobium 属通常具鞭毛、可运动，属水平推断）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（杆菌，属水平推断）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-sporulating）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "Rhizobium 属广泛分布于土壤及植物根际环境；该菌株经 γ-resorcylate 富集自环境样品分离，对其栖息地广度的直接研究有限",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "主链终产物 3-氧代己二酸（3-oxoadipate）经 β-酮己二酸途径（3-oxoadipate CoA-transferase，EC 2.8.3.6；3-oxoadipyl-CoA thiolase，EC 2.3.1.174）转化为琥珀酰-CoA 与乙酰-CoA，进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "β-ketoadipate pathway",
+      "summary": "3-oxoadipate → 3-oxoadipyl-CoA → succinyl-CoA + acetyl-CoA，进入 TCA 循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "anaerobic fermentative resorcinol degradation",
+      "summary": "严格厌氧（发酵）条件下，2,6-二羟基苯甲酸脱羧产物 resorcinol 可被还原为 1,3-环己二酮（dihydroresorcinol），随后水解开环为 5-氧代己酸并发酵产乙酸/丁酸（发酵性细菌，如部分 Clostridium）；该分支不属于被评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway: γ-resorcylate degradation II",
+      "claim_scope": [
+        "主链反应序列 2,6-dihydroxybenzoate → resorcinol → hydroxyquinol → maleylacetate → 3-oxoadipate",
+        "各步酶与 EC 编号（resorcinol hydroxylase EC 未定）",
+        "该路线为好氧路线"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Yoshida M., Oikawa T. 等关于 Rhizobium sp. 菌株 MTP-10005 的 γ-resorcylate 代谢及 γ-resorcylate decarboxylase (GRDC) 的系列研究（2000 年代，含酶学与降解基因簇研究）",
+      "claim_scope": [
+        "Rhizobium sp. MTP-10005 产生 γ-resorcylate decarboxylase 并能以 γ-resorcylate 为碳源好氧生长",
+        "该菌株经芳香族化合物富集分离获得"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Rhizobium 属的属水平一般微生物学特征（内部知识）",
+      "claim_scope": [
+        "革兰氏阴性",
+        "杆状",
+        "可运动",
+        "不产芽孢",
+        "土壤/根际分布"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "MetaCyc 中 γ-resorcylate degradation I 与 II 的菌株归属（Azotobacter vinelandii 与 Rhizobium sp. MTP-10005）仅凭记忆，存在不确定性；两条路线化学反应基本相同（均经 resorcinol、hydroxyquinol、maleylacetate）。",
+    "EC 4.1.1.106（2,6-dihydroxybenzoate decarboxylase）的编号归属存在少量不确定性。",
+    "resorcinol hydroxylase 的 EC 编号未知，故填 null。",
+    "Rhizobium sp. MTP-10005 的 NCBI TaxID、菌种保藏编号、基因组登录号及生长温度/pH/盐度数据未知，均填 null。",
+    "maleylacetate reductase 步骤是否确由该菌株降解基因簇编码缺乏直接把握，microorganism 置信度降为 low。"
+  ]
+}

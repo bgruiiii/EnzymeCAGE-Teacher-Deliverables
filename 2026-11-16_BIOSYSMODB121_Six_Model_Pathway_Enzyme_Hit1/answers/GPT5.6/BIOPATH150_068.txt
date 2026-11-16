@@ -1,0 +1,466 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_068",
+  "pollutant_name_zh": "3-氯苯甲酸根",
+  "pollutant_name_en": "3-Chlorobenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "3-chlorobenzoate degradation I (via chlorocatechol)",
+    "is_single_continuous_route": true,
+    "notes": "该路线为经氯儿茶酚和邻位裂解进入β-酮己二酸途径的需氧降解路线。"
+  },
+  "route_summary": "3-Chlorobenzoate先经芳香环羟化生成3-chlorocatechol，随后经邻位双加氧裂解、氯代黏康酸环异构化、dienelactone水解和maleylacetate还原，形成3-oxoadipate并进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3-Chlorobenzoate",
+          "smiles": "O=C([O-])c1cccc(Cl)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Chlorocatechol",
+          "smiles": "Oc1c(O)c(Cl)ccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "芳香环羟化",
+      "enzyme": {
+        "name": "Benzoate 1,2-dioxygenase",
+        "ec_number": "1.14.15.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "具体羟化酶亚基名称未指定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-Chlorocatechol",
+          "smiles": "Oc1c(O)c(Cl)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Chloromuconate",
+          "smiles": "O=C([O-])/C(Cl)=C\\C=C\\C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "儿茶酚邻位双加氧裂解",
+      "enzyme": {
+        "name": "Chlorocatechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "底物立体化学和离子化状态随培养条件而变化。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-Chloromuconate",
+          "smiles": "O=C([O-])/C(Cl)=C\\C=C\\C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis-Dienelactone",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Chloride",
+          "smiles": "[Cl-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氯代黏康酸环异构化及脱氯",
+      "enzyme": {
+        "name": "2-Chloromuconate cycloisomerase",
+        "ec_number": "5.5.1.7",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "cis-Dienelactone的具体质子化和结构异构体表示未确定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "cis-Dienelactone",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Maleylacetate",
+          "smiles": "O=C(/C=C\\C(=O)C)C[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "内酯水解",
+      "enzyme": {
+        "name": "Dienelactone hydrolase",
+        "ec_number": "3.1.1.45",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "Maleylacetate的双键几何构型及电荷状态可能依赖培养基条件。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "Maleylacetate",
+          "smiles": "O=C(/C=C\\C(=O)C)C[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "C1=CC(=CN=C1)C2C(C(C(O2)COP(=O)(O)O)O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipate",
+          "smiles": "CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "C1=CC(=CN=C1)C2C(C(C(O2)COP(=O)(O)O)O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "烯酮还原",
+      "enzyme": {
+        "name": "Maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "还原反应所用吡啶核苷酸辅因子在不同菌株中可能不同。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "3-Oxoadipate",
+          "smiles": "CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Succinyl-CoA",
+          "smiles": "CC(C)(C)C(=O)SCCNC(=O)CC(=O)[O-]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Succinate",
+          "smiles": "C(CC(=O)[O-])C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "辅酶A转移",
+      "enzyme": {
+        "name": "3-Oxoadipate CoA-transferase",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步骤作为进入β-酮己二酸中心代谢的延续步骤，菌株特异性证据有限。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "B13",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "需氧",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "Oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用3-Chlorobenzoate及其芳香族降解中间体作为碳源或底物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解氯代芳香族化合物并经邻位裂解途径进入β-酮己二酸代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有氯代儿茶酚1,2-双加氧酶及相关氯代芳香族降解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative bacterial envelope",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "3-Oxoadipyl-CoA"
+    ],
+    "explanation": "3-Oxoadipate经辅酶A转移后形成3-Oxoadipyl-CoA，随后可经硫解进入Acetyl-CoA和Succinyl-CoA相关中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-Oxoadipyl-CoA thiolysis",
+      "summary": "3-Oxoadipyl-CoA可进一步硫解生成Acetyl-CoA和Succinyl-CoA。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas sp. B13 chlorocatechol pathway literature",
+      "claim_scope": [
+        "3-Chlorobenzoate degradation I",
+        "chlorocatechol pathway",
+        "Pseudomonas sp. B13",
+        "reaction sequence",
+        "associated enzymes"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas genus Gram-negative envelope"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "部分中间体的精确立体化学、质子化状态和SMILES表示未能由单一来源确定。",
+    "Pseudomonas sp. B13的完整基因组、保藏编号和15项生理性状缺少可核验的菌株级来源。",
+    "路线后段进入中心代谢的具体辅酶A转移酶和硫解酶可能存在菌株差异。"
+  ]
+}

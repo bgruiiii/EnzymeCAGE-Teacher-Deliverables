@@ -1,0 +1,423 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_114",
+  "pollutant_name_zh": "Naphthalene",
+  "pollutant_name_en": "Naphthalene",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "naphthalene degradation (anaerobic)",
+    "is_single_continuous_route": true,
+    "notes": "主链为经2-萘甲酰-CoA（2-naphthoyl-CoA）的厌氧降解途径：初始羧化→CoA活化→逐步环还原（去芳构化）→进一步还原并水解开环，产物经β-氧化进入中心代谢。"
+  },
+  "route_summary": "在严格厌氧（硫酸盐还原）条件下，萘首先被羧化为2-萘甲酸，随后活化为2-萘甲酰-CoA；2-萘甲酰-CoA经2-萘甲酰-CoA还原酶等逐步还原为5,6-二氢-2-萘甲酰-CoA和5,6,7,8-四氢-2-萘甲酰-CoA，再经进一步还原生成六氢-2-萘甲酰-CoA，随后水解开环并经β-氧化生成乙酰-CoA进入中心代谢。代表微生物为海洋硫酸盐还原δ-变形菌NaphS2（Desulfobacteraceae）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Naphthalene",
+          "smiles": "c1ccc2ccccc2c1",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "C(=O)=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Naphthoic acid",
+          "smiles": "O=C(O)c1ccc2ccccc2c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "carboxylation",
+      "enzyme": {
+        "name": "naphthalene carboxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacteraceae bacterium NaphS2",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-Naphthoic acid",
+          "smiles": "O=C(O)c1ccc2ccccc2c1",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Naphthoyl-CoA",
+          "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)c1ccc2ccccc2c1",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)O)C(O)C1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "Diphosphate",
+          "smiles": "O=P(O)(O)OP(=O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA ligation (thioester formation)",
+      "enzyme": {
+        "name": "2-naphthoyl-CoA synthetase (2-naphthoate--CoA ligase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacteraceae bacterium NaphS2",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-Naphthoyl-CoA",
+          "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)c1ccc2ccccc2c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5,6-Dihydro-2-naphthoyl-CoA",
+          "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)c1ccc2c(c1)CCC=C2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dearomatizing reduction",
+      "enzyme": {
+        "name": "2-naphthoyl-CoA reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacteraceae bacterium NaphS2",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "5,6-Dihydro-2-naphthoyl-CoA",
+          "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)c1ccc2c(c1)CCC=C2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5,6,7,8-Tetrahydro-2-naphthoyl-CoA",
+          "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)c1ccc2c(c1)CCCC2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "reduction",
+      "enzyme": {
+        "name": "5,6-dihydro-2-naphthoyl-CoA reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacteraceae bacterium NaphS2",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "5,6,7,8-Tetrahydro-2-naphthoyl-CoA",
+          "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)c1ccc2c(c1)CCCC2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Hexahydro-2-naphthoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "reduction",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Desulfobacteraceae bacterium NaphS2",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步及随后水解开环反应的具体中间体双键位置、酶与机制尚未完全阐明；开环产物经β-氧化进入中心代谢，故主链至此为止，后续以中心代谢入口描述。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Desulfobacteraceae bacterium NaphS2",
+      "strain": "NaphS2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "obligate anaerobe (sulfate-reducing bacterium)",
+          "raw_text": "Anaerobic degradation of naphthalene by a pure culture of a novel type of marine sulphate-reducing bacterium (strain NaphS2)",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "海洋（marine）来源，嗜盐性海洋硫酸盐还原菌"
+          },
+          "raw_text": "a novel type of marine sulphate-reducing bacterium",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "anaerobic respiration (dissimilatory sulfate reduction)",
+            "terminal_electron_acceptor": "sulfate"
+          },
+          "raw_text": "marine sulphate-reducing bacterium ... anaerobic degradation of naphthalene coupled to sulfate reduction",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "naphthalene as sole source of carbon and energy（另可利用2-甲基萘）",
+          "raw_text": "anaerobic degradation of naphthalene by a pure culture",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "厌氧条件下降解萘及2-甲基萘，并与硫酸盐还原偶联",
+          "raw_text": "Anaerobic degradation of naphthalene by a pure culture of a novel type of marine sulphate-reducing bacterium",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "萘羧化酶及2-萘甲酰-CoA途径相关酶活性（厌氧萘生长时差异表达）",
+          "raw_text": "analysis of differential gene expression during anaerobic growth on naphthalene",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative（依据其δ-变形菌Desulfobacteraceae分类地位推断）",
+          "raw_text": "Genome sequence of the deltaproteobacterial strain NaphS2 ... affiliated with the family Desulfobacteraceae",
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": "Genome sequence of the deltaproteobacterial strain NaphS2 and analysis of differential gene expression during anaerobic growth on naphthalene (PLoS ONE 5:e14072)",
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自缺氧海洋沉积物（PAH污染环境），栖息地较为特化",
+          "raw_text": "strain NaphS2, a novel marine sulphate-reducing bacterium enriched from anoxic marine sediment with naphthalene",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA"],
+    "explanation": "六氢-2-萘甲酰-CoA经水解开环后的产物再经β-氧化逐步降解为乙酰-CoA，进入三羧酸循环/中心碳代谢；开环及β-氧化的具体中间体与酶在NaphS2中尚未完全阐明。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "环裂解与β-氧化",
+      "summary": "六氢-2-萘甲酰-CoA经水解开环（类苯甲酰-CoA途径机制）生成环状/直链中间体，随后经β-氧化生成乙酰-CoA进入中心代谢；具体中间体结构与催化酶尚不完全清楚。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "萘先甲基化生成2-甲基萘的途径",
+      "summary": "在部分硫酸盐还原培养物中，萘可能先经甲基化生成2-甲基萘，再经富马酸加成方式降解；该分支不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Zhang X, Young LY (1997) Applied and Environmental Microbiology 63:4759-4764",
+      "claim_scope": ["萘厌氧代谢初始反应为羧化生成2-萘甲酸（硫酸盐还原培养物）", "萘羧化酶反应"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Galushko A, Minz D, Schink B, Widdel F (1999) Environmental Microbiology 1:415-420",
+      "claim_scope": ["海洋硫酸盐还原菌NaphS2的分离及其纯培养厌氧降解萘", "萘降解与硫酸盐还原偶联", "海洋沉积物来源"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "DiDonato RJ Jr et al. (2010) PLoS ONE 5(11):e14072",
+      "claim_scope": ["NaphS2基因组序列及其在厌氧萘生长下的差异基因表达", "NaphS2属于Desulfobacteraceae（δ-变形菌）", "萘降解途径相关基因（CoA连接酶、还原酶等）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Eberlein C et al. (2013) Molecular Microbiology 88:1032-1039",
+      "claim_scope": ["2-萘甲酰-CoA还原酶（去芳构化还原酶）的鉴定与催化生成5,6-二氢-2-萘甲酰-CoA"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Estelmann S, Blank I, Feldmann A, Boll M (2015) Molecular Microbiology 95:162-172",
+      "claim_scope": ["5,6-二氢-2-萘甲酰-CoA进一步还原为5,6,7,8-四氢-2-萘甲酰-CoA的酶学证据"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Annweiler E, Michaelis W, Meckenstock RU (2002) Applied and Environmental Microbiology 68:852-858",
+      "claim_scope": ["厌氧萘降解经2-萘甲酸/2-萘甲酰-CoA中间体的代谢物证据"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "各步酶（萘羧化酶、2-萘甲酰-CoA合成酶、2-萘甲酰-CoA还原酶、5,6-二氢-2-萘甲酰-CoA还原酶）均未查到明确的EC编号，按要求填null。",
+    "NaphS2为富集获得的培养菌株，未查到菌种保藏编号、NCBI TaxID、基因组登录号及确切基因组大小/GC含量，均填null。",
+    "最终开环步骤的中间体双键位置、结构与酶尚未完全阐明，主链止于六氢-2-萘甲酰-CoA，该步酶填null。",
+    "温度、pH、运动性、细胞形态、产孢等性状缺乏直接来源，均填null；革兰氏染色为基于分类地位的推断，置信度为low。",
+    "2-萘甲酰-CoA还原酶等酶的详细表征多在淡水硫酸盐还原富集培养物N47中完成，此处将其作为NaphS2基因组所编码途径的同源证据引用。"
+  ]
+}

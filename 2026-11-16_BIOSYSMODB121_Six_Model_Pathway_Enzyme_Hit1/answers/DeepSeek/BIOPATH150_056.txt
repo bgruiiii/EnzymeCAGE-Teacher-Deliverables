@@ -1,0 +1,216 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_056",
+  "pollutant_name_zh": "甲基乙二醛",
+  "pollutant_name_en": "Methylglyoxal",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methylglyoxal degradation V",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "甲基乙二醛在Escherichia coli K-12 substr. MG1655中经2-氧醛脱氢酶（AldA）催化氧化生成丙酮酸，随后进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Methylglyoxal",
+          "smiles": "CC(=O)C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "2-oxoaldehyde dehydrogenase",
+        "ec_number": "1.2.1.23",
+        "gene_or_protein": "aldA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 10,
+            "optimum_c": 37,
+            "maximum_c": 45,
+            "preference": "嗜温菌"
+          },
+          "raw_text": "E. coli grows optimally at 37°C; growth range approximately 10-45°C.",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "facultative anaerobe",
+          "raw_text": "Escherichia coli is a facultative anaerobe.",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 4.4,
+            "optimum": 7.0,
+            "maximum": 9.0
+          },
+          "raw_text": "E. coli grows at pH 4.4-9.0, optimum around 6-7.",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "facultative anaerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "E. coli respires oxygen aerobically and can use nitrate anaerobically.",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "D-glucose, lactose, and other sugars",
+          "raw_text": "E. coli utilizes glucose and lactose.",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "detoxifies methylglyoxal via multiple pathways",
+          "raw_text": "E. coli has multiple methylglyoxal detoxification routes.",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2-oxoaldehyde dehydrogenase (AldA) activity",
+          "raw_text": "AldA oxidizes methylglyoxal to pyruvate.",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile by peritrichous flagella",
+          "raw_text": "E. coli is motile by peritrichous flagella.",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": "E. coli cells are rod-shaped.",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": "E. coli is Gram-negative.",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": "E. coli does not form spores.",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": "E. coli K-12 MG1655 genome: NC_000913.3, 4,641,652 bp, 50.8% GC.",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "facultative anaerobe; inhabits intestinal tract and external environments; broad host range",
+          "raw_text": "E. coli is a generalist found in gut and environment.",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Pyruvate"],
+    "explanation": "丙酮酸进入中心代谢，如TCA循环或发酵途径。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "methylglyoxal degradation V",
+      "claim_scope": ["reaction", "enzyme"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI",
+      "record_id": "511145",
+      "locator": "Escherichia coli K-12 substr. MG1655",
+      "claim_scope": ["organism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["F1_oxygen_tolerance", "F2_temperature", "F3_pH", "F6_respiration_electron_acceptor", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation", "F15_habitat_generalism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli K-12 MG1655 genome",
+      "claim_scope": ["F14_genome_basic"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": ["The exact EC number for AldA in this pathway may be 1.2.1.22 or 1.2.1.23."]
+}

@@ -1,0 +1,387 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_145",
+  "pollutant_name_zh": "6-磺酸基-α-D-奎诺糖",
+  "pollutant_name_en": "6-sulfo-alpha-D-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation V",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，oxygen_condition保持null；chosen_route_name按题面原样填写，不改选其他路线。'sulfoquinovose degradation V'对应的具体数据库条目及变体编号（I–V）与文献路线的对应关系未能核实；本回答按文献中表征最充分、可连续成链的微生物SQ降解主链——Escherichia coli K-12的磺醌糖酵解——作答；该主链不依赖分子氧，兼性厌氧条件下均可运行。"
+  },
+  "route_summary": "6-sulfo-α-D-quinovose（SQ）在大肠杆菌K-12中经磺醌糖酵解主链降解：SQ由磺醌糖异构酶异构化为6-sulfo-D-fructose；后者经ATP依赖的6-sulfofructose激酶在C1位磷酸化为6-sulfo-D-fructose-1-phosphate；该磷酸酮糖由6-sulfofructose-1-phosphate醛缩酶按C3–C4键裂解，生成磷酸二羟丙酮（DHAP，进入中心碳代谢）与磺乳醛；磺乳醛最终被NADH依赖的磺乳醛还原酶还原为2,3-二羟基丙烷-1-磺酸并外排。磺酸基以C3-磺酸化物形式离开细胞，在E. coli K-12内不发生脱硫。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-sulfo-alpha-D-quinovose",
+          "smiles": "OS(=O)(=O)CC1OC(O)C(O)C(O)C(O)1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-sulfo-D-fructose",
+          "smiles": "OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛糖-酮糖异构化",
+      "enzyme": {
+        "name": "sulfoquinovose isomerase",
+        "ec_number": "5.3.1.-",
+        "gene_or_protein": "yihS",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "酶的具体EC编号未确证（仅确证属异构酶类5.3.1.-）；基因符号yihS为中高置信度记忆；底物SMILES为连接层（非手性）表示。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-fructose",
+          "smiles": "OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-sulfo-D-fructose-1-phosphate",
+          "smiles": "O=P(O)(O)OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磷酸化（ATP依赖，C1位）",
+      "enzyme": {
+        "name": "6-sulfofructose kinase",
+        "ec_number": "2.7.1.-",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "激酶的基因符号与具体EC编号未知；磷酸化发生在C1位以及'先异构后磷酸化'的反应次序基于岩藻糖代谢（FucI/FucK/FucA）类比与文献记忆。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-fructose-1-phosphate",
+          "smiles": "O=P(O)(O)OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "OCC(=O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛醇裂解（C3–C4键断裂）",
+      "enzyme": {
+        "name": "6-sulfofructose-1-phosphate aldolase",
+        "ec_number": "4.1.2.-",
+        "gene_or_protein": "yihT",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "醛缩酶基因符号yihT为低置信度记忆；具体EC编号未确证。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-dihydroxypropane-1-sulfonate",
+          "smiles": "OCC(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原（NADH依赖的醛还原）",
+      "enzyme": {
+        "name": "sulfolactaldehyde reductase",
+        "ec_number": "1.1.1.-",
+        "gene_or_protein": "yihU",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "E. coli K-12中磺乳醛的主要去向为还原成2,3-二羟基丙烷-1-磺酸并外排（中等置信度记忆）；氧化为sulfolactate的分支见于其他SQ降解菌（见alternative_branches）；基因符号yihU为低置信度记忆。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12",
+      "ncbi_taxid": 83333,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": 45,
+            "preference": "中温性，最适约37℃（温血动物肠道温度）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（有氧与无氧条件下均可生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌（淡水/肠道低盐环境；常规培养基含约0.5%–1% NaCl可正常生长）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 4.5,
+            "optimum": 7.0,
+            "maximum": 9.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "10798"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（兼性厌氧：无氧时行发酵或厌氧呼吸）",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用6-sulfo-D-quinovose作为唯一碳源和能源生长；亦广泛利用葡萄糖等多种糖类",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "能降解磺酸化糖类（如sulfoquinovose）；SQ降解产生的C3-磺酸（2,3-二羟基丙烷-1-磺酸）被外排而不在该菌内进一步脱硫矿化；总体为代谢谱广的有机营养菌",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "磺醌糖异构酶活性：催化6-sulfo-α-D-quinovose异构化为6-sulfo-D-fructose（YihS）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具运动性（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状，约0.5 µm × 1.0–3.0 µm，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性；细胞包膜含外膜（LPS）与薄肽聚糖层",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性高：主要栖息于人等温血动物的肠道下段，亦广泛见于淡水、土壤和污泥等外环境，生态幅宽",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "dihydroxyacetone phosphate"
+    ],
+    "explanation": "S3生成的磷酸二羟丙酮（DHAP）直接进入糖酵解/糖异生等中心碳代谢，提供碳骨架与能量；磺酸部分以2,3-二羟基丙烷-1-磺酸形式外排，不在E. coli K-12内脱硫。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2,3-二羟基丙烷-1-磺酸的种间交叉喂养与后续矿化",
+      "summary": "外排的2,3-二羟基丙烷-1-磺酸可被环境或肠道中的其他细菌进一步氧化/脱硫，最终释放亚硫酸盐（并氧化为硫酸盐）或转化为硫化物，完成磺酸硫的循环；相应菌种与酶不在本题主链范围内，此处不作具体断言。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "磺乳醛氧化分支",
+      "summary": "磺乳醛亦可被脱氢酶氧化为2-羟基-3-磺酸基丙酸；该氧化分支在其他SQ降解菌中常见，产物的进一步脱硫由其他菌完成，不计入本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "sulfo-Entner-Doudoroff分支（其他好氧菌）",
+      "summary": "文献报道部分好氧细菌经sulfo-ED途径降解SQ（SQ→6-sulfo-D-gluconate→2-酮-3-脱氧-6-磺酸-D-葡糖酸→丙酮酸+磺乳醛）；该分支不属于本题主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Denger K, Weiss M, Felux A-K, et al. Sulphoquinovose in the environment: another carbon pathway for bacterial growth (2014)",
+      "claim_scope": [
+        "E. coli K-12以SQ为唯一碳源生长",
+        "S1 SQ异构化为6-sulfo-D-fructose",
+        "S2 6-sulfo-D-fructose的ATP依赖磷酸化",
+        "S3 磷酸化酮糖醛醇裂解为DHAP与磺乳醛",
+        "S4 磺乳醛还原为2,3-二羟基丙烷-1-磺酸并外排"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "E. coli K-12的15项一般性状与身份信息（TaxID、ATCC编号、基因组等）"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "路线名'sulfoquinovose degradation V'与数据库中变体编号（I–V）的具体对应关系未能核实；本回答按文献中表征最充分的E. coli K-12磺醌糖酵解主链作答，可能与该编号所指的具体变体不一致。",
+    "各步酶的具体EC编号均未确证，仅给出酶大类（5.3.1.-、2.7.1.-、4.1.2.-、1.1.1.-）。",
+    "S2激酶的基因符号未知；S3醛缩酶（yihT）与S4还原酶（yihU）的基因符号为低置信度记忆，可能不准确。",
+    "E. coli K-12降解SQ时外排的C3-磺酸终产物为2,3-二羟基丙烷-1-磺酸（还原分支）属中等置信度记忆；磺乳醛氧化为sulfolactate的分支见于其他菌。",
+    "所引文献的出处细节（期刊、卷期页码、PMID）未能确证，故record_id为null。"
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_123",
+  "pollutant_name_zh": "丙烷",
+  "pollutant_name_en": "Propane",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "propane degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；propane degradation I 为由单加氧酶启动的好氧亚末端氧化途径，故各步按好氧反应描述。"
+  },
+  "route_summary": "丙烷好氧降解主链（亚末端氧化）：propane 经 propane monooxygenase 羟化为 2-propanol；2-propanol 经 NAD+ 依赖的 secondary alcohol dehydrogenase 氧化为 acetone；acetone 再经单加氧酶羟化为 hydroxyacetone（acetol）；acetol 进一步氧化为 methylglyoxal，后者经 methylglyoxal 降解途径进入中心代谢（生成 pyruvate）。该主链为经典文献（Mycobacterium vaccae JOB5）所述的 propane degradation I；Gordonia sp. TY-5 在 acetone 节点走 Baeyer–Villiger（methyl acetate）支路，作为备选分支列出，不计入被评分主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "Propane", "smiles": "CCC", "role": "main"},
+        {"name": "Oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2-Propanol", "smiles": "CC(C)O", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "byproduct"}
+      ],
+      "reaction_type": "monooxygenation (hydroxylation)",
+      "enzyme": {
+        "name": "propane monooxygenase",
+        "ec_number": "1.14.13.227",
+        "gene_or_protein": "prmA (prmABCD)",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Gordonia sp. TY-5",
+        "strain": "TY-5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "propane monooxygenase 的 EC 号（1.14.13.227）为中等置信度；该酶为可溶性双铁单加氧酶（PrmABCD），在 Gordonia sp. TY-5 中已分子水平鉴定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "2-Propanol", "smiles": "CC(C)O", "role": "main"}
+      ],
+      "products": [
+        {"name": "Acetone", "smiles": "CC(C)=O", "role": "main"}
+      ],
+      "reaction_type": "NAD+-dependent oxidation (dehydrogenation)",
+      "enzyme": {
+        "name": "secondary alcohol dehydrogenase (NAD+)",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": "adh",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Gordonia sp. TY-5",
+        "strain": "TY-5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 1.1.1.1 为 NAD+ 依赖醇脱氢酶的通用归类；TY-5 的 Adh 为 NAD+ 依赖型仲醇脱氢酶，已由文献直接表征。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "Acetone", "smiles": "CC(C)=O", "role": "main"},
+        {"name": "Oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Hydroxyacetone (acetol)", "smiles": "CC(=O)CO", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "byproduct"}
+      ],
+      "reaction_type": "monooxygenation (hydroxylation)",
+      "enzyme": {
+        "name": "acetone monooxygenase (acetol-forming)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_009"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium vaccae",
+        "strain": "JOB5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步主要来自经典生理学与教科书描述，催化酶未在分子水平鉴定，EC 未定；Gordonia sp. TY-5 中丙酮改走 Baeyer–Villiger（methyl acetate）支路（见 alternative_branches）。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "Hydroxyacetone (acetol)", "smiles": "CC(=O)CO", "role": "main"}
+      ],
+      "products": [
+        {"name": "Methylglyoxal", "smiles": "CC(=O)C=O", "role": "main"}
+      ],
+      "reaction_type": "oxidation (dehydrogenation)",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Mycobacterium vaccae",
+        "strain": "JOB5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "acetol → methylglyoxal 的催化酶未在分子水平鉴定（推测为醇脱氢酶类），按规则 enzyme 整体填 null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Gordonia sp. TY-5",
+      "strain": "TY-5",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": 30, "maximum_c": null, "preference": "中温（mesophile）；文献培养温度 30 °C，未测定最适"},
+          "raw_text": "Gordonia sp. strain TY-5 was grown at 30 °C with propane as the sole carbon and energy source",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": "propane-utilizing Gordonia sp. strain TY-5 grows aerobically; propane monooxygenase requires O2",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸（aerobic respiration）", "terminal_electron_acceptor": "O2"},
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以丙烷为唯一碳源和能源生长",
+          "raw_text": "strain TY-5 utilizes propane as a sole carbon and energy source",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解丙烷等气态短链烷烃（propane degradation）",
+          "raw_text": "propane metabolism by Gordonia sp. strain TY-5",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "丙烷单加氧酶（propane monooxygenase, PrmA）与 NAD+ 依赖型仲醇脱氢酶（Adh）活性",
+          "raw_text": "propane monooxygenase and NAD+-dependent secondary alcohol dehydrogenase in propane metabolism by Gordonia sp. strain TY-5",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动（non-motile）",
+          "raw_text": "Gordonia species are non-motile",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状至球状（rod-coccus 形态循环）",
+          "raw_text": "Gordonia: rod-coccus morphogenesis",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（Gram-positive）",
+          "raw_text": "Gordonia is Gram-positive",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-spore-forming）",
+          "raw_text": "Gordonia is non-sporulating",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤来源的丙烷降解放线菌；Gordonia 属常见于土壤及烃污染环境，栖息地以土壤/污染环境为主",
+          "raw_text": "strain TY-5 was isolated as a propane-utilizing bacterium",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Mycobacterium vaccae",
+      "strain": "JOB5",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": 30, "maximum_c": null, "preference": "中温；丙烷降解研究多在约 30 °C 培养"},
+          "raw_text": "propane-grown M. vaccae JOB5 cultured at about 30 °C",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧（obligately aerobic）",
+          "raw_text": "M. vaccae is an obligately aerobic, rapidly growing mycobacterium",
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸（aerobic respiration）", "terminal_electron_acceptor": "O2"},
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以丙烷为碳源和能源生长（丙烷利用菌）",
+          "raw_text": "M. vaccae JOB5 grows on propane as sole carbon source",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "氧化降解丙烷；可共氧化多种烃类（烃共氧化研究的经典菌株）",
+          "raw_text": "microbial cooxidations involving hydrocarbons by propane-grown M. vaccae JOB5",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "丙烷及其氧化中间物（2-丙醇、丙酮、acetol）的氧化活性（生理/粗酶水平证据）",
+          "raw_text": "oxidation of propane and its proposed intermediates by M. vaccae JOB5",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "不运动（non-motile）",
+          "raw_text": "mycobacteria are non-motile",
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状，稍弯曲（rod-shaped）",
+          "raw_text": "M. vaccae is a rod-shaped, slightly curved bacillus",
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "抗酸染色阳性；革兰氏阳性（含分枝菌酸的放线菌型细胞壁）",
+          "raw_text": "M. vaccae is acid-fast and Gram-positive",
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-spore-forming）",
+          "raw_text": "mycobacteria do not form spores",
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤腐生分枝杆菌，广泛分布于土壤与水体，非宿主专性，栖息地较广",
+          "raw_text": "M. vaccae is a common soil saprophyte",
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_002",
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "主链终产物 methylglyoxal 通常经 methylglyoxal 降解途径（glyoxalase 系统生成 D-lactate，再氧化为 pyruvate）进入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "methylglyoxal 进一步降解",
+      "summary": "methylglyoxal 经 glyoxalase I/II（S-lactoylglutathione → D-lactate）再经 lactate dehydrogenase 生成 pyruvate；具体酶与路径依菌而异，未计入被评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "acetone Baeyer–Villiger 支路（Gordonia sp. TY-5）",
+      "summary": "在 Gordonia sp. TY-5 中，acetone 由 Baeyer–Villiger 型 acetone monooxygenase（AcmAB，EC 1.14.13.226）氧化为 methyl acetate，再经酯酶水解为 methanol 与 acetate 后进入中心代谢（Kotani et al., 2007, J Bacteriol）；该支路不属于本条被评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Kotani T, Yamamoto T, Yurimoto H, Sakai Y, Kato N (2003) Propane monooxygenase and NAD+-dependent secondary alcohol dehydrogenase in propane metabolism by Gordonia sp. strain TY-5. J Bacteriol 185(24):7120-7128",
+      "claim_scope": ["Gordonia sp. TY-5 以丙烷为唯一碳源生长", "丙烷经 propane monooxygenase（PrmA）氧化为 2-propanol", "2-propanol 经 NAD+ 依赖 secondary alcohol dehydrogenase 氧化为 acetone", "菌株性状：好氧、30 °C 培养"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Vestal JR, Perry JJ (1969) Divergent metabolic pathways for propane and propionate utilization by a soil isolate. J Bacteriol 99(1):216-221",
+      "claim_scope": ["Mycobacterium vaccae JOB5 以丙烷为底物生长", "丙烷经亚末端氧化途径（2-propanol、acetone 等中间物）代谢"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Perry JJ (1979) Microbial cooxidations involving hydrocarbons. Microbiol Rev 43(1):59-72",
+      "claim_scope": ["丙烷微生物氧化及其中间物（2-丙醇、丙酮）综述", "JOB5 为烃共氧化研究经典菌株"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Alexander M (1999) Biodegradation and Bioremediation, 2nd ed., Academic Press（脂肪烃降解章节）",
+      "claim_scope": ["丙烷降解主链：propane → 2-propanol → acetone → hydroxyacetone（acetol）→ methylglyoxal（M. vaccae JOB5）"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz Enzyme Nomenclature",
+      "record_id": "EC 1.14.13.227",
+      "locator": "accepted name: propane monooxygenase",
+      "claim_scope": ["EC 1.14.13.227 对应 propane monooxygenase（propane + NADH + O2 → propan-2-ol）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz Enzyme Nomenclature",
+      "record_id": "EC 1.1.1.1",
+      "locator": "accepted name: alcohol dehydrogenase",
+      "claim_scope": ["EC 1.1.1.1 = alcohol dehydrogenase（NAD+；可氧化仲醇如 2-propanol → acetone）"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Gordonia 属分类学描述（Stackebrandt et al. 1988；Bergey's Manual of Systematic Bacteriology）",
+      "claim_scope": ["Gordonia：革兰氏阳性、好氧、不运动、不产孢、杆-球形态"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Mycobacterium vaccae 种描述（Bergey's Manual of Systematic Bacteriology；ATCC 菌种资料）",
+      "claim_scope": ["M. vaccae：快速生长、抗酸、革兰氏阳性、不运动、不产孢、好氧、土壤腐生"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Taylor DG, Trudgill PW, Cripps RE, Harris PR (1980) The microbial metabolism of acetone. J Gen Microbiol 118:159-170",
+      "claim_scope": ["细菌可经 hydroxyacetone（acetol）与 methylglyoxal 代谢 acetone"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "propane degradation I 在 acetone 之后的走向存在文献分歧：本答案采用经典的 hydroxyacetone（acetol）→ methylglyoxal 主链；Gordonia sp. TY-5 的 Baeyer–Villiger（methyl acetate）途径列为 alternative_branches，不计入被评分主链。",
+    "S3、S4 两步缺乏分子水平的酶鉴定，相应 EC 填 null，置信度低。",
+    "propane monooxygenase 的 EC 号（1.14.13.227）为中等置信度。",
+    "两株菌（Gordonia sp. TY-5、Mycobacterium vaccae JOB5）的保藏编号、NCBI TaxID 与基因组信息未能确认，均填 null。"
+  ]
+}

@@ -1,0 +1,706 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_039",
+  "pollutant_name_zh": "D-脯氨酸甜菜碱",
+  "pollutant_name_en": "D-proline betaine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "proline betaine degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故 oxygen_condition 填 null；chosen_route_name 按题面原样填写为 proline betaine degradation I，不改选其他路线；主链为线性连续反应序列。"
+  },
+  "route_summary": "D-脯氨酸甜菜碱（stachydrine，N,N-二甲基-D-脯氨酸）先经两步氧化N-去甲基化：第一步生成N-甲基-D-脯氨酸并释放一分子甲醛，第二步进一步去甲基生成D-脯氨酸并再释放一分子甲醛；随后D-脯氨酸经脯氨酸消旋酶（EC 5.1.1.4）转化为L-脯氨酸；L-脯氨酸经PutA双功能酶催化，先由脯氨酸脱氢酶（EC 1.5.5.2）氧化为(S)-1-吡咯啉-5-羧酸（与L-谷氨酸-5-半醛自发互变），再由1-吡咯啉-5-羧酸脱氢酶（EC 1.5.1.12）氧化为L-谷氨酸，经2-氧代戊二酸进入TCA循环。前两步去甲基化的酶学与菌株证据较弱，属低置信重建；S3至S5为经典生化反应。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-proline betaine",
+          "smiles": "C[N+]1(C)CCC[C@@H]1C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-methyl-D-proline",
+          "smiles": "CN1CCC[C@@H]1C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化N-去甲基化",
+      "enzyme": {
+        "name": "stachydrine dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Sinorhizobium meliloti",
+        "strain": "1021",
+        "ncbi_taxid": 266835,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "本步酶名与EC未确证（填null）；按stachydrine两步氧化N-去甲基化的第一步重建，电子受体（O2或NAD(P)+）未确定；Sinorhizobium meliloti 1021为低置信执行菌。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "N-methyl-D-proline",
+          "smiles": "CN1CCC[C@@H]1C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-proline",
+          "smiles": "C1C[C@@H](NC1)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化N-去甲基化",
+      "enzyme": {
+        "name": "N-methyl-D-proline dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Sinorhizobium meliloti",
+        "strain": "1021",
+        "ncbi_taxid": 266835,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "与S1同理：N-甲基-D-脯氨酸氧化去甲基生成D-脯氨酸并释放甲醛为低置信推断；EC与基因未知。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "D-proline",
+          "smiles": "C1C[C@@H](NC1)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-proline",
+          "smiles": "C1C[C@H](NC1)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "外消旋化（D/L异构化）",
+      "enzyme": {
+        "name": "proline racemase",
+        "ec_number": "5.1.1.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sticklandii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "为衔接D-构型中间体进入L-脯氨酸降解而重建的消旋步骤；脯氨酸消旋酶经典来源菌为Clostridium sticklandii，但该消旋步骤在原始路线中的直接证据不足。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "L-proline",
+          "smiles": "C1C[C@H](NC1)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-1-pyrroline-5-carboxylate",
+          "smiles": "O=C([O-])[C@@H]1CCC=N1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化脱氢（FAD依赖，电子经泛醌传递）",
+      "enzyme": {
+        "name": "proline dehydrogenase",
+        "ec_number": "1.5.5.2",
+        "gene_or_protein": "putA",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_003",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "E. coli K-12 的PutA为双功能酶，同一蛋白催化本步与S5，此处按两个连续反应分列；生理电子受体为膜泛醌。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "(S)-1-pyrroline-5-carboxylate",
+          "smiles": "O=C([O-])[C@@H]1CCC=N1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-glutamate",
+          "smiles": "N[C@@H](CCC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱氢并开环（P5C/谷氨酸-5-半醛→谷氨酸）",
+      "enzyme": {
+        "name": "1-pyrroline-5-carboxylate dehydrogenase",
+        "ec_number": "1.5.1.12",
+        "gene_or_protein": "putA",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_003",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "(S)-1-吡咯啉-5-羧酸与L-谷氨酸-5-半醛自发互变，酶实际作用于开链半醛形式；本步与S4由同一双功能酶PutA催化。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sinorhizobium meliloti",
+      "strain": "1021",
+      "ncbi_taxid": 266835,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 28,
+            "maximum_c": null,
+            "preference": "中温；常规培养温度约28–30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧菌；微氧/低氧条件下可进行反硝化，具耐低氧能力",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "中度耐盐；高渗条件下依赖甜菜碱类渗透保护剂生长"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种糖类与有机酸；并能以stachydrine（脯氨酸甜菜碱）及脯氨酸作为碳源/氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可同化植物来源渗透保护剂（stachydrine→N-甲基脯氨酸→脯氨酸）及常规碳氮源；无广谱外源污染物降解记载",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "stachydrine氧化去甲基化相关酶活与脯氨酸氧化降解（PutA类）酶活（推断）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "具运动性（鞭毛介导的游动与群集运动）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "小杆状，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（典型外膜-周质-肽聚糖细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_003047;NC_003037;NC_003078",
+            "genome_size_bp": 6691693,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "跨生态位广适：自由生活于土壤/根际，并可内共生定殖于豆科植物（如苜蓿）根瘤",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Clostridium sticklandii",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温（常规厌氧培养约30–37 °C）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧发酵（Stickland反应，底物水平磷酸化）",
+            "terminal_electron_acceptor": "D-脯氨酸（作为Stickland型底物级电子受体）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以多种氨基酸为底物进行成对氧化-还原（Stickland）发酵获取能量",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "厌氧氨基酸发酵菌，降解底物谱窄，无外源污染物广谱降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "脯氨酸消旋酶（EC 5.1.1.4）、D-脯氨酸还原酶（生成5-氨基戊酸）与甘氨酸还原酶等酶活",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具运动性（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "可形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "专性厌氧且底物依赖性强，见于厌氧沉积物/动物肠道等生境；生境广适性有限",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 83333,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温，最适约37 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（肠道/淡水生境菌）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧（好氧呼吸或厌氧发酵/硝酸呼吸）",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用葡萄糖等多种糖类并进行混合酸发酵；可利用L-脯氨酸作为氮源，经PutA途径将其降解为谷氨酸",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "代谢谱广的肠道/环境菌，可同化多种糖类、氨基酸与小分子有机物；非典型外源污染物降解菌",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "PutA双功能酶活性：脯氨酸脱氢酶（EC 1.5.5.2）与1-吡咯啉-5-羧酸脱氢酶（EC 1.5.1.12）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "具运动性（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "高度广适：温血动物肠道主要菌群，并广泛存在于水体、土壤等外环境",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["L-glutamate", "2-oxoglutarate"],
+    "explanation": "主链终点为L-谷氨酸；L-谷氨酸经谷氨酸脱氢酶（EC 1.4.1.2/1.4.1.3）或转氨作用转化为2-氧代戊二酸进入TCA循环实现彻底氧化；两步去甲基化释放的甲醛可经甲醛脱氢酶/丝氨酸途径进一步同化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "谷氨酸进入TCA循环",
+      "summary": "L-谷氨酸经谷氨酸脱氢酶或转氨酶生成2-氧代戊二酸，经TCA循环氧化为CO2；甲醛副产物经甲醛脱氢酶/丝氨酸途径同化。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "D-脯氨酸直接氧化支路",
+      "summary": "D-脯氨酸亦可被D-氨基酸氧化酶（EC 1.4.3.3）氧化为Δ1-吡咯啉-2-羧酸，自发水解开环生成5-氨基-2-氧代戊酸后进入其他下游代谢；本回答未将该支路计入评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["主链反应序列与去甲基化化学：D-脯氨酸甜菜碱→N-甲基-D-脯氨酸→D-脯氨酸（各释放一分子甲醛）"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Sinorhizobium meliloti 1021 可利用stachydrine（脯氨酸甜菜碱）为碳/氮源，并经N-甲基脯氨酸→脯氨酸途径降解"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Clostridium sticklandii 一般生物学与酶学：专性厌氧、革兰氏阳性、产孢、杆状、运动、Stickland氨基酸发酵、脯氨酸消旋酶（EC 5.1.1.4）、D-脯氨酸还原酶"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["E. coli K-12 putA 编码双功能脯氨酸脱氢酶/1-吡咯啉-5-羧酸脱氢酶（EC 1.5.5.2 与 EC 1.5.1.12），将L-脯氨酸氧化为L-谷氨酸"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["E. coli K-12 MG1655 基因组 NC_000913（4,641,652 bp，GC 50.8%）及 ATCC 700926 保藏信息"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Sinorhizobium meliloti 1021 三复制子基因组（NC_003047 染色体、NC_003037 pSymA、NC_003078 pSymB，合计约 6,691,693 bp）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Sinorhizobium meliloti 一般性状：好氧/微氧下反硝化、革兰氏阴性、杆状、运动、不产芽孢、土壤—根际—豆科根瘤多生态位"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["E. coli K-12 一般性状：兼性厌氧、革兰氏阴性、杆状、周生鞭毛运动、不产芽孢、最适约37 °C、肠道与外环境广适性"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "未能确认 proline betaine degradation I 的原始数据库条目（如MetaCyc PWY编号）与逐反应原始文献；主链按stachydrine两步N-去甲基化加脯氨酸降解至谷氨酸的经典生化路线重建，整体为中低置信。",
+    "S1/S2 去甲基化步骤的酶名、EC号与基因未知（填null）；stachydrine dehydrogenase 与 N-methyl-D-proline dehydrogenase 为按底物命名的低置信推断名，电子受体（O2 或 NAD(P)+）未确定。",
+    "Sinorhizobium meliloti 1021 作为 S1/S2 执行菌为低置信记忆；若原始路线使用其他菌，本回答菌项需更正。",
+    "中间体按题面 D-构型（N-methyl-D-proline、D-proline）推定；若原始路线为 L-构型链，立体化学标注需相应调整。",
+    "Clostridium sticklandii 的菌株号与 NCBI TaxID 未知（填null）；其消旋步骤为衔接 D→L 构型的重建步骤，在原始路线中的直接证据不足。",
+    "E. coli 以 K-12 MG1655 代表 PutA 酶学文献体系；EC 1.5.5.2（脯氨酸脱氢酶）与 EC 1.5.1.12（1-吡咯啉-5-羧酸脱氢酶）为经典编号。"
+  ]
+}

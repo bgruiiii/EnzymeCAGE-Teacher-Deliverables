@@ -1,0 +1,484 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_044",
+  "pollutant_name_zh": "甲基膦酸根",
+  "pollutant_name_en": "Methylphosphonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methylphosphonate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。本主链按题面给定路线名称填写，对应大肠杆菌C-P裂解酶（phn）途径，不改选其他路线。裂解反应本身不消耗氧气，但PhnJ的铁硫簇体外对氧敏感。"
+  },
+  "route_summary": "甲基膦酸根降解I是一条连续的C-P裂解酶主链：PhnI将甲基膦酸根转移到ATP的核糖C1位，生成α-D-核糖-1-甲基膦酸-5-三磷酸并释放腺嘌呤；PhnM水解掉焦磷酸得到5-磷酸衍生物；PhnJ断裂C-P键，释放甲烷并生成5-磷酸-α-D-核糖-1,2-环磷酸；PhnP将其水解为α-D-核糖-1,5-二磷酸；PhnN再磷酸化为5-磷酸-α-D-核糖-1-二磷酸（PRPP）进入核苷酸代谢。甲基碳以甲烷离开，磷骨架经PRPP汇入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "methylphosphonate",
+          "smiles": "CP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "adenosine 5'-triphosphate",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "alpha-D-ribose 1-methylphosphonate 5-triphosphate",
+          "smiles": "C([C@@H]1[C@H]([C@H]([C@@H](O1)OP(=O)([O-])C)O)O)OP(=O)([O-])OP(=O)([O-])OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "adenine",
+          "smiles": "Nc1ncnc2nc[nH]c12",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "膦酸根核糖基化",
+      "enzyme": {
+        "name": "alpha-D-ribose 1-methylphosphonate 5-triphosphate synthase",
+        "ec_number": "2.7.8.37",
+        "gene_or_protein": "phnI",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "催化亚基为PhnI，全活性通常还需PhnG、PhnH和PhnL；此处只列首选催化酶。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "alpha-D-ribose 1-methylphosphonate 5-triphosphate",
+          "smiles": "C([C@@H]1[C@H]([C@H]([C@@H](O1)OP(=O)([O-])C)O)O)OP(=O)([O-])OP(=O)([O-])OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "alpha-D-ribose 1-methylphosphonate 5-phosphate",
+          "smiles": "C([C@@H]1[C@H]([C@H]([C@@H](O1)OP(=O)([O-])C)O)O)OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "[O-]P(=O)([O-])OP(=O)([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "三磷酸衍生物的二磷酸水解",
+      "enzyme": {
+        "name": "alpha-D-ribose 1-methylphosphonate 5-triphosphate diphosphatase",
+        "ec_number": "3.6.1.63",
+        "gene_or_protein": "phnM",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "alpha-D-ribose 1-methylphosphonate 5-phosphate",
+          "smiles": "C([C@@H]1[C@H]([C@H]([C@@H](O1)OP(=O)([O-])C)O)O)OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "S-adenosyl-L-methionine",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-phospho-alpha-D-ribose 1,2-cyclic phosphate",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "methane",
+          "smiles": "C",
+          "role": "main"
+        },
+        {
+          "name": "5'-deoxyadenosine",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "L-methionine",
+          "smiles": "CSCC[C@H](N)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-P键裂解",
+      "enzyme": {
+        "name": "alpha-D-ribose 1-methylphosphonate 5-phosphate C-P-lyase",
+        "ec_number": "4.7.1.1",
+        "gene_or_protein": "phnJ",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "PhnJ为自由基SAM酶，计量上还消耗一个还原当量；生理电子供体未单列。甲烷是甲基碳的末端产物，不进入后续主链。环磷酸产物的立体SMILES未填写。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "5-phospho-alpha-D-ribose 1,2-cyclic phosphate",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "alpha-D-ribose 1,5-bisphosphate",
+          "smiles": "C([C@@H]1[C@H]([C@H]([C@@H](O1)OP(=O)([O-])[O-])O)O)OP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环磷酸二酯水解",
+      "enzyme": {
+        "name": "phosphoribosyl 1,2-cyclic phosphate phosphodiesterase",
+        "ec_number": null,
+        "gene_or_protein": "phnP",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "PhnP的EC编号未确认，置null，不猜测。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "alpha-D-ribose 1,5-bisphosphate",
+          "smiles": "C([C@@H]1[C@H]([C@H]([C@@H](O1)OP(=O)([O-])[O-])O)O)OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "adenosine 5'-triphosphate",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-phospho-alpha-D-ribose 1-diphosphate",
+          "smiles": "C([C@@H]1[C@H]([C@H]([C@@H](O1)OP(=O)([O-])OP(=O)([O-])[O-])O)O)OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "adenosine 5'-diphosphate",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "核糖-1,5-二磷酸的磷酸化",
+      "enzyme": {
+        "name": "ribose 1,5-bisphosphokinase",
+        "ec_number": null,
+        "gene_or_protein": "phnN",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "PhnN的EC编号未确认，置null。该步把磷骨架转化为PRPP，是进入核苷酸代谢前的最后一步phn反应。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸（兼性）",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用葡萄糖及多种糖类、有机酸作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "基因组含phn C-P裂解酶系统，催化蛋白可降解甲基膦酸根等有机膦酸并释放甲烷；MG1655的phnE因8 bp串联重复失活，野生型体内摄取膦酸酯受阻",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "已实验证实来源于该菌phn基因的PhnI、PhnM、PhnJ、PhnP和PhnN活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "具周生鞭毛，可运动",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要适应温血动物肠道，亦可在土壤和淡水中存活，生境广度中等，不属于极端环境广布型",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["5-phospho-alpha-D-ribose 1-diphosphate", "methane"],
+    "explanation": "甲基膦酸根的甲基碳以甲烷释放，大肠杆菌通常不进一步氧化甲烷；磷骨架转化为PRPP后进入核苷酸生物合成，从而汇入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "PRPP进入核苷酸生物合成",
+      "summary": "5-磷酸-α-D-核糖-1-二磷酸作为核苷酸从头合成与补救合成的前体，磷最终可经核苷酸周转回收。"
+    },
+    {
+      "name": "甲烷不再被该菌代谢",
+      "summary": "本路线代表菌不氧化甲烷，甲烷是甲基碳的末端产物。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Kamat SS, Williams HJ, Raushel FM. Intermediates in the transformation of phosphonates to phosphate by bacteria. Nature. 2011;480:570-573.",
+      "claim_scope": ["S1_reaction", "S2_reaction", "PhnI", "PhnM", "ribosylated_intermediates"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Kamat SS, Williams HJ, Dangott LJ, Chakrabarti M, Raushel FM. The catalytic mechanism for aerobic formation of methane by bacteria. Nature. 2013;497:132-136.",
+      "claim_scope": ["S3_reaction", "PhnJ", "methane_release"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Hove-Jensen B, McSorley FR, Zechel DL. Physiological role of phnP-specified phosphoribosyl cyclic phosphodiesterase in catabolism of organophosphonic acids by the carbon-phosphorus lyase pathway. J Am Chem Soc. 2011;133:3617-3624.",
+      "claim_scope": ["S4_reaction", "PhnP", "ribose_1,5-bisphosphate"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Hove-Jensen B, Zechel DL, Jochimsen B. Utilization of glyphosate as phosphate source: biochemistry and genetics of bacterial carbon-phosphorus lyase. Microbiol Mol Biol Rev. 2014;78:176-197.",
+      "claim_scope": ["S5_reaction", "PhnN", "PRPP", "Escherichia_coli_phn_pathway", "enzyme_activities"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Makino K, Kim SK, Shinagawa H, Amemura M, Nakata A. Molecular analysis of the cryptic and functional phn operons for phosphonate use in Escherichia coli K-12. J Bacteriol. 1991.",
+      "claim_scope": ["phn_operon", "phnE_8bp_duplication", "K-12_phosphonate_utilization"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Escherichia coli K-12标准生理学常识：兼性厌氧、嗜温最适37°C、革兰氏阴性杆状、周生鞭毛、不产芽孢、非嗜盐、以氧气为主要末端电子受体、可利用多种糖和有机酸",
+      "claim_scope": ["F1_oxygen_tolerance", "F2_temperature", "F4_salinity", "F6_respiration_electron_acceptor", "F7_carbon_substrate_utilization", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation", "F15_habitat_generalism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "ATCC 700926对应Escherichia coli K-12 substr. MG1655",
+      "claim_scope": ["F5_culture_collection"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000913.3",
+      "locator": "NCBI Taxonomy 511145；RefSeq NC_000913.3为Escherichia coli str. K-12 substr. MG1655参考基因组。基因组碱基数与GC含量因版本差异未填写。",
+      "claim_scope": ["ncbi_taxid", "F14_genome_basic"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "Escherichia coli K-12 MG1655的phnE含8 bp串联重复，膦酸酯ABC转运受损，野生型通常不能以甲基膦酸根为磷源生长；催化酶基因有功能，Phn+回复突变株或大肠杆菌B可完成体内降解。因此complete_pathway_organism_profile_id置null。",
+    "PhnI、PhnM、PhnJ的EC分别按常用编号2.7.8.37、3.6.1.63、4.7.1.1填写；PhnP与PhnN的EC编号把握不足，已置null。",
+    "S-腺苷-L-甲硫氨酸、5'-脱氧腺苷、ATP、ADP以及5-磷酸-α-D-核糖-1,2-环磷酸的SMILES未填写，以避免错误立体结构。",
+    "PhnJ反应还需要还原当量，生理电子供体未列入底物。",
+    "题面氧条件未指定。C-P裂解本身不消耗氧气，但PhnJ的[4Fe-4S]簇体外对氧敏感。",
+    "未填写该菌株pH范围、盐度数值以及基因组碱基数和GC含量，避免用近似值占位。"
+  ]
+}

@@ -1,0 +1,722 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_138",
+  "pollutant_name_zh": "甲萘威",
+  "pollutant_name_en": "Carbaryl",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "carbaryl degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）；甲萘威的微生物降解主链通常在好氧条件下进行，本主链按好氧途径给出。"
+  },
+  "route_summary": "甲萘威（carbaryl）首先被甲萘威水解酶（NydA）水解为1-萘酚、甲胺与CO2；1-萘酚经NADPH依赖的1-萘酚羟化酶（NydB）羟化为1,2-二羟基萘；1,2-二羟基萘经间位开环双加氧（NahC）生成2-羟基-2H-色烯-2-羧酸，再经异构（NahD）与水合-醛缩裂解（NahE）生成水杨醛和丙酮酸；水杨醛被水杨醛脱氢酶（NahF）氧化为水杨酸，水杨酸经水杨酸1-羟化酶（NahG）羟化脱羧生成邻苯二酚，最后由邻苯二酚2,3-双加氧酶（NahH）间位开环生成2-羟基黏康酸半醛，经偏位裂解下游途径进入中心代谢。第1–2步以甲萘威降解菌Pseudomonas sp. C5pp为代表；第3–8步以携带NAH7降解质粒的Pseudomonas putida G7的经典nah酶为代表（甲萘威降解菌中由同源酶催化相同反应）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Carbaryl",
+          "smiles": "CNC(=O)Oc1cccc2ccccc12",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-Naphthol",
+          "smiles": "Oc1cccc2ccccc12",
+          "role": "main"
+        },
+        {
+          "name": "Methylamine",
+          "smiles": "CN",
+          "role": "byproduct"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氨基甲酸酯水解（carbamate hydrolysis）",
+      "enzyme": {
+        "name": "Carbaryl hydrolase (NydA)",
+        "ec_number": null,
+        "gene_or_protein": "nydA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5pp",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "甲萘威水解酶（NydA/CehA/CahA类酰胺酶）目前无正式EC编号，故填null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "1-Naphthol",
+          "smiles": "Oc1cccc2ccccc12",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1,2-Dihydroxynaphthalene",
+          "smiles": "Oc1ccc2ccccc2c1O",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧羟基化（flavin-dependent monooxygenation）",
+      "enzyme": {
+        "name": "1-Naphthol hydroxylase (NydB)",
+        "ec_number": null,
+        "gene_or_protein": "nydB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5pp",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "NydB为NADPH依赖的黄素单加氧酶，目前无正式EC编号，故填null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "1,2-Dihydroxynaphthalene",
+          "smiles": "Oc1ccc2ccccc2c1O",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxy-2H-chromene-2-carboxylic acid",
+          "smiles": "O=C(O)C1(O)C=Cc2ccccc2O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧开环（extradiol ring cleavage）",
+      "enzyme": {
+        "name": "1,2-Dihydroxynaphthalene dioxygenase (NahC)",
+        "ec_number": "1.13.11.56",
+        "gene_or_protein": "nahC",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "G7",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步及下游以P. putida G7（NAH7质粒）的Nah酶为代表；甲萘威降解菌（如C5pp）中由同源酶催化相同反应。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-2H-chromene-2-carboxylic acid",
+          "smiles": "O=C(O)C1(O)C=Cc2ccccc2O1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "trans-o-Hydroxybenzylidenepyruvate",
+          "smiles": "O=C(O)C(=O)C=Cc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "异构化（isomerization）",
+      "enzyme": {
+        "name": "2-Hydroxychromene-2-carboxylate isomerase (NahD)",
+        "ec_number": null,
+        "gene_or_protein": "nahD",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "G7",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "NahD的正式EC编号不确定（避免与EC 5.3.3.4 muconolactone isomerase混淆），故填null。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "trans-o-Hydroxybenzylidenepyruvate",
+          "smiles": "O=C(O)C(=O)C=Cc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Salicylaldehyde",
+          "smiles": "O=Cc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水合-醛缩裂解（hydration-aldol cleavage）",
+      "enzyme": {
+        "name": "trans-o-Hydroxybenzylidenepyruvate hydratase-aldolase (NahE)",
+        "ec_number": null,
+        "gene_or_protein": "nahE",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "G7",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "NahE的正式EC编号不确定，故填null。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "Salicylaldehyde",
+          "smiles": "O=Cc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Salicylic acid",
+          "smiles": "O=C(O)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱氢（aldehyde dehydrogenation）",
+      "enzyme": {
+        "name": "Salicylaldehyde dehydrogenase (NahF)",
+        "ec_number": "1.2.1.65",
+        "gene_or_protein": "nahF",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "G7",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 1.2.1.65（salicylaldehyde dehydrogenase）为中等置信。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "Salicylic acid",
+          "smiles": "O=C(O)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "羟基化脱羧（oxidative decarboxylation）",
+      "enzyme": {
+        "name": "Salicylate 1-hydroxylase (NahG)",
+        "ec_number": "1.14.13.1",
+        "gene_or_protein": "nahG",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "G7",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "Catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxymuconate semialdehyde",
+          "smiles": "O=C(O)C(O)=CC=CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧间位开环（meta ring cleavage）",
+      "enzyme": {
+        "name": "Catechol 2,3-dioxygenase (NahH)",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "nahH",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "G7",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "C5pp",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（mesophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧菌（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲萘威（carbaryl）为唯一碳源生长，也可利用1-萘酚等中间体",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解氨基甲酸酯类杀虫剂甲萘威，并进一步降解1-萘酚、水杨酸等芳香族中间体",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "甲萘威水解酶（NydA）与1-萘酚羟化酶（NydB）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤栖息的环境菌，自受农药影响的土壤中经甲萘威富集分离，适应土壤生境",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "G7",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（mesophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧菌（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以萘（naphthalene）为唯一碳源生长，也可利用水杨酸（salicylate）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "携带NAH7降解质粒，通过nah途径完全降解萘；水杨酸经邻苯二酚偏位（间位）裂解途径矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "NahC（1,2-二羟基萘双加氧酶）、NahD/NahE、NahF（水杨醛脱氢酶）、NahG（水杨酸1-羟化酶）、NahH（邻苯二酚2,3-双加氧酶）等萘/水杨酸降解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤来源的芳香烃降解菌，可在受芳香烃污染的土壤环境中定殖与富集",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Pyruvate", "2-Hydroxymuconate semialdehyde"],
+    "explanation": "主链第5步直接产生丙酮酸，可经丙酮酸脱氢酶系进入三羧酸循环；末端产物2-羟基黏康酸半醛经邻苯二酚偏位裂解下游途径（生成2-氧代戊-4-烯酸，再经水合与醛缩反应）转化为乙醛与丙酮酸，最终进入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "邻苯二酚偏位裂解下游途径（meta-cleavage lower pathway，NAH7质粒nahI–nahN）",
+      "summary": "2-羟基黏康酸半醛经脱氢或水解生成2-氧代戊-4-烯酸，再经水合、脱氢与醛缩等反应生成乙醛与丙酮酸，进入中心碳代谢。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "水杨酸经龙胆酸（gentisate）途径降解",
+      "summary": "部分萘/甲萘威降解菌以水杨酸5-羟化酶将水杨酸转化为龙胆酸，再经开环进入中心代谢；为已知的替代支路。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "甲萘威羟基化支路",
+      "summary": "少数微生物先将甲萘威羟基化为4-羟基或5-羟基甲萘威，再水解为相应羟基萘酚；为次要支路。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "10.1038/srep38430",
+      "locator": "Trivedi VD, Jangir PK, Sharma R, Phale PS. 2016. Insights into functional and evolutionary analysis of carbaryl metabolic pathway from Pseudomonas sp. strain C5pp. Scientific Reports 6:38430.",
+      "claim_scope": ["甲萘威在Pseudomonas sp. C5pp中的降解途径", "NydA（甲萘威水解酶）与NydB（1-萘酚羟化酶）", "菌株C5pp的生长条件与基本性状"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Dunn NW, Gunsalus IC. 1973. Transmissible plasmid coding early enzymes of naphthalene oxidation in Pseudomonas putida. Journal of Bacteriology 114(3):974-979.",
+      "claim_scope": ["Pseudomonas putida G7的NAH7降解质粒与nah基因", "萘/水杨酸降解下游酶系（NahC–NahH）", "菌株G7的底物利用与生长条件"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz / IUBMB Enzyme Nomenclature",
+      "record_id": null,
+      "locator": "EC 1.13.11.56; EC 1.2.1.65; EC 1.14.13.1; EC 1.13.11.2",
+      "claim_scope": ["酶名称与EC编号的对应关系"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD (UM-BBD) Biocatalysis/Biodegradation Database",
+      "record_id": "carbaryl pathway (car)",
+      "locator": "http://eawag-bbd.ethz.ch/car/car_map.html",
+      "claim_scope": ["甲萘威微生物降解主链的反应序列（carbaryl→1-naphthol→1,2-dihydroxynaphthalene→salicylaldehyde→salicylate→catechol）"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas属共性性状（革兰氏阴性、杆状、好氧、不产芽孢、具运动性）"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件题面未指定；本主链按好氧微生物降解途径给出。",
+    "甲萘威水解酶（NydA）与1-萘酚羟化酶（NydB）目前无正式EC编号，故填null。",
+    "NahD（2-hydroxychromene-2-carboxylate isomerase）与NahE（hydratase-aldolase）的EC编号不确定，故填null。",
+    "第3–8步以Pseudomonas putida G7（NAH7质粒）的经典nah酶为代表；在甲萘威降解菌（如Pseudomonas sp. C5pp）中由同源酶催化相同反应。C5pp可以甲萘威为唯一碳源完全降解，故complete_pathway_organism_profile_id指向ORG_001。",
+    "不同降解菌中水杨酸可经邻苯二酚或龙胆酸途径继续降解；本答案主链采用经典的邻苯二酚（偏位裂解）路线。",
+    "两株菌的NCBI TaxID、保藏编号与基因组登录号不确定，均如实填null。"
+  ]
+}

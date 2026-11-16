@@ -1,0 +1,149 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_141",
+  "pollutant_name_zh": "S-[1-(2-羟乙基)-1-甲基丁基]-L-半胱氨酰甘氨酸",
+  "pollutant_name_en": "S-[1-(2-hydroxyethyl)-1-methylbutyl]-(l)-cysteinylglycine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteinylglycine degradation",
+    "is_single_continuous_route": null,
+    "notes": "按半胱氨酰甘氨酸肽键水解后，再经半胱氨酸S-共轭物β-裂解处理。"
+  },
+  "route_summary": "主链包括S-共轭半胱氨酰甘氨酸的肽键水解，生成相应的S-共轭半胱氨酸和甘氨酸；随后S-共轭半胱氨酸经β-裂解生成4-甲基-4-巯基己醇衍生物、丙酮酸和氨。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteinylglycine",
+          "smiles": "N[C@@H](CSC(C)(CCC)CCO)C(=O)NCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteine",
+          "smiles": "N[C@@H](CSC(C)(CCC)CCO)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Glycine",
+          "smiles": "NCC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Cysteinylglycine peptide-bond hydrolysis",
+      "enzyme": {
+        "name": "Cysteinylglycine dipeptidase",
+        "ec_number": "3.4.13.6",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "具体微生物来源和该底物的直接实验证据未确定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteine",
+          "smiles": "N[C@@H](CSC(C)(CCC)CCO)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-Hydroxy-4-methylhexane-4-thiol",
+          "smiles": "OCCC(S)(C)CCC",
+          "role": "main"
+        },
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "byproduct"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Cysteine-S-conjugate beta-elimination",
+      "enzyme": {
+        "name": "Cysteine-S-conjugate beta-lyase",
+        "ec_number": "4.4.1.13",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "具体微生物、酶基因及该特定支链底物的直接反应证据未确定。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "Pyruvate",
+      "Ammonia",
+      "Glycine"
+    ],
+    "explanation": "丙酮酸可进入中心代谢，甘氨酸可经甘氨酸裂解或其他氨基酸代谢途径继续转化。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteinylglycine经肽键水解生成相应S-共轭半胱氨酸和甘氨酸",
+        "cysteinylglycine dipeptidase的候选EC分类"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "半胱氨酸S-共轭物经β-裂解生成相应硫醇、丙酮酸和氨",
+        "cysteine-S-conjugate beta-lyase的候选EC分类"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未指定氧条件。",
+    "未确认能够完成该特定底物主链的单一微生物或菌株。",
+    "酶和EC归类依据通用反应类型，缺少该特定化合物的直接实验证据。"
+  ]
+}

@@ -1,0 +1,866 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_004",
+  "pollutant_name_zh": "咖啡因",
+  "pollutant_name_en": "Caffeine",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Caffeine (fungal) pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定的真菌路线作答：好氧条件下真菌先经N7脱甲基将咖啡因转化为茶碱，再逐步脱甲基至黄嘌呤，随后进入真菌嘌呤分解代谢。"
+  },
+  "route_summary": "好氧条件下，真菌将咖啡因（1,3,7-三甲基黄嘌呤）先经N7-脱甲基生成茶碱（1,3-二甲基黄嘌呤，脱下的甲基以甲醛释放），茶碱再经N1-脱甲基生成3-甲基黄嘌呤，后者经N3-脱甲基生成黄嘌呤；黄嘌呤经黄嘌呤脱氢酶（EC 1.17.1.4）氧化为尿酸，尿酸经尿酸氧化酶（EC 1.7.3.0）氧化开环生成尿囊素（副产CO2与H2O2），尿囊素经尿囊素酶（EC 3.5.2.5）水解为尿囊酸，尿囊酸经尿囊酸酶分解为尿素与(S)-尿基乙酸，后者经尿基乙酸水解酶生成乙醛酸，乙醛酸进入乙醛酸循环而接入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Caffeine",
+          "smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Theophylline",
+          "smiles": "CN1C(=O)N(C)C(=O)C2=C1N=CN2",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化性N-脱甲基（N7位脱甲基）",
+      "enzyme": {
+        "name": "caffeine N7-demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus tamarii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "真菌途径首步经N7脱甲基生成茶碱为综述性知识，该酶未见纯化鉴定报道，EC编号与基因名未知。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Theophylline",
+          "smiles": "CN1C(=O)N(C)C(=O)C2=C1N=CN2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Methylxanthine",
+          "smiles": "CN1C(=O)NC(=O)C2=C1N=CN2",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化性N-脱甲基（N1位脱甲基）",
+      "enzyme": {
+        "name": "theophylline N1-demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus tamarii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "茶碱脱甲基生成3-甲基黄嘌呤为经典真菌途径描述；酶未鉴定，EC与基因未知。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-Methylxanthine",
+          "smiles": "CN1C(=O)NC(=O)C2=C1N=CN2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Xanthine",
+          "smiles": "N1C(=O)NC(=O)C2=C1N=CN2",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化性N-脱甲基（N3位脱甲基）",
+      "enzyme": {
+        "name": "3-methylxanthine N3-demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus tamarii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "3-甲基黄嘌呤脱去N3甲基生成黄嘌呤为经典真菌途径描述；酶未鉴定，EC与基因未知。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "Xanthine",
+          "smiles": "N1C(=O)NC(=O)C2=C1N=CN2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Uric acid",
+          "smiles": "N1C(=O)NC(=O)C2=C1NC(=O)N2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化（C8位氧化，黄嘌呤氧化为尿酸）",
+      "enzyme": {
+        "name": "xanthine dehydrogenase",
+        "ec_number": "1.17.1.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus nidulans",
+        "strain": null,
+        "ncbi_taxid": 162425,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "真菌中黄嘌呤氧化可由黄嘌呤脱氢酶（EC 1.17.1.4）或黄嘌呤氧化酶（EC 1.17.3.2）催化，此处按构巢曲霉的黄嘌呤脱氢酶填写。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "Uric acid",
+          "smiles": "N1C(=O)NC(=O)C2=C1NC(=O)N2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Allantoin",
+          "smiles": "O=C1NC(=O)NC1NC(=O)N",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "Hydrogen peroxide",
+          "smiles": "OO",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化开环（尿酸氧化开环生成尿囊素）",
+      "enzyme": {
+        "name": "urate oxidase (uricase)",
+        "ec_number": "1.7.3.0",
+        "gene_or_protein": "uaZ",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus nidulans",
+        "strain": null,
+        "ncbi_taxid": 162425,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "尿酸酶反应经5-羟基异尿酸中间体，此处按总反应（尿囊素+CO2+H2O2）计。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "Allantoin",
+          "smiles": "O=C1NC(=O)NC1NC(=O)N",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Allantoate",
+          "smiles": "NC(=O)NC(NC(=O)N)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解（乙内酰脲环开环）",
+      "enzyme": {
+        "name": "allantoinase",
+        "ec_number": "3.5.2.5",
+        "gene_or_protein": "DAL1",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": null,
+        "ncbi_taxid": 4932,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "尿囊素酶作用于(S)-尿囊素；酿酒酵母为该步研究最充分的真菌模型。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "Allantoate",
+          "smiles": "NC(=O)NC(NC(=O)N)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-Ureidoglycolate",
+          "smiles": "NC(=O)NC(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Urea",
+          "smiles": "NC(=O)N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解（尿囊酸裂解为尿素与尿基乙酸）",
+      "enzyme": {
+        "name": "allantoicase",
+        "ec_number": null,
+        "gene_or_protein": "DAL2",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": null,
+        "ncbi_taxid": 4932,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "不同生物中尿囊酸分解存在尿囊酸酶（生成尿素+尿基乙酸）与尿囊酸酰胺水解酶（经尿基甘氨酸）两种路线；EC编号未能可靠确认，填null。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S7"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-Ureidoglycolate",
+          "smiles": "NC(=O)NC(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Glyoxylic acid",
+          "smiles": "O=CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Urea",
+          "smiles": "NC(=O)N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解（尿基乙酸裂解为尿素与乙醛酸）",
+      "enzyme": {
+        "name": "ureidoglycolate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": "DAL3",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": null,
+        "ncbi_taxid": 4932,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "酵母中该步亦可由尿基乙酸酰胺水解酶水解释放氨与CO2而非尿素；EC编号未能可靠确认，填null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Aspergillus tamarii",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可降解并利用咖啡因（及咖啡浆等基质中的糖类）作为碳源与氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解甲基黄嘌呤类嘌呤生物碱（咖啡因及其脱甲基中间体）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "咖啡因N-脱甲基活性（推测经N7脱甲基生成茶碱）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "非运动性（菌丝体生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "丝状真菌，具分隔菌丝与分生孢子梗",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "真菌型细胞包膜（几丁质-葡聚糖细胞壁），革兰染色不适用",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "产生分生孢子（无性孢子），不产生芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤与植物性基质（含咖啡浆、咖啡种植环境）中的腐生真菌，栖息广适性中等",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Aspergillus nidulans",
+      "strain": null,
+      "ncbi_taxid": 162425,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温性，约37 °C生长最好"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "FGSC",
+            "accession": "A4"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用多种糖类作为碳源；可利用黄嘌呤、尿酸等嘌呤化合物作为氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "嘌呤分解代谢完整（黄嘌呤→尿酸→尿囊素→尿囊酸），是真菌嘌呤代谢研究的经典模式菌",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "黄嘌呤脱氢酶与尿酸氧化酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "非运动性（菌丝体生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "有隔菌丝的丝状真菌；分生孢子梗产生分生孢子，有性型形成闭囊壳",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "真菌型细胞包膜（几丁质-葡聚糖细胞壁），革兰染色不适用",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "产生分生孢子（无性）与子囊孢子（有性，着生于闭囊壳内）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "全球分布的土壤腐生菌，亦为经典实验室模式生物，栖息广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Saccharomyces cerevisiae",
+      "strain": null,
+      "ncbi_taxid": 4932,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温性，约28–30 °C最适培养"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（可行有氧呼吸或发酵生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧（发酵或有氧呼吸）",
+            "terminal_electron_acceptor": "O2（分子氧，呼吸时）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用葡萄糖、果糖、蔗糖等多种糖类进行发酵或有氧生长；可利用尿囊素、尿囊酸等作为氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具完整的尿囊素分解代谢途径（DAL基因簇），可利用嘌呤降解中间体作为氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "尿囊素酶（DAL1）与尿囊酸酶（DAL2）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "非运动性（出芽繁殖）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "单细胞出芽酵母，细胞圆形至卵形",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "酵母细胞壁（葡聚糖-甘露聚糖-几丁质）；革兰染色通常呈阳性着色",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "以出芽行无性繁殖；二倍体细胞可经减数分裂形成子囊孢子（每子囊4个）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性酵母：自然见于果实、树液等富糖环境，并广泛适应工业与实验室环境",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "Glyoxylic acid (乙醛酸)"
+    ],
+    "explanation": "乙醛酸进入乙醛酸循环，与中心碳代谢衔接；副产物尿素可进一步经脲酶水解释放氨进入氮代谢，各脱甲基步骤释放的甲醛可经甲醛脱氢酶氧化并入C1代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "尿素水解（脲酶）",
+      "summary": "副产物尿素经脲酶（EC 3.5.1.5）水解为2分子氨与CO2，氨进入微生物氮代谢。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "细菌路线（经可可碱）",
+      "summary": "细菌（如Pseudomonas putida CBB5，NdmA/NdmB/NdmC酶系）先经N1-脱甲基将咖啡因转化为可可碱（3,7-二甲基黄嘌呤），再经7-甲基黄嘌呤到黄嘌呤；另有Pseudomonas sp. CBB1经1,3,7-三甲基尿酸的氧化路线。均不属于本题真菌主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "主链反应化学（真菌、好氧）：咖啡因→茶碱→3-甲基黄嘌呤→黄嘌呤→尿酸→尿囊素→尿囊酸→(S)-尿基乙酸→乙醛酸",
+        "S1–S3酶（咖啡因/甲基黄嘌呤N-脱甲基酶，EC未知）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "记忆性文献依据：Hakil等（约1999年）报道丝状真菌Aspergillus tamarii可降解咖啡因（咖啡浆/咖啡种植环境分离株）；未能给出确切文献条目编号",
+      "claim_scope": [
+        "Aspergillus tamarii降解咖啡因（S1–S3对应微生物、底物利用与栖息性状）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "构巢曲霉嘌呤分解代谢：黄嘌呤脱氢酶（EC 1.17.1.4）与尿酸氧化酶uaZ（EC 1.7.3.0）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "酿酒酵母尿囊素分解代谢基因：DAL1（尿囊素酶，EC 3.5.2.5）、DAL2（尿囊酸酶）、DAL3（尿基乙酸水解酶）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "PubChem",
+      "record_id": null,
+      "locator": "PubChem化合物条目的canonical SMILES（如caffeine、theophylline、xanthine、uric acid、allantoin等结构式）",
+      "claim_scope": [
+        "各步化合物英文名与SMILES"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "丝状真菌一般生理性状：专性好氧、菌丝体、非运动性、几丁质-葡聚糖细胞壁、分生孢子"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "构巢曲霉一般性状：约37 °C最适生长、参考菌株FGSC A4、有性型闭囊壳与子囊孢子"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "酿酒酵母一般性状：约30 °C最适、兼性厌氧、出芽酵母形态、子囊孢子、TaxID 4932"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "真菌途径首步脱甲基位置（生成茶碱）依据综述性知识；个别文献报道真菌降解咖啡因时亦积累可可碱，故S1产物选择存在中等不确定性。",
+    "真菌咖啡因N-脱甲基酶尚未被纯化鉴定，无可用EC编号与基因名，S1–S3酶按反应描述性命名，置信度low。",
+    "Aspergillus tamarii作为降解菌的依据为记忆性文献（Hakil等，约1999），未能给出确切文献编号，对应证据置信度low。",
+    "尿囊酸→(S)-尿基乙酸→乙醛酸两步在不同真菌中存在路径差异（尿囊酸酶/尿基乙酸路线 vs 尿囊酸酰胺水解酶/尿基甘氨酸路线），此处按经典尿囊酸酶路线填写。",
+    "S7、S8酶的EC编号未能可靠回忆，按规则填null，不作猜测。",
+    "多数菌体性状（温度区间、pH、盐度、基因组信息等）缺乏可引用的确切数值，按规则填null，置信度unknown。"
+  ]
+}

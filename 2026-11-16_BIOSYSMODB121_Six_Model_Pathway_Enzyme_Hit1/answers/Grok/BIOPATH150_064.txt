@@ -1,0 +1,393 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_064",
+  "pollutant_name_zh": "3,4-二羟基苯磺酸根",
+  "pollutant_name_en": "3,4-Dihydroxybenzenesulfonate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-sulfocatechol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。该路线为4-磺基儿茶酚（即3,4-二羟基苯磺酸根）的好氧邻位开环降解，第一步双加氧酶必须消耗分子氧，故氧条件记为aerobic。主链以Hydrogenophaga intermedia S1中已报道的路线为代表，止于3-氧代己二酸进入β-酮己二酸途径。"
+  },
+  "route_summary": "3,4-二羟基苯磺酸根（4-sulfocatechol）经原儿茶酸3,4-双加氧酶型酶邻位开环生成3-磺基-顺,顺-粘康酸，再由环异构酶内酯化为4-磺基粘康酸内酯；内酯水解并脱去亚硫酸盐生成马来酰乙酸，随后由马来酰乙酸还原酶还原为3-氧代己二酸，进入β-酮己二酸途径并汇入琥珀酰CoA与乙酰CoA。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3,4-dihydroxybenzenesulfonate",
+          "smiles": "O=S(=O)([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-sulfo-cis,cis-muconate",
+          "smiles": "[O-]C(=O)C=C(S(=O)(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧邻位开环",
+      "enzyme": {
+        "name": "4-sulfocatechol-oxidizing protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该酶在文献中鉴定为可氧化4-磺基儿茶酚的原儿茶酸3,4-双加氧酶（EC 1.13.11.3）；EC标准反应底物是原儿茶酸，本路线中的生理底物是3,4-二羟基苯磺酸根，产物为3-磺基-顺,顺-粘康酸。基因符号未确认，故置null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-sulfo-cis,cis-muconate",
+          "smiles": "[O-]C(=O)C=C(S(=O)(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-sulfomuconolactone",
+          "smiles": "O=C1C=CC(CC(=O)[O-])(S(=O)(=O)[O-])O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环异构化内酯化",
+      "enzyme": {
+        "name": "3-sulfomuconate cycloisomerase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "Halak等将该酶描述为4-磺基儿茶酚途径中的3-羧基-顺,顺-粘康酸内酯化酶同源蛋白，催化3-磺基粘康酸生成4-磺基粘康酸内酯。与EC 5.5.1.2同源，但磺酸底物反应尚无已确认的独立EC编号，故ec_number为null。基因符号未确认。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-sulfomuconolactone",
+          "smiles": "O=C1C=CC(CC(=O)[O-])(S(=O)(=O)[O-])O1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylacetate",
+          "smiles": "[O-]C(=O)C=CC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "sulfite",
+          "smiles": "[O-]S(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱亚硫酸盐",
+      "enzyme": {
+        "name": "4-sulfomuconolactone hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "4-磺基粘康酸内酯水解酶已从Hydrogenophaga intermedia S1鉴定，产物为马来酰乙酸和亚硫酸盐。未确认独立EC编号与基因符号，故相应字段为null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "maleylacetate",
+          "smiles": "[O-]C(=O)C=CC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "[O-]C(=O)CCC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "马来酰乙酸还原为3-氧代己二酸是该路线进入中心代谢的既定后续反应，EC 1.3.1.32可靠；但未能确认该还原酶已在Hydrogenophaga intermedia S1中被单独纯化鉴定，菌株归属为途径推断，置信度为medium。该酶亦可使用NADPH，此处只列NADH一个辅因子。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Hydrogenophaga intermedia",
+      "strain": "S1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSMZ",
+            "accession": "DSM 5680"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用4-氨基苯磺酸盐作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具有4-磺基儿茶酚降解途径，可转化磺化芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有氧化4-磺基儿茶酚的原儿茶酸3,4-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "3-氧代己二酸是本路线进入中心代谢的节点，经β-酮己二酸途径的CoA转移与硫解生成琥珀酰CoA和乙酰CoA。这两步属于共享的中心途径，未列入被评分主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-oxoadipate pathway",
+      "summary": "3-氧代己二酸经3-氧代己二酸CoA转移酶与3-氧代己二酰CoA硫解酶转化为琥珀酰CoA和乙酰CoA，随后进入TCA循环。此为共享下游，不是4-磺基儿茶酚途径特有步骤。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Contzen M, Bürger S, Stolz A. 2001. Cloning of the genes for a 4-sulphocatechol-oxidizing protocatechuate 3,4-dioxygenase from Hydrogenophaga intermedia S1. Molecular Microbiology.",
+      "claim_scope": ["S1_reaction", "S1_enzyme", "S1_organism", "F9_enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Halak S, Basta T, Bürger S, Contzen M, Stolz A. 2006. Characterization of the genes encoding the 3-carboxy-cis,cis-muconate-lactonizing enzymes from the 4-sulfocatechol degradative pathways of Hydrogenophaga intermedia S1 and Agrobacterium radiobacter S2. Microbiology.",
+      "claim_scope": ["S2_reaction", "S2_enzyme", "S2_organism", "F8_degradation_capacity_broad"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Halak S, et al. 2007. 4-Sulfomuconolactone hydrolases from Hydrogenophaga intermedia S1 and Agrobacterium radiobacter S2. Journal of Bacteriology.",
+      "claim_scope": ["S3_reaction", "S3_enzyme", "S3_organism", "maleylacetate_and_sulfite_products"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Contzen M, Moore ERB, Blümel S, Stolz A, Kämpfer P. 2000. Hydrogenophaga intermedia sp. nov., a 4-aminobenzenesulfonate degrading organism. Systematic and Applied Microbiology. Type strain S1 = DSM 5680.",
+      "claim_scope": ["species_identity", "DSM_5680", "F1_oxygen_tolerance", "F6_respiration", "F7_carbon_substrate", "F11_cell_morphology", "F12_gram_cell_envelope"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "1.3.1.32",
+      "locator": "EC 1.3.1.32 maleylacetate reductase: maleylacetate + NAD(P)H = 3-oxoadipate + NAD(P)+",
+      "claim_scope": ["S4_enzyme_identity", "S4_ec_number"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": "由EVID_003所示S1的4-磺基粘康酸内酯水解酶生成马来酰乙酸，以及4-磺基儿茶酚降解途径的既定后续反应（EC 1.3.1.32）推断S1执行该还原步；未见该还原酶在S1中被单独纯化的直接记录。",
+      "claim_scope": ["S4_reaction", "S4_organism_link"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Hydrogenophaga为革兰氏阴性、不产芽孢的运动性β-变形菌；S1的运动性与不产芽孢按属级特征填写，无逐字原文。",
+      "claim_scope": ["F10_motility", "F13_sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为未指定；根据双加氧酶反应将本路线记为aerobic。",
+    "第2步与第3步酶没有已确认的独立EC编号，ec_number按要求置null，不套用同源酶EC 5.5.1.2。",
+    "第4步马来酰乙酸还原酶的EC编号可靠，但其在Hydrogenophaga intermedia S1中的直接酶学鉴定未确认，菌株归属为途径推断。",
+    "NCBI TaxID、基因组登录号、温度极值、pH和盐度范围没有可核对的原始数值，一律置null，不估算。",
+    "性状无可用逐字原文，raw_text均为null。仅知分离来源不能当作栖息地广适性，故F15为null。",
+    "SMILES采用阴离子连接关系写法，3-磺基粘康酸与马来酰乙酸的顺式构型以英文名表示，未在SMILES中强制立体标记。",
+    "Agrobacterium radiobacter S2同样具有该途径的环异构酶和内酯水解酶，但本主链每步只绑定一个代表菌，未另建档案。"
+  ]
+}

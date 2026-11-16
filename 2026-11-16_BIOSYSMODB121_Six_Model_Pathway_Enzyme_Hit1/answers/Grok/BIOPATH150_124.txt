@@ -1,0 +1,259 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_124",
+  "pollutant_name_zh": "异丁烯",
+  "pollutant_name_en": "Isobutylene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "2-methylpropene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面氧条件未指定。已报道的微生物主链依赖分子氧的烯烃单加氧，故填aerobic。本答案只保留环氧化—水解—两步脱氢这一条连续主链；烯丙位羟化及辅酶M开环不计入评分主链。菌株级催化剂无法无猜测地绑定，微生物字段置空。"
+  },
+  "route_summary": "异丁烯（2-methylpropene）的好氧微生物降解主链为：烯烃单加氧酶将双键环氧化为2,2-二甲基环氧乙烷，再水解为2-甲基丙烷-1,2-二醇；伯羟基与醛基依次脱氢，生成2-羟基-2-甲基丙酸。后三步仅能确定反应类型，不能确认具体EC与对应菌株。2-羟基-2-甲基丙酸可进一步经辅酶A变位进入中心代谢，但该衔接不作为本题已确认主链步骤。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-methylpropene",
+          "smiles": "CC(C)=C",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,2-dimethyloxirane",
+          "smiles": "CC1(C)CO1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧环氧化",
+      "enzyme": {
+        "name": "alkene monooxygenase",
+        "ec_number": "1.14.13.69",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "EC 1.14.13.69的法定反应底物是丙烯，注释中可作用于其他短链烯烃；异丁烯是否为其生理底物、以及哪一株菌在生长条件下催化该步，本次不能无猜测确认，故微生物置空。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2,2-dimethyloxirane",
+          "smiles": "CC1(C)CO1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-methylpropane-1,2-diol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环氧化物水解",
+      "enzyme": {
+        "name": "epoxide hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "开环生成2-甲基丙烷-1,2-二醇是常见推测；亦可能走辅酶M或谷胱甘肽依赖开环。未确认具体EC与微生物，故EC与微生物置空。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-methylpropane-1,2-diol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-2-methylpropanal",
+          "smiles": "CC(C)(O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "伯醇脱氢",
+      "enzyme": {
+        "name": "alcohol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "仅伯羟基可被脱氢，叔羟基保留，醛产物应为2-羟基-2-甲基丙醛。电子受体是否必为NAD+、以及具体脱氢酶EC，均未确认。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-2-methylpropanal",
+          "smiles": "CC(C)(O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-2-methylpropanoic acid",
+          "smiles": "CC(C)(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛脱氢",
+      "enzyme": {
+        "name": "aldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "醛氧化为2-羟基-2-甲基丙酸在代谢上合理，但缺少异丁烯降解菌中该酶的纯化、EC编号与菌株证据。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["2-hydroxy-2-methylpropanoic acid"],
+    "explanation": "本评分主链的明确终点是2-羟基-2-甲基丙酸。它在其他底物（如甲基叔丁基醚）的降解菌中可活化为2-羟基异丁酰-CoA并异构为3-羟基丁酰-CoA，再生成乙酰辅酶A，但该衔接未作为异丁烯降解主链步骤确认。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2-hydroxyisobutyrate assimilation to acetyl-CoA",
+      "summary": "2-羟基-2-甲基丙酸可经CoA连接酶生成2-羟基异丁酰-CoA，再由B12依赖变位酶转为3-羟基丁酰-CoA，随后经脱氢与硫解进入乙酰辅酶A。该路线主要在叔丁醇/MTBE降解菌中得到证实，此处仅作下游延续，不计入评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "allylic hydroxylation to methacrylate",
+      "summary": "异丁烯也可经烯丙位羟化生成2-甲基-2-丙烯-1-醇，再氧化为2-甲基-2-丙烯醛和2-甲基-2-丙烯酸。这不是细菌烯烃单加氧酶的主产物路线。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "coenzyme M-dependent epoxide cleavage",
+      "summary": "在丙烯利用菌中，环氧烷烃可通过辅酶M转移酶开环，而不是简单水解为二醇。异丁烯是否走同一路线未被确认。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "aerobic microbial alkene epoxidation followed by diol and aldehyde oxidation",
+      "claim_scope": ["route_summary", "S1_reaction", "S2_reaction", "S3_reaction", "S4_reaction", "S2_enzyme", "S3_enzyme", "S4_enzyme"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB EC 1.14.13.69 alkene monooxygenase; physiological reaction written for propene, reported from alkene-oxidizing bacteria",
+      "claim_scope": ["S1_enzyme"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；厌氧降解主链没有可核对记录，本答案仅整理好氧环氧化主链。",
+    "未能将任何一步无猜测地绑定到具体菌株，因此microorganism与organism_profiles为空，15项性状无从落在已确认的物种-菌株上。",
+    "EC 1.14.13.69官方底物为丙烯；用它代表异丁烯环氧化是酶类层面的对应，不是已核对的异丁烯动力学记录。",
+    "步骤2至4的酶名为反应类型所指的催化类，不是已纯化酶；EC、基因和微生物均置空。",
+    "2-羟基异丁酰-CoA变位途径与烯丙位羟化、辅酶M开环均未列入评分主链。"
+  ]
+}

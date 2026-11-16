@@ -1,0 +1,255 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_087",
+  "pollutant_name_zh": "2-羟基-3-磺酸基丙酸根",
+  "pollutant_name_en": "2-Hydroxy-3-sulfonatopropanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfolactate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面氧条件未指定，按题面保留 null；该路线为单步 C–S 键裂解反应，反应本身不直接依赖分子氧。"
+  },
+  "route_summary": "磺基乳酸降解II（sulfolactate degradation II）是一条单步主链：在 Bacillus subtilis subsp. subtilis 168 中，(2R)-磺基乳酸（2-羟基-3-磺酸基丙酸根）由双组分酶 (2R)-3-sulfolactate sulfo-lyase（SuyAB，EC 4.4.1.24）直接裂解 C–S 键，生成丙酮酸与亚硫酸氢盐。丙酮酸进入中心碳代谢，亚硫酸（氢）盐进入硫同化或被排出。与该路线并存的 sulfolactate degradation I（经磺基丙酮酸、磺基乙醛、Xsc）不属于本题评分主链，仅列为备选分支。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-3-sulfonatopropanoate",
+          "smiles": "O=C([O-])C(O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Hydrogen sulfite",
+          "smiles": "O=S([O-])O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C–S键裂解（磺基裂解酶，sulfo-lyase，脱磺基生成丙酮酸）",
+      "enzyme": {
+        "name": "(2R)-3-sulfolactate sulfo-lyase",
+        "ec_number": "4.4.1.24",
+        "gene_or_protein": "SuyAB（suyA/suyB 双组分）",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bacillus subtilis subsp. subtilis",
+        "strain": "168",
+        "ncbi_taxid": 224308,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "SuyAB 的已表征天然底物为 (2R)-构型的 3-磺基乳酸，题面污染物未指定立体构型；SuyAB 的具体基因座标签与辅因子需求未填写以避免臆测；该步反应不直接消耗氧。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Bacillus subtilis subsp. subtilis",
+      "strain": "168",
+      "ncbi_taxid": 224308,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（facultatively anaerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSMZ",
+            "accession": "DSM 402"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸为主（兼性厌氧，可行发酵与硝酸盐呼吸）",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "葡萄糖、甘油及多种有机酸等常见碳源；并可降解 (2R)-磺基乳酸作为有机硫源/底物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "能利用多种脂肪族磺酸盐（含磺基乳酸、牛磺酸等）作为硫源，并分泌淀粉酶、蛋白酶等多种胞外酶降解大分子有机物",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "(2R)-3-磺基乳酸磺基裂解酶活性（SuyAB，EC 4.4.1.24）：将 (2R)-磺基乳酸裂解为丙酮酸与亚硫酸氢盐",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细胞（可单生或成链）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "形成内生芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000964.3",
+            "genome_size_bp": 4215606,
+            "gc_percent": 43.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适：广泛存在于土壤、水体、植物表面与根际、尘埃等多种生境",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Pyruvate"],
+    "explanation": "主链产物丙酮酸可直接进入中心碳代谢（丙酮酸脱氢及 TCA 循环）；副产物亚硫酸氢盐进入硫代谢（可经同化型还原生成硫化物用于半胱氨酸合成，或被排出）。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "亚硫酸氢盐的同化",
+      "summary": "S1 释放的亚硫酸（氢）盐可在 Bacillus subtilis 中经同化型硫还原途径生成硫化物并掺入半胱氨酸；该部分不计入本题评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "sulfolactate degradation I（经磺基丙酮酸与磺基乙醛）",
+      "summary": "在 Chromohalobacter salexigens DSM 3043 等菌中，(R)-磺基乳酸先经两种脱氢酶差向异构为 (S)-磺基乳酸，再氧化为磺基丙酮酸、脱羧生成磺基乙醛，最终由磺基乙醛乙酰转移酶（Xsc，EC 2.3.1.25）生成乙酰辅酶A并释放亚硫酸盐；该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc/BioCyc",
+      "record_id": "sulfolactate degradation II",
+      "locator": null,
+      "claim_scope": ["route_main_route", "reaction", "enzyme_assignment", "organism_assignment"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz Enzyme Nomenclature",
+      "record_id": "EC 4.4.1.24",
+      "locator": null,
+      "claim_scope": ["enzyme_ec", "reaction_stoichiometry"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "224308",
+      "locator": null,
+      "claim_scope": ["organism_identity", "ncbi_taxid"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000964.3",
+      "locator": null,
+      "claim_scope": ["genome_basic"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["organism_traits_general", "culture_collection", "growth_conditions"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "整条主链仅一步反应，由同一菌株 Bacillus subtilis subsp. subtilis 168 完成。",
+    "题面污染物未指定立体构型，而 SuyAB（EC 4.4.1.24）已表征的底物为 (2R)-3-磺基乳酸。",
+    "DSM 402 保藏编号、最适温度约 37 °C、最适 pH 约 7.0 等来自内部知识，未经当次数据库核对，相应置信度标为 low。",
+    "SuyAB 的基因座标签、辅因子需求及该途径的原始文献条目未填写，以避免臆测。"
+  ]
+}

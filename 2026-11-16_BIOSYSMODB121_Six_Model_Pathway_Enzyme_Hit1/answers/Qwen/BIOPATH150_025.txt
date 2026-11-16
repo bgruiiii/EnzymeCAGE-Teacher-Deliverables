@@ -1,0 +1,326 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_025",
+  "pollutant_name_zh": "对甲苯甲酸根",
+  "pollutant_name_en": "p-Toluate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-toluenecarboxylate degradation",
+    "is_single_continuous_route": null,
+    "notes": "题面指定路线为 4-toluenecarboxylate degradation；氧条件未指定，保留为 null。"
+  },
+  "route_summary": "在 Pseudomonas putida mt-2 相关的 TOL 型芳香烃降解途径中，对甲苯甲酸根可经双加氧酶作用脱羧生成 4-methylcatechol，再经 catechol 2,3-dioxygenase 开环进入间位裂解途径。由于甲基化中间体的正式命名、部分酶编号及下游终产物存在不确定性，本答案仅给出较保守的主链步骤，并将不确定项标为低置信度或 null。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-toluenecarboxylate",
+          "smiles": "Cc1ccc(C(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-methylcatechol",
+          "smiles": "Cc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "oxidative dearomatization / decarboxylation",
+      "enzyme": {
+        "name": "toluate/benzoate 1,2-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "对甲苯甲酸根特异性双加氧酶的正式 EC 编号不确定，因此 EC 编号填 null；反应整体按 TOL 型途径中苯甲酸/甲苯甲酸双加氧反应保守表示。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-methylcatechol",
+          "smiles": "Cc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-4-methyl-6-oxohexa-2,4-dienoate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring-cleavage dioxygenation",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "甲基化邻苯二酚开环产物在不同数据库或文献中的命名可能存在变体，此处按 2,3-开环半醛形式表示。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxy-4-methyl-6-oxohexa-2,4-dienoate",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "unknown"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-methyl-2-oxopent-4-enoate",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "formate",
+          "smiles": "[O-]C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2-hydroxy-4-methylmuconate-semialdehyde hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该水解酶对甲基化半醛底物的特异性、正式 EC 编号及产物命名不确定，因此 EC 编号填 null；下游继续进入中心代谢的具体终产物也未在本答案中强行展开。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": "Pseudomonas putida is generally a mesophilic environmental bacterium.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": "Pseudomonas putida is an aerobic, non-fermentative bacterium.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "33015"
+          },
+          "raw_text": "Pseudomonas putida mt-2 is commonly associated with culture collection deposition ATCC 33015.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "Pseudomonas putida primarily performs aerobic respiration with oxygen as terminal electron acceptor.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用对甲苯甲酸根、甲苯、二甲苯及苯甲酸类芳香族化合物作为碳源",
+          "raw_text": "TOL plasmid-associated pathways enable utilization of toluene, xylenes and methylbenzoates such as p-toluate.",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解芳香烃及芳香羧酸类化合物，包括甲苯、二甲苯和甲苯甲酸类底物",
+          "raw_text": "Pseudomonas putida mt-2 harbors TOL-plasmid functions for degradation of aromatic hydrocarbons and aromatic carboxylates.",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 catechol 2,3-dioxygenase 活性，可开环降解甲基邻苯二酚类中间体",
+          "raw_text": "Catechol 2,3-dioxygenase activity is a key lower-pathway activity in TOL-type aromatic degradation.",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": "Pseudomonas putida is generally motile.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": "Pseudomonas putida cells are rod-shaped.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Pseudomonas putida is a Gram-negative bacterium.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": "Pseudomonas putida does not form spores.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "常见于土壤、水体及污染场地等环境，栖息范围较广",
+          "raw_text": "Pseudomonas putida is commonly isolated from soil, water and contaminated environments.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "间位裂解下游通常会将开环产物进一步转化为小分子中心代谢物，但甲基化分支的正式终产物和酶编号不确定，因此此处不填写具体产物。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "meta-cleavage downstream continuation",
+      "summary": "可能经水合酶、醛缩酶等进一步生成中心代谢小分子；因甲基化分支终产物不确定，未列入被评分主链步骤。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "4-toluenecarboxylate degradation; Pseudomonas putida mt-2 TOL-plasmid lower pathway",
+      "claim_scope": [
+        "steps",
+        "enzyme",
+        "microorganism",
+        "organism_traits"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general physiological and taxonomic knowledge for Pseudomonas putida",
+      "claim_scope": [
+        "organism_traits"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未由题面指定，因此 route_scope.oxygen_condition 保留 null。",
+    "对甲苯甲酸根特异性双加氧酶的正式 EC 编号不确定，故相关 EC 填 null。",
+    "甲基化间位裂解下游的正式中间体命名、酶编号和最终中心代谢产物存在不确定性，因此未展开为高置信度步骤。"
+  ]
+}

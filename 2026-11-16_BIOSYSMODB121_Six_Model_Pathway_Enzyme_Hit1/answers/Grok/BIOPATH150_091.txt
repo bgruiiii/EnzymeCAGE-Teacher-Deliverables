@@ -1,0 +1,433 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_091",
+  "pollutant_name_zh": "D-半乳糖",
+  "pollutant_name_en": "D-Galactose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-galactose degradation IV",
+    "is_single_continuous_route": true,
+    "notes": "氧条件按题面保持null。chosen_route_name原样使用题面名称。本答案将该名称解释为丝状真菌氧化还原型D-半乳糖降解主链（D-半乳糖→半乳糖醇→L-木糖-3-己酮糖→D-山梨醇→D-果糖→D-果糖-6-磷酸）。该罗马数字与具体生物化学路线的对应未经数据库页面核对，见uncertainties。"
+  },
+  "route_summary": "按D-galactose degradation IV解释的主链为丝状真菌氧化还原途径：D-半乳糖由NADPH依赖醛糖还原酶还原为半乳糖醇，半乳糖醇脱氢酶将其氧化为L-木糖-3-己酮糖，再由NADPH依赖还原酶生成D-山梨醇，山梨醇脱氢酶氧化为D-果糖，己糖激酶磷酸化为D-果糖-6-磷酸后进入糖酵解。代表微生物为Aspergillus niger。该编号归属存在不确定性。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-galactose",
+          "smiles": "OC[C@H]1O[C@@H](O)[C@H](O)[C@@H](O)[C@H]1O",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "galactitol",
+          "smiles": "OC[C@H](O)[C@@H](O)[C@@H](O)[C@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "还原反应",
+      "enzyme": {
+        "name": "aldose reductase",
+        "ec_number": "1.1.1.21",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": null,
+        "ncbi_taxid": 5061,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "生理酶可能是广谱醛糖还原酶或木糖还原酶的交叉活性，负责基因未唯一确定。路线名IV与本反应序列的对应亦未直接核对。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "galactitol",
+          "smiles": "OC[C@H](O)[C@@H](O)[C@@H](O)[C@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-xylo-3-hexulose",
+          "smiles": "OCC(O)C(=O)C(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "氧化反应",
+      "enzyme": {
+        "name": "galactitol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "LadB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": null,
+        "ncbi_taxid": 5061,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "产物为L-xylo-3-hexulose而非D-塔格糖，故不能使用EC 1.1.1.16；LadB的正式EC编号未知。SMILES仅表示3-己酮糖连接方式，未标注立体化学。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "L-xylo-3-hexulose",
+          "smiles": "OCC(O)C(=O)C(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-sorbitol",
+          "smiles": "OC[C@H](O)[C@@H](O)[C@H](O)[C@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "还原反应",
+      "enzyme": {
+        "name": "L-xylo-3-hexulose reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": null,
+        "ncbi_taxid": 5061,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该还原酶在丝状真菌中被鉴定为途径缺失环节，但EC编号和基因符号不能确认；最先清晰鉴定的物种可能是Trichoderma reesei而非本步所填的Aspergillus niger。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "D-sorbitol",
+          "smiles": "OC[C@H](O)[C@@H](O)[C@H](O)[C@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-fructose",
+          "smiles": "C([C@H]([C@H]([C@@H](C(=O)CO)O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "氧化反应",
+      "enzyme": {
+        "name": "sorbitol dehydrogenase",
+        "ec_number": "1.1.1.14",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": null,
+        "ncbi_taxid": 5061,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "D-fructose",
+          "smiles": "C([C@H]([C@H]([C@@H](C(=O)CO)O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2n(cnc12)[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-fructose 6-phosphate",
+          "smiles": "C([C@H]([C@H]([C@@H](C(=O)CO)O)O)OP(=O)(O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "Nc1ncnc2n(cnc12)[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "磷酸化反应",
+      "enzyme": {
+        "name": "hexokinase",
+        "ec_number": "2.7.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": null,
+        "ncbi_taxid": 5061,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该磷酸化是进入中心代谢所必需，但是否被途径数据库划入D-galactose degradation IV边界不确定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Aspergillus niger",
+      "strain": null,
+      "ncbi_taxid": 5061,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用D-半乳糖及多种单糖作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种植物多糖、糖醇和有机碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有半乳糖醇脱氢酶LadB及山梨醇脱氢酶等糖氧化还原酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "有隔丝状菌丝，分生孢子梗产生黑色分生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "真菌细胞壁含几丁质和葡聚糖，不适用细菌革兰氏染色",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "产生分生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性腐生真菌，可在土壤、植物残体、食品和室内环境等多种生境中生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["D-fructose 6-phosphate"],
+    "explanation": "主链末端D-果糖-6-磷酸是糖酵解中间体，由此进入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "glycolysis",
+      "summary": "D-果糖-6-磷酸可经糖酵解继续转化为丙酮酸。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "D-galactose degradation I (Leloir pathway)",
+      "summary": "Leloir途径将D-半乳糖经半乳糖-1-磷酸和UDP-半乳糖转化为葡萄糖磷酸酯。许多真菌包括曲霉同时具备该途径。不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "non-phosphorylative Entner-Doudoroff-like galactose degradation",
+      "summary": "古菌等生物中的非磷酸化路线：D-半乳糖氧化为半乳糖酸内酯和半乳糖酸，脱水为2-脱氢-3-脱氧半乳糖酸后裂解为丙酮酸与D-甘油醛，再转化为2-磷酸甘油酸。该路线可能对应另一罗马数字编号，不属于当前解释下的评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "filamentous fungal oxido-reductive D-galactose catabolic pathway literature, including LadB in Aspergillus niger and L-xylo-3-hexulose reductase as the missing link",
+      "claim_scope": ["pathway_reactions", "enzyme_identity", "organism_association"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Aspergillus niger species-level microbiology",
+      "claim_scope": ["oxygen_tolerance", "temperature_preference", "morphology", "motility", "sporulation", "cell_envelope", "habitat", "respiration"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": "inference that MetaCyc name D-galactose degradation IV corresponds to the fungal oxido-reductive route rather than Leloir, De Ley-Doudoroff, or non-phosphorylative ED routes",
+      "claim_scope": ["route_name_mapping"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未能直接核对MetaCyc页面，D-galactose degradation IV与丝状真菌氧化还原途径的对应是推断（EVID_003，低置信度）；若IV实为古菌非磷酸化ED途径或De Ley-Doudoroff途径，则主链化合物与酶均不正确。",
+    "L-xylo-3-hexulose仅给出无立体化学SMILES；LadB与L-xylo-3-hexulose reductase的EC编号未知，故填null。",
+    "各步未指定到菌株，定量温度、pH、盐度范围、保藏号和基因组登录号未知，相关性状为null。",
+    "L-xylo-3-hexulose还原酶可能主要在Trichoderma reesei中被鉴定，将其记在Aspergillus niger上的置信度为low。",
+    "己糖激酶是否属于数据库途径边界不确定。"
+  ]
+}

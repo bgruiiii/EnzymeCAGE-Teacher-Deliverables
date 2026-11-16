@@ -1,0 +1,213 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_144",
+  "pollutant_name_zh": "4-(三甲基铵基)丁酸根",
+  "pollutant_name_en": "4-(Trimethylammonio)butanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "γ-butyrobetaine degradation III",
+    "is_single_continuous_route": true,
+    "notes": "氧条件按题面保持未指定；路线名称严格采用题面给定的 γ-butyrobetaine degradation III。"
+  },
+  "route_summary": "主链按题面限定取 γ-butyrobetaine degradation III：4-(trimethylammonio)butanoate（γ-butyrobetaine）经一步 C–N 断裂/消除生成 crotonate 与 trimethylamine；其中 crotonate 作为 C4 碳骨架产物进入后续代谢，trimethylamine 为含氮裂解产物。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-(Trimethylammonio)butanoate",
+          "smiles": "C[N+](C)(C)CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "crotonate",
+          "smiles": "C/C=C/C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "carbon-nitrogen bond cleavage / elimination (trimethylamine-lyase type)",
+      "enzyme": {
+        "name": "γ-butyrobetaine trimethylamine-lyase (putative glycyl radical enzyme)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Emergencia timonensis",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步的具体 EC 编号、基因/蛋白命名及质子化状态未确证；产物按数据库常用形式写作 crotonate 与 trimethylamine。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Emergencia timonensis",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格厌氧（与 glycyl radical enzyme 型 γ-butyrobetaine 利用系统相符）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "转化 4-(trimethylammonio)butanoate/γ-butyrobetaine，生成 crotonate 与 trimethylamine",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "窄谱：γ-butyrobetaine 裂解并形成 trimethylamine（gbu 型能力）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "推定 γ-butyrobetaine trimethylamine-lyase/glycyl radical enzyme 活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "人肠道相关厌氧成员；按本地信息判断偏宿主/肠道生态位，不宜认定为广适环境菌",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "crotonate"
+    ],
+    "explanation": "题面主链到此步；crotonate 为可进入 C4 脂肪酸/中心代谢的碳骨架产物，trimethylamine 为同一生成的含氮裂解产物。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "γ-butyrobetaine hydroxylation to L-carnitine",
+      "summary": "γ-butyrobetaine 也可经 γ-butyrobetaine dioxygenase（EC 1.14.11.1）羟化为 L-carnitine；该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway name as specified in prompt: γ-butyrobetaine degradation III; reaction summarized as 4-(trimethylammonio)butanoate → crotonate + trimethylamine",
+      "claim_scope": [
+        "route",
+        "reaction",
+        "substrate",
+        "product",
+        "enzyme",
+        "organism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "search terms: Emergencia timonensis γ-butyrobetaine trimethylamine gbu; exact citation not supplied",
+      "claim_scope": [
+        "organism",
+        "F1_oxygen_tolerance",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity",
+        "F15_habitat_generalism"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为 null，因此 route_scope.oxygen_condition 未推断为 aerobic/anaerobic。",
+    "γ-butyrobetaine trimethylamine-lyase 的 EC 编号与基因/蛋白名未确证，故 ec_number 与 gene_or_protein 填 null。",
+    "Emergencia timonensis 的菌株、NCBI TaxID、保藏编号、基因组编号及多数生理性状无可靠来源，均填 null。"
+  ]
+}

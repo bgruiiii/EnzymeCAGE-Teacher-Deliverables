@@ -1,0 +1,221 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_136",
+  "pollutant_name_zh": "磺酸基乙醛",
+  "pollutant_name_en": "Sulfonatoacetaldehyde",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoacetaldehyde degradation IV",
+    "is_single_continuous_route": null,
+    "notes": "氧条件按题面保持null。路线名称原样填写，未改选其他路线。公开文献中该化合物的降解主反应可以核定，但罗马数字变体IV相对其他编号的完整反应列表未能独立核对，故主链不补写未经核定的下游步骤。"
+  },
+  "route_summary": "磺酸基乙醛（sulfonatoacetaldehyde，同义名sulfoacetaldehyde、2-sulfoacetaldehyde）在微生物中最明确的降解主反应，是硫胺素二磷酸依赖的磺酸基乙醛乙酰转移酶Xsc（EC 2.3.3.15）将其与磷酸裂解为乙酰磷酸和亚硫酸盐。题面指定的sulfoacetaldehyde degradation IV已原样保留；该变体是否还包含乙酸激酶、磷酸转乙酰酶、乙酰辅酶A合成酶或亚硫酸盐氧化/还原等下游步骤，或是否实为脱氢生成磺基乙酸、还原生成羟乙基磺酸等其他化学路线，均无法在不猜测的前提下核定，因此主链只列这一核心裂解步。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "sulfonatoacetaldehyde",
+          "smiles": "[O-]S(=O)(=O)CC=O",
+          "role": "main"
+        },
+        {
+          "name": "phosphate",
+          "smiles": "OP(=O)([O-])[O-]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl phosphate",
+          "smiles": "CC(=O)OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "sulfite",
+          "smiles": "[O-]S(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "acetyl transfer",
+      "enzyme": {
+        "name": "sulfoacetaldehyde acetyltransferase",
+        "ec_number": "2.3.3.15",
+        "gene_or_protein": "xsc",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "路线IV与经典Xsc裂解反应的数据库级对应关系未核对，本步置信度为低。磷酸为计量消耗的共底物；亚硫酸盐为脱硫化学计量产物，此处标为byproduct。TPP仅为催化辅因子，未写入底物。下游进入乙酰辅酶A的步骤以及亚硫酸盐去向因无法确定是否属于路线IV而省略。Ruegeria pomeroyi DSS-3仅作为文献中与Xsc相关的代表菌，不能确认为路线IV的指定菌株。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Ruegeria pomeroyi",
+      "strain": "DSS-3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "海洋细菌，适宜海水盐度"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "二甲基巯基丙酸内盐（DMSP）等有机硫化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "有机硫化合物降解（DMSP及磺酸盐相关代谢）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "乙酰磷酸可进一步转化为乙酰辅酶A并进入中心代谢，但该下游连接是否属于路线IV未能核定，故不写入评分主链，此处也不指定中心代谢入口产物。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "EC 2.3.3.15 sulfoacetaldehyde acetyltransferase (Xsc): sulfonatoacetaldehyde + phosphate -> acetyl phosphate + sulfite. Route-numeral IV assignment not verified against a database record.",
+      "claim_scope": [
+        "reaction_stoichiometry",
+        "enzyme_identity",
+        "ec_number"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Species-level description of Ruegeria pomeroyi DSS-3 as an aerobic marine rhodobacteracean with DMSP and organosulfonate metabolism; not a verified type strain record for sulfoacetaldehyde degradation IV.",
+      "claim_scope": [
+        "organism_identity",
+        "oxygen_tolerance",
+        "salinity_category",
+        "respiration",
+        "carbon_utilization",
+        "degradation_capacity",
+        "cell_morphology",
+        "gram_stain",
+        "sporulation"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "不能确认sulfoacetaldehyde degradation IV的完整反应列表是否仅含Xsc一步，或还包含乙酸激酶、磷酸转乙酰酶、乙酰辅酶A合成酶及亚硫酸盐脱氢酶或亚硫酸盐还原酶。",
+    "不能排除路线IV实为磺酸基乙醛脱氢生成磺基乙酸，或还原生成羟乙基磺酸后再裂解等其他化学路线。",
+    "Ruegeria pomeroyi DSS-3仅作为已报道与Xsc及有机硫代谢相关的代表菌，并非经数据库核对的路线IV指定菌株。",
+    "TaxID、保藏号、基因组登录号以及温度、pH、盐度数值和酶活测定描述均无把握，已置null，未用近似值占位。",
+    "证据类型为内部知识，未绑定可核验的PMID或数据库记录号。"
+  ]
+}

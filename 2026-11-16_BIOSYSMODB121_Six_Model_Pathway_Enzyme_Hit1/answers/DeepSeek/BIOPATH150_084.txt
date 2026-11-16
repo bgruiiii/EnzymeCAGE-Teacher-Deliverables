@@ -1,0 +1,281 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_084",
+  "pollutant_name_zh": "咖啡因",
+  "pollutant_name_en": "Caffeine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "caffeine degradation I (main, plants)",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "咖啡因通过三步N-脱甲基化反应降解：咖啡因 → 可可碱 → 7-甲基黄嘌呤 → 黄嘌呤。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Caffeine",
+          "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Theobromine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N1-demethylation",
+      "enzyme": {
+        "name": "Caffeine N1-demethylase",
+        "ec_number": "1.14.13.215",
+        "gene_or_protein": "NdmA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Theobromine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "7-Methylxanthine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N3-demethylation",
+      "enzyme": {
+        "name": "Theobromine N3-demethylase",
+        "ec_number": "1.14.13.216",
+        "gene_or_protein": "NdmB",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "7-Methylxanthine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Xanthine",
+          "smiles": "C1=NC2=C(N1)C(=O)NC(=O)N2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N7-demethylation",
+      "enzyme": {
+        "name": "7-Methylxanthine N7-demethylase",
+        "ec_number": "1.14.13.217",
+        "gene_or_protein": "NdmC",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "CBB5",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "Caffeine degradation via N-demethylation",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "Caffeine demethylase activity",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "Motile by flagella",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "Rod-shaped",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "Non-sporulating",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Xanthine"],
+    "explanation": "Xanthine can enter purine degradation pathways."
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Caffeine to theobromine N1-demethylation", "NdmA", "EC 1.14.13.215"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida CBB5 organism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Theobromine to 7-methylxanthine N3-demethylation", "NdmB", "EC 1.14.13.216"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["7-Methylxanthine to xanthine N7-demethylation", "NdmC", "EC 1.14.13.217"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

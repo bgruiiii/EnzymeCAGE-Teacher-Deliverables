@@ -1,0 +1,393 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_104",
+  "pollutant_name_zh": "S-1,2-丙二醇",
+  "pollutant_name_en": "S-1,2-Propanediol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "(S)-propane-1,2-diol degradation",
+    "is_single_continuous_route": true,
+    "notes": "路线名称按题面原样填写为 '(S)-propane-1,2-diol degradation'。题面未指定氧条件（null）；所给主链为氧化性（好氧为主）降解路线：(S)-1,2-丙二醇经 (S)-乳醛、(S)-乳酸氧化为丙酮酸，与依赖维生素B12的丙二醇脱水酶（pdu）途径相区别，后者并非 (S)-构型特异路线。"
+  },
+  "route_summary": "(S)-1,2-丙二醇的构型特异性氧化降解主链共3步，在大肠杆菌 K-12 中均有酶学表征：第1步 L-1,2-丙二醇氧化还原酶（FucO，EC 1.1.1.77）以NAD+为电子受体将伯醇氧化为 (S)-乳醛；第2步乳醛脱氢酶（AldB，EC 1.2.1.22）将 (S)-乳醛氧化为 (S)-乳酸；第3步醌依赖的 L-乳酸脱氢酶（LldD，EC 1.1.2.3）将 (S)-乳酸氧化为丙酮酸，进入中心碳代谢（乙酰-CoA/TCA循环）。整条路线保留C2立体中心直至生成丙酮酸，区别于非立体特异的B12依赖丙二醇脱水酶（pdu）途径。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(S)-propane-1,2-diol",
+          "smiles": "C[C@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-lactaldehyde",
+          "smiles": "C[C@H](O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "伯醇氧化脱氢（醇→醛）",
+      "enzyme": {
+        "name": "L-1,2-propanediol oxidoreductase",
+        "ec_number": "1.1.1.77",
+        "gene_or_protein": "fucO (FucO)",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "FucO 的体内生理方向以还原方向（L-乳醛→L-1,2-丙二醇，厌氧发酵电子汇）为主，其氧化（降解）方向有明确生化证据，但大肠杆菌 K-12 以外源 (S)-1,2-丙二醇为唯一碳源生长的能力有限。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-lactaldehyde",
+          "smiles": "C[C@H](O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-lactate",
+          "smiles": "C[C@H](O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛氧化脱氢（醛→羧酸）",
+      "enzyme": {
+        "name": "lactaldehyde dehydrogenase",
+        "ec_number": "1.2.1.22",
+        "gene_or_protein": "aldB (AldB)",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "AldB 底物谱较宽（也作用于其他短链醛），EC 1.2.1.22 的归属依据常见数据库注释，未逐条核对原始文献。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-lactate",
+          "smiles": "C[C@H](O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ubiquinone",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ubiquinol",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "L-乳酸氧化脱氢（乳酸→丙酮酸）",
+      "enzyme": {
+        "name": "L-lactate dehydrogenase (quinone-dependent)",
+        "ec_number": "1.1.2.3",
+        "gene_or_protein": "lldD (LldD)",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "LldD 的 EC 注释存在不同写法（1.1.2.3，醌/细胞色素依赖 L-乳酸脱氢酶）；生理电子受体为膜醌池（好氧时以泛醌为主），具体醌种未细分。此步亦可视为 (S)-乳酸进入中心代谢的衔接步骤。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 10,
+            "optimum_c": 37,
+            "maximum_c": 45,
+            "preference": "中温性，最适约37 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（有氧与无氧条件下均可生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌，低盐培养基中生长良好，可耐受约1–2% NaCl"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 4.5,
+            "optimum": 7.0,
+            "maximum": 9.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（兼性厌氧，厌氧时行发酵或厌氧呼吸）",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用葡萄糖等多种糖类（包括L-岩藻糖与L-鼠李糖，其降解涉及L-乳醛/L-1,2-丙二醇中间体）、有机酸与氨基酸作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具广谱的糖类、糖醇与有机酸代谢能力；非广谱异生物质降解菌，不降解多数芳香族等外源污染物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "L-1,2-丙二醇氧化还原酶（FucO，EC 1.1.1.77）活性：(S)-1,2-丙二醇 + NAD+ ⇌ (S)-乳醛 + NADH；另有乳醛脱氢酶（AldB）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具周生鞭毛，可运动（实验室长期传代菌株运动性可减弱）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状，约0.5 µm × 1–3 µm，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，具内膜–肽聚糖–外膜（含脂多糖）细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性（泛栖息型）：主要栖居于人等温血动物肠道，亦可在水体、土壤等外界环境中存活，实验室条件下可适应多种培养环境",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate"
+    ],
+    "explanation": "主链终点为丙酮酸；丙酮酸可经丙酮酸脱氢酶复合体氧化脱羧生成乙酰-CoA 进入三羧酸循环，或经其他丙酮酸代谢支路进入中心碳代谢，实现 (S)-1,2-丙二醇的完全矿化或同化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "pyruvate → acetyl-CoA → TCA cycle",
+      "summary": "丙酮酸经丙酮酸脱氢酶复合体转化为乙酰-CoA 后进入三羧酸循环彻底氧化，或用于合成代谢与糖异生。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "B12-dependent propanediol dehydratase (pdu) branch",
+      "summary": "在沙门氏菌等肠杆菌中，1,2-丙二醇可经维生素B12依赖的丙二醇脱水酶（EC 4.2.1.28）直接脱水为丙醛，再经醛脱氢酶生成丙酰-CoA，经甲基丙二酰-CoA 途径进入琥珀酰-CoA 与 TCA 循环；该途径并非 (S)-构型特异性路线，不属于本题指定的 (S)-丙二醇降解主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "step S1 反应: (S)-propane-1,2-diol + NAD+ → (S)-lactaldehyde + NADH",
+        "酶 fucO / EC 1.1.1.77 / Escherichia coli"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "step S2 反应: (S)-lactaldehyde + NAD+ + H2O → (S)-lactate + NADH + H+",
+        "酶 aldB / EC 1.2.1.22 / Escherichia coli"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "step S3 反应: (S)-lactate → pyruvate",
+        "酶 lldD / EC 1.1.2.3 / Escherichia coli"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli K-12 substr. MG1655 菌株身份与一般生理性状",
+        "F1/F2/F3/F4/F5/F6/F7/F8/F10/F11/F12/F13/F15 性状来源"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000913",
+      "locator": null,
+      "claim_scope": [
+        "F14 基因组基本信息: Escherichia coli K-12 substr. MG1655"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "路线名 '(S)-propane-1,2-diol degradation' 被理解为 (S)-构型特异的氧化性降解路线（经 (S)-乳醛与 (S)-乳酸）；若数据源所指实为经B12依赖丙二醇脱水酶的 pdu 途径（厌氧、非立体特异），则主链步骤将不同，此为本答案最大不确定性。",
+    "大肠杆菌 K-12 中 FucO 的体内生理方向主要为还原方向（L-乳醛→L-1,2-丙二醇，厌氧发酵电子汇），氧化（降解）方向有生化证据，但该菌以外源 (S)-1,2-丙二醇为唯一碳源生长的能力有限，本答案以酶系完整性而非生长能力为判定依据。",
+    "第三步 LldD 的 EC 编号注释存在不同写法（1.1.2.3，醌/细胞色素依赖 L-乳酸脱氢酶），生理电子受体为膜醌池（好氧时以泛醌为主），具体醌种未细分。",
+    "AldB（乳醛脱氢酶）底物谱较宽，EC 1.2.1.22 归属依据常见数据库注释，未逐条核对原始文献；相关酶与菌的 UniProt 登录号未凭记忆填写，一律留空以避免编造。"
+  ]
+}

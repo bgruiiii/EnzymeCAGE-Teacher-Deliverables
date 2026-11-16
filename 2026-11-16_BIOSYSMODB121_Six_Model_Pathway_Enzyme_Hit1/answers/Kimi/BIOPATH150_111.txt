@@ -1,0 +1,420 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_111",
+  "pollutant_name_zh": "D-肉碱",
+  "pollutant_name_en": "D-carnitine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-carnitine degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，oxygen_condition 按题面填 null；按文献（Kleber 1997 综述；MetaCyc）该路线在大肠杆菌中为厌氧途径，肉碱作为厌氧呼吸末端电子受体被还原为 γ-丁酰甜菜碱。"
+  },
+  "route_summary": "D-carnitine degradation I：在大肠杆菌 Escherichia coli K-12 厌氧条件下，D-肉碱经 cai 操纵子编码的酶系转化为 γ-丁酰甜菜碱。主链为：D-肉碱由 CaiB（肉碱 CoA 转移酶，EC 2.8.3.21）从 γ-丁酰甜菜碱酰-CoA 处获得 CoA 生成 D-肉碱酰-CoA；CaiD（巴豆甜菜碱酰-CoA 水合酶，EC 4.2.1.149）催化脱水生成巴豆甜菜碱酰-CoA；CaiA（巴豆甜菜碱酰-CoA 还原酶）以 NADH 为电子供体将其还原为 γ-丁酰甜菜碱酰-CoA；后者再经 CaiB 把 CoA 转移给下一个 D-肉碱并释放终产物 γ-丁酰甜菜碱（经 CaiT 逆向转运排出胞外）。净反应：D-肉碱 + NADH + H+ → γ-丁酰甜菜碱 + NAD+ + H2O。该途径生理功能为厌氧呼吸电子汇（NADH 再氧化），中间体均为 CoA 硫酯。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-carnitine",
+          "smiles": "C[N+](C)(C)C[C@H](O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "γ-butyrobetainyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@H](C(=O)NCCC(=O)NCCSC(=O)CCC[N+](C)(C)C)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-carnitinyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@H](C(=O)NCCC(=O)NCCSC(=O)CC(O)C[N+](C)(C)C)O",
+          "role": "main"
+        },
+        {
+          "name": "γ-butyrobetaine",
+          "smiles": "C[N+](C)(C)CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "辅酶A转移反应（CoA-transferase，循环 CoA 载体的转移）",
+      "enzyme": {
+        "name": "carnitine CoA-transferase (CaiB)",
+        "ec_number": "2.8.3.21",
+        "gene_or_protein": "caiB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "CoA 供体以 γ-丁酰甜菜碱酰-CoA 表示，系按 L-carnitine degradation I 的 MetaCyc 表述类推；循环启动时 CoA 酯亦可由 CaiC 连接酶反应提供。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "D-carnitinyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@H](C(=O)NCCC(=O)NCCSC(=O)CC(O)C[N+](C)(C)C)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "crotonobetainyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@H](C(=O)NCCC(=O)NCCSC(=O)/C=C/C[N+](C)(C)C)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱水反应（hydro-lyase / dehydratase）",
+      "enzyme": {
+        "name": "crotonobetainyl-CoA hydratase (CaiD)",
+        "ec_number": "4.2.1.149",
+        "gene_or_protein": "caiD",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "CaiD 对 D-型底物的脱水（或先经差向异构再水合/脱水）机制未完全确证；CaiD 的天然反应为巴豆甜菜碱酰-CoA 水合生成 L-carnitinyl-CoA。D-carnitinyl-CoA 的 SMILES 未标注手性。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "crotonobetainyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@H](C(=O)NCCC(=O)NCCSC(=O)/C=C/C[N+](C)(C)C)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "γ-butyrobetainyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@H](C(=O)NCCC(=O)NCCSC(=O)CCC[N+](C)(C)C)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原反应（NADH 依赖的烯酰-CoA 还原）",
+      "enzyme": {
+        "name": "crotonobetainyl-CoA reductase (CaiA)",
+        "ec_number": null,
+        "gene_or_protein": "caiA",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "CaiA 无公认完整 EC 编号，ec_number 填 null；生理电子供体未确证，文献多以 NADH 表征，NADH/NAD+ 的 SMILES 未填。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "γ-butyrobetainyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@H](C(=O)NCCC(=O)NCCSC(=O)CCC[N+](C)(C)C)O",
+          "role": "main"
+        },
+        {
+          "name": "D-carnitine",
+          "smiles": "C[N+](C)(C)C[C@H](O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "γ-butyrobetaine",
+          "smiles": "C[N+](C)(C)CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "D-carnitinyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@H](C(=O)NCCC(=O)NCCSC(=O)CC(O)C[N+](C)(C)C)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "辅酶A转移反应（释放终产物 γ-丁酰甜菜碱，CoA 进入下一轮循环）",
+      "enzyme": {
+        "name": "carnitine CoA-transferase (CaiB)",
+        "ec_number": "2.8.3.21",
+        "gene_or_protein": "caiB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "本步与 S1 为同一 CaiB 催化反应（循环式 CoA 转移）；γ-丁酰甜菜碱为途径终产物，经 CaiT 逆向转运排出胞外；D-carnitinyl-CoA 回到 S2 继续转化。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 10,
+            "optimum_c": 37,
+            "maximum_c": 45,
+            "preference": "中温菌（嗜温），最适约 37°C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧菌（facultative anaerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": "ATCC 700926: Escherichia coli str. K-12 substr. MG1655",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性：好氧呼吸、厌氧呼吸与发酵",
+            "terminal_electron_acceptor": "O2（好氧）；厌氧时可用硝酸盐、延胡索酸盐，亦可以肉碱（还原为 γ-丁酰甜菜碱）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "葡萄糖等多种糖类及有机酸（主要碳源：葡萄糖）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可厌氧还原/降解 D-肉碱与 L-肉碱生成 γ-丁酰甜菜碱，并可利用巴豆甜菜碱；对多种糖、氨基酸具有降解利用能力",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 cai 操纵子编码的肉碱 CoA 转移酶（CaiB）、巴豆甜菜碱酰-CoA 水合酶（CaiD）与巴豆甜菜碱酰-CoA 还原酶（CaiA）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（短杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": "Escherichia coli str. K-12 substr. MG1655, complete genome (NC_000913.3 / U00096.3): 4,641,652 bp, 50.8% GC",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "较广适：主要为人和温血动物肠道共生菌，亦可在水、土壤等肠外环境中存活",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "在 E. coli 中终产物 γ-丁酰甜菜碱经 CaiT 逆向转运排出胞外，不进入中心碳代谢；本途径的功能是厌氧呼吸电子汇（使 NADH 再氧化），因此没有进入中心代谢的产物。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "γ-丁酰甜菜碱的胞外命运",
+      "summary": "E. coli 将 γ-丁酰甜菜碱排出细胞；其他微生物（如部分肠道菌、土壤菌）可进一步代谢 γ-丁酰甜菜碱，但具体途径不属于本路线范围，且细节不确定。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "CaiC 启动反应",
+      "summary": "巴豆甜菜碱经 CaiC（巴豆甜菜碱/肉碱 CoA 连接酶）在 ATP 与 CoA 参与下生成巴豆甜菜碱酰-CoA，为 CoA 循环提供启动用 CoA 硫酯；该反应不属于被评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page: 'D-carnitine degradation I'",
+      "claim_scope": ["main_route", "reactions", "enzymes", "pathway_organism", "degradation_capacity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Elssner T, Engemann C, Baumgart K, Kleber HP (2001) Involvement of coenzyme A thioesters during anaerobic metabolism of L-carnitine by Escherichia coli. J Bacteriol 183(2):475-486",
+      "claim_scope": ["CoA_thioester_intermediates", "CaiB_CaiD_CaiA_function", "dehydration_and_reduction_steps"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Kleber HP (1997) Bacterial carnitine metabolism. FEMS Microbiol Lett 147(1):1-9",
+      "claim_scope": ["D-carnitine_anaerobic_reduction_to_gamma-butyrobetaine", "carnitine_as_anaerobic_electron_acceptor", "E.coli_as_pathway_organism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz/IntEnz",
+      "record_id": null,
+      "locator": "EC 2.8.3.21 (carnitine CoA-transferase); EC 4.2.1.149 (crotonobetainyl-CoA hydratase)",
+      "claim_scope": ["EC_nomenclature", "enzyme_name_EC_mapping"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655, complete genome",
+      "claim_scope": ["genome_accession", "genome_size", "gc_percent", "ncbi_taxid"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "ATCC 700926 Escherichia coli str. K-12 substr. MG1655",
+      "claim_scope": ["culture_collection"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["E.coli_general_physiology_and_morphology_traits"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "MetaCyc 路径 'D-carnitine degradation I' 的具体记录内容（PWY 编号、收录菌株、反应式细节）凭知识重构，存在不确定性；主链化学（CoA 硫酯介导的脱水-还原循环，D-肉碱 → γ-丁酰甜菜碱）与 Kleber 学派文献一致。",
+    "CaiD 直接作用于 D-carnitinyl-CoA 的证据强度有限，可能涉及经巴豆甜菜碱酰-CoA 的差向异构过程。",
+    "CaiA 的完整 EC 编号与生理电子供体未确证，故 ec_number 填 null。",
+    "若该路线在数据库中实际收录于其他菌（如 Proteus sp.），则 organism 归属需要修正。"
+  ]
+}

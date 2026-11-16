@@ -1,0 +1,418 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_021",
+  "pollutant_name_zh": "甲苯",
+  "pollutant_name_en": "Toluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Toluene degradation to 2-hydroxypentadienoate (via toluene-cis-diol)",
+    "is_single_continuous_route": true,
+    "notes": "本题主链为好氧tod顺式二醇途径，自甲苯至2-羟基戊-2,4-二烯酸，共四步连续反应；下游进入中心代谢的步骤不计入主链。"
+  },
+  "route_summary": "好氧条件下，甲苯经甲苯双加氧酶生成甲苯顺式二醇，再脱氢为3-甲基儿茶酚，经间位开环得到2-羟基-6-氧代庚-2,4-二烯酸，水解后释放乙酸并生成2-羟基戊-2,4-二烯酸。代表菌为Pseudomonas putida F1。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "toluene",
+          "smiles": "Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(1S,2R)-3-methylcyclohexa-3,5-diene-1,2-diol",
+          "smiles": "OC1C=CC=C(C)C1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "dioxygenation",
+      "enzyme": {
+        "name": "toluene dioxygenase",
+        "ec_number": "1.14.12.11",
+        "gene_or_protein": "todC1C2BA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "甲苯双加氧酶为多组分酶，基因标识todC1C2BA代表大亚基、小亚基、铁氧还蛋白和还原酶；产物SMILES只表示连接关系，未编码1S,2R立体化学。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "(1S,2R)-3-methylcyclohexa-3,5-diene-1,2-diol",
+          "smiles": "OC1C=CC=C(C)C1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-methylcatechol",
+          "smiles": "Cc1cccc(O)c1O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "cis-toluene dihydrodiol dehydrogenase",
+        "ec_number": "1.3.1.19",
+        "gene_or_protein": "todD",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "3-methylcatechol",
+          "smiles": "Cc1cccc(O)c1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol ring cleavage",
+      "enzyme": {
+        "name": "3-methylcatechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "todE",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "EC 1.13.11.2的原型底物是儿茶酚；TodE对3-甲基儿茶酚有明确活性并催化本步间位开环。产物SMILES未编码2Z,4E立体化学。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetate",
+          "smiles": "CC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxohepta-2,4-dienoate hydrolase",
+        "ec_number": "3.7.1.9",
+        "gene_or_protein": "todF",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "TodF催化该水解并生成2-羟基戊-2,4-二烯酸与乙酸是明确的；EC 3.7.1.9为数据库常用编号，但其IUBMB原型反应底物是2-羟基粘康酸半醛，故酶对象置信度取medium。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 351746,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700007"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用甲苯作为唯一碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解苯、甲苯和乙苯等单环芳香烃",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有甲苯双加氧酶及tod顺式二醇途径的脱氢、间位开环和水解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "CP000712.1",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA"],
+    "explanation": "主链终点2-羟基戊-2,4-二烯酸可继续水合为4-羟基-2-氧代戊酸，再醛缩为丙酮酸和乙醛，乙醛氧化为乙酰辅酶A；这些步骤超出本题指定终点。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2-hydroxypenta-2,4-dienoate hydration and aldol cleavage",
+      "summary": "2-羟基戊-2,4-二烯酸经水合酶生成4-羟基-2-氧代戊酸，再经醛缩酶生成丙酮酸与乙醛，乙醛脱氢进入乙酰辅酶A；不在本题评分主链内。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "TOL upper pathway via benzyl alcohol",
+      "summary": "甲苯侧链单加氧依次生成苯甲醇、苯甲醛和苯甲酸，再进入儿茶酚裂解；不属于本题顺式二醇主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "toluene monooxygenase routes to cresols",
+      "summary": "甲苯可经甲苯4-单加氧酶生成对甲酚，或经甲苯3-单加氧酶生成间甲酚，再氧化为甲基儿茶酚；不属于顺式二醇主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "anaerobic fumarate addition",
+      "summary": "厌氧条件下甲苯可经延胡索酸加成生成苄基琥珀酸；不属于本题好氧主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "KEGG",
+      "record_id": "map00623",
+      "locator": "KEGG甲苯降解途径map00623中经甲苯顺式二醇至2-羟基戊二烯酸的四步：EC 1.14.12.11、EC 1.3.1.19、EC 1.13.11.2、EC 3.7.1.9",
+      "claim_scope": ["reaction_chemistry", "enzyme_ec"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI",
+      "record_id": "351746",
+      "locator": "Pseudomonas putida F1的tod操纵子编码todC1C2BA、todD、todE和todF；NCBI Taxonomy 351746",
+      "claim_scope": ["enzyme_gene", "organism_identity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "ATCC",
+      "record_id": "700007",
+      "locator": "ATCC 700007为Pseudomonas putida F1；恶臭假单胞菌经典表型为革兰氏阴性杆状、极生鞭毛运动、不产芽孢、专性好氧、中温，并以分子氧为末端电子受体",
+      "claim_scope": ["culture_collection", "physiology"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida F1以甲苯为唯一碳源和能源生长，并通过tod双加氧酶途径好氧降解苯、甲苯和乙苯",
+      "claim_scope": ["carbon_substrate", "degradation_capacity", "enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI Genome",
+      "record_id": "CP000712.1",
+      "locator": "NCBI Pseudomonas putida F1染色体登录号CP000712.1，对应RefSeq NC_009512.1；基因组大小与GC含量未在此填写",
+      "claim_scope": ["genome_accession"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "第4步TodF的水解反应明确，但EC 3.7.1.9的IUBMB原型底物是2-羟基粘康酸半醛，数据库将其用于C7甲基类似物属于注释惯例，故该酶置信度为medium。",
+    "顺式二醇和开环产物的SMILES仅给出原子连接，未编码完整立体化学。",
+    "NADH与NAD+的SMILES未填写，以避免辅因子结构式误差。",
+    "菌株F1的温度基数、pH、盐度、基因组大小和GC含量缺少可逐条核对的单一来源，相关数值填null，不用近似值占位。",
+    "栖息地广适性不能由单一栖息地名称推出，且无直接来源，故F15为null。"
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_065",
+  "pollutant_name_zh": "3-(甲硫基)丙酸根",
+  "pollutant_name_en": "3-(Methylthio)propionate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methylthiopropanoate degradation I (cleavage)",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线；氧条件未指定。"
+  },
+  "route_summary": "在指定的裂解路线下，3-(甲硫基)丙酸根经一步裂解生成甲硫醇和丙烯酸根；对应酶记为 3-(methylthio)propionate lyase，对应微生物填 Ruegeria pomeroyi DSS-3。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3-(methylthio)propionate",
+          "smiles": "CSCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "methanethiol",
+          "smiles": "CS",
+          "role": "main"
+        },
+        {
+          "name": "acrylate",
+          "smiles": "C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "裂解（C-S 裂解）",
+      "enzyme": {
+        "name": "3-(methylthio)propionate lyase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "氧条件未指定；EC 编号与具体基因/蛋白未确认，故填 null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Ruegeria pomeroyi",
+      "strain": "DSS-3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经指定裂解路线降解 3-(methylthio)propionate，生成 methanethiol 与 acrylate。",
+          "raw_text": "指定裂解路线中，3-(methylthio)propionate 被裂解为 methanethiol 和 acrylate。",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 3-(methylthio)propionate lyase 活性，催化 3-(methylthio)propionate 裂解。",
+          "raw_text": "该路线记录 3-(methylthio)propionate lyase 催化上述裂解反应。",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "acrylate",
+      "methanethiol"
+    ],
+    "explanation": "裂解直接产生丙烯酸根与甲硫醇；丙烯酸根可进入后续有机酸/辅酶A代谢，甲硫醇进入硫代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway: methylthiopropanoate degradation I (cleavage)",
+      "claim_scope": [
+        "S1.substrates",
+        "S1.products",
+        "S1.enzyme",
+        "S1.microorganism",
+        "ORG_001.traits.F8_degradation_capacity_broad",
+        "ORG_001.traits.F9_enzyme_activity"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定。",
+    "EC 编号、基因/蛋白、保藏编号、基因组与多数生理性状未知，填 null。",
+    "微生物选择基于指定裂解路线的常见代表菌，具体菌株/酶归属仍可能需数据库核对。"
+  ]
+}

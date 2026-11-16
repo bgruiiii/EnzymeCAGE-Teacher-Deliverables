@@ -1,0 +1,843 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_103",
+  "pollutant_name_zh": "2-异丙基苯酚",
+  "pollutant_name_en": "2-Isopropylphenol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-isopropylphenol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）；主链按好氧降解给出：2-异丙基苯酚先经侧链（苄位）羟基化生成叔醇中间体，再脱烷基释放苯酚与丙酮，苯酚部分汇入经典邻苯二酚间位裂解途径。"
+  },
+  "route_summary": "2-异丙基苯酚的好氧降解主链：首先由依赖NADH的侧链（苄位）单加氧酶将异丙基的苄位碳羟基化，生成2-(1-hydroxy-1-methylethyl)phenol（叔醇中间体）；该中间体发生芳基-叔碳C-C键断裂（脱烷基），生成phenol并释放副产物acetone；phenol经苯酚2-单加氧酶（EC 1.14.13.7）邻位羟基化为catechol；catechol被邻苯二酚2,3-双加氧酶（EC 1.13.11.2）间位裂解为2-hydroxymuconic semialdehyde；后者依次经2-hydroxymuconic-semialdehyde hydrolase（生成2-oxopent-4-enoate与formate）、2-oxopent-4-enoate hydratase（生成4-hydroxy-2-oxopentanoate）、4-hydroxy-2-oxopentanoate aldolase（生成pyruvate与acetaldehyde）进入中央代谢；乙醛可进一步转化为乙酰辅酶A，丙酮作为脱烷基副产物另行矿化。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-isopropylphenol",
+          "smiles": "CC(C)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-(1-hydroxy-1-methylethyl)phenol",
+          "smiles": "CC(C)(O)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "side-chain (benzylic) monooxygenation",
+      "enzyme": {
+        "name": "2-isopropylphenol 1-monooxygenase",
+        "ec_number": "1.14.13.-",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_008"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "该步酶为按反应类型推定的苄位（侧链）羟化单加氧酶，EC只能归入1.14.13.-类，未见针对2-异丙基苯酚的确切酶名与EC；执行菌仅能定位到Pseudomonas putida种水平。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-(1-hydroxy-1-methylethyl)phenol",
+          "smiles": "CC(C)(O)c1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "phenol",
+          "smiles": "Oc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "acetone",
+          "smiles": "CC(C)=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-C bond cleavage (dealkylation / retro-alkylation)",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_008"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "叔醇中间体的芳基-叔碳C-C键断裂（脱烷基）可能为自发分解（酸催化的逆烷基化型反应）或由未鉴定的C-C裂解酶催化；酶学信息未知，故enzyme整体填null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "phenol",
+          "smiles": "Oc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aromatic ring ortho-hydroxylation (monooxygenation)",
+      "enzyme": {
+        "name": "phenol 2-monooxygenase",
+        "ec_number": "1.14.13.7",
+        "gene_or_protein": "dmpKLMNOP",
+        "confidence": "high",
+        "evidence_id": "EVID_009"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxymuconic semialdehyde",
+          "smiles": "OC(=O)C(O)=CC=CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol (meta) ring-cleavage",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "xylE",
+        "confidence": "high",
+        "evidence_id": "EVID_010"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_010"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_010",
+      "uncertainty": "酶与菌株取自经典甲苯/二甲苯间位裂解体系（Pseudomonas putida mt-2, xylE），其对catechol的作用为经典反应，但在2-异丙基苯酚降解语境中的直接文献归属未逐字核实。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxymuconic semialdehyde",
+          "smiles": "OC(=O)C(O)=CC=CC=O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "OC(=O)C(=O)CC=C",
+          "role": "main"
+        },
+        {
+          "name": "formate",
+          "smiles": "OC=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-C bond hydrolysis",
+      "enzyme": {
+        "name": "2-hydroxymuconic-semialdehyde hydrolase",
+        "ec_number": "3.7.1.9",
+        "gene_or_protein": "xylF",
+        "confidence": "medium",
+        "evidence_id": "EVID_010"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_010"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_010",
+      "uncertainty": "EC编号按间位裂解化合物水解酶的常用归类（3.7.1.9）填写，未能逐字核对原始EC条目。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "OC(=O)C(=O)CC=C",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "OC(=O)C(=O)CC(O)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration (enol hydratase reaction)",
+      "enzyme": {
+        "name": "2-oxopent-4-enoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": "xylJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_010"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_010"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_010",
+      "uncertainty": "EC编号按经典归类（4.2.1.80）填写，未能逐字核对原始EC条目。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "OC(=O)C(=O)CC(O)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxopentanoate aldolase",
+        "ec_number": "4.1.2.39",
+        "gene_or_protein": "xylK",
+        "confidence": "medium",
+        "evidence_id": "EVID_010"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_010"
+      },
+      "reaction_evidence_id": "EVID_007",
+      "trait_evidence_id": "EVID_010",
+      "uncertainty": "EC编号按经典归类（4.1.2.39）填写，未能逐字核对原始EC条目。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用2-异丙基苯酚等邻位烷基苯酚作为生长底物（先脱烷基为苯酚再进一步代谢）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可将邻位烷基苯酚（如2-异丙基苯酚）脱烷基生成苯酚与相应酮类（丙酮），苯酚部分再经间位裂解途径矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "2-异丙基苯酚苄位（侧链）羟化的单加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "具运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（外膜-肽聚糖细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "CF600",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以苯酚及邻/间/对甲酚等烷基苯酚为唯一碳源与能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经dmp操纵子编码的间位裂解途径将苯酚/甲酚类降解至中央代谢（pyruvate与acetaldehyde）",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "苯酚2-单加氧酶（dmpKLMNOP编码的多组分酶系统）活性：将苯酚类邻位羟基化为儿茶酚类",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲苯、间二甲苯、对二甲苯及相应苯甲酸（甲苯甲酸）为碳源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "携带TOL质粒pWW0，经间位裂解途径降解甲苯、二甲苯等烷基芳烃至pyruvate与acetaldehyde",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "邻苯二酚2,3-双加氧酶（XylE）及间位裂解途径后续酶系（XylF/XylJ/XylK）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "acetaldehyde"
+    ],
+    "explanation": "主链最终经邻苯二酚间位裂解途径的醛缩酶步生成pyruvate与acetaldehyde：pyruvate直接进入糖酵解/TCA循环；acetaldehyde可经乙酰化乙醛脱氢酶转化为acetyl-CoA后汇入TCA循环。脱烷基副产物acetone另行被矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "acetaldehyde 氧化为 acetyl-CoA",
+      "summary": "乙醛经乙酰化乙醛脱氢酶（如dmp体系中的DmpH类酶）转化为乙酰辅酶A，与pyruvate一同进入中央代谢。"
+    },
+    {
+      "name": "acetone 的进一步矿化",
+      "summary": "副产物acetone可被丙酮代谢菌经依赖NADPH的丙酮单加氧酶氧化为acetol（羟基丙酮），随后进入糖代谢/呼吸链被矿化。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "3-isopropylcatechol 间位裂解分支（另一条文献路线）",
+      "summary": "文献/数据库（异丙基苯降解相关节点）中亦存在另一路线：2-isopropylphenol被苯酚2-单加氧酶类在环上邻位羟基化为3-isopropylcatechol，再经3-isopropylcatechol 2,3-双加氧酶（CumC，Pseudomonas fluorescens IP01）间位裂解为2-hydroxy-6-oxo-7-methylocta-2,4-dienoate，经CumD类水解酶水解释放2-methylpropanoate并生成2-oxopent-4-enoate，汇入与主链相同的后段。该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "catechol 邻位（内二醇）裂解分支",
+      "summary": "catechol也可被邻苯二酚1,2-双加氧酶（EC 1.13.11.1）内二醇裂解生成cis,cis-muconate，经β-酮己二酸途径生成琥珀酰辅酶A与乙酰辅酶A进入中央代谢；该分支不属于本题主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1: 2-isopropylphenol 经苄位（侧链）单加氧羟基化生成 2-(1-hydroxy-1-methylethyl)phenol"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2: 2-(1-hydroxy-1-methylethyl)phenol 断裂芳基-叔碳C-C键生成 phenol 与 acetone"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S3: phenol 经苯酚2-单加氧酶邻位羟基化生成 catechol"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S4: catechol 经邻苯二酚2,3-双加氧酶间位裂解生成 2-hydroxymuconic semialdehyde"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S5: 2-hydroxymuconic semialdehyde 经C-C键水解生成 2-oxopent-4-enoate 与 formate"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S6: 2-oxopent-4-enoate 水合生成 4-hydroxy-2-oxopentanoate"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S7: 4-hydroxy-2-oxopentanoate 经醛缩裂解生成 pyruvate 与 acetaldehyde"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_001: 假单胞菌（Pseudomonas putida 种水平）可将2-异丙基苯酚经苄位羟基化-脱烷基转化为 phenol 与 acetone"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_002: Pseudomonas putida CF600 含 dmp 操纵子（苯酚羟化酶 dmpKLMNOP，EC 1.14.13.7）并以苯酚/甲酚类为碳源经间位途径降解"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_010",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_003: Pseudomonas putida mt-2 携带 TOL 质粒 pWW0（xylE/F/J/K 等间位裂解途径基因）降解甲苯/二甲苯"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_011",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "假单胞菌属一般性状：革兰氏阴性、专性好氧、杆状、具运动性、不产芽孢、中温性"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "S1的具体酶（推定为苄位羟化的单加氧酶，EC仅能归入1.14.13.-类）与执行菌株仅能定位到Pseudomonas putida种水平，无确切文献与EC编号。",
+    "S2（2-(1-hydroxy-1-methylethyl)phenol的C-C断裂）可能为自发分解或由未鉴定酶催化，酶学信息未知。",
+    "S4-S7的酶与菌株取自经典间位裂解途径代表体系（P. putida mt-2的xyl基因、P. putida CF600的dmp系统），其在2-异丙基苯酚降解语境中的直接文献归属未逐一核实；部分EC编号（3.7.1.9/4.2.1.80/4.1.2.39）为按经典归类的中等把握填写。",
+    "主路线按好氧脱烷基+苯酚间位裂解给出；文献中亦存在经3-isopropylcatechol间位裂解的另一路线（见alternative_branches）。"
+  ]
+}

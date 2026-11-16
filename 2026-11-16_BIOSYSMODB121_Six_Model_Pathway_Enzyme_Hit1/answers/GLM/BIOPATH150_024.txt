@@ -1,0 +1,527 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_024",
+  "pollutant_name_zh": "(S)-4-羟基扁桃酸",
+  "pollutant_name_en": "(S)-4-Hydroxymandelate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-hydroxymandelate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故 oxygen_condition 按题面填 null；所给主链为文献已知的好氧（需氧）途径，S1–S5 构成一条线性连续主链，其后经β-酮己二酸途径进入中央代谢。"
+  },
+  "route_summary": "好氧条件下，假单胞菌将(S)-4-羟基扁桃酸经(S)-扁桃酸脱氢酶氧化为4-羟基苯甲酰甲酸（4-羟基苯乙醛酸）；经硫胺素依赖的苯甲酰甲酸脱羧酶（EC 4.1.1.7）脱羧生成4-羟基苯甲醛并释放CO2；再经NAD+依赖的苯甲醛脱氢酶（EC 1.2.1.28）氧化为4-羟基苯甲酸；随后由PobA（4-羟基苯甲酸3-单加氧酶，EC 1.14.13.2）羟化为原儿茶酸，由PcaGH（原儿茶酸3,4-双加氧酶，EC 1.13.11.3）3,4-位裂环生成3-羧基-顺,顺-粘康酸；再经β-酮己二酸途径最终以琥珀酰辅酶A与乙酰辅酶A进入TCA循环。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(S)-4-hydroxymandelate",
+          "smiles": "Oc1ccc([C@@H](C(=O)[O-])O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoylformate",
+          "smiles": "O=C([O-])C(=O)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "α-羟基酸氧化（脱氢，仲醇氧化为酮）",
+      "enzyme": {
+        "name": "(S)-mandelate dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "(S)-扁桃酸脱氢酶对(S)-4-羟基扁桃酸的活性依据扁桃酸途径酶宽底物谱推断；其EC编号未能可靠确认（候选EC 1.1.99.31或EC 1.1.2.11），按不猜测规则填null；亦不能排除文献中存在类似的4-羟基扁桃酸氧化酶专责此步。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzoylformate",
+          "smiles": "O=C([O-])C(=O)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "硫胺素焦磷酸依赖性α-酮酸脱羧（生成醛）",
+      "enzyme": {
+        "name": "benzoylformate decarboxylase",
+        "ec_number": "4.1.1.7",
+        "gene_or_protein": "mdlC",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "苯甲酰甲酸脱羧酶（EC 4.1.1.7）作用于4-羟基取代底物的活性为基于其已知宽底物谱的推断；负责该步的菌株水平归属未确认。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoate",
+          "smiles": "O=C([O-])c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛氧化脱氢（NAD+依赖，生成羧酸）",
+      "enzyme": {
+        "name": "benzaldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.28",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "P. putida 中负责4-羟基苯甲醛氧化的具体同工酶及其基因未在菌株水平确认；EC 1.2.1.28为苯甲醛脱氢酶(NAD+)的常见记载。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzoate",
+          "smiles": "O=C([O-])c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "FAD依赖型芳香环3-位羟化（单加氧反应，消耗NADPH与O2）",
+      "enzyme": {
+        "name": "4-hydroxybenzoate 3-monooxygenase",
+        "ec_number": "1.14.13.2",
+        "gene_or_protein": "pobA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-carboxy-cis,cis-muconate",
+          "smiles": "O=C([O-])C=C(C(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "非血红素铁(III)型芳香环3,4-位双加氧裂环（邻位裂解）",
+      "enzyme": {
+        "name": "protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": "pcaGH",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温性，最适生长约30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（非发酵型，无氧条件下不生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌，生长不需高盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以有机酸、氨基酸及多种芳香族化合物（扁桃酸类、苯甲酸、4-羟基苯甲酸等）为碳源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具扁桃酸途径与β-酮己二酸途径，可降解多种单环芳香族化合物（芳香醇/醛/酸类）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "扁桃酸途径酶系活性：扁桃酸消旋酶（EC 5.1.2.2）、(S)-扁桃酸脱氢酶、苯甲酰甲酸脱羧酶（EC 4.1.1.7）、苯甲醛脱氢酶（EC 1.2.1.28）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动，具极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状细菌",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，具典型的外膜（LPS）细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产生芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性种：常见于土壤、淡水、植物根际及食品等多样生境，非单一栖息地菌",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温性，实验室常规30 °C培养"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（非发酵型）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌，可在低至中等盐浓度生长"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用4-羟基苯甲酸、原儿茶酸、苯甲酸、香草酸、4-羟基苯乙酸、阿魏酸及多种有机酸与氨基酸为唯一碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "含完整β-酮己二酸途径（pca簇）及pobA、van、hpa等芳香底物降解基因，芳香化合物降解谱广",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "PobA（4-羟基苯甲酸3-单加氧酶，EC 1.14.13.2）与PcaGH（原儿茶酸3,4-双加氧酶，EC 1.13.11.3）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动，具鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细菌",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，具外膜（LPS）细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产生芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002947",
+            "genome_size_bp": 6181003,
+            "gc_percent": 61.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性种的实验室安全衍生株（pWW0质粒缺失的mt-2衍生菌，生物安全1级/GRAS），野生祖先来自土壤生境",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "主链至3-羧基-顺,顺-粘康酸后经β-酮己二酸途径（PcaB/C/D/IJ/F）转化为琥珀酰辅酶A与乙酰辅酶A，进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "β-ketoadipate pathway（原儿茶酸支路，Pseudomonas putida KT2440 已充分表征）",
+      "summary": "3-carboxy-cis,cis-muconate →（PcaB，3-carboxy-cis,cis-muconate cycloisomerase）→ 4-carboxymuconolactone →（PcaC，4-carboxymuconolactone decarboxylase，EC 4.1.1.44，释放CO2）→ 3-oxoadipate enol-lactone →（PcaD，3-oxoadipate enol-lactone hydrolase）→ 3-oxoadipate →（PcaIJ，3-oxoadipate CoA-transferase，EC 2.8.3.6）→ 3-oxoadipyl-CoA →（PcaF，3-oxoadipyl-CoA thiolase）→ succinyl-CoA + acetyl-CoA。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "(R)-4-hydroxymandelate 消旋支路",
+      "summary": "(R)-构型的4-羟基扁桃酸可先经扁桃酸消旋酶（mandelate racemase，EC 5.1.2.2）转换为(S)-构型再进入主链；本题主底物已是(S)-构型，无需此步，故该分支不属于评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida 物种水平形态与生理性状（革兰阴性直杆菌、极生鞭毛可运动、不产芽孢、专性好氧、中温、非嗜盐、土壤/淡水/根际广适）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_002947",
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida KT2440 基因组（约6.18 Mb、GC约61.5%）", "KT2440 编码 pobA 与 pca 基因簇（4-hydroxybenzoate→protocatechuate→β-ketoadipate 途径）"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["P. putida 扁桃酸途径酶系（mandelate racemase、(S)-mandelate dehydrogenase、benzoylformate decarboxylase、benzaldehyde dehydrogenase）及其对取代扁桃酸类底物的氧化降解"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "第一步(S)-扁桃酸脱氢酶的EC编号未能可靠确认（候选EC 1.1.99.31或EC 1.1.2.11），按不猜测规则填null。",
+    "S1、S2中酶作用于4-羟基取代底物的直接动力学文献证据不足，前两步基于扁桃酸途径酶宽底物谱的合理推断，confidence定为medium。",
+    "题面未指定氧条件（null）；本主链按好氧途径构建。",
+    "S1–S3的微生物按物种水平（Pseudomonas putida）归属，未能绑定具体菌株（文献菌株如P. putida A/PRS2000无法确认）。",
+    "KT2440的菌种保藏编号（DSM/ATCC等）未能可靠回忆，F5填null。"
+  ]
+}

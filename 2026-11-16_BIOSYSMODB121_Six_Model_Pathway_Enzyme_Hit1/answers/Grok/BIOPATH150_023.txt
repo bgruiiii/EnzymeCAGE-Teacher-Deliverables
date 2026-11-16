@@ -1,0 +1,584 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_023",
+  "pollutant_name_zh": "4-羟基苯乙酸根",
+  "pollutant_name_en": "4-Hydroxyphenylacetate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-hydroxyphenylacetate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。路线名称对应好氧同型原儿茶酸间位裂解途径，单加氧与双加氧均依赖分子氧，故oxygen_condition填aerobic。主链为单一连续路线，止于丙酮酸与琥珀酸半醛。"
+  },
+  "route_summary": "好氧条件下，4-羟基苯乙酸经3-位单加氧生成3,4-二羟基苯乙酸（同型原儿茶酸），再经2,3-双加氧间位开环、半醛脱氢、异构、脱羧、烯醇-酮异构、水合与醛缩裂解，生成丙酮酸和琥珀酸半醛并进入中心代谢。代表菌为具有完整hpa基因簇的Escherichia coli W。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "O=C([O-])Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,4-dihydroxyphenylacetate",
+          "smiles": "O=C([O-])Cc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧羟基化",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetate 3-monooxygenase",
+        "ec_number": "1.14.14.9",
+        "gene_or_protein": "hpaBC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该酶为双组分黄素依赖单加氧酶：HpaB为加氧酶，HpaC为黄素还原酶。现行EC 1.14.14.9由原EC 1.14.13.3转移而来。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3,4-dihydroxyphenylacetate",
+          "smiles": "O=C([O-])Cc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-carboxymethyl-2-hydroxymuconate semialdehyde",
+          "smiles": "O=CC(CC(=O)[O-])=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "间位双加氧开环",
+      "enzyme": {
+        "name": "3,4-dihydroxyphenylacetate 2,3-dioxygenase",
+        "ec_number": "1.13.11.15",
+        "gene_or_protein": "hpaD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "5-carboxymethyl-2-hydroxymuconate semialdehyde",
+          "smiles": "O=CC(CC(=O)[O-])=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-carboxymethyl-2-hydroxymuconate",
+          "smiles": "O=C([O-])C(O)=CC=C(CC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛脱氢",
+      "enzyme": {
+        "name": "5-carboxymethyl-2-hydroxymuconic-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.60",
+        "gene_or_protein": "hpaE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "5-carboxymethyl-2-hydroxymuconate",
+          "smiles": "O=C([O-])C(O)=CC=C(CC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-oxopent-3-ene-1,2,5-tricarboxylate",
+          "smiles": "O=C([O-])CC(C(=O)[O-])C=CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "异构",
+      "enzyme": {
+        "name": "5-carboxymethyl-2-hydroxymuconate delta-isomerase",
+        "ec_number": "5.3.3.10",
+        "gene_or_protein": "hpaF",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "5-oxopent-3-ene-1,2,5-tricarboxylate",
+          "smiles": "O=C([O-])CC(C(=O)[O-])C=CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxyhepta-2,4-diene-1,7-dioate",
+          "smiles": "O=C([O-])C(O)=CC=CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "5-oxopent-3-ene-1,2,5-tricarboxylate decarboxylase",
+        "ec_number": "4.1.1.68",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "大肠杆菌中该脱羧酶为双功能蛋白，同一蛋白还催化下一步2-羟基庚-2,4-二烯-1,7-二酸的异构。E. coli W中对应基因符号未逐条核验，故gene_or_protein为null。生化表征最初多来自E. coli C的hpcE。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "2-hydroxyhepta-2,4-diene-1,7-dioate",
+          "smiles": "O=C([O-])C(O)=CC=CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxohept-3-ene-1,7-dioate",
+          "smiles": "O=C([O-])C(=O)C=CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "异构",
+      "enzyme": {
+        "name": "2-hydroxyhepta-2,4-diene-1,7-dioate isomerase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该异构活性由EC 4.1.1.68双功能脱羧/异构酶的另一结构域完成，未见独立四位EC编号，故ec_number为null。基因符号未核验。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "2-oxohept-3-ene-1,7-dioate",
+          "smiles": "O=C([O-])C(=O)C=CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxoheptanedioate",
+          "smiles": "O=C([O-])C(=O)CC(O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合",
+      "enzyme": {
+        "name": "2-oxo-hept-3-ene-1,7-dioate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 4.2.1.80的直接酶促产物为烯醇式2,4-dihydroxyhept-2-ene-1,7-dioate，与酮式4-hydroxy-2-oxoheptanedioate自发互变。此处以醛缩酶底物酮式作为主链连接代谢物。E. coli W基因符号未核验。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxoheptanedioate",
+          "smiles": "O=C([O-])C(=O)CC(O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "succinate semialdehyde",
+          "smiles": "O=CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛缩裂解",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxoheptanedioate aldolase",
+        "ec_number": "4.1.2.52",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "丙酮酸与琥珀酸半醛均为进入中心代谢的主产物。该醛缩酶在E. coli C中由hpcH编码；E. coli W对应基因符号未核验，故gene_or_protein为null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "W",
+      "ncbi_taxid": 562,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "9637"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "4-羟基苯乙酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经同型原儿茶酸途径降解4-羟基苯乙酸等芳香酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-羟基苯乙酸3-单加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "中等广适：以温血动物肠道为主要生境，也可在水体、土壤和食物等环境短期存活，但不适应高盐、极端温度或极端pH，不属于极端环境广适菌",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "succinate semialdehyde"],
+    "explanation": "丙酮酸可进入中心碳代谢；琥珀酸半醛可再氧化为琥珀酸后进入TCA循环。琥珀酸半醛脱氢并非4-羟基苯乙酸降解专属步骤，不计入主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "succinate semialdehyde oxidation",
+      "summary": "琥珀酸半醛经琥珀酸半醛脱氢酶（如大肠杆菌GabD，NADP+依赖，EC 1.2.1.79；亦有NAD+依赖的EC 1.2.1.24）氧化为琥珀酸，进入TCA循环。该酶不在hpa基因簇内。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "anaerobic 4-hydroxyphenylacetate degradation",
+      "summary": "厌氧或反硝化条件下，部分细菌可通过CoA活化等途径转化4-羟基苯乙酸，与本题好氧同型原儿茶酸间位裂解主链不同。具体步骤未展开。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB EC 1.14.14.9、1.13.11.15、1.2.1.60、5.3.3.10、4.1.1.68、4.2.1.80、4.1.2.52及同型原儿茶酸途径反应序列；E. coli W hpa与E. coli C hpc文献知识",
+      "claim_scope": ["reaction", "enzyme", "ec_number", "substrate", "product"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Escherichia coli W可利用4-羟基苯乙酸为唯一碳源，其hpa基因簇编码该降解途径",
+      "claim_scope": ["microorganism", "carbon_substrate", "degradation", "enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Escherichia coli物种级标准微生物学描述：革兰氏阴性杆状、不产芽孢、兼性厌氧、周生鞭毛、有氧呼吸以氧气为末端电子受体",
+      "claim_scope": ["oxygen_tolerance", "respiration", "morphology", "gram", "sporulation", "motility"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Escherichia coli W保藏编号ATCC 9637",
+      "claim_scope": ["culture_collection"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Escherichia coli通用生理与生态描述：中温、最适约37°C、近中性pH、非嗜盐、肠道为主并可出现于水体与土壤等次级环境",
+      "claim_scope": ["temperature", "pH", "salinity", "habitat_generalism"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为未指定；本答案按路线名称对应的好氧同型原儿茶酸途径填写，oxygen_condition为aerobic。",
+    "ncbi_taxid填写物种级562，菌株W的独立TaxID未核验，未另填。",
+    "基因组登录号、基因组大小与GC含量无把握，F14全部为null。",
+    "温度与pH只填写通用最适值，生物学耐受上下限无可靠出处，故为null；盐度仅填非嗜盐类别，数值为null。",
+    "S5之后E. coli W的hpaG/hpaH/hpaI与E. coli C的hpcE/hpcG/hpcH对应关系未逐条核验，相关gene_or_protein为null。",
+    "S6异构反应无独立四位EC编号。",
+    "S7水合酶直接产物为烯醇式，与酮式自发互变；主链以酮式4-hydroxy-2-oxoheptanedioate连接醛缩酶。",
+    "SMILES为生理pH阴离子形式，未标注E/Z立体化学；NADH与NAD+的SMILES未填写。",
+    "琥珀酸半醛至琥珀酸的脱氢不计入评分主链。",
+    "运动性按大肠杆菌物种典型周生鞭毛描述，未单独核验菌株W。"
+  ]
+}

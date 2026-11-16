@@ -1,0 +1,630 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_080",
+  "pollutant_name_zh": "(2E)-3-(4-羟基-3-甲氧基苯基)丙-2-烯酸根",
+  "pollutant_name_en": "(2E)-3-(4-hydroxy-3-methoxyphenyl)prop-2-enoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "ferulate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本主链采用好氧细菌中最常见的CoA依赖非β氧化侧链裂解路线，经香草醛、香草酸盐、原儿茶酸盐至邻位开环，故oxygen_condition记为aerobic。水合与逆醛醇裂解由同一Ech蛋白完成，因仅水合半反应的EC可确认，故拆成两步。前四步代表菌为Pseudomonas sp. HR199，后两步为Pseudomonas putida KT2440，并不表示仅这些菌能催化相应反应。"
+  },
+  "route_summary": "阿魏酸根先由阿魏酰CoA合成酶活化为阿魏酰CoA，再水合为3-羟基-3-(4-羟基-3-甲氧基苯基)丙酰CoA并逆醛醇裂解为香草醛与乙酰CoA；香草醛氧化为香草酸盐后，经单加氧酶氧化脱甲基生成原儿茶酸盐，再由原儿茶酸3,4-双加氧酶邻位开环为3-羧基-顺,顺-粘康酸，随后经β-酮己二酸途径进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "ferulate",
+          "smiles": "COc1cc(/C=C/C(=O)[O-])ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "feruloyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "[O-]P(=O)([O-])OP(=O)([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA ligation",
+      "enzyme": {
+        "name": "feruloyl-CoA synthetase",
+        "ec_number": "6.2.1.34",
+        "gene_or_protein": "fcs",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "HR199",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "feruloyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxy-3-(4-hydroxy-3-methoxyphenyl)propanoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "trans-feruloyl-CoA hydratase",
+        "ec_number": "4.2.1.101",
+        "gene_or_protein": "ech",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "HR199",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "EC 4.2.1.101按水合半反应填写；该蛋白同时具有后续逆醛醇裂解活性。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "3-hydroxy-3-(4-hydroxy-3-methoxyphenyl)propanoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "vanillin",
+          "smiles": "COc1cc(C=O)ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "retro-aldol cleavage",
+      "enzyme": {
+        "name": "enoyl-CoA hydratase/aldolase",
+        "ec_number": null,
+        "gene_or_protein": "ech",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "HR199",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "裂解与水合由同一Ech蛋白完成；裂解半反应的独立EC编号不确定，故ec_number为null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "vanillin",
+          "smiles": "COc1cc(C=O)ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "vanillate",
+          "smiles": "COc1cc(C(=O)[O-])ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aldehyde dehydrogenation",
+      "enzyme": {
+        "name": "vanillin dehydrogenase",
+        "ec_number": "1.2.1.67",
+        "gene_or_protein": "vdh",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "HR199",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "vanillate",
+          "smiles": "COc1cc(C(=O)[O-])ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C([O-])c1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative O-demethylation",
+      "enzyme": {
+        "name": "vanillate monooxygenase",
+        "ec_number": "1.14.13.82",
+        "gene_or_protein": "vanAB",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "本主链采用假单胞菌NADH依赖单加氧酶脱甲基并释放甲醛；四氢叶酸依赖的O-脱甲基路线不计入本主链。EC 1.14.13.82为常用编号，后续IUBMB重编号未核对。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C([O-])c1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-carboxy-cis,cis-muconate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aromatic ortho ring cleavage",
+      "enzyme": {
+        "name": "protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": "pcaHG",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "开环产物立体化学SMILES未填写。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "HR199",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用阿魏酸作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解阿魏酸等苯丙素类芳香化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有阿魏酰CoA合成酶、烯酰CoA水合酶/醛缩酶和香草醛脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种有机碳源，包括香草酸盐和原儿茶酸盐等芳香底物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种芳香化合物，具有β-酮己二酸途径",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有香草酸盐单加氧酶和原儿茶酸3,4-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动，极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "AE015451",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤来源的代谢广适菌，碳源谱广，可利用多种芳香与非芳香底物，并非单一生境专性菌",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA", "succinyl-CoA"],
+    "explanation": "主链第3步已释放乙酰CoA。3-羧基-顺,顺-粘康酸经下游β-酮己二酸途径生成琥珀酰CoA和乙酰CoA，进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "beta-ketoadipate pathway",
+      "summary": "3-羧基-顺,顺-粘康酸经β-酮己二酸途径转化为β-酮己二酰CoA，再硫解为琥珀酰CoA与乙酰CoA并进入TCA循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "phenolic acid decarboxylation to 4-vinylguaiacol",
+      "summary": "部分细菌和真菌经酚酸脱羧酶将阿魏酸根直接脱羧为4-乙烯基愈创木酚，再转化为香草醛，不经过阿魏酰CoA。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "THF-dependent demethylation and protocatechuate 4,5-cleavage",
+      "summary": "如Sphingobium sp. SYK-6以四氢叶酸依赖的O-脱甲基酶转化香草酸盐，再由原儿茶酸4,5-双加氧酶间位开环，不同于本主链的单加氧酶脱甲基与3,4-邻位开环。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "side-chain reduction",
+      "summary": "部分微生物先将阿魏酸侧链双键还原为二氢阿魏酸再继续降解，不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Aerobic CoA-dependent ferulate degradation map recalled from pathway literature and KEGG/MetaCyc-style routes; not live-queried",
+      "claim_scope": ["reaction", "route"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "EC assignments recalled: 6.2.1.34, 4.2.1.101, 1.2.1.67, 1.14.13.82, 1.13.11.3; not live-queried",
+      "claim_scope": ["enzyme", "ec_number"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas sp. HR199 fcs, ech and vdh ferulate catabolism recalled from Priefert/Steinbüchel literature; not live-retrieved",
+      "claim_scope": ["organism", "enzyme", "reaction", "trait"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida KT2440 vanAB, pcaHG and core cell traits recalled; not live-retrieved",
+      "claim_scope": ["organism", "enzyme", "trait"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida KT2440 taxonomy 160488 and GenBank chromosome AE015451 recalled; genome size and GC not filled",
+      "claim_scope": ["taxonomy", "genome"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，本主链按经典好氧CoA依赖途径填写。",
+    "Ech的水合与逆醛醇裂解拆成两步；裂解半反应未填EC，避免编造编号。",
+    "香草酸盐单加氧酶沿用EC 1.14.13.82，IUBMB后续重编号未核对。",
+    "CoA、ATP、NAD(H)、阿魏酰CoA、羟基酰CoA和乙酰CoA的完整SMILES未填。",
+    "HR199的TaxID、保藏号、基因组登录号及两株菌的温度、pH、盐度数值未经核对，故为null。",
+    "KT2440基因组仅填写登录号AE015451，大小与GC含量未填。"
+  ]
+}

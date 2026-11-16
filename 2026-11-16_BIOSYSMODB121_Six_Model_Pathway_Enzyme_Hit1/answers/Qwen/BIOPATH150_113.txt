@@ -1,0 +1,362 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_113",
+  "pollutant_name_zh": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+  "pollutant_name_en": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-tyrosine degradation IV (to 4-methylphenol)",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线范围为 L-tyrosine degradation IV (to 4-methylphenol)；氧条件未指定，按路线名称原样填写。"
+  },
+  "route_summary": "在题面指定的 L-tyrosine degradation IV (to 4-methylphenol) 路线中，(2S)-2-amino-3-(4-hydroxyphenyl)propanoate 作为 L-酪氨酸底物进入途径，先经转氨生成 4-羟基苯丙酮酸，再经铁氧还蛋白依赖的氧化脱羧形成 4-羟基苯乙酰辅酶 A，随后水解为 4-羟基苯乙酸，最后脱羧生成终产物 4-甲基苯酚。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+          "smiles": "N[C@@H](Cc1ccc(O)cc1)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "2-oxoglutarate",
+          "smiles": "[O-]C(=O)C(=O)CCC(=O)[O-]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylpyruvate",
+          "smiles": "[O-]C(=O)C(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "L-glutamate",
+          "smiles": "N[C@@H](CCC(=O)[O-])C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "transamination",
+      "enzyme": {
+        "name": "tyrosine transaminase",
+        "ec_number": "2.6.1.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步按酪氨酸转氨酶常见反应填写；辅底物 2-酮戊二酸与副产物谷氨酸按转氨反应化学计量列出。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylpyruvate",
+          "smiles": "[O-]C(=O)C(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "oxidized ferredoxin",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "reduced ferredoxin",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "oxidative decarboxylation",
+      "enzyme": {
+        "name": "4-hydroxyphenylpyruvate:ferredoxin oxidoreductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步按厌氧 2-氧酸:铁氧还蛋白氧化还原酶样反应填写，包含 CoA 与铁氧还蛋白；具体 EC 号未知。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "[O-]C(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "thioester hydrolysis",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetyl-CoA thioesterase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步按 4-羟基苯乙酰辅酶 A 硫酯水解为 4-羟基苯乙酸填写；具体 EC 号未知。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "[O-]C(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-methylphenol",
+          "smiles": "Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetate decarboxylase",
+        "ec_number": "4.1.1.83",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步为 4-羟基苯乙酸脱羧生成 4-甲基苯酚；EC 号按已知脱羧酶填写，具体基因未指定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Clostridium difficile",
+      "strain": "630",
+      "ncbi_taxid": 272563,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "题面指定路线终点为 4-甲基苯酚；未填写进入中心代谢的产物。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway: L-tyrosine degradation IV (to 4-methylphenol)",
+      "claim_scope": [
+        "chosen_route",
+        "step_reactions",
+        "enzymes",
+        "microorganism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "272563",
+      "locator": "Clostridium difficile 630",
+      "claim_scope": [
+        "microorganism_identity"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件题面未指定，因此 route_scope.oxygen_condition 保留为 null。",
+    "步骤 2 与步骤 3 的 EC 号未能确定，按未知处理。",
+    "微生物 15 项性状缺乏可核验来源，均填为 null。",
+    "MetaCyc 路线具体记录号未给出，证据仅以路线名称定位。"
+  ]
+}

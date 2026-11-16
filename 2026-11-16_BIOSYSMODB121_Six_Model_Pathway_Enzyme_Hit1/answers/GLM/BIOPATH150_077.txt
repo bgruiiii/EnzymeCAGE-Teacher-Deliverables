@@ -1,0 +1,483 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_077",
+  "pollutant_name_zh": "3,4-二羟基苯甲酸根",
+  "pollutant_name_en": "3,4-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "protocatechuate degradation III (para-cleavage pathway)",
+    "is_single_continuous_route": true,
+    "notes": "氧条件题面未指定，按题面填 null；该途径本身为好氧途径（首步为依赖分子氧的开环加双氧反应）。路线名称按题面原样填写，不另选其他路线。主链以 Sphingobium sp. SYK-6 的 lig 基因系统为酶学依据。"
+  },
+  "route_summary": "3,4-二羟基苯甲酸即原儿茶酸。在指定的 para-cleavage（4,5-断裂）路线下：protocatechuate 经 protocatechuate 4,5-dioxygenase（LigAB，EC 1.13.11.8）在 C4–C5 键处对位断裂开环，生成 4-carboxy-2-hydroxymuconate-6-semialdehyde（4C2HMS）；4C2HMS 经 NAD+ 依赖的 4-carboxy-2-hydroxymuconate-6-semialdehyde dehydrogenase（LigC）氧化为 4-oxalomesaconate（OMA），OMA 与其内酯 2-pyrone-4,6-dicarboxylate（PDC）处于自发平衡，2-pyrone-4,6-dicarboxylate lactonase（LigI）将 PDC 水解回 OMA；OMA 经 4-oxalomesaconate hydratase（LigJ）水合为 4-carboxy-4-hydroxy-2-oxoadipate（CHA）；CHA 最终经 4-carboxy-4-hydroxy-2-oxoadipate aldolase（LigK）裂解为 pyruvate 与 oxaloacetate，进入中心代谢。整条主链的酶学证据均来自模式菌株 Sphingobium sp. SYK-6（旧称 Sphingomonas paucimobilis SYK-6）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3,4-dihydroxybenzoate (protocatechuate)",
+          "smiles": "[O-]C(=O)c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-carboxy-2-hydroxymuconate-6-semialdehyde",
+          "smiles": "[O-]C(=O)C(O)=CC(C(=O)[O-])=CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aromatic ring 4,5-cleavage (para-cleavage, extradiol-type ring-opening dioxygenation)",
+      "enzyme": {
+        "name": "protocatechuate 4,5-dioxygenase",
+        "ec_number": "1.13.11.8",
+        "gene_or_protein": "ligAB (LigA/LigB two-component dioxygenase)",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-carboxy-2-hydroxymuconate-6-semialdehyde",
+          "smiles": "[O-]C(=O)C(O)=CC(C(=O)[O-])=CC=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-oxalomesaconate",
+          "smiles": "[O-]C(=O)C(O)=CC(C(=O)[O-])=CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "2-pyrone-4,6-dicarboxylate",
+          "smiles": "O=C1OC(C(=O)[O-])=CC(C(=O)[O-])=C1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation (NAD+-dependent aldehyde dehydrogenation)",
+      "enzyme": {
+        "name": "4-carboxy-2-hydroxymuconate-6-semialdehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "ligC",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "ligC 的直接酶产物为 4-oxalomesaconate；OMA 在生理条件下会自发内酯化为更稳定的 2-pyrone-4,6-dicarboxylate，故本步同时列出两种产物形式（不同数据库/文献对该步产物记为 OMA 或 PDC 的表述不一致）。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-pyrone-4,6-dicarboxylate",
+          "smiles": "O=C1OC(C(=O)[O-])=CC(C(=O)[O-])=C1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-oxalomesaconate",
+          "smiles": "[O-]C(=O)C(O)=CC(C(=O)[O-])=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "lactone hydrolysis (ring opening)",
+      "enzyme": {
+        "name": "2-pyrone-4,6-dicarboxylate lactonase",
+        "ec_number": null,
+        "gene_or_protein": "ligI",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "PDC 由上一步产物 OMA 经非酶内酯化生成（OMA 与 PDC 处于自发平衡）；ligI 将 PDC 水解回 OMA 以维持下游通量。部分文献将 OMA→PDC 的自发内酯化单列为非酶步骤。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2", "S3"],
+      "substrates": [
+        {
+          "name": "4-oxalomesaconate",
+          "smiles": "[O-]C(=O)C(O)=CC(C(=O)[O-])=CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-carboxy-4-hydroxy-2-oxoadipate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)(C(=O)[O-])CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration (C=C bond hydration)",
+      "enzyme": {
+        "name": "4-oxalomesaconate hydratase",
+        "ec_number": null,
+        "gene_or_protein": "ligJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "OMA 存在互变异构形式，水合可能经由其 2-oxo 互变异构体进行；产物为 4-carboxy-4-hydroxy-2-oxoadipate。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-carboxy-4-hydroxy-2-oxoadipate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)(C(=O)[O-])CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "oxaloacetate",
+          "smiles": "[O-]C(=O)C(=O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol C-C bond cleavage (retro-aldol)",
+      "enzyme": {
+        "name": "4-carboxy-4-hydroxy-2-oxoadipate aldolase",
+        "ec_number": null,
+        "gene_or_protein": "ligK",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sphingobium sp. SYK-6",
+      "strain": "SYK-6",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性；实验室常规培养温度约 28–30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（需氧生长，依赖分子氧进行呼吸与芳香环开环反应）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧 O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以多种木质素衍生芳香化合物作为碳源/能源生长，包括 protocatechuate、vanillate、vanillin、syringate、3-O-methylgallate、gallate、ferulate、4-hydroxybenzoate 等",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "木质素衍生芳香化合物生物降解的模式菌株，底物谱广；并可经 β-芳基醚断裂途径降解木质素二聚体模型化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有原儿茶酸 4,5-双加氧酶活性（LigAB，EC 1.13.11.8，将 protocatechuate 对位断裂为 4C2HMS），并拥有完整的 lig 基因簇介导的芳香族降解酶系",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（短杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性较高：陆生自由生活异养菌，常见于土壤及植物残体相关生境，据报道分离自木质素/制浆相关污染环境，能适应多种含木质素衍生芳香化合物的生境",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "oxaloacetate"],
+    "explanation": "主链终端产物 pyruvate 与 oxaloacetate 均为中心代谢中间物：pyruvate 可经丙酮酸脱氢酶复合体生成 acetyl-CoA，oxaloacetate 为 TCA 循环中间体，两者可直接进入 TCA 循环被彻底氧化或用于同化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA cycle (citrate cycle)",
+      "summary": "pyruvate 经丙酮酸脱氢酶复合体氧化为 acetyl-CoA，与 oxaloacetate 缩合生成 citrate 进入 TCA 循环；oxaloacetate 本身即 TCA 循环的组成中间体。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "protocatechuate ortho-cleavage pathway（3,4-双加氧酶邻位断裂途径）",
+      "summary": "其他好氧细菌（如 Pseudomonas、Acinetobacter 等）经 protocatechuate 3,4-dioxygenase（EC 1.13.11.3）在 C3–C4 键邻位断裂，经 β-carboxy-cis,cis-muconate 进入 3-oxoadipate 途径；不属于本题指定的 para-cleavage 主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1 反应：protocatechuate 经 protocatechuate 4,5-dioxygenase（ligAB，EC 1.13.11.8）对位断裂生成 4-carboxy-2-hydroxymuconate-6-semialdehyde",
+        "Sphingobium sp. SYK-6 含 ligAB 并表现 protocatechuate 4,5-dioxygenase 活性"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2 反应：4C2HMS 经 ligC 编码的 NAD+ 依赖脱氢酶氧化为 4-oxalomesaconate，后者与其内酯 2-pyrone-4,6-dicarboxylate 处于自发平衡（Sphingobium sp. SYK-6）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S3 反应：2-pyrone-4,6-dicarboxylate 经 ligI 编码的 2-pyrone-4,6-dicarboxylate lactonase 水解为 4-oxalomesaconate（Sphingobium sp. SYK-6）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S4 反应：4-oxalomesaconate 经 ligJ 编码的 4-oxalomesaconate hydratase 水合为 4-carboxy-4-hydroxy-2-oxoadipate（Sphingobium sp. SYK-6）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S5 反应：4-carboxy-4-hydroxy-2-oxoadipate 经 ligK 编码的醛缩酶裂解为 pyruvate 与 oxaloacetate（Sphingobium sp. SYK-6）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Sphingobium sp. SYK-6 为好氧、革兰氏阴性、不产芽孢的杆状菌",
+        "好氧呼吸，末端电子受体为 O2",
+        "常规培养温度约 28–30 °C（中温性）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Sphingobium sp. SYK-6 可利用多种木质素衍生芳香化合物为碳源并降解木质素二聚体模型物",
+        "SYK-6 据报道分离自木质素/制浆相关污染环境，为木质素衍生芳香化合物降解的模式菌株"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "S2 的直接酶产物为 4-oxalomesaconate（OMA），OMA 在生理条件下自发内酯化为更稳定的 2-pyrone-4,6-dicarboxylate（PDC），故 S2 同时列出两种产物形式；不同数据库/文献对该步产物（OMA 或 PDC）的表示不一致，亦有文献把 OMA→PDC 的自发内酯化单列为非酶步骤、把 PDC→OMA（LigI）列为主链步骤。",
+    "ligC、ligI、ligJ、ligK 对应酶的确切 EC 编号无法可靠确认，按规则填 null；仅 ligAB（protocatechuate 4,5-dioxygenase，EC 1.13.11.8）为公认编号。",
+    "题面未指定菌株，本答案各步均选用酶学证据最充分的模式菌株 Sphingobium sp. SYK-6（旧称 Sphingomonas paucimobilis SYK-6）；NAD+/NADH 的 SMILES 因无法可靠核实而填 null。",
+    "该菌株的 NCBI TaxID、保藏编号、基因组信息以及温度/pH/盐度等定量性状缺少可核实来源，均按规则填 null；定性性状（好氧、革兰氏阴性、杆状、不产芽孢等）来自内部知识，置信度中等。",
+    "SYK-6 的分离来源（木质素/制浆相关污染环境）来自内部记忆，置信度低。"
+  ]
+}

@@ -1,0 +1,387 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_107",
+  "pollutant_name_zh": "烟酸根",
+  "pollutant_name_en": "Nicotinate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "nicotinate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线 nicotinate degradation I 填写；氧条件未指定，保留 null。"
+  },
+  "route_summary": "在指定路线 nicotinate degradation I 中，烟酸根经 6-羟基烟酸、2,5-二羟基吡啶、N-甲酰马来酰胺酸和马来酰胺酸，最终生成延胡索酸进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "nicotinate",
+          "smiles": "O=C([O-])c1cccnc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-hydroxynicotinate",
+          "smiles": "O=C([O-])c1ccc(O)nc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "nicotinate dehydrogenase",
+        "ec_number": "1.17.1.6",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": null,
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "6-hydroxynicotinate",
+          "smiles": "O=C([O-])c1ccc(O)nc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,5-dihydroxypyridine",
+          "smiles": "Oc1ccc(O)cn1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydroxylation/decarboxylation",
+      "enzyme": {
+        "name": "6-hydroxynicotinate 3-hydroxylase",
+        "ec_number": "1.14.14.18",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": null,
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2,5-dihydroxypyridine",
+          "smiles": "Oc1ccc(O)cn1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-formylmaleamic acid",
+          "smiles": "O=C(O)C=CC(=O)NC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring-cleavage dioxygenation",
+      "enzyme": {
+        "name": "2,5-dihydroxypyridine dioxygenase",
+        "ec_number": "1.13.11.9",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": null,
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "N-formylmaleamic acid",
+          "smiles": "O=C(O)C=CC(=O)NC=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleamate",
+          "smiles": "NC(=O)C=CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "formate",
+          "smiles": "[O-]C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "deformylation",
+      "enzyme": {
+        "name": "N-formylmaleamic acid deformylase",
+        "ec_number": "3.5.1.103",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": null,
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "maleamate",
+          "smiles": "NC(=O)C=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarate",
+          "smiles": "[O-]C(=O)/C=C/C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis/isomerization",
+      "enzyme": {
+        "name": "maleamate hydrolase",
+        "ec_number": "3.5.1.104",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": null,
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas fluorescens",
+      "strain": null,
+      "ncbi_taxid": 294,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "nicotinate",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "nicotinate degradation",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "nicotinate dehydrogenase activity",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "fumarate"
+    ],
+    "explanation": "终产物延胡索酸进入三羧酸循环。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway: nicotinate degradation I",
+      "claim_scope": [
+        "steps S1-S5",
+        "enzyme assignments",
+        "microorganism association",
+        "organism traits F7/F8/F9"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，故 route_scope.oxygen_condition 保留 null。",
+    "Pseudomonas fluorescens 的菌株与多数生理性状缺乏直接可核对来源，相关性状置 null。"
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_084",
+  "pollutant_name_zh": "咖啡因",
+  "pollutant_name_en": "Caffeine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "caffeine degradation I (main, plants)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；路线名称按题面原样填写。"
+  },
+  "route_summary": "在指定路线 caffeine degradation I (main, plants) 下，咖啡因经三次氧化性 N-去甲基反应生成黄嘌呤；本题以已知咖啡因降解菌 Pseudomonas putida CBB5 作为微生物代表填写，植物路线原始宿主与微生物对应关系存在不确定性。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "caffeine",
+          "smiles": "Cn1cnc2c1c(=O)n(C)c(=O)n2C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "theophylline",
+          "smiles": "Cn1cnc2c1c(=O)n(C)c(=O)[nH]2",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative N-demethylation",
+      "enzyme": {
+        "name": "caffeine demethylase",
+        "ec_number": "1.14.13.150",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "植物主路线中的微生物代表、辅因子需求与反应计量未完全确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "theophylline",
+          "smiles": "Cn1cnc2c1c(=O)n(C)c(=O)[nH]2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-methylxanthine",
+          "smiles": "[nH]1cnc2c1c(=O)n(C)c(=O)[nH]2",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative N-demethylation",
+      "enzyme": {
+        "name": "theophylline demethylase",
+        "ec_number": "1.14.13.151",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "植物主路线中的微生物代表、辅因子需求与反应计量未完全确认。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-methylxanthine",
+          "smiles": "[nH]1cnc2c1c(=O)n(C)c(=O)[nH]2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "xanthine",
+          "smiles": "O=c1[nH]c2nc[nH]c2c(=O)[nH]1",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative N-demethylation",
+      "enzyme": {
+        "name": "3-methylxanthine demethylase",
+        "ec_number": "1.14.13.152",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "植物主路线中的微生物代表、辅因子需求与反应计量未完全确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "CBB5",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "需氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "咖啡因可作为唯一碳源和氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解咖啡因及甲基黄嘌呤类化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "咖啡因N-去甲基酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤、植物根际和水体等多种环境中均可存活，代谢谱广",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "xanthine"
+    ],
+    "explanation": "黄嘌呤可进入嘌呤分解代谢，后续可被氧化为尿酸并进一步进入尿囊素等代谢途径。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "xanthine oxidation",
+      "summary": "黄嘌呤可被黄嘌呤脱氢酶或黄嘌呤氧化酶转化为尿酸。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "caffeine degradation I (main, plants) main demethylation sequence",
+      "claim_scope": [
+        "route",
+        "steps"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida CBB5 caffeine degradation traits",
+      "claim_scope": [
+        "organism_profile",
+        "traits"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "caffeine/theophylline/3-methylxanthine demethylase names and EC assignments",
+      "claim_scope": [
+        "enzyme"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面路线名称标注为植物主路线，但要求填写微生物降解主链；本答案使用 Pseudomonas putida CBB5 作为微生物代表，置信度较低。",
+    "N-去甲基反应可能涉及 NADPH、O2、H2O 等辅因子，本答案未逐一列出。",
+    "甲基黄嘌呤类互变异构体较多，所给 SMILES 为代表互变异构的近似结构。"
+  ]
+}

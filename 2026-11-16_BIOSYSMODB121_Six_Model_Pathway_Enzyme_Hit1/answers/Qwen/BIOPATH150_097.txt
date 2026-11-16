@@ -1,0 +1,304 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_097",
+  "pollutant_name_zh": "三甲胺",
+  "pollutant_name_en": "Trimethylamine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "trimethylamine degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；此处按微生物氧化脱甲基主链填写。"
+  },
+  "route_summary": "三甲胺在甲基营养菌中经连续氧化脱甲基降解：三甲胺先生成二甲胺和甲醛，二甲胺再生成甲胺和甲醛，甲胺最终转化为氨和甲醛；甲醛进入一碳/中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Dimethylamine",
+          "smiles": "CNC",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱甲基",
+      "enzyme": {
+        "name": "trimethylamine dehydrogenase",
+        "ec_number": "1.5.8.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Methylophilus methylotrophus",
+        "strain": "W3A1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "辅因子电子传递黄素蛋白与水未在主链底物/产物中展开。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Dimethylamine",
+          "smiles": "CNC",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Methylamine",
+          "smiles": "CN",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱甲基",
+      "enzyme": {
+        "name": "dimethylamine dehydrogenase",
+        "ec_number": "1.5.8.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Methylophilus methylotrophus",
+        "strain": "W3A1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "辅因子电子传递黄素蛋白与水未在主链底物/产物中展开。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "Methylamine",
+          "smiles": "CN",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱氨",
+      "enzyme": {
+        "name": "methylamine dehydrogenase (amicyanin)",
+        "ec_number": "1.4.9.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Methylophilus methylotrophus",
+        "strain": "W3A1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该步通常依赖 amicyanin 等电子受体，此处未展开辅因子。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Methylophilus methylotrophus",
+      "strain": "W3A1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "甲基营养型，可利用甲醇、甲胺等一碳化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可通过连续氧化脱甲基降解三甲胺",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有三甲胺脱氢酶、二甲胺脱氢酶和甲胺脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "formaldehyde"
+    ],
+    "explanation": "三步脱甲基/脱氨均释放甲醛，甲醛作为一碳中间体进入中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "trimethylamine degradation pathway in methylotrophic bacteria",
+      "claim_scope": [
+        "steps",
+        "microorganism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "enzyme EC assignments for amine dehydrogenases",
+      "claim_scope": [
+        "enzyme"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general phenotype of Methylophilus methylotrophus W3A1",
+      "claim_scope": [
+        "traits"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，未强制归为 aerobic/anaerobic。",
+    "辅因子（electron-transfer flavoprotein、amicyanin、水）未作为步骤底物/产物展开。",
+    "菌株保藏编号、基因组信息与多数生理性状缺少可核验来源，填为 null。"
+  ]
+}

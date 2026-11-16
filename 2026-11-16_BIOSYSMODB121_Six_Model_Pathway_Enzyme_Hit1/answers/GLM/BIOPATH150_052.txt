@@ -1,0 +1,425 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_052",
+  "pollutant_name_zh": "对枯茗酸根",
+  "pollutant_name_en": "p-Cumate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "p-cumate degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": true,
+    "notes": "路线名称按题面原样填写；cmt 路径各步均为依赖分子氧的加双氧酶/氧化酶反应，故氧条件填 aerobic（题面未指定时不改选其他路线）。"
+  },
+  "route_summary": "p-Cumate（4-isopropylbenzoate，对枯茗酸根）在 Pseudomonas putida F1 等好氧细菌中经 cmt 基因簇编码的代谢途径降解：先由多组分加双氧酶 p-cumate 2,3-dioxygenase 将苯环 C2/C3 双羟化为 cis-2,3-dihydro-2,3-dihydroxycumate；再经 NAD+ 依赖的 cis-二氢二醇脱氢酶芳香化为 2,3-dihydroxycumate；随后经 2,3-dihydroxycumate 3,4-dioxygenase 的外二醇型开环；开环产物脱羧/水解后形成 2-hydroxypenta-2,4-dienoate（2-hydroxypentadienoate），同时以副产物形式释出 isobutyrate 与 CO2，从而进入 β-酮己二酸/中央代谢相关下游通路。主链共 5 步。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "p-Cumate",
+          "smiles": "CC(C)c1ccc(C(=O)O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@H]1O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@@H]([C@@H](O)[C@H]2O)n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(2R,3S)-2,3-dihydro-2,3-dihydroxy-4-isopropylbenzoate",
+          "smiles": "CC(C)c1ccc([C@@H](O)[C@H](O)C(=O)O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@H]1O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@@H]([C@@H](O)[C@H]2O)n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "cis-dihydroxylation (arene 2,3-dioxygenation)",
+      "enzyme": {
+        "name": "p-cumate 2,3-dioxygenase",
+        "ec_number": "1.14.12.-",
+        "gene_or_protein": "cmtAb (terminal dioxygenase), cmtAc (ferredoxin), cmtAd (reductase)",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 193,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "基因组成（cmtAb/cmtAc/cmtAd 的具体命名）与 EC 编号层级（1.14.12.-）为不完全确定的记忆重构；多组分 Rieske 加双氧酶本身的归属置信较高。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "(2R,3S)-2,3-dihydro-2,3-dihydroxy-4-isopropylbenzoate",
+          "smiles": "CC(C)c1ccc([C@@H](O)[C@H](O)C(=O)O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@H]1O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@@H]([C@@H](O)[C@H]2O)n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-dihydroxy-4-isopropylbenzoate",
+          "smiles": "CC(C)c1ccc(O)c(O)c1C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@H]1O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@@H]([C@@H](O)[C@H]2O)n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydrogenation (dihydrodiol dehydrogenase, aromatization)",
+      "enzyme": {
+        "name": "cis-2,3-dihydro-2,3-dihydroxy-4-isopropylbenzoate dehydrogenase",
+        "ec_number": "1.3.1.-",
+        "gene_or_protein": "cmtC",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 193,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "基因名（cmtC）与 EC 层级为记忆重构，未逐一核对原文献；反应本身（dihydrodiol → catechol 型芳香化）化学上确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2,3-dihydroxy-4-isopropylbenzoate",
+          "smiles": "CC(C)c1ccc(O)c(O)c1C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-3-carboxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)/C=C/C(=C(O)/C(=O)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol ring cleavage (meta-cleavage of 2,3-dihydroxycumate)",
+      "enzyme": {
+        "name": "2,3-dihydroxycumate 3,4-dioxygenase",
+        "ec_number": "1.13.11.-",
+        "gene_or_protein": "cmtI",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 193,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "开环产物为带 3 位羧基的 2-hydroxy-6-oxo-7-methylocta-2,4-dienoate（由化学计量与同类 3,4-开裂推断）；基因名 cmtI 与 EC 层级未逐一核对，脱羧与水解的先后顺序存在不确定性。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-3-carboxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)/C=C/C(=C(O)/C(=O)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)C=C/C=C/C(O)=C/C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "2-hydroxy-3-carboxy-6-oxo-7-methylocta-2,4-dienoate decarboxylase",
+        "ec_number": null,
+        "gene_or_protein": "cmtD",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 193,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "脱羧酶的具体名称、基因名与 EC 均不确定；亦不能排除该步与水解步顺序相反（先水解释出 isobutyrate 再脱羧），或脱羧并入开环/水解酶的同一酶促过程。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)C=C/C=C/C(O)=C/C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=CC(O)=C/C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "2-methylpropanoate",
+          "smiles": "CC(C)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-C bond hydrolysis (ring-fission product hydrolase, 2-hydroxymuconate-semialdehyde hydrolase type)",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate hydrolase",
+        "ec_number": "3.7.1.-",
+        "gene_or_protein": "cmtE",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 193,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "副产物按典型 2-hydroxymuconate-semialdehyde hydrolase 机理写作 isobutyrate（2-methylpropanoate）；不能排除文献记载为 2-methylpropanal。基因名与 EC 层级为记忆重构。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 193,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30.0,
+            "maximum_c": null,
+            "preference": "中温生长，常规 30 °C 培养即可良好生长"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐，普通淡水/培养基盐度即可"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "专性好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲苯、p-枯茗烯（p-cymene）、对枯茗酸（4-isopropylbenzoate）等烃类/取代苯甲酸作为唯一碳源与能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解苯、甲苯（tod 路径）及 p-枯茗烯/对枯茗酸（cym/cmt 路径）等多种芳香族化合物，为芳香烃降解的模式菌株之一",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "含甲苯 2,3-加双氧酶（tod）与对枯茗酸 2,3-加双氧酶（cmt）等芳香环双加氧/开环酶系",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动（一端多鞭毛或端生鞭毛，具游动能力）",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "直或微弯杆状，约 0.5 × 1.5-2.0 μm",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，外膜-肽聚糖细胞包膜",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（非芽孢菌）",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、水体等多样陆生生境的环境泛栖菌，具底物广谱性的腐生/共代谢生活方式",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["2-hydroxypenta-2,4-dienoate"],
+    "explanation": "主链终点为 2-hydroxypentadienoate；它通常经 2-hydroxypentadienoate hydratase 转为 4-hydroxy-2-oxopentanoate，再由醛缩酶裂解为 pyruvate 与 acetaldehyde 进入中央代谢。这些下游步骤超出本路线既定范围（到 2-hydroxypentadienoate 为止），故仅在说明中提及。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2-hydroxypentadienoate → 4-hydroxy-2-oxopentanoate → pyruvate + acetaldehyde",
+      "summary": "超出本路线评分范围的延续：2-hydroxypenta-2,4-dienoate 经 2-hydroxypentadienoate hydratase（EC 4.2.1.80 类）水合为 4-hydroxy-2-oxopentanoate，再经 4-hydroxy-2-oxopentanoate aldolase（EC 4.1.2.x 类）裂解为 pyruvate 与 acetaldehyde 进入中央代谢。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "4-oxalocrotonate branch（2-hydroxymuconate semialdehyde 氧化-异构-脱羧支路）",
+      "summary": "在经典 xyl/tod 型 2,3-开环途径中，开环半醛可先经脱氢酶氧化为 4-oxalocrotonate，再经互变异构与脱羧回到 2-hydroxypenta-2,4-dienoate；在枯茗酸路径中是否存在对应 cmt 同源酶支路不确定。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["step1_reaction", "step2_reaction", "step3_reaction", "step5_reaction", "pathway_scaffold", "organism_assignment"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["organism_traits"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "主链总体（p-cumate → cis-二氢二醇 → 2,3-dihydroxycumate → 3,4-开环 → 脱羧 → 水解 → 2-hydroxypentadienoate）为基于生化机理与记忆中 P. putida F1 cmt 途径文献的重构，未逐字核对原论文（Eaton 关于 p-cumate catabolic pathway 的报道），故各步置信多为 medium。",
+    "S3 开环产物的准确名称/结构（是否直接生成 2-hydroxy-3-carboxy-6-oxo-7-methyloctadienoate）与 S4/S5（脱羧与水解）的先后顺序不确定；亦不能排除路径经由 3-isopropylcatechol 的替代构型。",
+    "S5 副产物按典型 HMS hydrolase 机理写作 isobutyrate（2-methylpropanoate），但文献中该裂解片段可能以 2-methylpropanal 形式记载。",
+    "cmt 基因座基因命名（cmtAb/cmtAc/cmtAd/cmtC/cmtI/cmtD/cmtE）为记忆重构，个别基因名与酶的对应关系未核实。",
+    "P. putida F1 的基因组编号、保藏编号、GC 含量、基因组大小、最适 pH 与温度等数值未提供可靠来源，均填 null；菌株 F1 的 TaxID（193 为物种级 Pseudomonas putida）按物种填写，未能确认株级专用 TaxID。"
+  ]
+}

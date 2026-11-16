@@ -1,0 +1,96 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_086",
+  "pollutant_name_zh": "(S)-2,3-二羟基丙烷-1-磺酸根",
+  "pollutant_name_en": "(S)-2,3-dihydroxypropane-1-sulfonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "3-sulfopropanediol degradation I",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "该路线先将(S)-2,3-dihydroxypropane-1-sulfonate氧化为3-sulfolactaldehyde，随后经碳硫键裂解生成glycolaldehyde和sulfite。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(S)-2,3-dihydroxypropane-1-sulfonate",
+          "smiles": "O[C@H](CO)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "该步反应在指定路线中的化学转化可确定，但首选酶、EC编号和对应微生物缺少可核实来源。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycolaldehyde",
+          "smiles": "O=CCO",
+          "role": "main"
+        },
+        {
+          "name": "sulfite",
+          "smiles": "[O-]S(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "carbon-sulfur bond cleavage",
+      "enzyme": {
+        "name": "sulfolactaldehyde 3-sulfite-lyase",
+        "ec_number": "4.4.1.24",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": null,
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "酶名称和EC编号可对应该裂解反应，但缺少本题可登记的直接来源及对应菌株信息。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "glycolaldehyde"
+    ],
+    "explanation": "glycolaldehyde可继续进入中心代谢；本题未指定其后续路线。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [],
+  "uncertainties": [
+    "未能为该路线的各步骤核实单一对应微生物及菌株。",
+    "第一步首选酶及EC编号未核实。",
+    "未提供可用于填写15项微生物性状的可靠物种级来源。"
+  ]
+}

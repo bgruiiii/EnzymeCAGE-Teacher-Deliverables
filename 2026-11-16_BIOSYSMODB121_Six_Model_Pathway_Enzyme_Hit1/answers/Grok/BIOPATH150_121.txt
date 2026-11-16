@@ -1,0 +1,182 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_121",
+  "pollutant_name_zh": "2,6-二羟基苯甲酸根",
+  "pollutant_name_en": "2,6-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "γ-resorcylate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本答案将指定路线名按芳香化合物降解中“I多为好氧、II多为厌氧”的常见编号惯例，对应为γ-resorcylate的厌氧发酵主链；该名称与化学路径的对应未经数据库页面直接核对，归属存在不确定性。"
+  },
+  "route_summary": "按γ-resorcylate degradation II的厌氧发酵主链：2,6-二羟基苯甲酸根先脱羧生成间苯二酚和CO2，间苯二酚再被还原为环己烷-1,3-二酮，随后水解开环生成5-氧代己酸根。5-氧代己酸根可进一步发酵为乙酸和丁酸，但分步酶未完整阐明，故不计入主链。经典实验菌株没有可稳定引用的物种名与保藏号，微生物与15项性状均不编造。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,6-dihydroxybenzoate",
+          "smiles": "O=C([O-])c1c(O)cccc1O",
+          "role": "main"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "resorcinol",
+          "smiles": "Oc1cccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "2,6-dihydroxybenzoate decarboxylase",
+        "ec_number": "4.1.1.103",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该脱羧反应及EC 4.1.1.103对应的反应式是明确的；厌氧路线中的具体蛋白与菌株未确定，不能把好氧Rhizobium的酶基因安到本路线上。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "resorcinol",
+          "smiles": "Oc1cccc(O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cyclohexane-1,3-dione",
+          "smiles": "O=C1CC(=O)CCC1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "reduction",
+      "enzyme": {
+        "name": "resorcinol reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "生理电子供体未确认，故未列入NADH或其他辅因子；EC编号未知。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "cyclohexane-1,3-dione",
+          "smiles": "O=C1CC(=O)CCC1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-oxohexanoate",
+          "smiles": "CC(=O)CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolytic ring cleavage",
+      "enzyme": {
+        "name": "cyclohexane-1,3-dione hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "开环水解生成5-氧代己酸根有生化证据；现行EC编号未确认，故留空。催化该步的可引用菌株未知。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["acetate", "butyrate"],
+    "explanation": "5-氧代己酸根在发酵菌中进一步转化为乙酸和丁酸，从而进入中心代谢的有机酸库；该段不是好氧β-酮己二酸途径，且分步酶未完整解析，故未写入主链步骤。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "5-oxohexanoate fermentation",
+      "summary": "5-氧代己酸根发酵生成乙酸和丁酸。经典文献给出了产物去向，但没有把每一步酶和EC完整确定，因此不作为评分主链步骤。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "γ-resorcylate degradation I",
+      "summary": "好氧替代路线：Rhizobium sp. MTP-10005中，2,6-dihydroxybenzoate经2,6-dihydroxybenzoate decarboxylase（EC 4.1.1.103）生成resorcinol，再由resorcinol hydroxylase生成hydroxyquinol，经hydroxyquinol 1,2-dioxygenase（EC 1.13.11.37）开环为maleylacetate，由maleylacetate reductase（EC 1.3.1.32）还原为3-oxoadipate，随后进入β-ketoadipate途径生成succinyl-CoA和acetyl-CoA。该分支不属于本次按路线II评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Tschech A, Schink B. Fermentative degradation of resorcinol and resorcylic acids. Arch Microbiol. 1985;143:52-59；以及Schink/Heider/Fuchs关于厌氧间苯二酚还原—水解路线的综述性描述",
+      "claim_scope": ["S1_reaction", "S2_reaction", "S3_reaction", "downstream_acetate_butyrate"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "EC 4.1.1.103；KEGG R03543：2,6-dihydroxybenzoate + H+ = resorcinol + CO2",
+      "claim_scope": ["S1_enzyme", "S1_ec_number"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": "路线名罗马数字与好氧/厌氧分工的数据库命名惯例推断，非直接页面核验",
+      "claim_scope": ["route_name_to_anaerobic_mapping"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "将题面路线名γ-resorcylate degradation II对应为厌氧发酵化学路径，是根据芳香化合物降解路线编号惯例作出的推断，没有直接核对数据库页面，归属可能错误。",
+    "若该名称实际指向好氧Rhizobium羟基氢醌—马来酰乙酸—3-氧代己二酸路线，则主链应改为alternative_branches中的描述。",
+    "厌氧脱羧、还原和水解的实验菌株没有可稳定引用的物种名、菌株号、保藏号、TaxID和基因组编号，故microorganism与organism_profiles留空。",
+    "间苯二酚还原酶的EC编号和生理电子供体未确认。",
+    "环己烷-1,3-二酮水解酶的EC编号未确认，故留空。",
+    "5-氧代己酸根之后到乙酸和丁酸的分步反应未列入主链。"
+  ]
+}

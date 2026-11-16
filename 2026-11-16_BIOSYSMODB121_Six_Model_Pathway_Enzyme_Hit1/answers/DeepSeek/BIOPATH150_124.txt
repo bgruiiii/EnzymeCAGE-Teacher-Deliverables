@@ -1,0 +1,362 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_124",
+  "pollutant_name_zh": "异丁烯",
+  "pollutant_name_en": "Isobutylene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-methylpropene degradation",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "异丁烯（2-甲基丙烯）经好氧单加氧酶环氧化为异丁烯氧化物，再水解为2-甲基丙烷-1,2-二醇，随后氧化为2-羟基-2-甲基丙酸，活化为2-羟基异丁酰辅酶A，并经变位酶重排为3-羟基丁酰辅酶A进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-methylpropene",
+          "smiles": "C=C(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,2-dimethyloxirane",
+          "smiles": "CC1(C)CO1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "epoxidation",
+      "enzyme": {
+        "name": "alkene monooxygenase",
+        "ec_number": "1.14.13.69",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium sp.",
+        "strain": "ELW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2,2-dimethyloxirane",
+          "smiles": "CC1(C)CO1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-methylpropane-1,2-diol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "epoxide hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium sp.",
+        "strain": "ELW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-methylpropane-1,2-diol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-2-methylpropanal",
+          "smiles": "CC(C)(O)C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "2-methylpropane-1,2-diol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium sp.",
+        "strain": "ELW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-2-methylpropanal",
+          "smiles": "CC(C)(O)C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-2-methylpropanoate",
+          "smiles": "CC(C)(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "2-hydroxy-2-methylpropanal dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium sp.",
+        "strain": "ELW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-2-methylpropanoate",
+          "smiles": "CC(C)(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxyisobutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "CoA activation",
+      "enzyme": {
+        "name": "2-hydroxyisobutyrate-CoA ligase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium sp.",
+        "strain": "ELW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "2-hydroxyisobutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxybutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "mutase rearrangement",
+      "enzyme": {
+        "name": "2-hydroxyisobutyryl-CoA mutase",
+        "ec_number": "5.4.99.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium sp.",
+        "strain": "ELW1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Mycobacterium sp.",
+      "strain": "ELW1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["3-hydroxybutyryl-CoA"],
+    "explanation": "3-羟基丁酰辅酶A可进一步转化为乙酰乙酰辅酶A等中心代谢中间体。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [],
+  "uncertainties": [
+    "氧条件未指定，路线按已报道的好氧异丁烯降解途径填写。",
+    "部分酶EC编号、基因/蛋白名称、菌株保藏号、基因组信息和性状未确定，填null。",
+    "2-羟基异丁酰辅酶A和3-羟基丁酰辅酶A的SMILES未提供，填null。"
+  ]
+}

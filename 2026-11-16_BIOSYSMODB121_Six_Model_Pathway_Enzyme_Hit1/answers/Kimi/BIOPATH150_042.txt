@@ -1,0 +1,489 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_042",
+  "pollutant_name_zh": "3,4-二羟基苯甲酸根",
+  "pollutant_name_en": "3,4-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "protocatechuate degradation II (ortho-cleavage pathway)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，按题面将 oxygen_condition 记为 null；该邻位开环途径首步为双加氧酶催化的反应，通常发生于好氧条件。"
+  },
+  "route_summary": "3,4-二羟基苯甲酸（原儿茶酸）经邻位（ortho）开环的 β-酮己二酸途径降解：①原儿茶酸 3,4-双加氧酶（PcaGH）在两个酚羟基之间开环，生成 3-羧基-cis,cis-粘康酸；②3-羧基-cis,cis-粘康酸环异构酶（PcaB）催化内酯化生成 γ-羧基粘康内酯；③γ-羧基粘康内酯脱羧酶（PcaC）脱羧生成 β-酮己二酸烯醇内酯并释放 CO2；④烯醇内酯水解酶（PcaD）水解开环生成 β-酮己二酸（3-氧代己二酸）；⑤3-氧代己二酸 CoA 转移酶（PcaIJ）将琥珀酰-CoA 的 CoA 转移给 3-氧代己二酸，生成 3-氧代己二酰-CoA 并释放琥珀酸；⑥3-氧代己二酰-CoA 硫解酶（PcaF）硫解生成乙酰-CoA 与琥珀酰-CoA，二者进入三羧酸循环。各步代表菌均取 β-酮己二酸途径模式菌 Acinetobacter baylyi ADP1。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3,4-Dihydroxybenzoate",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Carboxy-cis,cis-muconate",
+          "smiles": "O=C(O)C=C(C(=O)O)C=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧酶催化的邻位氧化开环（ortho ring-cleavage dioxygenation）",
+      "enzyme": {
+        "name": "Protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": "pcaG/pcaH (PcaGH)",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "产物 SMILES 以中性连接形式给出，未标注 cis,cis 双键立体构型。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-Carboxy-cis,cis-muconate",
+          "smiles": "O=C(O)C=C(C(=O)O)C=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "gamma-Carboxymuconolactone",
+          "smiles": "O=C1C=C(C(=O)O)C(CC(=O)O)O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "分子内环异构化（内酯化，cycloisomerization/lactonization）",
+      "enzyme": {
+        "name": "3-Carboxy-cis,cis-muconate cycloisomerase",
+        "ec_number": "5.5.1.5",
+        "gene_or_protein": "pcaB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "底物 SMILES 未标注双键顺反构型。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "gamma-Carboxymuconolactone",
+          "smiles": "O=C1C=C(C(=O)O)C(CC(=O)O)O1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipate enol-lactone (beta-ketoadipate enol-lactone)",
+          "smiles": "O=C1CC=C(CC(=O)O)O1",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧（decarboxylation）",
+      "enzyme": {
+        "name": "gamma-Carboxymuconolactone decarboxylase",
+        "ec_number": "4.1.1.44",
+        "gene_or_protein": "pcaC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "烯醇内酯双键位置按通行教材/数据库结构绘制。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "3-Oxoadipate enol-lactone (beta-ketoadipate enol-lactone)",
+          "smiles": "O=C1CC=C(CC(=O)O)O1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipate (beta-ketoadipate)",
+          "smiles": "O=C(O)CC(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "内酯水解开环（enol-lactone hydrolysis）",
+      "enzyme": {
+        "name": "beta-Ketoadipate enol-lactone hydrolase (3-oxoadipate enol-lactonase)",
+        "ec_number": "3.1.1.24",
+        "gene_or_protein": "pcaD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "3-Oxoadipate (beta-ketoadipate)",
+          "smiles": "O=C(O)CC(=O)CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Succinyl-CoA",
+          "smiles": "O=C(O)CCC(=O)SCCNC(=O)CCNC(=O)[C@@H](C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipyl-CoA (beta-ketoadipyl-CoA)",
+          "smiles": "O=C(O)CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)[C@@H](C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "Succinate",
+          "smiles": "O=C(O)CCC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA 转移（CoA-transferase）",
+      "enzyme": {
+        "name": "3-Oxoadipate CoA-transferase",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": "pcaI/pcaJ",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "3-Oxoadipyl-CoA (beta-ketoadipyl-CoA)",
+          "smiles": "O=C(O)CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)[C@@H](C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": "SCCNC(=O)CCNC(=O)[C@@H](C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)[C@@H](C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "Succinyl-CoA",
+          "smiles": "O=C(O)CCC(=O)SCCNC(=O)CCNC(=O)[C@@H](C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "硫解（thiolytic cleavage，thiolase）",
+      "enzyme": {
+        "name": "3-Oxoadipyl-CoA thiolase",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": "pcaF",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter baylyi",
+      "strain": "ADP1",
+      "ncbi_taxid": 62977,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（mesophile）"
+          },
+          "raw_text": "Acinetobacter sp. ADP1 常规于 30 °C 矿物盐培养基中培养（常规实验室培养条件）。",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧（strict aerobe）",
+          "raw_text": "Acinetobacter species are strictly aerobic (oxidase-negative) bacteria.",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "33305"
+          },
+          "raw_text": "Acinetobacter sp. strain ADP1 (BD413; ATCC 33305)。",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（aerobic respiration）",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": "Strict aerobic respiration with oxygen as the terminal electron acceptor.",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种芳香族化合物（如原儿茶酸、4-羟基苯甲酸、苯甲酸等）及乙酸、琥珀酸等作为唯一碳源",
+          "raw_text": "ADP1 grows on a wide range of aromatic compounds via the beta-ketoadipate pathway as sole carbon sources.",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "通过 β-酮己二酸途径的儿茶酚支路与原儿茶酸支路降解多种芳香族化合物",
+          "raw_text": "Degradation of numerous aromatic compounds through the convergent catechol and protocatechuate branches of the beta-ketoadipate pathway.",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有原儿茶酸 3,4-双加氧酶及整套 β-酮己二酸途径酶活性（PcaGH/B/C/D/IJ/F）",
+          "raw_text": "Protocatechuate 3,4-dioxygenase and the full set of beta-ketoadipate pathway enzyme activities characterized in Acinetobacter sp. ADP1.",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "无鞭毛、通常描述为不运动（可表现颤搐运动）",
+          "raw_text": "Acinetobacter species are non-flagellated and generally described as non-motile; ADP1 exhibits twitching motility.",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "短杆状至球杆状（short rods / coccobacilli）",
+          "raw_text": "Cells are short rods to coccobacilli.",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": "Gram-negative cell envelope.",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-spore-forming）",
+          "raw_text": "Does not form spores.",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_005966.1",
+            "genome_size_bp": 3598621,
+            "gc_percent": 40.3
+          },
+          "raw_text": "Complete genome of Acinetobacter baylyi ADP1: 3,598,621 bp, 40.3 mol% G+C (RefSeq NC_005966.1)。",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "环境广适菌，广泛分布于土壤、淡水等多种自然与人为环境",
+          "raw_text": "Acinetobacter spp. are widely distributed in soil and water environments.",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Acetyl-CoA", "Succinyl-CoA"],
+    "explanation": "主链终产物乙酰-CoA 与琥珀酰-CoA 均为三羧酸循环的中间/起始代谢物，直接进入中心碳代谢被彻底氧化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "三羧酸循环（TCA cycle）",
+      "summary": "乙酰-CoA 进入三羧酸循环氧化供能；琥珀酰-CoA 作为循环中间体被代谢，并可在 S5 中作为 CoA 供体循环使用。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "protocatechuate meta-cleavage 途径（如 4,5-开环或 2,3-开环）",
+      "summary": "部分微生物经原儿茶酸 4,5-双加氧酶或 2,3-双加氧酶对原儿茶酸进行间位（meta）开环降解，不属于本题被评分的邻位开环主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page: protocatechuate degradation II (ortho-cleavage pathway)",
+      "claim_scope": ["主链反应序列", "酶-反应对应关系", "EC 编号"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "doi:10.1146/annurev.micro.50.1.553",
+      "locator": "Harwood CS, Parales RE. The beta-ketoadipate pathway and the biology of self-identity. Annual Review of Microbiology 1996;50:553-590.",
+      "claim_scope": ["β-酮己二酸途径各步反应与酶", "Acinetobacter sp. ADP1 与该途径的对应关系", "芳香族底物利用"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome (RefSeq)",
+      "record_id": "NC_005966.1",
+      "locator": "Acinetobacter baylyi ADP1 complete genome",
+      "claim_scope": ["基因组大小与 GC 含量", "NCBI TaxID 62977", "pca 基因簇存在"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "ATCC 33305",
+      "locator": "ATCC catalog entry: Acinetobacter sp. strain ADP1 (BD413)",
+      "claim_scope": ["菌种保藏编号"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Bergey's Manual of Systematics of Archaea and Bacteria, genus Acinetobacter 描述",
+      "claim_scope": ["氧耐受", "呼吸方式", "细胞形态", "革兰氏染色", "运动性", "产孢", "栖息地分布"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "常规实验室培养条件记录（ADP1 于 30 °C 培养）",
+      "claim_scope": ["培养温度"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；本主链第一步为双加氧酶反应，通常对应好氧过程，但 route_scope.oxygen_condition 按题面保留为 null。",
+    "部分中间体（3-羧基-cis,cis-粘康酸、γ-羧基粘康内酯、烯醇内酯）的 SMILES 以中性连接形式给出，未标注全部双键顺反/立体构型；γ-羧基粘康内酯与 β-酮己二酸烯醇内酯的双键位置按通行教材与 MetaCyc 结构绘制。",
+    "O2、H2O、CoA 等共底物按 role=cofactor 归类，CO2 与琥珀酸按 role=byproduct 归类。",
+    "ADP1 的 ATCC 33305 保藏编号依据文献惯用标注，置信度记为 medium。"
+  ]
+}

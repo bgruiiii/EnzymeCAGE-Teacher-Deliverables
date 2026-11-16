@@ -1,0 +1,235 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_037",
+  "pollutant_name_zh": "吡啶-3-甲醛肟",
+  "pollutant_name_en": "Pyridine-3-carbaldehyde oxime",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "Aldoxime degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线名称为 Aldoxime degradation（未指定氧条件），按经典醛肟降解连续序列（醛肟→腈→酰胺→羧酸）给出主链。"
+  },
+  "route_summary": "吡啶-3-甲醛肟（烟醛肟）经微生物醛肟降解途径代谢：第一步由醛肟脱水酶将 C=N-OH 脱水生成烟腈（3-氰基吡啶）；第二步由腈水合酶将烟腈水合为烟酰胺；第三步由酰胺酶将烟酰胺水解为烟酸并释放氨。终产物烟酸可进一步进入烟酸/吡啶环降解途径（如恶臭假单胞菌的 maleamate 途径）开环，最终以延胡索酸进入 TCA 循环实现矿化。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "Pyridine-3-carbaldehyde oxime", "smiles": "ON=Cc1cccnc1", "role": "main"}
+      ],
+      "products": [
+        {"name": "Nicotinonitrile", "smiles": "N#Cc1cccnc1", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "byproduct"}
+      ],
+      "reaction_type": "dehydration（醛肟脱水生成腈）",
+      "enzyme": {
+        "name": "aldoxime dehydratase",
+        "ec_number": "4.2.1.104",
+        "gene_or_protein": "oxdB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Bacillus sp. OxB-1",
+        "strain": "OxB-1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "Bacillus sp. OxB-1 的 OxdB 具广谱醛肟脱水活性（含芳香族底物），但其对吡啶-3-甲醛肟这一杂芳族醛肟的确切动力学未见明确文献记载；该步基于醛肟脱水酶的一般底物谱推断。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "Nicotinonitrile", "smiles": "N#Cc1cccnc1", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Nicotinamide", "smiles": "NC(=O)c1cccnc1", "role": "main"}
+      ],
+      "reaction_type": "hydration（腈水合生成酰胺）",
+      "enzyme": {
+        "name": "nitrile hydratase",
+        "ec_number": "4.2.1.84",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus rhodochrous",
+        "strain": "J1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "Nicotinamide", "smiles": "NC(=O)c1cccnc1", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Nicotinic acid", "smiles": "OC(=O)c1cccnc1", "role": "main"},
+        {"name": "Ammonia", "smiles": "N", "role": "byproduct"}
+      ],
+      "reaction_type": "amide hydrolysis（酰胺水解释放氨生成羧酸）",
+      "enzyme": {
+        "name": "amidase",
+        "ec_number": "3.5.1.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus rhodochrous",
+        "strain": "J1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "R. rhodochrous J1 的腈水合酶-酰胺酶级联通常可将腈转化为相应羧酸，但其酰胺酶对烟酰胺的水解为中等确信；其他含酰胺酶/烟酰胺酶的细菌亦可催化该步。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Bacillus sp. OxB-1",
+      "strain": "OxB-1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {"value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F1_oxygen_tolerance": {"value": "aerobic", "raw_text": null, "evidence_id": "EVID_005", "confidence": "low"},
+        "F4_salinity": {"value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F3_pH": {"value": {"minimum": null, "optimum": null, "maximum": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F5_culture_collection": {"value": {"collection": null, "accession": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F6_respiration_electron_acceptor": {"value": {"respiration_mode": "aerobic respiration", "terminal_electron_acceptor": "O2"}, "raw_text": null, "evidence_id": "EVID_005", "confidence": "low"},
+        "F7_carbon_substrate_utilization": {"value": "可利用苯乙醛肟等醛肟作为氮源生长（菌株经醛肟富集培养自土壤分离）", "raw_text": null, "evidence_id": "EVID_001", "confidence": "low"},
+        "F8_degradation_capacity_broad": {"value": "可将（芳香/杂芳族）醛肟脱水为相应腈，介导醛肟降解途径", "raw_text": null, "evidence_id": "EVID_001", "confidence": "medium"},
+        "F9_enzyme_activity": {"value": "醛肟脱水酶 OxdB 活性：催化 R-CH=NOH 脱水生成 R-CN（血红素结合酶）", "raw_text": null, "evidence_id": "EVID_001", "confidence": "medium"},
+        "F10_motility": {"value": null, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F11_cell_morphology": {"value": "杆状", "raw_text": null, "evidence_id": "EVID_005", "confidence": "low"},
+        "F12_gram_cell_envelope": {"value": "革兰氏阳性", "raw_text": null, "evidence_id": "EVID_005", "confidence": "low"},
+        "F13_sporulation": {"value": "可形成内生芽孢", "raw_text": null, "evidence_id": "EVID_005", "confidence": "low"},
+        "F14_genome_basic": {"value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F15_habitat_generalism": {"value": null, "raw_text": null, "evidence_id": null, "confidence": "unknown"}
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Rhodococcus rhodochrous",
+      "strain": "J1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {"value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F1_oxygen_tolerance": {"value": "专性好氧", "raw_text": null, "evidence_id": "EVID_004", "confidence": "medium"},
+        "F4_salinity": {"value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F3_pH": {"value": {"minimum": null, "optimum": null, "maximum": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F5_culture_collection": {"value": {"collection": null, "accession": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F6_respiration_electron_acceptor": {"value": {"respiration_mode": "aerobic respiration", "terminal_electron_acceptor": "O2"}, "raw_text": null, "evidence_id": "EVID_004", "confidence": "medium"},
+        "F7_carbon_substrate_utilization": {"value": "可利用多种腈类与酰胺类（如丙烯腈、3-氰基吡啶及相应酰胺）作为氮源/碳源生长", "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F8_degradation_capacity_broad": {"value": "广谱腈代谢能力：经腈水合酶/酰胺酶级联将脂肪族与芳香族腈转化为相应酰胺或羧酸（工业上用于丙烯酰胺与烟酰胺生产）", "raw_text": null, "evidence_id": "EVID_002", "confidence": "high"},
+        "F9_enzyme_activity": {"value": "腈水合酶活性极高（工业级），将腈水合为酰胺；并具酰胺酶活性，可水解酰胺生成羧酸", "raw_text": null, "evidence_id": "EVID_002", "confidence": "high"},
+        "F10_motility": {"value": "不运动", "raw_text": null, "evidence_id": "EVID_004", "confidence": "medium"},
+        "F11_cell_morphology": {"value": "多形性短杆菌/球杆菌", "raw_text": null, "evidence_id": "EVID_004", "confidence": "medium"},
+        "F12_gram_cell_envelope": {"value": "革兰氏阳性（高GC、含分枝菌酸的细胞包膜）", "raw_text": null, "evidence_id": "EVID_004", "confidence": "medium"},
+        "F13_sporulation": {"value": "不形成芽孢", "raw_text": null, "evidence_id": "EVID_004", "confidence": "medium"},
+        "F14_genome_basic": {"value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F15_habitat_generalism": {"value": "土壤等陆地环境广泛分布的广适性放线菌，底物谱广，亦见于活性污泥等受污染环境", "raw_text": null, "evidence_id": "EVID_004", "confidence": "low"}
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["nicotinate"],
+    "explanation": "主链终产物烟酸为烟酸降解途径的入口化合物：经 6-羟基烟酸、maleamate、maleate 生成延胡索酸，进入 TCA 循环，实现吡啶环碳骨架的完全矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "Nicotinate degradation (maleamate pathway)",
+      "summary": "烟酸经烟酸脱氢酶羟化为 6-羟基烟酸，随后开环生成 maleamate，再经 maleamate 酰胺水解酶生成马来酸/延胡索酸，进入 TCA 循环（典型菌：Pseudomonas putida 等）。"
+    },
+    {
+      "name": "Pyridine ring cleavage (alternative routes)",
+      "summary": "其他吡啶降解菌（Bacillus、Nocardia、Pseudomonas 的不同菌株）可经 2,5-或 2,6-二羟基吡啶中间体开环，最终生成琥珀酸、延胡索酸等中心代谢物。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "Nitrilase branch (nicotinonitrile → nicotinate directly)",
+      "summary": "烟腈可不经酰胺中间体，由腈水解酶（nitrilase, EC 3.5.5.1）直接水解为烟酸；一些 Rhodococcus 菌株可催化 3-氰基吡啶生成烟酸。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Asano Y, Kato Y 等关于醛肟脱水酶（aldoxime dehydratase）发现与表征的系列论文（Pseudomonas chlororaphis B23 OxdA；Bacillus sp. OxB-1 OxdB/苯乙醛肟脱水酶，约1997–2010）",
+      "claim_scope": ["S1：醛肟脱水生成腈的反应", "经典醛肟降解途径（醛肟→腈→酰胺→羧酸）", "Bacillus sp. OxB-1 产 OxdB 并可利用醛肟生长"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Shaw NM, Robins KT, Kiener A. Lonza: 20 years of industrial biotransformations. Adv Synth Catal. 2003;345（R. rhodochrous J1 细胞将 3-氰基吡啶转化为烟酰胺的工业过程）；并参考 Nagasawa T 等关于 R. rhodochrous J1 腈水合酶的论文",
+      "claim_scope": ["S2：3-氰基吡啶经腈水合酶水合为烟酰胺的反应", "Rhodococcus rhodochrous J1 的腈水合酶工业级活性与腈/酰胺利用能力"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S3：烟酰胺经酰胺酶水解为烟酸并释放氨（Rhodococcus 腈水合酶-酰胺酶级联的通识知识）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Rhodococcus rhodochrous 属级一般性状（好氧、革兰阳性多形杆菌、无芽孢、不运动、土壤栖息的广适性放线菌）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Bacillus 属级一般性状（革兰阳性杆菌、产内生芽孢、好氧生长）"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "第一步选用 Bacillus sp. OxB-1（OxdB）为中等确信：OxdB 具广谱醛肖脱水活性，但其对吡啶-3-甲醛肟的确切活性未见明确文献；采用其他醛肟脱水酶菌株（如 Pseudomonas chlororaphis B23、Rhodococcus sp. N-771）亦属合理。",
+    "醛肟脱水酶的 EC 编号（4.2.1.104）按记忆填写，未能与数据库核对，置信度中等。",
+    "第三步（烟酰胺→烟酸）的微生物与酶归属基于 R. rhodochrous J1 的腈水合酶-酰胺酶级联通识推断，为中等确信。",
+    "两个菌株的多数生理性状（温度、pH、盐度、保藏编号、基因组信息等）未见公开记载，按纪律如实置 null。"
+  ]
+}

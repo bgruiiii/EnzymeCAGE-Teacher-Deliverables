@@ -1,0 +1,334 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_014",
+  "pollutant_name_zh": "2-硝基苯甲酸根",
+  "pollutant_name_en": "2-Nitrobenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "2-nitrobenzoate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线填写；该路线按好氧条件处理。"
+  },
+  "route_summary": "在好氧条件下，2-硝基苯甲酸根经 3-羟基化生成 3-羟基-2-硝基苯甲酸根，随后硝基被逐步还原为羟氨基和氨基，生成 3-羟基邻氨基苯甲酸；最后由 3-羟基邻氨基苯甲酸 3,4-双加氧酶开环，生成 2-氨基-3-羧基粘康酸半醛并进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-nitrobenzoate",
+          "smiles": "[O-]C(=O)c1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxy-2-nitrobenzoate",
+          "smiles": "[O-]C(=O)c1c([N+](=O)[O-])c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "2-nitrobenzoate 3-monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "辅因子与化学计量未列出；该单加氧酶 EC 编号未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-hydroxy-2-nitrobenzoate",
+          "smiles": "[O-]C(=O)c1c([N+](=O)[O-])c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxy-2-hydroxylaminobenzoate",
+          "smiles": "[O-]C(=O)c1c(NO)c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "reduction",
+      "enzyme": {
+        "name": "nitroreductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "辅因子与化学计量未列出；具体硝基还原酶及其 EC 编号未确认。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-hydroxy-2-hydroxylaminobenzoate",
+          "smiles": "[O-]C(=O)c1c(NO)c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxyanthranilate",
+          "smiles": "[O-]C(=O)c1c(N)c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "reduction",
+      "enzyme": {
+        "name": "hydroxylaminobenzoate reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "辅因子与化学计量未列出；具体羟氨基苯甲酸还原酶及其 EC 编号未确认。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "3-hydroxyanthranilate",
+          "smiles": "[O-]C(=O)c1c(N)c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-amino-3-carboxymuconate semialdehyde",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring-cleaving dioxygenation",
+      "enzyme": {
+        "name": "3-hydroxyanthranilate 3,4-dioxygenase",
+        "ec_number": "1.13.11.6",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "产物 SMILES 未填写；辅因子与下游继续代谢未展开。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用 2-硝基苯甲酸根作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解 2-硝基苯甲酸根",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 2-nitrobenzoate 3-monooxygenase 活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "2-amino-3-carboxymuconate semialdehyde"
+    ],
+    "explanation": "该路线开环后生成 2-氨基-3-羧基粘康酸半醛，可进一步进入氨基酸与有机酸中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "2-nitrobenzoate degradation II pathway: hydroxylation, nitro reduction and ring cleavage",
+      "claim_scope": [
+        "route",
+        "step",
+        "enzyme",
+        "microorganism",
+        "trait"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB Enzyme Nomenclature",
+      "record_id": "1.13.11.6",
+      "locator": "3-hydroxyanthranilate 3,4-dioxygenase",
+      "claim_scope": [
+        "enzyme"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general aerobic physiology of Pseudomonas spp.",
+      "claim_scope": [
+        "trait"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "路线中单加氧酶、硝基还原酶与羟氨基苯甲酸还原酶的 EC 编号未确认。",
+    "对应微生物仅能归属到 Pseudomonas sp.，具体物种、菌株、保藏编号与基因组信息未知。",
+    "各步辅因子、电子供体与完整化学计量未列出。",
+    "2-amino-3-carboxymuconate semialdehyde 的 SMILES 未填写。"
+  ]
+}

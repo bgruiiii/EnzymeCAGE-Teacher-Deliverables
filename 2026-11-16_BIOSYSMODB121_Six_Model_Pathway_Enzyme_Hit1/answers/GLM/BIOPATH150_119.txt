@@ -1,0 +1,583 @@
+
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_119",
+  "pollutant_name_zh": "对甲酚",
+  "pollutant_name_en": "P-Cresol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-methylphenol degradation to protocatechuate",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）。该路线本质为好氧路线：末步4-羟基苯甲酸3-单加氧酶依赖分子氧，全程以O2为最终电子受体。"
+  },
+  "route_summary": "对甲酚（4-methylphenol）好氧降解至原儿茶酸的主链共3步：(1) 对甲酚甲基羟化酶（PCMH，黄素细胞色素c，EC 1.17.99.1）将对甲酚的甲基经脱氢羟化净氧化为醛基，生成4-羟基苯甲醛；(2) 4-羟基苯甲醛脱氢酶（NAD+依赖，EC 1.2.1.64）将其氧化为4-羟基苯甲酸；(3) 4-羟基苯甲酸3-单加氧酶（PobA，EC 1.14.13.2，FAD/NADPH依赖）在苯环3位引入羟基，生成原儿茶酸（3,4-二羟基苯甲酸）。路线终点即题面指定的protocatechuate，之后接入β-酮己二酸途径。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-methylphenol",
+          "smiles": "Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        },
+        {
+          "name": "electron acceptor (oxidized)",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "reduced electron acceptor",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "methyl group dehydrogenative oxidation (hydroxylation) to aldehyde",
+      "enzyme": {
+        "name": "4-cresol dehydrogenase (hydroxylating) / p-cresol methylhydroxylase (PCMH)",
+        "ec_number": "1.17.99.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "NCIMB 9869",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoate",
+          "smiles": "O=C(O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aldehyde oxidation (NAD+-dependent dehydrogenation to carboxylate)",
+      "enzyme": {
+        "name": "4-hydroxybenzaldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.64",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "NCIMB 9869",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzoate",
+          "smiles": "O=C(O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate (3,4-dihydroxybenzoate)",
+          "smiles": "O=C(O)c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aromatic ring hydroxylation (FAD-dependent monooxygenation at C-3)",
+      "enzyme": {
+        "name": "4-hydroxybenzoate 3-monooxygenase / p-hydroxybenzoate hydroxylase (PobA)",
+        "ec_number": "1.14.13.2",
+        "gene_or_protein": "pobA",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "NCIMB 9869",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（obligate aerobe，非发酵型）",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "NCIMB",
+            "accession": "9869"
+          },
+          "raw_text": "Pseudomonas putida NCIMB 9869",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以对甲酚（4-methylphenol）为唯一碳源与能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解对甲酚：经4-羟基苯甲醛、4-羟基苯甲酸氧化至原儿茶酸，再经β-酮己二酸途径矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "对甲酚甲基羟化酶（PCMH，含FAD与细胞色素c亚基的黄素细胞色素）活性：将对甲酚甲基氧化为4-羟基苯甲醛",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "能动（极生鞭毛运动）",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（外膜含脂多糖）",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤与水体等环境的代谢广适性菌（generalist），无严格专性生境",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（obligate aerobe，非发酵型）",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "代谢多能：可利用多种糖类、有机酸及芳香族化合物（如4-羟基苯甲酸、苯甲酸）作为唯一碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解多种芳香族化合物，携带pobA-pca基因簇，经4-羟基苯甲酸→原儿茶酸→β-酮己二酸途径代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-羟基苯甲酸3-单加氧酶（PobA，EC 1.14.13.2）活性：将4-羟基苯甲酸羟化为原儿茶酸",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "能动（极生鞭毛运动）",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（外膜含脂多糖）",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002947",
+            "genome_size_bp": 6181003,
+            "gc_percent": 61.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "环境广适性菌株：衍生自土壤分离株mt-2（消除pWW0 TOL质粒的衍生株），常见于土壤/水体环境，代谢通才",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "protocatechuate (3,4-dihydroxybenzoate)"
+    ],
+    "explanation": "本路线终点为原儿茶酸。好氧条件下，原儿茶酸经原儿茶酸3,4-双加氧酶（PcaGH，EC 1.13.11.3）邻位开环为3-羧基-顺,顺-粘康酸，沿β-酮己二酸途径最终生成琥珀酰-CoA与乙酰-CoA进入TCA循环，实现中央代谢入口。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate ortho-cleavage（β-ketoadipate pathway）",
+      "summary": "原儿茶酸→（原儿茶酸3,4-双加氧酶，EC 1.13.11.3）3-羧基-顺,顺-粘康酸→γ-羧基粘康内酯→β-酮己二酸→琥珀酰-CoA+乙酰-CoA，进入TCA循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "经4-羟基苄醇的甲基羟化变体",
+      "summary": "部分菌株（如厌氧/反硝化菌Geobacter、Azoarcus等）的对甲酚甲基羟化酶将对甲酚羟化为4-羟基苄醇，再由NAD+依赖的4-羟基苄醇脱氢酶氧化为4-羟基苯甲醛；部分数据库亦将4-羟基苄醇列为独立中间体。本主链按EC 1.17.99.1净反应处理为直接生成4-羟基苯甲醛。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "经4-甲基儿茶酚的苯环羟化（间位）途径",
+      "summary": "另一些假单胞菌先羟化苯环，将对甲酚转化为4-甲基儿茶酚，再经2,3-间位开环途径降解，不经原儿茶酸。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.17.99.1",
+      "locator": null,
+      "claim_scope": [
+        "S1酶与反应：4-cresol dehydrogenase (hydroxylating)；4-cresol + H2O + acceptor = 4-hydroxybenzaldehyde + reduced acceptor"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Keat MJ & Hopper DJ. p-Cresol methylhydroxylase: a flavocytochrome from Pseudomonas putida. Biochem J. 1978（PCMH经典来源菌株 P. putida NCIMB 9869）",
+      "claim_scope": [
+        "S1微生物：Pseudomonas putida NCIMB 9869 产PCMH并利用对甲酚",
+        "ORG_001菌株与保藏信息",
+        "ORG_001 F7/F9性状"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.2.1.64",
+      "locator": null,
+      "claim_scope": [
+        "S2酶与反应：4-hydroxybenzaldehyde dehydrogenase (NAD+)；4-hydroxybenzaldehyde + H2O + NAD+ = 4-hydroxybenzoate + NADH + H+"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2微生物关联：P. putida对甲酚降解途径中的醛脱氢步骤",
+        "ORG_001 F8性状"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.14.13.2",
+      "locator": null,
+      "claim_scope": [
+        "S3酶与反应：4-hydroxybenzoate 3-monooxygenase；4-hydroxybenzoate + NADPH + H+ + O2 = protocatechuate + NADP+ + H2O"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Nelson KE et al. Complete genome sequence and comparative analysis of the metabolically versatile Pseudomonas putida KT2440. J Bacteriol. 2002",
+      "claim_scope": [
+        "ORG_002基因组与芳香族代谢能力（pobA/pca）",
+        "S3微生物：KT2440含pobA",
+        "ORG_002 F7/F8/F9/F15性状"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "303",
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida（ORG_001）TaxID"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "160488",
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida KT2440（ORG_002）TaxID"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_002947",
+      "locator": null,
+      "claim_scope": [
+        "ORG_002 F14基因组（约6.18 Mb，GC约61.5%）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_010",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida属/种水平一般性状：专性好氧、革兰氏阴性、杆状、不产芽孢、能动、非嗜盐、中温、土壤与水体广适分布"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "第一步按EC 1.17.99.1的净反应记为对甲酚直接生成4-羟基苯甲醛（甲基→醛，净4电子氧化，羟化与醇氧化可在同一酶上相继完成）；部分文献与数据库将4-羟基苄醇作为独立中间体（尤其厌氧/反硝化菌），已在alternative_branches中说明。",
+    "Pseudomonas putida NCIMB 9869为PCMH经典来源菌株，其第2步醛脱氢酶的具体基因未见可靠记载，gene_or_protein填null。",
+    "ORG_002基因组数值（NC_002947、6181003 bp、GC 61.5%）依据记忆填写，confidence标为medium。",
+    "两个菌株的温度、pH、盐度等数值性状缺乏可靠来源，均填null或仅作定性描述。"
+  ]
+}

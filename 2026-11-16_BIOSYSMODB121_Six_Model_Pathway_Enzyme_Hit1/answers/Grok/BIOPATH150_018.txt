@@ -1,0 +1,142 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_018",
+  "pollutant_name_zh": "四溴双酚A",
+  "pollutant_name_en": "Tetrabromobisphenol A",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Tetrabromobisphenol A pathway",
+    "is_single_continuous_route": false,
+    "notes": "评分主链仅保留好氧氧化断裂及异丙烯基产物的水合。断裂同时生成的2,6-二溴氢醌未再展开；逐级还原脱溴至双酚A不作为本题好氧主链。"
+  },
+  "route_summary": "好氧条件下四溴双酚A的微生物降解主链以分子氧参与的桥键氧化断裂为起始：四溴双酚A生成2,6-二溴-4-异丙烯基苯酚和2,6-二溴氢醌，前者可水合为2,6-二溴-4-(2-羟基丙-2-基)苯酚。该主链的特异性酶、EC编号和逐步对应菌株缺乏统一酶学确证，故置空。逐级脱溴至双酚A主要属于厌氧还原脱卤，仅作替代分支。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Tetrabromobisphenol A",
+          "smiles": "CC(C)(c1cc(Br)c(O)c(Br)c1)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,6-Dibromo-4-isopropenylphenol",
+          "smiles": "CC(=C)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        },
+        {
+          "name": "2,6-Dibromohydroquinone",
+          "smiles": "Oc1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative cleavage",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "按双酚类ipso-羟基化类比，好氧氧化断裂生成2,6-二溴-4-异丙烯基苯酚与2,6-二溴氢醌；经验代谢物研究也常检出2,6-二溴苯酚，第二主产物尚未统一。单加氧反应通常还需NAD(P)H，但无法确定是NADH还是NADPH，故未列入。催化酶、EC编号及对应菌株无统一确证，置空。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2,6-Dibromo-4-isopropenylphenol",
+          "smiles": "CC(=C)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,6-Dibromo-4-(2-hydroxypropan-2-yl)phenol",
+          "smiles": "CC(C)(O)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "2,6-二溴-4-(2-羟基丙-2-基)苯酚是已报道的转化产物，但水合可能为酶催化或自发反应，酶与微生物均未知。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "单环溴酚脱溴后可能经氢醌、儿茶酚或4-羟基苯甲酸/原儿茶酸进入中心代谢，但衔接反应未经确证，故不写入主链步骤，入口化合物留空。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2,6-dibromohydroquinone debromination and ring cleavage",
+      "summary": "2,6-二溴氢醌可脱溴为氢醌并进一步开环，酶与对应菌株未确证。"
+    },
+    {
+      "name": "hydroxyisopropyl bromophenol further oxidation",
+      "summary": "2,6-二溴-4-(2-羟基丙-2-基)苯酚可继续氧化、脱溴，可能生成2,6-二溴苯酚或羟基苯甲酸类后再开环，具体步骤未确证。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "sequential debromination to bisphenol A",
+      "summary": "TBBPA可逐级脱溴生成三溴、二溴、一溴双酚A并至双酚A后再裂解。该路线在厌氧还原脱卤中最典型；个别好氧菌株（如Ochrobactrum sp. T）亦有报道，但不作为本题好氧氧化主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "O-methylation",
+      "summary": "好氧细菌可将TBBPA氧甲基化为单甲醚和双甲醚，属于转化而非矿化主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "好氧TBBPA氧化断裂共识：桥键断裂生成2,6-二溴-4-异丙烯基苯酚与2,6-二溴氢醌",
+      "claim_scope": ["reaction", "substrate", "product"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "TBBPA转化产物中报道的2,6-二溴-4-(2-羟基丙-2-基)苯酚",
+      "claim_scope": ["reaction", "substrate", "product"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧化断裂的第二产物按ipso-羟基化写为2,6-二溴氢醌；多篇代谢物研究更常检出2,6-二溴苯酚，二者是否为同一反应的主产物尚未统一。",
+    "特异性酶、EC编号、基因及逐步对应微生物未确证，已置空。",
+    "Ochrobactrum sp. T等好氧菌株可降解TBBPA，但公开途径多描述为逐级脱溴，故未绑定到本氧化主链。",
+    "水合步骤可能含自发反应成分。",
+    "未绑定具体菌株，故无菌种性状、保藏号、基因组登录号与TaxID。"
+  ]
+}

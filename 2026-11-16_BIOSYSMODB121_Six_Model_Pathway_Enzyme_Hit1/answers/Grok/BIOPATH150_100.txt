@@ -1,0 +1,250 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_100",
+  "pollutant_name_zh": "4-氨基-3-羟基苯甲酸根",
+  "pollutant_name_en": "4-Amino-3-hydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-amino-3-hydroxybenzoate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未预先限定氧条件。该路线的开环步为依赖分子氧的2,3-双加氧反应，故按好氧主链填写。主链仅展开有较明确对应关系的前两步，下游修饰间位裂解未逐反应展开。"
+  },
+  "route_summary": "4-氨基-3-羟基苯甲酸根在好氧条件下由Bordetella sp. strain 10d经4-氨基-3-羟基苯甲酸2,3-双加氧酶开环，生成2-氨基-5-羧基粘康酸-6-半醛；该产物再脱氨生成2-羟基-5-羧基粘康酸-6-半醛，随后进入修饰的间位裂解途径并汇入中心代谢。菌株能以该化合物为唯一碳源和氮源生长，但下游各酶步未作为已核实主链列出。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-amino-3-hydroxybenzoate",
+          "smiles": "Nc1ccc(C(=O)[O-])cc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-amino-5-carboxymuconic 6-semialdehyde",
+          "smiles": "O=C(O)C(N)=CC=C(C(=O)O)C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol dioxygenation",
+      "enzyme": {
+        "name": "4-amino-3-hydroxybenzoate 2,3-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Bordetella sp.",
+        "strain": "10d",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "开环反应、酶与Bordetella sp. strain 10d的对应关系有较明确文献基础，但正式EC编号和基因符号未能确认，故留空；产物SMILES按标准名称整理，未与数据库记录逐条比对。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-amino-5-carboxymuconic 6-semialdehyde",
+          "smiles": "O=C(O)C(N)=CC=C(C(=O)O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-5-carboxymuconic 6-semialdehyde",
+          "smiles": "O=C(O)C(O)=CC=C(C(=O)O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic deamination",
+      "enzyme": {
+        "name": "2-amino-5-carboxymuconic 6-semialdehyde deaminase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bordetella sp.",
+        "strain": "10d",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "脱氨生成2-羟基-5-羧基粘康酸-6-半醛是对该菌株修饰间位裂解途径的文献记忆，置信度较低；不能排除半醛先被脱氢、再脱氨的替代顺序。EC编号与基因符号未知。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Bordetella sp.",
+      "strain": "10d",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以4-氨基-3-羟基苯甲酸作为唯一碳源和氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解4-氨基-3-羟基苯甲酸，经修饰的间位开环途径",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有4-氨基-3-羟基苯甲酸2,3-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "Bordetella sp. strain 10d能以4-氨基-3-羟基苯甲酸为唯一碳源生长，表明降解可汇入中心代谢；具体汇入代谢物未经逐步核实，故不列出产物名称。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "modified meta-cleavage pathway",
+      "summary": "2-羟基-5-羧基粘康酸-6-半醛之后预计继续经修饰的间位裂解（可能包括半醛氧化或水解、脱羧及碳骨架拆分）进入中心代谢。这些下游反应的底物、产物和酶未核实，故不列入评分主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "文献记忆：Bordetella sp. strain 10d以4-amino-3-hydroxybenzoate为唯一碳氮源好氧生长，并由4-amino-3-hydroxybenzoate 2,3-dioxygenase将其开环为2-amino-5-carboxymuconic 6-semialdehyde（Takenaka、Murakami、Aoki等研究系列）。本次未回查数据库或原文。",
+      "claim_scope": ["S1_reaction", "S1_enzyme", "organism_Bordetella_sp_10d", "F1_oxygen_tolerance", "F6_respiration_electron_acceptor", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "文献记忆：同一菌株中2-amino-5-carboxymuconic 6-semialdehyde脱氨生成2-hydroxy-5-carboxymuconic 6-semialdehyde，再进入修饰间位裂解。酶EC与基因符号未能确认，本次未回查原文。",
+      "claim_scope": ["S2_reaction", "S2_enzyme"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "正式EC编号、基因符号、NCBI TaxID、保藏编号和基因组登录号均无可靠可引用值，已记为null。",
+    "脱氨步的酶名与反应顺序依据文献记忆，不能排除先脱氢再脱氨的替代顺序。",
+    "间位裂解下游至中心代谢的具体中间体和酶未展开，以避免编造。",
+    "温度、pH、盐度、运动性、细胞形态、革兰氏染色、产孢和栖息地广适性无该菌株的可核对原文，均记为null。",
+    "SMILES按化学名称整理，底物用题面阴离子形式，开环产物用文献常用酸式名称对应的结构，未与特定数据库记录比对。"
+  ]
+}

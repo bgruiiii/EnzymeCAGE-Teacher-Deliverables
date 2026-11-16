@@ -1,0 +1,361 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_065",
+  "pollutant_name_zh": "3-(甲硫基)丙酸根",
+  "pollutant_name_en": "3-(Methylthio)propionate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methylthiopropanoate degradation I (cleavage)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。本主链为3-(甲硫基)丙酸根经辅酶A硫酯活化、脱氢后水合裂解、释放甲硫醇的路线，对应DmdB–DmdC–甲基硫代丙烯酰-CoA水合酶序列，而不是去甲基化生成3-巯基丙酸的支路。该路线在好氧海洋玫瑰杆菌中阐明；三步反应不以分子氧为直接底物，但脱氢步骤的电子可经呼吸链传至氧气。"
+  },
+  "route_summary": "3-(甲硫基)丙酸根先由AMP形成型连接酶DmdB活化为3-(甲硫基)丙酰-CoA，再由DmdC脱氢生成(2E)-3-(甲硫基)丙烯酰-CoA，随后经水合裂解释放甲硫醇，碳骨架以乙醛和二氧化碳离开该主链。乙醛可进入中心碳代谢。代表菌为海洋玫瑰杆菌Ruegeria pomeroyi DSS-3。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3-(methylthio)propionate",
+          "smiles": "CSCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)N2C=NC3=C2N=CN=C3N)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCS)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-(methylthio)propanoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)N2C=NC3=C2N=CN=C3N)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCSC(=O)CCSC)O",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)O)C(O)C1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "OP(=O)(O)OP(=O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "acyl-CoA ligation (AMP-forming)",
+      "enzyme": {
+        "name": "3-(methylthio)propionyl-CoA ligase",
+        "ec_number": "6.2.1.44",
+        "gene_or_protein": "dmdB",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": 246200,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-(methylthio)propanoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)N2C=NC3=C2N=CN=C3N)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCSC(=O)CCSC)O",
+          "role": "main"
+        },
+        {
+          "name": "oxidized electron acceptor",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(2E)-3-(methylthio)acryloyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)N2C=NC3=C2N=CN=C3N)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCSC(=O)/C=C/SC)O",
+          "role": "main"
+        },
+        {
+          "name": "reduced electron acceptor",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "3-(methylthio)propanoyl-CoA dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "dmdC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": 246200,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "生理电子受体尚未在本回答中指定为具体化合物，故以未鉴定电子受体表示；不填写猜测的EC编号。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "(2E)-3-(methylthio)acryloyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)N2C=NC3=C2N=CN=C3N)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCSC(=O)/C=C/SC)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        },
+        {
+          "name": "methanethiol",
+          "smiles": "CS",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)N2C=NC3=C2N=CN=C3N)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCS)O",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "hydration and thiol-releasing cleavage",
+      "enzyme": {
+        "name": "methylthioacryloyl-CoA hydratase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": 246200,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "化学计量上该裂解消耗2分子水，产物为乙醛、甲硫醇、二氧化碳和辅酶A。Ruegeria pomeroyi DSS-3可完成该转化，但该菌株可能缺少典型dmdD直系同源基因，而由功能等同的巴豆酸酶超家族酶催化，故基因名与EC均不填写。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Ruegeria pomeroyi",
+      "strain": "DSS-3",
+      "ncbi_taxid": 246200,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用3-(甲硫基)丙酸和二甲基巯基丙酸内盐作为碳源与硫源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解二甲基巯基丙酸内盐及3-(甲硫基)丙酸，经裂解途径释放甲硫醇",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有3-(甲硫基)丙酰-CoA连接酶（DmdB）和3-(甲硫基)丙酰-CoA脱氢酶（DmdC）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_003911",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "沿海海水来源的海洋异养菌，有机底物利用面较宽，但分布主要限于海洋环境，不属于跨生态系统广适种",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetaldehyde"],
+    "explanation": "裂解主链的碳进入点是乙醛；乙醛可进一步氧化为乙酸或乙酰辅酶A而进入中心碳代谢。甲硫醇是硫产物，二氧化碳为脱羧产物，二者不作为中心碳代谢入口。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "acetaldehyde oxidation",
+      "summary": "乙醛可被氧化为乙酸或乙酰辅酶A后进入中心代谢。该后续步骤不属于本题评分的甲硫基丙酸裂解主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "methylthiopropanoate demethylation to 3-mercaptopropionate",
+      "summary": "3-(甲硫基)丙酸也可经去甲基化生成3-巯基丙酸，而不走释放甲硫醇的裂解主链。该支路不属于本题指定并评分的cleavage主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Reisch CR, Moran MA, Whitman WB. Novel pathway for assimilation of dimethylsulphoniopropionate widespread in marine bacteria. Nature. 2011;473:208-211.",
+      "claim_scope": ["reaction", "enzyme", "gene", "organism", "degradation_trait"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": "6.2.1.44",
+      "locator": "EC 6.2.1.44 3-(methylthio)propanoate:CoA ligase (AMP-forming); gene dmdB; Ruegeria pomeroyi",
+      "claim_scope": ["ec_number", "enzyme"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Moran MA, Buchan A, Gonzalez JM, et al. Genome sequence of Silicibacter pomeroyi reveals adaptations to the marine environment. Nature. 2004;432:910-913.",
+      "claim_scope": ["oxygen_tolerance", "respiration", "habitat"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Ruegeria/Rhodobacteraceae taxonomic characterization: Gram-negative rods",
+      "claim_scope": ["cell_morphology", "gram_stain"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_003911",
+      "locator": "Ruegeria pomeroyi DSS-3 chromosome; NCBI taxonomy 246200",
+      "claim_scope": ["genome_accession", "ncbi_taxid"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "DmdC与最后一步水合裂解酶的EC编号未能可靠确定，故填null。",
+    "最后一步在Ruegeria pomeroyi DSS-3中的具体基因（典型dmdD或功能等同的acuH类巴豆酸酶）存在文献差异，故gene_or_protein填null。",
+    "DmdC的生理电子受体未指定为具体分子。",
+    "温度、pH、盐度范围、保藏编号、运动性、产孢以及基因组大小和GC含量没有可靠的可引用数值，故相关性状为null，未用近似值占位。",
+    "本主链按Dmd途径的甲硫醇释放裂解解释题面路线名；若数据库将该路线名仅对应单步裂解酶反应，则步骤划分会不同。"
+  ]
+}

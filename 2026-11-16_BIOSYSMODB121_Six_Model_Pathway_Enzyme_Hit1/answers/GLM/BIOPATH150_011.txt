@@ -1,0 +1,477 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_011",
+  "pollutant_name_zh": "间甲酚",
+  "pollutant_name_en": "m-Cresol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "m-cresol degradation pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定的好氧m-cresol降解路线作答：主链为经3-甲基儿茶酚（3-methylcatechol）的儿茶酚间位裂解途径，为一条连续主链，未改选其他路线。"
+  },
+  "route_summary": "好氧条件下，m-cresol先由多组分苯酚羟化酶（phenol 2-monooxygenase，dmpKLMNOP，EC 1.14.13.7）羟化为3-methylcatechol；再由儿茶酚2,3-双加氧酶（catechol 2,3-dioxygenase，dmpB，EC 1.13.11.2）间位裂解为2-hydroxy-6-methyl-6-oxohexa-2,4-dienoate（即2-hydroxy-6-oxohepta-2,4-dienoate）；随后由2-hydroxymuconate-semialdehyde hydrolase（dmpD，EC 3.7.1.9）水解释放acetate并生成2-hydroxypenta-2,4-dienoate；经2-hydroxypenta-2,4-dienoate hydratase（dmpE，EC 4.2.1.80）水合为4-hydroxy-2-oxopentanoate；最后由4-hydroxy-2-oxopentanoate aldolase（dmpG，EC 4.1.3.39）裂解为pyruvate与acetaldehyde，连同第3步释放的acetate进入中心代谢。主链各步对应菌均为Pseudomonas sp. CF600（dmp操纵子系统）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "m-Cresol",
+          "smiles": "Cc1cccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C=CC1)[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@H]([C@H](O)[C@@H]2O)n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Methylcatechol",
+          "smiles": "Oc1c(O)c(C)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@H]([C@H](O)[C@@H]2O)n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "芳环羟化（单加氧反应）",
+      "enzyme": {
+        "name": "phenol 2-monooxygenase (multi-component phenol hydroxylase)",
+        "ec_number": "1.14.13.7",
+        "gene_or_protein": "dmpKLMNOP",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. CF600",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "羟化位置存在区域选择性：m-cresol亦可被羟化为4-methylcatechol（见alternative_branches）；本步按主要产物3-methylcatechol构建主链。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-Methylcatechol",
+          "smiles": "Oc1c(O)c(C)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxy-6-methyl-6-oxohexa-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "儿茶酚间位裂解（extradiol 2,3-开环）",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "dmpB",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. CF600",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-6-methyl-6-oxohexa-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Acetate",
+          "smiles": "CC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-C键水解裂解",
+      "enzyme": {
+        "name": "2-hydroxymuconate-semialdehyde hydrolase",
+        "ec_number": "3.7.1.9",
+        "gene_or_protein": "dmpD",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. CF600",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "中间体2-hydroxy-6-methyl-6-oxohexa-2,4-dienoate在文献中亦称2-hydroxy-6-oxohepta-2,4-dienoate，为同一化合物。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-Hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合反应（烯醇水合）",
+      "enzyme": {
+        "name": "2-hydroxypenta-2,4-dienoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": "dmpE",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. CF600",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 4.2.1.80按记忆填写，置信度中等。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-Hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛醇裂解（C-C键裂解）",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxopentanoate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": "dmpG",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. CF600",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 4.1.3.39按记忆填写，置信度中等。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp. CF600",
+      "strain": "CF600",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以苯酚及多种甲基酚（包括间甲酚等甲酚异构体、3,4-二甲基苯酚）作为唯一碳源与能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "通过dmp操纵子编码的间位裂解途径降解苯酚与烷基酚类（含m-cresol）：酚类先羟化为（甲基）儿茶酚，经儿茶酚2,3-双加氧酶间位裂解后进入中心代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具多组分苯酚羟化酶（DmpKLMNOP）、catechol 2,3-dioxygenase（DmpB）、2-hydroxymuconate-semialdehyde hydrolase（DmpD）、2-hydroxypenta-2,4-dienoate hydratase（DmpE）及4-hydroxy-2-oxopentanoate aldolase（DmpG）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "泛栖型（广适性）：假单胞菌属细菌广泛分布于土壤、淡水与活性污泥等多种生境，可在含酚类污染环境中检出并富集",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Pyruvate", "Acetaldehyde", "Acetate"],
+    "explanation": "主链末步醛缩酶反应生成pyruvate与acetaldehyde（均为中心代谢物）；第3步水解释放的acetate亦进入中心代谢。在dmp系统中，acetaldehyde可进一步由acylating acetaldehyde dehydrogenase（DmpH，EC 1.2.1.10）氧化为acetyl-CoA，经TCA循环彻底氧化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "acetaldehyde → acetyl-CoA",
+      "summary": "acetaldehyde经acylating acetaldehyde dehydrogenase（DmpH，EC 1.2.1.10）转化为acetyl-CoA，随后进入TCA循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "m-cresol → 4-methylcatechol 分支",
+      "summary": "部分菌株的苯酚/甲酚羟化酶将m-cresol羟化为4-methylcatechol（区域选择性与菌株有关），后者经catechol 2,3-dioxygenase生成2-hydroxy-5-methyl-6-oxohexa-2,4-dienoate并进入相应下游分支；该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Shingler V. et al., J. Gen. Microbiol. (1989)：Pseudomonas sp. CF600质粒编码苯酚羟化酶的分子分析；及Powlowski J.与Shingler V.等1990年代关于CF600 dmp操纵子编码酶（DmpB、DmpD、DmpE、DmpG-DmpH等）的系列表征论文",
+      "claim_scope": [
+        "Pseudomonas sp. CF600为酚/甲酚间位裂解途径降解菌",
+        "S1-S5各步酶与基因（dmp系统）",
+        "CF600以苯酚及甲酚类为唯一碳源生长"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.13.11.2",
+      "locator": "catechol 2,3-dioxygenase条目",
+      "claim_scope": ["catechol 2,3-dioxygenase的EC编号"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 3.7.1.9",
+      "locator": "2-hydroxymuconate-semialdehyde hydrolase条目",
+      "claim_scope": ["2-hydroxymuconate-semialdehyde hydrolase的EC编号"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.14.13.7",
+      "locator": "phenol 2-monooxygenase条目",
+      "claim_scope": ["phenol 2-monooxygenase的EC编号"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 4.2.1.80",
+      "locator": "2-hydroxypenta-2,4-dienoate hydratase条目",
+      "claim_scope": ["2-hydroxypenta-2,4-dienoate hydratase的EC编号"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 4.1.3.39",
+      "locator": "4-hydroxy-2-oxopentanoate aldolase条目",
+      "claim_scope": ["4-hydroxy-2-oxopentanoate aldolase的EC编号"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "整体好氧m-cresol降解路线（经3-methylcatechol的间位裂解途径）",
+        "假单胞菌属一般生物学性状（革兰氏阴性、杆状、可运动、不产芽孢、好氧、泛栖）"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "m-cresol第一步羟化的区域选择性因菌株/酶而异：主链按主要产物3-methylcatechol构建，4-methylcatechol分支已在alternative_branches中另行声明。",
+    "中间体2-hydroxy-6-methyl-6-oxohexa-2,4-dienoate与2-hydroxy-6-oxohepta-2,4-dienoate为同一化合物的两种命名。",
+    "EC 4.2.1.80（水合酶）与EC 4.1.3.39（醛缩酶）按记忆填写，置信度中等。",
+    "Pseudomonas sp. CF600的保藏编号、基因组信息及温度/pH/盐度等性状数值缺乏可确证来源，均填null。",
+    "各步首选菌均按dmp操纵子研究中的Pseudomonas sp. CF600填写，未为其他菌株（如P. putida mt-2的xyl系统）另建菌档案。"
+  ]
+}

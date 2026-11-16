@@ -1,0 +1,206 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_005",
+  "pollutant_name_zh": "4-羧基-4'-磺酸基偶氮苯",
+  "pollutant_name_en": "4-Carboxylato-4'-sulfonatoazobenzene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-Carboxy-4'-Sulfoazobenzene pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线名称填写，未改选其他路线。"
+  },
+  "route_summary": "在好氧条件下，该指定路线的主反应为微生物偶氮还原酶对偶氮键的还原裂解：4-羧基-4'-磺酸基偶氮苯被裂解为4-氨基苯甲酸（盐）和4-氨基苯磺酸（盐）。后续芳香胺进一步矿化的证据不足，未纳入本主链步骤。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Carboxylato-4'-sulfonatoazobenzene",
+          "smiles": "[O-]C(=O)c1ccc(N=Nc2ccc(S(=O)(=O)[O-])cc2)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-aminobenzoate",
+          "smiles": "[O-]C(=O)c1ccc(N)cc1",
+          "role": "main"
+        },
+        {
+          "name": "4-aminobenzenesulfonate",
+          "smiles": "Nc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "偶氮键还原裂解",
+      "enzyme": {
+        "name": "azoreductase",
+        "ec_number": "1.7.1.6",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas xenophaga",
+        "strain": "BN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "辅因子（如 NADH/NADPH）、质子平衡与完整化学计量未列出；后续芳香胺矿化路线及菌株生理参数未完全核实。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sphingomonas xenophaga",
+      "strain": "BN1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": "Sphingomonas xenophaga BN1 被描述为好氧微生物；依据内部知识，未给出可核验原始文献。",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": "好氧微生物通常以氧气作为末端电子受体；依据内部知识。",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可还原裂解4-羧基-4'-磺酸基偶氮苯的偶氮键，生成4-氨基苯甲酸（盐）和4-氨基苯磺酸（盐）。",
+          "raw_text": "基于S1反应：4-Carboxylato-4'-sulfonatoazobenzene 被 azoreductase 裂解为 4-aminobenzoate 与 4-aminobenzenesulfonate。",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "NADH 依赖型偶氮还原酶活性，可裂解偶氮键。",
+          "raw_text": "azoreductase 催化偶氮化合物还原裂解；依据内部知识。",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": "Sphingomonas 属通常为革兰氏阴性杆菌；依据内部知识。",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Sphingomonas 属通常为革兰氏阴性；依据内部知识。",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产孢/不产芽孢",
+          "raw_text": "Sphingomonas 属通常不产孢；依据内部知识。",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本答案仅给出指定路线中可确认的起始主反应；进入中心代谢的最终产物证据不足。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Sphingomonas xenophaga BN1 通过偶氮还原酶裂解 4-carboxy-4'-sulfoazobenzene 的内部知识。",
+      "claim_scope": [
+        "step:S1",
+        "enzyme:S1",
+        "microorganism:S1",
+        "organism_profile:ORG_001:F8",
+        "organism_profile:ORG_001:F9"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Sphingomonas xenophaga BN1 的基础生理与细胞形态特征内部知识。",
+      "claim_scope": [
+        "organism_profile:ORG_001:F1",
+        "organism_profile:ORG_001:F6",
+        "organism_profile:ORG_001:F11",
+        "organism_profile:ORG_001:F12",
+        "organism_profile:ORG_001:F13"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未找到可核验的公开记录来完整支持该路线的辅因子、化学计量与后续矿化步骤。",
+    "Sphingomonas xenophaga BN1 的分类地位、保藏编号、基因组信息与多数生理参数未核实，已按缺失填写 null。",
+    "好氧条件下偶氮还原是否由同一菌株直接完成仍需谨慎，置信度未标为 high。"
+  ]
+}

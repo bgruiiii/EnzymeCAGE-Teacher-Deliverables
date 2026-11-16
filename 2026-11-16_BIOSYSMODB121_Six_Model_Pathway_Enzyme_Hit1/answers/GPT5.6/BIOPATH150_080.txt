@@ -1,0 +1,349 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_080",
+  "pollutant_name_zh": "(2E)-3-(4-羟基-3-甲氧基苯基)丙-2-烯酸根",
+  "pollutant_name_en": "(2E)-3-(4-hydroxy-3-methoxyphenyl)prop-2-enoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "ferulate degradation",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "该主链采用CoA依赖的ferulate降解路线：ferulate先被活化为feruloyl-CoA，随后裂解生成vanillin，经氧化生成vanillate，再经O-去甲基化生成protocatechuate并进入芳香环裂解代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(2E)-3-(4-hydroxy-3-methoxyphenyl)prop-2-enoate",
+          "smiles": "COC1=C(C=CC(=C1)O)C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "feruloyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "CoA-dependent carboxylate activation",
+      "enzyme": {
+        "name": "feruloyl-CoA synthetase",
+        "ec_number": "6.2.1.34",
+        "gene_or_protein": "fcs",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "HR199",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "feruloyl-CoA的结构式未填写；该步骤通常需要CoA、ATP和Mg2+等辅助组分。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "feruloyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "vanillin",
+          "smiles": "COC1=C(C=CC(=C1)O)C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Hydration and side-chain cleavage",
+      "enzyme": {
+        "name": "feruloyl-CoA hydratase/lyase",
+        "ec_number": null,
+        "gene_or_protein": "ech",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "HR199",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该裂解反应伴随乙酰辅酶A等产物，但本步骤仅列出主芳香族产物。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "vanillin",
+          "smiles": "COC1=C(C=CC(=C1)O)C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "vanillate",
+          "smiles": "COC1=C(C=CC(=C1)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Aldehyde oxidation",
+      "enzyme": {
+        "name": "vanillin dehydrogenase",
+        "ec_number": "1.2.1.67",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "HR199",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "反应所用电子受体可为NAD+或其他细胞内氧化还原辅因子，未在此处限定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "vanillate",
+          "smiles": "COC1=C(C=CC(=C1)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C(O)C1=CC(=C(C=C1)O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "O-demethylation",
+      "enzyme": {
+        "name": "vanillate O-demethylase",
+        "ec_number": "2.1.1.76",
+        "gene_or_protein": "vanAB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "HR199",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "O-去甲基化可能通过两组分芳香醚O-去甲基化酶体系完成，具体辅因子组成未在此处展开。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "HR199",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "protocatechuate"
+    ],
+    "explanation": "Protocatechuate可进一步经芳香环裂解途径转化为中心代谢中间体。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate ring-cleavage pathway",
+      "summary": "protocatechuate通常经protocatechuate 3,4-dioxygenase等酶进行邻位开环，随后进入β-ketoadipate相关中心代谢。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ferulate degradation主链",
+        "feruloyl-CoA synthetase",
+        "feruloyl-CoA hydratase/lyase",
+        "vanillin dehydrogenase",
+        "vanillate O-demethylase"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas sp. HR199与ferulate degradation路线的对应关系"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，因此未将路线限定为aerobic或anaerobic。",
+    "部分酶的精确EC分类、基因命名及反应辅因子依赖性可能因菌株和数据库注释而异。",
+    "Pseudomonas sp. HR199的NCBI TaxID、保藏编号和基因组基本信息未填写。"
+  ]
+}

@@ -1,0 +1,504 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_084",
+  "pollutant_name_zh": "咖啡因",
+  "pollutant_name_en": "Caffeine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "caffeine degradation I (main, plants)",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线为MetaCyc数据库中的 caffeine degradation I (main, plants)，即植物（咖啡、茶等）体内咖啡因降解的主途径：咖啡因经N1→N3→N7顺序脱甲基（依次生成可可碱、7-甲基黄嘌呤）生成黄嘌呤，再氧化为尿酸、开环生成尿囊素，进入嘌呤分解代谢。植物中三步脱甲基酶尚未在分子水平鉴定；与之完全相同的反应链在细菌 Pseudomonas putida CBB5 中有明确酶学表征（NdmA/NdmB/NdmC），故各步首选酶与对应微生物按该细菌体系填写。氧条件题面未指定，填null。植物途径的化学顺序另见EVID_003（Ashihara等综述）。"
+  },
+  "route_summary": "咖啡因（1,3,7-三甲基黄嘌呤）先经N1-脱甲基生成可可碱（3,7-二甲基黄嘌呤），再经N3-脱甲基生成7-甲基黄嘌呤，最后经N7-脱甲基生成黄嘌呤，每步均消耗O2并副产甲醛；黄嘌呤经黄嘌呤氧化酶氧化为尿酸，尿酸经尿酸氧化酶氧化开环生成尿囊素并释放CO2；尿囊素进入嘌呤环分解代谢（经尿囊酸等最终生成乙醛酸、CO2和NH3）汇入中心代谢。该化学主链为植物中咖啡因降解的主要途径，同一反应链在细菌 Pseudomonas putida CBB5 中获明确酶学表征，故本题各步酶与微生物按CBB5体系给出。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "caffeine",
+          "smiles": "CN1C=NC2=C1C(=O)N(C)C(=O)N2C",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "theobromine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "N1-脱甲基化（单加氧反应，脱去N1位甲基并释放甲醛）",
+      "enzyme": {
+        "name": "methylxanthine N1-demethylase",
+        "ec_number": "1.14.13.178",
+        "gene_or_protein": "NdmA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "植物（咖啡、茶）体内存在该步反应，但其N-脱甲基酶尚未被分子鉴定；本步酶与菌株取自对该反应有明确表征的 Pseudomonas putida CBB5。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "theobromine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "7-methylxanthine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "N3-脱甲基化（单加氧反应，脱去N3位甲基并释放甲醛）",
+      "enzyme": {
+        "name": "methylxanthine N3-demethylase",
+        "ec_number": "1.14.13.179",
+        "gene_or_protein": "NdmB",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "植物中该步酶未获分子鉴定；此处采用对该反应（可可碱→7-甲基黄嘌呤）有明确表征的细菌酶NdmB及其来源菌株CBB5。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "7-methylxanthine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "xanthine",
+          "smiles": "N1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "N7-脱甲基化（单加氧反应，脱去N7位甲基并释放甲醛）",
+      "enzyme": {
+        "name": "methylxanthine N7-demethylase",
+        "ec_number": "1.14.13.180",
+        "gene_or_protein": "NdmC",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "NdmC需与NdmD（Rieske还原酶组分）协同完成N7-脱甲基；植物中该步酶未获分子鉴定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "xanthine",
+          "smiles": "N1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "uric acid",
+          "smiles": "N1C(=O)NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "hydrogen peroxide",
+          "smiles": "OO",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化（C8位氧化，黄嘌呤转变为2,6,8-三酮的尿酸）",
+      "enzyme": {
+        "name": "xanthine oxidase",
+        "ec_number": "1.17.3.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "黄嘌呤→尿酸可由黄嘌呤氧化酶（EC 1.17.3.2）或黄嘌呤脱氢酶（EC 1.17.1.4）催化，本答案按咖啡因降解文献惯例选黄嘌呤氧化酶；该步在CBB5中的具体酶未见单独表征，归属基于其以咖啡因为碳氮源生长的推断。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "uric acid",
+          "smiles": "N1C(=O)NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "allantoin",
+          "smiles": "O=C1NC(=O)NC1NC(=O)N",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "hydrogen peroxide",
+          "smiles": "OO",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化开环脱羧（嘌呤环开裂生成尿囊素并释放CO2）",
+      "enzyme": {
+        "name": "urate oxidase",
+        "ec_number": "1.7.3.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "尿酸氧化酶的直接产物为5-羟基异尿酸，通常经OHCU自发/酶促转化为尿囊素，此处按惯例以尿囊素为该步主产物；该步在CBB5中的具体酶未见单独表征。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "CBB5",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（专性好氧，需氧生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以咖啡因为唯一碳源和氮源生长，并能利用可可碱、茶碱、7-甲基黄嘌呤等甲基黄嘌呤类嘌呤生物碱",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "能降解咖啡因及多种甲基黄嘌呤生物碱（可可碱、茶碱、7-甲基黄嘌呤、3-甲基黄嘌呤等），经N-脱甲基将其转化为黄嘌呤并进入嘌呤分解代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具Rieske型甲基黄嘌呤N-脱甲基酶活性：NdmA（N1-脱甲基）、NdmB（N3-脱甲基）、NdmC（N7-脱甲基），催化脱甲基并释放甲醛",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "具运动性（鞭毛运动）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（典型革兰氏阴性细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性环境菌：广泛分布于土壤、水体及植物根际等多种栖息环境，代谢底物谱宽（可利用多种有机物包括嘌呤类生物碱），不局限于单一栖息地",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "allantoin",
+      "formaldehyde"
+    ],
+    "explanation": "咖啡因的嘌呤骨架经三步N-脱甲基转化为黄嘌呤，再氧化为尿酸并开环生成尿囊素；尿囊素进入嘌呤环分解代谢（尿囊素降解途径），最终生成乙醛酸、CO2与NH3汇入中心碳氮代谢（乙醛酸可进入乙醛酸循环）。各脱甲基步副产的甲醛经C1代谢（甲醛脱氢酶/甲酸脱氢酶）氧化为CO2。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "allantoin degradation（尿囊素降解/嘌呤环分解代谢）",
+      "summary": "尿囊素经尿囊素酶（EC 3.5.2.5）水解为尿囊酸，再经尿囊酸酶及酰胺水解酶等逐步降解为乙醛酸、CO2和NH3；植物中该途径与氮素转运及同化相关。"
+    },
+    {
+      "name": "formaldehyde oxidation（甲醛氧化，C1代谢）",
+      "summary": "三步N-脱甲基释放的甲醛经甲醛脱氢酶和甲酸脱氢酶氧化为CO2。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "经茶碱（theophylline）的次要支路",
+      "summary": "咖啡因经N7-脱甲基生成茶碱（1,3-二甲基黄嘌呤），茶碱再经N1-脱甲基生成3-甲基黄嘌呤，最后经N3-脱甲基生成黄嘌呤汇入主链；在植物中为次要途径，P. putida CBB5 代谢茶碱时亦经此链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "经1,3,7-三甲基尿酸的细菌途径",
+      "summary": "咖啡因经咖啡因脱氢酶直接氧化为1,3,7-三甲基尿酸，再经开环与脱甲基反应降解（如 Pseudomonas sp. CBB1）；为部分细菌中的另一条咖啡因降解途径。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway page: caffeine degradation I (main, plants)",
+      "claim_scope": [
+        "路线名称与植物主途径的化学走向（咖啡因→可可碱→7-甲基黄嘌呤→黄嘌呤）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Summers等（2012-2015，J. Bacteriol. 等）关于 Pseudomonas putida CBB5 甲基黄嘌呤N-脱甲基酶 NdmA/NdmB/NdmC 的系列研究；及Yu等（2009）CBB5 中咖啡因与茶碱代谢途径共表达的研究",
+      "claim_scope": [
+        "S1/S2/S3的反应、酶（NdmA/NdmB/NdmC）与菌株CBB5",
+        "ORG_001的F7/F8/F9性状"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Ashihara H., Sano H., Crozier A. (2008) Caffeine and related purine alkaloids: biosynthesis, catabolism, function and genetic engineering. Phytochemistry 69: 841-856",
+      "claim_scope": [
+        "植物中咖啡因降解主途径的化学顺序（咖啡因→可可碱→7-甲基黄嘌呤→黄嘌呤→尿酸→尿囊素）",
+        "S4/S5反应在植物路线中的存在"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "P. putida 的一般微生物学性状：好氧、革兰氏阴性、杆状、具运动性、不产芽孢、环境广适性"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S4/S5的酶（黄嘌呤氧化酶 EC 1.17.3.2、尿酸氧化酶 EC 1.7.3.3）为通用嘌呤分解代谢酶的学科共识；将S4/S5归于CBB5基于其能以咖啡因为碳氮源生长的推断"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面指定路线 caffeine degradation I (main, plants) 为植物中的咖啡因降解主途径；植物体内三步N-脱甲基的酶尚未在分子水平上鉴定，本答案各步酶（NdmA/NdmB/NdmC及对应EC号）与菌株取自对该同一反应链有明确表征的 Pseudomonas putida CBB5。",
+    "黄嘌呤→尿酸一步可由黄嘌呤氧化酶（EC 1.17.3.2）或黄嘌呤脱氢酶（EC 1.17.1.4）催化，本答案按咖啡因降解文献惯例选用黄嘌呤氧化酶。",
+    "尿酸氧化酶的直接产物为5-羟基异尿酸（经OHCU进一步转化为尿囊素），本答案按惯例以尿囊素为该步主产物。",
+    "S4/S5两步的酶在CBB5中未见单独的分子表征，该两步菌株归属基于CBB5能以咖啡因为碳氮源生长的推断，置信度为中等。",
+    "P. putida CBB5 的保藏编号、基因组信息及生长温度、pH、盐度范围未见可靠记载，相应性状填null。"
+  ]
+}

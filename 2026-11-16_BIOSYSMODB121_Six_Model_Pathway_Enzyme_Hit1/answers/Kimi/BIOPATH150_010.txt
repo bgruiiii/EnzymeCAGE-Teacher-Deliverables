@@ -1,0 +1,264 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_010",
+  "pollutant_name_zh": "甲胺磷",
+  "pollutant_name_en": "Methamidophos",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Methamidophos pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线作答（对应 EAWAG-BBD/UM-BBD 的 Methamidophos pathway 好氧路线图）。主链为一步水解脱氨反应，产物 O,S-二甲基硫代磷酸的后续路线图级记录有限。"
+  },
+  "route_summary": "好氧条件下，甲胺磷（O,S-二甲基硫代磷酰胺）经有机磷水解酶（OPH/phosphotriesterase，EC 3.1.8.1，opd 基因）催化发生 P–N 键水解，脱去氨生成 O,S-二甲基硫代磷酸（O,S-dimethyl hydrogen phosphorothioate）并释放 NH3，构成该路线主链；O,S-二甲基硫代磷酸的进一步微生物转化在公开路线图与文献中记录有限，主链止于此。代表菌为携带 opd 基因的经典有机磷降解菌 Flavobacterium sp. ATCC 27551。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Methamidophos",
+          "smiles": "COP(=O)(N)SC",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "O,S-Dimethyl hydrogen phosphorothioate",
+          "smiles": "COP(=O)(O)SC",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis（水解，P–N 键断裂/脱氨）",
+      "enzyme": {
+        "name": "Organophosphorus hydrolase (OPH; phosphotriesterase)",
+        "ec_number": "3.1.8.1",
+        "gene_or_protein": "opd",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Flavobacterium sp.",
+        "strain": "ATCC 27551",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "主产物按 P–N 键水解（脱氨）给出；亦有体系报道 P–S 键断裂生成 O-甲基硫代磷酰胺酸与甲硫醇，酶促区域选择性需以原始证据为准；EAWAG-BBD 路线图对该步酶与代表菌株标注有限，此处采用经典 opd/OPH 体系，置信度中等。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Flavobacterium sp.",
+      "strain": "ATCC 27551",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（mesophile）"
+          },
+          "raw_text": "ATCC 推荐培养温度 30 °C",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧（aerobic）",
+          "raw_text": "ATCC 培养条件标注 Atmosphere: Aerobic",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "27551"
+          },
+          "raw_text": "Flavobacterium sp. ATCC 27551",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（aerobic respiration）",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": "好氧培养（由 ATCC aerobic atmosphere 推断为好氧呼吸、以 O2 为末端电子受体）",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可降解并利用有机磷杀虫剂（二嗪农、对硫磷）及其水解产物作为碳源",
+          "raw_text": "a Flavobacterium that degrades diazinon and parathion",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱水解多种有机磷农药（对硫磷、二嗪农等；其 OPH 体系亦可水解甲胺磷）",
+          "raw_text": "degrades diazinon and parathion；opd/OPH 体系对多种有机磷酸酯具水解活性",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "有机磷水解酶/磷酸三酯酶（OPH, phosphotriesterase）活性，由质粒 pCMS1 上的 opd 基因编码",
+          "raw_text": "parathion hydrolase specified by the Flavobacterium opd gene",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动（non-motile，依据黄杆菌属通性）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（rod-shaped）",
+          "raw_text": "Gram-negative rod（原始分离株描述）",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": "Gram-negative rod",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-spore-forming，依据黄杆菌属通性）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自菲律宾施用二嗪农的稻田土壤；主要与受有机磷农药影响的农田土壤/水环境相关，广适性证据有限",
+          "raw_text": "isolated from a diazinon-treated rice field (Philippines)",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "副产物氨（NH3/NH4+）可进入常规氮同化途径；主产物 O,S-二甲基硫代磷酸的下游去向缺乏路线图级记录，未纳入主链。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "P–S 键水解支路",
+      "summary": "部分（含化学水解）体系报道甲胺磷可经 P–S 键断裂生成 O-甲基硫代磷酰胺酸（O-methyl phosphoramidothioate，SMILES: COP(=O)(N)O）与甲硫醇（methanethiol，SMILES: CS）；该支路不属于被评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD / UM-BBD Pathway Database",
+      "record_id": "Methamidophos Pathway Map (aerobic)",
+      "locator": "http://eawag-bbd.ethz.ch/met/met_map.html",
+      "claim_scope": ["route_scope", "reaction_hydrolysis", "main_product"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA / ExplorEnz",
+      "record_id": "EC 3.1.8.1",
+      "locator": null,
+      "claim_scope": ["enzyme_classification"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "ATCC 27551",
+      "locator": null,
+      "claim_scope": ["culture_collection", "growth_temperature", "oxygen_condition"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "Sethunathan N, Yoshida T. 1973. Can. J. Microbiol. 19:873-875",
+      "locator": null,
+      "claim_scope": ["organism_identity", "habitat", "morphology", "degradation_capacity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "Mulbry WW, Karns JS. 1989. J. Bacteriol. 171:6740-6746",
+      "locator": null,
+      "claim_scope": ["enzyme_gene_opd", "enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["genus_level_traits"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "EAWAG-BBD 甲胺磷路线图对该反应的催化酶与代表菌株标注有限；本答案采用经典 opd/OPH 体系（Flavobacterium sp. ATCC 27551）作为代表，归属为中等置信度。",
+    "甲胺磷水解的区域选择性（P–N 断裂为主抑或 P–S 断裂）在不同体系中报道不一，主链按 P–N 脱氨给出；P–S 支路列入 alternative_branches，不属于被评分主链。",
+    "O,S-二甲基硫代磷酸的进一步微生物降解去向缺乏路线图级记录，主链暂止于此。",
+    "未检索到 Flavobacterium sp. ATCC 27551 的可靠 NCBI TaxID、基因组登录号及 pH/盐度范围，相应字段如实填 null。"
+  ]
+}

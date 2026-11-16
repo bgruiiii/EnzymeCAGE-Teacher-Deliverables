@@ -1,0 +1,286 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_106",
+  "pollutant_name_zh": "香叶醇",
+  "pollutant_name_en": "Geraniol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "β myrcene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。评分主链采用文献中与β-月桂烯降解直接相连、且以香叶醇为明确中间体的氧非依赖路线，自污染物香叶醇起向下游展开；不包含上游由β-myrcene经(S)-linalool生成香叶醇的步骤。"
+  },
+  "route_summary": "在Castellaniella defragrans的β-月桂烯降解路线中，香叶醇位于β-myrcene水合/异构之后。其降解主链为香叶醇经NAD+依赖的香叶醇脱氢酶氧化为香叶醛，再经香叶醛脱氢酶氧化为香叶酸。香叶酸之后的酰基CoA活化与类β-氧化因酶身份与EC不够确定，未列入评分主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "geraniol",
+          "smiles": "CC(C)=CCC/C(C)=C/CO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "geranial",
+          "smiles": "CC(C)=CCC/C(C)=C/C=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+-dependent dehydrogenation",
+      "enzyme": {
+        "name": "geraniol dehydrogenase",
+        "ec_number": "1.1.1.183",
+        "gene_or_protein": "geoA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "反应与EC 1.1.1.183对应明确；辅因子SMILES未填，避免写错。菌株号依据Harder实验室常用实验株记忆，未核验保藏号。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "geranial",
+          "smiles": "CC(C)=CCC/C(C)=C/C=O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "geranic acid",
+          "smiles": "CC(C)=CCC/C(C)=C/C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aldehyde dehydrogenation",
+      "enzyme": {
+        "name": "geranial dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "geoB",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "GeoB催化香叶醛氧化为香叶酸已有报道，但专用EC编号不能确定，故ec_number为null，不套用通用醛脱氢酶EC。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Castellaniella defragrans",
+      "strain": "65Phen",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧，可反硝化",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "反硝化呼吸",
+            "terminal_electron_acceptor": "硝酸盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用香叶醇和β-myrcene等无环单萜作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解β-myrcene、香叶醇、芳樟醇等单萜",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "geraniol dehydrogenase (GeoA, EC 1.1.1.183) and geranial dehydrogenase (GeoB)",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA"],
+    "explanation": "香叶酸预计经酰基CoA活化及处理β-甲基支链的类β-氧化后，以乙酰CoA进入中心代谢；确切裂解序列未列入主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "香叶酰CoA形成及类β-氧化",
+      "summary": "香叶酸之后通常由酰基CoA连接酶活化为香叶酰CoA，再经羧化处理C3甲基支链并类β-氧化裂解。Castellaniella defragrans中该后段的具体酶与EC在本答案中未确认，故不写入评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "有氧无环萜利用途径",
+      "summary": "假单胞菌等好氧菌可通过香叶醇/香茅醇Atu途径将香叶醇氧化为香叶酸并进一步降解。该途径通常不称为β myrcene degradation，不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB EC 1.1.1.183 geraniol dehydrogenase; Lüddeke et al., Appl Environ Microbiol 2012, GeoA of Castellaniella defragrans",
+      "claim_scope": ["S1_reaction", "enzyme_geoA", "organism_65Phen", "F9_enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Lüddeke et al., Appl Environ Microbiol 2012, GeoB geranial dehydrogenase; Heyen and Harder, Appl Environ Microbiol 2000, geranic acid formation by Alcaligenes defragrans",
+      "claim_scope": ["S2_reaction", "enzyme_geoB", "organism_65Phen"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Foss et al., Int J Syst Bacteriol 1998, Alcaligenes defragrans species description; Harder group papers on denitrifying monoterpene degradation",
+      "claim_scope": ["oxygen_tolerance", "denitrification", "monoterpene_utilization", "cell_morphology", "gram_negative", "non_sporulating"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为null；主链按已鉴定的氧非依赖β-月桂烯降解路线中香叶醇下游段填写。",
+    "香叶酸之后的CoA活化、羧化与类β-氧化未列入评分步骤，因具体酶与EC不能确认，避免编造。",
+    "GeoB无把握的专用EC编号，ec_number置null。",
+    "菌株65Phen的保藏号、NCBI TaxID、基因组登录号以及温度、pH、盐度数值记忆不足，均置null。",
+    "若数据库中的β myrcene degradation专指Pseudomonas sp. M1有氧途径，则该途径是否以香叶醇为中间体及对应酶步不够确定，本答案未采用。",
+    "旧名Alcaligenes defragrans与现名Castellaniella defragrans指同一物种；SMILES采用生理底物(E)-异构体。辅因子全结构SMILES未填。"
+  ]
+}

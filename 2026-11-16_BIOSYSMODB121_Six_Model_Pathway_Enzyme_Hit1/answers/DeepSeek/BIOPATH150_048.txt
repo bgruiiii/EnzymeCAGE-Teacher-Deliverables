@@ -1,0 +1,239 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_048",
+  "pollutant_name_zh": "左旋肉碱",
+  "pollutant_name_en": "Levocarnitine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-carnitine degradation III",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "左旋肉碱通过L-肉碱裂解酶裂解为三甲胺和琥珀酸半醛，琥珀酸半醛进一步氧化为琥珀酸进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-carnitine",
+          "smiles": "C[N+](C)(C)C[C@H](O)CC([O-])=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "byproduct"
+        },
+        {
+          "name": "Succinate semialdehyde",
+          "smiles": "O=CCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "C-N bond cleavage",
+      "enzyme": {
+        "name": "L-carnitine lyase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "L-carnitine lyase的EC编号未确定，菌株未指定"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Succinate semialdehyde",
+          "smiles": "O=CCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Succinate",
+          "smiles": "OC(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Succinate-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.16",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "菌株未指定"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 4,
+            "optimum_c": 30,
+            "maximum_c": 37,
+            "preference": "嗜中温"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性需氧",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 6.0,
+            "optimum": 7.0,
+            "maximum": 8.0
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用多种糖类、有机酸和氨基酸",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种芳香族和脂肪族化合物",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "L-carnitine lyase",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "有运动性，极生鞭毛",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、水体和植物表面，栖息地广适性强",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Succinate"
+    ],
+    "explanation": "琥珀酸进入TCA循环。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [],
+  "uncertainties": [
+    "L-carnitine lyase的EC编号未确定",
+    "菌株未指定"
+  ]
+}

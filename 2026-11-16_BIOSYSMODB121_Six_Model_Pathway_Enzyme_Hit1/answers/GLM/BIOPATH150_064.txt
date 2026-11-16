@@ -1,0 +1,392 @@
+
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_064",
+  "pollutant_name_zh": "3,4-二羟基苯磺酸根",
+  "pollutant_name_en": "3,4-Dihydroxybenzenesulfonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-sulfocatechol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）；本路线本身为依赖分子氧的好氧途径（含双加氧酶步骤）。路线名称按题面原样填写，不改选其他路线。"
+  },
+  "route_summary": "4-sulfocatechol（3,4-二羟基苯磺酸根）在好氧细菌中经修饰型邻位（内二醇）裂解途径降解：4-sulfocatechol 1,2-dioxygenase 将其氧化开环生成 cis,cis-3-sulfomuconate；3-sulfomuconate cycloisomerase 将其环化异构为 4-sulfomuconolactone；4-sulfomuconolactone hydrolase 水解并脱磺，生成 maleylacetate 并以亚硫酸盐形式释放磺酸根；maleylacetate reductase（EC 1.3.1.32）以 NADH 将 maleylacetate 还原为 3-oxoadipate；3-oxoadipate 进入 β-酮己二酸途径，最终以乙酰辅酶A与琥珀酰辅酶A汇入TCA循环等中心代谢。代表降解菌为 Hydrogenophaga intermedia S1（磺胺酸降解富集/混合培养体系中的关键成员）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-sulfocatechol",
+          "smiles": "[O-]S(=O)(=O)c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis,cis-3-sulfomuconate",
+          "smiles": "[O-]C(=O)C=C(S(=O)(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "邻位（内二醇）双加氧开环：苯环在两个酚羟基碳之间断裂，两个氧原子掺入生成两个羧基",
+      "enzyme": {
+        "name": "4-sulfocatechol 1,2-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该酶的正式EC编号未能可靠确认（可能未单独分配EC条目），按规则填null；产物为顺,顺构型，SMILES未标注立体化学。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "cis,cis-3-sulfomuconate",
+          "smiles": "[O-]C(=O)C=C(S(=O)(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-sulfomuconolactone",
+          "smiles": "O=C1OC(S(=O)(=O)[O-])(CC(=O)[O-])C=C1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环化异构（内酯化，cycloisomerization）：羧酸根氧加成于链上碳形成五元内酯环并伴随质子化与双键重排",
+      "enzyme": {
+        "name": "3-sulfomuconate cycloisomerase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "4-sulfomuconolactone 的文献环编号与立体化学（(4S)- 或 (4R)-）未能完全确认，SMILES 为按环化异构反应机理推导的结构；酶的EC编号未确认。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-sulfomuconolactone",
+          "smiles": "O=C1OC(S(=O)(=O)[O-])(CC(=O)[O-])C=C1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylacetate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "sulfite",
+          "smiles": "O=S([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "内酯水解并脱磺：水解开环后经α-羟基磺酸结构消除亚硫酸盐，完成磺酸根的脱除",
+      "enzyme": {
+        "name": "4-sulfomuconolactone hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "亚硫酸盐是酶促反应直接释放还是开环后自发消除，未能确认；酶的正式EC编号未确认，填null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "maleylacetate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "[O-]C(=O)CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NADH 依赖的烯酸还原（将顺式烯酮酸还原为饱和的酮酸）",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "NADH/NAD+ 的 SMILES 因结构复杂且无法可靠核对而省略（填null）；maleylacetate 双键按顺式（Z）给出。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Hydrogenophaga intermedia",
+      "strain": "S1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧菌（需分子氧生长，其降解途径依赖双加氧酶）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（化能有机营养；属名为氢氧化菌之意，可氧化氢气）",
+            "terminal_electron_acceptor": "分子氧（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用磺化芳香族化合物（如磺胺酸 4-aminobenzenesulfonate）生长，并经 4-sulfocatechol 途径将其矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解磺化芳香族化合物（经修饰型邻位裂解途径脱磺并开环），降解谱相对专一，集中于磺化/氨基磺化芳烃",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具 4-sulfocatechol 1,2-dioxygenase、3-sulfomuconate cycloisomerase、4-sulfomuconolactone hydrolase 与 maleylacetate reductase 等修饰型邻位裂解途径酶活",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动（motile）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（β-变形菌纲，典型外膜-肽聚糖细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "Hydrogenophaga 属成员广泛分布于土壤与水体等环境，具较广的生境与底物谱（环境广适性中等偏高）；菌株 S1 分离自降解磺胺酸的微生物富集/混合培养体系",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "3-oxoadipate"
+    ],
+    "explanation": "主链终点 3-oxoadipate（β-酮己二酸）为 β-酮己二酸途径的入口化合物：经 3-oxoadipate CoA-transferase（EC 2.8.3.6）转化为 3-oxoadipyl-CoA，再经 3-oxoadipyl-CoA thiolase 硫解为乙酰辅酶A与琥珀酰辅酶A，进入TCA循环等中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-oxoadipate → 3-oxoadipyl-CoA（β-酮己二酸途径）",
+      "summary": "3-oxoadipate CoA-transferase（EC 2.8.3.6）将琥珀酰辅酶A上的CoA转移至 3-oxoadipate，生成 3-oxoadipyl-CoA 并释放琥珀酸。"
+    },
+    {
+      "name": "3-oxoadipyl-CoA 硫解",
+      "summary": "3-oxoadipyl-CoA thiolase（β-酮硫解酶）催化硫解，生成乙酰辅酶A与琥珀酰辅酶A，汇入TCA循环。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "4-sulfocatechol 降解主链的四步反应序列与各步酶名",
+        "maleylacetate reductase 的 EC 1.3.1.32",
+        "脱磺以亚硫酸盐形式释放",
+        "3-oxoadipate 进入 β-酮己二酸途径"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Hydrogenophaga intermedia S1 与 4-sulfocatechol 降解途径的关联",
+        "该菌的途径酶系（F9）与底物利用（F7、F8）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Hydrogenophaga 属级表型：好氧、革兰氏阴性、杆状、可运动、氢氧化、环境广布"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "4-sulfocatechol 1,2-dioxygenase、3-sulfomuconate cycloisomerase 与 4-sulfomuconolactone hydrolase 的正式EC编号未能可靠确认，按规则填null（maleylacetate reductase 记为 EC 1.3.1.32）。",
+    "4-sulfomuconolactone 的文献命名（环编号）与立体化学（(4S)- 或 (4R)-）未能完全确认，SMILES 按环化异构反应机理推导给出。",
+    "菌株 Hydrogenophaga intermedia S1 的 NCBI TaxID、保藏编号、基因组信息及温度、pH、盐度等生理性状缺乏可靠来源，相应字段填 null。",
+    "原始文献出处（作者、期刊、年份）无法可靠回忆，全部证据以 INTERNAL_KNOWLEDGE_ONLY 登记，相关事实置信度设为 medium 或 low。",
+    "maleylacetate 按顺式（(Z)-4-oxohex-2-enedioate）给出；NADH/NAD+ 的 SMILES 省略（null），以避免复杂结构的误写。"
+  ]
+}

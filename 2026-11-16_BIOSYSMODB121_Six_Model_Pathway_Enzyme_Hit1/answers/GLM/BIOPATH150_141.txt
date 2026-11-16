@@ -1,0 +1,423 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_141",
+  "pollutant_name_zh": "S-[1-(2-羟乙基)-1-甲基丁基]-L-半胱氨酰甘氨酸",
+  "pollutant_name_en": "S-[1-(2-hydroxyethyl)-1-methylbutyl]-(l)-cysteinylglycine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteinylglycine degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null），路线名称按题面原样填写。该主链为谷胱甘肽S-结合物（巯基尿途径中间体）在微生物体内继续分解的通用连续路线，好氧或兼性条件下均可进行。"
+  },
+  "route_summary": "该污染物即谷胱甘肽S-结合物切除谷氨酸后的半胱氨酰甘氨酸结合物，其S-取代基为6-hydroxy-4-methylhexan-4-yl（等于1-(2-羟乙基)-1-甲基丁基，含甲基、丙基与羟乙基的7碳叔碳基团）。微生物降解主链沿用谷胱甘肽结合物分解（巯基尿途径后段）的通用路线：第一步由半胱氨酰甘氨酸二肽酶水解Cys-Gly肽键，释放甘氨酸并生成S-(6-hydroxy-4-methylhexan-4-yl)-L-半胱氨酸；第二步由磷酸吡哆醛依赖的半胱氨酸结合物β-裂解酶断裂Cα–S键，生成6-hydroxy-4-methylhexan-4-thiol，同时释放丙酮酸与氨。甘氨酸与丙酮酸直接进入中心代谢；残余的叔碳硫醇需经进一步S-氧化与C–S断裂方可完全矿化（该段酶与菌不确定，未列入主链）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteinylglycine",
+          "smiles": "O=C(NCC(O)=O)[C@@H](N)CSC(C)(CCC)CCO",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteine",
+          "smiles": "O=C(O)[C@@H](N)CSC(C)(CCC)CCO",
+          "role": "main"
+        },
+        {
+          "name": "glycine",
+          "smiles": "NCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "肽键水解（Cys-Gly二肽键断裂）",
+      "enzyme": {
+        "name": "cysteinylglycine dipeptidase",
+        "ec_number": "3.4.13.6",
+        "gene_or_protein": "DUG1 (Dug1p)",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": null,
+        "ncbi_taxid": 4932,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该步为谷胱甘肽S-结合物后段分解的通用第一步；针对该具体结合物（R=6-hydroxy-4-methylhexan-4-yl）的原始文献/数据库记录未能确认，酶-菌对应基于酿酒酵母Dug途径（Dug1p为半胱氨酰甘氨酸二肽酶，可作用于S-取代半胱氨酰甘氨酸）的同源知识推断。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteine",
+          "smiles": "O=C(O)[C@@H](N)CSC(C)(CCC)CCO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-hydroxy-4-methylhexan-4-thiol",
+          "smiles": "SC(C)(CCC)CCO",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "β-消除（PLP依赖的Cα–S键断裂并脱氨）",
+      "enzyme": {
+        "name": "cysteine conjugate beta-lyase",
+        "ec_number": "4.4.1.13",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": null,
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "β-裂解是S-取代半胱氨酸结合物的典型去路（生成硫醇+丙酮酸+氨）；但针对该具体结合物的实验菌株与具体基因（大肠杆菌中行使β-裂解活性的PLP酶）未能确认，菌-酶对应为低置信度推断。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Saccharomyces cerevisiae",
+      "strain": null,
+      "ncbi_taxid": 4932,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": 40,
+            "preference": "中温性，最适约30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（可好氧呼吸或发酵）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 5,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧（呼吸或发酵）",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "葡萄糖、果糖、蔗糖等可发酵糖类（化能有机营养）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经Dug途径（DUG1/DUG2/DUG3）降解谷胱甘肽及其S-结合物，可水解S-取代半胱氨酰甘氨酸并释放S-取代半胱氨酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "半胱氨酰甘氨酸二肽酶活性（Dug1p，M17金属肽酶家族）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动（出芽酵母）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "椭圆至圆形的出芽细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "真菌细胞壁（葡聚糖、甘露聚糖、几丁质），不适用细菌革兰氏染色框架",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "可形成子囊孢子（ascospore）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性酵母：见于果实、树液、发酵食品、土壤等多种富糖生境",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Escherichia coli",
+      "strain": null,
+      "ncbi_taxid": 562,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": 45,
+            "preference": "中温性，最适约37 °C（宿主体温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "葡萄糖等多种糖类、有机酸与氨基酸（化能异养）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具有含硫氨基酸结合物β-裂解酶活性，可断裂S-取代半胱氨酸的C–S键，参与谷胱甘肽结合物/巯基尿途径中间体的后继分解",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "半胱氨酸结合物β-裂解酶（EC 4.4.1.13）活性（PLP依赖）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "周生鞭毛，可运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状细菌",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，具外膜与脂多糖",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适：温血动物肠道共栖菌，亦普遍见于水体与土壤等环境",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["glycine", "pyruvate"],
+    "explanation": "第一步水解释放的甘氨酸进入甘氨酸/丝氨酸及C1代谢；第二步β-裂解释放的丙酮酸直接进入糖酵解与三羧酸循环。S-取代基以叔碳硫醇（6-hydroxy-4-methylhexan-4-thiol）形式暂时留存，需经后续S-氧化与C–S断裂方能完全矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "6-hydroxy-4-methylhexan-4-thiol 的进一步氧化脱硫",
+      "summary": "β-裂解产生的叔碳硫醇可经硫醇S-氧化（次磺酸/亚磺酸/磺酸）及C–S键断裂进一步转化为4-methylhexane-1,4-diol等醇类，再经链末端氧化与（受叔碳阻碍的）β-氧化进入中心代谢；该段的具体酶与菌均未确定，故不列入主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "半胱氨酸结合物N-乙酰化（巯基尿酸支路）",
+      "summary": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteine可经半胱氨酸N-乙酰转移酶生成S-(6-hydroxy-4-methylhexan-4-yl)-N-acetyl-L-cysteine（巯基尿酸）后排出，属解毒/排泄支路而非矿化主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S1 reaction: peptide bond hydrolysis of S-substituted cysteinylglycine", "S1 enzyme cysteinylglycine dipeptidase EC 3.4.13.6 (yeast Dug1p as representative)"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S2 reaction: beta-elimination of S-substituted cysteine to thiol + pyruvate + ammonia", "S2 enzyme cysteine conjugate beta-lyase EC 4.4.1.13"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["ORG_001 Saccharomyces cerevisiae species-level general biology traits", "S1 microorganism assignment"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["ORG_002 Escherichia coli species-level general biology traits", "S2 microorganism assignment"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未能确认本题原始数据库/文献来源及该具体结合物（R=6-hydroxy-4-methylhexan-4-yl）的实验降解菌株，主链按谷胱甘肽S-结合物（巯基尿途径后段）的通用微生物分解路线给出。",
+    "第一步酶EC编号（3.4.13.6，cysteinylglycine dipeptidase）与酿酒酵母Dug1p的对应、以及大肠杆菌中具体行使半胱氨酸结合物β-裂解酶活性的基因均基于同源酶学知识，未经原始文献核验。",
+    "6-hydroxy-4-methylhexan-4-thiol（叔碳硫醇）的后续氧化脱硫路线及其酶、菌均不确定，故仅在downstream_continuation中描述，不列入主链。",
+    "各菌的15项性状多为物种级通识，未逐项核对原始文献，缺失项按null处理。"
+  ]
+}

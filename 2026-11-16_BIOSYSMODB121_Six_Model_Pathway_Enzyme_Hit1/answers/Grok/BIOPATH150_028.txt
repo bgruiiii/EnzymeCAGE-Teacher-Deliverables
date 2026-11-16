@@ -1,0 +1,300 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_028",
+  "pollutant_name_zh": "肌酸酐",
+  "pollutant_name_en": "creatinine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "creatinine degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。肌酸酐降解I主链为肌酸酐到肌酸再到肌氨酸与尿素的两步水解，反应本身不消耗分子氧；经典代表菌为好氧的Pseudomonas putida，但未绑定具体菌株。"
+  },
+  "route_summary": "肌酸酐降解I（肌酸途径）是一条线性水解主链：肌酸酐由肌酸酐酶水解开环生成肌酸，肌酸再由肌酸酶水解为肌氨酸和尿素。该主链区别于经1-甲基乙内酰脲的肌酸酐降解II；肌氨酸继续转化为甘氨酸属于下游，不计入本路线主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "creatinine",
+          "smiles": "CN1CC(=O)N=C1N",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "creatine",
+          "smiles": "CN(CC(=O)O)C(=N)N",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "creatininase",
+        "ec_number": "3.5.2.10",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "酶与反应对应关系明确，但经典文献多报道到Pseudomonas putida物种水平，未指定单一菌株。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "creatine",
+          "smiles": "CN(CC(=O)O)C(=N)N",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "sarcosine",
+          "smiles": "CNCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "urea",
+          "smiles": "NC(N)=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "creatinase",
+        "ec_number": "3.5.3.3",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用肌酸酐作为碳源和氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可将肌酸酐经肌酸水解降解为肌氨酸和尿素",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有肌酸酐酶（EC 3.5.2.10）和肌酸酶（EC 3.5.3.3）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动，具极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "可分布于土壤、根际和水体等多种生境，底物谱较宽，属于代谢多能的环境广适菌，而非单一生境专性菌",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "肌酸酐降解I主链止于肌氨酸与尿素，二者均不是中心代谢中间体。肌氨酸需经下游途径生成甘氨酸后，才可能通过甘氨酸裂解系统或转化为丝氨酸进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "sarcosine degradation",
+      "summary": "肌氨酸可被肌氨酸氧化酶（EC 1.5.3.1）氧化为甘氨酸、甲醛和过氧化氢，或由肌氨酸脱氢酶转化为甘氨酸与一碳单位。此为下游延续，不计入肌酸酐降解I主链。"
+    },
+    {
+      "name": "urea hydrolysis",
+      "summary": "尿素可被脲酶水解为氨和二氧化碳，主要用于氮的释放或同化，不属于肌酸酐碳骨架降解主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "creatinine degradation II",
+      "summary": "另一条细菌路线中，肌酸酐经肌酸酐脱亚胺酶生成1-甲基乙内酰脲和氨，再依次转化为N-氨甲酰肌氨酸和肌氨酸。该分支不是本题指定的肌酸酐降解I主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB与肌酸酐降解I途径定义：creatininase（creatinine amidohydrolase, EC 3.5.2.10）催化creatinine + H2O → creatine",
+      "claim_scope": ["S1_reaction", "S1_enzyme", "EC_3.5.2.10"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB与肌酸酐降解I途径定义：creatinase（creatine amidinohydrolase, EC 3.5.3.3）催化creatine + H2O → sarcosine + urea",
+      "claim_scope": ["S2_reaction", "S2_enzyme", "EC_3.5.3.3"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI Taxonomy",
+      "record_id": "303",
+      "locator": "Pseudomonas putida（NCBI Taxonomy ID 303）是肌酸酐降解I中可诱导肌酸酐酶和肌酸酶的经典细菌来源",
+      "claim_scope": ["microorganism", "ncbi_taxid", "enzyme_source"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida物种常规描述：革兰氏阴性杆状、极生鞭毛运动、不产芽孢、专性好氧、以分子氧为末端电子受体的中温菌",
+      "claim_scope": ["F1_oxygen_tolerance", "F2_temperature", "F6_respiration_electron_acceptor", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "降解肌酸酐的Pseudomonas putida可利用肌酸酐生长并表达肌酸酐酶与肌酸酶，将肌酸酐经肌酸转化为肌氨酸和尿素",
+      "claim_scope": ["F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida为代谢多能型环境细菌，分布于土壤、根际和水体等多种生境，不属于单一生境专性菌",
+      "claim_scope": ["F15_habitat_generalism"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "代表菌只确定到Pseudomonas putida物种；未绑定单一保藏菌株，故菌株、保藏编号和基因组信息为null。",
+    "温度极值、最适温度、pH和盐度缺少可直接引用的单一数值来源，未用近似范围占位。",
+    "肌氨酸至甘氨酸在不同资料中有时被并入肌酸酐降解描述，但按肌酸酐降解I的路线边界，主链只含两步水解，后续放入downstream_continuation。",
+    "本次未检索外部数据库，证据类型均为INTERNAL_KNOWLEDGE_ONLY。"
+  ]
+}

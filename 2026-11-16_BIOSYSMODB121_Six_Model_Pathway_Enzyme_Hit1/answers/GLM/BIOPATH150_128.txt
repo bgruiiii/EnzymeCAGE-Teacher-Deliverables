@@ -1,0 +1,494 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_128",
+  "pollutant_name_zh": "L-苏糖醇",
+  "pollutant_name_en": "l-Threitol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-threitol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，按要求保留null。主链为连续三步（脱氢→磷酸化→醛醇裂解），各步反应本身不直接依赖分子氧，但所涉细菌为好氧菌。"
+  },
+  "route_summary": "L-苏糖醇（C4糖醇）的降解主链共三步：(1) NAD+依赖的多元醇脱氢酶将L-苏糖醇氧化为L-赤藓酮糖（L-erythrulose）；(2) 激酶消耗ATP将其磷酸化为L-赤藓酮糖-1-磷酸；(3) 醛醇裂解酶将该C4底物裂解为磷酸二羟丙酮（DHAP，进入糖酵解/糖异生等中心代谢）与副产物甲醛。该主链与α-变形菌纲（布鲁氏菌、中华根瘤菌类群）已知的赤藓糖醇分解途径（脱氢—激酶—裂解，终产物DHAP+甲醛）同型，但针对L-苏糖醇的专门文献未能确认，整体置信度较低。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-threitol",
+          "smiles": "OC[C@H](O)[C@@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-erythrulose",
+          "smiles": "OCC(=O)[C@@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱氢氧化（NAD+依赖的仲醇→酮糖氧化）",
+      "enzyme": {
+        "name": "L-threitol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Brucella abortus",
+        "strain": "2308",
+        "ncbi_taxid": 359391,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "酶的正式EC编号与基因名未知；产物L-赤藓酮糖的构型由L-苏糖醇(2S,3S)的立体化学唯一确定；将布鲁氏菌指派为该步菌是基于其分解四元醇（赤藓糖醇）的经典文献，其对L-苏糖醇的直接作用未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "L-erythrulose",
+          "smiles": "OCC(=O)[C@@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-erythrulose 1-phosphate",
+          "smiles": "O=P(O)(O)OCC(=O)[C@@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "磷酸转移（激酶，ATP依赖）",
+      "enzyme": {
+        "name": "erythrulose kinase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Sinorhizobium meliloti",
+        "strain": "1021",
+        "ncbi_taxid": 266835,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "激酶的磷酸化位点（C1位，紧邻酮基）依据后续裂解产生DHAP+甲醛的化学必要性推断；EC编号与基因名未知。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "L-erythrulose 1-phosphate",
+          "smiles": "O=P(O)(O)OCC(=O)[C@@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "OCC(=O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "逆醛醇C–C裂解（甲醛裂解酶反应）",
+      "enzyme": {
+        "name": "erythrulose-1-phosphate formaldehyde-lyase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Sinorhizobium meliloti",
+        "strain": "1021",
+        "ncbi_taxid": 266835,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "裂解酶的正式名称与EC编号未知；该反应依赤藓糖醇分解途径（终产物DHAP+甲醛）类比重构。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Brucella abortus",
+      "strain": "2308",
+      "ncbi_taxid": 359391,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "最适约37°C（哺乳动物体温），中温性"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性需氧菌；部分生物变种初代分离生长需5%–10% CO2",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸（巨噬细胞内适应低氧环境）",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种单糖与糖醇类；赤藓糖醇（erythritol）为其特征性优先生长底物",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "限于小分子糖类/糖醇类的氧化分解，缺乏对复杂多聚物或异型生物质的一般降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "氧化酶阳性、过氧化氢酶阳性、脲酶阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "无鞭毛，不能运动",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "球杆菌（约0.5–0.7 × 0.6–1.5 µm），多单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，典型双层细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": 57.2
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F15_habitat_generalism": {
+          "value": "专性胞内寄生于多种哺乳动物宿主（牛及多种野生反刍动物，并可感染人），宿主谱较宽但营胞内生活方式，自由环境中存活能力有限",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Sinorhizobium meliloti",
+      "strain": "1021",
+      "ncbi_taxid": 266835,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 28,
+            "maximum_c": null,
+            "preference": "最适约28–30°C，中温性"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧菌；在根瘤内耐受微氧环境并依靠高亲和力细胞色素氧化酶进行微氧呼吸",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸（共生固氮时为微氧呼吸）",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用多种糖类、多元醇（如甘露醇、赤藓醇等）及有机酸（琥珀酸、苹果酸等）作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可代谢多种糖类、糖醇与有机酸等小分子碳源；未见显著的环境污染物（异型生物质）降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "在根瘤共生状态下具固氮酶活性（将N2还原为NH3）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具鞭毛，可运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "小杆状（约0.5–1.0 × 1.5–3.0 µm）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，典型双层细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_003047",
+            "genome_size_bp": 6691694,
+            "gc_percent": 62.1
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F15_habitat_generalism": {
+          "value": "兼具土壤/根际自由生活与苜蓿属等豆科植物根瘤内共生两种生活方式，栖息地广适性高",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "dihydroxyacetone phosphate"
+    ],
+    "explanation": "磷酸二羟丙酮（DHAP）是糖酵解/糖异生的经典中间物，可经磷酸丙糖异构酶（EC 5.3.1.1）与3-磷酸甘油醛互变，沿EMP途径生成丙酮酸后进入TCA循环；副产物甲醛则进入C1代谢被氧化为CO2或被同化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "dihydroxyacetone phosphate → glycolysis",
+      "summary": "DHAP经磷酸丙糖异构酶转化为3-磷酸甘油醛，两者沿糖酵解途径生成丙酮酸，产出ATP与NADH。"
+    },
+    {
+      "name": "formaldehyde oxidation",
+      "summary": "副产物甲醛可被甲醛脱氢酶氧化为甲酸，再经甲酸脱氢酶氧化为CO2，或经丝氨酸/RuMP等同化途径整合为细胞碳。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "先磷酸化变体（threitol → threitol-phosphate → erythrulose-1-phosphate）",
+      "summary": "赤藓糖醇分解中存在'先激酶磷酸化、后脱氢'的变体路线；若同样适用于L-苏糖醇，则末端羟基先被磷酸化，再由磷酸苏糖醇脱氢酶氧化，最终同样裂解为DHAP+甲醛。此为类比推测的分支，不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1反应化学：L-苏糖醇(2S,3S)经仲醇脱氢生成(3S)-赤藓酮糖（L-erythrulose）",
+        "S2反应化学：酮糖经激酶磷酸化为赤藓酮糖-1-磷酸",
+        "S3反应化学：赤藓酮糖-1-磷酸经逆醛醇裂解生成DHAP与甲醛"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "四元醇分解主链类比：α-变形菌纲（布鲁氏菌/中华根瘤菌类群）的赤藓糖醇分解为脱氢—激酶—裂解型途径（终产物DHAP+甲醛）",
+        "S1–S3酶与微生物的指派（低置信度推断）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Brucella abortus经典微生物学性状：革兰氏阴性球杆菌、无动力、不产芽孢、好氧、氧化酶/过氧化氢酶/脲酶阳性、以赤藓糖醇为特征性底物、哺乳动物胞内寄生"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Sinorhizobium meliloti 1021性状：革兰氏阴性运动小杆菌、好氧、根瘤共生固氮、土壤/根际生活、基因组含三个复制子（合计约6.69 Mb，GC约62.1%）"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未检索到针对L-苏糖醇的专门微生物降解文献；本题主链依据C4糖醇分解的经典生化学与α-变形菌纲赤藓糖醇分解途径（脱氢→激酶→裂解为DHAP+甲醛）类比重构，整体置信度低。",
+    "第1步酶'L-threitol dehydrogenase'按反应活性命名，其确切的EC编号、基因名及特征化来源未知；产物L-赤藓酮糖的构型由L-苏糖醇(2S,3S)的立体化学唯一确定。",
+    "第2步激酶（磷酸化于紧邻酮基的C1位）与第3步甲醛裂解酶均无确认的EC编号/基因名；磷酸化位点依据裂解产生DHAP+甲醛的化学必要性推断。",
+    "Brucella abortus 2308与Sinorhizobium meliloti 1021被指派为对应步骤的菌，是基于其类群具有同型四元醇分解酶系的推断；两菌对L-苏糖醇的实际利用能力未在文献中确认，故complete_pathway_organism_profile_id置null。",
+    "两菌的若干生理参数（pH与盐度范围、保藏编号、基因组精确数值等）缺乏可靠来源，按要求填null；TaxID与个别数值为记忆性填写，置信度已标注为low。"
+  ]
+}

@@ -1,0 +1,347 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_041",
+  "pollutant_name_zh": "琥珀酰-CoA",
+  "pollutant_name_en": "succinyl-CoA",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "propanoyl CoA degradation I",
+    "is_single_continuous_route": true,
+    "notes": "路线名称照题面原样填写：propanoyl CoA degradation I，即甲基丙二酰-CoA（methylmalonyl-CoA）路线，为线性三步链：propanoyl-CoA 经羧化生成 (S)-methylmalonyl-CoA，差向异构为 (R)-methylmalonyl-CoA，再经辅酶 B12 依赖的 methylmalonyl-CoA mutase 重排生成 succinyl-CoA。氧条件题面未指定（null）；该路线可在好氧条件下运行，所给代表菌为好氧菌。"
+  },
+  "route_summary": "在路线 'propanoyl CoA degradation I'（甲基丙二酰-CoA 路线）范围内，主链为 propanoyl-CoA → (S)-methylmalonyl-CoA → (R)-methylmalonyl-CoA → succinyl-CoA 三步：(1) propanoyl-CoA carboxylase（EC 6.4.1.3，生物素依赖、消耗 ATP 与 CO2）将 propanoyl-CoA 羧化为 (S)-methylmalonyl-CoA；(2) methylmalonyl-CoA epimerase（EC 5.1.99.1）将其转为 (R) 构型；(3) 辅酶 B12（腺苷钴胺素）依赖的 methylmalonyl-CoA mutase（EC 5.4.99.2）将其重排为 succinyl-CoA。需特别说明：本题污染物 succinyl-CoA 恰是该路线的末端产物——主链至此终止，succinyl-CoA 即进入中枢三羧酸（TCA）循环的入口（可经 succinyl-CoA synthetase 转为 succinate，见续接字段）。代表微生物为 Mycobacterium tuberculosis H37Rv，文献记载其可完成全部三步（依赖维生素 B12）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "propanoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)CC",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "O=P(O)(O)OP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-methylmalonyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)C(C)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "O=P(O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "orthophosphate",
+          "smiles": "O=P(O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP 依赖的羧化（生物素依赖羧化酶反应）",
+      "enzyme": {
+        "name": "propanoyl-CoA carboxylase",
+        "ec_number": "6.4.1.3",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium tuberculosis",
+        "strain": "H37Rv",
+        "ncbi_taxid": 83332,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "羧化底物在文献中有时写作碳酸氢根（HCO3-），此处按净反应写作 carbon dioxide；Mtb 的 propanoyl-CoA carboxylase 基因座位（如 accD5/pccB）未能核实，留 null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-methylmalonyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)C(C)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(R)-methylmalonyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)C(C)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "差向异构化（立体异构化）",
+      "enzyme": {
+        "name": "methylmalonyl-CoA epimerase",
+        "ec_number": "5.1.99.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium tuberculosis",
+        "strain": "H37Rv",
+        "ncbi_taxid": 83332,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "SMILES 未标注 (S)/(R) 立体中心，构型由化合物名称表达；Mtb 中该差向异构酶的基因未能确定，留 null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "(R)-methylmalonyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)C(C)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "辅酶 B12（腺苷钴胺素）依赖的分子内碳骨架重排（异构化）",
+      "enzyme": {
+        "name": "methylmalonyl-CoA mutase",
+        "ec_number": "5.4.99.2",
+        "gene_or_protein": "mutA/mutB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium tuberculosis",
+        "strain": "H37Rv",
+        "ncbi_taxid": 83332,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该反应可逆，Mtb 中的生理方向为 (R)-methylmalonyl-CoA → succinyl-CoA；mutA/mutB 基因命名系凭记忆填写。succinyl-CoA 既是本路线的末端产物也是本题污染物，其进一步转化（生成 succinate）记录于续接字段，不属于本主链。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Mycobacterium tuberculosis",
+      "strain": "H37Rv",
+      "ncbi_taxid": 83332,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温菌，适应哺乳动物（人体）约37℃的温度环境"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧：生长依赖氧，但可在低氧下维持非复制持留状态",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "27294"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用甘油、乙酸、脂肪酸及胆固醇等作为碳源与能源；奇数链/支链脂肪酸与胆固醇分解会产生 propanoyl-CoA，再经甲基丙二酰-CoA 路线代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解能力集中于宿主脂质类物质（胆固醇、奇数链/支链脂肪酸等）；产生的 propanoyl-CoA 可经维生素 B12 依赖的甲基丙二酰-CoA 路线汇入 TCA 循环（亦可由 2-甲基柠檬酸路线处置）；无广谱环境污染物降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 propanoyl-CoA carboxylase（EC 6.4.1.3）、methylmalonyl-CoA epimerase（EC 5.1.99.1）和辅酶 B12 依赖的 methylmalonyl-CoA mutase（EC 5.4.99.2）活性，完成 propanoyl-CoA 向 succinyl-CoA 的三步转化",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "无运动性，无鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状、略弯曲的细长杆菌，常平行成簇/呈索状排列",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性、抗酸染色阳性；细胞包膜富含分枝菌酸（高GC放线菌门成员）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢/孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000962",
+            "genome_size_bp": 4411532,
+            "gc_percent": 65.6
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性低（专化病原菌）：人和部分哺乳动物的专性病原体，寄生于巨噬细胞内，宿主谱窄；并非广栖息环境通才",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "succinyl-CoA",
+      "succinate"
+    ],
+    "explanation": "本路线的末端产物 succinyl-CoA 本身即 TCA 循环的中间体：可经 succinyl-CoA synthetase（EC 6.2.1.4 GDP-forming / 6.2.1.5 ADP-forming）转化为 succinate 并经底物水平磷酸化产生 GTP/ATP，succinate 再被 succinate dehydrogenase（EC 1.3.5.1）氧化为 fumarate 进入 TCA 循环。succinyl-CoA 既是本路线主链的终点，也是进入中枢代谢的入口；作为本题污染物，其进一步分解见 downstream_continuation。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "succinyl-CoA → succinate（succinyl-CoA synthetase）",
+      "summary": "Succinyl-CoA synthetase（succinate—CoA ligase，EC 6.2.1.4/6.2.1.5）将 succinyl-CoA 转化为 succinate，同时生成 ATP 或 GTP 并释出 CoA；典型微生物为 Escherichia coli K-12（sucCD）。该步是本路线末端产物进入 TCA 循环后的去向，不属于 'propanoyl CoA degradation I' 主链（不参与评分）。"
+    },
+    {
+      "name": "succinate → fumarate（succinate dehydrogenase）",
+      "summary": "Succinate dehydrogenase（EC 1.3.5.1，TCA 循环复合体 II）将 succinate 氧化为 fumarate，后者再经 fumarase（EC 4.2.1.2）水合为 malate，继续 TCA 循环。不属于本路线主链（不参与评分）。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "propanoyl-CoA degradation II（2-methylcitrate 路线）",
+      "summary": "部分细菌（如 Escherichia coli、Salmonella enterica）经 2-甲基柠檬酸路线：propanoyl-CoA 与草酰乙酸由 methylcitrate synthase 缩合成 2-methylcitrate，再经脱水与裂解最终生成丙酮酸和 succinate，为不依赖维生素 B12 的 propanoyl-CoA 降解途径。与本题主路线平行，不属于本题主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "本路线的逆向运行（succinyl-CoA → propanoyl-CoA，丙酸发酵方向）",
+      "summary": "厌氧条件下丙酸菌（如 Propionibacterium、Veillonella）可将同一酶系逆向运行，把 succinyl-CoA 经 (R)-methylmalonyl-CoA、(S)-methylmalonyl-CoA 转回 propanoyl-CoA（伴随脱羧）并以丙酸形式排出，用于丙酸发酵。属本路线的反向利用，不属于 propanoyl-CoA 降解主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway 页面 'propanoyl-CoA degradation I'（甲基丙二酰-CoA 路线：线性三步序列，末端产物 succinyl-CoA）",
+      "claim_scope": [
+        "propanoyl CoA degradation I 主链三步反应序列及各步酶的 EC 编号",
+        "succinyl-CoA 为该路线末端产物并作为 TCA 循环中间体"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Savvi et al., 2008, J. Bacteriol., Mycobacterium tuberculosis 中维生素 B12 依赖的 methylmalonyl-CoA 途径的功能表征（文献细节凭模型记忆，未当场核验）",
+      "claim_scope": [
+        "Mycobacterium tuberculosis（H37Rv）可执行 propanoyl-CoA → (S)-methylmalonyl-CoA → (R)-methylmalonyl-CoA → succinyl-CoA 的转化（维生素 B12 依赖）",
+        "Mtb 中 methylmalonyl-CoA mutase 的活性/基因（mutA/mutB）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "M. tuberculosis H37Rv 的基本生物学性状：抗酸/革兰氏阳性、杆状、无运动、不产孢、专性好氧、ATCC 27294、基因组 NC_000962（约4.4 Mb，GC 65.6%）、哺乳动物胞内病原体等"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "本题污染物 succinyl-CoA 是路线 'propanoyl CoA degradation I' 的末端产物而非其起始底物；本答案按该路线自身定义的方向给出主链（propanoyl-CoA→…→succinyl-CoA），succinyl-CoA 以最终步产物的形式出现并作为中枢代谢入口；其进一步分解（succinyl-CoA→succinate→fumarate）记录于续接与中枢代谢字段，不参与主链评分。",
+    "(S)-methylmalonyl-CoA 与 (R)-methylmalonyl-CoA 的 SMILES 未标注立体中心，构型仅由化合物名称表达；CoA 部分的核糖与泛解酸立体中心亦未标注。",
+    "MetaCyc 的 record ID、Mtb 的 propanoyl-CoA carboxylase 与 methylmalonyl-CoA epimerase 基因座位号以及部分数值（如精确基因组大小）凭记忆无法当场核验，不确定项留 null 或降为 medium 置信度。"
+  ]
+}

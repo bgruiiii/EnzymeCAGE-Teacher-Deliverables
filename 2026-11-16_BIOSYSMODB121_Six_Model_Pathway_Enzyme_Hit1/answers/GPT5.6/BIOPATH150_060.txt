@@ -1,0 +1,120 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_060",
+  "pollutant_name_zh": "2-铵基-3-(3-氧丙-1-烯基)丁-2-烯二酸根",
+  "pollutant_name_en": "2-Azaniumyl-3-(3-oxoprop-1-enyl)but-2-enedioate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-amino-3-carboxymuconate semialdehyde degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": null,
+    "notes": "题面未指定氧条件；所列反应按指定路线范围整理。"
+  },
+  "route_summary": "主链从 2-amino-3-carboxymuconate semialdehyde 开始，经脱羧形成 2-aminomuconate semialdehyde，随后经脱氨及氧化重排生成 2-hydroxypentadienoate。第二步的具体酶学实体和对应微生物缺乏足够可靠的直接来源。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-Amino-3-carboxymuconate semialdehyde",
+          "smiles": "[O-]C(=O)C([NH3+])=C(C=CC=O)C([O-])=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Aminomuconate semialdehyde",
+          "smiles": "[O-]C(=O)C([NH3+])=C/C=CC=O",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "2-amino-3-carboxymuconate-6-semialdehyde decarboxylase",
+        "ec_number": "4.1.1.45",
+        "gene_or_protein": "ACMSD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "反应和 EC 分类有文献与数据库支持，但未确认本题指定路线中唯一对应的物种或菌株。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-Aminomuconate semialdehyde",
+          "smiles": "[O-]C(=O)C([NH3+])=C/C=CC=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxypentadienoate",
+          "smiles": "[O-]C(=O)C(O)=CC=C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "脱氨及氧化重排",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "该步作为题面指定路线的终步保留，但缺乏足以唯一确定具体酶、EC 编号、微生物及反应计量的直接证据。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1",
+        "2-amino-3-carboxymuconate-6-semialdehyde decarboxylase",
+        "EC 4.1.1.45"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2",
+        "2-aminomuconate semialdehyde to 2-hydroxypentadienoate"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未能可靠确定各步骤的对应微生物及菌株。",
+    "第二步的具体酶、EC 编号和反应机制缺乏直接来源。",
+    "2-hydroxypentadienoate 的具体双键构型未指定。"
+  ]
+}

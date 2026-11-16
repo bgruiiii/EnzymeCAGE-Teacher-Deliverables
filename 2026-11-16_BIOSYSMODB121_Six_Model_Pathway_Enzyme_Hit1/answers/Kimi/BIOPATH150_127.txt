@@ -1,0 +1,272 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_127",
+  "pollutant_name_zh": "D-苏糖醇",
+  "pollutant_name_en": "D-Threitol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-threitol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition填null；需说明所选第一步（醋酸菌对多元醇的膜上氧化）本身是好氧过程。路线名称按题面原样填写。未检索到权威通路数据库对该路线逐步反应的完整公开记录，主链为依据已知多元醇生化反应的重建，整体证据偏弱。"
+  },
+  "route_summary": "D-苏糖醇降解主链（重建）：第一步，D-苏糖醇在C2位被氧化脱氢生成D-赤藓酮糖（D-erythrulose），由膜结合多元醇脱氢酶催化，醋酸菌Gluconobacter oxydans 621H为代表菌；第二步，D-赤藓酮糖经激酶磷酸化生成D-赤藓酮糖-4-磷酸（磷酸化位点按戊酮糖激酶惯例暂定为4-位），后者推测可经转酮酶进入非氧化磷酸戊糖途径。第一步有较可靠的生化依据，第二步及下游衔接缺乏直接文献证据，相应字段按规则置null。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-Threitol",
+          "smiles": "C([C@@H]([C@H](CO)O)O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-Erythrulose",
+          "smiles": "C([C@@H](C(=O)CO)O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative dehydrogenation (membrane-bound, PQQ-dependent)",
+      "enzyme": {
+        "name": "membrane-bound polyol dehydrogenase (D-threitol-oxidizing; SldAB)",
+        "ec_number": null,
+        "gene_or_protein": "sldAB",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Gluconobacter oxydans",
+        "strain": "621H",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该步未见独立的“D-苏糖醇脱氢酶”EC编号，按醋酸菌广谱膜结合多元醇脱氢酶重建，EC置null；电子受体（泛醌/PQQ体系）未在底物/产物中列出；产物构型推断为D-赤藓酮糖（C2氧化，C3构型保留为D）。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "D-Erythrulose",
+          "smiles": "C([C@@H](C(=O)CO)O)O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-Erythrulose 4-phosphate",
+          "smiles": "O=C(CO)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)O)O)O)N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "phosphorylation (kinase, ATP-dependent)",
+      "enzyme": {
+        "name": "D-erythrulose kinase (putative)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "未找到明确的微生物D-赤藓酮糖激酶及其EC编号的文献；磷酸化位点（1-位或4-位）不确定，此处按酮糖激酶惯例暂定生成4-磷酸；对应微生物未知，按规则置null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Gluconobacter oxydans",
+      "strain": "621H",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（mesophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧（obligate aerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSMZ",
+            "accession": "DSM 3503"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（氧化性呼吸代谢，不完全氧化为特征）",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以糖类和多元醇（如D-葡萄糖、D-山梨醇）为主要碳源进行不完全氧化",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可氧化多种多元醇与糖；能将D-苏糖醇氧化为D-赤藓酮糖（广义氧化/降解能力）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "膜结合PQQ依赖多元醇脱氢酶（SldAB）的多元醇氧化活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "椭圆至杆状细胞，单生、成对或成短链",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_006677",
+            "genome_size_bp": 2702173,
+            "gc_percent": 60.9
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "偏窄（生态位较专化）：典型栖息于花蜜、成熟果实、蜂蜜及酒醋等高糖微环境",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["D-Erythrulose 4-phosphate"],
+    "explanation": "推测D-赤藓酮糖-4-磷酸可作为转酮酶的羟乙醛供体进入非氧化磷酸戊糖途径；该衔接为文献外推（转酮酶已知可利用赤藓酮糖-4-磷酸），未见针对D-苏糖醇降解路线的直接实验证据。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["route_reconstruction", "S1_reaction", "S2_reaction", "S1_enzyme", "S2_enzyme", "S1_microorganism"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive (DSMZ)",
+      "record_id": "DSM 3503",
+      "locator": null,
+      "claim_scope": ["culture_collection", "growth_temperature"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI GenBank",
+      "record_id": "NC_006677",
+      "locator": "Gluconobacter oxydans 621H chromosome, complete genome (Prust et al. 2005)",
+      "claim_scope": ["genome_chromosome", "genome_size", "gc_percent"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["oxygen_tolerance", "respiration", "carbon_utilization", "morphology", "gram_stain", "sporulation", "habitat"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "未检索到权威通路数据库中“D-threitol degradation”路线的完整逐步公开记录，本主链为基于已知多元醇生化（醋酸菌氧化+酮糖磷酸化）的重建。",
+    "步骤S1的酶无独立EC编号（按膜结合多元醇脱氢酶sldAB重建），EC置null；菌株级（621H）归属为代表性选择，证据有限。",
+    "步骤S2（D-赤藓酮糖磷酸化）的酶、EC编号与对应微生物均无可靠文献，微生物整体置null；磷酸化位点暂定为4-位。",
+    "Gluconobacter oxydans的耐盐性、最适pH、运动性及NCBI TaxID未获可靠来源，按规则置null。"
+  ]
+}

@@ -1,0 +1,604 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_133",
+  "pollutant_name_zh": "4-香豆酸根",
+  "pollutant_name_en": "4-Coumarate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-coumarate degradation (aerobic)",
+    "is_single_continuous_route": true,
+    "notes": "chosen_route_name 按题面原样填写。主链取好氧羟基肉桂酰-CoA侧链缩短路线：4-香豆酸根→4-香豆酰-CoA→4-羟基苯甲醛→4-羟基苯甲酸→原儿茶酸→原儿茶酸3,4-开环产物；其后的β-酮己二酸通路作为共享下游续接说明。"
+  },
+  "route_summary": "好氧主链先将4-香豆酸根活化为4-香豆酰-CoA，再由羟基肉桂酰-CoA水合/裂解酶把侧链裂解为4-羟基苯甲醛和乙酰-CoA；醛氧化为4-羟基苯甲酸后经PobA羟基化生成原儿茶酸，随后由原儿茶酸3,4-双加氧酶进行分子内二醇开环，生成3-羧基-cis,cis-黏康酸并进入共享的β-酮己二酸通路。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Coumarate",
+          "smiles": "O=C([O-])/C=C/c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Coumaroyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]3[C@H]([C@H]([C@@H](O3)n1cnc2c(N)ncnc12)O)OP(=O)(O)O)[C@@H](C(=O)NCCC(=O)NCCSC(=O)/C=C/c4ccc(O)cc4)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "AMP-forming CoA thioesterification",
+      "enzyme": {
+        "name": "4-coumarate--CoA ligase",
+        "ec_number": "6.2.1.12",
+        "gene_or_protein": "4CL/fcs",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "AN103",
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-Coumaroyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]3[C@H]([C@H]([C@@H](O3)n1cnc2c(N)ncnc12)O)OP(=O)(O)O)[C@@H](C(=O)NCCC(=O)NCCSC(=O)/C=C/c4ccc(O)cc4)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]3[C@H]([C@H]([C@@H](O3)n1cnc2c(N)ncnc12)O)OP(=O)(O)O)[C@@H](C(=O)NCCC(=O)NCCSC(=O)C)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydroxycinnamoyl-CoA hydratase/lyase side-chain cleavage",
+      "enzyme": {
+        "name": "hydroxycinnamoyl-CoA hydratase/lyase",
+        "ec_number": "4.2.1.101",
+        "gene_or_protein": "ech/HCHL",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "AN103",
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_007",
+      "trait_evidence_id": null,
+      "uncertainty": "HCHL反应对阿魏酰-CoA生成香草醛有直接文献证据；对4-香豆酰-CoA按同一羟基肉桂酰-CoA底物类型类推，产物写为4-羟基苯甲醛。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-Hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxybenzoate",
+          "smiles": "O=C([O-])c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD(+)-dependent aldehyde oxidation",
+      "enzyme": {
+        "name": "4-hydroxybenzaldehyde dehydrogenase",
+        "ec_number": "1.2.1.64",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-Hydroxybenzoate",
+          "smiles": "O=C([O-])c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Protocatechuate",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "FAD-dependent aromatic 3-hydroxylation",
+      "enzyme": {
+        "name": "4-hydroxybenzoate 3-monooxygenase",
+        "ec_number": "1.14.13.2",
+        "gene_or_protein": "pobA",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_008",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "Protocatechuate",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-carboxy-cis,cis-muconate",
+          "smiles": "O=C([O-])C=C(C(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "intradiol dioxygenative aromatic ring cleavage",
+      "enzyme": {
+        "name": "protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": "pcaH/pcaG",
+        "confidence": "high",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_008",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "开环产物SMILES未标注cis,cis立体构型；名称仍按protocatechuate 3,4-cleavage的β-carboxy-cis,cis-muconate书写。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas fluorescens",
+      "strain": "AN103",
+      "ncbi_taxid": 294,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "羟基肉桂酸/羟基肉桂酰-CoA底物（文献直接底物为阿魏酸转化为香草醛）",
+          "raw_text": "Metabolism of ferulic acid to vanillin. A bacterial gene of the enoyl-CoA hydratase/isomerase superfamily encodes an enzyme for the hydration and cleavage of a hydroxycinnamic acid CoA thioester.",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "羟基肉桂酸侧链经CoA硫酯水合/裂解生成相应芳香醛",
+          "raw_text": "Metabolism of ferulic acid to vanillin. A bacterial gene of the enoyl-CoA hydratase/isomerase superfamily encodes an enzyme for the hydration and cleavage of a hydroxycinnamic acid CoA thioester.",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "feruloyl-CoA synthetase 与 enoyl-CoA hydratase/aldolase（HCHL）活性",
+          "raw_text": "A bacterial gene of the enoyl-CoA hydratase/isomerase superfamily encodes an enzyme for the hydration and cleavage of a hydroxycinnamic acid CoA thioester.",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动性（按荧光假单胞菌属极生鞭毛特征；AN103菌株水平未单独核实）",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "革兰阴性杆菌",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤/植物相关荧光假单胞菌；AN103菌株水平的栖息地广适性未建立",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温；实验室常用30 °C培养"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（不发酵的化学有机营养菌）",
+          "raw_text": "Complete genome sequence and comparative analysis of the metabolically versatile Pseudomonas putida KT2440.",
+          "evidence_id": "EVID_009",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": "NaCl",
+            "category": "非嗜盐；具体耐盐数值未核实"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": "Complete genome sequence and comparative analysis of the metabolically versatile Pseudomonas putida KT2440.",
+          "evidence_id": "EVID_009",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "芳香族羧酸（如苯甲酸、4-羟基苯甲酸、原儿茶酸）及多种有机酸/氨基酸",
+          "raw_text": "Complete genome sequence and comparative analysis of the metabolically versatile Pseudomonas putida KT2440.",
+          "evidence_id": "EVID_009",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "代谢广适的芳香族化合物降解，含4-羟基苯甲酸/原儿茶酸β-酮己二酸通路",
+          "raw_text": "The beta-ketoadipate pathway and the biology of self-identity.",
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "PobA（4-羟基苯甲酸3-单加氧酶）和PcaHG（原儿茶酸3,4-双加氧酶）等活性",
+          "raw_text": "The beta-ketoadipate pathway and the biology of self-identity.",
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动，极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆菌（rod-shaped cells）",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "AE015451.1",
+            "genome_size_bp": 6181863,
+            "gc_percent": 61.5
+          },
+          "raw_text": "Complete genome sequence and comparative analysis of the metabolically versatile Pseudomonas putida KT2440.",
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤、根际和污染环境中的代谢广适型革兰阴性菌，非单一宿主专性",
+          "raw_text": "Complete genome sequence and comparative analysis of the metabolically versatile Pseudomonas putida KT2440.",
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "acetyl-CoA"
+    ],
+    "explanation": "S2的羟基肉桂酰-CoA水合/裂解直接释放乙酰-CoA；芳香环碳架在原儿茶酸3,4-开环后经共享β-酮己二酸通路继续生成琥珀酰-CoA和乙酰-CoA（见downstream_continuation，未作为本轮评分主链逐步展开）。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate beta-ketoadipate pathway",
+      "summary": "3-羧基-cis,cis-黏康酸经环异构、脱羧和烯醇内酯水解生成β-酮己二酸，再经β-酮己二酸:succinyl-CoA转移酶和硫解酶转化为succinyl-CoA与acetyl-CoA进入TCA循环。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD/UM-BBD",
+      "record_id": "4-coumarate degradation (aerobic)",
+      "locator": null,
+      "claim_scope": [
+        "chosen route name",
+        "aerobic 4-coumarate degradation route context"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz - The Enzyme Database",
+      "record_id": "EC 6.2.1.12",
+      "locator": null,
+      "claim_scope": [
+        "4-coumarate--CoA ligase name and EC assignment"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz - The Enzyme Database",
+      "record_id": "EC 4.2.1.101",
+      "locator": null,
+      "claim_scope": [
+        "hydroxycinnamoyl-CoA hydratase/lyase EC assignment"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz - The Enzyme Database",
+      "record_id": "EC 1.2.1.64",
+      "locator": null,
+      "claim_scope": [
+        "4-hydroxybenzaldehyde dehydrogenase name and EC assignment"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz - The Enzyme Database",
+      "record_id": "EC 1.14.13.2",
+      "locator": null,
+      "claim_scope": [
+        "4-hydroxybenzoate 3-monooxygenase name and EC assignment"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz - The Enzyme Database",
+      "record_id": "EC 1.13.11.3",
+      "locator": null,
+      "claim_scope": [
+        "protocatechuate 3,4-dioxygenase name and EC assignment"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "Gasson et al., Journal of Biological Chemistry 273(7):4163-4170 (1998)",
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas fluorescens AN103 hydroxycinnamic acid CoA thioester hydration/cleavage",
+        "ferulic acid to vanillin via hydroxycinnamoyl-CoA hydratase/lyase"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "Harwood and Parales, Annual Review of Microbiology 50:553-590 (1996)",
+      "locator": "doi:10.1146/annurev.micro.50.1.553",
+      "claim_scope": [
+        "4-hydroxybenzoate to protocatechuate",
+        "protocatechuate 3,4-cleavage and beta-ketoadipate pathway"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "Nelson et al., Environmental Microbiology 4(12):799-808 (2002)",
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida KT2440 identity",
+        "metabolic versatility and aromatic compound degradation",
+        "aerobic chemoorganotrophic biology"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_010",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome",
+      "record_id": "AE015451.1",
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida KT2440 chromosome accession, genome size, G+C content, TaxID 160488"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_011",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida KT2440 routine cultivation temperature and near-neutral pH"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_012",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "294",
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas fluorescens species taxonomy"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "4-香豆酰-CoA侧链缩短在不同细菌中也可能经β-氧化样水合/脱氢/硫解生成4-羟基苯甲酰-CoA；本答案主链采用羟基肉桂酰-CoA水合/裂解酶（HCHL）生成4-羟基苯甲醛的路线。",
+    "Pseudomonas fluorescens AN103用于代表S1-S2的羟基肉桂酸CoA活化/裂解酶来源；其菌株水平基因组、保藏编号和多项生理性状未核实，按null或低置信记录。",
+    "原儿茶酸开环后的β-酮己二酸通路为多个好氧芳香族降解菌共享，本答案在downstream_continuation中概述而未全部列入评分steps。"
+  ]
+}

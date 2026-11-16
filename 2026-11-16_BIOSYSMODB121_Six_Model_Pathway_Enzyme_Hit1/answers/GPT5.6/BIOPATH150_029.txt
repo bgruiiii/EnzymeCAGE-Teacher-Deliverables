@@ -1,0 +1,336 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_029",
+  "pollutant_name_zh": "环己醇",
+  "pollutant_name_en": "Cyclohexanol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "cyclohexanol degradation",
+    "is_single_continuous_route": true,
+    "notes": "采用环己醇经环己酮、ε-caprolactone到6-hydroxyhexanoic acid的已知有氧降解主链；题面未指定氧条件。"
+  },
+  "route_summary": "环己醇先被氧化为环己酮，随后经Baeyer–Villiger氧化生成ε-caprolactone，再经内酯水解生成6-hydroxyhexanoic acid。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Cyclohexanol",
+          "smiles": "C1CCCCC1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Cyclohexanone",
+          "smiles": "O=C1CCCCC1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醇脱氢氧化",
+      "enzyme": {
+        "name": "Cyclohexanol dehydrogenase",
+        "ec_number": "1.1.1.245",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "NCIB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "具体菌株基因、辅酶形式及反应方向可能因菌株而异。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Cyclohexanone",
+          "smiles": "O=C1CCCCC1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "ε-Caprolactone",
+          "smiles": "O=C1OCCCCC1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Baeyer–Villiger氧化",
+      "enzyme": {
+        "name": "Cyclohexanone monooxygenase",
+        "ec_number": "1.14.13.22",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "NCIB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "该步通常需要分子氧及还原力；题面未指定氧条件，因此未将路线条件强制标为aerobic。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "ε-Caprolactone",
+          "smiles": "O=C1OCCCCC1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-Hydroxyhexanoic acid",
+          "smiles": "O=C(O)CCCCCO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "内酯水解",
+      "enzyme": {
+        "name": "Caprolactone hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "NCIB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "具体内酯水解酶的EC编号未确定；6-hydroxyhexanoic acid之后的连续氧化步骤未纳入本主链。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter sp.",
+      "strain": "NCIB 9871",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "NCIB",
+            "accession": "9871"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解环己醇及相关环己酮类化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有环己醇氧化、环己酮Baeyer–Villiger氧化及内酯水解相关活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [
+    {
+      "name": "6-Hydroxyhexanoic acid further oxidation",
+      "summary": "6-Hydroxyhexanoic acid可继续经醇和醛氧化生成adipic acid相关中间体，但本题主链未延伸至该部分。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Cyclohexanol到Cyclohexanone的氧化",
+        "Cyclohexanol dehydrogenase",
+        "EC 1.1.1.245"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Cyclohexanone到ε-Caprolactone的Baeyer–Villiger氧化",
+        "Cyclohexanone monooxygenase",
+        "EC 1.14.13.22"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ε-Caprolactone到6-Hydroxyhexanoic acid的内酯水解",
+        "Caprolactone hydrolase"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Acinetobacter sp. NCIB 9871与环己醇降解路线的对应关系",
+        "NCIB保藏编号9871"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件。",
+    "Acinetobacter sp. NCIB 9871的NCBI TaxID及基因组信息未确定。",
+    "Caprolactone hydrolase的具体EC编号未确定。",
+    "6-Hydroxyhexanoic acid之后的完整下游代谢未纳入评分主链。"
+  ]
+}

@@ -1,0 +1,411 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_109",
+  "pollutant_name_zh": "6-磺酸基-α-D-奎诺糖",
+  "pollutant_name_en": "6-sulfo-alpha-D-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；按指定路线名处理为磺酸糖酵解型 sulfoquinovose degradation I 主链。"
+  },
+  "route_summary": "主链为磺酸糖酵解（sulfo-EMP）：6-sulfo-alpha-D-quinovose 经 sulfoquinovose isomerase 异构为 6-sulfo-D-fructose，再经 6-sulfo-D-fructose kinase 磷酸化生成 6-sulfo-D-fructose 1-phosphate；随后由 6-sulfo-D-fructose-1-phosphate aldolase 裂解为 glycerone phosphate 与 (S)-sulfolactaldehyde，后者经 (S)-sulfolactaldehyde reductase 还原为 (S)-2,3-dihydroxypropane-1-sulfonate。glycerone phosphate 进入中心碳代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-sulfo-alpha-D-quinovose",
+          "smiles": "O=S(=O)(O)C([C@@H]1[C@H]([C@@H]([C@H]([C@H](O1)O)O)O)O)",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-sulfo-D-fructose",
+          "smiles": "O=S(=O)(O)CC(O)C(O)C(O)C(=O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldose-ketose isomerization",
+      "enzyme": {
+        "name": "sulfoquinovose isomerase",
+        "ec_number": "5.3.1.34",
+        "gene_or_protein": "yihS / YihS",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "题面给定 α 异头体；体内异头体可突变旋，本主链未单列 mutarotase 步骤。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-fructose",
+          "smiles": "O=S(=O)(O)CC(O)C(O)C(O)C(=O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-sulfo-D-fructose 1-phosphate",
+          "smiles": "O=S(=O)(O)CC(O)C(O)C(O)C(=O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)O)O)O)N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP-dependent phosphorylation",
+      "enzyme": {
+        "name": "6-sulfo-D-fructose kinase",
+        "ec_number": null,
+        "gene_or_protein": "yihV / YihV",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该步专属 EC 编号不确定，故 ec_number 填 null；酶功能按 sulfoglycolysis 文献记录。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-fructose 1-phosphate",
+          "smiles": "O=S(=O)(O)CC(O)C(O)C(O)C(=O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycerone phosphate",
+          "smiles": "O=C(CO)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "(S)-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "retro-aldol cleavage",
+      "enzyme": {
+        "name": "6-sulfo-D-fructose-1-phosphate aldolase",
+        "ec_number": null,
+        "gene_or_protein": "yihT / YihT",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该醛缩酶的专属 EC 编号不确定，故 ec_number 填 null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-2,3-dihydroxypropane-1-sulfonate",
+          "smiles": "OCC(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NADH-dependent reduction",
+      "enzyme": {
+        "name": "(S)-sulfolactaldehyde reductase",
+        "ec_number": null,
+        "gene_or_protein": "yihU / YihU",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "还原产物按 E. coli K-12 sulfoglycolysis 记录为 (S)-2,3-dihydroxypropane-1-sulfonate；该还原酶专属 EC 编号不确定，故填 null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温；常规培养最适约 37 °C"
+          },
+          "raw_text": "Propagation: Temperature 37°C; Atmosphere: Aerobic.",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "facultative anaerobe（兼性厌氧）",
+          "raw_text": "Escherichia coli is a facultatively anaerobic, Gram-negative rod.",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": "% NaCl",
+            "category": "非嗜盐；肠道/淡水型细菌"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": "Neutralophilic enteric bacterium; optimal growth near neutral pH.",
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": "Escherichia coli (Migula) Castellani and Chalmers, designation K-12 substr. MG1655.",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration; fermentation/anaerobic respiration when oxygen is absent",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "Facultatively anaerobic; grows aerobically with oxygen and can ferment or respire anaerobically.",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes 6-sulfo-D-quinovose via sulfoglycolysis; laboratory growth also on glucose",
+          "raw_text": "Escherichia coli K-12 degrades sulfoquinovose by sulphoglycolysis.",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "sulfoglycolytic degradation of the sulfolipid headgroup sulfoquinovose to glycerone phosphate and (S)-2,3-dihydroxypropane-1-sulfonate",
+          "raw_text": "Sulphoquinovose is degraded by sulphoglycolysis in Escherichia coli K-12.",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "YihT 6-sulfo-D-fructose-1-phosphate aldolase cleavage activity in sulfoglycolysis",
+          "raw_text": "The pathway includes sulfoquinovose isomerase, sulfofructose kinase, sulfofructose-1-phosphate aldolase and sulfolactaldehyde reductase activities.",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "typically motile with peritrichous flagella; motility can be reduced in domesticated K-12 stocks",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "short rods / bacilli",
+          "raw_text": "Escherichia coli cells are rod-shaped.",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative diderm envelope with inner membrane, thin peptidoglycan and outer membrane",
+          "raw_text": "Escherichia coli is Gram-negative.",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": "Escherichia coli does not form endospores.",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "U00096.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": "Escherichia coli str. K-12 substr. MG1655 complete genome; 4,641,652 bp; GC about 50.8%.",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "物种背景为温血动物肠道兼性菌，并可在水、沉积物和土壤中二次存续；该株为实验室参考株，不据此推断致病性",
+          "raw_text": "Escherichia coli is an enteric bacterium that can also persist in secondary environments such as water and sediment.",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "glycerone phosphate"
+    ],
+    "explanation": "glycerone phosphate（磷酸二羟丙酮）进入糖酵解/糖异生；(S)-2,3-dihydroxypropane-1-sulfonate 为含硫产物，可由其他微生物进一步脱硫，但不属于本评分主链。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc/EcoCyc",
+      "record_id": null,
+      "locator": "pathway: sulfoquinovose degradation I",
+      "claim_scope": [
+        "route name",
+        "reaction sequence",
+        "enzyme assignment for sulfoquinovose isomerase"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": "doi:10.1038/nature13116",
+      "locator": "Denger et al., Nature 507:114-117 (2014), sulphoglycolysis in Escherichia coli K-12",
+      "claim_scope": [
+        "sulfoglycolysis route in Escherichia coli K-12",
+        "formation of glycerone phosphate and (S)-2,3-dihydroxypropane-1-sulfonate",
+        "yihS/yihV/yihT/yihU functional assignment"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "Escherichia coli K-12 substr. MG1655 product page",
+      "claim_scope": [
+        "culture collection accession",
+        "propagation temperature 37 C",
+        "aerobic culture condition"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome/GenBank",
+      "record_id": "U00096.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655 complete genome",
+      "claim_scope": [
+        "genome accession",
+        "genome size",
+        "GC percent",
+        "NCBI TaxID 511145"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "EcoSal Plus",
+      "record_id": null,
+      "locator": "general Escherichia coli physiology and cell biology",
+      "claim_scope": [
+        "facultative anaerobe",
+        "Gram-negative rod",
+        "non-spore-forming",
+        "enteric habitat with secondary environmental persistence"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件题面为 null，未对 aerobic/anaerobic 作额外指定。",
+    "未单列 α/β 异头体突变旋步骤；主链从题面给定的 6-sulfo-alpha-D-quinovose 进入异构化。",
+    "YihV、YihT、YihU 的专属 EC 编号未填写，以避免猜测；仅填写较确定的 sulfoquinovose isomerase EC 5.3.1.34。",
+    "盐度、pH 范围和运动性为较弱证据或通性描述，未使用精确保藏或生理实验数值。"
+  ]
+}

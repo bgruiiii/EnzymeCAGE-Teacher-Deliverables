@@ -1,0 +1,550 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_013",
+  "pollutant_name_zh": "4-硝基苯酚",
+  "pollutant_name_en": "4-Nitrophenol",
+  "route_scope": {
+    "oxygen_condition": "mixed",
+    "chosen_route_name": "4-nitrophenol degradation II",
+    "is_single_continuous_route": true,
+    "notes": "按题面将氧条件记为mixed（兼性）。本主链对应革兰氏阳性菌中的4-硝基儿茶酚/1,2,4-苯三酚（羟基氢醌）路线：单加氧与开环双加氧步骤依赖分子氧，醌还原与马来酰乙酸还原不依赖分子氧。文献常将此路线称为途径II，以区别于革兰氏阴性菌的对苯二酚途径（途径I）。"
+  },
+  "route_summary": "4-硝基苯酚降解途径II是4-硝基儿茶酚/1,2,4-苯三酚路线。4-硝基苯酚先被单加氧酶邻位羟基化为4-硝基儿茶酚，再经单加氧脱硝释放亚硝酸盐并生成2-羟基-1,4-苯醌；醌还原为1,2,4-苯三酚后，由羟基氢醌1,2-双加氧酶开环生成马来酰乙酸，再还原为3-氧代己二酸，由此进入β-酮己二酸途径。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-nitrophenol",
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-nitrocatechol",
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧羟基化",
+      "enzyme": {
+        "name": "4-nitrophenol 2-monooxygenase",
+        "ec_number": "1.14.13.29",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "JS443",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 1.14.13.29明确以NADH为电子供体；节杆菌JS443催化同一转化，但其双组分单加氧酶的基因符号未在此填写。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-nitrocatechol",
+          "smiles": "Oc1ccc([N+](=O)[O-])cc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-1,4-benzoquinone",
+          "smiles": "O=C1C=CC(=O)C(O)=C1",
+          "role": "main"
+        },
+        {
+          "name": "nitrite",
+          "smiles": "N(=O)[O-]",
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧脱硝",
+      "enzyme": {
+        "name": "4-nitrocatechol monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Bacillus sphaericus",
+        "strain": "JS905",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该步是双组分4-硝基苯酚单加氧酶的第二活性，没有单独EC编号；直接实验证据来自Bacillus sphaericus JS905。反应还消耗NAD(P)H，但供体特异性未单独指定，故未写入辅因子。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-1,4-benzoquinone",
+          "smiles": "O=C1C=CC(=O)C(O)=C1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "1,2,4-benzenetriol",
+          "smiles": "Oc1ccc(O)c(O)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醌还原",
+      "enzyme": {
+        "name": "2-hydroxy-1,4-benzoquinone reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Bacillus sphaericus",
+        "strain": "JS905",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "细胞提取物中存在依赖NAD(P)H的醌还原活性，但还原酶未被赋予可靠EC编号，辅因子亦未指定为单一的NADH或NADPH。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "1,2,4-benzenetriol",
+          "smiles": "Oc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylacetate",
+          "smiles": "OC(=O)/C=C\\C(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "芳香环邻位开裂",
+      "enzyme": {
+        "name": "hydroxyquinol 1,2-dioxygenase",
+        "ec_number": "1.13.11.37",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "JS443",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "开环后的初级产物可互变异构为马来酰乙酸；途径图通常直接以马来酰乙酸作为该步产物。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "maleylacetate",
+          "smiles": "OC(=O)/C=C\\C(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "OC(=O)CC(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "烯键还原",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "JS443",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 1.3.1.32接受NADH或NADPH，未把其中一种写成唯一步底物。JS443被证明可将路线推进至β-酮己二酸，但该菌株还原酶蛋白本身的纯化证据弱于反应归属。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter sp.",
+      "strain": "JS443",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用4-硝基苯酚作为唯一碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经4-硝基儿茶酚和1,2,4-苯三酚好氧降解4-硝基苯酚至马来酰乙酸和3-氧代己二酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-硝基苯酚单加氧酶活性，可将4-硝基苯酚转化为4-硝基儿茶酚",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状至球状，具杆-球循环",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Bacillus sphaericus",
+      "strain": "JS905",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用4-硝基苯酚作为唯一碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解4-硝基苯酚，经4-硝基儿茶酚和2-羟基-1,4-苯醌生成1,2,4-苯三酚并释放亚硝酸盐",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "双组分单加氧酶同时催化4-硝基苯酚羟基化和4-硝基儿茶酚氧化脱硝",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "产内生芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["3-oxoadipate"],
+    "explanation": "主链终点3-氧代己二酸进入β-酮己二酸途径，再裂解为琥珀酰CoA和乙酰CoA，汇入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-oxoadipate pathway",
+      "summary": "3-氧代己二酸经CoA转移和硫解生成琥珀酰CoA与乙酰CoA，进入三羧酸循环。该下游模块不属于4-硝基苯酚降解II主链本身。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "hydroquinone pathway",
+      "summary": "革兰氏阴性菌（如Pseudomonas sp. WBC-3、Moraxella sp.）的对苯二酚途径：4-硝基苯酚经4-单加氧酶生成1,4-苯醌并释放亚硝酸盐，还原为对苯二酚后开环，同样汇入马来酰乙酸。该分支不是本题指定的降解II主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "1.14.13.29",
+      "locator": "EC 1.14.13.29 4-nitrophenol 2-monooxygenase: 4-nitrophenol + NADH + H+ + O2 = 4-nitrocatechol + NAD+ + H2O",
+      "claim_scope": ["S1_enzyme", "S1_ec", "S1_reaction_stoichiometry"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Jain RK, Dreisbach JH, Spain JC. 1994. Biodegradation of p-nitrophenol via 1,2,4-benzenetriol by an Arthrobacter sp. Applied and Environmental Microbiology.",
+      "claim_scope": ["JS443_pathway", "S1_reaction", "S4_reaction", "S5_route_end", "ORG_001_degradation"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Kadiyala V, Spain JC. 1998. A two-component monooxygenase catalyzes both the hydroxylation of p-nitrophenol and the oxidative release of nitrite from 4-nitrocatechol in Bacillus sphaericus JS905. Applied and Environmental Microbiology.",
+      "claim_scope": ["S2_reaction", "S3_reaction", "JS905_monooxygenase", "quinone_intermediate"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "1.13.11.37",
+      "locator": "EC 1.13.11.37 hydroxyquinol 1,2-dioxygenase: benzene-1,2,4-triol + O2 = maleylacetate",
+      "claim_scope": ["S4_enzyme", "S4_ec", "S4_reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "1.3.1.32",
+      "locator": "EC 1.3.1.32 maleylacetate reductase: 3-oxoadipate + NAD(P)+ = 2-maleylacetate + NAD(P)H + H+",
+      "claim_scope": ["S5_enzyme", "S5_ec", "S5_reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Arthrobacter属的常规分类学性状：革兰氏阳性、不产芽孢、好氧放线菌，细胞具杆-球循环。",
+      "claim_scope": ["ORG_001_morphology", "ORG_001_gram", "ORG_001_sporulation", "ORG_001_respiration"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Bacillus sphaericus（现多归入Lysinibacillus sphaericus）的常规分类学性状：革兰氏阳性、杆状、产内生芽孢、好氧呼吸。",
+      "claim_scope": ["ORG_002_morphology", "ORG_002_gram", "ORG_002_sporulation", "ORG_002_respiration"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面路线名“4-nitrophenol degradation II”按通行编号解释为1,2,4-苯三酚/4-硝基儿茶酚途径；若来源数据库把I/II编号对调，主链应改为对苯二酚途径。",
+    "2-羟基-1,4-苯醌的直接证据来自Bacillus sphaericus JS905；Arthrobacter sp. JS443的早期途径图常把4-硝基儿茶酚到1,2,4-苯三酚合并为一步。",
+    "4-硝基儿茶酚单加氧与醌还原没有可靠的独立EC编号，NADH与NADPH的取舍未写入，避免把不确定辅因子当成唯一候选。",
+    "Bacillus sphaericus JS905现分类学上多归入Lysinibacillus sphaericus，此处沿用降解文献原名。",
+    "两株菌的温度、pH、盐度、保藏号、TaxID、基因组登录号和栖息地广适性均无可靠可核对数值，已置null。",
+    "性状原文摘录未能逐字核对，raw_text一律为null。"
+  ]
+}

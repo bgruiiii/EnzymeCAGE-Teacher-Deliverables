@@ -1,0 +1,470 @@
+
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_018",
+  "pollutant_name_zh": "四溴双酚A",
+  "pollutant_name_en": "Tetrabromobisphenol A",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Tetrabromobisphenol A pathway",
+    "is_single_continuous_route": true,
+    "notes": "主链为：TBBPA 还原脱溴（合并为一步净反应，中间体依次为三溴/二溴/一溴双酚A）生成双酚A，随后在好氧条件下经 ipso 位加氧裂解与 β-酮己二酸途径完全矿化；含 4-羟基苯乙酮—对苯二酚的汇合支路。"
+  },
+  "route_summary": "四溴双酚A（TBBPA）的微生物降解主链：先经逐步还原脱溴（三溴→二溴→一溴双酚A）生成双酚A（BPA）；好氧条件下 BPA 由 Sphingomonas 等经 ipso 位加氧的 C–C 键断裂生成 4-羟基苯乙酮与 4-羟基苯甲醛。4-羟基苯甲醛氧化为 4-羟基苯甲酸，再经原儿茶酸、3-羧基-顺,顺-黏康酸进入 β-酮己二酸（3-氧代己二酸）；4-羟基苯乙酮经 Baeyer–Villiger 单加氧（HAPMO）生成 4-羟基苯基乙酸酯，水解为对苯二酚后同样汇入 β-酮己二酸。β-酮己二酸经 CoA 转移（PcaIJ）与硫解（PcaF）生成乙酰辅酶A 与琥珀酰辅酶A 进入 TCA 循环，溴以 Br⁻ 形式释放。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "Tetrabromobisphenol A", "smiles": "CC(C)(c1cc(Br)c(O)c(Br)c1)c1cc(Br)c(O)c(Br)c1", "role": "main"}
+      ],
+      "products": [
+        {"name": "Bisphenol A", "smiles": "CC(C)(c1ccc(O)cc1)c1ccc(O)cc1", "role": "main"},
+        {"name": "Bromide", "smiles": "[Br-]", "role": "byproduct"}
+      ],
+      "reaction_type": "reductive debromination (sequential; net 4 x C-Br cleavage)",
+      "enzyme": {
+        "name": "Reductive dehalogenase (C-Br reductive cleavage; uncharacterized)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "脱溴按三溴→二溴→一溴双酚A 逐步进行，本步合并为净反应；文献中该过程主要在厌氧沉积物/污泥联合体中报道，好氧体系中 BPA 的检出可能来自缺氧微环境；催化酶与单一对应菌均未确定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "Bisphenol A", "smiles": "CC(C)(c1ccc(O)cc1)c1ccc(O)cc1", "role": "main"},
+        {"name": "Oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "4-Hydroxyacetophenone", "smiles": "CC(=O)c1ccc(O)cc1", "role": "main"},
+        {"name": "4-Hydroxybenzaldehyde", "smiles": "O=Cc1ccc(O)cc1", "role": "main"}
+      ],
+      "reaction_type": "oxidative ipso-substitution / oxygenolytic C-C bond cleavage",
+      "enzyme": {
+        "name": "Bisphenol A ipso-hydroxylating oxygenase (uncharacterized)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas sp.",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "起始加氧裂解酶未获纯化鉴定；产物以 4-羟基苯乙酮与 4-羟基苯甲醛为主（ipso 取代型氧化 C–C 断裂机制）。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "4-Hydroxybenzaldehyde", "smiles": "O=Cc1ccc(O)cc1", "role": "main"},
+        {"name": "NAD+", "smiles": null, "role": "cofactor"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "4-Hydroxybenzoate", "smiles": "OC(=O)c1ccc(O)cc1", "role": "main"},
+        {"name": "NADH", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "aldehyde dehydrogenation (oxidation)",
+      "enzyme": {
+        "name": "4-Hydroxybenzaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas sp.",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该氧化步骤在双酚A 降解菌中被推断存在，具体酶与 EC 编号未表征。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "4-Hydroxybenzoate", "smiles": "OC(=O)c1ccc(O)cc1", "role": "main"},
+        {"name": "Oxygen", "smiles": "O=O", "role": "cofactor"},
+        {"name": "NADPH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Protocatechuate", "smiles": "OC(=O)c1cc(O)c(O)cc1", "role": "main"},
+        {"name": "NADP+", "smiles": null, "role": "byproduct"},
+        {"name": "Water", "smiles": "O", "role": "byproduct"}
+      ],
+      "reaction_type": "aromatic ortho-hydroxylation (monooxygenation)",
+      "enzyme": {
+        "name": "4-Hydroxybenzoate 3-monooxygenase (PobA)",
+        "ec_number": "1.14.13.2",
+        "gene_or_protein": "pobA",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160489,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {"name": "Protocatechuate", "smiles": "OC(=O)c1cc(O)c(O)cc1", "role": "main"},
+        {"name": "Oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-Carboxy-cis,cis-muconate", "smiles": "OC(=O)C=C(C(=O)O)C=CC(=O)O", "role": "main"}
+      ],
+      "reaction_type": "intradiol aromatic ring cleavage (3,4-dioxygenation)",
+      "enzyme": {
+        "name": "Protocatechuate 3,4-dioxygenase (PcaGH)",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": "pcaGH",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160489,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {"name": "3-Carboxy-cis,cis-muconate", "smiles": "OC(=O)C=C(C(=O)O)C=CC(=O)O", "role": "main"}
+      ],
+      "products": [
+        {"name": "3-Oxoadipate", "smiles": "OC(=O)CC(=O)CCC(=O)O", "role": "main"}
+      ],
+      "reaction_type": "cycloisomerization / decarboxylation / lactone hydrolysis (compressed segment)",
+      "enzyme": {
+        "name": "3-Carboxy-cis,cis-muconate cycloisomerase (PcaB)",
+        "ec_number": null,
+        "gene_or_protein": "pcaB",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160489,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "本步将 3-羧基-顺,顺-黏康酸经 4-羧基黏康内酯（PcaB/PcaC）与 3-氧代己二酸烯醇内酯（PcaD）到 3-氧代己二酸的多个酶促环节压缩为一步。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6", "S11"],
+      "substrates": [
+        {"name": "3-Oxoadipate", "smiles": "OC(=O)CC(=O)CCC(=O)O", "role": "main"},
+        {"name": "Succinyl-CoA", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-Oxoadipyl-CoA", "smiles": null, "role": "main"},
+        {"name": "Succinate", "smiles": "OC(=O)CCC(=O)O", "role": "byproduct"}
+      ],
+      "reaction_type": "CoA-transfer activation",
+      "enzyme": {
+        "name": "3-Oxoadipate CoA-transferase (PcaIJ)",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": "pcaIJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160489,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "EC 编号 2.8.3.6 为记忆填写，需核实。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {"name": "3-Oxoadipyl-CoA", "smiles": null, "role": "main"},
+        {"name": "Coenzyme A", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Acetyl-CoA", "smiles": null, "role": "main"},
+        {"name": "Succinyl-CoA", "smiles": null, "role": "main"}
+      ],
+      "reaction_type": "thiolytic cleavage",
+      "enzyme": {
+        "name": "3-Oxoadipyl-CoA thiolase (PcaF)",
+        "ec_number": null,
+        "gene_or_protein": "pcaF",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160489,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "硫解酶（PcaF）的专用 EC 编号未确认，留空。"
+    },
+    {
+      "step_id": "S9",
+      "order": 9,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "4-Hydroxyacetophenone", "smiles": "CC(=O)c1ccc(O)cc1", "role": "main"},
+        {"name": "Oxygen", "smiles": "O=O", "role": "cofactor"},
+        {"name": "NADPH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "4-Hydroxyphenyl acetate", "smiles": "CC(=O)Oc1ccc(O)cc1", "role": "main"},
+        {"name": "NADP+", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "Baeyer-Villiger monooxygenation (oxygen insertion)",
+      "enzyme": {
+        "name": "4-Hydroxyacetophenone monooxygenase (HAPMO)",
+        "ec_number": "1.14.13.84",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "ACB",
+        "ncbi_taxid": 296,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "HAPMO 的 EC 1.14.13.84 来自内部知识；菌株 ACB 对应的基因名未记录。"
+    },
+    {
+      "step_id": "S10",
+      "order": 10,
+      "branch_id": null,
+      "predecessor_step_ids": ["S9"],
+      "substrates": [
+        {"name": "4-Hydroxyphenyl acetate", "smiles": "CC(=O)Oc1ccc(O)cc1", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Hydroquinone", "smiles": "Oc1ccc(O)cc1", "role": "main"},
+        {"name": "Acetate", "smiles": "CC(=O)O", "role": "byproduct"}
+      ],
+      "reaction_type": "ester hydrolysis",
+      "enzyme": {
+        "name": "4-Hydroxyphenyl acetate ester hydrolase (uncharacterized)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "ACB",
+        "ncbi_taxid": 296,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "催化酯键水解的酶未获系统表征。"
+    },
+    {
+      "step_id": "S11",
+      "order": 11,
+      "branch_id": null,
+      "predecessor_step_ids": ["S10"],
+      "substrates": [
+        {"name": "Hydroquinone", "smiles": "Oc1ccc(O)cc1", "role": "main"},
+        {"name": "Oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-Oxoadipate", "smiles": "OC(=O)CC(=O)CCC(=O)O", "role": "main"}
+      ],
+      "reaction_type": "ring cleavage and convergent conversion to 3-oxoadipate (compressed segment)",
+      "enzyme": {
+        "name": "Hydroquinone 1,2-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "ACB",
+        "ncbi_taxid": 296,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "对苯二酚经 4-羟基黏康酸半醛、马来酰乙酸等中间体到 3-氧代己二酸的途径被压缩为一步。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sphingomonas sp.",
+      "strain": "TTNP3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {"value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F1_oxygen_tolerance": {"value": "严格好氧（专性需氧）", "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F4_salinity": {"value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F3_pH": {"value": {"minimum": null, "optimum": null, "maximum": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F5_culture_collection": {"value": {"collection": null, "accession": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F6_respiration_electron_acceptor": {"value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2（分子氧）"}, "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F7_carbon_substrate_utilization": {"value": "以双酚A 及其降解中间产物（4-羟基苯乙酮、4-羟基苯甲醛/对羟基苯甲酸等）作为碳源生长", "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F8_degradation_capacity_broad": {"value": "可好氧降解双酚A 等双酚类/酚类化合物（经 ipso 位加氧的 C–C 键断裂机制）", "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F9_enzyme_activity": {"value": "双酚A 加氧裂解（ipso 取代型）活性；具体酶未纯化鉴定", "raw_text": null, "evidence_id": "EVID_005", "confidence": "low"},
+        "F10_motility": {"value": null, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F11_cell_morphology": {"value": "杆状", "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F12_gram_cell_envelope": {"value": "革兰氏阴性", "raw_text": null, "evidence_id": "EVID_005", "confidence": "high"},
+        "F13_sporulation": {"value": "不产芽孢", "raw_text": null, "evidence_id": "EVID_005", "confidence": "medium"},
+        "F14_genome_basic": {"value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F15_habitat_generalism": {"value": null, "raw_text": null, "evidence_id": null, "confidence": "unknown"}
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160489,
+      "traits": {
+        "F2_temperature": {"value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": "中温生长"}, "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F1_oxygen_tolerance": {"value": "严格好氧（专性需氧）", "raw_text": null, "evidence_id": "EVID_006", "confidence": "high"},
+        "F4_salinity": {"value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": "非嗜盐菌"}, "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F3_pH": {"value": {"minimum": null, "optimum": null, "maximum": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F5_culture_collection": {"value": {"collection": null, "accession": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F6_respiration_electron_acceptor": {"value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2（分子氧）"}, "raw_text": null, "evidence_id": "EVID_006", "confidence": "high"},
+        "F7_carbon_substrate_utilization": {"value": "可利用多种芳香族化合物（4-羟基苯甲酸、原儿茶酸、苯甲酸等，经 β-酮己二酸途径）以及多种有机酸、氨基酸作为碳源", "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F8_degradation_capacity_broad": {"value": "广谱的芳香族化合物代谢能力，为 β-酮己二酸途径研究的模式菌株", "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F9_enzyme_activity": {"value": "4-羟基苯甲酸 3-单加氧酶（PobA）、原儿茶酸 3,4-双加氧酶（PcaGH）等 β-酮己二酸途径酶活性", "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F10_motility": {"value": "可运动（具鞭毛）", "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F11_cell_morphology": {"value": "杆状", "raw_text": null, "evidence_id": "EVID_006", "confidence": "high"},
+        "F12_gram_cell_envelope": {"value": "革兰氏阴性", "raw_text": null, "evidence_id": "EVID_006", "confidence": "high"},
+        "F13_sporulation": {"value": "不产芽孢", "raw_text": null, "evidence_id": "EVID_006", "confidence": "high"},
+        "F14_genome_basic": {"value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": 61.5}, "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F15_habitat_generalism": {"value": "泛栖息于土壤与植物根际的代谢通用型腐生菌，碳源谱广", "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"}
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Pseudomonas fluorescens",
+      "strain": "ACB",
+      "ncbi_taxid": 296,
+      "traits": {
+        "F2_temperature": {"value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": "中温生长（耐低温）"}, "raw_text": null, "evidence_id": "EVID_007", "confidence": "medium"},
+        "F1_oxygen_tolerance": {"value": "严格好氧（专性需氧）", "raw_text": null, "evidence_id": "EVID_007", "confidence": "high"},
+        "F4_salinity": {"value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": "非嗜盐菌"}, "raw_text": null, "evidence_id": "EVID_007", "confidence": "medium"},
+        "F3_pH": {"value": {"minimum": null, "optimum": null, "maximum": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F5_culture_collection": {"value": {"collection": null, "accession": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F6_respiration_electron_acceptor": {"value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2（分子氧）"}, "raw_text": null, "evidence_id": "EVID_007", "confidence": "high"},
+        "F7_carbon_substrate_utilization": {"value": "以苯乙酮/4-羟基苯乙酮等芳香酮作为碳源生长，并能降解对苯二酚", "raw_text": null, "evidence_id": "EVID_007", "confidence": "medium"},
+        "F8_degradation_capacity_broad": {"value": "可好氧降解芳香酮与酚类化合物（经 Baeyer–Villiger 单加氧酶途径）", "raw_text": null, "evidence_id": "EVID_007", "confidence": "medium"},
+        "F9_enzyme_activity": {"value": "4-羟基苯乙酮单加氧酶（HAPMO，NADPH 依赖的黄素型 Baeyer–Villiger 单加氧酶）活性", "raw_text": null, "evidence_id": "EVID_007", "confidence": "high"},
+        "F10_motility": {"value": "可运动（具鞭毛）", "raw_text": null, "evidence_id": "EVID_007", "confidence": "medium"},
+        "F11_cell_morphology": {"value": "杆状", "raw_text": null, "evidence_id": "EVID_007", "confidence": "high"},
+        "F12_gram_cell_envelope": {"value": "革兰氏阴性", "raw_text": null, "evidence_id": "EVID_007", "confidence": "high"},
+        "F13_sporulation": {"value": "不产芽孢", "raw_text": null, "evidence_id": "EVID_007", "confidence": "high"},
+        "F14_genome_basic": {"value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F15_habitat_generalism": {"value": "广泛分布于土壤与水体的广适性腐生菌（种级描述）", "raw_text": null, "evidence_id": "EVID_007", "confidence": "medium"}
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["Acetyl-CoA", "Succinyl-CoA"],
+    "explanation": "主链末端通过 β-酮己二酸途径的 CoA 转移（PcaIJ）与硫解（PcaF）生成乙酰辅酶A 和琥珀酰辅酶A，直接进入三羧酸循环；脱除的溴以 Br⁻ 形式释放。"
+  },
+  "downstream_continuation": [
+    {"name": "TCA cycle", "summary": "乙酰辅酶A 与琥珀酰辅酶A 进入三羧酸循环被彻底氧化为 CO2 与 H2O，实现 TBBPA 的完全矿化。"}
+  ],
+  "alternative_branches": [
+    {"name": "好氧直接氧化开环分支", "summary": "部分好氧细菌或真菌的加氧酶/漆酶可直接进攻 TBBPA 的溴代芳环，生成 2,6-二溴酚、2,6-二溴对苯二酚等溴代酚片段，再经开环与脱溴进入中央代谢；酶与菌株信息缺乏系统表征。", "is_part_of_scored_main_route": false},
+    {"name": "真菌漆酶氧化分支", "summary": "白腐真菌（如 Trametes versicolor）漆酶介导 TBBPA 的氧化去芳构化与氧化偶联，主要生成偶联寡聚物及脱溴片段，矿化程度有限。", "is_part_of_scored_main_route": false}
+  ],
+  "evidence_registry": [
+    {"evidence_id": "EVID_001", "source_type": "INTERNAL_KNOWLEDGE_ONLY", "database": null, "record_id": null, "locator": null, "claim_scope": ["TBBPA 经逐步还原脱溴（三/二/一溴双酚A）生成双酚A 的环境微生物学共识", "步骤 S1 净反应"], "confidence": "medium"},
+    {"evidence_id": "EVID_002", "source_type": "INTERNAL_KNOWLEDGE_ONLY", "database": null, "record_id": null, "locator": null, "claim_scope": ["Sphingomonas sp. TTNP3 好氧降解双酚A，经 ipso 取代型加氧裂解生成 4-羟基苯乙酮与 4-羟基苯甲醛", "步骤 S2、S3 反应与菌株"], "confidence": "medium"},
+    {"evidence_id": "EVID_003", "source_type": "INTERNAL_KNOWLEDGE_ONLY", "database": null, "record_id": null, "locator": null, "claim_scope": ["Pseudomonas putida 的 pobA/pca 基因簇与 β-酮己二酸途径（4-羟基苯甲酸→原儿茶酸→3-氧代己二酸→乙酰辅酶A/琥珀酰辅酶A）", "步骤 S4-S8 反应、酶与菌株"], "confidence": "medium"},
+    {"evidence_id": "EVID_004", "source_type": "INTERNAL_KNOWLEDGE_ONLY", "database": null, "record_id": null, "locator": null, "claim_scope": ["Pseudomonas fluorescens ACB 的 4-羟基苯乙酮单加氧酶（HAPMO, EC 1.14.13.84）及 4-羟基苯乙酮—对苯二酚支路", "步骤 S9-S11 反应、酶与菌株"], "confidence": "medium"},
+    {"evidence_id": "EVID_005", "source_type": "INTERNAL_KNOWLEDGE_ONLY", "database": null, "record_id": null, "locator": null, "claim_scope": ["ORG_001（Sphingomonas sp. TTNP3）的属级/菌株级性状"], "confidence": "low"},
+    {"evidence_id": "EVID_006", "source_type": "INTERNAL_KNOWLEDGE_ONLY", "database": null, "record_id": null, "locator": null, "claim_scope": ["ORG_002（Pseudomonas putida KT2440）的性状（含 GC 61.5%、TaxID 160489）"], "confidence": "medium"},
+    {"evidence_id": "EVID_007", "source_type": "INTERNAL_KNOWLEDGE_ONLY", "database": null, "record_id": null, "locator": null, "claim_scope": ["ORG_003（Pseudomonas fluorescens ACB）的种级性状"], "confidence": "medium"}
+  ],
+  "uncertainties": [
+    "TBBPA→BPA 的还原脱溴多在厌氧沉积物/污泥联合体中报道，具体微生物与酶未确定；本题指定好氧条件，主链按总体好氧矿化框架给出，该步菌种与酶留空。",
+    "Sphingomonas sp. TTNP3 催化双酚A ipso 加氧裂解的酶未获纯化鉴定，EC 编号留空。",
+    "β-酮己二酸途径末段 3-氧代己二酸 CoA 转移酶的 EC 2.8.3.6 为记忆填写，需核实。",
+    "Pseudomonas putida KT2440 与 Pseudomonas fluorescens ACB 的多项性状来自种/属级知识推断，菌株特异性数值（温度、pH、保藏编号、基因组登录号等）缺失，均填 null。",
+    "三溴/二溴/一溴双酚A 中间体被合并进第一步净反应，未单列为步骤。"
+  ]
+}

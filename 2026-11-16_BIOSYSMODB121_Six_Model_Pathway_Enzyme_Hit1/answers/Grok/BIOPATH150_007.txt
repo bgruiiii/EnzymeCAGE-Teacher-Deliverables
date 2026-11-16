@@ -1,0 +1,339 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_007",
+  "pollutant_name_zh": "1,3-二氯-2-丙醇",
+  "pollutant_name_en": "1,3-Dichloro-2-propanol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "1,3-Dichloro-2-propanol pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定的好氧1,3-Dichloro-2-propanol pathway填写，不改选其他路线。主链为卤醇脱卤生成环氧化物、再水解为二醇的连续四步，止于甘油。"
+  },
+  "route_summary": "好氧条件下，1,3-二氯-2-丙醇经卤醇脱卤酶分子内脱卤生成环氧氯丙烷并释放氯离子；环氧氯丙烷经环氧化物水解酶水解为3-氯-1,2-丙二醇；3-氯-1,2-丙二醇再经卤醇脱卤酶生成缩水甘油并释放氯离子；缩水甘油水解为甘油。甘油作为进入中心代谢的节点。代表菌为可利用该卤代醇生长的Arthrobacter sp. AD2。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "1,3-Dichloro-2-propanol",
+          "smiles": "ClCC(O)CCl",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Epichlorohydrin",
+          "smiles": "ClCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "chloride",
+          "smiles": "[Cl-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "分子内脱卤",
+      "enzyme": {
+        "name": "haloalcohol dehalogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "AD2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步酶学证据较强，但官方四位EC编号与AD2对应基因符号未能确认，故留空。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Epichlorohydrin",
+          "smiles": "ClCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Chloro-1,2-propanediol",
+          "smiles": "ClCC(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环氧化物水解",
+      "enzyme": {
+        "name": "epoxide hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "AD2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "AD2可转化环氧氯丙烷，但环氧化物水解酶未确认已从该菌株纯化，EC与基因留空。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "3-Chloro-1,2-propanediol",
+          "smiles": "ClCC(O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Glycidol",
+          "smiles": "OCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "chloride",
+          "smiles": "[Cl-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "分子内脱卤",
+      "enzyme": {
+        "name": "haloalcohol dehalogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "AD2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "与S1为同一类卤醇脱卤酶催化的第二次脱卤；EC与基因符号未确认。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "Glycidol",
+          "smiles": "OCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Glycerol",
+          "smiles": "OCC(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环氧化物水解",
+      "enzyme": {
+        "name": "epoxide hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "AD2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "缩水甘油水解为甘油由途径逻辑与该菌对缩水甘油的利用支持；菌株级水解酶EC与基因未确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter sp.",
+      "strain": "AD2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用1,3-二氯-2-丙醇作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解1,3-二氯-2-丙醇、环氧氯丙烷、3-氯-1,2-丙二醇和缩水甘油",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有haloalcohol dehalogenase活性，催化1,3-二氯-2-丙醇生成环氧氯丙烷、3-氯-1,2-丙二醇生成缩水甘油",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["glycerol"],
+    "explanation": "主链止于甘油。甘油可进入中心碳代谢，但甘油激酶及后续糖酵解步骤不属于本题指定路线的评分主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "甘油进入中心代谢",
+      "summary": "甘油可经磷酸化和氧化进入糖酵解，具体下游酶与菌属性状未纳入本主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "van den Wijngaard, Reuvekamp and Janssen, 1991, Journal of Bacteriology, purification and characterization of haloalcohol dehalogenase from Arthrobacter sp. AD2",
+      "claim_scope": ["S1_reaction", "S3_reaction", "haloalcohol_dehalogenase", "Arthrobacter_sp_AD2", "F9_enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "van den Wijngaard, Janssen and Witholt, 1989, Journal of General Microbiology, aerobic degradation of epichlorohydrin and halohydrins by Arthrobacter sp. AD2",
+      "claim_scope": ["organism_growth", "aerobic_degradation", "F1_oxygen_tolerance", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "EAWAG-BBD/UM-BBD recalled 1,3-Dichloro-2-propanol pathway: epoxide hydrolase hydrolyzes epichlorohydrin to 3-chloro-1,2-propanediol and glycidol to glycerol",
+      "claim_scope": ["S2_reaction", "S4_reaction", "epoxide_hydrolase"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "本回答未联网核对数据库或原文，证据类型均为INTERNAL_KNOWLEDGE_ONLY。",
+    "卤醇脱卤酶与该途径细菌环氧化物水解酶的官方四位EC编号未能确认，未填写近似EC。",
+    "Arthrobacter sp. AD2的NCBI TaxID、保藏编号、基因组登录号及温度、pH、盐度、形态等性状无可靠记忆来源，均填null。",
+    "S2与S4的环氧化物水解酶是途径级归属；AD2对环氧氯丙烷和缩水甘油的利用支持这些转化，但纯化酶与基因证据弱于S1、S3。",
+    "未表示各手性中间体的立体化学，主链只记录化合物层面的转化。"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_103",
+  "pollutant_name_zh": "2-异丙基苯酚",
+  "pollutant_name_en": "2-Isopropylphenol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-isopropylphenol degradation",
+    "is_single_continuous_route": null,
+    "notes": "目前仅能可靠给出芳环初始羟基化步骤，后续开环及完全矿化步骤缺乏足够明确的专属性证据。"
+  },
+  "route_summary": "2-异丙基苯酚可首先发生芳环羟基化，生成2-异丙基苯-1,3-二醇；该步骤属于推定的初始活化反应。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-Isopropylphenol",
+          "smiles": "CC(C)c1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Isopropylbenzene-1,3-diol",
+          "smiles": "CC(C)c1c(O)cccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "芳环羟基化",
+      "enzyme": {
+        "name": "Phenol hydroxylase",
+        "ec_number": "1.14.13.7",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该反应类型和产物为基于苯酚类微生物初始氧化反应的保守推定，未确认到针对2-异丙基苯酚的专属菌株和实验证据。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "2-Isopropylphenol的芳环初始羟基化",
+        "Phenol hydroxylase",
+        "EC 1.14.13.7",
+        "2-Isopropylbenzene-1,3-diol"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未确认可专一降解2-Isopropylphenol的对应微生物及菌株。",
+    "未确认后续芳环裂解产物、酶和完整矿化路线。",
+    "氧条件未指定。"
+  ]
+}

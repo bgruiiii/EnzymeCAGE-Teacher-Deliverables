@@ -1,0 +1,390 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_008",
+  "pollutant_name_zh": "异菌脲",
+  "pollutant_name_en": "Iprodione",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Iprodione pathway",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线为 Iprodione pathway（好氧）。主链为单一连续的水解—脱羧—开环—水解序列：Iprodione → 1-羧基-3-(3,5-dichlorophenyl)乙内酰脲 → 3-(3,5-dichlorophenyl)hydantoin → N-(3,5-dichlorophenyl)urea → 3,5-dichloroaniline。"
+  },
+  "route_summary": "好氧条件下，土壤细菌（文献中常报道的假单胞菌属 Pseudomonas sp.）逐步降解异菌脲：首先经酰胺水解酶水解 N1 位氨基甲酰侧链，生成 3-(3,5-dichlorophenyl)-2,4-dioxoimidazolidine-1-carboxylic acid 并释放异丙胺；该 N-羧基（氨基甲酸型）中间体随后脱羧生成 3-(3,5-dichlorophenyl)hydantoin（DCH）；乙内酰脲环再经水解开环为 N-(3,5-dichlorophenyl)urea；最后脲键水解生成 3,5-dichloroaniline（DCA，3,5-二氯苯胺），并释放 CO2 与 NH3。DCA 是异菌脲降解中典型的死端积累产物。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Iprodione",
+          "smiles": "CC(C)NC(=O)N1CC(=O)N(c2cc(Cl)cc(Cl)c2)C1=O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-(3,5-dichlorophenyl)-2,4-dioxoimidazolidine-1-carboxylic acid",
+          "smiles": "OC(=O)N1CC(=O)N(c2cc(Cl)cc(Cl)c2)C1=O",
+          "role": "main"
+        },
+        {
+          "name": "isopropylamine",
+          "smiles": "CC(C)N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "酰胺键水解（水解脱去 N1 位氨基甲酰侧链）",
+      "enzyme": {
+        "name": "iprodione hydrolase (amidase)",
+        "ec_number": "3.5.1.-",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": null,
+        "ncbi_taxid": 286,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "具体水解酶的基因与完整 EC 编号未能确证；部分文献将 Iprodione→DCH 表述为单步反应，或报道脱异丙基酰胺中间体，第一步中间体（羧酸）的表述存在文献差异。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-(3,5-dichlorophenyl)-2,4-dioxoimidazolidine-1-carboxylic acid",
+          "smiles": "OC(=O)N1CC(=O)N(c2cc(Cl)cc(Cl)c2)C1=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-(3,5-dichlorophenyl)hydantoin",
+          "smiles": "O=C1N(c2cc(Cl)cc(Cl)c2)C(=O)CN1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧（N-羧基/氨基甲酸型中间体脱羧）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": null,
+        "ncbi_taxid": 286,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "脱羧很可能为自发反应（N-羧基/氨基甲酸型中间体不稳定），未确证催化酶，故 enzyme 整体填 null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-(3,5-dichlorophenyl)hydantoin",
+          "smiles": "O=C1N(c2cc(Cl)cc(Cl)c2)C(=O)CN1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-(3,5-dichlorophenyl)urea",
+          "smiles": "NC(=O)Nc1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "乙内酰脲环水解开环",
+      "enzyme": {
+        "name": "hydantoinase (dihydropyrimidinase)",
+        "ec_number": "3.5.2.-",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": null,
+        "ncbi_taxid": 286,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "开环是直接生成 N-(3,5-dichlorophenyl)urea，还是先经 N-(3,5-dichlorophenyl)hydantoic acid 中间体，未在可靠来源中确证；伴随的二碳副产物（如乙二醛类）亦未明确，故未列出。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "N-(3,5-dichlorophenyl)urea",
+          "smiles": "NC(=O)Nc1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,5-dichloroaniline",
+          "smiles": "Nc1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脲键水解（C–N 键断裂）",
+      "enzyme": {
+        "name": "urease (urea amidohydrolase)",
+        "ec_number": "3.5.1.5",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": null,
+        "ncbi_taxid": 286,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "催化芳基脲水解生成 3,5-dichloroaniline 的酶未确证，urease 仅为基于反应类型的低置信度推测；该步亦可能由土壤混合菌群完成。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": null,
+      "ncbi_taxid": 286,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（需氧呼吸型）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种有机碳源（糖类、有机酸、氨基酸等），碳源代谢谱广",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "属内多种菌株可降解农药、芳香族化合物等多种异生素，广义降解能力强",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "酰胺水解酶活性：可水解异菌脲 N1 位氨基甲酰侧链",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "泛栖性高：广泛分布于土壤、淡水、植物根际等多种生境",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "主链终止于 3,5-dichloroaniline（3,5-二氯苯胺，DCA）。DCA 为环境中典型的持久性/死端代谢物，其进一步脱氯或开环矿化缓慢且缺少可确证的好氧微生物连续主链证据，故本主链未连接到中央代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3,5-dichloroaniline further degradation",
+      "summary": "3,5-dichloroaniline 在土壤中可被缓慢进一步转化（如脱氯、氧化开环等），但缺乏可确证的好氧菌连续降解主链文献，未纳入本回答的评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "desisopropyl iprodione（脱异丙基酰胺）支路",
+      "summary": "部分土壤代谢与酸性条件（如葡萄酒）研究报道 iprodione 可经脱异丙基生成 3-(3,5-dichlorophenyl)-2,4-dioxoimidazolidine-1-carboxamide（desisopropyl iprodione 类代谢物），再进一步转化为 3-(3,5-dichlorophenyl)hydantoin；该支路与主链第一步的羧酸途径并行，未选入评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "异菌脲好氧微生物降解主链：Iprodione →(水解，释放异丙胺) 3-(3,5-dichlorophenyl)-2,4-dioxoimidazolidine-1-carboxylic acid →(脱羧) 3-(3,5-dichlorophenyl)hydantoin →(开环) N-(3,5-dichlorophenyl)urea →(水解) 3,5-dichloroaniline（3,5-二氯苯胺为主要积累代谢物）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "假单胞菌属 细菌可在好氧条件下降解异菌脲（文献中常报道的土壤降解菌类群，具体菌株未能确证）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "假单胞菌属属级典型性状：革兰氏阴性、杆状、极生鞭毛运动、好氧呼吸（末端电子受体为 O2）、不产芽孢、中温、泛栖于土壤/水体/根际等多种生境"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "第一步羧酸中间体（3-(3,5-dichlorophenyl)-2,4-dioxoimidazolidine-1-carboxylic acid）可能自发脱羧，部分文献将 Iprodione→DCH 表述为单步反应；另有脱异丙基酰胺代谢物（desisopropyl iprodione）的报道，中间体取舍存在不确定性。",
+    "降解菌的具体菌株名称、保藏编号、酶基因与完整 EC 编号均未能从可靠来源确证，相关字段按 null 处理；假单胞菌属的降解归属置信度为中等。",
+    "3-(3,5-dichlorophenyl)hydantoin 开环是否经 hydantoic acid 中间体、以及催化芳基脲水解生成 3,5-dichloroaniline 的酶均未确证，S3/S4 的酶学注释为低置信度推断。",
+    "本回答未进行外部数据库实时检索，所有证据均为内部知识型（INTERNAL_KNOWLEDGE_ONLY），无法提供可核验的文献编号或数据库记录号。"
+  ]
+}

@@ -1,0 +1,366 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_050",
+  "pollutant_name_zh": "肌酸酐",
+  "pollutant_name_en": "creatinine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "creatinine degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，oxygen_condition保持null。本主链为经1-甲基乙内酰脲至肌氨酸的连续三步，不包含经肌酸的另一路线，也不把肌氨酸之后的转化计入主链。"
+  },
+  "route_summary": "肌酸酐降解II主链为N-甲基乙内酰脲途径：肌酸酐先水解脱氨生成1-甲基乙内酰脲和氨；1-甲基乙内酰脲在ATP依赖下开环生成N-氨甲酰肌氨酸；N-氨甲酰肌氨酸再水解为肌氨酸、二氧化碳和氨。该连续途径在Pseudomonas putida 77中被阐明。肌氨酸继续转化为甘氨酸属于下游，不计入本主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "creatinine",
+          "smiles": "CN1CC(=O)N=C1N",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-methylhydantoin",
+          "smiles": "CN1CC(=O)NC1=O",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic deamination",
+      "enzyme": {
+        "name": "creatinine deaminase",
+        "ec_number": "3.5.4.21",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "77",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "1-methylhydantoin",
+          "smiles": "CN1CC(=O)NC1=O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2n(cnc12)C1OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-carbamoylsarcosine",
+          "smiles": "CN(CC(=O)O)C(N)=O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "Nc1ncnc2n(cnc12)C1OC(COP(=O)(O)OP(=O)(O)O)C(O)C1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "phosphate",
+          "smiles": "OP(=O)(O)O",
+          "role": "byproduct"
+        },
+        {
+          "name": "hydron",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP-dependent ring hydrolysis",
+      "enzyme": {
+        "name": "N-methylhydantoinase",
+        "ec_number": "3.5.2.14",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "77",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该步消耗2分子水；记录中水只列出一次，未单列化学计量系数。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "N-carbamoylsarcosine",
+          "smiles": "CN(CC(=O)O)C(N)=O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "sarcosine",
+          "smiles": "CNCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "amidohydrolysis",
+      "enzyme": {
+        "name": "N-carbamoylsarcosine amidase",
+        "ec_number": "3.5.1.59",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "77",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "77",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可降解并利用肌酸酐",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经N-甲基乙内酰脲途径降解肌酸酐",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有肌酸酐脱氨酶、N-甲基乙内酰脲酶和N-氨甲酰肌氨酸酰胺酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["sarcosine"],
+    "explanation": "主链交接产物为肌氨酸，它本身不是中心代谢中间体。肌氨酸需再转化为甘氨酸后才进入中心代谢，该步不属于creatinine degradation II主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "sarcosine degradation",
+      "summary": "肌氨酸可经肌氨酸氧化酶或肌氨酸脱氢酶转化为甘氨酸及一碳单位，再进入中心代谢。此延续不计入本题评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "creatinine degradation I",
+      "summary": "另一条常见路线由肌酸酐酰胺水解酶生成肌酸，再由肌酸酶生成肌氨酸和尿素，不属于本题指定并评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB Enzyme Nomenclature",
+      "record_id": "EC 3.5.4.21",
+      "locator": "https://iubmb.qmul.ac.uk/enzyme/EC3/5/4/21.html",
+      "claim_scope": ["S1 reaction", "creatinine deaminase", "EC 3.5.4.21"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB Enzyme Nomenclature",
+      "record_id": "EC 3.5.2.14",
+      "locator": "https://iubmb.qmul.ac.uk/enzyme/EC3/5/2/14.html",
+      "claim_scope": ["S2 reaction", "N-methylhydantoinase", "EC 3.5.2.14", "ATP dependence"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB Enzyme Nomenclature",
+      "record_id": "EC 3.5.1.59",
+      "locator": "https://iubmb.qmul.ac.uk/enzyme/EC3/5/1/59.html",
+      "claim_scope": ["S3 reaction", "N-carbamoylsarcosine amidase", "EC 3.5.1.59"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Shimizu S, Kim JM, Shinmen Y, Yamada H. 1986. Evaluation of two alternative metabolic pathways for creatinine degradation in microorganisms. Arch Microbiol.",
+      "claim_scope": ["creatinine degradation II via 1-methylhydantoin", "Pseudomonas putida pathway assignment", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Kim JM, Shimizu S, Yamada H. 1986. Purification and characterization of a novel enzyme, N-carbamoylsarcosine amidohydrolase, from Pseudomonas putida 77. J Biol Chem.",
+      "claim_scope": ["S3 microorganism Pseudomonas putida 77", "N-carbamoylsarcosine amidohydrolase"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["F1_oxygen_tolerance", "F6_respiration_electron_acceptor", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；主链三步水解/脱氨不直接消耗分子氧，但代表菌按物种描述为好氧菌。",
+    "主链边界取至肌氨酸。不同数据库版本可能把肌氨酸后续降解仅作下游链接，此处不将其计入评分主链。",
+    "菌株77的温度、pH、盐度、运动性、保藏编号和基因组登录号没有可靠菌株级来源，相应性状为null。",
+    "氧耐受、呼吸末端受体、细胞形态、革兰氏属性和产孢按Pseudomonas putida物种水平填写，不是菌株77的专项测定。",
+    "未填写基因符号，避免写入未经核对的基因名。NCBI TaxID 303为物种级编号。"
+  ]
+}

@@ -1,0 +1,347 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_150",
+  "pollutant_name_zh": "(-)-奎尼酸",
+  "pollutant_name_en": "(-)-Quinate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "quinate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "按题面原样选择 quinate degradation I；题面未指定氧条件。主链按 (-)-quinate → 3-dehydroquinate → 3-dehydroshikimate → protocatechuate 填写。"
+  },
+  "route_summary": "主链为 (-)-quinate 经 QsuA 氧化生成 3-dehydroquinate，再由 3-dehydroquinate dehydratase 与 3-dehydroshikimate dehydratase 连续脱水/芳构化生成 protocatechuate。这里选用 Corynebacterium glutamicum ATCC 13032 的 qsu 酶系作为各步对应微生物；protocatechuate 之后的 β-ketoadipate 分解不属于本 route_scope 的评分主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(-)-quinate",
+          "smiles": "C1[C@@H]([C@@H]([C@@H](C[C@]1(C(=O)O)O)O)O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydroquinate",
+          "smiles": "C1[C@@H]([C@@H](C(=O)C[C@]1(C(=O)O)O)O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD+-dependent oxidation/dehydrogenation",
+      "enzyme": {
+        "name": "quinate/shikimate dehydrogenase",
+        "ec_number": "1.1.1.24",
+        "gene_or_protein": "qsuA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Corynebacterium glutamicum",
+        "strain": "ATCC 13032",
+        "ncbi_taxid": 196627,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-dehydroquinate",
+          "smiles": "C1[C@@H]([C@@H](C(=O)C[C@]1(C(=O)O)O)O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydroshikimate",
+          "smiles": "C1[C@@H]([C@@H](C(=O)C=C1C(=O)O)O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydration by hydro-lyase",
+      "enzyme": {
+        "name": "3-dehydroquinate dehydratase",
+        "ec_number": "4.2.1.10",
+        "gene_or_protein": "qsuC",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Corynebacterium glutamicum",
+        "strain": "ATCC 13032",
+        "ncbi_taxid": 196627,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-dehydroshikimate",
+          "smiles": "C1[C@@H]([C@@H](C(=O)C=C1C(=O)O)O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C(O)c1cc(O)c(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydration/aromatization by hydro-lyase",
+      "enzyme": {
+        "name": "3-dehydroshikimate dehydratase",
+        "ec_number": "4.2.1.118",
+        "gene_or_protein": "qsuD",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Corynebacterium glutamicum",
+        "strain": "ATCC 13032",
+        "ncbi_taxid": 196627,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Corynebacterium glutamicum",
+      "strain": "ATCC 13032",
+      "ncbi_taxid": 196627,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（mesophilic）"
+          },
+          "raw_text": "growth temperature: 30 °C",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobe",
+          "raw_text": "oxygen tolerance: aerobe",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": "near-neutral cultivation pH; medium pH 7.0",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "13032"
+          },
+          "raw_text": "Corynebacterium glutamicum ATCC 13032",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "aerobic respiratory growth with oxygen as terminal electron acceptor",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用 quinate（奎尼酸）或 shikimate（莽草酸）作为碳源（qsu 通路）",
+          "raw_text": "growth on quinate or shikimate as carbon source via the qsu pathway",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "将 quinate/shikimate 经 3-dehydroquinate、3-dehydroshikimate 降解为 protocatechuate，进入 β-ketoadipate 通路前体",
+          "raw_text": "quinate and shikimate are degraded to protocatechuate",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "quinate/shikimate dehydrogenase（QsuA, EC 1.1.1.24）、3-dehydroquinate dehydratase（QsuC, EC 4.2.1.10）和 3-dehydroshikimate dehydratase（QsuD, EC 4.2.1.118）活性",
+          "raw_text": "qsuA/qsuC/qsuD encode the enzyme activities for conversion of quinate to protocatechuate",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "non-motile（无鞭毛运动）",
+          "raw_text": "nonmotile",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆至略弯的 coryneform rods；可呈 snapping division 后的角状/栅栏状排列",
+          "raw_text": "straight to slightly curved rods; coryneform morphology",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-positive",
+          "raw_text": "Gram-positive",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": "non-sporulating",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_003450.3",
+            "genome_size_bp": 3309401,
+            "gc_percent": 53.8
+          },
+          "raw_text": "Corynebacterium glutamicum ATCC 13032 complete chromosome; 3,309,401 bp; G+C content 53.8%",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要为土壤来源的腐生/工业氨基酸生产菌；本地记录支持土壤分离与受控发酵培养，未见专性宿主或多生境泛适性的充分证据",
+          "raw_text": "isolation source: soil; industrial amino-acid-producing bacterium",
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "succinyl-CoA",
+      "acetyl-CoA"
+    ],
+    "explanation": "本 route_scope 的终点是 protocatechuate；在 C. glutamicum 中它可继续经 protocatechuate ortho-cleavage/β-ketoadipate 通路生成 succinyl-CoA 与 acetyl-CoA。该后续连接不属于题面指定的 quinate degradation I 主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate degradation I (ortho-cleavage / beta-ketoadipate pathway)",
+      "summary": "protocatechuate 经 pca 基因介导的 ortho-cleavage 生成 beta-ketoadipate，再转化为 beta-ketoadipyl-CoA 并裂解为 succinyl-CoA 与 acetyl-CoA。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway page: quinate degradation I",
+      "claim_scope": [
+        "chosen route sequence",
+        "reaction order",
+        "main compound identities"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": null,
+      "locator": "Corynebacterium glutamicum ATCC 13032 quinate/shikimate utilization (qsu) genes and EC annotations",
+      "claim_scope": [
+        "enzyme names",
+        "EC numbers",
+        "qsuA/qsuC/qsuD gene assignment",
+        "quinate/shikimate degradation to protocatechuate"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": null,
+      "locator": "Corynebacterium glutamicum ATCC 13032 / DSM 20300 strain data",
+      "claim_scope": [
+        "temperature",
+        "oxygen tolerance",
+        "pH",
+        "morphology",
+        "Gram stain",
+        "motility",
+        "sporulation",
+        "isolation habitat"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome/RefSeq",
+      "record_id": "NC_003450.3",
+      "locator": "Corynebacterium glutamicum ATCC 13032 chromosome, complete genome",
+      "claim_scope": [
+        "genome accession",
+        "genome size",
+        "GC percent",
+        "strain taxonomy"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "ATCC 13032",
+      "locator": "Corynebacterium glutamicum strain ATCC 13032 catalogue entry",
+      "claim_scope": [
+        "culture collection accession"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；本答案未把氧条件改写成 aerobic/anaerobic，仅按 route_scope=null 处理。",
+    "主链数组只列主底物与主产物；未把第一步的 NAD+/NADH/H+ 或脱水反应产生的水列为评分主链成员。",
+    "F4 盐度缺少可引用的最强来源，按规则填 null。"
+  ]
+}

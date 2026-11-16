@@ -1,0 +1,504 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_098",
+  "pollutant_name_zh": "4'-羟基苯乙酮",
+  "pollutant_name_en": "4'-Hydroxyacetophenone",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-hydroxyacetophenone degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；文献所载该路线（Pseudomonas fluorescens ACB）为好氧的氧化降解路线，其中多步为依赖 O2 的单加氧/双加氧反应。"
+  },
+  "route_summary": "以 Pseudomonas fluorescens ACB 为代表菌：4'-羟基苯乙酮首先被 4-羟基苯乙酮单加氧酶（HAPMO，HapA，EC 1.14.13.84，FAD 依赖的 Baeyer-Villiger 单加氧酶）氧化为 4-羟基苯乙酸酯；后者经 4-羟基苯乙酸酯水解酶（HapB）水解脱乙酰基生成对苯二酚（hydroquinone）与乙酸；对苯二酚再经对苯二酚羟化酶羟化生成羟基醌醇（1,2,4-苯三酚，hydroxyquinol）；羟基醌醇 1,2-双加氧酶（EC 1.13.11.37）将其开环生成马来酰乙酸（maleylacetate）；马来酰乙酸还原酶（EC 1.3.1.32）以 NADH 将其还原为 3-氧代己二酸（β-酮己二酸），随后经 β-酮己二酸途径生成琥珀酰-CoA 与乙酰-CoA 进入三羧酸循环。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4'-Hydroxyacetophenone",
+          "smiles": "CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxyphenyl acetate",
+          "smiles": "CC(=O)Oc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Baeyer-Villiger monooxygenation（单加氧氧化）",
+      "enzyme": {
+        "name": "4-hydroxyacetophenone monooxygenase (HAPMO)",
+        "ec_number": "1.14.13.84",
+        "gene_or_protein": "hapA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "ACB",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-Hydroxyphenyl acetate",
+          "smiles": "CC(=O)Oc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Hydroquinone",
+          "smiles": "Oc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Acetate",
+          "smiles": "CC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ester hydrolysis（酯水解，脱乙酰）",
+      "enzyme": {
+        "name": "4-hydroxyphenyl acetate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": "hapB",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "ACB",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该酯水解酶未见正式分配的 EC 编号（文献多记为 EC 3.1.1.-），故 ec_number 填 null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Hydroquinone",
+          "smiles": "Oc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD(P)H",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Hydroxyquinol (1,2,4-benzenetriol)",
+          "smiles": "Oc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NAD(P)+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "flavin-dependent monooxygenation（羟化）",
+      "enzyme": {
+        "name": "hydroquinone hydroxylase (hydroquinone monooxygenase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "ACB",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "对苯二酚羟化酶的正式 EC 编号归属不确定，故 ec_number 填 null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "Hydroxyquinol (1,2,4-benzenetriol)",
+          "smiles": "Oc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Maleylacetate",
+          "smiles": "O=C(O)/C=C/C(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "intradiol oxidative ring cleavage（双加氧开环）",
+      "enzyme": {
+        "name": "hydroxyquinol 1,2-dioxygenase",
+        "ec_number": "1.13.11.37",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "ACB",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "Maleylacetate",
+          "smiles": "O=C(O)/C=C/C(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipate (beta-ketoadipate)",
+          "smiles": "O=C(O)CCC(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NADH-dependent reduction（双键还原）",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "ACB",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas fluorescens",
+      "strain": "ACB",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（mesophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（obligate aerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "17485"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（aerobic respiration）",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以 4-羟基苯乙酮（4-hydroxyacetophenone）为唯一碳源和能源生长，亦可利用多种芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解 4-羟基苯乙酮及其类似芳香化合物；其 HAPMO 对多种芳香酮具 Baeyer-Villiger 氧化活性，底物谱较宽",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-羟基苯乙酮单加氧酶活性（含 FAD 的 Baeyer-Villiger 单加氧酶，EC 1.14.13.84）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（具鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢（non-sporulating）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "该菌株具体分离生境记录有限；荧光假单胞菌属成员通常广布于土壤、淡水及植物根际，生境广适性较广",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["3-Oxoadipate"],
+    "explanation": "3-氧代己二酸（β-酮己二酸）经 3-氧代己二酸 CoA-转移酶生成 3-氧代己二酰-CoA，再经硫解生成琥珀酰-CoA 与乙酰-CoA，进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "β-酮己二酸途径（beta-ketoadipate pathway）",
+      "summary": "3-oxoadipate → 3-oxoadipyl-CoA → succinyl-CoA + acetyl-CoA，进入三羧酸循环彻底矿化。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Kamerbeek NM, Moonen MJH, van der Ven JGM, van Berkel WJH, Fraaije MW, Janssen DB. 4-Hydroxyacetophenone monooxygenase from Pseudomonas fluorescens ACB: a novel flavoprotein catalyzing Baeyer-Villiger oxidation of aromatic compounds. Eur J Biochem 268:2547-2557 (2001)",
+      "claim_scope": [
+        "S1 反应（4-羟基苯乙酮 Baeyer-Villiger 氧化为 4-羟基苯乙酸酯）",
+        "HAPMO 酶学性质与 EC 1.14.13.84",
+        "Pseudomonas fluorescens ACB 以 4-羟基苯乙酮为碳源生长",
+        "培养条件（30 °C）"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Moonen MJH, Kamerbeek NM, Westphal AH, Boeren SA, Janssen DB, Fraaije MW, van Berkel WJH. Elucidation of the 4-hydroxyacetophenone catabolic pathway in Pseudomonas fluorescens ACB. J Bacteriol 190(15):5190-5198 (2008)",
+      "claim_scope": [
+        "S1–S5 整条降解路线",
+        "hap 基因簇（hapA 单加氧酶、hapB 水解酶、对苯二酚羟化酶、羟基醌醇双加氧酶、马来酰乙酸还原酶）",
+        "菌株 Pseudomonas fluorescens ACB 与途径的对应关系"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "1.14.13.84",
+      "locator": "EC 1.14.13.84 - 4-hydroxyacetophenone monooxygenase",
+      "claim_scope": [
+        "4-hydroxyacetophenone monooxygenase 的 EC 编号"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway: 4-hydroxyacetophenone degradation (Pseudomonas fluorescens ACB)",
+      "claim_scope": [
+        "路线整体框架：4-hydroxyacetophenone → 4-hydroxyphenyl acetate → hydroquinone → hydroxyquinol → maleylacetate → 3-oxoadipate"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "1.13.11.37",
+      "locator": "EC 1.13.11.37 - hydroxyquinol 1,2-dioxygenase",
+      "claim_scope": [
+        "hydroxyquinol 1,2-dioxygenase 的 EC 编号"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "1.3.1.32",
+      "locator": "EC 1.3.1.32 - maleylacetate reductase",
+      "claim_scope": [
+        "maleylacetate reductase 的 EC 编号"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas fluorescens 属常规表型（革兰氏阴性、杆状、好氧、具鞭毛、不产孢）",
+        "Pseudomonas fluorescens ACB 与 ATCC 17485 的对应关系（记忆性知识，置信度低）"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "S2 的 4-羟基苯乙酸酯水解酶（HapB）无正式 EC 编号，已填 null。",
+    "S3 对苯二酚羟化酶的正式 EC 编号归属不确定，已填 null。",
+    "Pseudomonas fluorescens ACB 的 NCBI TaxID 与全基因组基本信息未能确认，填 null。",
+    "ATCC 17485 保藏编号来自记忆性知识，置信度低。",
+    "题面未指定氧条件；本路线文献中为好氧氧化路线，route_scope.oxygen_condition 按题面保留 null。"
+  ]
+}

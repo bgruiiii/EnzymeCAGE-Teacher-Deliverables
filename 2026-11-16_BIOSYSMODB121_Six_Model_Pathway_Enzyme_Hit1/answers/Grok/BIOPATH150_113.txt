@@ -1,0 +1,259 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_113",
+  "pollutant_name_zh": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+  "pollutant_name_en": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "L-tyrosine degradation IV (to 4-methylphenol)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。该命名路线是厌氧主链：L-酪氨酸经4-羟基苯乙酸生成4-甲基苯酚，关键脱羧酶为氧敏感的甘氨酰自由基酶。文献与部分数据库仍用旧名Clostridium difficile，与Clostridioides difficile为同一物种。"
+  },
+  "route_summary": "主链为两步连续转化：L-酪氨酸先生成4-羟基苯乙酸，再由4-羟基苯乙酸脱羧酶（EC 4.1.1.83，hpdBCA）脱羧为4-甲基苯酚并释放二氧化碳。该路线在艰难梭菌中研究最清楚；第一步酶尚未鉴定，4-甲基苯酚作为抑菌性终产物排出，通常不进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+          "smiles": "N[C@@H](Cc1ccc(O)cc1)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "Oc1ccc(CC(=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "L-酪氨酸转化为4-羟基苯乙酸",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Clostridioides difficile",
+        "strain": null,
+        "ncbi_taxid": 1496,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "该步在艰难梭菌中作为4-甲基苯酚生成的上游转化被描述，但催化酶、EC编号、基因及精确计量均未鉴定，故enzyme置null；未写入氨或其他副产物，以免编造计量。此步也可能含尚未证实的亚步骤，未拆入主链。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "Oc1ccc(CC(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "hydron",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-methylphenol",
+          "smiles": "Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧反应",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetate decarboxylase",
+        "ec_number": "4.1.1.83",
+        "gene_or_protein": "hpdBCA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridioides difficile",
+        "strain": null,
+        "ncbi_taxid": 1496,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Clostridioides difficile",
+      "strain": null,
+      "ncbi_taxid": 1496,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧发酵",
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可发酵糖类和氨基酸",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "厌氧条件下可将L-酪氨酸转化为4-甲基苯酚（对甲酚）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有4-羟基苯乙酸脱羧酶活性，将4-羟基苯乙酸脱羧为4-甲基苯酚",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "通常具周生鞭毛、可运动",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（染色可呈可变）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "产内生芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "4-甲基苯酚是该命名路线的分泌性终产物。艰难梭菌将其排出并用于抑制其他细菌，通常不把4-甲基苯酚进一步导入中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "L-tyrosine degradation to homogentisate",
+      "summary": "好氧路线经4-羟基苯丙酮酸和尿黑酸降解，产物进入延胡索酸与乙酰乙酸，不是生成4-甲基苯酚的本评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "tyrosine phenol-lyase route to phenol",
+      "summary": "酪氨酸酚裂解酶（EC 4.1.99.2）将L-酪氨酸裂解为苯酚、丙酮酸和氨，产物是苯酚而非4-甲基苯酚，不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB EC 4.1.1.83: 4-hydroxyphenylacetate + H+ = 4-methylphenol + CO2; glycyl-radical enzyme system of Clostridium difficile encoded by hpdBCA (Selmer and Andrei, Eur. J. Biochem. 2001).",
+      "claim_scope": ["S2_reaction", "S2_enzyme", "S2_organism", "F9_enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Named route L-tyrosine degradation IV (to 4-methylphenol): Clostridioides difficile converts L-tyrosine to 4-methylphenol via 4-hydroxyphenylacetate; the tyrosine-to-4-hydroxyphenylacetate enzyme is uncharacterized.",
+      "claim_scope": ["S1_reaction", "S1_organism", "pathway_scope", "F8_degradation_capacity_broad"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Species-level description of Clostridioides difficile (NCBI:txid1496): obligate anaerobe, mesophile, fermentative, typically motile Gram-positive rod that forms endospores and utilizes carbohydrates and amino acids.",
+      "claim_scope": ["organism_identity", "F1_oxygen_tolerance", "F2_temperature", "F6_respiration_electron_acceptor", "F7_carbon_substrate_utilization", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "第一步催化酶、EC编号、基因和反应计量均未鉴定，enzyme按未知置null。",
+    "不能确认第一步是否还经过4-羟基苯丙酮酸等中间体，未把未证实亚步骤写入主链。",
+    "hpdBCA代表该脱羧酶系统；未把单一亚基基因写成唯一催化基因，以避免亚基注释冲突。",
+    "性状按物种一般认识填写，未绑定特定菌株，故保藏号、基因组登录号、温度与pH数值及盐度均为null。",
+    "题面氧条件未指定；因该路线依赖氧敏感甘氨酰自由基酶，route_scope.oxygen_condition填为anaerobic。"
+  ]
+}

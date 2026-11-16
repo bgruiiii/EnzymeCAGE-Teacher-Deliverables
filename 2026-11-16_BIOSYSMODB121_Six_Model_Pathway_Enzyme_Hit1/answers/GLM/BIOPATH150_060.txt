@@ -1,0 +1,701 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_060",
+  "pollutant_name_zh": "2-铵基-3-(3-氧丙-1-烯基)丁-2-烯二酸根",
+  "pollutant_name_en": "2-Azaniumyl-3-(3-oxoprop-1-enyl)but-2-enedioate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-amino-3-carboxymuconate semialdehyde degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": true,
+    "notes": "路线名按题面给定原样填写；氧条件未指定（null）。主链为线性连续的4步反应。"
+  },
+  "route_summary": "本题污染物即2-amino-3-carboxymuconate-6-semialdehyde（ACMS，2-azaniumyl-3-(3-oxoprop-1-enyl)but-2-enedioate），为3-hydroxyanthranilate 3,4-dioxygenase开环产物，常见于色氨酸（犬尿氨酸分支）及2-nitrobenzoate降解的上游。指定路线的主链为4步线性反应：ACMS经2-amino-3-carboxymuconate-6-semialdehyde decarboxylase（ACMSD，EC 4.1.1.45）脱羧生成2-aminomuconate-6-semialdehyde并释放CO2；后者经aminomuconate-semialdehyde dehydrogenase（EC 1.2.1.32，NAD+依赖）氧化为2-aminomuconate；再经2-aminomuconate deaminase水解脱氨生成4-oxalocrotonate并释放NH3；最后经4-oxalocrotonate decarboxylase（xylI，EC 4.1.1.77）脱羧生成2-hydroxypenta-2,4-dienoate（2-hydroxypentadienoate）并释放CO2。ACMS亦可自发环化为喹啉酸，属平行分支而非主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-amino-3-carboxymuconate-6-semialdehyde (ACMS)",
+          "smiles": "[O-]C(=O)C([NH3+])=C(C=CC=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminomuconate-6-semialdehyde",
+          "smiles": "[O-]C(=O)C([NH3+])=CC=CC=O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "2-amino-3-carboxymuconate-6-semialdehyde decarboxylase (ACMSD)",
+        "ec_number": "4.1.1.45",
+        "gene_or_protein": "acmsd",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": null,
+        "ncbi_taxid": 296,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "在部分降解菌（如2-nitrobenzoate降解菌）中ACMS的脱羧据文献报道可自发进行；本步按已充分表征的酶ACMSD（EC 4.1.1.45）填写。对应菌Pseudomonas fluorescens的ACMSD来源依据内部知识，可靠性较低。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-aminomuconate-6-semialdehyde",
+          "smiles": "[O-]C(=O)C([NH3+])=CC=CC=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@@H](O)[C@H](O)[C@@H]2n3cnc4c(N)ncnc34)[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminomuconate",
+          "smiles": "[O-]C(=O)C([NH3+])=CC=CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@@H](O)[C@H](O)[C@@H]3n4cnc5c(N)ncnc54)C=CC1",
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化（NAD+依赖的脱氢氧化，醛基氧化为羧基）",
+      "enzyme": {
+        "name": "aminomuconate-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.32",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas pseudoalcaligenes",
+        "strain": "JS45",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该酶亦见于其他假单胞菌；JS45中该途径与硝基苯/2-aminophenol降解的后续代谢共用，对应菌依据内部知识（未附可核查文献条目）。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-aminomuconate",
+          "smiles": "[O-]C(=O)C([NH3+])=CC=CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-oxalocrotonate",
+          "smiles": "[O-]C(=O)C(=O)C=CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱氨",
+      "enzyme": {
+        "name": "2-aminomuconate deaminase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas pseudoalcaligenes",
+        "strain": "JS45",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "2-aminomuconate deaminase的EC编号未获得可靠来源，填null。产物4-oxalocrotonate存在酮式/烯醇式互变异构（2-oxohex-3-enedioate、2-oxohex-4-enedioate与2-hydroxymuconate互变），不同数据库的表示可能不同。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-oxalocrotonate",
+          "smiles": "[O-]C(=O)C(=O)C=CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate (2-hydroxypentadienoate)",
+          "smiles": "O=C([O-])C(O)=CC=C",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "4-oxalocrotonate decarboxylase",
+        "ec_number": "4.1.1.77",
+        "gene_or_protein": "xylI",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "EC 4.1.1.77与基因xylI的对应关系及底物互变形式（酮式/烯醇式）在不同文献中描述不一；该酶以TOL质粒pWW0间位裂解途径组分的形式表征。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas fluorescens",
+      "strain": null,
+      "ncbi_taxid": 296,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "化能异养，可利用多种有机酸、氨基酸及糖类生长",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "环境常见假单胞菌，参与多种芳香族化合物（含经犬尿氨酸/ACMS分支的色氨酸代谢中间产物）的转化",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "2-amino-3-carboxymuconate-6-semialdehyde decarboxylase（ACMSD，EC 4.1.1.45）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，外膜-肽聚糖细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、水体及植物根际等多种生境，栖息地广适性较强",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas pseudoalcaligenes",
+      "strain": "JS45",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以硝基苯、2-aminophenol等硝基/氨基芳香族化合物为生长底物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解硝基苯及其代谢物（经2-aminophenol与aminomuconate途径）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2-aminomuconate semialdehyde dehydrogenase与2-aminomuconate deaminase活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动（假单胞菌属典型极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自污染环境土壤的假单胞菌；属内物种在土壤与水体环境中分布较广，广适性中等",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以甲苯、二甲苯（TOL质粒底物）及多种有机酸为碳源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "携带TOL质粒pWW0，经间位裂解途径好氧降解甲苯、二甲苯及相关芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "间位裂解途径完整酶系活性（含4-oxalocrotonate decarboxylase/XylI）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "常见于土壤与水体等多样生境，栖息地广适性较强",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "主链终点为2-hydroxypenta-2,4-dienoate（2-hydroxypentadienoate），尚未直接进入中央代谢；其下游经水合与醛缩裂解可生成丙酮酸和乙醛，进而汇入中央代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2-hydroxypentadienoate → 4-hydroxy-2-oxopentanoate → pyruvate + acetaldehyde",
+      "summary": "由2-hydroxypentadienoate水合酶（xylJ同源物）水合生成4-hydroxy-2-oxopentanoate，再由4-hydroxy-2-oxopentanoate aldolase（xylQ同源物）裂解为丙酮酸与乙醛，进入中央代谢；属本题路线之后的延续，不在评分主链内。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "ACMS自发环化生成喹啉酸",
+      "summary": "2-amino-3-carboxymuconate semialdehyde可经非酶（自发）环化生成喹啉酸（喹啉酸盐），进入NAD生物合成分支；该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "经2-hydroxymuconate semialdehyde的水解分支",
+      "summary": "部分文献描述2-aminomuconate-6-semialdehyde可自发或经酶促脱氨生成2-hydroxymuconate semialdehyde，再由2-hydroxymuconate semialdehyde hydrolase水解生成2-hydroxypenta-2,4-dienoate与甲酸；该分支与本题主链平行，不属于评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 4.1.1.45",
+      "locator": null,
+      "claim_scope": [
+        "S1反应：2-amino-3-carboxymuconate-6-semialdehyde脱羧生成2-aminomuconate-6-semialdehyde与CO2",
+        "S1酶：2-amino-3-carboxymuconate-6-semialdehyde decarboxylase（ACMSD）对应EC 4.1.1.45"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.2.1.32",
+      "locator": null,
+      "claim_scope": [
+        "S2反应与酶：aminomuconate-semialdehyde dehydrogenase（EC 1.2.1.32，NAD+依赖）催化2-aminomuconate-6-semialdehyde氧化为2-aminomuconate"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S4反应与酶：4-oxalocrotonate decarboxylase（xylI，EC 4.1.1.77）催化4-oxalocrotonate脱羧生成2-hydroxypenta-2,4-dienoate与CO2",
+        "S4对应菌Pseudomonas putida mt-2（TOL质粒pWW0）携带xylI"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S3反应与酶：2-aminomuconate deaminase催化2-aminomuconate水解脱氨生成4-oxalocrotonate与NH3",
+        "S2/S3对应菌Pseudomonas pseudoalcaligenes JS45的硝基苯/2-aminophenol降解及aminomuconate代谢能力"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1对应菌Pseudomonas fluorescens作为ACMSD的来源（酶学/结构研究记忆）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida mt-2携带TOL质粒pWW0并具完整间位裂解途径（甲苯/二甲苯降解）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas属一般性状：好氧、革兰氏阴性、运动杆菌、不产芽孢、土壤与水体等环境广泛分布"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定（null）；本路线各步酶均为好氧背景下的微生物酶，但题面未给出具体氧条件，故route_scope.oxygen_condition保持null。",
+    "S1：ACMS的脱羧在部分降解菌中可自发进行，本答案按已表征酶ACMSD（EC 4.1.1.45）填写；对应菌Pseudomonas fluorescens的来源依据为内部知识，置信低。",
+    "S2：EC 1.2.1.32与2-aminomuconate semialdehyde的对应关系依据内部知识；对应菌JS45取自硝基苯降解文献记忆，未附可核查条目。",
+    "S3：2-aminomuconate deaminase的EC编号未知（null）；4-oxalocrotonate的互变异构形式（酮式/烯醇式）可能影响与参考SMILES的比对。",
+    "S4：EC 4.1.1.77（4-oxalocrotonate decarboxylase）与基因xylI的对应为中置信，不同文献对底物互变形式描述不一。",
+    "未发现单一已确认可完整执行四步的菌株，故complete_pathway_organism_profile_id为null。"
+  ]
+}

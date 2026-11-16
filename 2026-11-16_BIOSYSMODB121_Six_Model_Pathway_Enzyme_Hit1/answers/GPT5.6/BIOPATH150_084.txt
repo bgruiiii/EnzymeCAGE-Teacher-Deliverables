@@ -1,0 +1,128 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_084",
+  "pollutant_name_zh": "咖啡因",
+  "pollutant_name_en": "Caffeine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "caffeine degradation I (main, plants)",
+    "is_single_continuous_route": true,
+    "notes": "该路线按植物咖啡因逐步去甲基化至黄嘌呤的主链表示；具体植物酶的标准EC编号和对应微生物均未确定。"
+  },
+  "route_summary": "咖啡因经连续N-去甲基化依次生成茶碱、3-甲基黄嘌呤和黄嘌呤。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Caffeine",
+          "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Theophylline",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N-demethylation",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "植物咖啡因去甲基化反应已被作为该主链步骤描述，但具体首选酶及标准EC编号未确定；该步骤不对应微生物。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Theophylline",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Methylxanthine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N-demethylation",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "具体去甲基化酶、EC编号及植物种属特异性信息未确定；该步骤不对应微生物。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-Methylxanthine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Xanthine",
+          "smiles": "C1=NC2=C(N1)C(=O)NC(=O)N2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N-demethylation",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "具体去甲基化酶、EC编号及对应植物证据未确定；该步骤不对应微生物。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "Xanthine"
+    ],
+    "explanation": "黄嘌呤可继续进入植物嘌呤降解相关代谢，但该延续不纳入本题指定主链的明确步骤。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1",
+        "S2",
+        "S3",
+        "caffeine degradation I (main, plants)"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "具体植物物种、基因或蛋白名称未确定。",
+    "各步首选酶及EC编号未确定。",
+    "该植物路线不对应可绑定的微生物，因此microorganism字段为空。"
+  ]
+}

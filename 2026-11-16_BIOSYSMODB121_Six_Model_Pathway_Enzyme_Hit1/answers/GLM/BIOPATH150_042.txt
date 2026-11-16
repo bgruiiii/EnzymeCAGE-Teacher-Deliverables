@@ -1,0 +1,531 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_042",
+  "pollutant_name_zh": "3,4-二羟基苯甲酸根",
+  "pollutant_name_en": "3,4-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "protocatechuate degradation II (ortho-cleavage pathway)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）；邻位裂合途径第一步为依赖分子氧的双加氧反应，途径本质上需要O2，故按好氧（aerobic）作答。路线名称按题面原样填写，未改选其他路线。"
+  },
+  "route_summary": "原儿茶酸（3,4-二羟基苯甲酸根）经β-酮己二酸途径的原儿茶酸分支（邻位裂合）共6步降解为中央代谢物：①原儿茶酸3,4-双加氧酶（PcaGH，EC 1.13.11.3）以O2为共底物，在3,4-两个酚羟基碳之间裂开苯环（邻位裂合），生成3-carboxy-cis,cis-muconate；②3-carboxy-cis,cis-muconate环化异构酶（PcaB）将其内酯化为4-carboxymuconolactone；③4-carboxymuconolactone脱羧酶（PcaC）脱羧生成3-oxoadipate enol-lactone并释放CO2；④3-oxoadipate烯醇内酯酶（PcaD）水解内酯生成3-oxoadipate；⑤3-oxoadipate CoA转移酶（PcaIJ）将琥珀酰辅酶A上的辅酶A转移至3-oxoadipate，生成3-oxoadipyl-CoA并释放琥珀酸；⑥3-oxoadipyl-CoA硫解酶（PcaF）在CoA参与下裂解β-酮硫酯的C–C键，生成琥珀酰辅酶A与乙酰辅酶A，汇入三羧酸循环等中央代谢。整条主链单一连续，代表微生物为Pseudomonas putida（本答案以携带完整pca基因簇的模式菌株KT2440为代表）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3,4-dihydroxybenzoate",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-carboxy-cis,cis-muconate",
+          "smiles": "O=C([O-])C=C(C(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "苯环邻位（3,4-位）双加氧裂环",
+      "enzyme": {
+        "name": "protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": "pcaG/pcaH (PcaGH)",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_010",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-carboxy-cis,cis-muconate",
+          "smiles": "O=C([O-])C=C(C(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-carboxymuconolactone",
+          "smiles": "O=C1C=CC(C(=O)[O-])(CC(=O)[O-])O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环化异构（内酯化）",
+      "enzyme": {
+        "name": "3-carboxy-cis,cis-muconate cycloisomerase",
+        "ec_number": "5.5.1.2",
+        "gene_or_protein": "pcaB",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_010",
+      "uncertainty": "EC编号5.5.1.2凭记忆给出，未经在线核实；4-carboxymuconolactone的立体化学未在SMILES中标注。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-carboxymuconolactone",
+          "smiles": "O=C1C=CC(C(=O)[O-])(CC(=O)[O-])O1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": "O=C1OC(=CC1)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧（vinylogous β-酮酸脱羧）",
+      "enzyme": {
+        "name": "4-carboxymuconolactone decarboxylase",
+        "ec_number": "4.1.1.44",
+        "gene_or_protein": "pcaC",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_010",
+      "uncertainty": "EC编号4.1.1.44凭记忆给出，未经在线核实。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": "O=C1OC(=CC1)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "O=C([O-])CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "烯醇内酯水解",
+      "enzyme": {
+        "name": "3-oxoadipate enol-lactonase",
+        "ec_number": "3.1.1.24",
+        "gene_or_protein": "pcaD",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_010",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "O=C([O-])CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "succinyl-CoA",
+          "smiles": "O=C(CCC(=O)[O-])SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])O)n1cnc2c(N)ncnc12",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": "O=C(CC(=O)CCC(=O)[O-])SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])O)n1cnc2c(N)ncnc12",
+          "role": "main"
+        },
+        {
+          "name": "succinate",
+          "smiles": "O=C([O-])CCC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA基团转移（硫酯化）",
+      "enzyme": {
+        "name": "3-oxoadipate CoA-transferase",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": "pcaI/pcaJ (PcaIJ双亚基)",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_010",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": "O=C(CC(=O)CCC(=O)[O-])SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])O)n1cnc2c(N)ncnc12",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])O)n1cnc2c(N)ncnc12",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinyl-CoA",
+          "smiles": "O=C(CCC(=O)[O-])SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])O)n1cnc2c(N)ncnc12",
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])O)n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "硫解（β-酮硫酯C–C键断裂）",
+      "enzyme": {
+        "name": "3-oxoadipyl-CoA thiolase",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": "pcaF",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_010",
+      "uncertainty": "EC编号2.3.1.174凭记忆给出；部分文献亦将PcaF描述为广谱β-酮脂酰辅酶A硫解酶活性（如EC 2.3.1.16类），未经在线核实。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性（常规培养温度约30 °C）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧菌（需分子氧进行呼吸代谢，非发酵型）",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌（土壤/淡水来源，常规培养基即可生长）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以葡萄糖等糖类、多种有机酸以及芳香族化合物（4-羟基苯甲酸、原儿茶酸、香草酸/香草醛等）作为碳源与能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经β-酮己二酸途径（邻位裂合）降解多种单环芳香族化合物，包括4-羟基苯甲酸、原儿茶酸、香草酸及苯甲酸/儿茶酚（经cat分支）等，芳香底物谱较广",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具完整的原儿茶酸邻位裂合/β-酮己二酸途径酶系：PcaGH（EC 1.13.11.3）、PcaB、PcaC、PcaD、PcaIJ（EC 2.8.3.6）与PcaF",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动性阳性，借极生鞭毛运动",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，具典型含外膜与脂多糖的细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（非芽孢菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002947",
+            "genome_size_bp": 6181863,
+            "gc_percent": 61.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性较强：泛栖息的腐生菌，常见于土壤、植物根际及淡水等多种生境并可定殖",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinate", "succinyl-CoA", "acetyl-CoA"],
+    "explanation": "主链末步（及第5步副产物）生成乙酰辅酶A、琥珀酰辅酶A与琥珀酸，均为三羧酸循环相关代谢物：乙酰辅酶A与草酰乙酸缩合进入TCA循环，琥珀酸与琥珀酰辅酶A本身即TCA循环成员，由此完成原儿茶酸碳骨架向中央碳代谢的汇入。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "三羧酸循环（TCA cycle）",
+      "summary": "乙酰辅酶A经柠檬酸合酶进入TCA循环被彻底氧化为CO2并产生还原当量；琥珀酸与琥珀酰辅酶A作为TCA中间体直接参与循环，部分碳可经乙醛酸循环或糖异生流向生物合成。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "protocatechuate degradation I (meta-cleavage pathway)",
+      "summary": "部分细菌（如Sphingomonas等）经原儿茶酸4,5-双加氧酶对C4–C5键进行间位裂合，生成2-羟基-4-羧基粘康酸半醛类中间体，再经水解/脱氢等步骤裂解为丙酮酸等小分子进入中央代谢；该分支与本题指定的邻位裂合主链不同，不属于评分范围。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "真菌型3-oxoadipate途径变体（经γ-carboxymuconolactone）",
+      "summary": "真菌中3-carboxy-cis,cis-muconate由另一家族的内酯化酶转化为γ-carboxymuconolactone（3-carboxymuconolactone），再经相应的γ-carboxymuconolactone脱羧酶生成3-oxoadipate enol-lactone，与细菌主链在3-oxoadipate enol-lactone处汇合；不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.13.11.3",
+      "locator": "https://www.brenda-enzymes.org/enzyme.php?ecno=1.13.11.3",
+      "claim_scope": ["S1酶protocatechuate 3,4-dioxygenase（EC 1.13.11.3）及其催化反应：3,4-dihydroxybenzoate + O2 = 3-carboxy-cis,cis-muconate"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S2酶3-carboxy-cis,cis-muconate cycloisomerase（PcaB）及其反应：3-carboxy-cis,cis-muconate = 4-carboxymuconolactone"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S3酶4-carboxymuconolactone decarboxylase（PcaC）及其反应：4-carboxymuconolactone = 3-oxoadipate enol-lactone + CO2"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 3.1.1.24",
+      "locator": "https://www.brenda-enzymes.org/enzyme.php?ecno=3.1.1.24",
+      "claim_scope": ["S4酶3-oxoadipate enol-lactonase（EC 3.1.1.24）及其水解反应生成3-oxoadipate"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 2.8.3.6",
+      "locator": "https://www.brenda-enzymes.org/enzyme.php?ecno=2.8.3.6",
+      "claim_scope": ["S5酶3-oxoadipate CoA-transferase（EC 2.8.3.6）及其反应：3-oxoadipate + succinyl-CoA = 3-oxoadipyl-CoA + succinate"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S6酶3-oxoadipyl-CoA thiolase（PcaF）及其反应：3-oxoadipyl-CoA + CoA = succinyl-CoA + acetyl-CoA"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida（含模式菌株KT2440）携带完整pca基因簇，经β-酮己二酸途径/原儿茶酸邻位裂合途径降解原儿茶酸及4-羟基苯甲酸等芳香族化合物", "F7碳源利用", "F8广义降解能力", "F9酶活"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "160488",
+      "locator": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=160488",
+      "claim_scope": ["微生物身份：Pseudomonas putida KT2440（NCBI TaxID 160488）"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI GenBank/RefSeq",
+      "record_id": "NC_002947",
+      "locator": "https://www.ncbi.nlm.nih.gov/nuccore/NC_002947",
+      "claim_scope": ["F14基因组基本信息：P. putida KT2440染色体（约6.18 Mb，GC约61.5%）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_010",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["P. putida KT2440基本形态与生理性状：革兰氏阴性、杆状、好氧呼吸（末端电子受体O2）、极生鞭毛可运动、不产芽孢、中温、非嗜盐、泛栖息于土壤/根际/淡水等生境"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "S2、S3、S6的EC编号（5.5.1.2、4.1.1.44、2.3.1.174）凭模型记忆给出，未经在线数据库核实，可能存在编号偏差。",
+    "P. putida KT2440携带完整pca基因簇的判断基于文献记忆（该菌株经β-酮己二酸途径利用4-羟基苯甲酸/原儿茶酸/香草酸类底物），具体基因座号未逐一核对。",
+    "SMILES未标注立体化学（双键顺反与手性中心）；3-carboxy-cis,cis-muconate的cis,cis构型及内酯类化合物的立体构型由化合物名称表达。",
+    "KT2440的温度、pH、盐度数值范围及菌种保藏编号缺乏可靠记忆来源，按规则填null。",
+    "多数证据为INTERNAL_KNOWLEDGE_ONLY；BRENDA/NCBI标识符按记忆给出，未在线验证链接与内容。"
+  ]
+}

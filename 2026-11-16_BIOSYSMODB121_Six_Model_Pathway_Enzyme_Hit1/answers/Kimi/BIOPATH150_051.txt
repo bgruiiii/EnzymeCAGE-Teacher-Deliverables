@@ -1,0 +1,357 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_051",
+  "pollutant_name_zh": "(2Z)-2-羟基戊-2,4-二烯酸根",
+  "pollutant_name_en": "(2Z)-2-hydroxypenta-2,4-dienoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-hydroxypenta-2,4-dienoate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面氧条件为 null（未指定）；路线名称按题面原样填写。该路线对应 MetaCyc/EcoCyc 中 2-hydroxypenta-2,4-dienoate degradation 途径，是 3-苯基丙酸（mhp）降解的下游段。"
+  },
+  "route_summary": "（2Z）-2-羟基戊-2,4-二烯酸根首先经 MhpD（2-羟基戊-2,4-二烯酸水合酶，EC 4.2.1.80）水合生成 4-羟基-2-氧代戊酸；随后 MhpE（4-羟基-2-氧代戊酸醛缩酶，EC 4.1.3.39）将其醛缩裂解为丙酮酸与乙醛；乙醛再经 MhpF（酰化型乙醛脱氢酶，EC 1.2.1.10）以 CoA 和 NAD+ 为辅因子氧化生成乙酰辅酶A。丙酮酸与乙酰辅酶A进入中心碳代谢。各步代表菌均为 Escherichia coli K-12 MG1655（mhp 基因簇）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(2Z)-2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=C/C=C(\\O)/C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合反应（hydro-lyase 催化烯醇水合）",
+      "enzyme": {
+        "name": "2-hydroxypent-2,4-dienoate hydratase (2-oxopent-4-enoate hydratase)",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": "mhpD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛缩裂解（aldol cleavage）",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxopentanoate aldolase (4-hydroxy-2-oxovalerate aldolase)",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": "mhpE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](C2OC(COP(=O)([O-])OP(=O)([O-])OCC3OC(C(O)C3O)n4cnc5c(N)ncnc45)C(O)C2)c1",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C2OC(COP(=O)([O-])OP(=O)([O-])OCC3OC(C(O)C3O)n4cnc5c(N)ncnc45)C(O)C2)C=CC1",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱氢（NAD+ 依赖、酰化型乙醛脱氢）",
+      "enzyme": {
+        "name": "acetaldehyde dehydrogenase (acylating)",
+        "ec_number": "1.2.1.10",
+        "gene_or_protein": "mhpF",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温（中温）菌，最适生长温度约 37 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（facultatively anaerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌（肠道/淡水环境）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸为主（兼性厌氧，亦可发酵）",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "化能有机异养，以葡萄糖等糖类为主要碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经 mhp 途径降解 3-苯基丙酸与 3-(3-羟基苯基)丙酸等芳香化合物，并降解其中间体 2-羟基戊-2,4-二烯酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 2-羟基戊-2,4-二烯酸水合酶（MhpD, EC 4.2.1.80）、4-羟基-2-氧代戊酸醛缩酶（MhpE, EC 4.1.3.39）与酰化型乙醛脱氢酶（MhpF, EC 1.2.1.10）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状杆菌（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要栖息于人和温血动物肠道（共生菌），亦可在水、土壤等受粪便污染的环境中存活，栖息地适应性较广",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA"],
+    "explanation": "路线终产物丙酮酸与乙酰辅酶A均为标准中心碳代谢物：乙酰辅酶A直接进入三羧酸循环氧化，丙酮酸可进入三羧酸循环或糖异生。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc/EcoCyc",
+      "record_id": "2-hydroxypenta-2,4-dienoate degradation (Escherichia coli K-12 MG1655)",
+      "locator": null,
+      "claim_scope": [
+        "路线三步反应：2-羟基戊-2,4-二烯酸→4-羟基-2-氧代戊酸→丙酮酸+乙醛→乙酰辅酶A",
+        "酶 MhpD（EC 4.2.1.80）、MhpE（EC 4.1.3.39）、MhpF（EC 1.2.1.10）及其基因归属",
+        "代表菌 Escherichia coli K-12 MG1655 携带 mhp 基因簇并执行该降解"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome (RefSeq)",
+      "record_id": "NC_000913.3",
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli str. K-12 substr. MG1655 全基因组",
+        "基因组大小 4,641,652 bp，GC 含量 50.8%",
+        "NCBI Taxonomy ID 511145"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive (DSMZ)",
+      "record_id": "DSM 18039 (Escherichia coli K-12 MG1655)",
+      "locator": null,
+      "claim_scope": [
+        "兼性厌氧",
+        "最适生长温度 37 °C",
+        "革兰氏阴性直杆菌、具运动性"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "ATCC 700926",
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli K-12 MG1655 的菌种保藏编号"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "E. coli 一般生理常识：最适 pH 约 7、非嗜盐、不产芽孢、以葡萄糖等糖类为主要碳源、肠道共生且可见于粪便污染环境"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件未指定（null）；mhp 途径通常由兼性厌氧的 E. coli 在有氧条件下表达运行，本答案按题面将 oxygen_condition 记为 null。",
+    "相同的下游化学转化亦存在于 Pseudomonas putida mt-2 的 TOL 质粒 meta-途径（xylJ/xylK 编码同源酶）；本题按 MetaCyc/EcoCyc 的 2-hydroxypenta-2,4-dienoate degradation 选用 Escherichia coli K-12 MG1655 作为各步代表菌。",
+    "温度上下限、pH 上下限与盐度数值缺乏直接来源，按纪律以 null 或低置信度填写；辅因子 CoA、NAD+、NADH、乙酰辅酶A 的 SMILES 为非立体标注的常用表示。"
+  ]
+}

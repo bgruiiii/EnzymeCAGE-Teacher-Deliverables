@@ -1,0 +1,844 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_123",
+  "pollutant_name_zh": "丙烷",
+  "pollutant_name_en": "Propane",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "propane degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（按题面原值填 null）；所选路线 propane degradation I 在生化本质上为有氧途径（首步单加氧酶依赖分子氧）。路线名称按题面原样填写，未改选其他路线。主链为自丙烷至琥珀酰-CoA的单一连续线性途径。"
+  },
+  "route_summary": "丙烷好氧末端氧化降解主链（propane degradation I）：丙烷经丙烷单加氧酶末端羟化为丙-1-醇，再经NAD+依赖的醇脱氢酶氧化为丙醛，丙醛经NAD+依赖的醛脱氢酶氧化为丙酸；丙酸经丙酰-CoA合成酶活化为丙酰-CoA，经丙酰-CoA羧化酶羧化为(S)-甲基丙二酰-CoA，经甲基丙二酰-CoA差向异构酶转化为(R)-甲基丙二酰-CoA，最终经腺苷钴胺素依赖的甲基丙二酰-CoA变位酶重排为琥珀酰-CoA，进入三羧酸循环完成矿化与同化。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "propane",
+          "smiles": "CCC",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C=CC1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]2O[C@@H](N3C=NC4=C3N=CN=C4N)[C@H](O)[C@@H]2O)[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "propan-1-ol",
+          "smiles": "CCCO",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]2O[C@@H](N3C=NC4=C3N=CN=C4N)[C@H](O)[C@@H]2O)[C@@H](O)[C@H]1O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧羟化",
+      "enzyme": {
+        "name": "propane monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": "prmBCAD",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus sp. BCP1",
+        "strain": "BCP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "丙烷单加氧酶尚无正式EC编号；Rhodococcus sp. BCP1对丙烷的氧化亦可部分发生于亚末端（生成丙-2-醇），本步按主链末端羟化处理。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "propan-1-ol",
+          "smiles": "CCCO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]2O[C@@H](N3C=NC4=C3N=CN=C4N)[C@H](O)[C@@H]2O)[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "propanal",
+          "smiles": "CCC=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C=CC1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]2O[C@@H](N3C=NC4=C3N=CN=C4N)[C@H](O)[C@@H]2O)[C@@H](O)[C@H]1O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醇脱氢氧化",
+      "enzyme": {
+        "name": "alcohol dehydrogenase (NAD+)",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus sp. BCP1",
+        "strain": "BCP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "丙烷降解菌中催化丙-1-醇氧化的具体醇脱氢酶同工酶未逐一鉴定，此处按通用NAD+依赖型醇脱氢酶处理。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "propanal",
+          "smiles": "CCC=O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]2O[C@@H](N3C=NC4=C3N=CN=C4N)[C@H](O)[C@@H]2O)[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "propanoate",
+          "smiles": "CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C=CC1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]2O[C@@H](N3C=NC4=C3N=CN=C4N)[C@H](O)[C@@H]2O)[C@@H](O)[C@H]1O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛脱氢氧化",
+      "enzyme": {
+        "name": "aldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus sp. BCP1",
+        "strain": "BCP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "丙烷降解菌中此步的具体醛脱氢酶同工酶未逐一鉴定，按通用NAD+依赖型醛脱氢酶处理。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "propanoate",
+          "smiles": "CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OP(=O)([O-])[O-])[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@@H](N2C=NC3=C2N=CN=C3N)[C@H](O)[C@@H]1OP(=O)([O-])[O-]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "propanoyl-CoA",
+          "smiles": "CCC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@@H](N2C=NC3=C2N=CN=C3N)[C@H](O)[C@@H]1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)([O-])[O-])[C@H](O)[C@@H]1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "O=P([O-])([O-])OP(=O)([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "硫酯化（CoA活化，AMP形成型连接）",
+      "enzyme": {
+        "name": "propionyl-CoA synthetase",
+        "ec_number": "6.2.1.17",
+        "gene_or_protein": "prpE",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Salmonella enterica subsp. enterica serovar Typhimurium",
+        "strain": "LT2",
+        "ncbi_taxid": 99287,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "丙烷降解菌体内此步可能由丙酸CoA转移酶或底物特异性不同的酰基-CoA合成酶催化；此处采用研究最清楚的PrpE型丙酰-CoA合成酶及其对应模式菌。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "propanoyl-CoA",
+          "smiles": "CCC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@@H](N2C=NC3=C2N=CN=C3N)[C@H](O)[C@@H]1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "hydrogen carbonate",
+          "smiles": "OC(=O)[O-]",
+          "role": "cofactor"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OP(=O)([O-])[O-])[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-methylmalonyl-CoA",
+          "smiles": "C[C@@H](C(=O)[O-])C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@@H](N2C=NC3=C2N=CN=C3N)[C@H](O)[C@@H]1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])[O-])[C@H](O)[C@@H]1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "phosphate",
+          "smiles": "OP(=O)([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP依赖的羧化",
+      "enzyme": {
+        "name": "propionyl-CoA carboxylase",
+        "ec_number": "6.4.1.3",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Propionibacterium freudenreichii subsp. shermanii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_003",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "此步采用经典模式菌Propionibacterium freudenreichii subsp. shermanii的酶系作为该步对应微生物；丙烷降解菌（如红球菌）体内亦存在丙酰-CoA羧化活性，但未逐一核验。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "(S)-methylmalonyl-CoA",
+          "smiles": "C[C@@H](C(=O)[O-])C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@@H](N2C=NC3=C2N=CN=C3N)[C@H](O)[C@@H]1OP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(R)-methylmalonyl-CoA",
+          "smiles": "C[C@H](C(=O)[O-])C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@@H](N2C=NC3=C2N=CN=C3N)[C@H](O)[C@@H]1OP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "差向异构化",
+      "enzyme": {
+        "name": "methylmalonyl-CoA epimerase",
+        "ec_number": "5.1.99.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Propionibacterium freudenreichii subsp. shermanii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_003",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "(R)-methylmalonyl-CoA",
+          "smiles": "C[C@H](C(=O)[O-])C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@@H](N2C=NC3=C2N=CN=C3N)[C@H](O)[C@@H]1OP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinyl-CoA",
+          "smiles": "OC(=O)CCC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@@H](N2C=NC3=C2N=CN=C3N)[C@H](O)[C@@H]1OP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "变位重排（腺苷钴胺素辅酶依赖的分子内异构）",
+      "enzyme": {
+        "name": "methylmalonyl-CoA mutase",
+        "ec_number": "5.4.99.2",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Propionibacterium freudenreichii subsp. shermanii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_003",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "变位酶依赖腺苷钴胺素（辅酶B12）作为辅因子；反应本身为分子内重排，无净辅底物消耗，故未将B12列为底物。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Rhodococcus sp. BCP1",
+      "strain": "BCP1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（生长依赖分子氧，单加氧酶反应需O2）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以丙烷、正丁烷等气态正构烷烃为唯一碳源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧氧化降解短链气态正构烷烃（丙烷、正丁烷），属烷烃降解菌",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "丙烷单加氧酶活性（可溶性双铁单加氧酶类，prmBCAD基因簇编码），催化丙烷氧化为丙醇",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状，随生长阶段可呈多形性（球杆状）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Salmonella enterica subsp. enterica serovar Typhimurium",
+      "strain": "LT2",
+      "ncbi_taxid": 99287,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温菌，最适生长温度约37℃（与温血动物宿主体温一致）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（有氧与无氧条件下均可生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700720"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧（好氧呼吸/厌氧呼吸/发酵）",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用葡萄糖等多种糖类和有机酸生长；能以丙酸盐为碳源（经prpBCDE编码的2-甲基柠檬酸途径代谢丙酸）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "碳源利用谱广（糖类、有机酸、氨基酸等），无烷烃降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "PrpE丙酰-CoA合成酶活性（AMP形成型连接酶，EC 6.2.1.17，催化丙酸活化为丙酰-CoA）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "具周生鞭毛，运动性阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆菌（两端钝圆）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_003197",
+            "genome_size_bp": null,
+            "gc_percent": 52.2
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "宿主-环境兼栖：主要栖居于温血动物肠道（人畜共患病原菌），亦可在土壤和水体中长期存活，栖息广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Propionibacterium freudenreichii subsp. shermanii",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（乳品丙酸发酵菌，最适生长约30℃）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "厌氧但具一定耐氧性（耐氧厌氧菌，丙酸发酵于厌氧条件下进行）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "中等耐盐（适应干酪盐渍生境）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧（以丙酸发酵为主，具胞内电子传递链）",
+            "terminal_electron_acceptor": "延胡索酸（fumarate）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以乳酸盐（乳清/干酪中的乳酸）及葡萄糖等糖类为主要碳源进行丙酸发酵",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "乳品发酵菌，将糖类与乳酸盐发酵为丙酸、乙酸和CO2；无烷烃降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "丙酰-CoA羧化酶、甲基丙二酰-CoA差向异构酶及B12依赖的甲基丙二酰-CoA变位酶活性（Wood-Werkman途径相关酶系）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "非运动性（无鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "多形性短小杆菌",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要栖居于乳制品（瑞士型干酪成熟环境）及反刍动物瘤胃/肠道等生境，栖息广适性中等",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA"],
+    "explanation": "丙烷经末端氧化与丙酰-CoA/甲基丙二酰-CoA途径转化为琥珀酰-CoA，进入三羧酸循环（TCA）：琥珀酰-CoA经琥珀酰-CoA合成酶转化为琥珀酸，随后经延胡索酸、苹果酸、草酰乙酸等步骤氧化，碳骨架被彻底氧化为CO2或经糖异生/柠檬酸循环同化进入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "三羧酸循环",
+      "summary": "琥珀酰-CoA是TCA循环中间体，经琥珀酰-CoA合成酶转化为琥珀酸后沿循环氧化，彻底矿化丙烷碳骨架并产生还原当量与能量。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "丙烷亚末端氧化分支（经丙-2-醇与丙酮）",
+      "summary": "部分丙烷降解菌（如Gordonia sp. TY-5及一些Mycobacterium属菌株）由丙烷单加氧酶催化亚末端羟化生成丙-2-醇，再经NAD+依赖的仲醇脱氢酶氧化为丙酮；丙酮可经丙酮羧化酶生成乙酰乙酸并裂解为两分子乙酰-CoA进入中心代谢。该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc 途径页面 propane degradation I（丙烷好氧末端氧化：propane → propan-1-ol → propanal → propanoate → propanoyl-CoA → (S)-methylmalonyl-CoA → (R)-methylmalonyl-CoA → succinyl-CoA）",
+      "claim_scope": ["主链反应顺序与各步化学计量（S1–S7的路线化学）", "central_metabolism_entry"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Cappelletti等（意大利博洛尼亚大学）关于Rhodococcus sp. BCP1在丙烷/正丁烷上好氧生长及其丙烷单加氧酶（prm基因簇）的研究系列论文（约2001–2020年）",
+      "claim_scope": ["S1酶-菌关联与反应", "ORG_001碳源利用、广义降解能力与酶活"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Horswill与Escalante-Semerena等关于Salmonella enterica serovar Typhimurium prp操纵子（2-甲基柠檬酸途径）及PrpE丙酰-CoA合成酶（EC 6.2.1.17）的经典研究（约1999–2002年，Journal of Bacteriology等）",
+      "claim_scope": ["S4酶-EC-菌关联与反应", "ORG_002丙酸盐利用与PrpE活性"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Propionibacterium freudenreichii subsp. shermanii（旧称Propionibacterium shermanii）的经典酶学文献：丙酰-CoA羧化酶、甲基丙二酰-CoA差向异构酶（消旋酶）与B12依赖甲基丙二酰-CoA变位酶",
+      "claim_scope": ["S5、S6、S7酶-EC-菌关联与反应", "ORG_003酶活"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["ORG_002一般微生物学性状（Gram阴性、兼性厌氧、运动性、形态、最适温度、保藏与栖息广适性等）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["ORG_001一般性状（好氧、革兰氏阳性、不产芽孢、杆状多形性）"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["ORG_003一般性状（乳品来源、厌氧耐氧、革兰氏阳性、非运动、多形性短杆菌、乳酸/糖利用等）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq/GenBank",
+      "record_id": "NC_003197",
+      "locator": "Salmonella enterica subsp. enterica serovar Typhimurium str. LT2 染色体参考序列",
+      "claim_scope": ["ORG_002基因组基本信息（序列登录号、GC含量）与菌株身份"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "propane degradation I 的数据库原始定义未逐条核验（本回答无法访问在线数据库）；主链按公认的丙烷好氧末端氧化途径构建（丙烷→丙-1-醇→丙醛→丙酸→丙酰-CoA→甲基丙二酰-CoA→琥珀酰-CoA）。若数据库将该编号定义为亚末端（丙-2-醇/丙酮）路线，则需相应调整。",
+    "丙烷单加氧酶无正式EC编号；酶名与基因簇名称（prmBCAD）来自文献，Rhodococcus sp. BCP1的TaxID、保藏编号与基因组信息未知，按要求填null。",
+    "Rhodococcus sp. BCP1对丙烷的氧化可同时产生末端与亚末端产物（丙-1-醇与丙-2-醇），主链按末端氧化处理，实际产物比例可能因菌株与条件而异。",
+    "步骤4（丙酸活化）在不同丙烷降解菌中可能由CoA转移酶或底物特异性不同的酰基-CoA合成酶催化；本回答选用研究最充分的PrpE型丙酰-CoA合成酶并以Salmonella enterica serovar Typhimurium LT2为该步对应微生物。",
+    "步骤5–7选用的Propionibacterium freudenreichii subsp. shermanii为该三步酶系的经典模式菌，并非丙烷降解菌；同一丙烷降解菌（如红球菌）体内通常亦具备丙酰-CoA→琥珀酰-CoA酶系，但未逐一核验。",
+    "BCP1的pH、盐度、温度范围、运动性、保藏与基因组信息及多个数值性状缺乏可靠来源，按要求填null；Salmonella与Propionibacterium的部分数值（如基因组大小）仅有近似记忆，未填入以免误差。"
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_052",
+  "pollutant_name_zh": "对枯茗酸根",
+  "pollutant_name_en": "p-Cumate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "p-cumate degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；本答案按题面给定的路线名称原样填写，从 p-cumate 至 2-hydroxypentadienoate。"
+  },
+  "route_summary": "在该指定路线中，p-cumate 先经 p-cumate 1,2-双加氧酶样活性转化为 4-异丙基邻苯二酚，并释放二氧化碳；随后 4-异丙基邻苯二酚经 2,3-双加氧酶开环生成 2-羟基-6-氧代-7-甲基辛-2,4-二烯酸；最后经水解酶裂解生成路线终点 2-羟基戊-2,4-二烯酸和异丁酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "p-cumate",
+          "smiles": "CC(C)c1ccc(C(=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-isopropylcatechol",
+          "smiles": "Oc1c(O)cc(C(C)C)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative decarboxylation",
+      "enzyme": {
+        "name": "p-cumate 1,2-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步的正式 EC 编号未确定，因此 EC 编号填 null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-isopropylcatechol",
+          "smiles": "Oc1c(O)cc(C(C)C)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "O=C([O-])C(O)=CC=CC(=O)C(C)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "meta-cleavage dioxygenation",
+      "enzyme": {
+        "name": "4-isopropylcatechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "O=C([O-])C(O)=CC=CC(=O)C(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "O=C([O-])C(O)=CC=C",
+          "role": "main"
+        },
+        {
+          "name": "2-methylpropanoate",
+          "smiles": "CC(C)C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic C-C cleavage",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该水解酶的正式 EC 编号未确定，因此 EC 编号填 null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用对枯茗酸根（4-异丙基苯甲酸）作为芳香族碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解对异丙基苯甲酸及邻苯二酚类芳香化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 p-cumate 1,2-双加氧酶、4-异丙基邻苯二酚 2,3-双加氧酶和 2-羟基-6-氧代-7-甲基辛-2,4-二烯酸水解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛见于土壤和水体等环境",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway: p-cumate degradation to 2-hydroxypentadienoate",
+      "claim_scope": [
+        "pathway steps",
+        "enzyme names",
+        "microorganism assignment",
+        "carbon substrate utilization",
+        "degradation capacity",
+        "enzyme activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "General Pseudomonas putida phenotype",
+      "claim_scope": [
+        "oxygen tolerance",
+        "respiration mode",
+        "motility",
+        "cell morphology",
+        "Gram staining",
+        "sporulation",
+        "habitat generalism"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；本答案保留 route_scope.oxygen_condition 为 null。",
+    "第一步和第三步酶缺少明确正式 EC 编号，因此对应 EC 编号填 null。",
+    "中间产物 2-hydroxy-6-oxo-7-methylocta-2,4-dienoate 的 SMILES 为按名称推导的结构表示，未指定立体化学。",
+    "微生物性状多为 Pseudomonas putida 的一般特征，未逐条关联到具体菌株实验数据。"
+  ]
+}

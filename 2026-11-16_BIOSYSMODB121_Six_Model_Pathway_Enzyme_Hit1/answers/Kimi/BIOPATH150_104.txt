@@ -1,0 +1,293 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_104",
+  "pollutant_name_zh": "S-1,2-丙二醇",
+  "pollutant_name_en": "S-1,2-Propanediol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "(S)-propane-1,2-diol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；按题面固定路线名填写 (S)-1,2-丙二醇经 (S)-乳酸醛到 (S)-乳酸的氧化型主链，不改选厌氧丙二醇脱水酶/Pdu 路线。"
+  },
+  "route_summary": "主链为两步 NAD+ 依赖氧化：(S)-propane-1,2-diol → (S)-lactaldehyde → (S)-lactate。(S)-乳酸可再氧化为丙酮酸进入中心碳代谢，但该接续不计入本评分 steps。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(S)-propane-1,2-diol",
+          "smiles": "C[C@@H](CO)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-lactaldehyde",
+          "smiles": "C[C@@H](C=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD+-dependent oxidation of the primary alcohol to an aldehyde",
+      "enzyme": {
+        "name": "L-1,2-propanediol oxidoreductase (lactaldehyde reductase; FucO)",
+        "ec_number": "1.1.1.77",
+        "gene_or_protein": "fucO",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "题面未指定氧条件；本步按该路线的降解方向书写。FucO 在岩藻糖代谢中也以催化反向的 (S)-乳酸醛还原反应著称。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-lactaldehyde",
+          "smiles": "C[C@@H](C=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-lactate",
+          "smiles": "C[C@@H](C(=O)[O-])O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD+-dependent aldehyde oxidation to carboxylate",
+      "enzyme": {
+        "name": "lactaldehyde dehydrogenase (AldA)",
+        "ec_number": "1.2.1.22",
+        "gene_or_protein": "aldA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温；常规培养温度 37 °C"
+          },
+          "raw_text": "Temperature: 37°C; Atmosphere: Aerobic",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": "facultatively anaerobic",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": "ATCC 700926; strain designations MG1655 [K-12]",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸（兼性厌氧菌）",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "facultatively anaerobic; aerobic growth condition listed for routine cultivation",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以 (S)-1,2-丙二醇为底物进行氧化：经 (S)-乳酸醛生成 (S)-乳酸（与 L-岩藻糖/L-鼠李糖代谢相联的碳流）",
+          "raw_text": "(S)-propane-1,2-diol degradation proceeds via (S)-lactaldehyde to (S)-lactate in Escherichia coli K-12 substr. MG1655",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "非广谱异生物质降解菌；具备与 L-岩藻糖/L-鼠李糖代谢相联的 (S)-1,2-丙二醇—乳酸醛—乳酸转化能力",
+          "raw_text": "Pathway assignment: (S)-propane-1,2-diol degradation; genes fucO and aldA",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "FucO（EC 1.1.1.77）可逆催化 (S)-1,2-丙二醇/(S)-乳酸醛；乳酸醛脱氢酶 AldA（EC 1.2.1.22）氧化 (S)-乳酸醛为 (S)-乳酸",
+          "raw_text": "fucO encodes L-1,2-propanediol oxidoreductase; aldA encodes aldehyde dehydrogenase/lactaldehyde dehydrogenase activity",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（周生鞭毛）",
+          "raw_text": "motile; rod-shaped Gram-negative enteric bacterium",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（rod-shaped）",
+          "raw_text": "rod-shaped cells",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性；具外膜（diderm）",
+          "raw_text": "Gram-negative",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": "non-spore-forming",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": "NC_000913.3 Escherichia coli str. K-12 substr. MG1655, complete genome; 4,641,652 bp; GC content about 50.8%",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "偏宿主相关但非严格专性：主要见于温血动物肠道/粪便相关环境，并可进入受粪便污染的水体和土壤短期存活；不属于极端环境特化菌",
+          "raw_text": "enteric bacterium associated with warm-blooded hosts and fecally impacted environments",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate"
+    ],
+    "explanation": "评分主链终点为 (S)-乳酸；在乳酸利用阶段，(S)-乳酸通常经 L-乳酸脱氢酶/呼吸链偶联系统氧化为丙酮酸，随后进入糖酵解反向通量和三羧酸循环。该氧化未列入本评分 steps。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EcoCyc",
+      "record_id": null,
+      "locator": "Escherichia coli K-12 substr. MG1655; pathway (S)-propane-1,2-diol degradation and genes fucO/aldA",
+      "claim_scope": [
+        "chosen route main reactions",
+        "step S1 reaction and EC 1.1.1.77/FucO assignment",
+        "step S2 reaction and EC 1.2.1.22/AldA assignment",
+        "organism-pathway assignment"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq Genome",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655, complete genome",
+      "claim_scope": [
+        "organism identity",
+        "ncbi_taxid 511145",
+        "genome accession",
+        "genome size",
+        "GC percent"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "Escherichia coli strain MG1655 [K-12] product page",
+      "claim_scope": [
+        "culture collection accession",
+        "routine growth temperature 37 C",
+        "aerobic routine cultivation condition"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": null,
+      "locator": "strain search for Escherichia coli K-12 MG1655; physiology and morphology fields",
+      "claim_scope": [
+        "oxygen tolerance",
+        "cell morphology",
+        "Gram/cell envelope",
+        "motility",
+        "sporulation",
+        "general habitat association"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定；本答案按题面固定路线写作氧化主链，不选择厌氧丙二醇脱水酶/微区室 Pdu 到丙醛、丙酰-CoA/丙酸的路线。",
+    "FucO 与 AldA 相关反应具有可逆性或广谱醛脱氢酶背景；本答案仅按 (S)-propane-1,2-diol degradation 的降解方向排列主链。"
+  ]
+}

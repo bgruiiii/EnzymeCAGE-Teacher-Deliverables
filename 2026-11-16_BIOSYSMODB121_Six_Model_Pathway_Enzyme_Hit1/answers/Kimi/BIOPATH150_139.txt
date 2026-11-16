@@ -1,0 +1,293 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_139",
+  "pollutant_name_zh": "丙烯酸根",
+  "pollutant_name_en": "Acrylate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "acrylate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故保留为 null。所选代表菌 Clostridium kluyveri 为严格厌氧菌，但不据此改写题面给定的氧条件。"
+  },
+  "route_summary": "该路线的主链为一步还原反应：丙烯酸根在 NADH 依赖的 2-enoate reductase 作用下将碳碳双键加氢还原，生成丙酸根，同时 NADH 被氧化为 NAD+。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "acrylate",
+          "smiles": "C=CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)([O-])OP(=O)(O)OC[C@H]4[C@H]([C@H]([C@@H](O4)N5C=CC(=CC5)C(=O)N)O)O)O)O)N",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "propionate",
+          "smiles": "CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)([O-])OP(=O)(O)OC[C@H]4[C@H]([C@H]([C@@H](O4)[N+]5=CC=CC(=C5)C(=O)N)O)O)O)O)N",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "NADH-dependent reduction of an alpha,beta-unsaturated carboxylate",
+      "enzyme": {
+        "name": "2-enoate reductase",
+        "ec_number": "1.3.1.31",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium kluyveri",
+        "strain": "DSM 555",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "反应按 NAD+/NADH 形式表示，未单列质子；Clostridium kluyveri 与该酶的关联主要是物种层面证据，落实到 DSM 555 菌株时保留中等置信度。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Clostridium kluyveri",
+      "strain": "DSM 555",
+      "ncbi_taxid": 431943,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 35,
+            "maximum_c": null,
+            "preference": "中温培养；35 °C 为目录培养温度，不应解释为生物学耐受上限或下限"
+          },
+          "raw_text": "35 °C",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格厌氧",
+          "raw_text": "a strict anaerobe",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSMZ",
+            "accession": "DSM 555"
+          },
+          "raw_text": "DSM 555",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "发酵型厌氧代谢",
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用乙醇和乙酸根作为联合底物进行厌氧链延长，形成丁酸根和己酸根等产物",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具有还原 α,β-不饱和羧酸碳碳双键的能力；本路线中表现为将丙烯酸根还原为丙酸根",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2-enoate reductase 活性：以 NADH 为还原剂还原 2-烯酸的 C=C 双键",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "形成内生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_009706.1",
+            "genome_size_bp": 3964510,
+            "gc_percent": 31.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "现有资料主要将其与厌氧淤泥、沉积物或污泥环境联系起来，更支持厌氧沉积环境适应，而不是广泛的多栖息地泛适性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "propionate"
+    ],
+    "explanation": "丙酸根是本评分主链的末端产物；其在不同微生物中可经丙酰辅酶 A 等后续途径继续代谢，但该部分不属于题面指定的 acrylate degradation II 主链。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page: acrylate degradation II",
+      "claim_scope": [
+        "路线名称归属",
+        "主反应为 acrylate 还原生成 propionate"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "1.3.1.31",
+      "locator": "EC 1.3.1.31, accepted name 2-enoate reductase and accepted reaction",
+      "claim_scope": [
+        "首选酶名称",
+        "EC 编号",
+        "NADH 依赖的 2-烯酸还原反应"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "1.3.1.31",
+      "locator": "EC 1.3.1.31 organism-specific entry for Clostridium kluyveri",
+      "claim_scope": [
+        "Clostridium kluyveri 与 2-enoate reductase 的对应关系",
+        "该菌还原 2-烯酸类底物的酶活性"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "Leibniz Institute DSMZ catalogue",
+      "record_id": "DSM 555",
+      "locator": "Clostridium kluyveri DSM 555 catalogue entry",
+      "claim_scope": [
+        "菌种保藏编号",
+        "培养温度",
+        "细胞形态、运动性、革兰氏染色和产孢信息",
+        "分离来源及栖息地背景"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Nucleotide",
+      "record_id": "NC_009706.1",
+      "locator": "Clostridium kluyveri DSM 555 chromosome, complete genome",
+      "claim_scope": [
+        "基因组登录号",
+        "染色体长度",
+        "GC 含量"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "Crossref",
+      "record_id": "10.1073/pnas.0711093105",
+      "locator": "Seedorf et al., The genome of Clostridium kluyveri, a strict anaerobe with unique metabolic features",
+      "claim_scope": [
+        "严格厌氧属性",
+        "乙醇和乙酸根联合代谢",
+        "菌株生理与代谢背景"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "431943",
+      "locator": "Clostridium kluyveri DSM 555",
+      "claim_scope": [
+        "物种与菌株身份",
+        "NCBI Taxonomy ID"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面未提供路线数据库版本或路径记录号；本回答按 MetaCyc 路线名称 acrylate degradation II 定位主反应。",
+    "酶与 Clostridium kluyveri 的实验关联主要为物种层面证据，未将其过度表述为已单独验证的 DSM 555 菌株反应。"
+  ]
+}

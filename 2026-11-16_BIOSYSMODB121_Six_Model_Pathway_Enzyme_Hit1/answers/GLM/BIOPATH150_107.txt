@@ -1,0 +1,384 @@
+
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_107",
+  "pollutant_name_zh": "烟酸根",
+  "pollutant_name_en": "Nicotinate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "nicotinate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面给定氧条件为 null（未指定），故此处按题面填 null；所选路线 nicotinate degradation I 本身为经典好氧（需氧）途径，吡啶环开环步骤消耗分子氧，主链按好氧过程描述。路线名称按题面原样填写。"
+  },
+  "route_summary": "烟酸根经 nicotinate degradation I（经典假单胞菌好氧路线）线性降解共 6 步：第1步烟酸脱氢酶将吡啶环 6 位氧化羟基化生成 6-羟基烟酸；第2步 6-羟基烟酸经水解脱羧生成 2,5-二羟基吡啶并释放 CO2；第3步 2,5-二羟基吡啶被 5,6-加双氧酶以分子氧开环生成 N-甲酰马来酰胺酸；第4步脱甲酰基生成马来酰胺酸并释放甲酸；第5步酰胺键水解释放铵生成马来酸；第6步马来酸经顺反异构化生成延胡索酸，进入 TCA 循环。经典代表菌为 Pseudomonas putida（菌株 KT2440），可完成全途径。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "nicotinate", "smiles": "O=C([O-])c1cccnc1", "role": "main"},
+        {"name": "NAD+", "smiles": null, "role": "cofactor"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "6-hydroxynicotinate", "smiles": "O=C([O-])c1ccc(O)nc1", "role": "main"},
+        {"name": "NADH", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "氧化羟基化（脱氢，水为羟基供体）",
+      "enzyme": {
+        "name": "nicotinate dehydrogenase",
+        "ec_number": "1.17.1.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160482,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "烟酸脱氢酶的电子受体（NAD+）与基因名未能逐项核实；EC 1.17.1.5 为记忆值。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "6-hydroxynicotinate", "smiles": "O=C([O-])c1ccc(O)nc1", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2,5-dihydroxypyridine", "smiles": "Oc1ccc(O)cn1", "role": "main"},
+        {"name": "carbon dioxide", "smiles": "O=C=O", "role": "byproduct"}
+      ],
+      "reaction_type": "水解脱羧（羧基被羟基置换）",
+      "enzyme": {
+        "name": "6-hydroxynicotinate decarboxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160482,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该酶未见确切 EC 编号，填 null；反应属较罕见的水解脱羧类型（脱羧同时引入羟基）。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "2,5-dihydroxypyridine", "smiles": "Oc1ccc(O)cn1", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "N-formylmaleamic acid", "smiles": "O=C(O)/C=C\\C(=O)NC=O", "role": "main"}
+      ],
+      "reaction_type": "芳香杂环开环（双加氧，C5–C6 键断裂）",
+      "enzyme": {
+        "name": "2,5-dihydroxypyridine 5,6-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160482,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "开环产物 N-formylmaleamic acid 的结构与酶名基于经典文献与 MetaCyc 路线记忆，未经实时核对；该酶未见确切 EC 编号。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "N-formylmaleamic acid", "smiles": "O=C(O)/C=C\\C(=O)NC=O", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "maleamic acid", "smiles": "O=C(O)/C=C\\C(=O)N", "role": "main"},
+        {"name": "formate", "smiles": "O=C[O-]", "role": "byproduct"}
+      ],
+      "reaction_type": "酰胺水解（脱甲酰基）",
+      "enzyme": {
+        "name": "N-formylmaleamate deformylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160482,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "酶名基于路线记忆，未见确切 EC 编号，填 null。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {"name": "maleamic acid", "smiles": "O=C(O)/C=C\\C(=O)N", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "maleate", "smiles": "O=C([O-])/C=C\\C(=O)[O-]", "role": "main"},
+        {"name": "ammonium", "smiles": "[NH4+]", "role": "byproduct"}
+      ],
+      "reaction_type": "酰胺水解（脱酰胺，释放铵）",
+      "enzyme": {
+        "name": "maleamate amidohydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160482,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "酶名基于路线记忆（亦称 maleamase），未见确切 EC 编号，填 null。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {"name": "maleate", "smiles": "O=C([O-])/C=C\\C(=O)[O-]", "role": "main"}
+      ],
+      "products": [
+        {"name": "fumarate", "smiles": "O=C([O-])/C=C/C(=O)[O-]", "role": "main"}
+      ],
+      "reaction_type": "顺反异构化（cis→trans）",
+      "enzyme": {
+        "name": "maleate cis-trans isomerase",
+        "ec_number": "5.2.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160482,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 5.2.1.1 为记忆值。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160482,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": 30, "maximum_c": null, "preference": "中温菌，最适生长温度约 30 °C"},
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧，依赖有氧呼吸产能，不能厌氧生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": "非嗜盐菌，常规无盐或低盐培养基即可正常生长"},
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": 7.0, "maximum": null},
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": "DSMZ", "accession": "DSM 6125"},
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "专性有氧呼吸（氧化磷酸化）", "terminal_electron_acceptor": "分子氧 O2"},
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种碳源（葡萄糖、果糖、甘油、有机酸及多种芳香族化合物），并能以烟酸作为唯一碳源、氮源和能量来源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具有广谱的芳香族与杂环化合物降解能力，可代谢苯甲酸、对羟基苯甲酸、烟酸等，是研究芳香族化合物代谢的模式菌株",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具备完整烟酸降解途径酶系活性：烟酸脱氢酶、6-羟基烟酸脱羧酶、2,5-二羟基吡啶 5,6-加双氧酶、N-甲酰马来酰胺酸脱甲酰酶、马来酰胺酸酰胺水解酶、马来酸顺反异构酶",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性，借助极生鞭毛游动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状/短杆菌，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，典型外膜-肽聚糖-内膜细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": "NC_002947", "genome_size_bp": 6181885, "gc_percent": 61.5},
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性强（泛化种），广泛分布于土壤、植物根际、淡水水体等多种有氧环境",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["fumarate"],
+    "explanation": "延胡索酸为 TCA 循环中间体，可被延胡索酸酶直接水化为苹果酸进入三羧酸循环，为细胞提供能量与碳骨架。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA 循环（三羧酸循环）",
+      "summary": "延胡索酸经延胡索酸酶水化为苹果酸，继而氧化为草酰乙酸，完成烟酸碳骨架的彻底矿化与同化。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "烟酸厌氧发酵途径",
+      "summary": "严格厌氧菌 Eubacterium barkeri 通过含硒/钼的烟酸脱氢酶系将烟酸发酵为乙酸、丙酸、丁酸、CO2 与 NH3（对应 MetaCyc 的 nicotinate degradation III），与本题主链（好氧路线）不同。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway: nicotinate degradation I（好氧路线，经 6-hydroxynicotinate 与 2,5-dihydroxypyridine，Pseudomonas putida）",
+      "claim_scope": ["route_scope.chosen_route_name", "S1-S6 各步反应与酶学归属", "步骤与微生物的对应关系", "F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["ORG_001 一般性状（F1、F2、F3、F4、F6、F7、F8、F10、F11、F12、F13、F15）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_002947",
+      "locator": null,
+      "claim_scope": ["ORG_001 F14_genome_basic"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "DSMZ",
+      "record_id": "DSM 6125",
+      "locator": null,
+      "claim_scope": ["ORG_001 F5_culture_collection"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI Taxonomy",
+      "record_id": "160482",
+      "locator": null,
+      "claim_scope": ["ORG_001 物种与菌株身份及 TaxID"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "除 EC 1.17.1.5（nicotinate dehydrogenase）与 EC 5.2.1.1（maleate cis-trans isomerase）外，其余各步酶均未能确证 EC 编号，均已填 null。",
+    "第一步烟酸脱氢酶的辅因子/电子受体（NAD+）及各步酶的基因名均未能核实，gene_or_protein 均填 null。",
+    "2,5-二羟基吡啶开环产物（N-formylmaleamic acid）及后续两步水解酶的名称基于经典文献与 MetaCyc 路线记忆，未经数据库实时核对。",
+    "P. putida KT2440 的基因组大小（6,181,885 bp）、GC 含量（61.5%）与 DSM 6125 保藏编号为记忆值，未经实时核对。",
+    "全部证据均为模型内部知识（INTERNAL_KNOWLEDGE_ONLY），未进行实时数据库检索；性状数值（最适温度、最适 pH 等）缺少原文摘录，raw_text 均为 null。"
+  ]
+}

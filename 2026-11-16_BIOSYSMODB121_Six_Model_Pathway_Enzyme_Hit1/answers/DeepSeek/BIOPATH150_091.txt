@@ -1,0 +1,496 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_091",
+  "pollutant_name_zh": "D-半乳糖",
+  "pollutant_name_en": "D-Galactose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-galactose degradation IV",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "D-半乳糖通过非磷酸化Entner-Doudoroff途径降解：D-半乳糖氧化为D-半乳糖酸-1,4-内酯，水解为D-半乳糖酸，脱水生成2-脱氢-3-脱氧-D-半乳糖酸，醛缩裂解为丙酮酸和D-甘油醛；D-甘油醛进一步氧化为D-甘油酸，磷酸化为2-磷酸-D-甘油酸，脱水生成磷酸烯醇丙酮酸，最终生成丙酮酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-Galactose",
+          "smiles": "OC[C@H](O)[C@H](O)[C@@H](O)[C@@H](O)C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-Galactono-1,4-lactone",
+          "smiles": "O=C1O[C@@H](CO)[C@H](O)[C@@H]1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Galactose dehydrogenase",
+        "ec_number": "1.1.1.48",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Saccharolobus solfataricus",
+        "strain": "P2",
+        "ncbi_taxid": 273057,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "D-Galactono-1,4-lactone",
+          "smiles": "O=C1O[C@@H](CO)[C@H](O)[C@@H]1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-Galactonate",
+          "smiles": "OCC(O)C(O)C(O)C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "D-Galactono-1,4-lactonase",
+        "ec_number": "3.1.1.25",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Saccharolobus solfataricus",
+        "strain": "P2",
+        "ncbi_taxid": 273057,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "D-Galactonate",
+          "smiles": "OCC(O)C(O)C(O)C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Dehydro-3-deoxy-D-galactonate",
+          "smiles": "O=C(O)C(=O)CC(O)C(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydration",
+      "enzyme": {
+        "name": "D-Galactonate dehydratase",
+        "ec_number": "4.2.1.6",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Saccharolobus solfataricus",
+        "strain": "P2",
+        "ncbi_taxid": 273057,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-Dehydro-3-deoxy-D-galactonate",
+          "smiles": "O=C(O)C(=O)CC(O)C(O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "D-Glyceraldehyde",
+          "smiles": "O=C[C@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "2-Dehydro-3-deoxy-D-galactonate aldolase",
+        "ec_number": "4.1.2.29",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Saccharolobus solfataricus",
+        "strain": "P2",
+        "ncbi_taxid": 273057,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "D-Glyceraldehyde",
+          "smiles": "O=C[C@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-Glycerate",
+          "smiles": "O=C(O)[C@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Glyceraldehyde dehydrogenase",
+        "ec_number": "1.2.1.9",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Saccharolobus solfataricus",
+        "strain": "P2",
+        "ncbi_taxid": 273057,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "D-Glycerate",
+          "smiles": "O=C(O)[C@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Phospho-D-glycerate",
+          "smiles": "O=C(O)[C@H](O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": {
+        "name": "Glycerate kinase",
+        "ec_number": "2.7.1.31",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Saccharolobus solfataricus",
+        "strain": "P2",
+        "ncbi_taxid": 273057,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "2-Phospho-D-glycerate",
+          "smiles": "O=C(O)[C@H](O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Phosphoenolpyruvate",
+          "smiles": "C=C(OP(=O)(O)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydration",
+      "enzyme": {
+        "name": "Enolase",
+        "ec_number": "4.2.1.11",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Saccharolobus solfataricus",
+        "strain": "P2",
+        "ncbi_taxid": 273057,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "Phosphoenolpyruvate",
+          "smiles": "C=C(OP(=O)(O)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": {
+        "name": "Pyruvate kinase",
+        "ec_number": "2.7.1.40",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Saccharolobus solfataricus",
+        "strain": "P2",
+        "ncbi_taxid": 273057,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Saccharolobus solfataricus",
+      "strain": "P2",
+      "ncbi_taxid": 273057,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 50,
+            "optimum_c": 80,
+            "maximum_c": 87,
+            "preference": "嗜热"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 1.0,
+            "optimum": 3.0,
+            "maximum": 5.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "chemoorganotroph; utilizes D-galactose, D-glucose, and other sugars",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades D-galactose via non-phosphorylated Entner-Doudoroff pathway",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "galactose dehydrogenase, galactonate dehydratase, 2-keto-3-deoxy-galactonate aldolase, glyceraldehyde dehydrogenase, glycerate kinase, enolase, pyruvate kinase",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "non-motile",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "irregular cocci",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative, S-layer, no peptidoglycan",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002754.1",
+            "genome_size_bp": 2992245,
+            "gc_percent": 35.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "thermoacidophilic; found in terrestrial hot springs and volcanic environments",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "最终产物丙酮酸进入中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["D-galactose degradation IV pathway steps and enzymes"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI",
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Saccharolobus solfataricus P2 traits"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI",
+      "record_id": "NC_002754.1",
+      "locator": null,
+      "claim_scope": ["genome size and GC content"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "部分酶和菌株特性基于内部知识，未引用具体文献。"
+  ]
+}

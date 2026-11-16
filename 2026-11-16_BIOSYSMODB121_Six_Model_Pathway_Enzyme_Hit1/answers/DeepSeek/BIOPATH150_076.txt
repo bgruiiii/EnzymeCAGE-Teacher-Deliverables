@@ -1,0 +1,251 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_076",
+  "pollutant_name_zh": "2,5-二羟基苯甲酸根",
+  "pollutant_name_en": "2,5-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "gentisate degradation I",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "2,5-二羟基苯甲酸根（gentisate）通过 gentisate degradation I 路线被微生物降解：gentisate 经 gentisate 1,2-dioxygenase 开环生成 maleylpyruvate，再经 maleylpyruvate isomerase 异构化为 fumarylpyruvate，最后经 fumarylpyruvate hydrolase 水解为 pyruvate 和 fumarate，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,5-Dihydroxybenzoate",
+          "smiles": "[O-]C(=O)c1cc(O)ccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Maleylpyruvate",
+          "smiles": "O=C([O-])C(=O)CC(=O)C=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dioxygenation; ring cleavage",
+      "enzyme": {
+        "name": "Gentisate 1,2-dioxygenase",
+        "ec_number": "1.13.11.4",
+        "gene_or_protein": "nagI",
+        "confidence": "high",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas alcaligenes",
+        "strain": "NCIB 9867",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Maleylpyruvate",
+          "smiles": "O=C([O-])C(=O)CC(=O)C=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Fumarylpyruvate",
+          "smiles": "O=C([O-])C(=O)CC(=O)/C=C/C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "Maleylpyruvate isomerase",
+        "ec_number": "5.2.1.4",
+        "gene_or_protein": "nagL",
+        "confidence": "high",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas alcaligenes",
+        "strain": "NCIB 9867",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Fumarylpyruvate",
+          "smiles": "O=C([O-])C(=O)CC(=O)/C=C/C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Fumarate",
+          "smiles": "O=C([O-])/C=C/C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "Fumarylpyruvate hydrolase",
+        "ec_number": "3.7.1.20",
+        "gene_or_protein": "nagK",
+        "confidence": "high",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas alcaligenes",
+        "strain": "NCIB 9867",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas alcaligenes",
+      "strain": "NCIB 9867",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Pyruvate", "Fumarate"],
+    "explanation": "Fumarylpyruvate hydrolase 将 fumarylpyruvate 水解为 pyruvate 和 fumarate，二者进入中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [],
+  "uncertainties": []
+}

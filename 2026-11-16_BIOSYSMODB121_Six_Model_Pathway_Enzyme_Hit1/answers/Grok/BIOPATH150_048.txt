@@ -1,0 +1,260 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_048",
+  "pollutant_name_zh": "左旋肉碱",
+  "pollutant_name_en": "Levocarnitine",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "L-carnitine degradation III",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本答案将指定路线对应为需分子氧的肉碱单加氧酶（CntAB）裂解途径；罗马数字III与该途径的对应系依据MetaCyc按收录顺序编号及该途径发现时间较晚所作推断，未经页面实时核对。"
+  },
+  "route_summary": "左旋肉碱在需氧条件下由双组分肉碱单加氧酶CntAB催化，以NADH为电子供体、分子氧为共底物，氧化裂解为三甲胺与苹果酸半醛（malic semialdehyde，3-羟基-4-氧代丁酸）。三甲胺通常排出，苹果酸半醛为碳骨架去向并可进一步进入中心代谢。主链仅列该特征性裂解步。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-carnitine",
+          "smiles": "C[N+](C)(C)C[C@@H](O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "malic semialdehyde",
+          "smiles": "O=CC(O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "carnitine monooxygenase",
+        "ec_number": "1.14.13.239",
+        "gene_or_protein": "cntAB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baumannii",
+        "strain": null,
+        "ncbi_taxid": 470,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "特征反应、酶与菌种有文献支持；EC编号记忆为1.14.13.239，未逐条核对现行ExplorEnz。代表性菌株保藏号不确定。该步是否即题面路线III，属路线编号推断。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter baumannii",
+      "strain": null,
+      "ncbi_taxid": 470,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "嗜温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "化能异养，可利用左旋肉碱作为底物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可将左旋肉碱氧化裂解为三甲胺和苹果酸半醛",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "肉碱单加氧酶CntAB活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "无鞭毛，不游动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "球杆菌，短杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地较广，可见于土壤、水体、医院环境及人体皮肤等，为广适性机会致病菌",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "malic semialdehyde"
+    ],
+    "explanation": "碳骨架主要产物为苹果酸半醛，可再转化为苹果酸等并进入中心代谢；三甲胺一般不作为产碳的中心代谢入口。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "malic semialdehyde assimilation",
+      "summary": "苹果酸半醛可被醛脱氢酶等进一步氧化为苹果酸并进入TCA循环。该下游转化是否列入题面MetaCyc路线主链未能确认，故不写入评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "carnitine dehydrogenase route to glycine betaine",
+      "summary": "另有需氧途径：肉碱脱氢酶将L-肉碱氧化为3-脱氢肉碱，再裂解生成甘氨酸甜菜碱及C2产物。不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "anaerobic cai route to gamma-butyrobetaine",
+      "summary": "肠杆菌科在厌氧条件下经cai操纵子将L-肉碱还原为γ-丁基甜菜碱，主要作为电子受体。不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Zhu et al. 2014 Proc Natl Acad Sci U S A. Carnitine metabolism to trimethylamine by an unusual Rieske-type oxygenase from human microbiota.",
+      "claim_scope": [
+        "reaction",
+        "enzyme",
+        "organism",
+        "carbon_substrate",
+        "degradation_capacity",
+        "enzyme_activity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Acinetobacter属及A. baumannii的标准分类学与生理学描述（专性好氧、革兰氏阴性球杆菌、不产芽孢、无鞭毛、嗜温、环境分布较广）",
+      "claim_scope": [
+        "oxygen_tolerance",
+        "temperature_preference",
+        "respiration",
+        "motility",
+        "cell_morphology",
+        "gram_stain",
+        "sporulation",
+        "habitat_generalism"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "将题面路线名L-carnitine degradation III对应到CntAB肉碱单加氧酶途径，是基于MetaCyc罗马数字按收录顺序编号、且该途径为三条经典肉碱分解路线中最晚阐明者的推断，未经MetaCyc页面实时核对。",
+    "EC 1.14.13.239为记忆中的IUBMB/KEGG编号，若与现行ExplorEnz不一致则应以数据库为准。",
+    "文献确立的是Acinetobacter baumannii的cntAB，具体菌株保藏号未能确认，故strain与菌种保藏编号置null。",
+    "苹果酸半醛亦常称malate semialdehyde；此处SMILES给出连接关系，未标注立体化学。",
+    "NADH/NAD+的完整SMILES未填写。温度、pH、盐度的具体数值及基因组登录号无逐条可核对来源，已置null。"
+  ]
+}

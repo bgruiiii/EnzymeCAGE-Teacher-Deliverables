@@ -1,0 +1,332 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_120",
+  "pollutant_name_zh": "6-磺酸基-d-奎诺糖",
+  "pollutant_name_en": "6-Sulfo-d-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。sulfoquinovose degradation II 即 MetaCyc 命名的 sulfo-Entner–Doudoroff（sulfo-ED）途径，在模式菌 Pseudomonas putida SQ1 中被完整阐明（好氧培养条件下研究）；该途径将 6-磺酸基-D-奎诺糖转化为丙酮酸和 3-磺基乳酸。"
+  },
+  "route_summary": "sulfoquinovose degradation II（sulfo-Entner–Doudoroff, sulfo-ED 途径）主链共四步：（1）6-磺酸基-D-奎诺糖（sulfoquinovose）经 NAD+ 依赖的脱氢酶在 C1 位氧化为 6-脱氧-6-磺酸基-D-葡萄糖酸；（2）脱水生成 2-脱氢-3,6-二脱氧-6-磺酸基-D-葡萄糖酸（2-酮-3-脱氧-6-磺酸基葡萄糖酸, KDSG）；（3）KDSG 醛缩酶将其裂解为丙酮酸与 3-磺基乳醛两种主产物；（4）3-磺基乳醛经 NAD+ 依赖的脱氢酶氧化为 3-磺基乳酸。整条主链在 Pseudomonas putida SQ1 中得到遗传学与生化证据支持（Felux et al., PNAS 2015）。3-磺基乳酸可经下游磺基丙酮酸模块进一步分解为乙酰-CoA 并释放亚硫酸盐。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-Sulfo-D-quinovose",
+          "smiles": "O=C[C@H](O)[C@@H](O)[C@H](O)[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-Deoxy-6-sulfo-D-gluconate",
+          "smiles": "O=C(O)[C@H](O)[C@@H](O)[C@H](O)[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化（NAD+ 依赖的 C1 脱氢，生成相应糖酸；可能经 1,5-内酯中间体）",
+      "enzyme": {
+        "name": "6-sulfo-D-quinovose 1-dehydrogenase (sulfoquinovose dehydrogenase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该脱氢酶的专属 EC 编号未能确认，故填 null；反应可能经 6-脱氧-6-磺酸基-D-葡萄糖酸-1,5-内酯中间体，本步按净反应合并。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "6-Deoxy-6-sulfo-D-gluconate",
+          "smiles": "O=C(O)[C@H](O)[C@@H](O)[C@H](O)[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Dehydro-3,6-dideoxy-6-sulfo-D-gluconate",
+          "smiles": "O=C(O)C(=O)C[C@H](O)[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "脱水（脱去一分子水，形成 2-酮-3-脱氧中间体）",
+      "enzyme": {
+        "name": "6-deoxy-6-sulfo-D-gluconate dehydratase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该脱水酶的专属 EC 编号未能确认，故填 null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-Dehydro-3,6-dideoxy-6-sulfo-D-gluconate",
+          "smiles": "O=C(O)C(=O)C[C@H](O)[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "3-Sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛缩裂解（retro-aldol cleavage，C–C 键断裂生成两个 C3 产物）",
+      "enzyme": {
+        "name": "2-dehydro-3,6-dideoxy-6-sulfo-D-gluconate aldolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该醛缩酶的专属 EC 编号未能确认，故填 null；3-磺基乳醛的立体构型未标注，SMILES 未含手性。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "3-Sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Sulfolactate",
+          "smiles": "O=C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛脱氢氧化（NAD+ 依赖）",
+      "enzyme": {
+        "name": "3-sulfolactaldehyde dehydrogenase (NAD+)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该脱氢酶的专属 EC 编号未能确认，故填 null；本步被纳入主链系参照 sulfoquinovose degradation I 的平行结构及文献报道的 3-磺基乳酸生成；产物立体构型（(S)- 或 (R)-3-磺基乳酸）未确认，SMILES 未含手性。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "SQ1",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "嗜中温；30 °C 为文献报道的培养温度，非严格测定的最适生长温度"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以 sulfoquinovose（6-磺酸基-D-奎诺糖）为唯一碳源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解植物/藻类磺脂衍生的含 C–S 键磺糖 sulfoquinovose，经 sulfo-Entner–Doudoroff 途径矿化其碳骨架",
+          "raw_text": "Entner–Doudoroff pathway for sulfoquinovose degradation in Pseudomonas putida SQ1",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 NAD+ 依赖的 sulfoquinovose 1-脱氢酶活性，以及 sulfo-ED 途径的磺酸基葡萄糖酸脱水酶、KDSG 醛缩酶和 3-磺基乳醛脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "能运动（极生鞭毛，物种层面特征）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状细菌（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "物种层面为土壤、水体及植物根际广泛分布的腐生菌，栖息地广适性强；SQ1 菌株的具体分离来源未确认",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "第三步醛缩酶直接生成中心碳代谢物丙酮酸，可进入三羧酸循环；磺基碳骨架经下游途径最终以乙酰-CoA 和亚硫酸盐形式分别进入中心碳代谢与硫代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-sulfolactate degradation via 3-sulfopyruvate",
+      "summary": "3-磺基乳酸经 (S)-sulfolactate dehydrogenase（ComC 类酶）氧化为 3-磺基丙酮酸，再由 sulfopyruvate decarboxylase（ComDE，EC 4.1.1.79）脱羧生成磺基乙醛，最后由 sulfoacetaldehyde acetyltransferase（Xsc）裂解为乙酰-CoA 并释放亚硫酸盐；该下游模块在 Pseudomonas putida SQ1 等菌中与 sulfo-ED 主链衔接。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Felux A-K, Spiteller D, Klebensberger J, Schleheck D. Entner–Doudoroff pathway for sulfoquinovose degradation in Pseudomonas putida SQ1. Proc Natl Acad Sci U S A. 2015;112(31):E4298–E4305",
+      "claim_scope": ["reaction", "enzyme", "microorganism", "trait"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway: sulfoquinovose degradation II (sulfo-Entner–Doudoroff pathway)",
+      "claim_scope": ["reaction", "pathway"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["trait"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "四步酶的专属 EC 编号均未能可靠确认，按纪律一律填 null，仅给出文献支持的酶名称。",
+    "Pseudomonas putida SQ1 的菌种保藏编号、基因组登录号、基因组大小及菌株级 TaxID 未知；profile 中 ncbi_taxid 303 为 Pseudomonas putida 物种级编号。",
+    "第一步可能经 6-脱氧-6-磺酸基-D-葡萄糖酸-1,5-内酯中间体（是否由独立内酯酶参与未确认），本答案按净反应合并为一步。",
+    "第四步（3-磺基乳醛→3-磺基乳酸）是否被数据库的 sulfoquinovose degradation II 原样收录存在轻微不确定性；此处参照 sulfoquinovose degradation I 的平行结构及原文报道将其纳入主链。",
+    "3-磺基乳醛与 3-磺基乳酸的立体构型未确认，相应 SMILES 未标注手性。"
+  ]
+}

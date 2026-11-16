@@ -1,0 +1,428 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_004",
+  "pollutant_name_zh": "咖啡因",
+  "pollutant_name_en": "Caffeine",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Caffeine (fungal) pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线填写真菌好氧咖啡因降解主链；主链为逐步N-去甲基化后进入嘌呤分解代谢。"
+  },
+  "route_summary": "在好氧真菌中，咖啡因经逐步N-去甲基化生成黄嘌呤，随后黄嘌呤被氧化为尿酸，尿酸再经尿酸氧化酶生成尿囊素；尿囊素可进一步分解并进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Caffeine",
+          "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Theobromine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative N-demethylation",
+      "enzyme": {
+        "name": "Caffeine demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus sydowii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "初始N-去甲基化酶的EC编号、基因与辅因子信息不足；甲醛作为去甲基副产物按一般氧化去甲基化推断。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Theobromine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "7-Methylxanthine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative N-demethylation",
+      "enzyme": {
+        "name": "Theobromine demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus sydowii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步酶学名称与EC编号缺乏明确公开记录；菌株与辅因子信息不足。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "7-Methylxanthine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Xanthine",
+          "smiles": "O=C1NC(=O)C2=C(N1)N=CN2",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative N-demethylation",
+      "enzyme": {
+        "name": "7-methylxanthine demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus sydowii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步酶学名称与EC编号缺乏明确公开记录；菌株与辅因子信息不足。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "Xanthine",
+          "smiles": "O=C1NC(=O)C2=C(N1)N=CN2",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Uric acid",
+          "smiles": "O=C1NC(=O)C2=C(N1)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "Hydrogen peroxide",
+          "smiles": "OO",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Xanthine oxidase",
+        "ec_number": "1.17.3.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus sydowii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "真菌中也可能由黄嘌呤脱氢酶催化；此处按好氧条件下黄嘌呤氧化酶形式记录。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "Uric acid",
+          "smiles": "O=C1NC(=O)C2=C(N1)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Allantoin",
+          "smiles": "NC(=O)NC1NC(=O)NC1=O",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "Hydrogen peroxide",
+          "smiles": "OO",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Urate oxidase",
+        "ec_number": "1.7.3.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus sydowii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "尿囊素后续分解进入中心代谢的步骤未列入本题主链。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Aspergillus sydowii",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "咖啡因/甲基黄嘌呤类化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "咖啡因及甲基黄嘌呤类化合物降解",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "caffeine N-demethylase activity",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "filamentous fungus",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "fungal cell wall; Gram stain not applicable",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "produces conidia",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "soil and plant-associated fungus",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本答案主链止于尿囊素；尿囊素后续分解可产生乙醛酸、尿素/氨并进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "Allantoin catabolism",
+      "summary": "尿囊素可经尿囊素酶、尿囊酸酶等进一步生成乙醛酸和尿素/氨，随后进入中心代谢。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：真菌咖啡因N-去甲基化主链（咖啡因 -> 可可碱 -> 7-甲基黄嘌呤 -> 黄嘌呤）",
+      "claim_scope": [
+        "step:S1",
+        "step:S2",
+        "step:S3",
+        "organism:Aspergillus sydowii"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：真菌嘌呤分解代谢中黄嘌呤氧化酶（EC 1.17.3.2）与尿酸氧化酶（EC 1.7.3.3）",
+      "claim_scope": [
+        "step:S4",
+        "step:S5"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：Aspergillus sydowii为丝状好氧真菌，产分生孢子，常见于土壤/植物环境",
+      "claim_scope": [
+        "organism_profile:ORG_001"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "初始三步N-去甲基化酶缺乏明确EC编号、基因与辅因子信息。",
+    "代表真菌 Aspergillus sydowii 及具体菌株信息基于内部知识，未附具体文献或数据库记录，置信度低。",
+    "黄嘌呤氧化步骤在真菌中可能由黄嘌呤脱氢酶催化；此处按好氧氧化酶形式记录。",
+    "尿囊素之后进入中心代谢的步骤未纳入评分主链。"
+  ]
+}

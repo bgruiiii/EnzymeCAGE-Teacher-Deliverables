@@ -1,0 +1,236 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_008",
+  "pollutant_name_zh": "异菌脲",
+  "pollutant_name_en": "Iprodione",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Iprodione pathway",
+    "is_single_continuous_route": null,
+    "notes": "已按题面指定路线名称返回；具体中间体和催化酶的实验证据不足。"
+  },
+  "route_summary": "好氧微生物降解主链可概括为异菌脲先发生脱异丙基/水解相关转化，形成3-(3,5-dichlorophenyl)imidazolidine-2,4-dione，随后进一步开环并释放3,5-dichloroaniline。具体酶学步骤尚缺乏可核实的单一酶和EC编号证据。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Iprodione",
+          "smiles": "CC(C)N1C(=O)N(c2cc(Cl)cc(Cl)c2)CC1=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-(3,5-Dichlorophenyl)imidazolidine-2,4-dione",
+          "smiles": "O=C1N(c2cc(Cl)cc(Cl)c2)CC(=O)N1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N-deisopropylation or hydrolytic transformation",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该中间体在不同研究中可能以开环或其他水解产物形式报告，且尚无可确认的单一催化酶及EC编号。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-(3,5-Dichlorophenyl)imidazolidine-2,4-dione",
+          "smiles": "O=C1N(c2cc(Cl)cc(Cl)c2)CC(=O)N1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,5-Dichloroaniline",
+          "smiles": "Nc1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Hydrolytic ring opening and deamination-related conversion",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "3,5-Dichloroaniline是异菌脲环境降解中常见的芳胺产物，但该步的直接酶学机制和具体菌株信息未能确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter sp.",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Iprodione pathway",
+        "aerobic microbial degradation",
+        "formation of 3,5-dichloroaniline",
+        "Arthrobacter sp. association"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "缺少可核实的具体菌株、保藏编号和基因组信息。",
+    "缺少可核实的单一催化酶名称及EC编号。",
+    "3-(3,5-Dichlorophenyl)imidazolidine-2,4-dione作为主链中间体的直接证据不足。"
+  ]
+}

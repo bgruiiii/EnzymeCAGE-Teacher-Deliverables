@@ -1,0 +1,86 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_149",
+  "pollutant_name_zh": "L-刀豆氨酸(1+)",
+  "pollutant_name_en": "L-canavanine(1+)",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-canavanine degradation II",
+    "is_single_continuous_route": null,
+    "notes": "该路线的明确主反应为刀豆氨酸的胍基水解，生成L-canaline和尿素；具体降解菌株未确定。"
+  },
+  "route_summary": "L-canavanine经类精氨酸酶催化发生胍基水解，生成L-canaline和urea。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-canavanine(1+)",
+          "smiles": "[NH3+][C@@H](CCCONC(=N)N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-canaline(1+)",
+          "smiles": "[NH3+][C@@H](CCCON)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Urea",
+          "smiles": "C(=O)(N)N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "胍基水解",
+      "enzyme": {
+        "name": "Arginase",
+        "ec_number": "3.5.3.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该反应及酶类别依据L-canavanine作为L-arginine胍基类似物的已知水解反应推断；未确认本路线的具体微生物、菌株及其直接实验证据。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "L-canaline(1+)",
+      "Urea"
+    ],
+    "explanation": "L-canaline可作为后续含氮代谢的入口中间体，但本题指定路线下未确认其后续连续反应。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "L-canavanine水解生成L-canaline和urea",
+        "arginase作为首选酶及EC 3.5.3.1"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未确认L-canavanine degradation II对应的具体微生物和菌株。",
+    "未确认该路线是否包含L-canaline之后的连续降解步骤。"
+  ]
+}

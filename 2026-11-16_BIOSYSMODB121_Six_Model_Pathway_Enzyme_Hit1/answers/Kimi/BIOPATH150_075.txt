@@ -1,0 +1,327 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_075",
+  "pollutant_name_zh": "4-氯苯甲酸根",
+  "pollutant_name_en": "4-Chlorobenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-chlorobenzoate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；本回答按该路线名通常所指的 CoA 依赖型三步主链整理，终点为 4-羟基苯甲酸根。"
+  },
+  "route_summary": "4-氯苯甲酸根先经 ATP 依赖的 CoA 连接形成 4-氯苯甲酰-CoA；随后由 4-chlorobenzoyl-CoA dehalogenase 进行水解脱氯，生成 4-羟基苯甲酰-CoA；最后经 4-hydroxybenzoyl-CoA thioesterase 水解，释放 4-羟基苯甲酸根并再生 CoA。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-chlorobenzoate",
+          "smiles": "O=C([O-])c1ccc(Cl)cc1",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2C3OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C3O",
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)n2cnc3c(N)ncnc23)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCS)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-chlorobenzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)n2cnc3c(N)ncnc23)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCSC(=O)c4ccc(Cl)cc4)O",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "Nc1ncnc2c1ncn2C3OC(COP(=O)(O)O)C(O)C3O",
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "[O-]P(=O)([O-])OP(=O)([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP-dependent acyl-CoA formation",
+      "enzyme": {
+        "name": "4-chlorobenzoate-CoA ligase",
+        "ec_number": "6.2.1.33",
+        "gene_or_protein": "fcbA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CBS-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-chlorobenzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)n2cnc3c(N)ncnc23)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCSC(=O)c4ccc(Cl)cc4)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)n2cnc3c(N)ncnc23)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCSC(=O)c4ccc(O)cc4)O",
+          "role": "main"
+        },
+        {
+          "name": "chloride",
+          "smiles": "[Cl-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic dehalogenation",
+      "enzyme": {
+        "name": "4-chlorobenzoyl-CoA dehalogenase",
+        "ec_number": "3.8.1.6",
+        "gene_or_protein": "fcbB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CBS-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)n2cnc3c(N)ncnc23)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCSC(=O)c4ccc(O)cc4)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoate",
+          "smiles": "O=C([O-])c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)n2cnc3c(N)ncnc23)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCS)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "thioester hydrolysis",
+      "enzyme": {
+        "name": "4-hydroxybenzoyl-CoA thioesterase",
+        "ec_number": "3.1.2.23",
+        "gene_or_protein": "fcbC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CBS-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "CBS-3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "4-chlorobenzoate catabolic substrate utilization",
+          "raw_text": "Isolation and characterization of the three polypeptide components of 4-chlorobenzoate dehalogenase from Pseudomonas sp. strain CBS-3.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "chlorinated benzoate degradation by the CoA-dependent 4-chlorobenzoate dehalogenase pathway",
+          "raw_text": "Isolation and characterization of the three polypeptide components of 4-chlorobenzoate dehalogenase from Pseudomonas sp. strain CBS-3.",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-chlorobenzoate dehalogenase-system activity",
+          "raw_text": "the three polypeptide components of 4-chlorobenzoate dehalogenase from Pseudomonas sp. strain CBS-3",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本路线终点 4-羟基苯甲酸根通常还需进入后续 4-hydroxybenzoate degradation 或 protocatechuate 支路；该下游过程不属于题面指定的三步主链，故未填中心代谢物。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Chang KH, Liang PH, Beck W, Scholten JD, Dunaway-Mariano D. Isolation and characterization of the three polypeptide components of 4-chlorobenzoate dehalogenase from Pseudomonas sp. strain CBS-3. Biochemistry. 1992;31(24):5605-5610.",
+      "claim_scope": [
+        "Pseudomonas sp. CBS-3 的 4-chlorobenzoate 至 4-hydroxybenzoate 三酶主链",
+        "4-chlorobenzoate-CoA ligase、4-chlorobenzoyl-CoA dehalogenase 和 4-hydroxybenzoyl-CoA thioesterase",
+        "ORG_001 的 F7、F8 和 F9 性状"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；所列三步 CoA 依赖型转化本身不直接消耗分子氧，因此 route_scope.oxygen_condition 保留为 null。",
+    "所引路线文献中的 Pseudomonas sp. CBS-3 未解析到可核验的物种级名称、NCBI TaxID、菌种保藏编号及完整生理性状，相关字段均如实填 null。"
+  ]
+}

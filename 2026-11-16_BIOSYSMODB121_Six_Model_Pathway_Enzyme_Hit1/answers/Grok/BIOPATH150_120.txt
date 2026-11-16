@@ -1,0 +1,402 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_120",
+  "pollutant_name_zh": "6-磺酸基-d-奎诺糖",
+  "pollutant_name_en": "6-Sulfo-d-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。sulfoquinovose degradation II按发现顺序与途径差异对应Pseudomonas putida SQ1的磺基-Entner-Doudoroff（sulfo-ED）主链：脱氢、内酯水解、脱水、醛醇裂解，再将(S)-3-磺基乳醛氧化为排出的(S)-3-磺基乳酸。途径反应不直接消耗氧气。各步EC与基因符号未能确认，未填写。"
+  },
+  "route_summary": "6-磺基-D-喹诺糖经sulfo-ED主链先被NAD+依赖脱氢酶氧化为6-脱氧-6-磺基-D-葡萄糖酸-1,5-内酯，水解为6-脱氧-6-磺基-D-葡萄糖酸，再脱水生成2-酮-3-脱氧-6-磺基-D-葡萄糖酸；醛醇裂解产生丙酮酸与(S)-3-磺基乳醛，后者被NAD+依赖醛脱氢酶氧化为(S)-3-磺基乳酸。丙酮酸进入中心代谢，磺基乳酸通常排出。代表菌为Pseudomonas putida SQ1。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-sulfo-beta-D-quinovose",
+          "smiles": "OS(=O)(=O)C[C@H]1O[C@@H](O)[C@H](O)[C@@H](O)[C@@H]1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-deoxy-6-sulfo-D-glucono-1,5-lactone",
+          "smiles": "OS(=O)(=O)C[C@H]1OC(=O)[C@H](O)[C@@H](O)[C@@H]1O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+依赖的脱氢",
+      "enzyme": {
+        "name": "sulfoquinovose dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "6-deoxy-6-sulfo-D-glucono-1,5-lactone",
+          "smiles": "OS(=O)(=O)C[C@H]1OC(=O)[C@H](O)[C@@H](O)[C@@H]1O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-deoxy-6-sulfo-D-gluconate",
+          "smiles": "OS(=O)(=O)C[C@@H](O)[C@@H](O)[C@H](O)[C@@H](O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "内酯水解",
+      "enzyme": {
+        "name": "6-deoxy-6-sulfogluconolactonase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "内酯也可缓慢自发水解；主链按基因簇中的内酯酶催化步骤填写。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "6-deoxy-6-sulfo-D-gluconate",
+          "smiles": "OS(=O)(=O)C[C@@H](O)[C@@H](O)[C@H](O)[C@@H](O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-keto-3-deoxy-6-sulfo-D-gluconate",
+          "smiles": "OS(=O)(=O)C[C@@H](O)[C@@H](O)CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱水",
+      "enzyme": {
+        "name": "6-deoxy-6-sulfogluconate dehydratase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-keto-3-deoxy-6-sulfo-D-gluconate",
+          "smiles": "OS(=O)(=O)C[C@@H](O)[C@@H](O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "(S)-3-sulfolactaldehyde",
+          "smiles": "O=C[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛醇裂解",
+      "enzyme": {
+        "name": "2-keto-3-deoxy-6-sulfogluconate aldolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "(S)-3-sulfolactaldehyde",
+          "smiles": "O=C[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-3-sulfolactate",
+          "smiles": "O=C(O)[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+依赖的醛脱氢",
+      "enzyme": {
+        "name": "3-sulfolactaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "P. putida SQ1提取液具有将3-磺基乳醛NAD+依赖氧化为3-磺基乳酸的活性，且磺基乳酸为排出终产物；具体基因归属确认度低于前四步。若目标数据库把本步划为下游而非degradation II主链，则主链止于S4。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "SQ1",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以6-磺基-D-喹诺糖（sulfoquinovose）作为唯一碳源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "通过sulfo-ED途径降解6-磺基-D-喹诺糖，生成丙酮酸并排出3-磺基乳酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有NAD+依赖的磺基喹诺糖脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "S4产生的丙酮酸可进入丙酮酸脱氢、TCA循环或糖异生等中心代谢。(S)-3-磺基乳酸不直接进入中心碳代谢，通常被排出。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-sulfolactate community degradation",
+      "summary": "排出的(S)-3-磺基乳酸可由其他微生物进一步降解并释放亚硫酸盐；该脱硫过程不属于本路线主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Felux et al. 2015, Proc. Natl. Acad. Sci. U.S.A., Entner-Doudoroff pathway for sulfoquinovose degradation in Pseudomonas putida SQ1；及后续对sulfo-ED途径的生化描述。本次未重新检索原文。",
+      "claim_scope": ["main_route_reactions", "enzyme_names", "organism_identity", "carbon_utilization", "degradation_capacity", "dehydrogenase_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida物种水平分类与生理共识（革兰氏阴性杆状、不产芽孢、专性好氧、有氧呼吸以分子氧为末端电子受体）；非菌株SQ1的实测记录。",
+      "claim_scope": ["oxygen_tolerance", "respiration", "cell_morphology", "gram_stain", "sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "路线名sulfoquinovose degradation II按与sulfo-EMP（degradation I）相区分的sulfo-ED途径解释；若目标数据库的步骤边界不含S5，主链应止于丙酮酸与(S)-3-磺基乳醛。",
+    "各步EC编号与基因符号未能确认，已置null，未用近似编号占位。",
+    "ncbi_taxid 303为物种Pseudomonas putida的TaxID，不是已确认的菌株SQ1独立TaxID。",
+    "菌株SQ1的温度、pH、盐度、保藏号、运动性、基因组登录号和栖息地广适性缺乏可引用精确记录，相应性状为null。",
+    "代谢物SMILES立体化学由D-葡萄糖标准写法与碳骨架映射推导，未经数据库逐条核对；NAD+与NADH未给出SMILES。"
+  ]
+}

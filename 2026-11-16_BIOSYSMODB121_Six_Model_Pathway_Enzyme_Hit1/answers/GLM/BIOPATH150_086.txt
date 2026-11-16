@@ -1,0 +1,470 @@
+
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_086",
+  "pollutant_name_zh": "(S)-2,3-二羟基丙烷-1-磺酸根",
+  "pollutant_name_en": "(S)-2,3-dihydroxypropane-1-sulfonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "3-sulfopropanediol degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，按要求保持null。该路线为氧化型3-磺酸丙二醇(DHPS)降解主链，以NAD+为电子受体，通常在好氧海洋玫瑰杆菌中运行；chosen_route_name按题面要求原样填写，未改选其他路线。"
+  },
+  "route_summary": "指定路线'3-sulfopropanediol degradation I'是(S)-2,3-二羟基丙烷-1-磺酸根（DHPS）的氧化降解主链：(S)-3-磺酸丙二醇脱氢酶先将DHPS氧化为(S)-3-磺基乳醛；3-磺基乳醛脱氢酶再将其氧化为(S)-3-磺基乳酸；随后由3-磺基乳酸脱氢酶氧化为磺基丙酮酸，经磺基丙酮酸脱羧酶脱羧生成磺基乙醛并释放CO2；最后由磺基乙醛乙酰转移酶进行磷酸解断裂C–S键，生成乙酰磷酸并释放亚硫酸盐。乙酰磷酸经乙酰CoA/乙酸进入中心碳代谢，亚硫酸盐好氧下氧化为硫酸盐，实现该C3-磺酸盐的脱硫矿化。代表执行菌为海洋玫瑰杆菌Ruegeria pomeroyi DSS-3（曾名Silicibacter pomeroyi DSS-3）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(S)-2,3-dihydroxypropane-1-sulfonate",
+          "smiles": "OC[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]2O[C@H]([C@H](O)[C@@H]2O)n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-3-sulfolactaldehyde",
+          "smiles": "O=C[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C=CC1)[C@H]2O[C@@H]([C@H](O)[C@@H]2O)COP(=O)([O-])OP(=O)([O-])OC[C@@H]3O[C@@H]([C@H](O)[C@@H]3O)n3cnc4c(N)ncnc34",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醇氧化（NAD+依赖的伯醇脱氢生成醛）",
+      "enzyme": {
+        "name": "(S)-3-sulfopropanediol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "酶的规范命名、EC编号与基因名未能可靠核实（填null）；该步将DHPS末端伯醇氧化为磺基乳醛的反应化学与已知磺酸盐降解文献一致。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-3-sulfolactaldehyde",
+          "smiles": "O=C[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]2O[C@H]([C@H](O)[C@@H]2O)n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-3-sulfolactate",
+          "smiles": "O=C(O)[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C=CC1)[C@H]2O[C@@H]([C@H](O)[C@@H]2O)COP(=O)([O-])OP(=O)([O-])OC[C@@H]3O[C@@H]([C@H](O)[C@@H]3O)n3cnc4c(N)ncnc34",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛氧化（NAD+依赖的醛脱氢，加水生成羧酸）",
+      "enzyme": {
+        "name": "3-sulfolactaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "酶的规范命名、EC编号与基因名未能可靠核实（填null）。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-3-sulfolactate",
+          "smiles": "O=C(O)[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]2O[C@H]([C@H](O)[C@@H]2O)n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "sulfopyruvate",
+          "smiles": "OC(=O)C(=O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C=CC1)[C@H]2O[C@@H]([C@H](O)[C@@H]2O)COP(=O)([O-])OP(=O)([O-])OC[C@@H]3O[C@@H]([C@H](O)[C@@H]3O)n3cnc4c(N)ncnc34",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "α-羟酸氧化脱氢（2-羟酸→2-酮酸）",
+      "enzyme": {
+        "name": "3-sulfolactate dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步底物/产物（3-磺基乳酸→磺基丙酮酸）较确定，但具体酶学机制不确定（可能为NAD+依赖脱氢，也可能经CoA活化中间体），EC编号与基因名填null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "sulfopyruvate",
+          "smiles": "OC(=O)C(=O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "sulfoacetaldehyde",
+          "smiles": "O=CCS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧（释放CO2，3-碳磺酸丙酮酸转为2-碳磺基乙醛）",
+      "enzyme": {
+        "name": "sulfopyruvate decarboxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "酶名按磺酸盐降解文献惯例给出（通常为硫胺素焦磷酸依赖脱羧酶），其EC编号未能可靠回忆（填null）。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "sulfoacetaldehyde",
+          "smiles": "O=CCS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "phosphate",
+          "smiles": "OP(=O)(O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl phosphate",
+          "smiles": "CC(=O)OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "sulfite",
+          "smiles": "O=S(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "C–S键磷酸解（脱磺化：磺基乙醛裂解为乙酰磷酸与亚硫酸盐）",
+      "enzyme": {
+        "name": "sulfoacetaldehyde acetyltransferase (Xsc)",
+        "ec_number": "2.3.3.15",
+        "gene_or_protein": "xsc",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "Xsc的EC编号2.3.3.15按内部知识记忆填写，未直接核验；基因名xsc为文献通用名。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Ruegeria pomeroyi",
+      "strain": "DSS-3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F1_oxygen_tolerance": {
+          "value": "好氧（依赖氧生长的海洋好氧异养菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温（海洋表层水温范围）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "海洋型（海水盐度环境，海洋细菌）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧化能有机营养呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "化能有机营养；可利用多种海源溶存有机物（含硫化合物如DMSP、牛磺酸及氨基酸等），并可利用2,3-二羟基丙烷-1-磺酸根(DHPS)作为碳源/硫源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "Roseobacter进化枝典型广谱海洋异养菌，可代谢藻源溶存有机物并降解多种有机磺酸盐（如牛磺酸、DHPS等），将磺酸基中的硫转化为无机硫",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "本路线涉及的活性：DHPS脱氢酶、磺基乳醛脱氢酶、磺基乳酸脱氢酶、磺基丙酮酸脱羧酶及磺基乙醛乙酰转移酶；另有DMSP脱甲基酶等硫代谢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（α-变形菌纲Rhodobacteraceae，典型含外膜的双层细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢/内生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性高：海洋普遍分布种，表层海水、沿岸水域与浮游植物藻际均可检出（Roseobacter进化枝广布成员）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "acetyl phosphate",
+      "sulfite",
+      "carbon dioxide"
+    ],
+    "explanation": "乙酰磷酸是进入中心代谢的碳骨架节点：经磷酸转乙酰酶生成乙酰CoA进入TCA循环等中央碳代谢，或经乙酸激酶转化为乙酸并偶联产能；磺酸基以亚硫酸盐形式释放，好氧下进一步氧化为硫酸盐（可被同化或外排）；碳骨架另以CO2形式失去一个碳。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "acetyl phosphate → acetyl-CoA / acetate",
+      "summary": "乙酰磷酸经磷酸转乙酰酶（EC 2.3.1.8）生成乙酰CoA进入中心碳代谢，或经乙酸激酶（EC 2.7.2.1）转化为乙酸并合成ATP。"
+    },
+    {
+      "name": "sulfite → sulfate",
+      "summary": "好氧条件下亚硫酸盐经酶促或化学氧化生成硫酸盐，完成有机磺酸盐的脱硫矿化；硫酸盐可被同化利用或排出体外。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "路线步骤化学反应与酶步骤归属（S1–S5：DHPS→3-磺基乳醛→3-磺基乳酸→磺基丙酮酸→磺基乙醛→乙酰磷酸+亚硫酸盐）",
+        "各步酶名命名"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "海洋玫瑰杆菌（Ruegeria pomeroyi DSS-3等）利用藻源磺酸盐DHPS的文献知识（凭记忆，未直接核验）",
+      "claim_scope": [
+        "organism:Ruegeria pomeroyi DSS-3 作为该路线执行菌",
+        "DHPS作为碳源/硫源被利用"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "González et al. 2003, Int J Syst Evol Microbiol（Silicibacter pomeroyi sp. nov., DSS-3 种描述）；Moran et al. 2004, Nature（DSS-3 基因组）——凭记忆，未直接核验",
+      "claim_scope": [
+        "R. pomeroyi DSS-3 分类与一般生物学性状（革兰氏阴性、好氧、海洋、不产芽孢、中温、海洋广布）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB/ExplorEnz",
+      "record_id": "EC 2.3.3.15",
+      "locator": null,
+      "claim_scope": [
+        "磺基乙醛乙酰转移酶的EC编号"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "路线名称按题面原样填写为'3-sulfopropanediol degradation I'；其步骤内容按对已知磺酸盐降解文献的内部知识重建，未能直接核验原始数据库记录。",
+    "首选菌Ruegeria pomeroyi DSS-3（曾名Silicibacter pomeroyi）基于海洋玫瑰杆菌降解DHPS的文献记忆；若参考路线采用其他菌株（例如其他玫瑰杆菌属种），则本答案的菌项会偏离，相关置信度已降为medium。",
+    "S1–S4各步酶的EC编号与基因名未能可靠回忆，均填null；S5按记忆填EC 2.3.3.15（medium置信度）。",
+    "S3（(S)-3-磺基乳酸→磺基丙酮酸）的具体酶学机制（直接NAD+依赖脱氢还是经CoA活化中间体）不确定。",
+    "R. pomeroyi DSS-3的NCBI TaxID、保藏机构编号、基因组登录号、基因组大小、GC含量、最适温度/pH/盐度等数值未核实，一律填null。",
+    "NAD+/NADH等辅因子的SMILES按标准结构书写，未逐一程序化校验。"
+  ]
+}

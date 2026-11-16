@@ -1,0 +1,317 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_012",
+  "pollutant_name_zh": "硝化甘油",
+  "pollutant_name_en": "Nitroglycerin",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Nitroglycerin degradation pathway",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "硝化甘油在好氧条件下经硝酸酯还原酶催化的连续脱硝反应，依次生成1,2-二硝基甘油、1-单硝基甘油和甘油，并释放亚硝酸盐。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Nitroglycerin",
+          "smiles": "[O-][N+](=O)OCC(CO[N+](=O)[O-])O[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "1,2-Dinitroglycerin",
+          "smiles": "OCC(CO[N+](=O)[O-])O[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Nitrite",
+          "smiles": "[O-]N=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "nitrate ester reduction",
+      "enzyme": {
+        "name": "Pentaerythritol tetranitrate reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Enterobacter cloacae",
+        "strain": "PB2",
+        "ncbi_taxid": 550,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "1,2-Dinitroglycerin",
+          "smiles": "OCC(CO[N+](=O)[O-])O[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-Mononitroglycerin",
+          "smiles": "OCC(O)CO[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Nitrite",
+          "smiles": "[O-]N=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "nitrate ester reduction",
+      "enzyme": {
+        "name": "Pentaerythritol tetranitrate reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Enterobacter cloacae",
+        "strain": "PB2",
+        "ncbi_taxid": 550,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "1-Mononitroglycerin",
+          "smiles": "OCC(O)CO[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Glycerol",
+          "smiles": "OCC(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "Nitrite",
+          "smiles": "[O-]N=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "nitrate ester reduction",
+      "enzyme": {
+        "name": "Pentaerythritol tetranitrate reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Enterobacter cloacae",
+        "strain": "PB2",
+        "ncbi_taxid": 550,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Enterobacter cloacae",
+      "strain": "PB2",
+      "ncbi_taxid": 550,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用多种碳水化合物和有机酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解硝化甘油和季戊四醇四硝酸酯",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "PETN还原酶/硝酸酯还原酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "通过周生鞭毛运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "存在于土壤、水和肠道；栖息地广泛",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Glycerol"
+    ],
+    "explanation": "甘油可进入糖酵解/糖异生等中心代谢途径。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "Glycerol metabolism",
+      "summary": "甘油进一步进入糖酵解/糖异生及细胞碳代谢。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "nitroglycerin degradation pathway",
+        "PETN reductase activity",
+        "Enterobacter cloacae PB2 degrades nitroglycerin"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Enterobacter cloacae PB2 traits"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

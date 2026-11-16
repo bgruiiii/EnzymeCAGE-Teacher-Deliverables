@@ -1,0 +1,399 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_060",
+  "pollutant_name_zh": "2-铵基-3-(3-氧丙-1-烯基)丁-2-烯二酸根",
+  "pollutant_name_en": "2-Azaniumyl-3-(3-oxoprop-1-enyl)but-2-enedioate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-amino-3-carboxymuconate semialdehyde degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。本主链四步为脱羧、NAD+依赖的醛脱氢、水解脱氨和脱羧，反应式本身不消耗分子氧；该子路线通常嵌在好氧的2-硝基苯甲酸或色氨酸分解中，其上游3-羟基邻氨基苯甲酸开环需要双加氧。"
+  },
+  "route_summary": "2-氨基-3-羧基粘康酸半醛先由EC 4.1.1.45脱羧为2-氨基粘康酸半醛，再由EC 1.2.1.32以NAD+氧化为2-氨基粘康酸，随后由EC 3.5.99.5水解脱氨生成4-草酰巴豆酸（(3E)-2-氧代己-3-烯二酸），最后由EC 4.1.1.77脱羧得到2-羟基戊-2,4-二烯酸。前三步可对应Pseudomonas fluorescens KU-7的nba途径；末步为间位裂解下游的经典反应，但本回答不能把该酶可靠归属到同一菌株的已鉴定蛋白。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-Azaniumyl-3-(3-oxoprop-1-enyl)but-2-enedioate",
+          "smiles": "[O-]C(=O)C([NH3+])=C(C=CC=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminomuconate semialdehyde",
+          "smiles": "[O-]C(=O)C([NH3+])=CC=CC=O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "2-amino-3-carboxymuconate-6-semialdehyde decarboxylase",
+        "ec_number": "4.1.1.45",
+        "gene_or_protein": "nbaD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "KU-7",
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该中间体也可自发环化生成喹啉酸，与本脱羧步骤竞争；此分支不计入主链。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-aminomuconate semialdehyde",
+          "smiles": "[O-]C(=O)C([NH3+])=CC=CC=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)C1OC(COP(=O)([O-])OP(=O)([O-])OCC2OC(n3cnc4c(N)ncnc34)C(O)C2O)C(O)C1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminomuconate",
+          "smiles": "[O-]C(=O)C([NH3+])=CC=CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C=CC1)C1OC(COP(=O)([O-])OP(=O)([O-])OCC2OC(n3cnc4c(N)ncnc34)C(O)C2O)C(O)C1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛脱氢",
+      "enzyme": {
+        "name": "2-aminomuconate-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.32",
+        "gene_or_protein": "nbaE",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "KU-7",
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "EC编号对应关系可靠；KU-7中基因符号nbaE依据途径基因簇顺序记忆，未在本次核对原始序列，故微生物对应置信度为medium。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-aminomuconate",
+          "smiles": "[O-]C(=O)C([NH3+])=CC=CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-oxalocrotonate",
+          "smiles": "[O-]C(=O)C(=O)/C=C/CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱氨",
+      "enzyme": {
+        "name": "2-aminomuconate deaminase",
+        "ec_number": "3.5.99.5",
+        "gene_or_protein": "nbaF",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "KU-7",
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "IUBMB将产物写作4-草酰巴豆酸；部分文献把初产物写作2-羟基粘康酸（烯醇式）。二者为酮-烯醇互变异构，其间可能还有EC 5.3.2.6或自发互变，本主链未单列该步。基因符号nbaF未经本次原始文献复核。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-oxalocrotonate",
+          "smiles": "[O-]C(=O)C(=O)/C=C/CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "4-oxalocrotonate decarboxylase",
+        "ec_number": "4.1.1.77",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": null,
+      "uncertainty": "该化学转化由EC 4.1.1.77催化，经典表征来自甲苯/儿茶酚间位裂解途径，而非已确证的ACMS降解菌株纯化酶。KU-7能降解2-硝基苯甲酸，提示下游活性存在，但不能据此把具体酶和菌株写成已证实对应，故微生物置null。产物烯醇式与2-氧戊-4-烯酸互变异构。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas fluorescens",
+      "strain": "KU-7",
+      "ncbi_taxid": 294,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "2-硝基苯甲酸",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解2-硝基苯甲酸，经3-羟基邻氨基苯甲酸和2-氨基-3-羧基粘康酸半醛继续分解",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2-氨基-3-羧基粘康酸-6-半醛脱羧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA"],
+    "explanation": "2-羟基戊-2,4-二烯酸不属于中心代谢物。其下游经水合和醛缩裂解可生成丙酮酸与乙醛，乙醛再转化为乙酰辅酶A后进入中心代谢；该段不在本题指定主链内。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2-hydroxypentadienoate lower pathway to pyruvate and acetyl-CoA",
+      "summary": "2-羟基戊-2,4-二烯酸可由EC 4.2.1.80水合为4-羟基-2-氧戊酸，再由EC 4.1.3.39裂解为丙酮酸和乙醛；乙醛可氧化为乙酰辅酶A。此为间位裂解下游途径，不属于本题评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "spontaneous cyclization to quinolinate",
+      "summary": "2-氨基-3-羧基粘康酸半醛可自发环化生成喹啉酸，进入NAD生物合成，与EC 4.1.1.45脱羧降解竞争。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "spontaneous cyclization to picolinate",
+      "summary": "2-氨基粘康酸半醛可自发环化生成吡啶甲酸，从而偏离经脱氢酶进入2-氨基粘康酸的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": "EC 4.1.1.45",
+      "locator": "IUBMB/ExplorEnz EC 4.1.1.45；反应为2-氨基-3-羧基粘康酸半醛脱羧生成2-氨基粘康酸半醛与CO2",
+      "claim_scope": ["S1_reaction", "S1_enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": "EC 1.2.1.32",
+      "locator": "IUBMB/ExplorEnz EC 1.2.1.32；2-氨基粘康酸半醛脱氢酶，NAD+与水参与，生成2-氨基粘康酸与NADH",
+      "claim_scope": ["S2_reaction", "S2_enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": "EC 3.5.99.5",
+      "locator": "IUBMB/ExplorEnz EC 3.5.99.5；2-氨基粘康酸脱氨酶，水解脱氨生成4-草酰巴豆酸与氨",
+      "claim_scope": ["S3_reaction", "S3_enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": "EC 4.1.1.77",
+      "locator": "IUBMB/ExplorEnz EC 4.1.1.77；4-草酰巴豆酸脱羧酶生成2-羟基戊-2,4-二烯酸与CO2",
+      "claim_scope": ["S4_reaction", "S4_enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas fluorescens KU-7的2-硝基苯甲酸nba降解簇；回忆来源包括Hasegawa等FEMS Microbiol Lett 2000及Muraki等关于NbaD的研究，本次未重读原文",
+      "claim_scope": ["S1_microorganism", "S2_microorganism", "S3_microorganism", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas fluorescens物种水平细胞生物学常识，非KU-7菌株实测数据",
+      "claim_scope": ["F1_oxygen_tolerance", "F2_temperature", "F6_respiration_electron_acceptor", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件题面为null，未改判为aerobic；本子路线各步不直接消耗O2。",
+    "ncbi_taxid 294是Pseudomonas fluorescens的物种编号，未见KU-7独立TaxID。",
+    "nbaE、nbaF基因符号依据KU-7基因簇功能顺序记忆，未经本次序列或原文复核。",
+    "脱氨产物与脱羧底物之间可能存在酮-烯醇互变（2-羟基粘康酸与4-草酰巴豆酸），文献有时单列EC 5.3.2.6；IUBMB将EC 3.5.99.5产物直接写作4-草酰巴豆酸，故主链未单列互变步骤。",
+    "EC 4.1.1.77是到达2-羟基戊二烯酸的正确酶，但其在ACMS降解菌中的菌株级实验归属未确证，故S4微生物为null，且不把KU-7标为完整途径代表菌。",
+    "KU-7的温度数值、pH、盐度、保藏编号、基因组登录号和栖息地广适性无可靠来源，相关性状为null或仅保留物种水平定性描述。"
+  ]
+}

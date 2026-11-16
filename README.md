@@ -1,5 +1,13 @@
 # EnzymeCAGE Teacher Deliverables
 
+## 六模型降解路径与酶预测 Hit@1 — 2026-11-16
+
+- [汇总结果与原答入口](2026-11-16_BIOSYSMODB121_Six_Model_Pathway_Enzyme_Hit1/)
+- [整链、单步反应、Gold目标酶的Hit@1与评价方法](2026-11-16_BIOSYSMODB121_Six_Model_Pathway_Enzyme_Hit1/REPORT.md)
+- [Excel总表](2026-11-16_BIOSYSMODB121_Six_Model_Pathway_Enzyme_Hit1/六模型路径与酶_Hit1.xlsx)
+
+复用现成121题×6模型答卷，新增API调用0。每题只有一份首选完整方案，未采集有序Top-3/5候选，故只报告Hit@1；酶始终对照Gold目标反应。
+
 ## Likert V0.5评分结果与V0.4→V0.5变化归因 — 2026-11-15
 
 - [给黄老师的完整报告](2026-11-15_BIOSYSMODB121_Likert_V05_Results_And_Attribution/TEACHER_REPORT.md)

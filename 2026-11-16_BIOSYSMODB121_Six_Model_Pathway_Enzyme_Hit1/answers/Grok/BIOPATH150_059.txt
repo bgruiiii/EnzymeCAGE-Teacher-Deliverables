@@ -1,0 +1,471 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_059",
+  "pollutant_name_zh": "色氨酸",
+  "pollutant_name_en": "Tryptophan",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-tryptophan degradation to 2-amino-3-carboxymuconate semialdehyde",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。该主链含三步加氧反应，生物化学上依赖分子氧。代表菌选用具备完整犬尿氨酸/BNA途径、可连续完成至2-氨基-3-羧基粘康酸半醛的酿酒酵母S288C。"
+  },
+  "route_summary": "L-色氨酸经犬尿氨酸途径转化为2-氨基-3-羧基粘康酸半醛：先由色氨酸2,3-双加氧酶氧化开环生成N-甲酰-L-犬尿氨酸，再水解为L-犬尿氨酸，经3位羟基化得到3-羟基-L-犬尿氨酸，裂解为3-羟基邻氨基苯甲酸后，由3-羟基邻氨基苯甲酸3,4-双加氧酶开环生成2-氨基-3-羧基粘康酸半醛。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-tryptophan",
+          "smiles": "N[C@@H](Cc1c[nH]c2ccccc12)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-formyl-L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1ccccc1NC=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "吲哚环双加氧开环",
+      "enzyme": {
+        "name": "tryptophan 2,3-dioxygenase",
+        "ec_number": "1.13.11.11",
+        "gene_or_protein": "BNA2",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": "S288C",
+        "ncbi_taxid": 559292,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "N-formyl-L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1ccccc1NC=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1ccccc1N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "formate",
+          "smiles": "[O-]C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱甲酰基",
+      "enzyme": {
+        "name": "kynurenine formamidase",
+        "ec_number": "3.5.1.9",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": "S288C",
+        "ncbi_taxid": 559292,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该步酶学归属为EC 3.5.1.9（芳基甲酰胺酶/犬尿氨酸甲酰胺酶）；酿酒酵母中对应基因符号未填写，以避免基因名误配。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1ccccc1N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxy-L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1cccc(O)c1N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "芳香环单加氧羟基化",
+      "enzyme": {
+        "name": "kynurenine 3-monooxygenase",
+        "ec_number": "1.14.13.9",
+        "gene_or_protein": "BNA4",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": "S288C",
+        "ncbi_taxid": 559292,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "途径数据库常用EC 1.14.13.9；部分现行酶学名录已将该酶转移为EC 1.14.14.2。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "3-hydroxy-L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1cccc(O)c1N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxyanthranilate",
+          "smiles": "Nc1c(O)cccc1C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "L-alanine",
+          "smiles": "N[C@@H](C)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磷酸吡哆醛依赖的水解裂解",
+      "enzyme": {
+        "name": "kynureninase",
+        "ec_number": "3.7.1.3",
+        "gene_or_protein": "BNA5",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": "S288C",
+        "ncbi_taxid": 559292,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "3-hydroxyanthranilate",
+          "smiles": "Nc1c(O)cccc1C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-amino-3-carboxymuconate semialdehyde",
+          "smiles": "NC(=C(C=CC=O)C(=O)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "芳香环双加氧开环",
+      "enzyme": {
+        "name": "3-hydroxyanthranilate 3,4-dioxygenase",
+        "ec_number": "1.13.11.6",
+        "gene_or_protein": "BNA1",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": "S288C",
+        "ncbi_taxid": 559292,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "产物SMILES只表示原子连接关系，未指定双键立体化学。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Saccharomyces cerevisiae",
+      "strain": "S288C",
+      "ncbi_taxid": 559292,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "204508"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧，有氧呼吸或发酵",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "优先利用葡萄糖等可发酵糖类",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可通过犬尿氨酸途径转化L-色氨酸并用于NAD生物合成，不是典型广谱异生物质降解菌",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有色氨酸2,3-双加氧酶、犬尿氨酸3-单加氧酶、犬尿氨酸酶和3-羟基邻氨基苯甲酸3,4-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "卵圆形或球形出芽酵母细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "真菌，细胞壁含几丁质和葡聚糖，不适用细菌革兰氏染色分类",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "营养限制条件下可形成子囊孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "GCF_000146045.2",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要适应富糖果实、发酵食品和实验室环境，对糖丰富生境适应较好，但并非跨土壤、水体和极端环境的广适降解菌",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本题主链止于2-氨基-3-羧基粘康酸半醛。在酿酒酵母中，该产物主要经自发环化进入NAD生物合成，不直接汇入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "自发环化为喹啉酸并进入NAD生物合成",
+      "summary": "在酿酒酵母中，2-氨基-3-羧基粘康酸半醛可自发环化为喹啉酸，再经喹啉酸磷酸核糖基转移酶等进入NAD生物合成，这是该路线在该菌中的主要去向。"
+    },
+    {
+      "name": "细菌分解型ACMS脱羧支路",
+      "summary": "在部分细菌中，2-氨基-3-羧基粘康酸半醛可被ACMS脱羧酶（EC 4.1.1.45）转化为2-氨基粘康酸半醛，再进一步生成2-氧代己二酸并可能汇入中心代谢；该去向不属于本题评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "L-犬尿氨酸直接裂解为邻氨基苯甲酸",
+      "summary": "L-犬尿氨酸可被犬尿氨酸酶直接水解为邻氨基苯甲酸和L-丙氨酸，不经过3-羟基化，因此不生成2-氨基-3-羧基粘康酸半醛。该分支见于铜绿假单胞菌等，不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "KEGG",
+      "record_id": "map00380",
+      "locator": "Tryptophan metabolism, kynurenine route to 2-amino-3-carboxymuconate semialdehyde",
+      "claim_scope": ["reaction_sequence", "substrates", "products", "ec_numbers"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "L-tryptophan degradation to 2-amino-3-carboxymuconate semialdehyde",
+      "claim_scope": ["route_name", "reaction_sequence"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "SGD",
+      "record_id": null,
+      "locator": "Saccharomyces cerevisiae BNA pathway: BNA2, BNA4, BNA5, BNA1",
+      "claim_scope": ["enzyme_gene", "microorganism", "enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI",
+      "record_id": "4932",
+      "locator": "Saccharomyces cerevisiae general taxonomy and physiology",
+      "claim_scope": ["taxonomy", "physiology", "morphology", "habitat"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "ATCC",
+      "record_id": "204508",
+      "locator": "Saccharomyces cerevisiae S288C",
+      "claim_scope": ["culture_collection"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI",
+      "record_id": "GCF_000146045.2",
+      "locator": "Saccharomyces cerevisiae S288C reference genome assembly",
+      "claim_scope": ["genome_accession"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "犬尿氨酸3-单加氧酶在部分酶学名录中的现行编号为EC 1.14.14.2，本题采用途径数据库常用的EC 1.14.13.9。",
+    "酿酒酵母甲酰犬尿氨酸甲酰胺酶的基因符号未填写。",
+    "部分假单胞菌、伯克霍尔德菌和贪铜菌也具有该化学主链的若干酶，但许多菌株在L-犬尿氨酸处转向邻氨基苯甲酸；因缺少可核验的全套菌株级证据，未将它们写为逐步代表菌。",
+    "2-氨基-3-羧基粘康酸半醛的双键立体化学未指定，SMILES仅保证连接关系。",
+    "性状中无原文摘录且无确切数值者已置为null，未用近似值占位。"
+  ]
+}

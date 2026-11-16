@@ -1,0 +1,439 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_052",
+  "pollutant_name_zh": "对枯茗酸根",
+  "pollutant_name_en": "p-Cumate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "p-cumate degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。该指定路线含两步分子氧依赖的加氧反应，生物化学上为好氧连续主链，代表菌为Pseudomonas putida F1的cmt途径。"
+  },
+  "route_summary": "对枯茗酸根经好氧cmt主链五步转化为2-羟基戊-2,4-二烯酸根：先2,3-双加氧生成顺式二氢二醇，再NAD+依赖脱氢生成2,3-二羟基对枯茗酸，随后3,4-位外二醇开环、脱去3-位羧基，并水解为2-羟基戊-2,4-二烯酸根与异丁酸根。对伞花烃氧化至对枯茗酸根属于上游cym途径，不计入本题主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "p-cumate",
+          "smiles": "CC(C)c1ccc(C(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis-2,3-dihydroxy-2,3-dihydro-p-cumate",
+          "smiles": "C1(C(=O)[O-])C(O)C(O)C(C(C)C)=CC=1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "芳环2,3-双加氧",
+      "enzyme": {
+        "name": "p-cumate 2,3-dioxygenase",
+        "ec_number": "1.14.12.25",
+        "gene_or_protein": "cmtAa/cmtAb/cmtAc/cmtAd",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "SMILES未标注顺式二氢二醇两个羟基的绝对构型。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "cis-2,3-dihydroxy-2,3-dihydro-p-cumate",
+          "smiles": "C1(C(=O)[O-])C(O)C(O)C(C(C)C)=CC=1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-dihydroxy-p-cumate",
+          "smiles": "CC(C)c1ccc(C(=O)[O-])c(O)c1O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "脱氢",
+      "enzyme": {
+        "name": "cis-2,3-dihydroxy-2,3-dihydro-p-cumate dehydrogenase",
+        "ec_number": "1.3.1.58",
+        "gene_or_protein": "cmtB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2,3-dihydroxy-p-cumate",
+          "smiles": "CC(C)c1ccc(C(=O)[O-])c(O)c1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-3-carboxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)C=CC(=C(O)C(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "外二醇3,4-开环双加氧",
+      "enzyme": {
+        "name": "2,3-dihydroxy-p-cumate 3,4-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": "cmtC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "酶身份对应cmtC，但唯一IUBMB EC编号未能确认，故ec_number为null。产物SMILES按两个羧酸根去质子化、2-位烯醇保持质子化书写。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-3-carboxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)C=CC(=C(O)C(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)C=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "2-hydroxy-3-carboxy-6-oxo-7-methylocta-2,4-dienoate decarboxylase",
+        "ec_number": null,
+        "gene_or_protein": "cmtD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "cmtD被指定为该脱羧酶，但唯一EC编号未能确认，故置null。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)C=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "isobutyrate",
+          "smiles": "CC(C)C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": "cmtE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "cmtE为该水解酶，唯一EC编号未能确认，故置null。异丁酸根是化学计量共产物，为突出主链终点将其标为byproduct。直接产物为烯醇式2-羟基戊-2,4-二烯酸根，可互变异构为2-氧代戊-4-烯酸根。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 351746,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700007"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用p-cumate、p-cymene、toluene、benzene和ethylbenzene作为碳源与能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解甲苯、苯、乙苯、对伞花烃和对枯茗酸等单环芳香烃",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有p-cumate 2,3-dioxygenase（Cmt）和toluene dioxygenase（Tod）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动，极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "CP000712.1",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "营养与生境广适型环境细菌，可在土壤、淡水及芳香烃污染环境中利用多种碳源，而非单一生境专性菌",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA"],
+    "explanation": "主链终点2-羟基戊-2,4-二烯酸根进入间位裂解下游途径，经水合、醛缩和乙醛脱氢生成丙酮酸与乙酰辅酶A。共产物异丁酸根不在该下游途径内，其进入中心代谢的菌株特异性路线本题未展开。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "meta-cleavage lower pathway",
+      "summary": "2-羟基戊-2,4-二烯酸根（可互变异构为2-氧代戊-4-烯酸根）由CmtF类水合酶转化为4-羟基-2-氧代戊酸，再经醛缩酶裂解为丙酮酸与乙醛，乙醛由乙酰化乙醛脱氢酶转化为乙酰辅酶A。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Eaton 1996 J Bacteriol 178:1351-1362, cmt operon of Pseudomonas putida F1; IUBMB EC 1.14.12.25 and EC 1.3.1.58",
+      "claim_scope": ["pathway", "reaction", "enzyme", "microorganism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida species phenotype and strain F1 aromatic-hydrocarbon degradation knowledge",
+      "claim_scope": ["trait", "organism_identity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI",
+      "record_id": "CP000712.1",
+      "locator": "NCBI GenBank CP000712.1 Pseudomonas putida F1 chromosome; NCBI Taxonomy 351746",
+      "claim_scope": ["genome", "taxonomy"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "ATCC",
+      "record_id": "700007",
+      "locator": "ATCC 700007 Pseudomonas putida F1",
+      "claim_scope": ["culture_collection"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "第3至第5步酶的唯一IUBMB EC编号未能确认，已置null，未用近似EC占位。",
+    "顺式二氢二醇的绝对构型未写入SMILES。",
+    "开环产物按双羧酸根、烯醇质子化形式书写，反应式质子计量未逐项配平。",
+    "异丁酸根为水解步化学计量共产物，role标为byproduct以突出主链终点。",
+    "菌株级温度界限、pH、盐度、基因组大小和GC含量无可靠数值，已置null。",
+    "运动性、温度偏好和生境广适性部分依据物种级知识，而非F1逐项实测摘录。",
+    "NADH与NAD+未填写SMILES。"
+  ]
+}

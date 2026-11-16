@@ -1,0 +1,587 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_132",
+  "pollutant_name_zh": "1-甲基-2-吡咯烷酮",
+  "pollutant_name_en": "1-Methyl-2-pyrrolidinone",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "N-methylpyrrolidone degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面给定氧条件为null（未指定）。所选主链首步为依赖分子氧与NAD(P)H的单加氧羟化反应，整体按好氧降解路线描述。"
+  },
+  "route_summary": "1-甲基-2-吡咯烷酮（NMP）的微生物好氧降解主链：NMP首先在吡咯烷酮环5位（N的邻位碳）被单加氧羟化为5-羟基-1-甲基-2-吡咯烷酮（5-HNMP），随后脱氢氧化生成N-甲基琥珀酰亚胺（NMS）；NMS经亚酰胺C–N键水解开环生成N-甲基琥珀酸，再被酰胺水解酶水解为琥珀酸（进入三羧酸循环）并释放甲胺；甲胺经甲基胺脱氢酶氧化为甲醛，甲醛经甲醛脱氢酶氧化为甲酸，甲酸经甲酸脱氢酶氧化为CO2，实现NMP四碳骨架与N-甲基基团的完全矿化。本答案将降解菌统一记为Paracoccus aminophilus JCM 7688（文献证据未能在本回答中直接核验，置信度中等偏低）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "1-Methyl-2-pyrrolidinone",
+          "smiles": "CN1CCCC1=O",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-Hydroxy-1-methyl-2-pyrrolidinone",
+          "smiles": "CN1C(O)CCC1=O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "羟化（单加氧反应，5位加羟基）",
+      "enzyme": {
+        "name": "1-methyl-2-pyrrolidone 5-monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Paracoccus aminophilus",
+        "strain": "JCM 7688",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "5-位羟化（生成5-HNMP）是NMP生物转化的标志性首步，但该单加氧酶的基因、EC编号与生化鉴定信息缺失；羟化亦可发生于其他位置（次要途径）。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "5-Hydroxy-1-methyl-2-pyrrolidinone",
+          "smiles": "CN1C(O)CCC1=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-Methylsuccinimide",
+          "smiles": "CN1C(=O)CCC1=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱氢氧化（半缩醛胺氧化为环状亚酰胺）",
+      "enzyme": {
+        "name": "5-hydroxy-1-methyl-2-pyrrolidone dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Paracoccus aminophilus",
+        "strain": "JCM 7688",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "5-HNMP转化为NMS为公认的代谢转化，但催化机理（特异性脱氢酶还是经非酶平衡/开链醛氧化）尚未充分表征；对应酶与EC未知。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "N-Methylsuccinimide",
+          "smiles": "CN1C(=O)CCC1=O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-Methylsuccinamic acid",
+          "smiles": "O=C(O)CCC(=O)NC",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "亚酰胺C–N键水解（开环生成单酰胺酸）",
+      "enzyme": {
+        "name": "N-methylsuccinimide amidohydrolase (imidase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Paracoccus aminophilus",
+        "strain": "JCM 7688",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "NMS经亚酰胺水解开环为N-甲基琥珀酸的步骤主要基于生化合理性与对NMS去向的推断；具体水解酶（是否为广谱imidase类酶）及其在NMP降解菌中的鉴定证据不足。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "N-Methylsuccinamic acid",
+          "smiles": "O=C(O)CCC(=O)NC",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Succinate",
+          "smiles": "O=C(O)CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Methylamine",
+          "smiles": "CN",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "酰胺键水解（释放甲胺）",
+      "enzyme": {
+        "name": "N-methylsuccinamate amidase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Paracoccus aminophilus",
+        "strain": "JCM 7688",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "催化该步的酰胺酶（基因/EC）未鉴定；产物为琥珀酸与甲胺的推断与Paracoccus属的酰胺/胺代谢能力一致，但缺乏直接文献条目。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "Methylamine",
+          "smiles": "CN",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱氨（脱氢，电子经细胞色素c传递）",
+      "enzyme": {
+        "name": "methylamine dehydrogenase",
+        "ec_number": "1.4.9.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Paracoccus aminophilus",
+        "strain": "JCM 7688",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "甲基胺脱氢酶（MADH）在Paracoccus denitrificans等甲基营养菌中研究充分，但P. aminophilus在NMP降解中是否使用MADH（而非胺氧化酶途径）未经直接证实。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Formate",
+          "smiles": "C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化（脱氢，醛氧化为羧酸）",
+      "enzyme": {
+        "name": "formaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Paracoccus aminophilus",
+        "strain": "JCM 7688",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "甲醛氧化可由谷胱甘肽依赖或非依赖型甲醛脱氢酶等不同酶催化；具体酶型与EC未在本降解体系中确定。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "Formate",
+          "smiles": "C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化（脱氢，C1完全矿化）",
+      "enzyme": {
+        "name": "formate dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Paracoccus aminophilus",
+        "strain": "JCM 7688",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "甲酸脱氢酶的具体亚型（NAD+依赖型或膜结合型等）与EC未确定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Paracoccus aminophilus",
+      "strain": "JCM 7688",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温（mesophilic，推测）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（土壤来源，推测）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "JCM",
+            "accession": "7688"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（化能有机营养）",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以N,N-二甲基甲酰胺（DMF）等N-甲基酰胺类作为碳源/氮源生长，亦报道可利用1-甲基-2-吡咯烷酮（NMP）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解N-甲基酰胺类工业化合物（如DMF、1-甲基-2-吡咯烷酮），并将N-甲基基团经甲胺-C1途径矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "酰胺水解酶类活性（如DMFase样的酰胺/亚酰胺键水解活性）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "不运动（无鞭毛，非游动）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "球形至短杆状（球杆菌形细胞）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤来源的自由生活化能异养菌；Paracoccus属成员普遍分布于土壤、水体与活性污泥等多种生境，栖息地广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Succinate",
+      "Carbon dioxide"
+    ],
+    "explanation": "NMP的四碳骨架经5-位羟化、脱氢、亚酰胺水解与酰胺水解后以琥珀酸形式进入三羧酸（TCA）循环；N-甲基基团以甲胺形式释放，经甲醛、甲酸逐步氧化为CO2，还原当量进入呼吸链，实现污染物的完全矿化与菌体同化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "三羧酸（TCA）循环",
+      "summary": "琥珀酸进入TCA循环，经琥珀酸脱氢酶氧化为延胡索酸并沿循环继续氧化为CO2与H2O，为细胞提供能量与中间代谢物。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "NMP直接内酰胺水解支路",
+      "summary": "NMP的γ-内酰胺环被环酰胺水解酶（γ-内酰胺酶/酰胺酶）直接水解生成4-(甲氨基)丁酸，后者经氧化脱N-甲基生成4-氨基丁酸（GABA）与甲醛，GABA经转氨生成琥珀酸半醛进入TCA循环。该支路在部分降解菌或数据库中列为替代初始途径，微生物中的直接证据有限。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "NMS的Cα羟化支路（哺乳动物类似途径）",
+      "summary": "N-甲基琥珀酰亚胺被（CYP类）羟化为2-羟基-N-甲基琥珀酰亚胺（2-HMSI），随后开环生成N-甲基苹果酰胺酸，再水解释放甲胺并生成苹果酸进入TCA循环。该支路主要见于哺乳动物NMP代谢，微生物降解中的证据不足。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "主降解路线各步反应：NMP→5-HNMP→NMS→N-甲基琥珀酸→琥珀酸+甲胺→甲醛→甲酸→CO2",
+        "各步反应类型与酶学活性命名"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Paracoccus aminophilus JCM 7688为N-甲基酰胺类（含NMP）降解菌",
+        "F7碳源利用、F8广义降解能力、F9酶活性相关主张"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Paracoccus aminophilus的形态与生理性状：革兰氏阴性、不运动、不产芽孢、好氧、中温、土壤来源"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Paracoccus aminophilus模式菌株保藏信息：JCM 7688"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "第一步羟化酶（1-methyl-2-pyrrolidone 5-monooxygenase）的基因、EC编号与生化鉴定信息缺失。",
+    "5-HNMP→NMS一步的酶学性质（特异性脱氢酶还是含非酶过程）未表征，酶与EC未知。",
+    "主链后半段（NMS水解为N-甲基琥珀酸、酰胺水解生成琥珀酸与甲胺）主要基于生化合理性推断，缺少可核查的文献直接证据与EC编号。",
+    "Paracoccus aminophilus JCM 7688作为NMP降解菌的证据来自内部知识回忆，未能提供可核查的数据库/文献条目；若参考数据库使用其他降解菌株，本答案的菌种匹配可能偏离。",
+    "甲胺、甲醛、甲酸的C1氧化步骤（MADH/甲醛脱氢酶/甲酸脱氢酶）在P. aminophilus中的具体酶型未逐一验证；MADH的EC 1.4.9.1为Paracoccus属经典酶学的归属。",
+    "未指定氧条件（null）；主链按好氧路线作答，未评价该化合物在厌氧（如反硝化/产甲烷/硫酸盐还原）条件下的替代降解路线。"
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_020",
+  "pollutant_name_zh": "甲苯",
+  "pollutant_name_en": "Toluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Toluene degradation to benzoate",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "在好氧条件下，甲苯经 TOL 质粒编码的上游途径依次被氧化为苯甲醇、苯甲醛，最终生成苯甲酸（benzoate）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Toluene",
+          "smiles": "Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Benzyl alcohol",
+          "smiles": "OCc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation (methyl hydroxylation)",
+      "enzyme": {
+        "name": "xylene monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": "xylM/xylA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "xylene monooxygenase 的精确 EC 编号未确定"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Benzyl alcohol",
+          "smiles": "OCc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Benzaldehyde",
+          "smiles": "O=Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation (dehydrogenation)",
+      "enzyme": {
+        "name": "benzyl alcohol dehydrogenase",
+        "ec_number": "1.1.1.90",
+        "gene_or_protein": "xylB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "Benzaldehyde",
+          "smiles": "O=Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Benzoate",
+          "smiles": "O=C([O-])c1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation (dehydrogenation)",
+      "enzyme": {
+        "name": "benzaldehyde dehydrogenase",
+        "ec_number": "1.2.1.28",
+        "gene_or_protein": "xylC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温菌（mesophilic）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic (obligate aerobe)",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen (O2)"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes a wide range of organic compounds including toluene, benzyl alcohol, benzaldehyde, and benzoate",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades aromatic hydrocarbons such as toluene via the TOL plasmid upper pathway to benzoate",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "xylene monooxygenase, benzyl alcohol dehydrogenase, and benzaldehyde dehydrogenase activities",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile by polar flagella",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "widely distributed in soil, water, and rhizosphere; versatile saprophyte",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Benzoate"
+    ],
+    "explanation": "苯甲酸进入β-酮己二酸途径进一步代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "toluene degradation to benzoate",
+        "xylene monooxygenase",
+        "benzyl alcohol dehydrogenase",
+        "benzaldehyde dehydrogenase",
+        "Pseudomonas putida mt-2 TOL pathway"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida mt-2 general traits"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "xylene monooxygenase 的精确 EC 编号未在回答中确定",
+    "Pseudomonas putida mt-2 的 NCBI TaxID 未指定"
+  ]
+}

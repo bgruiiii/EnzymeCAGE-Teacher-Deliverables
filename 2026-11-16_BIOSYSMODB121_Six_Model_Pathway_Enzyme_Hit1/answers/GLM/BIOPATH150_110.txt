@@ -1,0 +1,487 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_110",
+  "pollutant_name_zh": "2,5-二羟基苯甲酸根",
+  "pollutant_name_en": "2,5-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "gentisate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（照题面填null）；该路线依赖加双氧酶与分子氧，本质为好氧途径。'gentisate degradation II'与'gentisate degradation I'变体编号的确切区分未能完全确证，本答案按文献中最经典的三步主链作答。"
+  },
+  "route_summary": "龙胆酸（gentisate, 2,5-dihydroxybenzoate）在gentisate degradation II主链中经三步反应进入中心代谢：(1) gentisate 1,2-dioxygenase（EC 1.13.11.4）以O2（需Fe2+）将芳香环在1,2位裂解生成maleylpyruvate；(2) maleylpyruvate经谷胱甘肽依赖的maleylpyruvate isomerase发生顺反异构化生成fumarylpyruvate；(3) fumarylpyruvate hydrolase水解C–C键生成fumarate与pyruvate，进入TCA循环。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "gentisate",
+          "smiles": "O=C([O-])c1cc(O)ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "Fe2+",
+          "smiles": "[Fe+2]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylpyruvate",
+          "smiles": "O=C([O-])/C=C\\C(=O)C=C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "芳香环1,2-位加双氧裂解（ring 1,2-cleavage by dioxygenase）",
+      "enzyme": {
+        "name": "gentisate 1,2-dioxygenase",
+        "ec_number": "1.13.11.4",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Klebsiella pneumoniae",
+        "strain": "M5a1",
+        "ncbi_taxid": 573,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "maleylpyruvate",
+          "smiles": "O=C([O-])/C=C\\C(=O)C=C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "glutathione",
+          "smiles": "NC(CCC(=O)O)C(=O)NC(CS)C(=O)NCC(=O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarylpyruvate",
+          "smiles": "O=C([O-])/C=C/C(=O)C=C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "谷胱甘肽依赖的顺反异构化（cis–trans isomerization）",
+      "enzyme": {
+        "name": "maleylpyruvate isomerase",
+        "ec_number": null,
+        "gene_or_protein": "nagM",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "U2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "maleylpyruvate isomerase的EC编号未能确证（可能为EC 5.2.1.x或尚无正式条目），按规则填null；基因名nagM依Pseudomonas sp. U2的nag基因簇文献记忆填写，置信中等。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "fumarylpyruvate",
+          "smiles": "O=C([O-])/C=C/C(=O)C=C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarate",
+          "smiles": "O=C([O-])/C=C/C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "C–C键水解裂解（hydrolytic C–C bond cleavage）",
+      "enzyme": {
+        "name": "fumarylpyruvate hydrolase",
+        "ec_number": "3.7.1.5",
+        "gene_or_protein": "nagN",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "U2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "fumarylpyruvate hydrolase的EC编号3.7.1.5来自记忆（中等置信），建议以BRENDA/KEGG核对；fumarylpyruvate存在酮–烯醇互变，所给SMILES为其中一种互变形式。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Klebsiella pneumoniae",
+      "strain": "M5a1",
+      "ncbi_taxid": 573,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（facultative anaerobe），有氧与无氧条件下均可生长",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸（兼性厌氧，无氧时可进行发酵代谢）",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用3-hydroxybenzoate与gentisate等芳香化合物作为碳源生长，亦利用多种糖类",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经gentisate途径好氧降解3-hydroxybenzoate/gentisate等芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具gentisate 1,2-dioxygenase（EC 1.13.11.4）、maleylpyruvate isomerase、fumarylpyruvate hydrolase及3-hydroxybenzoate 6-hydroxylase活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "无动力（不运动，无鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状细菌，常单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，具典型外膜，有厚荚膜",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性菌种：既栖生于人体（肠道、呼吸道）等宿主相关生境，也见于水、土壤等环境生境",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "U2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以naphthalene为唯一碳源生长，其中间产物gentisate经nag途径进一步代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经nag基因簇途径好氧降解萘，采用gentisate分支（而非水杨酸/邻苯二酚分支）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具gentisate 1,2-dioxygenase、maleylpyruvate isomerase、fumarylpyruvate hydrolase（nag途径酶系）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_002",
+  "central_metabolism_entry": {
+    "products": [
+      "fumarate",
+      "pyruvate"
+    ],
+    "explanation": "主链终点产物为延胡索酸与丙酮酸：fumarate直接进入三羧酸循环；pyruvate可经丙酮酸脱氢酶复合体生成乙酰辅酶A后进入TCA循环，实现完全矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA cycle（三羧酸循环）",
+      "summary": "fumarate作为TCA循环中间体被延胡索酸酶/苹果酸脱氢酶进一步代谢；pyruvate经氧化脱羧生成乙酰辅酶A进入循环。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": "gentisate degradation II",
+      "locator": null,
+      "claim_scope": [
+        "路线名称 gentisate degradation II",
+        "S1反应：gentisate + O2 → maleylpyruvate（gentisate 1,2-dioxygenase, EC 1.13.11.4）",
+        "S2反应：maleylpyruvate → fumarylpyruvate（maleylpyruvate isomerase）",
+        "S3反应：fumarylpyruvate + H2O → fumarate + pyruvate（fumarylpyruvate hydrolase）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "Fuenmayor et al. 1998, J. Bacteriol.（Pseudomonas sp. strain U2 萘经gentisate降解的nag基因簇研究）",
+      "locator": null,
+      "claim_scope": [
+        "ORG_002具备完整gentisate降解途径（nag基因簇）",
+        "S2的酶maleylpyruvate isomerase（nagM）",
+        "S3的菌与酶（fumarylpyruvate hydrolase, nagN）",
+        "ORG_002好氧与碳源利用性状"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_001（Klebsiella pneumoniae M5a1）经gentisate途径降解3-hydroxybenzoate/gentisate",
+        "S1的菌与gentisate 1,2-dioxygenase存在性",
+        "ORG_001碳源利用与降解能力性状"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_001种级形态/染色/动力/呼吸等教科书性状",
+        "ORG_002属级一般性状（革兰氏阴性、不产芽孢）"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "路线编号：'gentisate degradation II'相对'gentisate degradation I'的确切变体含义未能完全确证（可能涉及maleylpyruvate的替代代谢方式），本答案采用文献中最经典的三步主链。",
+    "maleylpyruvate isomerase的EC编号未能确证（可能为EC 5.2.1.x或尚无正式EC条目），按规则填null。",
+    "fumarylpyruvate hydrolase的EC编号3.7.1.5来自记忆，置信中等，建议以BRENDA/KEGG核对。",
+    "maleylpyruvate与fumarylpyruvate为酮–烯醇互变体系，所给SMILES为其中一种互变形式（顺/反以C2=C3双键几何标记）。",
+    "Pseudomonas sp. U2的种级分类地位与NCBI TaxID未能确证，填null；nagM/nagN基因名依文献记忆填写，置信中等。",
+    "Klebsiella pneumoniae M5a1的菌株级性状（温度、pH、盐度、保藏号、基因组）数据缺失，按null处理；所填性状多为K. pneumoniae种级常识。"
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_129",
+  "pollutant_name_zh": "赤藓糖醇",
+  "pollutant_name_en": "Erythritol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "erythritol degradation II",
+    "is_single_continuous_route": null,
+    "notes": "该路线的具体菌株和部分酶学注释存在不确定性。"
+  },
+  "route_summary": "赤藓糖醇先被磷酸化为赤藓糖醇-1-磷酸，随后被氧化为赤藓酮糖-1-磷酸，进入后续糖代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Erythritol",
+          "smiles": "OCC(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "CC1C(C(C(C(O1)OP(=O)(O)O)O)O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Erythritol 1-phosphate",
+          "smiles": "OCC(O)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "CC1C(C(C(C(O1)OP(=O)(O)O)O)O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磷酸基转移",
+      "enzyme": {
+        "name": "Erythritol kinase",
+        "ec_number": "2.7.1.27",
+        "gene_or_protein": "eryA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Brucella abortus",
+        "strain": "2308",
+        "ncbi_taxid": 444178,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步骤及酶名与布鲁氏菌赤藓糖醇利用途径相符，但具体路线编号对应关系存在不确定性。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Erythritol 1-phosphate",
+          "smiles": "OCC(O)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC1=NC2=C(N1)N=CN2[C@@H]3O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]3O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Erythrulose 1-phosphate",
+          "smiles": "OCC(=O)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC1=NC2=C(N1)N=CN2[C@@H]3O[C@H](COP(=O)(O)O)[C@@H](O)[C@H]3O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醇氧化为酮",
+      "enzyme": {
+        "name": "Erythritol-1-phosphate dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "eryD",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Brucella abortus",
+        "strain": "2308",
+        "ncbi_taxid": 444178,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "该氧化步骤的具体EC编号及底物立体化学形式未能确定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Brucella abortus",
+      "strain": "2308",
+      "ncbi_taxid": 444178,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Erythrulose 1-phosphate"
+    ],
+    "explanation": "赤藓酮糖-1-磷酸可继续进入后续裂解和中心碳代谢步骤，但本题仅返回指定路线的主链范围。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "erythritol degradation II",
+        "Erythritol",
+        "Erythritol 1-phosphate",
+        "Erythritol kinase",
+        "EC 2.7.1.27"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Erythritol 1-phosphate",
+        "Erythrulose 1-phosphate",
+        "Erythritol-1-phosphate dehydrogenase"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Brucella abortus",
+        "strain 2308",
+        "erythritol utilization"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "路线名称与具体数据库条目的对应关系未能独立核实。",
+    "第二步酶的EC编号未确定。",
+    " organism profile 的15项性状缺乏可引用的最强来源，因此均填为null。"
+  ]
+}

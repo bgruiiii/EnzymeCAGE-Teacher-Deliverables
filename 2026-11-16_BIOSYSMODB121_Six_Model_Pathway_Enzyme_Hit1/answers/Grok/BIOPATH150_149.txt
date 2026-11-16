@@ -1,0 +1,218 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_149",
+  "pollutant_name_zh": "L-刀豆氨酸(1+)",
+  "pollutant_name_en": "L-canavanine(1+)",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-canavanine degradation II",
+    "is_single_continuous_route": true,
+    "notes": "氧条件按题面保持null。本主链按与精氨酸酶路线（L-刀豆氨酸→L-刀豆碱+尿素）相区别的水解裂解路线填写：L-刀豆氨酸(1+)水解为L-高丝氨酸与羟基胍(1+)。将该化学路线对应到题面名称L-canavanine degradation II，依据其作为另一条已知裂解路线、并类比MetaCyc中L-精氨酸降解I为精氨酸酶途径的编号习惯；本次未能直接核对数据库途径页面，编号对调风险见uncertainties。该步为水解，不消耗分子氧。"
+  },
+  "route_summary": "指定路线L-canavanine degradation II的主链按单步水解裂解填写：L-刀豆氨酸(1+)在水参与下，由刀豆氨酸水解酶切断烷基–氧键，生成L-高丝氨酸与羟基胍(1+)。L-高丝氨酸为可进入氨基酸代谢的碳骨架产物，羟基胍为等摩尔含氮裂解产物。该酶无可靠EC编号与基因名，原始文献微生物以Streptococcus faecalis记载，现用物种名写作Enterococcus faecalis，菌株保藏号未核实。羟基胍的后续去向未写入评分主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-canavanine(1+)",
+          "smiles": "N[C@@H](CCONC(=[NH2+])N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-homoserine",
+          "smiles": "N[C@@H](CCO)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "hydroxyguanidine(1+)",
+          "smiles": "NC(=[NH2+])NO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "L-canavanine hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Enterococcus faecalis",
+        "strain": null,
+        "ncbi_taxid": 1351,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC编号与基因名未知，故不填写。酶名采用描述性名称L-canavanine hydrolase，不是已核对的官方命名。微生物对应经典文献中的Streptococcus faecalis，此处用现名Enterococcus faecalis，菌株未核实。本步是否即数据库中名为L-canavanine degradation II的全部反应，未能直接核对。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Enterococcus faecalis",
+      "strain": null,
+      "ncbi_taxid": 1351,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "可在6.5% NaCl中生长的耐盐类型，非极端嗜盐菌；最适与极限盐度未核实"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "发酵（兼性厌氧）",
+            "terminal_electron_acceptor": "丙酮酸"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以葡萄糖为主要碳源并进行同型乳酸发酵",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "文献记载的菌株可将L-刀豆氨酸水解为L-高丝氨酸与羟基胍；不能据此认为该物种所有菌株都具备此能力",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "刀豆氨酸水解酶活性，催化L-刀豆氨酸水解为L-高丝氨酸和羟基胍",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "卵圆形球菌，常成对或呈短链",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "生境广适性较强，常见于人及动物肠道，也可出现于土壤、水体和食品等环境，并非专性单一生境微生物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["L-homoserine"],
+    "explanation": "L-高丝氨酸是本路线保留氨基酸碳骨架的产物，可进入苏氨酸/甲硫氨酸相关氨基酸代谢，或经脱氨/转氨生成2-氧代丁酸后汇入中心代谢。羟基胍不直接进入中心碳代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "arginase-like cleavage to L-canaline and urea",
+      "summary": "另一条已知裂解路线：L-刀豆氨酸由精氨酸酶类酶水解为L-刀豆碱（canaline）与尿素，随后刀豆碱再被进一步转化。该分支不是本题指定的L-canavanine degradation II评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：经典生化研究报道一种不依赖外加辅因子的水解酶，将L-刀豆氨酸裂解为L-高丝氨酸与羟基胍；细菌活性来源记载为Streptococcus faecalis（现名Enterococcus faecalis）。文献题录与页码本次未复核，故不写成已核数据库记录。",
+      "claim_scope": ["step_reaction", "enzyme", "microorganism", "degradation_capacity", "enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：Enterococcus faecalis物种水平标准描述（NCBI Taxonomy taxid 1351；革兰氏阳性卵圆球菌、不运动、不产芽孢、兼性厌氧、同型乳酸发酵、中温、可在6.5% NaCl中生长、肠道及环境均可见）。非特定降解菌株的实测档案。",
+      "claim_scope": ["taxonomy", "oxygen_tolerance", "temperature", "salinity", "respiration", "carbon_substrate", "motility", "morphology", "gram", "sporulation", "habitat"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "未能直接核对MetaCyc或同等数据库中名为L-canavanine degradation II的反应列表。当前主链化学采用与精氨酸酶路线不同的水解裂解（L-高丝氨酸+羟基胍），并据此对应途径II；若数据库把精氨酸酶/刀豆碱路线编号为II，则主链化学需要整体替换。",
+    "L-刀豆氨酸水解为L-高丝氨酸与羟基胍的酶没有采用任何EC编号或基因符号，避免把精氨酸酶EC 3.5.3.1误接到本路线。",
+    "原始文献用名Streptococcus faecalis；部分历史上称为S. faecalis的实验菌株后来被改归到其他Enterococcus物种。因此strain、保藏号和基因组一律为null，性状只按Enterococcus faecalis物种水平填写。",
+    "羟基胍是否继续水解为尿素与羟胺，以及尿素酶步骤是否属于该命名路线，证据不足，未写入评分主链。",
+    "SMILES采用胍基质子化、羧基与α-氨基写成中性分子的(1+)形式，以匹配题面L-canavanine(1+)；生理pH下羧基去质子化、α-氨基质子化、胍基质子化，净电荷仍为+1。"
+  ]
+}

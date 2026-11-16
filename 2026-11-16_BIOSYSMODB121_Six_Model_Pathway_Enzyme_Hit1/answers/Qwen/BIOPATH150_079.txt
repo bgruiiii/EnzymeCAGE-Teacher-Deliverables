@@ -1,0 +1,419 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_079",
+  "pollutant_name_zh": "2,2'-二羟基-3,3'-二甲氧基-5,5'-二羧基联苯",
+  "pollutant_name_en": "2,2'-Dihydroxy-3,3'-dimethoxy-5,5'-dicarboxybiphenyl",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "5,5'-dehydrodivanillate degradation",
+    "is_single_continuous_route": null,
+    "notes": "题面指定路线；氧条件未提供。"
+  },
+  "route_summary": "在 Sphingobium sp. SYK-6 中，5,5'-脱氢二香草酸先经 O-去甲基生成三羟基-甲氧基二羧基联苯，再经双加氧酶开环和水解产生 5-羧基香草酸与开环酸；5-羧基香草酸脱羧为香草酸，再经香草酸 O-去甲基酶生成原儿茶酸进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,2'-Dihydroxy-3,3'-dimethoxy-5,5'-dicarboxybiphenyl",
+          "smiles": "COc1cc(C(=O)O)cc(-c2c(O)c(OC)cc(C(=O)O)c2)c1O",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,2',3-trihydroxy-3'-methoxy-5,5'-dicarboxybiphenyl",
+          "smiles": "COc1cc(C(=O)O)cc(-c2c(O)c(O)cc(C(=O)O)c2)c1O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "O-demethylation",
+      "enzyme": {
+        "name": "5,5'-dehydrodivanillate O-demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "还原当量（NADH/NADPH）与完整酶组分未明确列出；SMILES 按联苯取代关系推导。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2,2',3-trihydroxy-3'-methoxy-5,5'-dicarboxybiphenyl",
+          "smiles": "COc1cc(C(=O)O)cc(-c2c(O)c(O)cc(C(=O)O)c2)c1O",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-5-carboxy-6-(4-hydroxy-3-methoxy-5-carboxyphenyl)-6-oxohexa-2,4-dienoic acid",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol dioxygenation",
+      "enzyme": {
+        "name": "2,2',3-trihydroxy-3'-methoxy-5,5'-dicarboxybiphenyl dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "开环产物的精确结构、取代位置与 SMILES 未能完全确证。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxy-5-carboxy-6-(4-hydroxy-3-methoxy-5-carboxyphenyl)-6-oxohexa-2,4-dienoic acid",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-carboxyvanillate",
+          "smiles": "O=C(O)c1cc(OC)c(O)c(C(=O)O)c1",
+          "role": "main"
+        },
+        {
+          "name": "2-hydroxy-5-carboxy-6-oxohexa-2,4-dienoic acid",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2-hydroxy-5-carboxy-6-(4-hydroxy-3-methoxy-5-carboxyphenyl)-6-oxohexa-2,4-dienoate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "水解酶的具体 EC 编号、基因名以及开环酸产物结构未完全确证。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "5-carboxyvanillate",
+          "smiles": "O=C(O)c1cc(OC)c(O)c(C(=O)O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "vanillate",
+          "smiles": "O=C(O)c1cc(OC)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "5-carboxyvanillate decarboxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "5-羧基香草酸脱羧酶的 EC 编号与基因未确证。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "vanillate",
+          "smiles": "O=C(O)c1cc(OC)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C(O)c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "O-demethylation",
+      "enzyme": {
+        "name": "vanillate O-demethylase",
+        "ec_number": "1.14.13.83",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "还原当量（NADH/NADPH）未列出；该步属于下游香草酸转化。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sphingobium sp. SYK-6",
+      "strain": "SYK-6",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": "Sphingomonas/Sphingobium sp. SYK-6 is treated as an aerobic bacterium.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "aerobic bacterium",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以 5,5'-脱氢二香草酸等木质素衍生芳香化合物作为碳源",
+          "raw_text": "Sphingobium sp. SYK-6 degrades 5,5'-dehydrodivanillate as an aromatic carbon source.",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解 5,5'-脱氢二香草酸、香草酸和原儿茶酸等芳香族化合物",
+          "raw_text": "The strain metabolizes lignin-derived aromatic compounds such as dehydrodivanillate and vanillate.",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 5,5'-脱氢二香草酸 O-去甲基酶、芳香环开裂双加氧酶和香草酸 O-去甲基酶活性",
+          "raw_text": "Pathway enzymes include dehydrodivanillate O-demethylase, ring-cleavage dioxygenase and vanillate O-demethylase.",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": "Sphingomonas/Sphingobium are rod-shaped bacteria.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Sphingomonas/Sphingobium are Gram-negative bacteria.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": "Sphingomonas/Sphingobium are non-spore-forming.",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "protocatechuate"
+    ],
+    "explanation": "香草酸经 O-去甲基后生成原儿茶酸，可进入原儿茶酸降解途径并汇入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate degradation",
+      "summary": "原儿茶酸可经 3,4-双加氧酶或 4,5-双加氧酶途径进一步降解并进入中心代谢。"
+    },
+    {
+      "name": "2-hydroxy-5-carboxy-6-oxohexa-2,4-dienoate branch",
+      "summary": "另一开环产物可进一步转化为 2-吡喃酮-4,6-二羧酸并进入中心代谢，本题未展开。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Masai et al., characterization of 5,5'-dehydrodivanillate degradation in Sphingomonas paucimobilis/Sphingobium sp. SYK-6",
+      "claim_scope": [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "organism",
+        "pathway"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "General characteristics of Sphingomonas/Sphingobium (aerobic, Gram-negative, rod-shaped, non-spore-forming)",
+      "claim_scope": [
+        "F1_oxygen_tolerance",
+        "F6_respiration_electron_acceptor",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定；路径中的氧化反应按常见好氧酶系推断。",
+    "多数酶的具体 EC 编号、基因名和辅因子未给出。",
+    "开环中间体和开环酸的精确结构及 SMILES 未确证。",
+    "菌株保藏编号、基因组信息和多数生理性状缺乏直接来源。"
+  ]
+}

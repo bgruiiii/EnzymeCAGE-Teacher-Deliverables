@@ -1,0 +1,288 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_039",
+  "pollutant_name_zh": "D-脯氨酸甜菜碱",
+  "pollutant_name_en": "D-proline betaine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "proline betaine degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；该路线（连续氧化脱甲基）通常认为在好氧条件下由根瘤菌等好氧微生物进行。"
+  },
+  "route_summary": "D-脯氨酸甜菜碱经两步连续 N-氧化脱甲基降解：先脱去一个甲基生成 N-甲基-D-脯氨酸，再脱去第二个甲基生成 D-脯氨酸（对应 MetaCyc 通路 proline betaine degradation I）。证据菌为苜蓿中华根瘤菌 Sinorhizobium meliloti 1021，其脯氨酸甜菜碱（stachydrine）分解代谢由 stc 基因座编码的类 Rieske 型多酶系统催化；相关酶尚无正式 EC 编号。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-proline betaine",
+          "smiles": "O=C([O-])[C@H]1CCC[N+]1(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-methyl-D-proline",
+          "smiles": "O=C(O)[C@H]1CCCN1C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative N-demethylation",
+      "enzyme": {
+        "name": "stachydrine demethylase (proline betaine demethylase)",
+        "ec_number": null,
+        "gene_or_protein": "stcA",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Sinorhizobium meliloti",
+        "strain": "1021",
+        "ncbi_taxid": 266834,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "脱甲基机制（推测为 Rieske 型加氧酶系统）及辅因子需求依据文献序列分析推断，故未列辅因子；该酶无正式 EC 编号。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "N-methyl-D-proline",
+          "smiles": "O=C(O)[C@H]1CCCN1C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-proline",
+          "smiles": "O=C(O)[C@H]1CCCN1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative N-demethylation",
+      "enzyme": {
+        "name": "N-methylproline demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sinorhizobium meliloti",
+        "strain": "1021",
+        "ncbi_taxid": 266834,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "催化第二步脱甲基的酶/基因尚未确证，可能由同一 stc 多酶系统完成；无正式 EC 编号。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sinorhizobium meliloti",
+      "strain": "1021",
+      "ncbi_taxid": 266834,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（mesophile）"
+          },
+          "raw_text": "常规实验室培养温度约 28–30 °C",
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（低氧/微好氧条件下可利用硝酸盐进行反硝化）",
+          "raw_text": "aerobic soil bacterium; can respire nitrate under low oxygen",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": "中性 pH 附近生长良好",
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（氧化磷酸化）",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": "aerobic respiration with oxygen as terminal electron acceptor",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能利用多种糖类与有机酸作碳源，并能以脯氨酸甜菜碱（stachydrine）作为唯一碳、氮源",
+          "raw_text": "S. meliloti can utilize stachydrine as a sole carbon and nitrogen source",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解甜菜碱类渗透保护剂：脯氨酸甜菜碱（stachydrine）经 N-甲基脯氨酸降解为脯氨酸",
+          "raw_text": "The stachydrine catabolism region of Sinorhizobium meliloti encodes a multi-enzyme complex similar to the xenobiotic degrading systems in other bacteria",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "脯氨酸甜菜碱脱甲基酶（stachydrine demethylase，推测为 Rieske 型加氧酶 Stc 系统）活性",
+          "raw_text": "stc 基因座编码与异生质降解系统相似的多酶复合体，催化 stachydrine 脱甲基",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（具鞭毛）",
+          "raw_text": "motile, flagellated bacterium",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（短杆菌）",
+          "raw_text": "rod-shaped cells",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Gram-negative",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_003047",
+            "genome_size_bp": 3654135,
+            "gc_percent": 62.7
+          },
+          "raw_text": "染色体约 3.65 Mb；全基因组约 6.69 Mb（含共质粒 pSymA、pSymB），GC 约 62.7%（Galibert et al. 2001, Science）",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛存在于土壤及豆科植物（如苜蓿）根际，并可侵入根部形成根瘤共生固氮，兼具自由生活与共生两种生活方式，栖息地较广",
+          "raw_text": "soil and rhizosphere bacterium; nitrogen-fixing symbiont in root nodules of legumes",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["D-proline"],
+    "explanation": "主链终产物 D-脯氨酸可经脯氨酸分解代谢（消旋为 L-脯氨酸后经 1-吡咯啉-5-羧酸脱氢生成 L-谷氨酸，再进入三羧酸循环）汇入中心代谢；该下游不属于本评分主链。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway: proline betaine degradation I",
+      "claim_scope": ["route_scope", "reaction", "enzyme_identity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Burnet MW, Goldmann A, Message B, Drong R, El Amrani A, Loreau O, Tepfer D, Le Rudulier D. Gene 244(1-2):151-161 (2000)",
+      "claim_scope": ["organism", "enzyme", "reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Phillips DA, Sande ES, Vriezen JAC, de Bruijn FJ, Le Rudulier D, Joseph CM. Appl Environ Microbiol 64(10):3954-3960 (1998)",
+      "claim_scope": ["organism", "substrate_utilization"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "266834",
+      "locator": "Sinorhizobium meliloti 1021",
+      "claim_scope": ["organism_identity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Galibert F et al. Science 293(5530):668-672 (2001)",
+      "claim_scope": ["genome"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Sinorhizobium meliloti 一般微生物学性状（革兰氏阴性、杆状、好氧、有鞭毛、不产孢、土壤/根瘤栖息、中性 pH、约 30 °C 中温培养）",
+      "claim_scope": ["traits"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "步骤1酶 stachydrine demethylase（Stc 系统）无正式 EC 编号，Stc 多酶复合体中各组分的具体分工不完全确定。",
+    "步骤2催化 N-甲基脯氨酸生成脯氨酸的酶及其基因尚未确证。",
+    "题面未指定氧条件；本路线按文献报道为氧化脱甲基，通常在好氧条件下进行。",
+    "MetaCyc 通路条目的具体 PWY 编号及通路内化合物的 D/L 构型标注未逐一核实，中间体按题面 D-脯氨酸甜菜碱给出 D 系列构型。",
+    "Sinorhizobium meliloti 1021 的菌种保藏编号未能可靠确认，故 F5 填 null。"
+  ]
+}

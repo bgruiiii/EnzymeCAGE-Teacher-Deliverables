@@ -1,0 +1,376 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_108",
+  "pollutant_name_zh": "甲基膦酸根",
+  "pollutant_name_en": "Methylphosphonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methylphosphonate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，按 null 填写；碳-磷裂解酶途径对氧不敏感，有氧与厌氧条件下均可运行。路线名称按题面原样填写为 methylphosphonate degradation II；因无法核实该名称在源数据库中的确切条目，主链内容按文献中最充分表征的甲基膦酸根微生物降解途径（C-P 裂解酶/phn 途径）作答。"
+  },
+  "route_summary": "甲基膦酸根（CH3PO3^2-）经碳-磷裂解酶（phn/C-P lyase）系统降解：PhnI（与 PhnGHIJKLM 复合物协同）先以 ATP 依赖方式活化并核糖基化，生成 5-phospho-alpha-D-ribose 1-methylphosphonate（释放腺嘌呤与焦磷酸）；随后自由基 SAM 酶 PhnJ 切断 C-P 键，生成甲烷与 5-phospho-D-ribose-1,2-cyclic phosphate；再经 PhnP 水解开环生成 D-ribose-1,5-bisphosphate；最后由 PhnN 以 ATP 磷酸化为 PRPP 进入核苷酸等中心代谢。净反应：甲基膦酸根 + H2O → 甲烷 + 磷酸（膦酸磷并入核糖磷酸中间体后回收）。模式菌为大肠杆菌 K-12（phn 操纵子），有氧与无氧条件下均可运行。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "methylphosphonate",
+          "smiles": "CP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "NC1=NC=NC2=C1N=CN2C3OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C3O",
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-phospho-alpha-D-ribose 1-methylphosphonate",
+          "smiles": "CP(=O)(O)OC1OC(COP(=O)(O)O)C(O)C1O",
+          "role": "main"
+        },
+        {
+          "name": "adenine",
+          "smiles": "NC1=NC=NC2=C1N=CN2",
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "O=P([O-])([O-])OP(=O)([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP依赖的膦酸酯活化与核糖基化（磷酸核糖基转移，随后水解释放焦磷酸）",
+      "enzyme": {
+        "name": "phosphonate phosphoribosyltransferase (C-P lyase activation protein PhnI, 与PhnGHIJKLM复合物协同)",
+        "ec_number": null,
+        "gene_or_protein": "phnI",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "本步为多酶复合体催化的总括反应：PhnI 先以 ATP 生成腺嘌呤与核糖-三磷酸类中间体，膦酸根连接至核糖1位后经水解释放焦磷酸（或三磷酸）；确切计量与中间体细节基于文献综合记忆，未能核对原始条目；PhnI 的 EC 编号未知。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "5-phospho-alpha-D-ribose 1-methylphosphonate",
+          "smiles": "CP(=O)(O)OC1OC(COP(=O)(O)O)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "methane",
+          "smiles": "C",
+          "role": "main"
+        },
+        {
+          "name": "5-phospho-D-ribose 1,2-cyclic phosphate",
+          "smiles": "O=P1(O)OC2OC(COP(=O)(O)O)C(O)C2O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "自由基SAM型碳-磷键断裂（C-P lyase）",
+      "enzyme": {
+        "name": "carbon-phosphorus lyase subunit PhnJ (radical SAM enzyme, PhnGHIJK 复合物催化亚基)",
+        "ec_number": null,
+        "gene_or_protein": "phnJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "PhnJ 需要 S-腺苷甲硫氨酸（SAM）辅因子，其计量/再生细节未核实，故未将 SAM 列为底物；PhnJ 的 EC 编号（碳-磷裂解酶类）未能可靠确认。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "5-phospho-D-ribose 1,2-cyclic phosphate",
+          "smiles": "O=P1(O)OC2OC(COP(=O)(O)O)C(O)C2O1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-ribose-1,5-bisphosphate",
+          "smiles": "O=P(O)(O)OC1OC(COP(=O)(O)O)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环磷酸二酯水解开环",
+      "enzyme": {
+        "name": "5-phospho-D-ribose-1,2-cyclic phosphate phosphodiesterase (PhnP)",
+        "ec_number": null,
+        "gene_or_protein": "phnP",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "PhnP 产物（D-核糖-1,5-二磷酸）的开环区域化学基于文献记忆，未能核对原始条目；EC 编号未知。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "D-ribose-1,5-bisphosphate",
+          "smiles": "O=P(O)(O)OC1OC(COP(=O)(O)O)C(O)C1O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "NC1=NC=NC2=C1N=CN2C3OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C3O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-phospho-alpha-D-ribose 1-diphosphate (PRPP)",
+          "smiles": "O=P(O)(O)OP(=O)(O)OC1OC(COP(=O)(O)O)C(O)C1O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "NC1=NC=NC2=C1N=CN2C3OC(COP(=O)(O)OP(=O)(O)O)C(O)C3O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磷酸化（激酶反应：1-位单磷酸再磷酸化为1-位焦磷酸）",
+      "enzyme": {
+        "name": "D-ribose-1,5-bisphosphate phosphokinase (PhnN)",
+        "ec_number": null,
+        "gene_or_protein": "phnN",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "PhnN 的 EC 编号未知；ATP→ADP 的计量关系未核对原始条目。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 10,
+            "optimum_c": 37,
+            "maximum_c": 45,
+            "preference": "中温性，最适约37°C（接近哺乳动物体温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（facultative anaerobe）：有氧与无氧条件下均可生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌，可在常规低盐培养基中生长，耐盐性中等"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 4.5,
+            "optimum": 7.0,
+            "maximum": 9.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸为主，兼性厌氧（缺氧时转行发酵/厌氧呼吸）",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "化能异养，以葡萄糖等糖类为主要碳源（K-12 菌株柠檬酸盐利用阴性）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "磷酸饥饿时经 phn 操纵子（C-P 裂解酶系统）利用多种膦酸酯（甲基膦酸酯、乙基膦酸酯等烷基膦酸酯及苯基膦酸酯）作为唯一磷源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "碳-磷裂解酶（PhnGHIJKLM 复合体）活性：断裂膦酸酯 C-P 键，生成甲烷等烃类与磷酸核糖衍生物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性，借周生鞭毛游动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状，约0.4–0.7 × 1–3 μm，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性；细胞包膜为内膜-薄肽聚糖层-含LPS的外膜",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性强：主要栖于温血动物下段肠道，亦广泛见于淡水、土壤、污泥等外环境（广适性物种）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["PRPP (5-phospho-alpha-D-ribose 1-diphosphate)"],
+    "explanation": "核糖磷酸骨架最终以 PRPP 形式进入中心代谢，作为嘌呤/嘧啶核苷酸、组氨酸、色氨酸等从头合成的通用前体；甲基膦酸根的甲基碳以甲烷形式释放（未被同化或进一步矿化），膦酸磷并入 PRPP 后经核苷酸代谢周转回收为可利用磷素（文献亦常以净反应‘甲基膦酸根 + H2O → 甲烷 + 磷酸’概括）。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "PRPP 依赖的生物合成途径",
+      "summary": "PRPP 进入嘌呤核苷酸、嘧啶核苷酸、组氨酸、色氨酸及部分辅酶的从头合成途径，使核糖磷酸骨架与磷素回归细胞中心代谢库。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["甲基膦酸根降解主链（C-P 裂解酶/phn 途径）的步骤顺序、各步反应与酶（PhnI/PhnJ/PhnP/PhnN）", "steps", "reactions", "enzymes"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["大肠杆菌 K-12 substr. MG1655 的分类、保藏、基因组与一般生物学性状", "organism identity", "traits"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "未能核实源数据库中路线名称 'methylphosphonate degradation II' 的确切条目内容；本答案按文献中最充分表征的甲基膦酸根微生物降解途径（C-P 裂解酶/phn 途径，大肠杆菌）作答，若该路线实际指其他降解机制（如氧化型途径或其他菌）则本答案不匹配。",
+    "S1 活化步骤的精确反应式（5'-三磷酸核糖类中间体、释放焦磷酸还是三磷酸）基于文献综合记忆，未能核对原始条目。",
+    "PhnI、PhnJ、PhnP、PhnN 均未能可靠给出 EC 编号，按规则填 null。",
+    "大肠杆菌 K-12 MG1655 的 phnE 存在移码/重复突变使膦酸利用表型隐性，体内完整途径需功能性 phnE（膦酸转运）；本答案按该菌株标准 phn 基因簇作答。",
+    "PhnJ 所需 S-腺苷甲硫氨酸辅因子未列为底物，其计量与再生方式未核实。",
+    "膦酸磷的最终去向（并入 PRPP 的 1-位焦磷酸 vs 以无机磷酸形式释放）在文献中表述不一，本答案按并入核糖磷酸中间体/PRPP 处理。"
+  ]
+}

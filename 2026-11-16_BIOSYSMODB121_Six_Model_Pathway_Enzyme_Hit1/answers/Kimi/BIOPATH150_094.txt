@@ -1,0 +1,321 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_094",
+  "pollutant_name_zh": "雄酮",
+  "pollutant_name_en": "Androsterone",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "testosterone and androsterone degradation to androstendione (aerobic)",
+    "is_single_continuous_route": true,
+    "notes": "题面路线名同时提及 testosterone 与 androsterone；本答案以污染物 androsterone 为起点，取收敛到 androstenedione 的连续主链。testosterone 氧化分支仅列为非评分旁支。"
+  },
+  "route_summary": "好氧条件下，androsterone（3α-hydroxy-5α-androstan-17-one）先经 3α-hydroxysteroid dehydrogenase 氧化 C3 羟基，生成 5α-androstane-3,17-dione；随后经 3-oxo-5α-steroid 4-dehydrogenase 在 A 环形成 Δ4 双键，生成 androst-4-ene-3,17-dione（androsten(ed)ione）。按题面路线范围，主链止于 androstenedione，不继续展开后续开环降解。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Androsterone",
+          "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CCC2=O)CC[C@@H]4[C@@]3(CC[C@@H](C4)O)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5alpha-Androstane-3,17-dione",
+          "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CCC2=O)CC[C@@H]4[C@@]3(CCC(=O)C4)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD(P)+-dependent oxidation of 3alpha-hydroxysteroid to 3-ketosteroid",
+      "enzyme": {
+        "name": "3alpha-hydroxysteroid dehydrogenase (B-specific)",
+        "ec_number": "1.1.1.50",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Comamonas testosteroni",
+        "strain": "ATCC 11996",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "5alpha-Androstane-3,17-dione",
+          "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CCC2=O)CC[C@@H]4[C@@]3(CCC(=O)C4)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Androst-4-ene-3,17-dione",
+          "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CCC2=O)CCC4=CC(=O)CC[C@]34C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative Delta4-desaturation of a 3-oxo-5alpha-steroid",
+      "enzyme": {
+        "name": "3-oxo-5alpha-steroid 4-dehydrogenase (NADP+)",
+        "ec_number": "1.3.1.22",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Comamonas testosteroni",
+        "strain": "ATCC 11996",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该酶编号在不同数据库中也对应哺乳动物 steroid 5alpha-reductase 的反向书写；此处按好氧脱氢方向用于生成 androstenedione，菌株级直接证据按中等置信处理。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Comamonas testosteroni",
+      "strain": "ATCC 11996",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温好氧菌（mesophile）"
+          },
+          "raw_text": "optimum growth temperature 30 °C",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "strictly aerobic",
+          "raw_text": "aerobe",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": "optimum pH about 7.0",
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "11996"
+          },
+          "raw_text": "ATCC 11996",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "strictly aerobic organism",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "testosterone and related steroids as carbon/energy substrates",
+          "raw_text": "steroid-degrading organism historically associated with testosterone/androsterone oxidation",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "aerobic steroid degradation, including androsterone/testosterone oxidation toward androstenedione",
+          "raw_text": "androsterone is oxidized to 5alpha-androstane-3,17-dione by 3alpha-hydroxysteroid dehydrogenase",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "3alpha-hydroxysteroid dehydrogenase activity on androsterone",
+          "raw_text": "androsterone + NAD(P)+ = 5alpha-androstane-3,17-dione + NAD(P)H",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": "motile Gram-negative rods",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped cells",
+          "raw_text": "rods",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": "Gram-negative",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": "non-spore-forming proteobacterium",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "environmental generalist reported from soil, freshwater and sewage/activated-sludge settings rather than a single restricted habitat",
+          "raw_text": "environmental isolate; Comamonas testosteroni strains are commonly associated with soil, water and wastewater/activated sludge",
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本评分主链按题面止于 androstenedione；未把 androstenedione 后续 9,10-开环、侧链/环系裂解或进入中心代谢的产物纳入主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "androstenedione further aerobic steroid-ring degradation",
+      "summary": "在多种好氧类固醇降解菌中，androstenedione 可继续经 3-ketosteroid Delta1-dehydrogenase 与 9alpha-hydroxylase 等反应形成 3-hydroxy-9,10-secoandrost-1,3,5(10)-triene-9,17-dione（3-HSA）并进一步开环进入中心代谢；该续接不属于本题的 androsterone→androstenedione 主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "testosterone oxidation branch to androstenedione",
+      "summary": "Testosterone 可经 17beta-hydroxysteroid dehydrogenase 氧化为同一终点 androst-4-ene-3,17-dione；由于本题污染物为 androsterone，该旁支不作为被评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "PubChem",
+      "record_id": "CID 5879",
+      "locator": "https://pubchem.ncbi.nlm.nih.gov/compound/5879",
+      "claim_scope": [
+        "Androsterone identity",
+        "Androsterone isomeric SMILES"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.1.1.50",
+      "locator": "https://www.brenda-enzymes.org/enzyme.php?ecno=1.1.1.50",
+      "claim_scope": [
+        "3alpha-hydroxysteroid dehydrogenase (B-specific)",
+        "androsterone oxidation to 5alpha-androstane-3,17-dione",
+        "NAD(P)+-dependent reaction",
+        "historical association with Pseudomonas/Comamonas testosteroni steroid oxidation"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.3.1.22",
+      "locator": "https://www.brenda-enzymes.org/enzyme.php?ecno=1.3.1.22",
+      "claim_scope": [
+        "3-oxo-5alpha-steroid 4-dehydrogenase (NADP+)",
+        "3-oxo-5alpha-steroid to 3-oxo-Delta4-steroid reaction",
+        "5alpha-androstane-3,17-dione to androst-4-ene-3,17-dione transformation"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "PubChem",
+      "record_id": "CID 6128",
+      "locator": "https://pubchem.ncbi.nlm.nih.gov/compound/6128",
+      "claim_scope": [
+        "Androstenedione / androst-4-ene-3,17-dione identity",
+        "androstenedione isomeric SMILES"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": "DSM 50244",
+      "locator": null,
+      "claim_scope": [
+        "Comamonas testosteroni strain identity equivalent to ATCC 11996",
+        "aerobic Gram-negative rod phenotype",
+        "temperature and pH cultivation data",
+        "environmental occurrence"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "ATCC 11996",
+      "locator": "https://www.atcc.org/products/11996",
+      "claim_scope": [
+        "culture collection accession ATCC 11996",
+        "Pseudomonas testosteroni / Comamonas testosteroni strain identity"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "未填写 ncbi_taxid、基因组 accession、基因组大小和 GC%，以避免在不同 Comamonas testosteroni 菌株/装配之间误配。",
+    "S2 的 EC 1.3.1.22 在部分数据库语境中更常对应真核 steroid 5alpha-reductase 反应的书写方向；本答案按题面好氧生成 androstenedione 的脱氢方向使用，并将其置信度设为 medium。"
+  ]
+}

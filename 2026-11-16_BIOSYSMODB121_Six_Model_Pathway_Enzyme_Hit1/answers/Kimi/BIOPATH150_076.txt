@@ -1,0 +1,330 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_076",
+  "pollutant_name_zh": "2,5-二羟基苯甲酸根",
+  "pollutant_name_en": "2,5-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "gentisate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，按 null 处理；该路线第一步为双加氧酶催化的氧化开环，通常为好氧过程。"
+  },
+  "route_summary": "2,5-二羟基苯甲酸根（gentisate，龙胆酸）按 gentisate degradation I 三步主链降解：① gentisate 1,2-dioxygenase（EC 1.13.11.4）催化氧化开环生成 maleylpyruvate（顺丁烯二酰丙酮酸）；② maleylpyruvate isomerase（EC 5.2.1.4）将其顺反异构为 fumarylpyruvate（延胡索酰丙酮酸）；③ fumarylpyruvate hydrolase（EC 3.7.1.5）水解 C–C 键生成延胡索酸（fumarate）与丙酮酸（pyruvate），二者进入TCA循环等中心代谢完成矿化。代表菌选用 Klebsiella pneumoniae M5a1，其龙胆酸途径已有文献报道。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Gentisate (2,5-dihydroxybenzoate)",
+          "smiles": "O=C([O-])c1cc(O)ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "Molecular oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Maleylpyruvate",
+          "smiles": "O=C(O)/C=C\\C(=O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧氧化开环（dioxygenative ring cleavage）",
+      "enzyme": {
+        "name": "Gentisate 1,2-dioxygenase",
+        "ec_number": "1.13.11.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Klebsiella pneumoniae",
+        "strain": "M5a1",
+        "ncbi_taxid": 573,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Maleylpyruvate",
+          "smiles": "O=C(O)/C=C\\C(=O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Fumarylpyruvate",
+          "smiles": "O=C(O)/C=C/C(=O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "顺反异构（cis-trans isomerization）",
+      "enzyme": {
+        "name": "Maleylpyruvate isomerase",
+        "ec_number": "5.2.1.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Klebsiella pneumoniae",
+        "strain": "M5a1",
+        "ncbi_taxid": 573,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该异构酶在不同菌中有谷胱甘肽（GSH）依赖与不依赖两种类型；M5a1 酶的 GSH 依赖性本回答未确认，故未将 GSH 列为辅因子。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Fumarylpyruvate",
+          "smiles": "O=C(O)/C=C/C(=O)CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Fumarate",
+          "smiles": "O=C(O)/C=C/C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解（hydrolytic C-C bond cleavage）",
+      "enzyme": {
+        "name": "Fumarylpyruvate hydrolase",
+        "ec_number": "3.7.1.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Klebsiella pneumoniae",
+        "strain": "M5a1",
+        "ncbi_taxid": 573,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Klebsiella pneumoniae",
+      "strain": "M5a1",
+      "ncbi_taxid": 573,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温（中温）菌，最适约37℃"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（facultative anaerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸为主，兼能发酵",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用龙胆酸（gentisate）及3-羟基苯甲酸等芳香酸作为碳源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解多种羟基苯甲酸类芳香化合物；3-羟基苯甲酸经龙胆酸途径（gentisate pathway）矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "龙胆酸1,2-双加氧酶活性（gentisate 1,2-dioxygenase, EC 1.13.11.4）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动（无鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "短杆状杆菌，常具荚膜",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广泛：人和动物肠道、水体、土壤、植物表面等多种环境均可分离，为泛生性机会致病微生物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Fumarate", "Pyruvate"],
+    "explanation": "主链终产物延胡索酸（fumarate）经延胡索酸酶水合为L-苹果酸进入TCA循环；丙酮酸（pyruvate）经丙酮酸脱氢酶复合体生成乙酰辅酶A进入TCA循环，由此完成龙胆酸的矿化。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "maleylpyruvate 直接水解分支",
+      "summary": "部分细菌中 maleylpyruvate 可不经异构而由 maleylpyruvate hydrolase（EC 3.7.1.4）直接水解为 maleate（顺丁烯二酸）与 pyruvate；该分支不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Cooper RA, Skinner MA (1980) Journal of Bacteriology, 3-/4-羟基苯甲酸在 Klebsiella pneumoniae M5a1 中的分解代谢（gentisate 途径）",
+      "claim_scope": ["Klebsiella pneumoniae M5a1 经 gentisate pathway 降解 3-羟基苯甲酸/龙胆酸", "gentisate 生长的 M5a1 细胞中检测到 gentisate dioxygenase、maleylpyruvate isomerase、fumarylpyruvate hydrolase 活性", "M5a1 以芳香酸为碳源的能力"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Suárez M, Ferrer E, Martín M (1996) FEMS Microbiology Letters, Purification and biochemical characterization of gentisate 1,2-dioxygenase from Klebsiella pneumoniae M5a1",
+      "claim_scope": ["Klebsiella pneumoniae M5a1 来源 gentisate 1,2-dioxygenase（EC 1.13.11.4）的纯化与酶学性质"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page: gentisate degradation I",
+      "claim_scope": ["gentisate degradation I 路线定义：gentisate → maleylpyruvate → fumarylpyruvate → fumarate + pyruvate", "各步酶与 EC 编号对应（1.13.11.4 / 5.2.1.4 / 3.7.1.5）", "各中间化合物身份与结构"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Klebsiella pneumoniae 常规微生物学性状（教科书/综述层面常识）",
+      "claim_scope": ["革兰氏阴性短杆菌、常具荚膜", "不运动、不形成芽孢", "兼性厌氧、好氧呼吸兼发酵、末端电子受体 O2", "嗜温、最适约37℃", "栖息地广泛（肠道、水、土壤、植物表面等）"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；本路线第一步为需氧双加氧开环，但 route_scope.oxygen_condition 按题面填 null。",
+    "gentisate degradation I 与 gentisate degradation II 的区分点（maleylpyruvate isomerase 的谷胱甘肽依赖性）在文献中存在差异；Klebsiella pneumoniae M5a1 该酶的 GSH 依赖性未确认。",
+    "步骤2与步骤3在 M5a1 中的证据主要为粗酶提取液活性测定水平（EVID_001），未见纯化酶或基因序列层面的直接证据。",
+    "M5a1 的菌种保藏编号与基因组序列信息未能确认，相应性状字段按 null 处理。",
+    "中间体 SMILES 以中性酸形式给出（gentisate 按题面以单负离子形式给出），未逐一对应生理 pH 下的电离状态。"
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_145",
+  "pollutant_name_zh": "6-磺酸基-α-D-奎诺糖",
+  "pollutant_name_en": "6-sulfo-alpha-D-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation V",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线 sulfoquinovose degradation V 填写；氧条件未指定。"
+  },
+  "route_summary": "在指定路线 sulfoquinovose degradation V 下，主链按磺基糖酵解型路线处理：6-磺酸基-α-D-奎诺糖先异构为 6-脱氧-6-磺酸基-D-果糖，再经激酶磷酸化，随后被醛缩酶裂解为磷酸二羟丙酮与 3-磺酸基-L-乳醛；3-磺酸基-L-乳醛进一步氧化为 3-磺酸基-L-乳酸。磷酸二羟丙酮可进入中心碳代谢；菌株性状与部分基因/EC细节证据不足处按未知或低置信度处理。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-sulfo-alpha-D-quinovose",
+          "smiles": "O=S(=O)(O)CC1OC(O)C(O)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-deoxy-6-sulfo-D-fructose",
+          "smiles": "O=S(=O)(O)CC(O)C(O)C(O)C(=O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "sulfoquinovose isomerase",
+        "ec_number": "5.3.1.31",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodopseudomonas palustris",
+        "strain": "CGA009",
+        "ncbi_taxid": 258594,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "路线 V 的基因座与菌株归属未完全核实，此处按低置信度记录。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "6-deoxy-6-sulfo-D-fructose",
+          "smiles": "O=S(=O)(O)CC(O)C(O)C(O)C(=O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-deoxy-6-sulfo-D-fructose 1-phosphate",
+          "smiles": "O=S(=O)(O)CC(O)C(O)C(O)C(=O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": {
+        "name": "6-deoxy-6-sulfo-D-fructose kinase",
+        "ec_number": "2.7.1.184",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodopseudomonas palustris",
+        "strain": "CGA009",
+        "ncbi_taxid": 258594,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "ATP/ADP 等辅因子未作为主底物/主产物展开；具体基因座未核实。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "6-deoxy-6-sulfo-D-fructose 1-phosphate",
+          "smiles": "O=S(=O)(O)CC(O)C(O)C(O)C(=O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "O=P(O)(O)OCC(=O)CO",
+          "role": "main"
+        },
+        {
+          "name": "3-sulfo-L-lactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "6-deoxy-6-sulfo-D-fructose-1-phosphate aldolase",
+        "ec_number": "4.1.2.51",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodopseudomonas palustris",
+        "strain": "CGA009",
+        "ncbi_taxid": 258594,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "两个主产物中，磷酸二羟丙酮进入中心代谢；3-磺酸基-L-乳醛继续氧化。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "3-sulfo-L-lactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-sulfo-L-lactate",
+          "smiles": "OC(=O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "3-sulfo-L-lactaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodopseudomonas palustris",
+        "strain": "CGA009",
+        "ncbi_taxid": 258594,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该脱氢酶 EC 编号未确认，填 null；NAD+/NADH 等辅因子未展开。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Rhodopseudomonas palustris",
+      "strain": "CGA009",
+      "ncbi_taxid": 258594,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "dihydroxyacetone phosphate"
+    ],
+    "explanation": "S3 生成的磷酸二羟丙酮可直接进入糖酵解/糖异生中心代谢；3-磺酸基-L-乳酸通常需后续脱硫途径进一步矿化。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "sulfoquinovose degradation V",
+      "claim_scope": [
+        "pathway",
+        "steps",
+        "enzymes",
+        "microorganism"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "258594",
+      "locator": "Rhodopseudomonas palustris CGA009",
+      "claim_scope": [
+        "microorganism"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "路线 V 的具体基因座、部分 EC 编号和辅因子细节未完全确认。",
+    "微生物 15 项性状缺乏直接来源，均填 null。",
+    "SMILES 为近似结构表示，立体化学未完全指定。"
+  ]
+}

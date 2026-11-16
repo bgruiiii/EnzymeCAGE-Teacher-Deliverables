@@ -1,0 +1,67 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_128",
+  "pollutant_name_zh": "L-苏糖醇",
+  "pollutant_name_en": "l-Threitol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-threitol degradation",
+    "is_single_continuous_route": null,
+    "notes": "氧条件未指定；仅保留可支持的主氧化转化。"
+  },
+  "route_summary": "L-threitol可经脱氢氧化生成L-threulose；后续专一降解酶、微生物及氧化条件缺乏可核实信息。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "l-Threitol",
+          "smiles": "OCC(O)C(O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-Threulose",
+          "smiles": "OCC(=O)C(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "脱氢氧化",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步的底物-产物关系可作多元醇脱氢氧化的主路线表示，但缺少可核实的专一酶、EC编号和对应菌株证据。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "缺少后续经验证的代谢连接步骤，无法可靠指定中心代谢入口。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1底物与主产物的多元醇脱氢氧化关系"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "缺少可核实的L-threitol degradation完整路线来源。",
+    "缺少可核实的L-threitol dehydrogenase专一酶及EC编号。",
+    "缺少可核实的对应微生物、菌株和15项性状数据。"
+  ]
+}

@@ -1,0 +1,414 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_013",
+  "pollutant_name_zh": "4-硝基苯酚",
+  "pollutant_name_en": "4-Nitrophenol",
+  "route_scope": {
+    "oxygen_condition": "mixed",
+    "chosen_route_name": "4-nitrophenol degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线 4-nitrophenol degradation II 为革兰氏阳性菌中的4-硝基邻苯二酚（nitrocatechol）途径，代表菌为 Lysinibacillus sphaericus JS905（原 Bacillus sphaericus JS905），属兼性（mixed）条件；前两步反应由同一双组分单加氧酶 NpcBA 催化，后续开环与还原步骤依赖分子氧或NAD(P)H。"
+  },
+  "route_summary": "主链：4-硝基苯酚经双组分单加氧酶 NpcBA 邻位羟基化生成4-硝基邻苯二酚；同一酶系再催化4-硝基邻苯二酚氧化脱硝（释放亚硝酸根）生成1,2,4-苯三酚（羟基醌醇）；羟基醌醇1,2-双加氧酶开环生成顺丁烯二酰乙酸（maleylacetate）；顺丁烯二酰乙酸还原酶将其还原为3-氧代己二酸（β-酮己二酸），后者经β-酮己二酸途径转化为琥珀酰CoA与乙酰CoA进入中心代谢。全程代表菌为 Lysinibacillus sphaericus JS905。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Nitrophenol",
+          "smiles": "O=[N+]([O-])c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Nitrocatechol",
+          "smiles": "O=[N+]([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧羟基化（芳香环邻位羟基化）",
+      "enzyme": {
+        "name": "4-nitrophenol 2-monooxygenase (two-component, NpcB monooxygenase + NpcA flavin reductase)",
+        "ec_number": "1.14.13.166",
+        "gene_or_protein": "npcB / npcA",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Lysinibacillus sphaericus",
+        "strain": "JS905",
+        "ncbi_taxid": 1431,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 1.14.13.166（4-nitrophenol 2-monooxygenase）与 NpcBA 的对应关系为中等置信度；NpcA 为还原酶组分、NpcB 为单加氧酶组分。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-Nitrocatechol",
+          "smiles": "O=[N+]([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1,2,4-Benzenetriol",
+          "smiles": "Oc1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Nitrite",
+          "smiles": "[O-]N=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱硝基（单加氧介导羟基化并释放亚硝酸根）",
+      "enzyme": {
+        "name": "4-nitrophenol 2-monooxygenase (NpcBA; 兼具 4-nitrocatechol 4-monooxygenase 活性)",
+        "ec_number": "1.14.13.166",
+        "gene_or_protein": "npcB / npcA",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Lysinibacillus sphaericus",
+        "strain": "JS905",
+        "ncbi_taxid": 1431,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "JS905 中由与 S1 相同的双组分单加氧酶催化本步氧化脱硝；该反应无独立 EC 编号，沿用 1.14.13.166，中等置信度。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "1,2,4-Benzenetriol",
+          "smiles": "Oc1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Maleylacetate",
+          "smiles": "O=C(O)/C=C\\C(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧开环（邻位裂解）",
+      "enzyme": {
+        "name": "hydroxyquinol 1,2-dioxygenase",
+        "ec_number": "1.13.11.37",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Lysinibacillus sphaericus",
+        "strain": "JS905",
+        "ncbi_taxid": 1431,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "JS905 中该开环酶的基因未被专门表征，依据 MetaCyc 路线与通用 EC 注释推断，中等置信度。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "Maleylacetate",
+          "smiles": "O=C(O)/C=C\\C(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD(P)H",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipate",
+          "smiles": "O=C(O)CC(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD(P)+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD(P)H 依赖的双键还原",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Lysinibacillus sphaericus",
+        "strain": "JS905",
+        "ncbi_taxid": 1431,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "还原步骤在 JS905 中的基因未专门表征，依据 MetaCyc 路线与通用酶注释推断；产物3-氧代己二酸随后进入β-酮己二酸途径。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Lysinibacillus sphaericus",
+      "strain": "JS905",
+      "ncbi_taxid": 1431,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（常规培养约30°C）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧或兼性厌氧（文献表述不一，本题按兼性条件处理）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸为主",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以4-硝基苯酚为唯一碳源、氮源和能源生长（释放的亚硝酸根可用作氮源）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解并矿化4-硝基苯酚（经4-硝基邻苯二酚途径），属于硝基芳香族化合物降解菌",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "双组分单加氧酶 NpcBA 活性：催化4-硝基苯酚羟基化为4-硝基邻苯二酚，并催化4-硝基邻苯二酚氧化脱硝释放亚硝酸根",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（可呈革兰氏可变）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "产内生芽孢：近球形芽孢、端生、孢子囊膨大（种名 sphaericus 即源于球形芽孢）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "已知栖息地以土壤（含受硝基芳香化合物污染的环境）为主；作为产芽孢杆菌可存在于土壤及沉积物等多种环境，但广适性直接证据有限",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "主链末端产物3-氧代己二酸（β-酮己二酸）经β-酮己二酸途径转化为琥珀酰CoA与乙酰CoA，进入三羧酸循环完成矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "β-酮己二酸途径（β-ketoadipate pathway）",
+      "summary": "3-氧代己二酸 → 3-氧代己二酰CoA → 琥珀酰CoA + 乙酰CoA，进入三羧酸循环；属通用下游，不计入本题评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "4-nitrophenol degradation I (hydroquinone/benzoquinone pathway)",
+      "summary": "革兰氏阴性菌（如 Pseudomonas sp. WBC-3、Moraxella sp.）中的对苯二酚途径：4-硝基苯酚经对苯醌脱硝生成对苯二酚，再羟基化为羟基醌醇后开环；与主链在羟基醌醇处汇合，但不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": "4-nitrophenol degradation II",
+      "locator": "MetaCyc pathway: 4-nitrophenol degradation II",
+      "claim_scope": ["路线组成与反应顺序", "步骤S1-S4反应", "羟基醌醇双加氧酶与顺丁烯二酰乙酸还原酶步骤注释"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "Appl Environ Microbiol 64(7):2479-2484 (1998)",
+      "locator": "Kadiyala V, Spain JC. A two-component monooxygenase catalyzes both the hydroxylation of p-nitrophenol and the oxidative release of nitrite from 4-nitrocatechol in Bacillus sphaericus JS905",
+      "claim_scope": ["S1反应", "S2反应", "NpcBA双组分单加氧酶", "Lysinibacillus (Bacillus) sphaericus JS905 降解4-硝基苯酚", "以4-硝基苯酚为生长底物"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA / ExplorEnz",
+      "record_id": "EC 1.13.11.37; EC 1.3.1.32",
+      "locator": null,
+      "claim_scope": ["酶名称与EC编号对应关系（hydroxyquinol 1,2-dioxygenase; maleylacetate reductase）"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Lysinibacillus sphaericus 物种水平一般性状（形态、革兰氏染色、芽孢、运动性、温度与氧耐受的一般认知）"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "EC 1.14.13.166 与 NpcBA 的对应关系为中等置信度；第二步（4-硝基邻苯二酚氧化脱硝）无独立 EC 编号，沿用同一双组分酶的 EC。",
+    "步骤 S3、S4 在 JS905 中的基因未被专门表征，系依据 MetaCyc 路线与通用酶注释推断。",
+    "JS905 菌株水平的生理数据（温度范围、pH、盐度、保藏编号、基因组信息）缺乏直接来源，相应字段填 null 或仅以物种水平一般认知低置信度填写。",
+    "Lysinibacillus sphaericus 的氧耐受性文献表述不一（好氧至兼性厌氧），本题按题面 mixed（兼性）条件处理并标低置信度。",
+    "菌株现用名 Lysinibacillus sphaericus JS905，原发表时名为 Bacillus sphaericus JS905；ncbi_taxid 填物种级 1431，菌株级 TaxID 未知。"
+  ]
+}

@@ -1,0 +1,588 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_060",
+  "pollutant_name_zh": "2-铵基-3-(3-氧丙-1-烯基)丁-2-烯二酸根",
+  "pollutant_name_en": "2-Azaniumyl-3-(3-oxoprop-1-enyl)but-2-enedioate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-amino-3-carboxymuconate semialdehyde degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）。该路线各步反应本身不直接消耗 O2，但已知承载菌均为好氧假单胞菌，途径在有氧代谢背景下运行。"
+  },
+  "route_summary": "好氧细菌中 2-氨基-3-羧基粘康酸半醛（ACMS，即题述污染物）的下游降解主链共 4 步：(1) ACMS 经 2-氨基-3-羧基粘康酸-6-半醛脱羧酶（EC 4.1.1.45）脱羧生成 2-氨基粘康酸-6-半醛；(2) 经 2-氨基粘康酸-6-半醛脱氢酶（EC 1.2.1.32，NAD+ 依赖）氧化为 2-氨基粘康酸；(3) 经 2-氨基粘康酸脱氨酶（EC 3.5.99.5）水解脱氨生成 4-草酰巴豆酸（2-氧代己-3-烯二酸）并释放铵；(4) 经 4-草酰巴豆酸脱羧酶（EC 4.1.1.77）脱羧生成路线终点 2-羟基戊-2,4-二烯酸（2-hydroxypentadienoate）。各步代表菌：第 1 步 Pseudomonas fluorescens KU-7（2-硝基苯甲酸降解菌，含原核 ACMSD），第 2、4 步 Pseudomonas sp. AP-3（2-氨基苯酚降解菌），第 3 步 Pseudomonas pseudoalcaligenes JS45（硝基苯降解菌）。下游 2-羟基戊二烯酸可经水合、醛缩生成丙酮酸与乙醛进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-amino-3-carboxymuconate-6-semialdehyde",
+          "smiles": "NC(=C(C(=O)O)C=CC=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminomuconate-6-semialdehyde",
+          "smiles": "NC(=CC=CC=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "C(=O)=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧反应（decarboxylation）",
+      "enzyme": {
+        "name": "2-amino-3-carboxymuconate-6-semialdehyde decarboxylase (ACMSD)",
+        "ec_number": "4.1.1.45",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "KU-7",
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步脱羧在体外亦可缓慢自发进行；KU-7 中原核 ACMSD 的证据主要来自同源鉴定与酶学研究，基因名未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-aminomuconate-6-semialdehyde",
+          "smiles": "NC(=CC=CC=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+]([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@H]([C@H](O)[C@@H]3O)n3cnc4c(N)ncnc34)[C@H](O)[C@@H]2O)c1",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminomuconate",
+          "smiles": "NC(=CC=CC(=O)O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@H]([C@H](O)[C@@H]3O)n3cnc4c(N)ncnc34)[C@H](O)[C@@H]2O)C=CC1",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+ 依赖的醛氧化（aldehyde dehydrogenation）",
+      "enzyme": {
+        "name": "2-aminomuconate-6-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.32",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "AP-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "AP-3 中该脱氢酶活性有文献支持；基因名与酶学细节未完全确认，gene_or_protein 填 null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-aminomuconate",
+          "smiles": "NC(=CC=CC(=O)O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-oxalocrotonate (2-oxohex-3-enedioate)",
+          "smiles": "O=C(O)C(=O)C=CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ammonium",
+          "smiles": "[NH4+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱氨（hydrolytic deamination）",
+      "enzyme": {
+        "name": "2-aminomuconate deaminase",
+        "ec_number": "3.5.99.5",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas pseudoalcaligenes",
+        "strain": "JS45",
+        "ncbi_taxid": 330,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "产物以酮式（2-氧代己-3-烯二酸，即 4-oxalocrotonate）表示，与烯醇式 2-羟基粘康酸互变异构。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-oxalocrotonate (2-oxohex-3-enedioate)",
+          "smiles": "O=C(O)C(=O)C=CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate (2-hydroxypentadienoate)",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "C(=O)=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧反应（decarboxylation）",
+      "enzyme": {
+        "name": "4-oxalocrotonate decarboxylase",
+        "ec_number": "4.1.1.77",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "AP-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "产物 2-羟基戊-2,4-二烯酸与其酮式 2-氧代戊-4-烯酸互变异构。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas fluorescens",
+      "strain": "KU-7",
+      "ncbi_taxid": 294,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以 2-硝基苯甲酸（2-nitrobenzoate）为唯一碳源和氮源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "矿化 2-硝基苯甲酸：经 3-羟基邻氨基苯甲酸开环生成 2-氨基-3-羧基粘康酸半醛，再经脱羧进入 2-氨基粘康酸下游途径",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有原核 2-氨基-3-羧基粘康酸-6-半醛脱羧酶（ACMSD）及 3-羟基邻氨基苯甲酸-3,4-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆菌（直杆状）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "Pseudomonas fluorescens 为土壤、水体及植物根际广泛分布的环境种；KU-7 菌株级的分离与分布数据有限",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "AP-3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以 2-氨基苯酚（2-aminophenol）为唯一碳源和氮源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解 2-氨基苯酚：经 2-氨基苯酚 1,6-双加氧开环生成 2-氨基粘康酸-6-半醛，再经脱氢、脱氨、脱羧生成 2-羟基戊二烯酸",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 2-氨基粘康酸-6-半醛脱氢酶与 4-草酰巴豆酸脱羧酶（下游 kba 途径酶）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆菌",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "环境分离的芳香胺（2-氨基苯酚）降解菌；确切分离来源与栖息地广适性数据有限",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Pseudomonas pseudoalcaligenes",
+      "strain": "JS45",
+      "ncbi_taxid": 330,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以硝基苯（nitrobenzene）为唯一碳源、氮源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解硝基苯：部分还原生成羟胺苯，经 Bamberger 重排为 2-氨基苯酚后开环，经 2-氨基粘康酸脱氨进入 4-草酰巴豆酸/2-羟基戊二烯酸下游途径",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 2-氨基粘康酸脱氨酶（2-aminomuconate deaminase）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆菌",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "硝基芳烃（硝基苯）降解菌；具体分离来源与栖息地广适性数据有限",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetaldehyde"],
+    "explanation": "路线终点 2-羟基戊-2,4-二烯酸在本路线范围之外继续降解：经 2-氧代戊-4-烯酸水合酶（EC 4.2.1.80）水合生成 4-羟基-2-氧代戊酸，再经 4-羟基-2-氧代戊酸醛缩酶（EC 4.1.3.39）裂解为丙酮酸和乙醛；丙酮酸直接进入中心碳代谢，乙醛经乙酰辅酶 A 进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2-hydroxypentadienoate 水合与醛缩裂解",
+      "summary": "2-羟基戊-2,4-二烯酸 → 4-羟基-2-氧代戊酸（2-氧代戊-4-烯酸水合酶，EC 4.2.1.80）→ 丙酮酸 + 乙醛（4-羟基-2-氧代戊酸醛缩酶，EC 4.1.3.39），随后进入中心代谢；该下游段在 Pseudomonas sp. AP-3 的 kba 途径中已有描述。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "ACMS 非酶促环化生成喹啉酸",
+      "summary": "2-氨基-3-羧基粘康酸-6-半醛可自发环化生成喹啉酸（quinolinate，吡啶-2,3-二羧酸），与酶促脱羧竞争同一底物；在真核生物中该分支通向 NAD 从头合成。不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway: 2-amino-3-carboxymuconate semialdehyde degradation to 2-hydroxypentadienoate",
+      "claim_scope": ["route", "reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Muraki T. et al. 2003, Applied and Environmental Microbiology: Pseudomonas fluorescens KU-7 的 2-硝基苯甲酸降解途径中存在原核 3-羟基邻氨基苯甲酸-3,4-双加氧酶与 2-氨基-3-羧基粘康酸-6-半醛脱羧酶（ACMSD）同源酶",
+      "claim_scope": ["enzyme", "reaction", "organism", "trait"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "He Z. & Spain J.C. 1998, Journal of Bacteriology: Pseudomonas pseudoalcaligenes JS45 硝基苯降解下游途径中一种新型 2-氨基粘康酸脱氨酶的鉴定",
+      "claim_scope": ["enzyme", "reaction", "organism", "trait"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Takenaka S. et al. 1997 (J. Biol. Chem.) 及 Muraki T. et al. 2003: Pseudomonas sp. AP-3 的 2-氨基苯酚降解（amn/kba 基因簇，含 2-氨基粘康酸-6-半醛脱氢酶与 4-草酰巴豆酸脱羧酶）",
+      "claim_scope": ["enzyme", "reaction", "organism", "trait"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz (IUBMB Enzyme Nomenclature)",
+      "record_id": null,
+      "locator": "EC 4.1.1.45; EC 1.2.1.32; EC 3.5.99.5; EC 4.1.1.77",
+      "claim_scope": ["enzyme", "reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas 属共性状（革兰氏阴性杆菌、好氧呼吸以 O2 为末端电子受体、极生鞭毛运动、不产芽孢）",
+      "claim_scope": ["trait"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "Pseudomonas fluorescens KU-7 的菌种保藏编号、基因组登录号及生长性状（温度、pH、盐度）未查到可靠数据，相应字段填 null。",
+    "Pseudomonas sp. AP-3 未完成种级鉴定，ncbi_taxid 填 null；其多数生理性状缺直接文献数据。",
+    "Pseudomonas pseudoalcaligenes JS45 的菌种保藏与基因组信息未确认，相应字段填 null。",
+    "第 1 步脱羧在部分体系中亦可非酶促发生；KU-7 中 ACMSD 的体内作用证据主要基于同源酶鉴定。",
+    "各步骤基因名（如 nba/kba/nbz 基因的对应关系）未完全确认，所有 step 的 gene_or_protein 填 null。",
+    "未确认存在任何单一菌株被实验证明独立承载本路线全部 4 步，complete_pathway_organism_profile_id 填 null。"
+  ]
+}
