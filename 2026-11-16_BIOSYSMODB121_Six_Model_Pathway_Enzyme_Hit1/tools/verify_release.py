@@ -59,6 +59,9 @@ def main():
  good=dict(correct,order=1)
  assert c.route_hit([['T1']],{'T1':0},[good],gold)
  assert not c.route_hit([['T1']],{'T1':0},[good,good],gold)
+ # An equivalent reference branch must not lose its only prediction to
+ # another branch's stable-id tie-break.
+ assert c.route_hit_alternatives(s,[['T2']],[good],duplicate,frozenset(),1.0)
  # Only valid local links are checked. The parent historical release is a
  # sibling after publication and is intentionally allowed outside this bundle.
  nlinks=0
@@ -73,5 +76,5 @@ def main():
    text=p.read_text()
    assert not re.search(r'/home/[a-zA-Z0-9_.-]+/',text),p.relative_to(ROOT)
    assert not re.search(r'(?i)(?:sk-[a-z0-9_-]{20,}|Bearer\s+[a-z0-9._-]{24,})',text),p.relative_to(ROOT)
- print(json.dumps(dict(PASS=True,positions=726,step_rows=len(ss),summary_rows=len(summary),raw_file_sha_verified=len(idx),behavioral_probes=6,links_verified=nlinks,api_calls=0),ensure_ascii=False))
+ print(json.dumps(dict(PASS=True,positions=726,step_rows=len(ss),summary_rows=len(summary),raw_file_sha_verified=len(idx),behavioral_probes=7,links_verified=nlinks,api_calls=0),ensure_ascii=False))
 if __name__=='__main__':main()

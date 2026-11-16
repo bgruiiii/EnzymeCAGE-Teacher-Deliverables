@@ -71,6 +71,18 @@ def route_hit(paths,match,ps,gold):
   return True
  return False
 
+def route_hit_alternatives(s,paths,ps,gold,controlled,threshold):
+ # Alternatives are accepted references, not additional model guesses.
+ # Align each allowed path on its own so a chemically identical step in a
+ # different gold branch cannot consume the only matching prediction.
+ for path in paths:
+  if len(path)!=len(ps):continue
+  subset={g:gold[g]for g in path}
+  result=s.align_steps(subset,ps,controlled,threshold=threshold)
+  mapping={x['gold_step']:x['pred_index']for x in result['matches']}
+  if route_hit([path],mapping,ps,subset):return True
+ return False
+
 def standalone_mapping(s,gs,ps,matched,is_linear):
  """Fix target identity without inspecting enzyme/EC or requiring product success."""
  mapping=dict(matched);methods={g:'REACTION_EXACT'for g in mapping}
@@ -168,7 +180,7 @@ def calculate(root):
    out=dict(model=mod,case_id=case,gold_step_id=sid,gold_reaction_id=sid.rsplit('__',1)[-1],scope_evaluable=rr['route_evaluable'],gold_order=g['order'],reaction_hit1_strict=int(sid in em),reaction_hit1_frozen05=int(sid in lm),pred_index=pi if pi is not None else '',pred_step_id=p.get('step_id',''),target_binding_method=methods.get(sid,'UNRESOLVED_OR_MISSING'),pred_enzyme_name=enz.get('name')or'',pred_ec=ec,gold_accepted_complete_ecs='|'.join(sorted(ecs)),gold_accepted_names='|'.join(sorted(names)),ec_reference_scoreable=int(bool(ecs)),enzyme_ec_hit1=int(ec_hit),enzyme_ec_hit1_order_sensitivity=int(ec_order_hit),enzyme_name_hit1=int(name_hit),enzyme_name_ec_same_record_hit1=int(same_pair),reaction_and_enzyme_ec_hit1=int(eh),enzyme_ec_hit_with_reaction_miss=int(ec_hit and sid not in em),ec_status=status,answer_sha256=row['answer_sha256'],answer_file=row['answer_file'])
    local.append(out);steps.append(out)
   n=len(gs);ecden=sum(x['ec_reference_scoreable']for x in local);ech=sum(x['enzyme_ec_hit1']for x in local)
-  cases.append(dict(model=mod,case_id=case,pathway_name=rr['pathway_name'],source_state=state,answer_source_version=row['answer_source_version'],answer_sha256=row['answer_sha256'],answer_file=row['answer_file'],scope_policy=rr['scope_policy'],route_evaluable=rr['route_evaluable'],common118=case in common,n_gold_target_steps=n,n_predicted_steps=len(ps),pathway_hit1_strict=int(route_hit(paths,em,ps,gs))if paths else '',pathway_hit1_frozen05=int(route_hit(paths,lm,ps,gs))if paths else '',reaction_hits_strict=len(em),reaction_hits_frozen05=len(lm),reaction_micro_component_pct=pct(len(em),n),enzyme_ec_scoreable_targets=ecden,enzyme_ec_hits=ech,enzyme_ec_order_sensitivity_hits=sum(x['enzyme_ec_hit1_order_sensitivity']for x in local),enzyme_ec_component_pct=pct(ech,ecden),enzyme_name_hits=sum(x['enzyme_name_hit1']for x in local),enzyme_pair_hits=sum(x['enzyme_name_ec_same_record_hit1']for x in local),joint_reaction_enzyme_ec_hits=sum(x['reaction_and_enzyme_ec_hit1']for x in local),enzyme_ec_hits_reaction_miss=sum(x['enzyme_ec_hit_with_reaction_miss']for x in local),binding_unresolved=sum(x['target_binding_method']not in ('REACTION_EXACT','UNIQUE_SUBSTRATE_ANCHOR')for x in local),predicted_enzyme_objects=sum(isinstance(p.get('enzyme'),dict)for p in ps),predicted_trait_profiles=len((a or{}).get('organism_profiles')or[])))
+  cases.append(dict(model=mod,case_id=case,pathway_name=rr['pathway_name'],source_state=state,answer_source_version=row['answer_source_version'],answer_sha256=row['answer_sha256'],answer_file=row['answer_file'],scope_policy=rr['scope_policy'],route_evaluable=rr['route_evaluable'],common118=case in common,n_gold_target_steps=n,n_predicted_steps=len(ps),pathway_hit1_strict=int(route_hit_alternatives(s,paths,ps,gs,controlled,1.0))if paths else '',pathway_hit1_frozen05=int(route_hit_alternatives(s,paths,ps,gs,controlled,.5))if paths else '',reaction_hits_strict=len(em),reaction_hits_frozen05=len(lm),reaction_micro_component_pct=pct(len(em),n),enzyme_ec_scoreable_targets=ecden,enzyme_ec_hits=ech,enzyme_ec_order_sensitivity_hits=sum(x['enzyme_ec_hit1_order_sensitivity']for x in local),enzyme_ec_component_pct=pct(ech,ecden),enzyme_name_hits=sum(x['enzyme_name_hit1']for x in local),enzyme_pair_hits=sum(x['enzyme_name_ec_same_record_hit1']for x in local),joint_reaction_enzyme_ec_hits=sum(x['reaction_and_enzyme_ec_hit1']for x in local),enzyme_ec_hits_reaction_miss=sum(x['enzyme_ec_hit_with_reaction_miss']for x in local),binding_unresolved=sum(x['target_binding_method']not in ('REACTION_EXACT','UNIQUE_SUBSTRATE_ANCHOR')for x in local),predicted_enzyme_objects=sum(isinstance(p.get('enzyme'),dict)for p in ps),predicted_trait_profiles=len((a or{}).get('organism_profiles')or[])))
  summaries=[]
  for cohort in ['ALL121_SCOPED120','COMMON118_SCOPED117']:
   for mod in sorted({x['model']for x in cases}):
