@@ -1,0 +1,332 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_049",
+  "pollutant_name_zh": "甘油",
+  "pollutant_name_en": "Glycerol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "glycerol degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；按固定路线名填写甘油经磷酸化、氧化生成 glycerone phosphate/dihydroxyacetone phosphate 的主链。"
+  },
+  "route_summary": "甘油先由甘油激酶 GlpK 磷酸化生成 sn-glycerol 3-phosphate，再由甘油-3-磷酸脱氢酶 GlpD 氧化为 glycerone phosphate（即 dihydroxyacetone phosphate, DHAP），随后可进入糖酵解/中心碳代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "glycerol",
+          "smiles": "C(C(CO)O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "sn-glycerol 3-phosphate",
+          "smiles": "OCC(O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ATP-dependent phosphorylation",
+      "enzyme": {
+        "name": "glycerol kinase",
+        "ec_number": "2.7.1.30",
+        "gene_or_protein": "glpK / GlpK",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "sn-glycerol 3-phosphate",
+          "smiles": "OCC(O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycerone phosphate",
+          "smiles": "OCC(=O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "quinone-dependent oxidative dehydrogenation",
+      "enzyme": {
+        "name": "aerobic glycerol-3-phosphate dehydrogenase",
+        "ec_number": "1.1.5.3",
+        "gene_or_protein": "glpD / GlpD",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "氧条件未指定；本步采用醌依赖的 GlpD 反应表示 sn-glycerol 3-phosphate 到 glycerone phosphate 的主链氧化，具体末端电子受体可随呼吸状态变化。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜中温；常规培养最适约 37 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐/低盐需求"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen (O2)"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用甘油为碳源，经 GlpK 启动磷酸化并进入中心碳代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解本题底物甘油并汇入中心碳代谢；E. coli K-12 MG1655 不是典型广谱异生物质降解菌",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "sn-glycerol 3-phosphate dehydrogenase activity (EC 1.1.5.3)",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有鞭毛运动；实验室 K-12 菌株运动性可较弱",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状/短杆菌",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "中等偏广但非极端环境广适：主要与温血动物肠道相关，也可在水体、土壤和粪便污染环境中短期存活；K-12 MG1655 主要为实验室参考菌株",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "glycerone phosphate (dihydroxyacetone phosphate)"
+    ],
+    "explanation": "主链产物 glycerone phosphate/DHAP 是糖酵解中间物，可进入中心碳代谢；本答案按路线范围止步于该进入点。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway page: glycerol degradation I",
+      "claim_scope": [
+        "chosen route name",
+        "main sequence glycerol -> sn-glycerol 3-phosphate -> glycerone phosphate"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UniProtKB",
+      "record_id": "P0A6F3",
+      "locator": "GlpK, Escherichia coli K-12",
+      "claim_scope": [
+        "glycerol kinase",
+        "EC 2.7.1.30",
+        "glpK",
+        "Escherichia coli K-12 MG1655"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UniProtKB",
+      "record_id": "P13035",
+      "locator": "GlpD, Escherichia coli K-12",
+      "claim_scope": [
+        "aerobic glycerol-3-phosphate dehydrogenase",
+        "EC 1.1.5.3",
+        "glpD",
+        "Escherichia coli K-12 MG1655"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "511145",
+      "locator": "Escherichia coli str. K-12 substr. MG1655",
+      "claim_scope": [
+        "organism identity",
+        "strain identity",
+        "NCBI TaxID"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq Genome",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655 complete genome",
+      "claim_scope": [
+        "genome accession",
+        "genome size",
+        "GC content"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "ATCC 700926; designation MG1655",
+      "claim_scope": [
+        "culture collection accession",
+        "strain designation MG1655",
+        "routine growth at 37 C",
+        "aerobic atmosphere"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general microbiology knowledge for Escherichia coli K-12 laboratory strains",
+      "claim_scope": [
+        "facultative anaerobe",
+        "Gram-negative rod",
+        "flagellated motile",
+        "non-spore-forming",
+        "near-neutral pH preference",
+        "non-halophilic",
+        "habitat breadth"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；route_scope.oxygen_condition 保持 null。",
+    "GlpD 为醌依赖脱氢酶；本答案未展开其下游电子传递链或具体末端电子受体。"
+  ]
+}

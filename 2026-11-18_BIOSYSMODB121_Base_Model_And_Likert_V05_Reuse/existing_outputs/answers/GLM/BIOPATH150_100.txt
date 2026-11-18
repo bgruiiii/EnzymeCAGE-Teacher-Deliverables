@@ -1,0 +1,379 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_100",
+  "pollutant_name_zh": "4-氨基-3-羟基苯甲酸根",
+  "pollutant_name_en": "4-Amino-3-hydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-amino-3-hydroxybenzoate degradation",
+    "is_single_continuous_route": true,
+    "notes": "氧条件题面未指定，按题面填 null；该途径本身为依赖分子氧的开环降解途径（extradiol 型 2,3-开裂），实际运行需好氧条件。"
+  },
+  "route_summary": "4-氨基-3-羟基苯甲酸根的主降解链为好氧开环途径：首先由 4-氨基-3-羟基苯甲酸 2,3-加双氧酶对 3-OH/4-NH2 相邻取代的苯环进行 C2-C3 位 extradiol 开裂，生成 2-氨基-5-羧基黏康酸-6-半醛（2-amino-5-carboxymuconic semialdehyde）；随后半醛经 NAD+ 依赖的脱氢酶氧化为 2-氨基-5-羧基黏康酸，再脱羧生成 2-氨基黏康酸，经水解脱氨基生成 4-草酸巴豆酸（4-oxalocrotonate），并入经典的间位开裂下游（2-氧-4-戊烯酸 → 4-羟基-2-氧戊酸 → 丙酮酸 + 乙醛）进入中心代谢。文献记忆中的降解菌为 Bordetella sp. 10d（证据等级低）。第一为本途径的特征步骤，后续步骤为与 2-aminophenol/邻苯二酚间位开裂途径类比推导，置信度较低。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Amino-3-hydroxybenzoate",
+          "smiles": "O=C([O-])c1cc(O)c(N)cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Amino-5-carboxymuconic semialdehyde",
+          "smiles": "O=C(O)C(N)=CC=C(C(=O)O)C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol aromatic ring cleavage (2,3-dioxygenation)",
+      "enzyme": {
+        "name": "4-amino-3-hydroxybenzoate 2,3-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Bordetella sp.",
+        "strain": "10d",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "开环产物结构（2-amino-5-carboxymuconic semialdehyde）与酶名来自文献记忆及 extradiol 2,3-开环化学推导；EC 编号未能确定填 null；菌株归属不确定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-Amino-5-carboxymuconic semialdehyde",
+          "smiles": "O=C(O)C(N)=CC=C(C(=O)O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Amino-5-carboxymuconate",
+          "smiles": "O=C(O)C(N)=CC=C(C(=O)O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aldehyde oxidation (NAD+-dependent dehydrogenation)",
+      "enzyme": {
+        "name": "2-amino-5-carboxymuconic semialdehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Bordetella sp.",
+        "strain": "10d",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "该步及酶名基于与 2-aminophenol 途径中 2-aminomuconic semialdehyde 脱氢酶的类比推导，具体酶名、EC 与反应顺序待文献核实。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-Amino-5-carboxymuconate",
+          "smiles": "O=C(O)C(N)=CC=C(C(=O)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Aminomuconate",
+          "smiles": "O=C(O)C(N)=CC=CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "2-amino-5-carboxymuconate decarboxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Bordetella sp.",
+        "strain": "10d",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "脱羧步骤及酶名为类比推导（与 2-amino-3-carboxymuconate semialdehyde 脱羧酶类似的反应类型），真实途径中脱羧与脱氨的先后顺序可能不同。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-Aminomuconate",
+          "smiles": "O=C(O)C(N)=CC=CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Oxalocrotonate",
+          "smiles": "O=C(O)C(=O)CC=CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NH3",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic deamination",
+      "enzyme": {
+        "name": "2-aminomuconate deaminase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Bordetella sp.",
+        "strain": "10d",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "2-aminomuconate deaminase 已在 2-aminophenol 途径中有报道，但其在本途径中的参与为类比推导。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Bordetella sp.",
+      "strain": "10d",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetaldehyde"],
+    "explanation": "主链在 4-草酸巴豆酸（4-oxalocrotonate）处并入经典间位开裂下游：经互变异构与脱羧生成 2-oxopent-4-enoate，水合生成 4-hydroxy-2-oxopentanoate，最后经醛缩酶裂解为 pyruvate 与 acetaldehyde；pyruvate 进入 TCA 循环等中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "4-oxalocrotonate 至 pyruvate 的经典间位开裂下游",
+      "summary": "4-oxalocrotonate 经 4-oxalocrotonate tautomerase 互变异构为 2-oxohex-4-enedioate，经 4-oxalocrotonate decarboxylase 脱羧生成 2-oxopent-4-enoate，经 2-oxopent-4-enoate hydratase 水合生成 4-hydroxy-2-oxopentanoate，最后由 4-hydroxy-2-oxopentanoate aldolase 裂解为 pyruvate 与 acetaldehyde；该模块在多种变形菌（如 Pseudomonas 属）中广泛存在。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S1 反应：4-氨基-3-羟基苯甲酸根经 extradiol 2,3-加双氧开环生成 2-amino-5-carboxymuconic semialdehyde", "酶 4-amino-3-hydroxybenzoate 2,3-dioxygenase 的存在"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Bordetella sp. 10d 为 4-氨基-3-羟基苯甲酸降解菌"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S2-S4 下游反应（脱氢、脱羧、脱氨）及其与 2-aminophenol/邻苯二酚间位开裂途径的类比"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "第一步开环产物 2-amino-5-carboxymuconic semialdehyde 的结构依据酶命名规则（2,3-加双氧）与 extradiol 开环化学推导得出，未能给出可核对的数据库记录编号。",
+    "4-amino-3-hydroxybenzoate 2,3-dioxygenase 的 EC 编号与基因名未能确定，均填 null，不作猜测。",
+    "菌株 Bordetella sp. 10d 的归属基于文献记忆，置信度低；其 15 项性状无可靠来源，全部填 null。",
+    "S2-S4（脱氢、脱羧、脱氨）为与 2-aminophenol/邻苯二酚间位开裂途径的类比推导，脱羧与脱氨的先后顺序可能与真实途径不同。",
+    "题面未指定氧条件，route_scope.oxygen_condition 按 null 返回；该途径实际需要分子氧参与。"
+  ]
+}

@@ -1,0 +1,370 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_047",
+  "pollutant_name_zh": "吲哚-3-乙酸根",
+  "pollutant_name_en": "Indole-3-acetate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "indole-3-acetate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故 oxygen_condition 按题面填 null；该路线本身为好氧途径，S1、S2、S3、S5、S6 均依赖分子氧。路线名称按题面原样填写为 indole-3-acetate degradation I，主链为单一线性连续途径。"
+  },
+  "route_summary": "好氧条件下，吲哚-3-乙酸根经 6 步主链降解：1) IAA 被氧化为 2-氧代吲哚-3-乙酸；2) 再经 C-3 位羟化生成 3-羟基-2-氧代吲哚-3-乙酸（二氧吲哚-3-乙酸）；3) 氧化开环裂解，吲哚 C-2 以 CO2 形式脱去，生成 2-氨基苯甲酰乙酸；4) 水解断裂 C-C 键，侧链以乙酸释放，生成邻氨基苯甲酸；5) 邻氨基苯甲酸经 1,2-双加氧并脱氨基转化为儿茶酚；6) 儿茶酚经内二醇开环生成顺,顺-粘康酸，随后进入 β-酮己二酸途径，以琥珀酰辅酶 A 与乙酰辅酶 A 汇入三羧酸循环。IAA 特异步骤（S1–S4）以 Pseudomonas putida 1290（iac 基因簇）为代表菌；S5 与 S6 分别以 Acinetobacter baylyi ADP1 和 Pseudomonas putida mt-2 的经典酶学为代表菌。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "indole-3-acetate", "smiles": "O=C([O-])Cc1c[nH]c2ccccc12", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"},
+        {"name": "NADPH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2-oxoindole-3-acetate", "smiles": "O=C([O-])CC1C(=O)NC2=CC=CC=C12", "role": "main"},
+        {"name": "NADP+", "smiles": null, "role": "byproduct"},
+        {"name": "water", "smiles": "O", "role": "byproduct"}
+      ],
+      "reaction_type": "单加氧氧化（吲哚环 C-2 位氧化为酮，2,3-位加氢重排）",
+      "enzyme": {
+        "name": "indole-3-acetate 2-monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": "iacA",
+        "confidence": "low",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "1290",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该步酶（iacA，推测为黄素依赖型单加氧酶）及化学计量基于文献记忆推断，未核对数据库记录；EC 编号未知；电子供体写作 NADPH，实际亦可能为 NADH。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "2-oxoindole-3-acetate", "smiles": "O=C([O-])CC1C(=O)NC2=CC=CC=C12", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"},
+        {"name": "NADPH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "dioxindole-3-acetate", "smiles": "O=C([O-])CC1(O)C(=O)NC2=CC=CC=C12", "role": "main"},
+        {"name": "NADP+", "smiles": null, "role": "byproduct"},
+        {"name": "water", "smiles": "O", "role": "byproduct"}
+      ],
+      "reaction_type": "单加氧羟化（C-3 位羟基化）",
+      "enzyme": {
+        "name": "2-oxoindole-3-acetate 3-monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": "iacB",
+        "confidence": "low",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "1290",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "酶基因（iacB）为推测，也可能由同一黄素单加氧酶（iacA）连续催化两步氧化；EC 编号未知。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "dioxindole-3-acetate", "smiles": "O=C([O-])CC1(O)C(=O)NC2=CC=CC=C12", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2-aminobenzoylacetate", "smiles": "O=C([O-])CC(=O)c1ccccc1N", "role": "main"},
+        {"name": "carbon dioxide", "smiles": "O=C=O", "role": "byproduct"}
+      ],
+      "reaction_type": "氧化开环裂解（吲哚五元环断裂并脱羧）",
+      "enzyme": {
+        "name": "dioxindole-3-acetate ring-cleaving dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": "iacC",
+        "confidence": "low",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "1290",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "开环产物（2-aminobenzoylacetate + CO2）由化学推断得出，与实际文献中间体可能不符，是整条主链中确定性最低的环节；酶基因 iacC 为推测。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "2-aminobenzoylacetate", "smiles": "O=C([O-])CC(=O)c1ccccc1N", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "anthranilate", "smiles": "O=C([O-])c1ccccc1N", "role": "main"},
+        {"name": "acetate", "smiles": "CC(=O)[O-]", "role": "byproduct"}
+      ],
+      "reaction_type": "C-C 键水解断裂（侧链以乙酸形式释放）",
+      "enzyme": {
+        "name": "2-aminobenzoylacetate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": "iacH",
+        "confidence": "low",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "1290",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "酶基因 iacH 为推测（iacH 文献注释为酰胺酶家族蛋白，其与本步 C-C 水解功能的对应关系未核实）。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {"name": "anthranilate", "smiles": "O=C([O-])c1ccccc1N", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"},
+        {"name": "NADH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "catechol", "smiles": "Oc1ccccc1O", "role": "main"},
+        {"name": "ammonia", "smiles": "N", "role": "byproduct"},
+        {"name": "NAD+", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "邻位双加氧羟化并脱氨基",
+      "enzyme": {
+        "name": "anthranilate 1,2-dioxygenase (deaminating)",
+        "ec_number": "1.14.12.1",
+        "gene_or_protein": "antABC",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 40066,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该步酶学为经典反应；此处以 Acinetobacter baylyi ADP1 为代表菌株记录，IAA 降解菌 P. putida 1290 自身的邻氨基苯甲酸双加氧酶基因未逐个核实。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {"name": "catechol", "smiles": "Oc1ccccc1O", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "cis,cis-muconate", "smiles": "O=C([O-])/C=C\\C=C/C(=O)[O-]", "role": "main"}
+      ],
+      "reaction_type": "内二醇（邻位）双加氧开环",
+      "enzyme": {
+        "name": "catechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": "catA",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_003",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "以 P. putida mt-2（pWW0/TOL 质粒 catA）为代表菌株记录经典酶学；1290 菌株自身的 catA 未逐个核实。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "1290",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {"value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F1_oxygen_tolerance": {"value": "专性好氧", "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F4_salinity": {"value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F3_pH": {"value": {"minimum": null, "optimum": null, "maximum": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F5_culture_collection": {"value": {"collection": null, "accession": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F6_respiration_electron_acceptor": {"value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2（分子氧）"}, "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F7_carbon_substrate_utilization": {"value": "能以吲哚-3-乙酸（植物生长素 IAA）作为唯一碳源和能源生长", "raw_text": "Utilization of the plant hormone indole-3-acetic acid for growth by Pseudomonas putida 1290", "evidence_id": "EVID_001", "confidence": "medium"},
+        "F8_degradation_capacity_broad": {"value": "能将吲哚-3-乙酸彻底降解并矿化（iac 基因簇介导，最终经儿茶酚进入 β-酮己二酸途径）", "raw_text": null, "evidence_id": "EVID_001", "confidence": "medium"},
+        "F9_enzyme_activity": {"value": "吲哚-3-乙酸氧化/降解酶系活性（iac 基因簇编码，推测含黄素依赖型单加氧酶 IacA 等）", "raw_text": null, "evidence_id": "EVID_005", "confidence": "low"},
+        "F10_motility": {"value": "可运动（极生鞭毛）", "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F11_cell_morphology": {"value": "直杆状", "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F12_gram_cell_envelope": {"value": "革兰氏阴性（外膜-肽聚糖细胞包膜）", "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F13_sporulation": {"value": "不形成芽孢", "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F14_genome_basic": {"value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F15_habitat_generalism": {"value": "泛栖型广适菌：该属成员广泛分布于土壤、水体及植物根际/叶际等多种生境，可在多种有机底物上生长；1290 为植物相关生境来源菌株（具体分离地点未核实）", "raw_text": null, "evidence_id": "EVID_002", "confidence": "low"}
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Acinetobacter baylyi",
+      "strain": "ADP1",
+      "ncbi_taxid": 40066,
+      "traits": {
+        "F2_temperature": {"value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F1_oxygen_tolerance": {"value": "专性好氧", "raw_text": null, "evidence_id": "EVID_003", "confidence": "medium"},
+        "F4_salinity": {"value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F3_pH": {"value": {"minimum": null, "optimum": null, "maximum": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F5_culture_collection": {"value": {"collection": null, "accession": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F6_respiration_electron_acceptor": {"value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2（分子氧）"}, "raw_text": null, "evidence_id": "EVID_003", "confidence": "medium"},
+        "F7_carbon_substrate_utilization": {"value": "能以邻氨基苯甲酸、苯甲酸等多种芳香族化合物作为唯一碳源和能源生长", "raw_text": null, "evidence_id": "EVID_003", "confidence": "medium"},
+        "F8_degradation_capacity_broad": {"value": "经 β-酮己二酸途径降解多种芳香族化合物（苯甲酸、邻氨基苯甲酸、奎尼酸、对香豆酸等）", "raw_text": null, "evidence_id": "EVID_003", "confidence": "low"},
+        "F9_enzyme_activity": {"value": "邻氨基苯甲酸 1,2-双加氧酶（AntABC）活性", "raw_text": null, "evidence_id": "EVID_003", "confidence": "medium"},
+        "F10_motility": {"value": "不具鞭毛、非游动", "raw_text": null, "evidence_id": "EVID_003", "confidence": "medium"},
+        "F11_cell_morphology": {"value": "短杆状/球杆状，常成对排列", "raw_text": null, "evidence_id": "EVID_003", "confidence": "medium"},
+        "F12_gram_cell_envelope": {"value": "革兰氏阴性", "raw_text": null, "evidence_id": "EVID_003", "confidence": "medium"},
+        "F13_sporulation": {"value": "不形成芽孢", "raw_text": null, "evidence_id": "EVID_003", "confidence": "medium"},
+        "F14_genome_basic": {"value": {"genome_accession": "NC_005966", "genome_size_bp": null, "gc_percent": null}, "raw_text": null, "evidence_id": "EVID_006", "confidence": "medium"},
+        "F15_habitat_generalism": {"value": "广适性腐生菌：广泛分布于土壤、水体、污水及临床相关环境等多种生境", "raw_text": null, "evidence_id": "EVID_003", "confidence": "medium"}
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {"value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F1_oxygen_tolerance": {"value": "专性好氧", "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F4_salinity": {"value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F3_pH": {"value": {"minimum": null, "optimum": null, "maximum": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F5_culture_collection": {"value": {"collection": null, "accession": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F6_respiration_electron_acceptor": {"value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2（分子氧）"}, "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F7_carbon_substrate_utilization": {"value": "能利用甲苯、二甲苯（pWW0/TOL 质粒介导）及其中间代谢物苯甲酸、儿茶酚等作为碳源", "raw_text": null, "evidence_id": "EVID_004", "confidence": "medium"},
+        "F8_degradation_capacity_broad": {"value": "具 TOL 质粒介导的甲苯/二甲苯降解能力及儿茶酚内二醇开环能力，经 β-酮己二酸途径矿化芳香族化合物", "raw_text": null, "evidence_id": "EVID_004", "confidence": "medium"},
+        "F9_enzyme_activity": {"value": "儿茶酚 1,2-双加氧酶（内二醇开环）活性", "raw_text": null, "evidence_id": "EVID_004", "confidence": "medium"},
+        "F10_motility": {"value": "可运动（极生鞭毛）", "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F11_cell_morphology": {"value": "杆状", "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F12_gram_cell_envelope": {"value": "革兰氏阴性", "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F13_sporulation": {"value": "不形成芽孢", "raw_text": null, "evidence_id": "EVID_002", "confidence": "medium"},
+        "F14_genome_basic": {"value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null}, "raw_text": null, "evidence_id": null, "confidence": "unknown"},
+        "F15_habitat_generalism": {"value": "环境广适菌：分离自土壤/污泥等环境，携带可自我转移的 TOL 降解质粒，可适应含芳香物污染生境", "raw_text": null, "evidence_id": "EVID_004", "confidence": "low"}
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "主链终点顺,顺-粘康酸经 β-酮己二酸途径（catB/catC 及 pca 基因簇编码的酶系）逐步降解，最终以琥珀酰辅酶 A 与乙酰辅酶 A 进入三羧酸循环被彻底氧化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "β-酮己二酸途径（儿茶酚支路）",
+      "summary": "顺,顺-粘康酸经粘康酸环异构酶（EC 5.5.1.7，catB）生成 (+)-粘康内酯，再经粘康内酯异构酶转化为 3-氧代己二酸烯醇内酯，水解为 3-氧代己二酸，经 CoA 转移/连接与硫解（pcaIJ、pcaF）生成琥珀酰辅酶 A 与乙酰辅酶 A，进入 TCA 循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "3-亚甲基-2-氧代吲哚支路（过氧化物酶型 IAA 氧化）",
+      "summary": "IAA 亦可经过氧化物酶型氧化脱羧生成 3-亚甲基-2-氧代吲哚（3-methylene-2-oxindole）等产物；该支路更多见于植物体系及部分细菌的 IAA 氧化反应，不属于本题指定的评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Leveau J.H.J. 与 Lindow S.E.，Applied and Environmental Microbiology（2005），论文标题《Utilization of the plant hormone indole-3-acetic acid for growth by Pseudomonas putida 1290》",
+      "claim_scope": ["P. putida 1290 菌株身份及其利用 IAA 生长的能力", "该菌具备 IAA 降解途径（路线在菌株层面的存在性）", "ORG_001 F7 碳源利用"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida 属一般微生物学性状（好氧、革兰氏阴性、杆状、极生鞭毛运动、不产芽孢、好氧呼吸）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["邻氨基苯甲酸 1,2-双加氧酶（EC 1.14.12.1，antABC）催化 anthranilate 转化为 catechol 的经典酶学", "Acinetobacter baylyi ADP1 具邻氨基苯甲酸降解能力", "Acinetobacter 一般微生物学性状"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["儿茶酚 1,2-双加氧酶（EC 1.13.11.1，catA）催化 catechol 内二醇开环生成 cis,cis-muconate 的经典酶学", "Pseudomonas putida mt-2（pWW0/TOL 质粒）的甲苯/儿茶酚降解能力"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["IAA 降解中间体 2-oxoindole-3-acetate 与 dioxindole-3-acetate 及 iac 基因簇的文献记忆（未经数据库核对）", "S1–S4 反应与酶的推断依据"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_005966",
+      "locator": "Acinetobacter baylyi ADP1 染色体完整基因组序列记录",
+      "claim_scope": ["ORG_002 F14 基因组登录号"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "S1–S4 的酶名、基因归属（iacA/iacB/iacC/iacH）及部分中间体（尤其 S3 开环产物 2-aminobenzoylacetate 与 S4 水解释放乙酸）基于化学推断与不完整的文献记忆，未经 MetaCyc/UniProt 原始记录核对，确定性较低。",
+    "未能核对 MetaCyc 中 indole-3-acetate degradation I 的确切反应清单与途径边界；本答案按文献报道的 Pseudomonas putida 1290 IAA 降解途径（经 2-oxoindole-3-acetate、dioxindole-3-acetate 至 catechol）重构主链，S6（catechol 开环）可能超出或未完全覆盖该 MetaCyc 途径的原始边界。",
+    "P. putida 1290 与 mt-2 的菌株级 TaxID 未知，ncbi_taxid 填物种级编号 303；Acinetobacter baylyi ADP1 填 40066，均未经在线核对。",
+    "S5、S6 分别以 Acinetobacter baylyi ADP1 与 Pseudomonas putida mt-2 为代表菌株记录酶学事实；同一菌株内完成全部六步的证据未逐基因核实（P. putida 1290 能以 IAA 为唯一碳源生长，据此推断其具备完整途径，故 complete_pathway_organism_profile_id 指向 ORG_001）。",
+    "三个菌株的温度、pH、盐度、保藏编号及 ORG_001/ORG_003 的基因组数值缺乏可靠来源，按要求填 null；F14 中 ORG_002 仅填已知的登录号，大小与 GC 含量未知。"
+  ]
+}

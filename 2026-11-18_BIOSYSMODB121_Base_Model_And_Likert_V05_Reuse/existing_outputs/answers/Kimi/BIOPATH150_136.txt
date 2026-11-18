@@ -1,0 +1,253 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_136",
+  "pollutant_name_zh": "磺酸基乙醛",
+  "pollutant_name_en": "Sulfonatoacetaldehyde",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoacetaldehyde degradation IV",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；本路线按题面原样限定为 sulfoacetaldehyde degradation IV，不额外推定好氧或厌氧属性。"
+  },
+  "route_summary": "该路线的主链为一步水解性脱磺反应：磺酸基乙醛（sulfoacetaldehyde）由 sulfoacetaldehyde lyase 催化，发生碳-硫键裂解，碳骨架生成乙酸盐，硫以亚硫酸盐释放。路线级证据将该反应与 Rhodobacter capsulatus 相关联。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Sulfonatoacetaldehyde",
+          "smiles": "O=CCS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetate",
+          "smiles": "CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Sulfite",
+          "smiles": "O=S([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解性碳-硫键裂解与脱磺酸基",
+      "enzyme": {
+        "name": "sulfoacetaldehyde lyase",
+        "ec_number": "4.4.1.12",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Rhodobacter capsulatus",
+        "strain": null,
+        "ncbi_taxid": 1060,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "反应和首选酶有酶学数据库及路线数据库支持；当前路线级证据未能把实验材料可靠限定到具体菌株，因此菌株、菌株级保藏编号和基因组信息不作推断。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Rhodobacter capsulatus",
+      "strain": null,
+      "ncbi_taxid": 1060,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧光合异养菌；可进行有氧生长，也可在光照厌氧条件下生长",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "淡水型或非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "牛磺酸衍生的有机磺酸盐，包括磺酸基乙醛",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "有机磺酸盐脱磺降解；可将磺酸基乙醛裂解为乙酸盐和亚硫酸盐",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "sulfoacetaldehyde lyase 活性：磺酸基乙醛经水解性 C–S 键裂解生成乙酸盐和亚硫酸盐",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "具运动性，通常依靠鞭毛运动",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要见于淡水、沉积物及潮湿土壤等环境，并兼具黑暗有氧异养和光照厌氧光合生活方式，表现出一定的栖息地与代谢适应性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "Acetate"
+    ],
+    "explanation": "本指定路线的主碳产物为乙酸盐。乙酸盐可在后续一般代谢中活化为乙酰辅酶A并进入中心碳代谢；该后续步骤不属于题面限定的 sulfoacetaldehyde degradation IV，因此未列为本路线步骤。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page titled \"sulfoacetaldehyde degradation IV\"",
+      "claim_scope": [
+        "指定路线的主反应",
+        "路线底物与产物",
+        "路线与 Rhodobacter capsulatus 的关联",
+        "有机磺酸盐降解能力"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz",
+      "record_id": "EC 4.4.1.12",
+      "locator": "https://enzyme.expasy.org/EC/4.4.1.12",
+      "claim_scope": [
+        "酶首选名称",
+        "EC 编号",
+        "sulfoacetaldehyde lyase 催化反应"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": null,
+      "locator": "https://bacdive.dsmz.de/search?search=Rhodobacter%20capsulatus",
+      "claim_scope": [
+        "Rhodobacter capsulatus 的培养条件",
+        "氧耐受性",
+        "细胞形态",
+        "运动性",
+        "革兰氏染色",
+        "产孢状态",
+        "栖息地"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "1060",
+      "locator": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=1060",
+      "claim_scope": [
+        "Rhodobacter capsulatus 物种分类身份",
+        "NCBI TaxID"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；虽然该主反应不以分子氧为反应物，但不据此把整条路线判定为厌氧路线。",
+    "路线级证据在当前记录中不能可靠确定实验菌株；为避免把另一菌株的培养、保藏和基因组数据错误套用到本路线，organism_profile 保留在 Rhodobacter capsulatus 物种层级。"
+  ]
+}

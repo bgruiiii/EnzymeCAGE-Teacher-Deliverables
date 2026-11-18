@@ -1,0 +1,288 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_039",
+  "pollutant_name_zh": "D-脯氨酸甜菜碱",
+  "pollutant_name_en": "D-proline betaine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "proline betaine degradation I",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "D-脯氨酸甜菜碱经三步降解：首先由D-脯氨酸甜菜碱脱甲基酶催化生成N-甲基-D-脯氨酸，再由N-甲基-D-脯氨酸脱甲基酶催化生成D-脯氨酸，最后经D-氨基酸氧化酶氧化生成2-氧戊二酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-proline betaine",
+          "smiles": "[O-]C(=O)[C@H]1CCC[N+]1(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-methyl-D-proline",
+          "smiles": "OC(=O)[C@H]1CCCN1C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative demethylation",
+      "enzyme": {
+        "name": "D-proline betaine demethylase",
+        "ec_number": "1.5.99.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "N-methyl-D-proline",
+          "smiles": "OC(=O)[C@H]1CCCN1C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-proline",
+          "smiles": "OC(=O)[C@H]1CCCN1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative demethylation",
+      "enzyme": {
+        "name": "N-methyl-D-proline demethylase",
+        "ec_number": "1.5.99.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "D-proline",
+          "smiles": "OC(=O)[C@H]1CCCN1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxoglutarate",
+          "smiles": "O=C(O)C(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "D-amino acid oxidase",
+        "ec_number": "1.4.3.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "嗜温菌（mesophilic）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 6.0,
+            "optimum": 7.0,
+            "maximum": 8.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能利用多种碳源，包括葡萄糖、有机酸、氨基酸和芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种芳香族化合物、脯氨酸甜菜碱等",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有D-脯氨酸甜菜碱脱甲基酶、D-氨基酸氧化酶等活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性，具极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002947.3",
+            "genome_size_bp": 6181582,
+            "gc_percent": 61.6
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、水体和植物根际，具有较强环境适应性和代谢多样性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "2-oxoglutarate"
+    ],
+    "explanation": "2-氧戊二酸进入三羧酸循环。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "pathway",
+        "reactions",
+        "enzymes"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "organism traits"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

@@ -1,0 +1,565 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_014",
+  "pollutant_name_zh": "2-硝基苯甲酸根",
+  "pollutant_name_en": "2-Nitrobenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "2-nitrobenzoate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "本题指定路线按好氧、经2-氨基苯甲酸根与邻苯二酚、再邻位裂解进入β-酮己二酸途径的矿化主链填写。硝基芳烃特异步骤主要为前两步；自邻苯二酚起为β-酮己二酸途径。数据库中该命名对象的反应边界可能止于邻苯二酚并外链到邻苯二酚降解途径，此处按生理降解主链写至中心代谢入口。路线编号对应关系见uncertainties。"
+  },
+  "route_summary": "好氧条件下，2-硝基苯甲酸根降解路线II的主链为：2-硝基苯甲酸根先被完全还原为2-氨基苯甲酸根，再由邻氨基苯甲酸1,2-双加氧酶转化为邻苯二酚并释放二氧化碳和氨；邻苯二酚经邻位开环生成顺,顺-粘康酸根，随后经粘康酸内酯、3-氧代己二酸烯醇内酯和3-氧代己二酸进入β-酮己二酸途径，生成琥珀酰CoA与乙酰CoA。代表菌为Arthrobacter protophormiae RKJ100。该序列不同于Pseudomonas fluorescens KU-7经2-羟基氨基苯甲酸根和3-羟基邻氨基苯甲酸根的路线。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-nitrobenzoate",
+          "smiles": "[O-]C(=O)c1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminobenzoate",
+          "smiles": "[O-]C(=O)c1ccccc1N",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "硝基完全还原",
+      "enzyme": {
+        "name": "2-nitrobenzoate nitroreductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "净反应为硝基六电子还原为氨基；RKJ100中该硝基还原酶未完成纯化与基因鉴定，EC未知。亚硝基与羟氨基物种可能为酶结合中间体，未列为独立主链步骤。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-aminobenzoate",
+          "smiles": "[O-]C(=O)c1ccccc1N",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "双加氧脱氨脱羧",
+      "enzyme": {
+        "name": "anthranilate 1,2-dioxygenase",
+        "ec_number": "1.14.12.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该转化的标准酶为EC 1.14.12.1，辅因子写成NADH以代表NAD(P)H；RKJ100中该酶未单独克隆，辅因子偏好未确认。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis,cis-muconate",
+          "smiles": "[O-]C(=O)/C=C\\C=C/C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "邻位开环双加氧",
+      "enzyme": {
+        "name": "catechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "主链采用邻位裂解。若该菌实际以间位裂解处理邻苯二酚，则S3之后的步骤不成立。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "cis,cis-muconate",
+          "smiles": "[O-]C(=O)/C=C\\C=C/C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "muconolactone",
+          "smiles": "O=C1C=CC(CC(=O)[O-])O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "内酯化",
+      "enzyme": {
+        "name": "muconate cycloisomerase",
+        "ec_number": "5.5.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "此步及以后为邻位裂解后的标准β-酮己二酸途径续写，RKJ100中未逐酶测定，按该菌能矿化2-硝基苯甲酸根推断。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "muconolactone",
+          "smiles": "O=C1C=CC(CC(=O)[O-])O1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": "O=C1CCC(=CC(=O)[O-])O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双键异构",
+      "enzyme": {
+        "name": "muconolactone isomerase",
+        "ec_number": "5.3.3.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "标准β-酮己二酸途径步骤，菌株水平证据为推断。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": "O=C1CCC(=CC(=O)[O-])O1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "[O-]C(=O)CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "烯醇内酯水解",
+      "enzyme": {
+        "name": "3-oxoadipate enol-lactone hydrolase",
+        "ec_number": "3.1.1.24",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "标准β-酮己二酸途径步骤，菌株水平证据为推断。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "[O-]C(=O)CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "succinyl-CoA",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "succinate",
+          "smiles": "[O-]C(=O)CCC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA转移",
+      "enzyme": {
+        "name": "3-oxoadipate CoA-transferase",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "琥珀酰CoA为CoA供体；该转移酶在RKJ100中未被单独测定。CoA衍生物SMILES未填写以免写错。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "硫解",
+      "enzyme": {
+        "name": "3-oxoadipyl-CoA thiolase",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "中心代谢入口步骤。EC 2.3.1.174为3-氧代己二酰CoA硫解酶的专用编号，部分文献仍用通用硫解酶EC 2.3.1.16；菌株水平为推断。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter protophormiae",
+      "strain": "RKJ100",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用2-硝基苯甲酸根作为碳源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解2-硝基苯甲酸根，代谢中出现2-氨基苯甲酸根与邻苯二酚",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有将2-硝基苯甲酸根转化为2-氨基苯甲酸根并进一步生成邻苯二酚的活性；初始还原酶与后续各酶在该菌株中多数未单独纯化鉴定",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "不规则杆状至球状，属典型杆-球循环",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "β-酮己二酸途径的硫解步骤同时生成琥珀酰CoA和乙酰CoA，二者进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "三羧酸循环",
+      "summary": "琥珀酰CoA与乙酰CoA进入TCA循环，完成碳骨架的中心代谢转化。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "2-nitrobenzoate degradation I",
+      "summary": "Pseudomonas fluorescens KU-7将2-硝基苯甲酸根经部分还原生成2-羟基氨基苯甲酸根，再变位为3-羟基邻氨基苯甲酸根，随后由3-羟基邻氨基苯甲酸3,4-双加氧酶开环，进入2-氨基粘康酸途径。该路线不是本题指定并评分的degradation II主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Arthrobacter protophormiae RKJ100降解o-nitrobenzoate的文献记忆，主要包括Pandey G, Paul D, Jain RK. 2003. Branching of o-nitrobenzoate degradation pathway in Arthrobacter protophormiae RKJ100: identification of new intermediates. FEMS Microbiol Lett. 以及Jain课题组对该菌株经邻氨基苯甲酸转化的相关报道。本次未直接打开原文。",
+      "claim_scope": ["organism", "reaction", "metabolite", "carbon_source"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB/KEGG酶学常识：EC 1.14.12.1 anthranilate 1,2-dioxygenase；EC 1.13.11.1 catechol 1,2-dioxygenase；EC 5.5.1.1 muconate cycloisomerase；EC 5.3.3.4 muconolactone isomerase；EC 3.1.1.24 3-oxoadipate enol-lactone hydrolase；EC 2.8.3.6 3-oxoadipate CoA-transferase；EC 2.3.1.174 3-oxoadipyl-CoA thiolase。",
+      "claim_scope": ["enzyme", "ec_number", "reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": "将题面路线名2-nitrobenzoate degradation II对应为区别于KU-7的3-羟基邻氨基苯甲酸路线的邻氨基苯甲酸/邻苯二酚/邻位裂解路线，并把β-酮己二酸途径后段归于RKJ100的推断。",
+      "claim_scope": ["route_identity", "downstream_inference"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "节杆菌属Arthrobacter的分类学表型常识：革兰氏阳性放线菌、好氧、不产芽孢、杆-球循环；降解实验在好氧条件下进行。非该菌株实测数值。",
+      "claim_scope": ["taxonomy_traits", "oxygen", "morphology"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "将题面名称2-nitrobenzoate degradation II对应为经2-氨基苯甲酸根和邻苯二酚的好氧矿化路线，是基于其与Pseudomonas fluorescens KU-7的3-羟基邻氨基苯甲酸路线相互区别所作的分型推断，未能直接核对MetaCyc或EAWAG-BBD反应列表，存在I/II编号对调的风险。",
+    "RKJ100被报道具有分支途径；除2-氨基苯甲酸根一支外的新中间体结构记忆不可靠，故不写入评分主链。",
+    "S1硝基还原酶无可靠EC与基因名；S4至S8在该菌株中多未逐酶测定，系由唯一碳源生长和邻位裂解假设外推。",
+    "邻苯二酚若走间位裂解，则S3产物及后续β-酮己二酸步骤均不成立。",
+    "菌株保藏号、NCBI TaxID、基因组登录号、温度、pH、盐度、运动性和栖息地广适性无可靠来源，已置null；形态、革兰氏染色和产孢为属级常识而非菌株实测。",
+    "Arthrobacter protophormiae后来可能被重新分类，此处沿用降解文献中的原名与菌株号RKJ100，不改写为未核实的新属名。",
+    "NAD(P)H具体偏好和各步质子计量未严格平衡；CoA衍生物未给出SMILES。"
+  ]
+}

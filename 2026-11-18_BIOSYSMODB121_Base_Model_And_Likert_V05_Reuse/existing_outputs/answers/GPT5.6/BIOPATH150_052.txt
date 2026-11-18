@@ -1,0 +1,308 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_052",
+  "pollutant_name_zh": "对枯茗酸根",
+  "pollutant_name_en": "p-Cumate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "p-cumate degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "已知的主链可概括为对枯茗酸根的邻位双羟化、芳环裂解以及后续水解，终产物为2-hydroxypentadienoate。部分中间体和酶的具体命名及EC归属缺乏足够确定性。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "p-Cumate",
+          "smiles": "CC(C)c1ccc(C(=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-Dihydroxy-4-isopropylbenzoate",
+          "smiles": "CC(C)c1ccc(C(=O)[O-])c(O)c1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Aromatic-ring dihydroxylation",
+      "enzyme": {
+        "name": "p-Cumate 2,3-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该反应及中间体符合Pseudomonas putida F1的对枯茗酸降解模式，但具体酶的EC编号未确定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2,3-Dihydroxy-4-isopropylbenzoate",
+          "smiles": "CC(C)c1ccc(C(=O)[O-])c(O)c1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxy-6-oxo-4-methylhepta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)C=C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Extradiol aromatic-ring cleavage",
+      "enzyme": {
+        "name": "2,3-Dihydroxy-4-isopropylbenzoate dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "芳环裂解产物的系统命名、双键构型和具体酶归属存在文献命名差异，EC编号未确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-6-oxo-4-methylhepta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)C=C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxypentadienoate",
+          "smiles": "O=C([O-])C(O)=CC=C",
+          "role": "main"
+        },
+        {
+          "name": "Acetone",
+          "smiles": "CC(=O)C",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Hydrolytic cleavage of ring-cleavage product",
+      "enzyme": {
+        "name": "Ring-cleavage product hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "终产物方向符合题定路线，但该步的确切中间体、断裂方式和副产物需要专门文献或数据库记录确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "2-Hydroxypentadienoate"
+    ],
+    "explanation": "2-Hydroxypentadienoate可继续进入后续有机酸和中央代谢相关转化，但本题路线范围止于该产物。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "p-cumate degradation to 2-hydroxypentadienoate",
+        "aromatic-ring dihydroxylation",
+        "extradiol ring cleavage",
+        "ring-cleavage product hydrolysis"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida F1 association with p-cumate degradation"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定。",
+    "各步首选酶的正式名称和EC编号未获得足够确定的来源支持。",
+    "芳环裂解中间体的系统命名、双键构型及副产物需要进一步文献核实。",
+    "Pseudomonas putida F1的15项培养和基因组性状未在本回答中填入无来源的推测值。"
+  ]
+}

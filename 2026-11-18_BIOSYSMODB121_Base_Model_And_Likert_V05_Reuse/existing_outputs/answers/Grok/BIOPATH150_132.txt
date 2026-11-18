@@ -1,0 +1,212 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_132",
+  "pollutant_name_zh": "1-甲基-2-吡咯烷酮",
+  "pollutant_name_en": "1-Methyl-2-pyrrolidinone",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "N-methylpyrrolidone degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本回答按命名路线中以C5位依赖氧气的羟基化为首步的好氧主链填写；厌氧转化未纳入评分主链。"
+  },
+  "route_summary": "好氧主链为：1-甲基-2-吡咯烷酮先在内酰胺环C5位单加氧羟基化，生成5-羟基-1-甲基-2-吡咯烷酮；再脱氢生成1-甲基吡咯烷-2,5-二酮（N-甲基琥珀酰亚胺）；随后水解开环为4-(甲氨基)-4-氧代丁酸，并进一步水解为琥珀酸与甲胺。琥珀酸进入中心代谢。各步EC编号、基因符号和可唯一对应的菌株未能可靠核定，故置null。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "1-Methyl-2-pyrrolidinone",
+          "smiles": "CN1CCCC1=O",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-Hydroxy-1-methyl-2-pyrrolidinone",
+          "smiles": "O=C1CCC(O)N1C",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "N-methylpyrrolidone hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "按单加氧酶化学计量列入氧气与水；电子供体究竟是NADH还是NADPH未能核定，故未列入。酶名为文献中的功能称呼，EC与基因未核定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "5-Hydroxy-1-methyl-2-pyrrolidinone",
+          "smiles": "O=C1CCC(O)N1C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-Methylpyrrolidine-2,5-dione",
+          "smiles": "O=C1CCC(=O)N1C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "5-hydroxy-N-methyl-2-pyrrolidone dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "N-甲基琥珀酰亚胺是反复检出的中间体，但半胺醛氧化为酰亚胺可能部分非酶进行；脱氢酶为暂定功能名，辅因子特异性、EC与基因未核定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "1-Methylpyrrolidine-2,5-dione",
+          "smiles": "O=C1CCC(=O)N1C",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-(Methylamino)-4-oxobutanoic acid",
+          "smiles": "CNC(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "环状酰亚胺水解开环在化学上生成N-甲基琥珀酰胺酸，但是否由已定名水解酶催化、以及对应EC与菌株均未核定，故enzyme与microorganism置null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-(Methylamino)-4-oxobutanoic acid",
+          "smiles": "CNC(=O)CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Succinic acid",
+          "smiles": "OC(=O)CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Methylamine",
+          "smiles": "CN",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "末端酰胺水解并释放甲胺是进入琥珀酸的合理转化，但专一酰胺酶未被可靠核定；亦存在先去甲基再释放氨的替代提议，故本步酶与菌置null。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["Succinic acid"],
+    "explanation": "琥珀酸可经琥珀酸脱氢酶进入三羧酸循环，用于产能或生物合成。甲胺的进一步代谢未纳入本主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "三羧酸循环",
+      "summary": "琥珀酸进入三羧酸循环后可继续氧化。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "经琥珀酰亚胺的去甲基支路",
+      "summary": "N-甲基琥珀酰亚胺先去甲基生成琥珀酰亚胺，再水解为琥珀酰胺酸并释放氨生成琥珀酸，而不是由N-甲基琥珀酰胺酸直接释放甲胺。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "半胺醛自发开环支路",
+      "summary": "5-羟基-1-甲基-2-吡咯烷酮可自发开环为4-(甲氨基)-4-氧代丁醛，再氧化为N-甲基琥珀酰胺酸，不一定经过N-甲基琥珀酰亚胺。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "起始N-去甲基支路",
+      "summary": "早期研究曾提出NMP先N-去甲基生成2-吡咯烷酮，再沿2-吡咯烷酮途径降解；该支路不是本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["route_chemistry", "S1_reaction", "S2_reaction", "S3_reaction", "S4_reaction", "S1_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S2_enzyme_activity"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未能把任一步可靠绑定到单一物种、菌株、NCBI TaxID或保藏号，因此microorganism均为null，organism_profiles为空，15项性状无从填写。",
+    "各步均无已核定的EC编号和基因符号。",
+    "N-甲基琥珀酰亚胺之后是直接水解并释放甲胺，还是先去甲基再释放氨，文献提议并存；本回答以前者为主链。",
+    "5-羟基中间体氧化为酰亚胺的步骤可能部分自发进行。",
+    "电子供体特异性未知，未写入辅因子。"
+  ]
+}

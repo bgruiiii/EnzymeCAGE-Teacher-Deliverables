@@ -1,0 +1,349 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_018",
+  "pollutant_name_zh": "四溴双酚A",
+  "pollutant_name_en": "Tetrabromobisphenol A",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Tetrabromobisphenol A pathway",
+    "is_single_continuous_route": true,
+    "notes": "题面指定好氧（aerobic）条件与“Tetrabromobisphenol A pathway”。主链取TBBPA经逐步脱溴生成双酚A的连续线性序列（终点为双酚A）。需说明：三溴/二溴/一溴双酚A等逐步中间体的确证主要来自厌氧富集培养（Arbeli & Ronen 2003）；好氧条件下 Ochrobactrum sp. T 被报道可“一步”完成脱溴并矿化TBBPA（An et al. 2011），好氧培养中逐步中间体的直接检出有限。"
+  },
+  "route_summary": "好氧条件下，四溴双酚A（TBBPA）经连续脱溴依次生成三溴双酚A、二溴双酚A、一溴双酚A，最终生成双酚A（BPA），每步释放Br−；BPA 可再经双酚A降解途径进入中心代谢并被矿化。各脱溴步骤的酶均未被纯化鉴定（enzyme 一律填 null）。代表菌为 Ochrobactrum sp. T（电子废物回收场地分离株，An et al. 2011 报道其好氧脱溴并矿化TBBPA）；其他好氧降解菌（如 Bacillus sp. GZT、Achromobacter sp. HZ01）亦有报道。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Tetrabromobisphenol A",
+          "smiles": "CC(C)(c1cc(Br)c(O)c(Br)c1)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Tribromobisphenol A",
+          "smiles": "CC(C)(c1cc(Br)c(O)c(Br)c1)c1ccc(O)c(Br)c1",
+          "role": "main"
+        },
+        {
+          "name": "Bromide",
+          "smiles": "[Br-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原脱溴（好氧培养中观察到的脱溴步骤，反应机制未鉴定）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Ochrobactrum sp.",
+        "strain": "T",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "脱溴酶未纯化鉴定，故 enzyme 填 null；三溴双酚A中间体的确证主要来自厌氧富集培养（Arbeli & Ronen 2003）；好氧条件下 Ochrobactrum sp. T 被报道可一步完成脱溴与矿化（An et al. 2011），好氧培养中逐步中间体的检出有限，脱溴位置（异构体）未完全确定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Tribromobisphenol A",
+          "smiles": "CC(C)(c1cc(Br)c(O)c(Br)c1)c1ccc(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,2'-Dibromobisphenol A",
+          "smiles": "CC(C)(c1ccc(O)c(Br)c1)c1ccc(O)c(Br)c1",
+          "role": "main"
+        },
+        {
+          "name": "Bromide",
+          "smiles": "[Br-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原脱溴（机制未鉴定）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Ochrobactrum sp.",
+        "strain": "T",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "二溴双酚A的异构体（2,2′-二溴 与 2,6-二溴）未完全确定，此处按2,2′-二溴双酚A给出；中间体验证主要来自厌氧富集培养；脱溴酶未鉴定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2,2'-Dibromobisphenol A",
+          "smiles": "CC(C)(c1ccc(O)c(Br)c1)c1ccc(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Monobromobisphenol A",
+          "smiles": "CC(C)(c1ccc(O)cc1)c1ccc(O)c(Br)c1",
+          "role": "main"
+        },
+        {
+          "name": "Bromide",
+          "smiles": "[Br-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原脱溴（机制未鉴定）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Ochrobactrum sp.",
+        "strain": "T",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "一溴双酚A中间体验证主要来自厌氧富集培养（Arbeli & Ronen 2003）；好氧条件下的逐步中间体检出有限；脱溴酶未鉴定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "Monobromobisphenol A",
+          "smiles": "CC(C)(c1ccc(O)cc1)c1ccc(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Bisphenol A",
+          "smiles": "CC(C)(c1ccc(O)cc1)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Bromide",
+          "smiles": "[Br-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原脱溴（机制未鉴定）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Ochrobactrum sp.",
+        "strain": "T",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "生成双酚A为本评分主链终点；BPA 的进一步好氧降解属于 Bisphenol A pathway（未列入主链）；脱溴酶未鉴定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Ochrobactrum sp.",
+      "strain": "T",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": "One-step process for debromination and aerobic mineralization of tetrabromobisphenol-A by a novel Ochrobactrum sp. T isolated from e-waste recycling site",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": "aerobic mineralization of tetrabromobisphenol-A by a novel Ochrobactrum sp. T",
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以四溴双酚A（TBBPA）为碳源/底物进行好氧降解并矿化",
+          "raw_text": "debromination and aerobic mineralization of tetrabromobisphenol-A by a novel Ochrobactrum sp. T",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可好氧脱溴并矿化溴代阻燃剂TBBPA（生成双酚A并释放Br−）",
+          "raw_text": "One-step process for debromination and aerobic mineralization of tetrabromobisphenol-A",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "全细胞水平表现出TBBPA脱溴与矿化活性；未见纯化酶或基因层面的活性表征",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（短杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自电子废物回收拆解场地的受污染环境；该菌株已报道的栖息地信息有限，未见广适性系统评估",
+          "raw_text": "a novel Ochrobactrum sp. T isolated from e-waste recycling site",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Bisphenol A"],
+    "explanation": "本主链终点为双酚A（BPA）；好氧条件下BPA可经双酚A降解途径进一步转化（生成4-羟基苯甲酸等中间体）进入中心代谢并最终矿化为CO2；Ochrobactrum sp. T 被报道可矿化TBBPA，但其环裂解与矿化路径未逐步解析。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "Bisphenol A pathway",
+      "summary": "主链终点双酚A可经好氧双酚A降解途径进一步转化（如 Sphingomonas/Sphingobium 类菌株经4-羟基苯甲酸进入中心代谢；参见 EAWAG-BBD Bisphenol A pathway）；Ochrobactrum sp. T 亦被报道可进一步矿化（An et al. 2011），具体步骤未列入本评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "厌氧还原脱溴途径",
+      "summary": "厌氧沉积物/污泥及厌氧富集培养中，TBBPA 经相同的逐步脱溴序列还原脱溴至双酚A（Ronen & Abeliovich 2000；Arbeli & Ronen 2003），其氧条件与本题指定的好氧条件不同，不属于被评分的好氧主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "经2,4,6-三溴苯酚的好氧转化（存疑）",
+      "summary": "部分环境研究报道好氧转化TBBPA时检出2,4,6-三溴苯酚等酚类产物，提示可能存在酚环断裂型替代途径；证据不充分、机制不明，不属于被评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD (formerly UM-BBD)",
+      "record_id": "Tetrabromobisphenol A Pathway Map",
+      "locator": "https://eawag-bbd.ethz.ch/tbbpa/tbbpa_map.html",
+      "claim_scope": ["route", "reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Arbeli Z, Ronen Z. 2003. Enrichment of a microbial culture capable of reductive debromination of tetrabromobisphenol A, and identification of the intermediate metabolites produced in the process. Biodegradation 14(6):385-395",
+      "claim_scope": ["reaction", "route"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "An T, Zu L, Li G, Wan S, Mai B, Wong MH. 2011. One-step process for debromination and aerobic mineralization of tetrabromobisphenol-A by a novel Ochrobactrum sp. T isolated from e-waste recycling site. Bioresource Technology 102(19):9148-9154",
+      "claim_scope": ["microorganism", "reaction", "trait", "route"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Ronen Z, Abeliovich A. 2000. Complete anaerobic mineralization of tetrabromobisphenol A. Applied and Environmental Microbiology 66(6):2372-2377",
+      "claim_scope": ["route"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["trait"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "各脱溴步骤对应的酶均未被纯化或基因层面鉴定，ec_number 与基因信息缺失，故所有 step 的 enzyme 整体填 null。",
+    "三溴/二溴/一溴双酚A 逐步中间体的确证主要来自厌氧富集培养（Arbeli & Ronen 2003）；好氧条件下 Ochrobactrum sp. T 被报道可“一步”完成脱溴与矿化（An et al. 2011），好氧培养中逐步中间体的直接检出有限，本好氧主链沿用了该脱溴序列。",
+    "二溴双酚A的异构体（2,2′- 与 2,6-二溴）位置未完全确定，主链按2,2′-二溴双酚A给出。",
+    "Ochrobactrum sp. T 的菌种保藏编号、基因组序列及温度/pH/盐度等生理性状缺乏可核实的公开数据，相应性状一律填 null。",
+    "文献中另有好氧降解TBBPA产生2,4,6-三溴苯酚等酚类产物的报道，可能构成替代分支，因证据不充分未列入主链。",
+    "其他好氧降解菌（如 Bacillus sp. GZT、Achromobacter sp. HZ01）亦被报道可脱溴降解TBBPA，主链代表菌选用 Ochrobactrum sp. T。",
+    "Ochrobactrum sp. T 的菌株命名以 An et al. 2011 的电子废物场地分离株为准；该菌株的 NCBI TaxID 无法核实，填 null。"
+  ]
+}

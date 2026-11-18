@@ -1,5 +1,13 @@
 # EnzymeCAGE Teacher Deliverables
 
+## 六基模调用框架与Likert V0.5完整复用交接 — 2026-11-18
+
+- [完整入口：题目、六模型调用、评分代码与参考数据](2026-11-18_BIOSYSMODB121_Base_Model_And_Likert_V05_Reuse/README.md)
+- [直接运行与原任务真实评分样例](2026-11-18_BIOSYSMODB121_Base_Model_And_Likert_V05_Reuse/docs/RUNNING.md)
+- [不限路线任务复用时的范围与参考覆盖边界](2026-11-18_BIOSYSMODB121_Base_Model_And_Likert_V05_Reuse/docs/OPEN_ROUTE_SCOPE.md)
+
+包含原121题、六模型现成输出、V0.5工具、Gold/accepted/任务范围、派发源码与历史问题说明；新实验题目和模型由使用者自行确定。本目录未执行新的20题实验，无密钥和私人账本。
+
 ## 六模型降解路径与酶预测 Hit@1 — 2026-11-16
 
 - [汇总结果与原答入口](2026-11-16_BIOSYSMODB121_Six_Model_Pathway_Enzyme_Hit1/)

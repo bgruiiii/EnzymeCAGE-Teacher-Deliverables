@@ -1,0 +1,397 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_055",
+  "pollutant_name_zh": "儿茶酚",
+  "pollutant_name_en": "Catechol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "catechol degradation to 2-hydroxypentadienoate II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，oxygen_condition按题面填null；该路线实际依赖分子氧（儿茶酚2,3-双加氧酶）与NAD+，本质为好氧降解过程。chosen_route_name按题面原样填写；本答案将该路线实现为儿茶酚间位裂解途径中经2-hydroxymuconate与4-oxalocrotonate的氧化分支，为四步连续主链，终点为2-hydroxypentadienoate。"
+  },
+  "route_summary": "在恶臭假单胞菌Pseudomonas putida mt-2（携带TOL质粒pWW0的xyl基因簇）中，儿茶酚首先经儿茶酚2,3-双加氧酶（catechol 2,3-dioxygenase/metapyrocatechase，XylE，EC 1.13.11.2）以O2为共底物进行间位裂解，生成2-hydroxymuconate semialdehyde；随后经2-hydroxymuconate semialdehyde dehydrogenase（XylG，EC 1.2.1.61）以NAD+为电子受体被氧化为2-hydroxymuconate；再经4-oxalocrotonate tautomerase（EC 5.3.2.6）发生酮-烯醇互变异构生成4-oxalocrotonate；最后经4-oxalocrotonate decarboxylase（EC 4.1.1.77）脱羧，生成路线终点主产物2-hydroxypentadienoate并释放CO2，完成题面指定的'catechol degradation to 2-hydroxypentadienoate II'路线。该氧化分支与经2-hydroxymuconate semialdehyde水解酶直接生成2-hydroxypentadienoate+甲酸的水解分支互为替代（后者见alternative_branches）。终点产物尚未进入中心代谢，下游可继续水合、醛缩生成丙酮酸与乙醛。"
+  ,
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxymuconate semialdehyde",
+          "smiles": "O=CC=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "间位裂解双加氧反应",
+      "enzyme": {
+        "name": "Catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "xylE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-Hydroxymuconate semialdehyde",
+          "smiles": "O=CC=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxymuconate",
+          "smiles": "O=C(O)C(O)=CC=CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+依赖性脱氢氧化（醛基氧化为羧基）",
+      "enzyme": {
+        "name": "2-Hydroxymuconate semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.61",
+        "gene_or_protein": "xylG",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-Hydroxymuconate",
+          "smiles": "O=C(O)C(O)=CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Oxalocrotonate",
+          "smiles": "O=C(O)C(=O)CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "酮-烯醇互变异构",
+      "enzyme": {
+        "name": "4-Oxalocrotonate tautomerase",
+        "ec_number": "5.3.2.6",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "4-oxalocrotonate tautomerase在TOL质粒pWW0中的编码基因名（xylK或xylD等）未能确证，gene_or_protein留空。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-Oxalocrotonate",
+          "smiles": "O=C(O)C(=O)CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxypentadienoate",
+          "smiles": "O=C(O)C(O)=CC=C",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "4-Oxalocrotonate decarboxylase",
+        "ec_number": "4.1.1.77",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "4-oxalocrotonate decarboxylase的编码基因名未能确证，gene_or_protein留空。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（适于土壤/淡水等低盐环境）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲苯、间/对二甲苯等芳香族化合物及其降解中间体（如儿茶酚）作为碳源与能源",
+          "raw_text": "Metabolism of toluene and xylenes by Pseudomonas putida (arvilla) mt-2: evidence for a new function of the TOL plasmid",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "携带TOL质粒pWW0（xyl基因簇），可降解甲苯、间/对二甲苯等烷基苯，并经儿茶酚间位裂解途径将其进一步代谢",
+          "raw_text": "Metabolism of toluene and xylenes by Pseudomonas putida (arvilla) mt-2: evidence for a new function of the TOL plasmid",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "表达TOL质粒pWW0编码的间位裂解途径酶系：儿茶酚2,3-双加氧酶、2-hydroxymuconate semialdehyde脱氢酶、4-oxalocrotonate互变异构酶、4-oxalocrotonate脱羧酶等活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（短杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（外膜-肽聚糖-细胞膜的双层包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性（泛栖息）种：恶臭假单胞菌普遍存在于土壤、淡水及植物根际等多种好氧环境；mt-2为携带降解质粒的土壤分离株",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本路线终点为2-hydroxypentadienoate（2-羟基-2,4-戊二烯酸），尚未直接进入中心代谢；其下游经水合与醛缩反应生成丙酮酸与乙醛（后者可氧化为乙酰辅酶A）后才进入中心代谢，但已超出本题指定的路线范围。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2-hydroxypentadienoate → 4-hydroxy-2-oxopentanoate → pyruvate + acetaldehyde",
+      "summary": "路线终点产物2-hydroxypentadienoate可经2-hydroxypentadienoate hydratase（EC 4.2.1.80，XylH）水合生成4-hydroxy-2-oxopentanoate，再经4-hydroxy-2-oxopentanoate aldolase（EC 4.1.3.39，XylJ）裂解为丙酮酸与乙醛；乙醛可进一步由乙醛脱氢酶氧化为乙酰辅酶A后进入中心代谢。此段为路线范围外的下游延续，不参与本题主链评分。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "catechol degradation to 2-hydroxypentadienoate（水解分支，通常对应路线I）",
+      "summary": "儿茶酚经儿茶酚2,3-双加氧酶生成2-hydroxymuconate semialdehyde后，可由2-hydroxymuconate semialdehyde hydrolase（EC 3.7.1.9，XylF）直接水解释出甲酸并一步生成2-hydroxypentadienoate；该分支不经2-hydroxymuconate与4-oxalocrotonate，不属于本题指定的II号主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UniProtKB",
+      "record_id": "P23259",
+      "locator": "https://www.uniprot.org/uniprotkb/P23259",
+      "claim_scope": [
+        "S1酶：catechol 2,3-dioxygenase（xylE，EC 1.13.11.2）催化儿茶酚间位裂解生成2-hydroxymuconate semialdehyde",
+        "S1宿主菌：Pseudomonas putida（TOL质粒pWW0，菌株mt-2背景）"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida mt-2的一般微生物学性状：专性好氧、革兰氏阴性短杆菌、极生鞭毛可运动、不产芽孢、非嗜盐、中温性、泛栖息于土壤/淡水/根际等好氧环境"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2反应与酶：2-hydroxymuconate semialdehyde经NAD+依赖的2-hydroxymuconate semialdehyde dehydrogenase（xylG，EC 1.2.1.61）氧化为2-hydroxymuconate",
+        "S3反应与酶：2-hydroxymuconate经4-oxalocrotonate tautomerase（EC 5.3.2.6）互变异构为4-oxalocrotonate",
+        "S4反应与酶：4-oxalocrotonate经4-oxalocrotonate decarboxylase（EC 4.1.1.77）脱羧生成2-hydroxypentadienoate并释放CO2"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Worsey MJ, Williams PA. Metabolism of toluene and xylenes by Pseudomonas putida (arvilla) mt-2: evidence for a new function of the TOL plasmid. J Bacteriol. 1975;124(1):7-13.",
+      "claim_scope": [
+        "菌株身份：Pseudomonas putida mt-2携带TOL质粒并经儿茶酚间位裂解途径代谢甲苯/二甲苯",
+        "性状F7/F8/F9：芳香族碳源利用、TOL质粒介导的降解能力与间位裂解途径酶活"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "对路线编号的解释：本题将'catechol degradation to 2-hydroxypentadienoate II'实现为经2-hydroxymuconate→4-oxalocrotonate的氧化分支（脱氢酶-互变异构酶-脱羧酶三步，加首步共四步）；若参考数据库中该编号对应经2-hydroxymuconate semialdehyde hydrolase（EC 3.7.1.9）直接生成2-hydroxypentadienoate的水解分支，则第2-4步应替换为该水解反应（已记录于alternative_branches）。",
+    "Pseudomonas putida mt-2的株级NCBI TaxID未能确证，仅在profile身份区填写物种级TaxID 303，各step的ncbi_taxid按规则留空。",
+    "S3与S4对应酶（4-oxalocrotonate tautomerase、4-oxalocrotonate decarboxylase）在TOL质粒pWW0中的编码基因名未能确证，gene_or_protein填null。",
+    "15项性状主要依据对恶臭假单胞菌的通用微生物学知识（INTERNAL_KNOWLEDGE_ONLY），温度、pH、盐度、保藏编号、基因组等具体数值未知，均按null处理，相应置信度标为low或unknown。",
+    "各中间代谢物SMILES未标注E/Z立体化学构型；NAD+/NADH的完整SMILES未给出，填null。"
+  ]
+}

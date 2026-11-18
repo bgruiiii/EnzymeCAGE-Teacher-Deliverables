@@ -1,0 +1,353 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_023",
+  "pollutant_name_zh": "4-羟基苯乙酸根",
+  "pollutant_name_en": "4-Hydroxyphenylacetate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-hydroxyphenylacetate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；chosen_route_name 按题面原样填写为 4-hydroxyphenylacetate degradation。"
+  },
+  "route_summary": "按题面指定的 4-hydroxyphenylacetate degradation 路线，4-羟基苯乙酸根经尿黑酸途径降解：先被羟基化生成尿黑酸（homogentisate），再由尿黑酸 1,2-双加氧酶开环生成马来酰乙酰乙酸，经异构酶转化为延胡索酰乙酰乙酸，最终由延胡索酰乙酰乙酸酶水解为延胡索酸与乙酰乙酸并进入中心代谢。氧条件未指定，但该路线通常依赖分子氧。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "[O-]C(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "homogentisate",
+          "smiles": "[O-]C(=O)Cc1c(O)ccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetate 1-hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "S-12",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "第一步羟基化酶的 EC 编号未确认；辅因子按 NADH 依赖单加氧酶记录。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "homogentisate",
+          "smiles": "[O-]C(=O)Cc1c(O)ccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylacetoacetate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dioxygenolytic ring cleavage",
+      "enzyme": {
+        "name": "homogentisate 1,2-dioxygenase",
+        "ec_number": "1.13.11.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "S-12",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "maleylacetoacetate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarylacetoacetate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "cis-trans isomerization",
+      "enzyme": {
+        "name": "maleylacetoacetate isomerase",
+        "ec_number": "5.2.1.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "S-12",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "fumarylacetoacetate",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarate",
+          "smiles": "[O-]C(=O)C=CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetoacetate",
+          "smiles": "CC(=O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "fumarylacetoacetase",
+        "ec_number": "3.7.1.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "S-12",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "S-12",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "fumarate",
+      "acetoacetate"
+    ],
+    "explanation": "终产物延胡索酸可进入 TCA 循环；乙酰乙酸可进一步活化并进入中心碳代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "4-hydroxyphenylacetate degradation via homogentisate in Pseudomonas putida",
+      "claim_scope": [
+        "S1 reaction",
+        "S1 enzyme",
+        "S2 reaction",
+        "S2 enzyme",
+        "S3 reaction",
+        "S3 enzyme",
+        "S4 reaction",
+        "S4 enzyme",
+        "Pseudomonas putida S-12 involvement"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定；本路线通常为好氧途径，但题面未明确氧条件。",
+    "第一步 4-hydroxyphenylacetate 1-hydroxylase 的 EC 编号与辅因子特异性证据不足。",
+    "代表菌记录为 Pseudomonas putida 菌株 S-12；15 项生理性状缺乏可靠来源，均填 null。"
+  ]
+}

@@ -1,0 +1,398 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_113",
+  "pollutant_name_zh": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+  "pollutant_name_en": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-tyrosine degradation IV (to 4-methylphenol)",
+    "is_single_continuous_route": true,
+    "notes": "题面氧条件为 null；不改选路线，按给定路线名取至 4-methylphenol (p-cresol) 的主链。"
+  },
+  "route_summary": "题面物质即 L-酪氨酸的羧酸根形式。主链取为：L-酪氨酸/酪氨酸根先转氨生成 4-hydroxyphenylpyruvate，再脱羧生成 4-hydroxyphenylacetaldehyde，随后氧化为 4-hydroxyphenylacetate，最后由甘氨酰自由基型 4-hydroxyphenylacetate decarboxylase 脱羧生成 4-methylphenol (p-cresol) 和 CO2。代表菌采用 Clostridioides difficile 630；其中最后一步的证据最强。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+          "smiles": "C1=CC(=CC=C1C[C@@H](C(=O)[O-])N)O",
+          "role": "main"
+        },
+        {
+          "name": "2-oxoglutarate",
+          "smiles": "O=C(O)CCC(=O)C(=O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylpyruvate",
+          "smiles": "O=C(O)C(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "L-glutamate",
+          "smiles": "N[C@@H](CCC(=O)O)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "transamination",
+      "enzyme": {
+        "name": "tyrosine aminotransferase",
+        "ec_number": "2.6.1.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridioides difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该步按给定路线数据库的主链填写；在 Clostridioides difficile 630 中对应转氨酶基因未逐一核实。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylpyruvate",
+          "smiles": "O=C(O)C(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylacetaldehyde",
+          "smiles": "O=CCc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "4-hydroxyphenylpyruvate decarboxylase",
+        "ec_number": "4.1.1.80",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridioides difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "中间醛为该 α-酮酸脱羧的化学合理主链中间体；对应菌内基因证据未单独核实。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetaldehyde",
+          "smiles": "O=CCc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "O=C(O)Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldehyde oxidation",
+      "enzyme": {
+        "name": "aldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridioides difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该氧化步采用广谱醛脱氢酶 EC；更专一的 4-hydroxyphenylacetaldehyde 脱氢酶证据不足。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "O=C(O)Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-methylphenol",
+          "smiles": "Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetate decarboxylase",
+        "ec_number": "4.1.1.83",
+        "gene_or_protein": "hpdB",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Clostridioides difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Clostridioides difficile",
+      "strain": "630",
+      "ncbi_taxid": 272563,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温；人源病原菌，最适约 37 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "BAA-1382"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "发酵（氨基酸/Stickland 型代谢）",
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "氨基酸发酵；可将 L-酪氨酸转化为 4-methylphenol (p-cresol)",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "转化芳香族氨基酸 L-酪氨酸，经 4-hydroxyphenylacetate 生成 4-methylphenol",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-hydroxyphenylacetate decarboxylase（glycyl radical enzyme）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有鞭毛，可运动；运动性可受调控且菌株间有差异",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状，直或微弯杆菌",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（厚壁菌门单膜细胞包膜；可呈革兰氏可变）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "形成内生芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_009089.1",
+            "genome_size_bp": 4290252,
+            "gc_percent": 29.1
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要为人和动物肠道相关的严格厌氧菌；芽孢可使其在医院环境及外环境中持久存在，整体偏宿主相关而非极端环境广适",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "4-methylphenol (p-cresol) 是本路线终产物；不把它列为进入中心碳代谢的产物。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway page: L-tyrosine degradation IV (to 4-methylphenol)",
+      "claim_scope": [
+        "chosen route name",
+        "S1 transamination to 4-hydroxyphenylpyruvate",
+        "S2 decarboxylation to 4-hydroxyphenylacetaldehyde",
+        "S3 oxidation to 4-hydroxyphenylacetate",
+        "route-level assignment to Clostridioides difficile 630"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Selmer T, Andrei PI. p-Hydroxyphenylacetate decarboxylase from Clostridium difficile: a novel glycyl radical enzyme catalysing the formation of p-cresol. European Journal of Biochemistry, 2001.",
+      "claim_scope": [
+        "S4 reaction: 4-hydroxyphenylacetate to 4-methylphenol",
+        "enzyme: 4-hydroxyphenylacetate decarboxylase EC 4.1.1.83",
+        "microorganism: Clostridioides difficile",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_009089.1",
+      "locator": "Clostridioides difficile 630 chromosome, complete genome; NCBI Taxonomy strain-level ID 272563",
+      "claim_scope": [
+        "organism identity",
+        "ncbi_taxid",
+        "F14_genome_basic"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "BAA-1382",
+      "locator": "Clostridioides difficile (syn. Clostridium difficile) strain 630",
+      "claim_scope": [
+        "F5_culture_collection",
+        "organism identity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": null,
+      "locator": "Strain data for Clostridioides difficile 630 (ATCC BAA-1382)",
+      "claim_scope": [
+        "F1_oxygen_tolerance",
+        "F2_temperature",
+        "F6_respiration_electron_acceptor",
+        "F10_motility",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation",
+        "F15_habitat_generalism"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为 null；本回答未据此推断氧条件，只按给定路线名填写主链。",
+    "S1–S3 在 Clostridioides difficile 630 中的具体编码基因未逐一核实；S4 的 hpdB/hpdC 与 p-cresol 形成证据最强。",
+    "盐度与 pH 生长边界缺乏可核验摘录，按规则置 null。"
+  ]
+}

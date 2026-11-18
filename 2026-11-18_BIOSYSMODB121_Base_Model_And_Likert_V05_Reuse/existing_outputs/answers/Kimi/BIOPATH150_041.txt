@@ -1,0 +1,475 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_041",
+  "pollutant_name_zh": "琥珀酰-CoA",
+  "pollutant_name_en": "succinyl-CoA",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "propanoyl CoA degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。该路线（甲基丙二酰-CoA途径）三步反应均不直接涉及氧，广泛存在于好氧与厌氧微生物中；在丙酸发酵菌（如 Propionibacterium freudenreichii）中以相反方向运行生成丙酸。题面污染物琥珀酰-CoA 是该路线的末端产物。"
+  },
+  "route_summary": "propanoyl CoA degradation I 主链：丙酰-CoA 在丙酰-CoA羧化酶（ATP/碳酸氢盐依赖，EC 6.4.1.3）作用下羧化生成 (S)-甲基丙二酰-CoA；经甲基丙二酰-CoA差向异构酶（EC 5.1.99.1）差向异构为 (R)-甲基丙二酰-CoA；再由腺苷钴胺（维生素B12辅酶）依赖的甲基丙二酰-CoA变位酶（EC 5.4.99.2）进行碳骨架重排，生成琥珀酰-CoA。琥珀酰-CoA 随后进入三羧酸循环被进一步代谢。三步构成一条无分支的连续主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "propanoyl-CoA",
+          "smiles": "CCC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "hydrogencarbonate",
+          "smiles": "OC(=O)[O-]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-methylmalonyl-CoA",
+          "smiles": "C[C@@H](C(=O)O)C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)OP(=O)(O)O)C(O)C1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "orthophosphate",
+          "smiles": "O=P(O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP依赖性羧化反应（连接酶，生物素依赖酰基-CoA羧化酶）",
+      "enzyme": {
+        "name": "propionyl-CoA carboxylase",
+        "ec_number": "6.4.1.3",
+        "gene_or_protein": "AccA1-PccB 复合体（α/β 亚基，accA1/pccB）",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Streptomyces coelicolor",
+        "strain": "A3(2) M145",
+        "ncbi_taxid": 100226,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "碳酸氢盐/CO2的具体底物形式及ATP水解偶联细节按该类羧化酶的通用机制书写，未对该菌逐步核实。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "(S)-methylmalonyl-CoA",
+          "smiles": "C[C@@H](C(=O)O)C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(R)-methylmalonyl-CoA",
+          "smiles": "C[C@H](C(=O)O)C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "差向异构化（消旋酶/差向异构酶）",
+      "enzyme": {
+        "name": "methylmalonyl-CoA epimerase",
+        "ec_number": "5.1.99.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Propionibacterium freudenreichii subsp. shermanii",
+        "strain": "CIRM-BIA1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "该酶的经典纯化与性质研究来自早期 Propionibacterium shermanii 菌株（非 CIRM-BIA1 株实测）；CIRM-BIA1 归属依据其基因组所注释的丙酸发酵途径外推。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "(R)-methylmalonyl-CoA",
+          "smiles": "C[C@H](C(=O)O)C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinyl-CoA",
+          "smiles": "O=C(O)CCC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "腺苷钴胺（coenzyme B12）依赖的碳骨架重排（变位酶）",
+      "enzyme": {
+        "name": "methylmalonyl-CoA mutase",
+        "ec_number": "5.4.99.2",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Propionibacterium freudenreichii subsp. shermanii",
+        "strain": "CIRM-BIA1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "变位酶的结构与催化证据来自经典 P. shermanii 研究；该步为路线终点，产物琥珀酰-CoA 即本题污染物，随后进入三羧酸循环。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Streptomyces coelicolor",
+      "strain": "A3(2) M145",
+      "ncbi_taxid": 100226,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（嗜常温）"
+          },
+          "raw_text": "Streptomyces coelicolor A3(2) is routinely cultivated at 30 °C",
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧（obligate aerobe）",
+          "raw_text": "an aerobic, filamentous, soil-dwelling actinomycete",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen (O2)"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用葡萄糖、甘露醇等多种糖类以及几丁质等多糖为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "分泌多种胞外水解酶，可降解几丁质、纤维素、蛋白质等生物大分子；并合成放线紫红素等多种抗生素",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "丙酰-CoA羧化酶活性（AccA1-PccB 复合体），将丙酰-CoA羧化为(S)-甲基丙二酰-CoA",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "无运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "分枝状基内菌丝与气生菌丝，形成链状分生孢子（丝状放线菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（高GC放线菌细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "气生菌丝分化形成链状分生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_003888",
+            "genome_size_bp": 8667507,
+            "gc_percent": 72.1
+          },
+          "raw_text": "The complete genome sequence of Streptomyces coelicolor A3(2): 8,667,507 bp, G+C content 72.1%",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于各类土壤中营腐生生活，生态广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Propionibacterium freudenreichii subsp. shermanii",
+      "strain": "CIRM-BIA1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（嗜常温）"
+          },
+          "raw_text": "CIRM-BIA1 was grown at 30 °C in yeast extract-sodium lactate (YEL) medium",
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "耐氧型厌氧（aerotolerant anaerobe）",
+          "raw_text": "a hardy, aerotolerant anaerobic actinobacterium",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "CIRM-BIA",
+            "accession": "1"
+          },
+          "raw_text": "strain CIRM-BIA1",
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "anaerobic fermentation",
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": "ferments lactate to propionate and acetate (propionic acid fermentation)",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以乳酸为主要底物，亦可利用葡萄糖等糖类，经丙酸发酵产丙酸、乙酸与CO2",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "以丙酸发酵为主；在奶酪成熟过程中参与蛋白质和脂质的分解，贡献风味物质形成",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "甲基丙二酰-CoA变位酶与甲基丙二酰-CoA差向异构酶活性（丙酸发酵的甲基丙二酰-CoA支路）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "无运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "多形性短杆状至类球杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（高GC放线菌细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "FN806773",
+            "genome_size_bp": 2616384,
+            "gc_percent": 67.3
+          },
+          "raw_text": "The complete genome of Propionibacterium freudenreichii CIRM-BIA1: a single circular chromosome of 2,616,384 bp with 67.3% G+C",
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要适应乳制品（如瑞士奶酪）发酵环境，亦见于青贮饲料等；栖息地相对专一",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA"],
+    "explanation": "本题污染物琥珀酰-CoA 是 propanoyl CoA degradation I 的末端产物，本身即中心代谢中间物：在三羧酸循环中经琥珀酰-CoA合成酶转化为琥珀酸（伴随底物水平磷酸化）并继续氧化；也可经5-氨基乙酰丙酸合酶进入四吡咯/血红素合成。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "succinyl-CoA 进入三羧酸循环",
+      "summary": "琥珀酰-CoA 经琥珀酰-CoA合成酶（EC 6.2.1.5）生成琥珀酸并产生GTP/ATP，随后沿 TCA 循环经琥珀酸脱氢酶、延胡索酸酶、苹果酸脱氢酶氧化为草酰乙酸。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "2-甲基柠檬酸循环（propanoyl-CoA 经 2-methylcitrate 降解）",
+      "summary": "许多细菌（如 Escherichia coli、Salmonella、Ralstonia eutropha）通过 prp 操纵子的 2-甲基柠檬酸循环将丙酰-CoA 降解为丙酮酸与琥珀酸，不经过甲基丙二酰-CoA；不属于本题被评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "M00741",
+      "locator": "https://www.kegg.jp/module/M00741",
+      "claim_scope": ["route_steps", "reaction_to_ec_mapping", "enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page 'propanoyl CoA degradation I'",
+      "claim_scope": ["route_definition", "route_steps"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Diacovich L et al. 2002, Journal of Bacteriology 184(22):6437-6446, 'Kinetic and structural analysis of a new group of acyl-CoA carboxylases found in Streptomyces coelicolor A3(2)'",
+      "claim_scope": ["reaction", "enzyme", "enzyme_ec", "organism_enzyme_assignment", "gene"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Allen SHG, Kellermeyer RW, Stjernholm R, Wood HG — purification and properties of methylmalonyl racemase (methylmalonyl-CoA epimerase, EC 5.1.99.1) from Propionibacterium shermanii, Journal of Biological Chemistry, 1960s",
+      "claim_scope": ["reaction", "enzyme", "enzyme_ec"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Mancia F et al. 1996, Structure 4(3):339-350, 'How coenzyme B12 radicals are generated: the crystal structure of methylmalonyl-coenzyme A mutase at 2 A resolution' (enzyme from Propionibacterium shermanii)",
+      "claim_scope": ["reaction", "enzyme", "enzyme_ec"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Bentley SD et al. 2002, Nature 417:141-147, 'Complete genome sequence of the model actinomycete Streptomyces coelicolor A3(2)'",
+      "claim_scope": ["organism_identity", "genome", "traits"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Falentin H et al. 2010, PLoS ONE 5(7):e11748, 'The complete genome of Propionibacterium freudenreichii CIRM-BIA1, a hardy actinobacterium with food and probiotic applications'",
+      "claim_scope": ["organism_identity", "genome", "traits", "organism_enzyme_assignment"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["traits"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "MetaCyc 路线 'propanoyl CoA degradation I' 的具体 pathway ID 未能确认，EVID_002 的 record_id 置 null；路线步骤与 KEGG 模块 M00741 一致。",
+    "第2、3步酶学证据来自经典 Propionibacterium shermanii 生化研究，并非 CIRM-BIA1 株的实测数据；菌株归属依据 CIRM-BIA1 基因组所注释的完整丙酸发酵（甲基丙二酰-CoA）途径外推。",
+    "P. freudenreichii subsp. shermanii CIRM-BIA1 的 NCBI TaxID 不确定，按要求填 null。",
+    "氧条件题面未指定：三步反应均不直接消耗氧，主链在好氧与厌氧微生物中均可存在；在丙酸发酵菌中路线方向相反（生成丙酰-CoA）。"
+  ]
+}

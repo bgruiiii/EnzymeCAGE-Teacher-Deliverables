@@ -1,0 +1,530 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_126",
+  "pollutant_name_zh": "丁烷",
+  "pollutant_name_en": "Butane",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "butane degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；此处给出经典好氧主链：丁烷末端羟化→1-丁醇→丁醛→丁酸→丁酰辅酶A→β-氧化→乙酰辅酶A。"
+  },
+  "route_summary": "好氧条件下丁烷微生物降解主链：丁烷经可溶性丁烷单加氧酶（sBMO）末端羟化生成1-丁醇，依次经醇脱氢酶、醛脱氢酶氧化为丁醛和丁酸；丁酸经AMP形成型连接酶活化为丁酰辅酶A，再经β-氧化（脱氢、水合、再脱氢、硫解）生成2分子乙酰辅酶A进入中心代谢。代表菌为 Thauera butanivorans（原 Pseudomonas butanovora），为文献记载的典型丁烷氧化菌。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Butane",
+          "smiles": "CCCC",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-Butanol",
+          "smiles": "CCCCO",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "terminal monooxygenation (hydroxylation)",
+      "enzyme": {
+        "name": "butane monooxygenase (soluble diiron monooxygenase, sBMO)",
+        "ec_number": null,
+        "gene_or_protein": "bmoX (hydroxylase alpha subunit)",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "sBMO 为可溶性双铁单加氧酶，目前无专属四位 EC 编号，故 ec_number 记为 null；该酶亦催化少量次末端羟化生成2-丁醇（见支路说明）。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "1-Butanol",
+          "smiles": "CCCCO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Butanal",
+          "smiles": "CCCC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation (alcohol dehydrogenation)",
+      "enzyme": {
+        "name": "alcohol dehydrogenase (NAD+)",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "醇脱氢酶为通用酶学归属（EC 1.1.1.1），该菌中也可能为醌蛋白型醇脱氢酶，缺乏菌株级确证。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Butanal",
+          "smiles": "CCCC=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Butanoate",
+          "smiles": "CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation (aldehyde dehydrogenation)",
+      "enzyme": {
+        "name": "aldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "醛脱氢酶为通用酶学归属，缺乏该菌菌株级确证。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "Butanoate",
+          "smiles": "CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Butanoyl-CoA",
+          "smiles": "CCCC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "CoA activation (AMP-forming ligation)",
+      "enzyme": {
+        "name": "butanoate-CoA ligase (AMP-forming)",
+        "ec_number": "6.2.1.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "丁酸活化亦可能经由 CoA 转移酶（如 ato 系统）实现，主链按 AMP 形成型连接酶给出。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "Butanoyl-CoA",
+          "smiles": "CCCC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Crotonyl-CoA",
+          "smiles": "CC=CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative dehydrogenation (beta-oxidation step 1)",
+      "enzyme": {
+        "name": "butyryl-CoA dehydrogenase",
+        "ec_number": "1.3.8.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "Crotonyl-CoA",
+          "smiles": "CC=CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Hydroxybutanoyl-CoA",
+          "smiles": "CC(O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration (beta-oxidation step 2)",
+      "enzyme": {
+        "name": "enoyl-CoA hydratase",
+        "ec_number": "4.2.1.17",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "3-Hydroxybutanoyl-CoA",
+          "smiles": "CC(O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetoacetyl-CoA",
+          "smiles": "CC(=O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation (beta-oxidation step 3, NAD+-dependent dehydrogenation)",
+      "enzyme": {
+        "name": "3-hydroxyacyl-CoA dehydrogenase",
+        "ec_number": "1.1.1.35",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "Acetoacetyl-CoA",
+          "smiles": "CC(=O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolysis (beta-oxidation step 4)",
+      "enzyme": {
+        "name": "acetyl-CoA C-acetyltransferase (thiolase)",
+        "ec_number": "2.3.1.9",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Thauera butanivorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "硫解反应实际生成2分子乙酰辅酶A，此处产物列乙酰辅酶A为代表。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Thauera butanivorans",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（mesophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（丁烷氧化依赖分子氧）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以正丁烷等短链气态烷烃为唯一碳源和能源生长，亦可利用1-丁醇、丁酸盐",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解正丁烷等多种短链烷烃；文献报道其丁烷诱导细胞可共代谢三氯乙烯（TCE）等氯代烯烃",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "可溶性丁烷单加氧酶（sBMO）末端羟化活性，将丁烷氧化为1-丁醇",
+          "raw_text": "purification and biochemical characterization of a terminal-alkane hydroxylating diiron monooxygenase from 'Pseudomonas butanovora'",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rods）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自土壤等含烷烃环境，为依赖气态烷烃的相对特化菌，栖息地广适性偏低至中等",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Acetyl-CoA"],
+    "explanation": "主链末端产物乙酰辅酶A进入三羧酸循环彻底氧化供能，或经乙醛酸循环等途径用于生物合成。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "三羧酸循环（TCA cycle）",
+      "summary": "乙酰辅酶A经TCA循环氧化为CO2并产生NADH/FADH2，经氧化磷酸化产生ATP。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "次末端氧化支路（butane → 2-butanol → 2-butanone）",
+      "summary": "sBMO 对丁烷次末端碳羟化生成2-丁醇，进而经醇脱氢酶氧化为2-丁酮，再经 Baeyer–Villiger 单加氧酶生成乙酸乙酯并水解汇入中心代谢；该支路为次要途径。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "map00650 (Butanoate metabolism)",
+      "locator": "https://www.kegg.jp/pathway/map00650",
+      "claim_scope": [
+        "丁酸活化为丁酰辅酶A并经β-氧化生成乙酰辅酶A的反应序列（步骤S4–S8）",
+        "对应EC编号：6.2.1.2、1.3.8.1、4.2.1.17、1.1.1.35、2.3.1.9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "Dubbels BL, Sayavedra-Soto LA, Arp DJ (2007) Microbiology 153:1808-1816",
+      "locator": "Butane monooxygenase of 'Pseudomonas butanovora': purification and biochemical characterization of a terminal-alkane hydroxylating diiron monooxygenase",
+      "claim_scope": [
+        "Thauera butanivorans（原 Pseudomonas butanovora）的sBMO催化丁烷末端羟化生成1-丁醇（步骤S1）",
+        "该菌以正丁烷等烷烃为碳源和能源进行好氧生长"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UM-BBD / EAWAG-BBD",
+      "record_id": "Butane Pathway Map",
+      "locator": "https://eawag-bbd.ethz.ch/butane/butane_map.html",
+      "claim_scope": [
+        "丁烷→1-丁醇→丁醛→丁酸的上游氧化序列（步骤S1–S3）",
+        "步骤S2、S3的醇/醛脱氢酶酶类归属"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Thauera butanivorans 一般表型性状（革兰氏阴性、杆状、好氧呼吸、不产芽孢、中温等）",
+        "步骤S2–S8由该菌执行的推断（基于其矿化丁烷/丁酸的生长表型）"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "sBMO（可溶性双铁单加氧酶）目前无专属四位 EC 编号，步骤S1的 ec_number 记为 null。",
+    "步骤S2–S3的脱氢酶为通用酶学归属（EC 1.1.1.1 / 1.2.1.3），在 Thauera butanivorans 中可能为醌蛋白型等其他类型，缺乏菌株级证据。",
+    "步骤S4–S8（丁酰辅酶A β-氧化）为依据 KEGG map00650 的推断主链，尚无该菌逐步骤的酶学实验确证。",
+    "题面未指定氧条件，本主链按经典好氧路线给出；厌氧丁烷降解未纳入。",
+    "Thauera butanivorans 的菌株编号、保藏编号、基因组登录号与 NCBI TaxID 未确认，均记为 null。"
+  ]
+}

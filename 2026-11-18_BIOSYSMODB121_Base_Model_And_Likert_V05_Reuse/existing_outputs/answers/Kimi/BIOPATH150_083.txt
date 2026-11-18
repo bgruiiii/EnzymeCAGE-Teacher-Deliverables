@@ -1,0 +1,368 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_083",
+  "pollutant_name_zh": "(-)-奎尼酸",
+  "pollutant_name_en": "(-)-Quinate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "quinate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故保留为 null；主链按题面指定的 quinate degradation II 整理。"
+  },
+  "route_summary": "主链为：(-)-奎尼酸经NAD+依赖性奎尼酸脱氢酶氧化为3-脱氢奎尼酸，再经3-脱氢奎尼酸脱水酶生成3-脱氢莽草酸，最后由3-脱氢莽草酸脱水酶脱水芳构化生成原儿茶酸。以 Acinetobacter baylyi ADP1 作为三步反应均有相应酶注释的代表菌；题定路线边界止于原儿茶酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(-)-quinate",
+          "smiles": "C1[C@@H]([C@@H]([C@H](C[C@]1(C(=O)[O-])O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)(O)OC[C@H]2O[C@H](n3cnc4c(N)ncnc34)[C@H](O)[C@@H]2O)[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydroquinate",
+          "smiles": "C1C[C@@](C(=O)[C@@H]([C@H]1O)O)(C(=O)[O-])O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)(O)OC[C@H]3O[C@H](n4cnc5c(N)ncnc54)[C@H](O)[C@@H]3O)[C@H](O)[C@@H]2O)C=CC1",
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+依赖性氧化还原反应",
+      "enzyme": {
+        "name": "quinate dehydrogenase",
+        "ec_number": "1.1.1.24",
+        "gene_or_protein": "QuiA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-dehydroquinate",
+          "smiles": "C1C[C@@](C(=O)[C@@H]([C@H]1O)O)(C(=O)[O-])O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydroshikimate",
+          "smiles": "O=C([O-])C1=CC(=O)[C@@H](O)[C@@H](O)C1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱水反应",
+      "enzyme": {
+        "name": "3-dehydroquinate dehydratase",
+        "ec_number": "4.2.1.10",
+        "gene_or_protein": "QuiB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-dehydroshikimate",
+          "smiles": "O=C([O-])C1=CC(=O)[C@@H](O)[C@@H](O)C1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱水芳构化反应",
+      "enzyme": {
+        "name": "3-dehydroshikimate dehydratase",
+        "ec_number": "4.2.1.118",
+        "gene_or_protein": "QuiC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter baylyi",
+      "strain": "ADP1",
+      "ncbi_taxid": 62977,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（以DSMZ培养温度30 °C为依据；未获得可靠上下限）"
+          },
+          "raw_text": "Culture and growth conditions: 30 °C",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧",
+          "raw_text": "strictly aerobic",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSMZ",
+            "accession": "DSM 24193"
+          },
+          "raw_text": "DSM 24193",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": "strictly aerobic",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以奎尼酸为碳源，经3-脱氢奎尼酸和3-脱氢莽草酸生成原儿茶酸",
+          "raw_text": "quinate degradation II",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "能够利用奎尼酸，并具备以多种芳香族及羟基芳香族化合物为碳源的代谢潜力",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "奎尼酸脱氢酶、3-脱氢奎尼酸脱水酶和3-脱氢莽草酸脱水酶活性",
+          "raw_text": "quinate degradation II",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": "non-motile",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "短杆状至球杆状细胞",
+          "raw_text": "coccobacilli",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Gram-negative",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": "non-spore-forming",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_005966.1",
+            "genome_size_bp": 3598621,
+            "gc_percent": 40.3
+          },
+          "raw_text": "Total sequence length: 3,598,621 bp; GC: 40.3%",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本题指定主链的终点为原儿茶酸；其进一步进入中心代谢需另接原儿茶酸降解路线，本答案不扩展题定路线边界。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "https://metacyc.org/META/search-query?type=PATHWAY&object=quinate%20degradation%20II",
+      "claim_scope": [
+        "quinate degradation II route sequence",
+        "S1-S3 reaction equations",
+        "EC 1.1.1.24",
+        "EC 4.2.1.10",
+        "EC 4.2.1.118"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UniProtKB",
+      "record_id": null,
+      "locator": "https://rest.uniprot.org/uniprotkb/search?query=%28organism_id%3A62977%29%20AND%20%28quiA%20OR%20quiB%20OR%20quiC%20OR%20quinate%29",
+      "claim_scope": [
+        "Acinetobacter baylyi ADP1 quinate-utilization enzymes",
+        "QuiA",
+        "QuiB",
+        "QuiC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Assembly",
+      "record_id": "GCF_000005825.1",
+      "locator": "https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000005825.1/",
+      "claim_scope": [
+        "Acinetobacter baylyi ADP1 genome accession",
+        "genome size",
+        "GC content"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "DSMZ",
+      "record_id": "DSM 24193",
+      "locator": "https://www.dsmz.de/collection/catalogue/details/culture/DSM-24193",
+      "claim_scope": [
+        "culture collection accession",
+        "cultivation temperature"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "International Journal of Systematic and Evolutionary Microbiology",
+      "record_id": "10.1099/ijs.0.02613-0",
+      "locator": "https://doi.org/10.1099/ijs.0.02613-0",
+      "claim_scope": [
+        "Acinetobacter baylyi species description",
+        "oxygen tolerance",
+        "cell morphology",
+        "motility",
+        "Gram staining",
+        "sporulation"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "Nucleic Acids Research",
+      "record_id": "10.1093/nar/gkh910",
+      "locator": "https://doi.org/10.1093/nar/gkh910",
+      "claim_scope": [
+        "Acinetobacter sp. ADP1 complete genome",
+        "broad metabolic potential"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": []
+}

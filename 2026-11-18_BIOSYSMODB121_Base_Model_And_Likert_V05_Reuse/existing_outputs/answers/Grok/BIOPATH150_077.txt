@@ -1,0 +1,226 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_077",
+  "pollutant_name_zh": "3,4-二羟基苯甲酸根",
+  "pollutant_name_en": "3,4-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "protocatechuate degradation III (para-cleavage pathway)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；该路线的特征反应为依赖分子氧的2,3-外二醇双加氧裂解，故氧条件定为好氧。文献已确证的主链仅含环裂解一步，下游未充分阐明，因此不把未经结构确证的后续反应写入评分主链。"
+  },
+  "route_summary": "在好氧条件下，3,4-二羟基苯甲酸根（原儿茶酸根）由原儿茶酸2,3-双加氧酶催化，在羧基邻位与3-位羟基之间发生芳香环对位裂解（2,3-外二醇裂解），生成5-羧基-2-羟基粘康酸半醛。该反应在Bacillus macerans（现分类名Paenibacillus macerans）中被纯化酶确证。环裂解之后如何进入中心代谢尚未被充分鉴定，主链只收录这一已确证步骤。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3,4-dihydroxybenzoate",
+          "smiles": "O=C([O-])c1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-carboxy-2-hydroxymuconate semialdehyde",
+          "smiles": "O=CC(C(=O)[O-])=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aromatic extradiol dioxygenation (para-cleavage)",
+      "enzyme": {
+        "name": "protocatechuate 2,3-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Paenibacillus macerans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "产物SMILES只表示连通性，未标注双键立体化学；该酶无已分配的四位EC编号，基因名未知。文献所用菌名为Bacillus macerans，现分类名为Paenibacillus macerans，具体菌株保藏号未确定。环裂解之后的步骤未纳入本步。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Paenibacillus macerans",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可发酵葡萄糖等多种碳水化合物并产酸产气",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经原儿茶酸2,3-双加氧酶对位裂解降解3,4-二羟基苯甲酸根",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "protocatechuate 2,3-dioxygenase",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动，具周生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏染色可变，细胞壁为革兰氏阳性型",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "形成内生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "对位裂解途径在环裂解之后的代谢去向尚未被充分鉴定，不能确定其进入中心代谢的具体产物。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "metabolism downstream of 5-carboxy-2-hydroxymuconate semialdehyde",
+      "summary": "早期研究在Bacillus macerans细胞提取物中报道过针对环裂解产物的NAD+依赖脱氢酶活性，但该酶未纯化、无EC编号，产物结构以及随后至丙酮酸或其他中心代谢物的步骤均未充分确证，故不列入评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "protocatechuate degradation II (ortho-cleavage pathway)",
+      "summary": "由原儿茶酸3,4-双加氧酶（EC 1.13.11.3）在两个羟基之间进行邻位裂解，生成3-羧基-顺,顺-粘康酸并进入β-酮己二酸途径。该路线不是本题指定的对位裂解主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "protocatechuate degradation I (meta-cleavage pathway)",
+      "summary": "由原儿茶酸4,5-双加氧酶（EC 1.13.11.8）进行4,5-间位裂解，生成4-羧基-2-羟基粘康酸半醛后再进入中心代谢。该路线不是本题指定的对位裂解主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Wolgel SA, Dege JE, Perkins-Olson PE, Jaurez-Garcia CH, Crawford RL, Munck E, Lipscomb JD. 1993. Purification and characterization of protocatechuate 2,3-dioxygenase from Bacillus macerans: a new extradiol catecholic dioxygenase. J Bacteriol 175:4414-4426; pathway context also in Crawford RL. 1975. Novel pathway for degradation of protocatechuic acid in Bacillus species. J Bacteriol 121:531-536.",
+      "claim_scope": [
+        "reaction",
+        "enzyme",
+        "organism",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Paenibacillus macerans（原Bacillus macerans）的标准细菌学类群特征：兼性厌氧杆状菌，革兰氏染色可变但具革兰氏阳性型细胞壁，产内生孢子，周生鞭毛运动，发酵多种糖类产酸产气。",
+      "claim_scope": [
+        "F1_oxygen_tolerance",
+        "F6_respiration_electron_acceptor",
+        "F7_carbon_substrate_utilization",
+        "F10_motility",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "原儿茶酸2,3-双加氧酶没有已分配的四位EC编号，基因符号未知，故ec_number与gene_or_protein填null。",
+    "酶学文献使用菌名Bacillus macerans；该种现分类名为Paenibacillus macerans。纯化酶所用菌株的保藏号不能确定，strain、保藏编号与NCBI TaxID均填null。",
+    "环裂解产物的双键立体化学未写入SMILES。",
+    "5-羧基-2-羟基粘康酸半醛之后可能存在NAD+依赖脱氢，或脱羧后汇入2-羟基粘康酸半醛/儿茶酚间位裂解下游，但产物结构与酶身份证据不足，未写入steps。",
+    "温度、pH、盐度、基因组登录号与栖息地广适性没有可直接引用的可靠数值或原文，相关性状填null。"
+  ]
+}

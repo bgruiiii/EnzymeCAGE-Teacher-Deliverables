@@ -1,0 +1,536 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_103",
+  "pollutant_name_zh": "2-异丙基苯酚",
+  "pollutant_name_en": "2-Isopropylphenol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-isopropylphenol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故按要求保留 null；本主链中的酚羟化和儿茶酚开环反应为 O2 依赖型。路线在化学上连续，但前段与下游步骤的微生物证据来自不同菌株。"
+  },
+  "route_summary": "主链按“酚羟化—3-异丙基儿茶酚 meta 开环—开环产物水解—保守的 meta-cleavage lower pathway”组织：2-isopropylphenol 先转化为 3-isopropylcatechol，再经开环形成 2-hydroxy-6-oxo-7-methylocta-2,4-dienoate；后者水解释放 2-methylpropanoate，并生成 2-oxopent-4-enoate，随后经水合和醛醇裂解生成 pyruvate 与 acetaldehyde。前三步采用 Pseudomonas putida KL1 作为路线对应菌；后两步采用 Pseudomonas sp. CF600 中已实验表征的 DmpD/DmpE 作为对应菌。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-isopropylphenol",
+          "smiles": "CC(C)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-isopropylcatechol",
+          "smiles": "CC(C)c1cccc(O)c1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aromatic ortho-hydroxylation",
+      "enzyme": {
+        "name": "phenol 2-monooxygenase",
+        "ec_number": "1.14.13.7",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KL1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "KL1 中负责该羟化的具体基因或酶复合体组成未能由单一可核实记录确定；还原当量及相应氧化产物未列入。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-isopropylcatechol",
+          "smiles": "CC(C)c1cccc(O)c1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)/C=C/C=C(/O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol aromatic ring-cleavage dioxygenation",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KL1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)/C=C/C=C(/O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "C=CCC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "2-methylpropanoate",
+          "smiles": "CC(C)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic C-C bond cleavage",
+      "enzyme": {
+        "name": "2-hydroxymuconate-semialdehyde hydrolase",
+        "ec_number": "3.7.1.9",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KL1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "2-methylpropanoate 是并行碳产物；其后续短链脂肪酸降解支链未纳入被评分主链。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "C=CCC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "2-oxopent-4-enoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": "dmpD",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "本步采用 CF600 作为已实验表征的对应菌，不声称 KL1 与 CF600 为同一完整途径菌。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "retro-aldol cleavage",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxopentanoate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": "dmpE",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "pyruvate 可直接进入中心碳代谢；acetaldehyde 的后续氧化列为下游延续，未扩展为评分主步。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KL1",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "2-isopropylphenol（唯一碳源和能源）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "2-isopropylphenol degradation via 3-isopropylcatechol meta-cleavage",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "phenol hydroxylation and catechol 2,3-dioxygenation",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "CF600",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "phenol and 3,4-dimethylphenol",
+          "raw_text": "complete phenol/3,4-dimethylphenol catabolic pathway of Pseudomonas sp. strain CF600",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "phenol and methylphenol degradation through the dmp meta-cleavage pathway",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "DmpD 2-oxopent-4-enoate hydratase and DmpE 4-hydroxy-2-oxopentanoate aldolase activities",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "acetaldehyde"
+    ],
+    "explanation": "pyruvate 可直接进入丙酮酸节点和三羧酸循环；acetaldehyde 通常需再经酰化型乙醛脱氢酶转化为 acetyl-CoA 后进入中心代谢，该末端转换未扩展为评分主步。S3 的 2-methylpropanoate 属于并行支链产物。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "acetaldehyde oxidation to acetyl-CoA",
+      "summary": "在 Pseudomonas sp. CF600 的 dmp lower pathway 中，DmpF（acetaldehyde dehydrogenase, acetylating；EC 1.2.1.10）可将 acetaldehyde 转化为 acetyl-CoA；为避免把中心代谢接口扩展进主链，未计为评分步骤。"
+    },
+    {
+      "name": "2-methylpropanoate continuation",
+      "summary": "2-methylpropanoate 是 S3 的并行产物，其进一步矿化需进入短链脂肪酸或酰基-CoA 分解支链；本路线缺少足够一致的逐步酶与对应菌证据，故未列入评分主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD / UM-BBD",
+      "record_id": null,
+      "locator": "Pathway map: 2-isopropylphenol degradation; 3-isopropylcatechol and meta-cleavage intermediates",
+      "claim_scope": [
+        "2-isopropylphenol degradation route",
+        "S1-S3",
+        "3-isopropylcatechol",
+        "extradiol ring cleavage"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "bibliographic search: \"2-isopropylphenol\" AND \"Pseudomonas putida KL1\"",
+      "claim_scope": [
+        "Pseudomonas putida KL1",
+        "2-isopropylphenol utilization",
+        "front-end pathway organism",
+        "aerobic phenolic-compound catabolism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz",
+      "record_id": null,
+      "locator": "EC 1.14.13.7; EC 1.13.11.2; EC 3.7.1.9; EC 4.2.1.80; EC 4.1.3.39",
+      "claim_scope": [
+        "enzyme nomenclature",
+        "EC numbers",
+        "reaction classes S1-S5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "Journal of Bacteriology",
+      "record_id": null,
+      "locator": "Nucleotide sequence and functional analysis of the complete phenol/3,4-dimethylphenol catabolic pathway of Pseudomonas sp. strain CF600, Journal of Bacteriology 174:711-724 (1992)",
+      "claim_scope": [
+        "Pseudomonas sp. CF600",
+        "dmp lower pathway",
+        "dmpD",
+        "dmpE",
+        "S4-S5"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；虽然 S1 和 S2 为 O2 依赖反应，route_scope.oxygen_condition 按要求保留 null。",
+    "Pseudomonas putida KL1 前段羟化酶、双加氧酶及水解酶的具体基因编号未能由单一可核实记录确定。",
+    "S4-S5 采用 Pseudomonas sp. CF600 作为已表征的对应菌，因此整条主链不是由同一株菌实验贯穿。",
+    "除 O2 和 H2O 外，还原剂、核苷酸、辅酶及质子未列入化学数组。",
+    "KL1 与 CF600 的保藏编号、全基因组及多项培养性状未找到可核实的单一来源，相关字段按 null 记录。"
+  ]
+}

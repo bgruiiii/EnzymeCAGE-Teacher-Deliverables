@@ -1,0 +1,291 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_067",
+  "pollutant_name_zh": "4-乙基苯酚",
+  "pollutant_name_en": "4-Ethylphenol",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "4-ethylphenol degradation (anaerobic)",
+    "is_single_continuous_route": true,
+    "notes": "该路线表示厌氧条件下4-乙基苯酚侧链逐步氧化并进入4-hydroxybenzoate节点；部分具体催化步骤的酶学注释仍不确定。"
+  },
+  "route_summary": "4-乙基苯酚先发生乙基侧链的厌氧羟基化生成1-(4-hydroxyphenyl)ethanol，随后氧化为4-hydroxyacetophenone，最终进一步氧化并脱除一个碳单元形成4-hydroxybenzoate，同时生成acetate副产物。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Ethylphenol",
+          "smiles": "CCc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-(4-Hydroxyphenyl)ethanol",
+          "smiles": "CC(O)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "乙基侧链厌氧羟基化",
+      "enzyme": {
+        "name": "Ethylbenzene dehydrogenase",
+        "ec_number": "1.17.99.2",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该底物的初始羟基化反应及其直接酶学归属缺乏明确的单步实验证据，酶名按功能相近的乙苯脱氢酶标注。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "1-(4-Hydroxyphenyl)ethanol",
+          "smiles": "CC(O)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxyacetophenone",
+          "smiles": "CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "仲醇氧化为芳香酮",
+      "enzyme": {
+        "name": "Secondary alcohol dehydrogenase",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该中间体在特定菌株中的积累和对应脱氢酶尚未明确实验证实，采用一般性仲醇脱氢酶功能注释。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-Hydroxyacetophenone",
+          "smiles": "CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxybenzoate",
+          "smiles": "O=C([O-])c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Acetate",
+          "smiles": "CC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "芳香酮侧链氧化和碳单元脱除",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步的确切反应顺序、电子受体耦联方式及催化酶尚不确定，因此酶整体填为null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Aromatoleum aromaticum",
+      "strain": "EbN1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "厌氧生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧呼吸",
+            "terminal_electron_acceptor": "nitrate"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用芳香族化合物作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "厌氧芳香族化合物降解",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "芳香族侧链氧化相关酶活",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "4-Hydroxybenzoate",
+      "Acetate"
+    ],
+    "explanation": "4-Hydroxybenzoate可作为芳香族降解的中心中间体继续进入厌氧芳香环降解网络；具体下游反应未在本题路线中展开。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "4-ethylphenol degradation (anaerobic)主链反应顺序",
+        "4-ethylphenol至4-hydroxybenzoate的厌氧侧链氧化概括"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Aromatoleum aromaticum EbN1作为厌氧芳香族化合物降解微生物",
+        "厌氧呼吸及硝酸盐作为主要末端电子受体"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "乙苯脱氢酶参与芳香族乙基侧链羟基化的功能类比",
+        "仲醇脱氢酶参与1-(4-hydroxyphenyl)ethanol氧化"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "4-乙基苯酚在Aromatoleum aromaticum EbN1中的完整单步反应序列缺少逐步酶学验证。",
+    "末步由4-hydroxyacetophenone生成4-hydroxybenzoate和acetate的确切酶及电子受体耦联方式未知。",
+    "菌株的15项表型中多数缺少本题可核验的直接来源，因此按要求填为null或低置信度。"
+  ]
+}

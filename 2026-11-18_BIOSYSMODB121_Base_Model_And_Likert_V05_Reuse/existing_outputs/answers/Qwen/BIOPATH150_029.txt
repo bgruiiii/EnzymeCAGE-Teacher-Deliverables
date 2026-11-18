@@ -1,0 +1,463 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_029",
+  "pollutant_name_zh": "环己醇",
+  "pollutant_name_en": "Cyclohexanol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "cyclohexanol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；按常见好氧微生物降解主链填写。"
+  },
+  "route_summary": "环己醇在微生物中通常先被氧化为环己酮，再经环己酮单加氧酶发生 Baeyer-Villiger 氧化生成 6-己内酯；6-己内酯水解开环为 6-羟基己酸，随后氧化为己二酸半醛并进一步氧化为己二酸。己二酸可继续进入 β-酮己二酸途径汇入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Cyclohexanol",
+          "smiles": "OC1CCCCC1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Cyclohexanone",
+          "smiles": "O=C1CCCCC1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "cyclohexanol dehydrogenase",
+        "ec_number": "1.1.1.160",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "SE19",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "辅因子计量按常见脱氢酶反应填写。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Cyclohexanone",
+          "smiles": "O=C1CCCCC1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-hexanolide",
+          "smiles": "O=C1CCCCCO1",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Baeyer-Villiger monooxygenation",
+      "enzyme": {
+        "name": "cyclohexanone monooxygenase",
+        "ec_number": "1.14.13.22",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "SE19",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "Baeyer-Villiger 氧化需要 NADPH 和 O2；辅因子计量按常见单加氧酶填写。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "6-hexanolide",
+          "smiles": "O=C1CCCCCO1",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-hydroxyhexanoate",
+          "smiles": "[O-]C(=O)CCCCCO",
+          "role": "main"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "6-hexanolide lactonase",
+        "ec_number": "3.1.1.31",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "SE19",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "内酯水解产物按去质子化羧酸盐记录，伴随质子生成。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "6-hydroxyhexanoate",
+          "smiles": "[O-]C(=O)CCCCCO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "adipate semialdehyde",
+          "smiles": "[O-]C(=O)CCCCC=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "6-hydroxyhexanoate dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "SE19",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步酶学名称与 EC 编号不完全确定，EC 填 null。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "adipate semialdehyde",
+          "smiles": "[O-]C(=O)CCCCC=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "adipate",
+          "smiles": "[O-]C(=O)CCCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "adipate semialdehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "SE19",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步酶学名称与 EC 编号不完全确定，EC 填 null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter sp.",
+      "strain": "SE19",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用环己醇作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解环己醇、环己酮和己内酯等脂环族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有环己醇脱氢酶和环己酮单加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "短杆状至球状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本轮主链止于己二酸；己二酸后续通常进入 β-酮己二酸途径，未作为评分步骤展开。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "adipate to beta-ketoadipate pathway",
+      "summary": "己二酸可经 β-酮己二酸途径转化为琥珀酰辅酶A和乙酰辅酶A进入中心代谢。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "常见好氧微生物环己醇降解主链：cyclohexanol -> cyclohexanone -> 6-hexanolide -> 6-hydroxyhexanoate -> adipate semialdehyde -> adipate；代表菌 Acinetobacter sp. SE19。",
+      "claim_scope": [
+        "pathway",
+        "step:S1",
+        "step:S2",
+        "step:S3",
+        "step:S4",
+        "step:S5",
+        "enzyme",
+        "microorganism",
+        "trait:F7",
+        "trait:F8",
+        "trait:F9"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Acinetobacter 属及 Acinetobacter sp. SE19 的一般生理与细胞特征归纳。",
+      "claim_scope": [
+        "organism:ORG_001",
+        "trait:F1",
+        "trait:F6",
+        "trait:F11",
+        "trait:F12",
+        "trait:F13"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，本答案按常见好氧途径填写。",
+    "己二酸进入中心代谢的后续步骤未作为主链展开。",
+    "6-羟基己酸脱氢酶和己二酸半醛脱氢酶的具体 EC 编号未确定，填 null。",
+    "菌株性状多依据属级常识与内部知识，未逐项核对原始文献。"
+  ]
+}

@@ -1,0 +1,352 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_047",
+  "pollutant_name_zh": "吲哚-3-乙酸根",
+  "pollutant_name_en": "Indole-3-acetate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "indole-3-acetate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "该路线通常被描述为吲哚-3-乙酸根经氧化、羟化、开环及甲酰胺水解生成邻氨基苯甲酸的过程；部分中间步骤的酶学注释缺乏明确证据。"
+  },
+  "route_summary": "吲哚-3-乙酸根首先被氧化为2-氧代吲哚-3-乙酸根，随后经羟化和芳环开裂形成2-甲酰氨基苯甲酸根，最后水解为邻氨基苯甲酸根。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Indole-3-acetate",
+          "smiles": "[O-]C(=O)Cc1c[nH]c2ccccc12",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Oxoindole-3-acetate",
+          "smiles": "[O-]C(=O)CC1c2ccccc2NC1=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化反应",
+      "enzyme": {
+        "name": "Indole-3-acetate monooxygenase",
+        "ec_number": "1.13.12.3",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "1290",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该反应及其EC归属在不同数据库中可能采用不同命名；菌株对应关系证据有限。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-Oxoindole-3-acetate",
+          "smiles": "[O-]C(=O)CC1c2ccccc2NC1=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Hydroxy-2-oxoindole-3-acetate",
+          "smiles": "[O-]C(=O)CC1(O)c2ccccc2NC1=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "羟化反应",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "1290",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "中间体和催化酶的具体注释不确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-Hydroxy-2-oxoindole-3-acetate",
+          "smiles": "[O-]C(=O)CC1(O)c2ccccc2NC1=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Formamidobenzoate",
+          "smiles": "[O-]C(=O)c1ccccc1NC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化开环反应",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "1290",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "该步可能包含非酶促重排、脱羧或开环过程，具体反应边界不确定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-Formamidobenzoate",
+          "smiles": "[O-]C(=O)c1ccccc1NC=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Anthranilate",
+          "smiles": "Nc1ccccc1C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Formate",
+          "smiles": "[O-]C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "甲酰胺水解",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "1290",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": null,
+      "uncertainty": "末步可由广义酰胺酶或水解酶催化，但具体酶和EC未确定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "1290",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Anthranilate"
+    ],
+    "explanation": "邻氨基苯甲酸根可进一步进入芳香族化合物降解网络，但后续路线未在本题指定范围内展开。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1反应",
+        "Indole-3-acetate monooxygenase",
+        "EC 1.13.12.3"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida strain 1290与吲哚-3-乙酸降解的对应关系"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2羟化步骤",
+        "S3氧化开环步骤"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S4甲酰胺水解步骤"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "路线中间体的质子化状态和具体化学计量可能因数据库表示方式而异。",
+    "S2至S4的具体酶、EC编号及基因尚未得到足够强的直接证据。",
+    "指定氧条件未给出，因此未将该路线限定为严格好氧或厌氧过程。"
+  ]
+}

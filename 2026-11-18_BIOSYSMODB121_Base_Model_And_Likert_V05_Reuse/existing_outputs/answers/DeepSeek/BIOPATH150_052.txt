@@ -1,0 +1,379 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_052",
+  "pollutant_name_zh": "对枯茗酸根",
+  "pollutant_name_en": "p-Cumate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "p-cumate degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "对枯茗酸根在 Pseudomonas putida F1 中经 CmtA-E 酶系催化，依次发生 2,3-双加氧、脱氢、间位开环、脱羧和水解，主链生成 2-hydroxypentadienoate，并释放 CO2 和异丁酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "p-Cumate",
+          "smiles": "CC(C)c1ccc(C(=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-dihydro-2,3-dihydroxy-p-cumate",
+          "smiles": "CC(C)C1=CC=C(C(=O)[O-])C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dioxygenation",
+      "enzyme": {
+        "name": "p-cumate 2,3-dioxygenase",
+        "ec_number": "1.14.12.25",
+        "gene_or_protein": "CmtA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2,3-dihydro-2,3-dihydroxy-p-cumate",
+          "smiles": "CC(C)C1=CC=C(C(=O)[O-])C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-dihydroxy-p-cumate",
+          "smiles": "O=C([O-])c1c(O)c(O)c(C(C)C)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "2,3-dihydro-2,3-dihydroxy-p-cumate dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "CmtB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2,3-dihydroxy-p-cumate",
+          "smiles": "O=C([O-])c1c(O)c(O)c(C(C)C)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-3-carboxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "[O-]C(=O)C(O)=C(C(=O)O)C=CC(=O)C(C)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "meta-cleavage/extradiol dioxygenation",
+      "enzyme": {
+        "name": "2,3-dihydroxy-p-cumate 3,4-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": "CmtC",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-3-carboxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "[O-]C(=O)C(O)=C(C(=O)O)C=CC(=O)C(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "[O-]C(=O)C(O)=CC=CC(=O)C(C)C",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "2-hydroxy-3-carboxy-6-oxo-7-methylocta-2,4-dienoate decarboxylase",
+        "ec_number": null,
+        "gene_or_protein": "CmtD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "[O-]C(=O)C(O)=CC=CC(=O)C(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypentadienoate",
+          "smiles": "[O-]C(=O)C(O)=CC=C",
+          "role": "main"
+        },
+        {
+          "name": "2-methylpropanoate",
+          "smiles": "CC(C)C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": "CmtE",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 351746,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes p-cumate as a carbon and energy source",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades p-cumate and other aromatic hydrocarbons",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "p-cumate 2,3-dioxygenase and associated p-cumate degradation enzymes",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "found in soil and aquatic environments; able to colonize diverse habitats",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "p-cumate degradation to 2-hydroxypentadienoate",
+        "CmtA-E enzyme names and reaction order",
+        "Pseudomonas putida F1 carries the p-cumate degradation pathway"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida F1 general morphological and physiological traits"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": []
+}

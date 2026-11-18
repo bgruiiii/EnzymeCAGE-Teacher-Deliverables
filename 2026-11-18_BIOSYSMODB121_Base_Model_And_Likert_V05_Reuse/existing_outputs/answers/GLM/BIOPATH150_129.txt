@@ -1,0 +1,352 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_129",
+  "pollutant_name_zh": "赤藓糖醇",
+  "pollutant_name_en": "Erythritol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "erythritol degradation II",
+    "is_single_continuous_route": true,
+    "notes": "氧条件题面未指定（null）；路线名称按题面原样填写 erythritol degradation II，未改选其他路线。"
+  },
+  "route_summary": "赤藓糖醇为C4糖醇，在 Brucella abortus（及相关 Rhizobiales 细菌）中经磷酸化依赖途径降解：赤藓糖醇首先由 ery 操纵子编码的赤藓糖醇激酶（eryC）以 ATP 磷酸化为 D-赤藓糖醇-4-磷酸；随后经 NAD+ 依赖的赤藓糖醇磷酸脱氢酶（eryB）氧化为 D-赤藓糖-4-磷酸；D-赤藓糖-4-磷酸为磷酸戊糖途径中间体，经转酮醇酶与 D-木酮糖-5-磷酸反应生成 D-果糖-6-磷酸与 D-甘油醛-3-磷酸，汇入中心碳代谢。赤藓糖醇利用能力与 Brucella 在反刍动物胎盘组织中的生长优势相关。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "erythritol",
+          "smiles": "OCC(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-erythritol 4-phosphate",
+          "smiles": "OCC(O)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磷酸化（糖醇激酶反应）",
+      "enzyme": {
+        "name": "erythritol kinase",
+        "ec_number": null,
+        "gene_or_protein": "eryC",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Brucella abortus",
+        "strain": "2308",
+        "ncbi_taxid": 235,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "erythritol kinase 无确定的已收录 EC 编号（填 null）；磷酸化位点（C1/C4，因赤藓糖醇为内消旋化合物两者等价）与基因命名（eryC）依据文献记忆，未经数据库实时核验。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "D-erythritol 4-phosphate",
+          "smiles": "OCC(O)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-erythrose 4-phosphate",
+          "smiles": "O=CC(O)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+ 依赖的氧化脱氢",
+      "enzyme": {
+        "name": "erythritol-phosphate dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "eryB",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Brucella abortus",
+        "strain": "2308",
+        "ncbi_taxid": 235,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "本步产物在文献中存在歧义：经典描述为直接生成 D-erythrose 4-phosphate，另有描述经 D-erythrulose phosphate 中间体再异构化；基因归属（eryB）基于文献记忆，EC 编号未能确定（null）。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "D-erythrose 4-phosphate",
+          "smiles": "O=CC(O)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "D-xylulose 5-phosphate",
+          "smiles": "OCC(=O)C(O)C(O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-fructose 6-phosphate",
+          "smiles": "OCC(=O)C(O)C(O)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "D-glyceraldehyde 3-phosphate",
+          "smiles": "O=CC(O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "转酮醇反应（C2 糖单位转移）",
+      "enzyme": {
+        "name": "transketolase",
+        "ec_number": "2.2.1.1",
+        "gene_or_protein": "tkt",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Brucella abortus",
+        "strain": "2308",
+        "ncbi_taxid": 235,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "本步为磷酸戊糖途径共有反应，是否计入 erythritol degradation II 主链取决于数据库对该通路的边界定义；此处作为进入中心代谢的衔接步骤给出。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Brucella abortus",
+      "strain": "2308",
+      "ncbi_taxid": 235,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温菌，最适生长温度约37°C（与哺乳动物宿主体温一致）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（需氧生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "23448"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用赤藓糖醇、葡萄糖等糖类作为碳源与能源；赤藓糖醇可诱导 ery 操纵子表达并被其代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "底物谱较窄，主要限于糖类与多元醇（如赤藓糖醇）；为胞内寄生病原菌而非环境降解菌，不具备广谱外源污染物降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具赤藓糖醇激酶与赤藓糖醇磷酸脱氢酶活性（ery 操纵子编码），可将赤藓糖醇转化为 D-赤藓糖-4-磷酸",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "无鞭毛、不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "球杆菌，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性菌，细胞壁含脂多糖（LPS），无荚膜",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "宿主专化的胞内病原体，宿主以牛为主，可感染多种哺乳动物与人；营巨噬细胞内寄生生活，环境中自由存活能力有限，栖息地广适性低",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "D-fructose 6-phosphate",
+      "D-glyceraldehyde 3-phosphate"
+    ],
+    "explanation": "赤藓糖醇经两步途径特异反应（磷酸化、氧化脱氢）转化为 D-erythrose 4-phosphate；后者是磷酸戊糖途径中间体，经转酮醇酶（EC 2.2.1.1）与 D-xylulose 5-phosphate 反应生成 D-fructose 6-phosphate 与 D-glyceraldehyde 3-phosphate，从而进入糖酵解与磷酸戊糖途径等中心碳代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1 反应：erythritol + ATP → D-erythritol 4-phosphate + ADP",
+        "酶：erythritol kinase（eryC，Brucella abortus）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2 反应：D-erythritol 4-phosphate + NAD+ → D-erythrose 4-phosphate + NADH",
+        "酶：erythritol-phosphate dehydrogenase（eryB，Brucella abortus）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S3 反应：transketolase（EC 2.2.1.1）：D-erythrose 4-phosphate + D-xylulose 5-phosphate → D-fructose 6-phosphate + D-glyceraldehyde 3-phosphate"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "微生物：Brucella abortus 2308 的生理性状（好氧、革兰氏阴性、球杆菌、无运动、不产芽孢、胞内寄生）",
+        "Brucella abortus 经 ery 操纵子代谢赤藓糖醇"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "步骤 S2（erythritol-phosphate dehydrogenase）的具体产物在文献中存在歧义：经典描述为直接生成 D-erythrose 4-phosphate，另有描述经 D-erythrulose phosphate 中间体后再转化；因无法实时核验数据库，本答案采用直接生成 D-erythrose 4-phosphate 的版本。",
+    "erythritol kinase 与 erythritol-phosphate dehydrogenase 均未能给出确定的 EC 编号（填 null）；基因名 eryC/eryB 的功能分配基于文献记忆，未经原文核对。",
+    "D-erythritol 4-phosphate 的命名位点（C1/C4）因赤藓糖醇为内消旋化合物而结构等价，但与数据库命名可能不一致。",
+    "步骤 S3（transketolase）属于磷酸戊糖途径共有反应，是否被计入 erythritol degradation II 的主链取决于该通路在数据库中的边界定义。",
+    "Brucella abortus 2308 菌株的基因组登录号、基因组大小与 GC 含量未能确定（填 null，避免编造）；ATCC 23448 保藏编号基于记忆，置信度低。",
+    "所有证据均为内部知识（INTERNAL_KNOWLEDGE_ONLY），未经数据库或文献原文直接核验，相关事实置信度按记忆可靠程度分别标注。"
+  ]
+}

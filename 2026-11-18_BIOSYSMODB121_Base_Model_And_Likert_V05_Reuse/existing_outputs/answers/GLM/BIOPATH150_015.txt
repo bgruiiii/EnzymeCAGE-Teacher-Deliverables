@@ -1,0 +1,362 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_015",
+  "pollutant_name_zh": "苔黑酚",
+  "pollutant_name_en": "Orcinol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Orcinol degradation pathway",
+    "is_single_continuous_route": true,
+    "notes": "路线名称按题面原样填写，未改选其他路线。好氧主链：苔黑酚(5-甲基间苯二酚)经羟基化生成2,3,5-三羟基甲苯(甲基氢醌醇)，再经邻位二醇内向开环生成2-甲基马来酰乙酸，随后还原为甲基化的β-酮己二酸类似物并汇入β-酮己二酸型末端代谢。"
+  },
+  "route_summary": "好氧条件下，苔黑酚（3,5-二羟基甲苯，5-甲基间苯二酚）首先由NADH依赖的黄素类单加氧酶（苔黑酚2-单加氧酶，orcinol 2-monooxygenase）在甲苯C2位（对位于一个酚羟基、邻位于甲基）进行羟基化，生成2,3,5-三羟基甲苯（6-甲基氢醌醇，methylhydroxyquinol），该步与经典的间苯二酚→氢醌醇途径相类比。随后2,3,5-三羟基甲苯1,2-双加氧酶进攻其邻位二醇（2,3位）进行内向开环，生成2-甲基马来酰乙酸（2-methylmaleylacetate）。后者经马来酰乙酸还原酶以NADH还原并互变异构，生成2-甲基-4-氧代己二酸（甲基化的β-酮己二酸类似物），再经β-酮己二酸型末端代谢（CoA转移与硫解）产生乙酰辅酶A与甲基琥珀酰辅酶A类中间物进入中心代谢（TCA循环）。代表微生物为恶臭假单胞菌。需注意：本答案中酶的EC号、菌株级信息及部分中间产物命名基于文献记忆与化学推导，置信度较低，已在uncertainties中如实标明。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Orcinol (3,5-dihydroxytoluene)",
+          "smiles": "Cc1cc(O)cc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3,5-Trihydroxytoluene (6-methylhydroxyquinol)",
+          "smiles": "Cc1c(O)c(O)cc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydroxylation (NADH-dependent monooxygenation)",
+      "enzyme": {
+        "name": "orcinol 2-monooxygenase",
+        "ec_number": "1.14.13.42",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "酶名与EC号(1.14.13.42)基于对苔黑酚/间苯二酚降解文献的记忆与类比，未能核实；羟基化位点由化学推导为甲苯C2位（生成2,3,5-三羟基甲苯），另一可能位点为C4位（生成3,4,5-三羟基甲苯，见alternative_branches）。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2,3,5-Trihydroxytoluene",
+          "smiles": "Cc1c(O)c(O)cc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Methylmaleylacetate (2-methyl-4-hydroxyhexa-2,4-dienedioate)",
+          "smiles": "OC(=O)C(C)=CC(O)=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "intradiol ring cleavage (1,2-dioxygenolysis of the ortho-diol)",
+      "enzyme": {
+        "name": "2,3,5-trihydroxytoluene 1,2-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该酶亦可能被称为methylhydroxyquinol 1,2-dioxygenase或归入hydroxyquinol 1,2-dioxygenase（EC 1.13.11.x）家族，具体EC号未核实；开环产物2-甲基马来酰乙酸（类比6-氯氢醌醇开环生成2-氯马来酰乙酸）为化学推导。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-Methylmaleylacetate",
+          "smiles": "OC(=O)C(C)=CC(O)=CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Methyl-4-oxohexanedioate (5-methyl-3-oxoadipate, methyl-β-ketoadipate analog)",
+          "smiles": "OC(=O)C(C)CC(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "reduction of the maleyl C=C bond with keto-enol tautomerization",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "还原酶对甲基化底物的活性、被还原双键的位置（推导为还原马来酰部分C=C后经烯醇-酮互变异构）及产物命名（2-methyl-4-oxohexanedioate，即5-methyl-3-oxoadipate）均基于类比推导，未见直接文献核实。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 4,
+            "optimum_c": 30,
+            "maximum_c": 40,
+            "preference": "中温性（嗜温菌），最适生长温度约30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧，需分子氧进行呼吸代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌，适宜淡水/土壤等低盐环境"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 5.0,
+            "optimum": 7.0,
+            "maximum": 8.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用苔黑酚、间苯二酚、苯酚等多种芳香族化合物以及有机酸作为碳源与能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具广谱芳香族化合物降解能力，可降解多种单环芳烃（酚类、甲酚类、苯甲酸类等）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "苔黑酚2-单加氧酶、2,3,5-三羟基甲苯1,2-双加氧酶及马来酰乙酸还原酶活性（好氧苔黑酚降解途径）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动性阳性，借极生鞭毛运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状细菌，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，具含脂多糖外膜的典型细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "泛栖性广布种：常见于土壤、淡水、植物根际及腐生环境，对多种生境具有适应能力",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "acetyl-CoA",
+      "succinyl-CoA (经甲基琥珀酰CoA类中间体)"
+    ],
+    "explanation": "主链末端产物2-甲基-4-氧代己二酸为甲基化的β-酮己二酸类似物，进入β-酮己二酸型末端代谢：类比3-氧代己二酸经CoA转移酶与硫解酶作用，生成乙酰辅酶A与（甲基）琥珀酰辅酶A类中间物，随后进入TCA循环等中心代谢。该末端归属为类比推导，未直接核实。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "β-酮己二酸型末端代谢（甲基化类似物）",
+      "summary": "2-甲基-4-氧代己二酸经CoA转移（类比3-氧代己二酸:琥珀酰CoA转移酶）形成2-甲基-4-氧代己二酰CoA，再经硫解酶裂解生成甲基琥珀酰CoA与乙酰CoA；甲基琥珀酰CoA进一步转化进入TCA循环（细节未核实）。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "C4位羟基化支路（3,4,5-三羟基甲苯 / 5-甲基焦棓酚）",
+      "summary": "若苔黑酚单加氧酶进攻C4位（甲基对位、两个酚羟基之间），则生成3,4,5-三羟基甲苯（甲基焦棓酚型），其后续开环途径不明。该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1/S2/S3三步反应及其化学计量与产物结构（基于间苯二酚→氢醌醇→马来酰乙酸途径的类比与化学推导）",
+        "S2酶（2,3,5-三羟基甲苯1,2-双加氧酶）的功能归属"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida 物种水平的一般微生物学性状（形态、革兰氏反应、生理与栖息地）",
+        "Pseudomonas putida 作为该途径对应微生物的归属"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1酶EC号（1.14.13.42，orcinol 2-monooxygenase）与S3酶EC号（1.3.1.32，maleylacetate reductase）的记忆性归属"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "步骤S1酶名'orcinol 2-monooxygenase'及其EC号1.14.13.42基于记忆与类比，未经数据库核实，可能不准确。",
+    "微生物仅鉴定到种（Pseudomonas putida），未获得降解菌株编号、保藏号与基因组数据；F2/F3/F7/F8等性状为物种水平通用知识，非降解菌株实测值，数值仅为典型范围。",
+    "S2开环酶命名与EC号不确定，亦可能称为methylhydroxyquinol 1,2-dioxygenase或hydroxyquinol 1,2-dioxygenase（EC 1.13.11.x）。",
+    "S3产物命名为化学推导（2-methyl-4-oxohexanedioate，亦即5-methyl-3-oxoadipate），文献中可能采用不同命名（如甲基-β-酮己二酸）。",
+    "首步羟基化位点（C2位生成2,3,5-三羟基甲苯）由与间苯二酚→氢醌醇途径的类比推导；替代位点（C4位）已列入alternative_branches且不属于评分主链。",
+    "全部证据均为内部知识（INTERNAL_KNOWLEDGE_ONLY），无外部数据库或文献记录可供引用，故各事实置信度普遍为low或medium。"
+  ]
+}

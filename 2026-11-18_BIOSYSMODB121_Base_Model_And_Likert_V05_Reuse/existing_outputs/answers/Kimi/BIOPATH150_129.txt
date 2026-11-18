@@ -1,0 +1,368 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_129",
+  "pollutant_name_zh": "赤藓糖醇",
+  "pollutant_name_en": "Erythritol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "erythritol degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（按题面填 null）。该路线最初在好氧培养的 Brucella abortus 中阐明，为一条连续主链。"
+  },
+  "route_summary": "赤藓糖醇降解 II（Brucella 型，经 D-赤藓酮糖路线）：赤藓糖醇先由 NAD+ 依赖的赤藓糖醇脱氢酶氧化为 D-赤藓酮糖（D-erythrulose），再由 D-赤藓酮糖激酶磷酸化生成 D-赤藓酮糖-1-磷酸，随后经 D-赤藓酮糖-1-磷酸脱氢酶（NAD+ 依赖的氧化还原/异构化）转化为 D-赤藓酮糖-4-磷酸。据早期报道（Sperry & Robertson, 1975）D-赤藓酮糖-4-磷酸可再被醛缩裂解为磷酸二羟丙酮与甲醛而进入中心碳代谢，该裂解步酶未明确鉴定，未计入主链。该路线区别于 Rhizobium/Sinorhizobium 中经 L-erythrulose 的 erythritol degradation I 路线。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Erythritol",
+          "smiles": "C(C(C(CO)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+]([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H]([C@H](O)[C@@H]3O)n3cnc4c(N)ncnc34)[C@@H](O)[C@H]2O)c1",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-erythrulose",
+          "smiles": "C(C(C(=O)CO)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H]([C@H](O)[C@@H]3O)n3cnc4c(N)ncnc34)[C@@H](O)[C@H]2O)C=CC1",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化还原反应（NAD+ 依赖的脱氢氧化）",
+      "enzyme": {
+        "name": "erythritol dehydrogenase (D-erythrulose-forming)",
+        "ec_number": "1.1.1.162",
+        "gene_or_protein": "EryA (eryA)",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Brucella abortus",
+        "strain": null,
+        "ncbi_taxid": 359,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "D-erythrulose",
+          "smiles": "C(C(C(=O)CO)O)O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-erythrulose 1-phosphate",
+          "smiles": "O=P(O)(O)OCC(=O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]1O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磷酸基团转移（ATP 依赖的激酶反应）",
+      "enzyme": {
+        "name": "D-erythrulose kinase",
+        "ec_number": null,
+        "gene_or_protein": "EryC (eryC)",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Brucella abortus",
+        "strain": null,
+        "ncbi_taxid": 359,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该激酶的 EC 编号未能确认，故填 null；基因归属 eryC 依据 Brucella ery 操纵子注释（EVID_004），置信度低。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "D-erythrulose 1-phosphate",
+          "smiles": "O=P(O)(O)OCC(=O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+]([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H]([C@H](O)[C@@H]3O)n3cnc4c(N)ncnc34)[C@@H](O)[C@H]2O)c1",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-erythrulose 4-phosphate",
+          "smiles": "O=C(CO)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H]([C@H](O)[C@@H]3O)n3cnc4c(N)ncnc34)[C@@H](O)[C@H]2O)C=CC1",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化还原/异构化（NAD+ 依赖的脱氢酶反应）",
+      "enzyme": {
+        "name": "D-erythrulose-1-phosphate dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "EryB (eryB)",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Brucella abortus",
+        "strain": null,
+        "ncbi_taxid": 359,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该酶被描述为 NAD 特异的脱氢酶；反应形式上涉及羰基位置迁移（氧化还原异构化），NAD(H) 是否净消耗/生成不确定；EC 编号未能确认；基因归属 eryB 依据操纵子注释（EVID_004），置信度低。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Brucella abortus",
+      "strain": null,
+      "ncbi_taxid": 359,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 20,
+            "optimum_c": 37,
+            "maximum_c": 40,
+            "preference": "嗜温菌，最适约37°C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧；部分生物型初代分离培养需补充5–10% CO2（嗜二氧化碳性）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 6.6,
+            "optimum": null,
+            "maximum": 7.4
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以赤藓糖醇为优选碳源（赤藓糖醇可诱导其分解代谢酶系并促进生长，与其对牛胎盘组织的嗜性相关），也可利用葡萄糖等少数糖类",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "兼性胞内寄生菌，代谢相对不活跃、底物利用谱窄；已知能降解赤藓糖醇等少数多元醇和糖类，未见广泛的外源物降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "赤藓糖醇脱氢酶活性（EC 1.1.1.162，NAD+ 依赖，将赤藓糖醇氧化为 D-erythrulose），为 erythritol degradation II 的首步关键酶",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动（无鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "细小的球杆菌或短杆菌（coccobacilli），多单生",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "宿主关联的专性胞内寄生菌，主要感染牛等家畜（可致人布鲁氏菌病），自然栖息地局限于动物宿主体内，属窄适（specialist）类型",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["dihydroxyacetone phosphate", "formaldehyde"],
+    "explanation": "据 Sperry & Robertson（1975）报道，D-erythrulose-4-phosphate 经醛缩裂解生成磷酸二羟丙酮（DHAP）与甲醛；DHAP 进入糖酵解等中心碳代谢，甲醛进一步氧化（经甲酸）进入一碳代谢。该裂解酶未明确鉴定，故未列入评分主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "D-erythrulose-4-phosphate 裂解及中心碳代谢衔接",
+      "summary": "D-erythrulose-4-phosphate 被醛缩裂解为磷酸二羟丙酮（DHAP）与甲醛（催化酶未鉴定），DHAP 进入糖酵解，甲醛经氧化脱毒。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "erythritol degradation I（L-erythrulose 途径，Rhizobium/Sinorhizobium）",
+      "summary": "在 Rhizobium leguminosarum bv. viciae 3841 与 Sinorhizobium meliloti 中：赤藓糖醇 → L-erythrulose（赤藓糖醇脱氢酶，L-erythrulose 形成）→ L-erythrulose-1-磷酸（L-erythrulose 激酶）→ D-erythrulose-4-磷酸（L-erythrulose-1-磷酸脱氢酶）。该路线不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page: erythritol degradation II",
+      "claim_scope": ["路线归属（route_scope）", "反应序列"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Sperry JF, Robertson DC. 1975. Erythritol catabolism by Brucella abortus. J Bacteriol 121(2):619-630",
+      "claim_scope": ["主链各步反应", "酶活性（赤藓糖醇脱氢酶、D-erythrulose 激酶、D-erythrulose-1-磷酸脱氢酶）", "对应微生物 Brucella abortus", "碳源利用"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ENZYME (ExPASy) / BRENDA",
+      "record_id": "1.1.1.162",
+      "locator": "EC 1.1.1.162 erythritol dehydrogenase (D-erythrulose-forming)",
+      "claim_scope": ["S1 酶名称与 EC 编号", "S1 反应"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Sangari FJ, Aguero J, Garcia-Lobo JM. 2000. The genes for erythritol catabolism are organized as an inducible operon in Brucella abortus. Microbiology 146(Pt 2):487-495",
+      "claim_scope": ["ery 操纵子基因命名（eryA/eryB/eryC）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Bergey's Manual 等对 Brucella 属常规性状的描述（凭内部知识转述，无逐字原文）",
+      "claim_scope": ["15 项性状（温度、氧耐受、pH、呼吸、运动性、形态、革兰氏、产孢、栖息地等）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "359",
+      "locator": "NCBI Taxonomy: Brucella abortus",
+      "claim_scope": ["ncbi_taxid"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "MetaCyc 中 erythritol degradation I 与 II 的命名对应关系存在记忆不确定性：本回答认定 erythritol degradation II 为 Brucella 的 D-erythrulose 路线（中间体 D-erythrulose-1-磷酸），I 为 Rhizobium 的 L-erythrulose 路线；若命名相反，则主链应改为 L-erythrulose → L-erythrulose-1-磷酸 → D-erythrulose-4-磷酸（见 alternative_branches）。",
+    "S2（D-erythrulose 激酶）与 S3（D-erythrulose-1-磷酸脱氢酶）的 EC 编号未能确认，均填 null；其基因归属（eryC、eryB）依据操纵子注释，置信度低。",
+    "Sperry & Robertson（1975）所用 B. abortus 具体菌株号未能确认，故 profile 按物种级给出（strain=null），菌种保藏编号与基因组基本信息填 null。",
+    "D-erythrulose-4-磷酸裂解为 DHAP 与甲醛的步骤是否属于该路线主链不确定（催化酶未鉴定），未计入 steps，仅列入 downstream_continuation 与 central_metabolism_entry。",
+    "ncbi_taxid=359（Brucella abortus 物种级）凭记忆填写，置信度中；S3 反应中 NAD(H) 是否净消耗/生成不确定。"
+  ]
+}

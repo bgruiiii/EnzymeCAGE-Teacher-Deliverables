@@ -1,0 +1,286 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_015",
+  "pollutant_name_zh": "苔黑酚",
+  "pollutant_name_en": "Orcinol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Orcinol degradation pathway",
+    "is_single_continuous_route": true,
+    "notes": "主链依据 Pseudomonas putida 苔黑酚（orcinol，5-甲基间苯二酚）好氧降解的经典描述：先羟化生成 2,3,5-三羟基甲苯，随后进行间位（meta）氧化开环；开环之后的步骤在经典文献中未完全阐明，未列入主链。"
+  },
+  "route_summary": "好氧条件下，Pseudomonas putida 以苔黑酚为唯一碳源生长：第一步由 NADH 依赖的黄素蛋白单加氧酶 orcinol hydroxylase 将苔黑酚羟化为 2,3,5-三羟基甲苯（2,3,5-trihydroxytoluene）；第二步由开环双加氧酶催化 2,3,5-三羟基甲苯发生间位（meta）氧化开环，开环产物随后经进一步降解进入中心碳代谢。两步酶均未见正式 EC 编号指定，文献所用菌株编号未能确认，开环产物的确切结构未完全确证，故相应字段按缺失处理（null）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Orcinol",
+          "smiles": "Cc1cc(O)cc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3,5-Trihydroxytoluene",
+          "smiles": "Cc1c(O)c(O)cc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NADH-dependent flavoprotein monooxygenation (aromatic ortho-hydroxylation)",
+      "enzyme": {
+        "name": "orcinol hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "电子供体按经典文献报道为 NADH；该酶未见正式 EC 编号指定，基因/蛋白标识未知。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2,3,5-Trihydroxytoluene",
+          "smiles": "Cc1c(O)c(O)cc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3,5-trihydroxytoluene meta ring-cleavage product (structure tentative)",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol-type oxidative meta ring cleavage (dioxygenation)",
+      "enzyme": {
+        "name": "2,3,5-trihydroxytoluene dioxygenase (ring-cleavage dioxygenase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "开环产物的确切化学结构与开环区域选择性在本题所依据的经典文献中未完全确证，产物以通用名给出且 SMILES 填 null；该双加氧酶无正式 EC 编号。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温型（mesophilic）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧（obligate aerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（aerobic respiration）",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能利用苔黑酚（orcinol）等多种芳香族化合物及有机酸作为唯一碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "物种层面可降解多种芳香族及异生物质化合物（如甲苯、萘、苯酚等）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "苔黑酚羟化酶（NADH 依赖单加氧酶）活性与 2,3,5-三羟基甲苯开环双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直或微弯的杆菌（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢/内生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、水体及植物根际等多种环境，属栖息地广适型环境菌",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "经典文献将主链追踪到 2,3,5-三羟基甲苯的氧化开环为止；开环产物经进一步降解最终进入中心碳代谢，但具体末端产物在本题所依据的来源中未确证，故 products 留空，不作猜测。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "Further catabolism of the ring-cleavage product",
+      "summary": "开环产物（推测为间位开环生成的二烯酸/半醛类化合物）经水解等步骤进一步降解，最终进入中心碳代谢；该部分反应序列与产物在经典文献中未完全阐明，本回答未将其列为被评分主链步骤。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Chapman PJ, Ribbons DW. Metabolism of resorcinylic compounds by bacteria: orcinol pathway in Pseudomonas putida. Journal of Bacteriology. 1976;125(3):985-998.",
+      "claim_scope": [
+        "orcinol aerobic degradation pathway in Pseudomonas putida",
+        "orcinol hydroxylase-catalyzed hydroxylation of orcinol to 2,3,5-trihydroxytoluene",
+        "ring cleavage of 2,3,5-trihydroxytoluene by a dioxygenase",
+        "Pseudomonas putida grows on orcinol as carbon source"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "303",
+      "locator": "NCBI Taxonomy: Pseudomonas putida (txid303)",
+      "claim_scope": [
+        "species identity and NCBI taxid of the organism profile"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "species-level general traits of Pseudomonas putida: Gram-negative, rod-shaped, motile with polar flagella, obligately aerobic, non-sporulating, mesophilic, versatile aromatic-compound degrader, widespread in soil/water/rhizosphere"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "步骤2开环产物的精确结构与开环区域选择性未完全确定，产物名以通用描述给出，SMILES 填 null。",
+    "经典文献所用菌株编号未能确认，微生物仅定到种（Pseudomonas putida），菌株、保藏编号与基因组编号均为 null。",
+    "orcinol hydroxylase 与 2,3,5-三羟基甲苯双加氧酶均未见正式 EC 编号指定，ec_number 填 null。",
+    "性状值为种级一般性描述，来自内部知识（EVID_003），证据强度低/中，未标注到具体菌株。"
+  ]
+}

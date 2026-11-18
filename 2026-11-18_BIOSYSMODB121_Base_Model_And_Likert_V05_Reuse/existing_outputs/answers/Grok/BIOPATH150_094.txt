@@ -1,0 +1,340 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_094",
+  "pollutant_name_zh": "雄酮",
+  "pollutant_name_en": "Androsterone",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "testosterone and androsterone degradation to androstendione (aerobic)",
+    "is_single_continuous_route": false,
+    "notes": "题面androstendione按androst-4-ene-3,17-dione（雄烯二酮）理解。本路线含雄酮支路与睾酮支路，二者在雄烯二酮汇合，不是单一底物的线性连续链。"
+  },
+  "route_summary": "好氧条件下，雄酮与睾酮分别经羟基甾体脱氢汇入雄烯二酮。雄酮由3α-羟基甾体脱氢酶（EC 1.1.1.50）氧化为5α-雄烷-3,17-二酮，再经3-氧代-5α-甾体4-脱氢酶（EC 1.3.99.5）引入Δ4双键生成雄烯二酮；睾酮由3(或17)β-羟基甾体脱氢酶（EC 1.1.1.51）直接氧化17β-羟基生成同一产物。代表菌为Comamonas testosteroni ATCC 11996（旧名Pseudomonas testosteroni）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "androsterone_branch",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Androsterone",
+          "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CCC2=O)CC[C@@H]4[C@@]3(CC[C@H](C4)O)C",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5α-androstane-3,17-dione",
+          "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CCC2=O)CC[C@@H]4[C@@]3(CCC(=O)C4)C",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "3α-羟基甾体脱氢",
+      "enzyme": {
+        "name": "3α-hydroxysteroid dehydrogenase",
+        "ec_number": "1.1.1.50",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Comamonas testosteroni",
+        "strain": "ATCC 11996",
+        "ncbi_taxid": 285,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "androsterone_branch",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "5α-androstane-3,17-dione",
+          "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CCC2=O)CC[C@@H]4[C@@]3(CCC(=O)C4)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "androst-4-ene-3,17-dione",
+          "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CCC2=O)CCC4=CC(=O)CC[C@@]34C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "3-氧代-5α-甾体Δ4-脱氢",
+      "enzyme": {
+        "name": "3-oxo-5α-steroid 4-dehydrogenase (acceptor)",
+        "ec_number": "1.3.99.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Comamonas testosteroni",
+        "strain": "ATCC 11996",
+        "ncbi_taxid": 285,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该转化是雄酮进入雄烯二酮所必需的Δ4-脱氢；EC 1.3.99.5的经典酶学表征来自Nocardia restrictus。将其归于C. testosteroni ATCC 11996属于途径推断，基因与生理电子受体均未核实，故未填写辅因子与基因名。"
+    },
+    {
+      "step_id": "S3",
+      "order": 1,
+      "branch_id": "testosterone_branch",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Testosterone",
+          "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CC[C@@H]2O)CCC4=CC(=O)CC[C@@]34C",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "androst-4-ene-3,17-dione",
+          "smiles": "C[C@]12CC[C@H]3[C@H]([C@@H]1CCC2=O)CCC4=CC(=O)CC[C@@]34C",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "17β-羟基甾体脱氢",
+      "enzyme": {
+        "name": "3(or 17)β-hydroxysteroid dehydrogenase",
+        "ec_number": "1.1.1.51",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Comamonas testosteroni",
+        "strain": "ATCC 11996",
+        "ncbi_taxid": 285,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Comamonas testosteroni",
+      "strain": "ATCC 11996",
+      "ncbi_taxid": 285,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "11996"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用睾酮、雄酮等C19甾体作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解睾酮、雄酮及相关C19甾体，可转化为雄烯二酮并继续降解",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有3α-羟基甾体脱氢酶和3(或17)β-羟基甾体脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动，具极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本路线终点为雄烯二酮，甾体骨架尚未开环，不能直接进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "androstenedione onward aerobic steroid degradation",
+      "summary": "雄烯二酮可继续经3-酮基甾体Δ1-脱氢生成雄甾-1,4-二烯-3,17-二酮，再经9α-羟化进入9,10-开环途径，最终分解为可进入中心代谢的小分子。该后续过程不在本题指定路线范围内。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "epiandrosterone to androstenedione",
+      "summary": "表雄酮（3β-羟基-5α-雄烷-17-酮）可经3β-羟基甾体脱氢生成5α-雄烷-3,17-二酮，再汇入同一Δ4-脱氢步骤得到雄烯二酮。该支路不在题面指定主链名称内。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Comamonas testosteroni（原Pseudomonas testosteroni）的3α-羟基甾体脱氢酶（EC 1.1.1.50）以NAD+将雄酮氧化为5α-雄烷-3,17-二酮。",
+      "claim_scope": ["S1_reaction", "enzyme_3alpha_HSD", "EC_1.1.1.50"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "同菌的3(或17)β-羟基甾体脱氢酶（EC 1.1.1.51）以NAD+将睾酮的17β-羟基氧化为androst-4-ene-3,17-dione。",
+      "claim_scope": ["S3_reaction", "enzyme_17beta_HSD", "EC_1.1.1.51"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "5α-雄烷-3,17-二酮到雄烯二酮的Δ4-脱氢对应EC 1.3.99.5；该酶经典表征于Nocardia restrictus，在C. testosteroni中按雄酮利用途径推断。",
+      "claim_scope": ["S2_reaction", "enzyme_delta4_dehydrogenase", "EC_1.3.99.5", "organism_step_inference"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Comamonas testosteroni模式菌株ATCC 11996，NCBI TaxID 285；革兰氏阴性好氧杆菌，极生鞭毛，不产芽孢，行好氧呼吸。",
+      "claim_scope": ["organism_identity", "culture_collection", "morphology", "oxygen", "motility", "gram", "sporulation", "respiration"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "C. testosteroni ATCC 11996可好氧利用睾酮和雄酮等C19甾体，并具有3α-与17β-羟基甾体脱氢酶活性。",
+      "claim_scope": ["carbon_substrate", "degradation_capacity", "enzyme_activity"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面androstendione按androst-4-ene-3,17-dione（雄烯二酮）理解。",
+    "Δ4-脱氢步骤的基因名、生理电子受体以及与ATCC 11996的直接酶学对应未核实；EC 1.3.99.5的经典来源菌是Nocardia restrictus。",
+    "NAD+/NADH未填写SMILES；温度、pH、盐度、基因组和栖息地广适性无可靠原文，已置null。",
+    "甾体SMILES为常见立体写法，未对照数据库逐条复核。",
+    "证据均为内部知识，未绑定可核验的数据库记录号或文献标识。"
+  ]
+}

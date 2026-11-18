@@ -1,0 +1,413 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_081",
+  "pollutant_name_zh": "2-氨基-5-胍基戊酸",
+  "pollutant_name_en": "2-Amino-5-guanidinovaleric acid",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-arginine degradation XIV (oxidative Stickland reaction)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）。2-氨基-5-胍基戊酸即 L-精氨酸；该路线为专性厌氧梭菌的氧化型 Stickland 发酵途径，主链止于 4-胍基丁酸并伴随底物水平磷酸化产 ATP。"
+  },
+  "route_summary": "在专性厌氧的 Clostridium sticklandii 中，L-精氨酸（2-氨基-5-胍基戊酸）作为 Stickland 反应的氧化型（供氢体）底物被降解：第一步经 NAD+ 依赖的氧化脱氨生成 2-氧代-5-胍基戊酸（α-酮-δ-胍基戊酸，即 2-酮基精氨酸），释放 NH4+ 和 NADH；第二步经铁氧还蛋白依赖的 2-氧代酸氧化还原酶氧化脱羧，生成 4-胍基丁酰-CoA 和 CO2；第三步经磷酸丁酰转移酶将 CoA 酯磷酸解为 4-胍基丁酰磷酸；第四步经丁酸激酶将磷酸基转移给 ADP 生成 ATP，得到主链终产物 4-胍基丁酸（γ-胍基丁酸）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-arginine",
+          "smiles": "N[C@@H](CCCNC(=N)N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)C1=CC=C[N+](=C1)[C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H]([C@H](O)[C@@H]3O)N4C=NC5=C(N=CN=C54)N)[C@@H](O)[C@H]2O",
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxo-5-guanidinopentanoate",
+          "smiles": "NC(=N)NCCCC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H]([C@H](O)[C@@H]3O)N4C=NC5=C(N=CN=C54)N)[C@@H](O)[C@H]2O)C=CC1",
+          "role": "cofactor"
+        },
+        {
+          "name": "ammonium",
+          "smiles": "[NH4+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+ 依赖的氧化脱氨（oxidative deamination）",
+      "enzyme": {
+        "name": "L-arginine dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sticklandii",
+        "strain": "ATCC 12662",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "酶的 EC 编号与基因归属不确定；按 Stickland 氧化支路通式取 NAD+ 依赖的氨基酸脱氢酶。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-oxo-5-guanidinopentanoate",
+          "smiles": "NC(=N)NCCCC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@@H](C(=O)NCCC(=O)NCCS)O",
+          "role": "cofactor"
+        },
+        {
+          "name": "oxidized ferredoxin",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-guanidinobutanoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@@H](C(=O)NCCC(=O)NCCSC(=O)CCCNC(=N)N)O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "C(=O)=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "reduced ferredoxin",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "氧化脱羧（2-氧代酸:铁氧还蛋白氧化还原，生成酰基-CoA）",
+      "enzyme": {
+        "name": "2-oxoacid:ferredoxin oxidoreductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sticklandii",
+        "strain": "ATCC 12662",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "电子受体按梭菌惯例取氧化型铁氧还蛋白；具体 EC 编号与基因归属不确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-guanidinobutanoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@@H](C(=O)NCCC(=O)NCCSC(=O)CCCNC(=N)N)O",
+          "role": "main"
+        },
+        {
+          "name": "phosphate",
+          "smiles": "OP(=O)(O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-guanidinobutanoyl phosphate",
+          "smiles": "NC(=N)NCCCC(=O)OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)O)OP(=O)(O)O)[C@@H](C(=O)NCCC(=O)NCCS)O",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "磷酸解（酰基-CoA → 酰基磷酸，底物水平磷酸化第一步）",
+      "enzyme": {
+        "name": "phosphate butyryltransferase",
+        "ec_number": "2.3.1.19",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sticklandii",
+        "strain": "ATCC 12662",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "梭菌磷酸丁酰转移酶对 C4 酰基-CoA 具广谱性，按此指定；该菌对该底物的直接酶学证据有限。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-guanidinobutanoyl phosphate",
+          "smiles": "NC(=N)NCCCC(=O)OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]3O[C@H](COP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]3O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-guanidinobutanoate",
+          "smiles": "NC(=N)NCCCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]3O[C@H](COP(=O)(O)OP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]3O",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "底物水平磷酸化（酰基磷酸 → 羧酸，偶联 ADP 磷酸化生成 ATP）",
+      "enzyme": {
+        "name": "butyrate kinase",
+        "ec_number": "2.7.2.7",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sticklandii",
+        "strain": "ATCC 12662",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "丁酸激酶对该 C4 酰基磷酸底物的直接动力学证据有限，按 Stickland 氧化支路通式指定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Clostridium sticklandii",
+      "strain": "ATCC 12662",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温菌（嗜温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "12662"
+          },
+          "raw_text": "Clostridium sticklandii ATCC 12662（模式菌株）",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧发酵（Stickland 反应）",
+            "terminal_electron_acceptor": "Stickland 还原支路中的受体氨基酸（如甘氨酸、脯氨酸）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以氨基酸为主要碳源和能源，可利用 L-精氨酸进行氧化型 Stickland 发酵",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "氨基酸降解专性菌，可通过 Stickland 反应降解多种氨基酸（作为供体或受体）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "NAD+ 依赖的 L-精氨酸脱氢酶活性及 2-氧代酸氧化还原酶活性（Stickland 氧化支路）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（梭菌样）细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（厚壁菌门梭菌型细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "形成内生芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息于土壤、污泥、粪污等富含有机质的厌氧环境，适应氨基酸丰富的微环境",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["4-guanidinobutanoate", "ATP", "NH4+", "CO2"],
+    "explanation": "主链终产物 4-胍基丁酸可经 4-胍基丁酸酶（EC 3.5.3.7）水解为 4-氨基丁酸（GABA）和尿素，GABA 再经 GABA 转氨酶与琥珀酸半醛脱氢酶转化为琥珀酸进入三羧酸循环；NH4+ 进入氮代谢，ATP 直接进入能量代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "4-guanidinobutanoate 进一步降解为 succinate",
+      "summary": "4-胍基丁酸 + H2O → 4-氨基丁酸 + 尿素（4-胍基丁酸酶，EC 3.5.3.7）；4-氨基丁酸经 GABA 支路（GABA 转氨酶、琥珀酸半醛脱氢酶）生成琥珀酸进入 TCA。该延续不属于本题评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "L-arginine degradation via arginine deiminase (ADI pathway)",
+      "summary": "L-精氨酸也可经精氨酸脱亚胺酶途径（精氨酸→瓜氨酸→鸟氨酸，伴随氨与 ATP 生成）降解；该分支不属于本题指定的氧化型 Stickland 主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway: L-arginine degradation XIV (oxidative Stickland reaction)",
+      "claim_scope": ["reaction_sequence", "main_compounds", "enzyme_assignment", "organism_assignment"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["general_organism_traits"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Nisman B. The Stickland reaction. Bacteriological Reviews. 1954;18(1):16-42",
+      "claim_scope": ["stickland_physiology", "anaerobic_amino_acid_fermentation"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "12662",
+      "locator": "ATCC 12662, Clostridium sticklandii (type strain)",
+      "claim_scope": ["strain_identity", "culture_collection"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Fonknechten et al. Clostridium sticklandii, a specialist in amino acid degradation: revisiting its metabolism through its genome sequence. BMC Genomics. 2010",
+      "claim_scope": ["physiology", "amino_acid_degradation_capacity"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "第 1 步 L-精氨酸脱氢酶与第 2 步 2-氧代酸氧化还原酶的 EC 编号和基因归属不确定，按纪律填 null。",
+    "第 2 步电子受体按梭菌 Stickland 氧化支路惯例取氧化型铁氧还蛋白；个别数据库表示可能写作 NAD+。",
+    "微生物按该路线文献关联物种 Clostridium sticklandii 填写，菌株取模式株 ATCC 12662 作为代表，实际催化各步的菌株层面证据有限。",
+    "部分表示将磷酸转移酶/激酶两步合并描述，但主链化合物序列（L-精氨酸 → 2-氧代-5-胍基戊酸 → 4-胍基丁酰-CoA → 4-胍基丁酸）一致。"
+  ]
+}

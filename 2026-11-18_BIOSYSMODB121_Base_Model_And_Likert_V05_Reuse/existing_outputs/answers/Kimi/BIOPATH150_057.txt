@@ -1,0 +1,413 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_057",
+  "pollutant_name_zh": "2-硝基甲苯",
+  "pollutant_name_en": "2-Nitrotoluene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-nitrotoluene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）。所给主链为文献中占主导的好氧双加氧起始路线（Acidovorax sp. JS42，原 Pseudomonas sp. JS42）：双加氧脱亚硝酸→3-甲基邻苯二酚→extradiol 开环→meta-fission 至丙酮酸与乙醛。路线名称按题面原样填写。"
+  },
+  "route_summary": "2-硝基甲苯在 Acidovorax sp. JS42（原 Pseudomonas sp. strain JS42）中经三组分 2-硝基甲苯 2,3-双加氧酶（NtdAaAbAcAd）催化发生双加氧，同步将硝基以亚硝酸根形式脱除，直接生成 3-甲基邻苯二酚；随后经儿茶酚 2,3-双加氧酶进行 extradiol（间位）开环，生成 2-羟基-6-氧代-2,4-庚二烯酸，再经 meta-fission 水解（脱去乙酸）、水合与醛醇裂解，最终生成丙酮酸与乙醛进入中心碳代谢。氧条件题面未指定，主链按该好氧路线给出。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-Nitrotoluene",
+          "smiles": "Cc1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Methylcatechol",
+          "smiles": "Cc1cccc(O)c1O",
+          "role": "main"
+        },
+        {
+          "name": "Nitrite",
+          "smiles": "N(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Rieske 型非血红素三组分双加氧（需 NADH 还原当量），双加氧的同时硝基以亚硝酸根形式脱除",
+      "enzyme": {
+        "name": "2-nitrotoluene 2,3-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": "ntdAaAbAcAd",
+        "confidence": "high",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Acidovorax sp.",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该酶为文献确证的三组分双加氧酶，但暂无正式分配的 EC 编号，按规则填 null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-Methylcatechol",
+          "smiles": "Cc1cccc(O)c1O",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxy-6-oxo-2,4-heptadienoic acid",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "邻苯二酚 extradiol（间位）开环双加氧裂解",
+      "enzyme": {
+        "name": "3-methylcatechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acidovorax sp.",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "开环酶暂按儿茶酚 2,3-双加氧酶（EC 1.13.11.2）归类；JS42 中对应基因未逐一确证，产物立体构型未标注。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-6-oxo-2,4-heptadienoic acid",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxy-2,4-pentadienoic acid",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Acetic acid",
+          "smiles": "CC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "meta-fission 水解（脱去乙酸）",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxo-2,4-heptadienoate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acidovorax sp.",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "该底物专一性水解酶无独立正式 EC 编号（与 2-hydroxymuconate semialdehyde hydrolase EC 3.7.1.9 同家族），JS42 下游酶学证据有限，按通用 meta-fission 途径推断。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-2,4-pentadienoic acid",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxy-2-oxopentanoic acid",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "异构化/水合（vinylpyruvate 水合）",
+      "enzyme": {
+        "name": "2-oxopent-4-enoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acidovorax sp.",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "2-羟基-2,4-戊二烯酸（烯醇式）与 2-氧代-4-戊烯酸（酮式）为互变异构体，水合酶作用于酮式；该步在 JS42 中为推断归属。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-Hydroxy-2-oxopentanoic acid",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Pyruvic acid",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛醇裂解（aldol cleavage）",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxovalerate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acidovorax sp.",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "终产物丙酮酸直接进入中心代谢，乙醛经乙醛脱氢酶转化为乙酰辅酶 A；该步在 JS42 中为基于其完全矿化能力的推断归属。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acidovorax sp.",
+      "strain": "JS42",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（mesophilic，文献中常规培养约 30 °C）"
+          },
+          "raw_text": "Strain JS42 was routinely cultivated at 30 °C in 2-nitrotoluene degradation studies.",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（好氧生长并好氧降解 2-硝基甲苯）",
+          "raw_text": "aerobic biodegradation of 2-nitrotoluene by Pseudomonas sp. strain JS42",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": "aerobic growth of strain JS42 on 2-nitrotoluene",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以 2-硝基甲苯为唯一碳源和能源生长（完全矿化）",
+          "raw_text": "strain JS42 utilizes 2-nitrotoluene as sole source of carbon and energy",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "硝基芳烃降解菌：完全矿化 2-硝基甲苯；其双加氧酶底物谱较宽，可转化多种硝基取代芳香化合物",
+          "raw_text": "oxidative release of nitrite from 2-nitrotoluene by a three-component enzyme system; enzyme shows activity toward multiple nitroaromatic substrates",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2-硝基甲苯 2,3-双加氧酶活性：将 2-硝基甲苯双加氧生成 3-甲基邻苯二酚并释放亚硝酸根",
+          "raw_text": "Oxidative release of nitrite from 2-nitrotoluene by a three-component enzyme system from Pseudomonas sp. strain JS42.",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（推测极生鞭毛，依据 Acidovorax 属共性，JS42 本身未见直接描述）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（杆菌）",
+          "raw_text": "Gram-negative rod, originally described as Pseudomonas sp. strain JS42",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Gram-negative bacterium (strain JS42)",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自受硝基化合物污染的环境样品，为污染场地适应性较强的特化降解菌，整体栖息地广度偏窄",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Pyruvate", "Acetaldehyde"],
+    "explanation": "丙酮酸直接进入三羧酸循环等中心碳代谢；乙醛经乙醛脱氢酶氧化为乙酰辅酶 A 进入中心代谢；S3 副产物乙酸亦经乙酰辅酶 A 合成酶汇入。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UM-BBD / EAWAG-BBD (Biocatalysis/Biodegradation Database)",
+      "record_id": "2-Nitrotoluene Pathway",
+      "locator": "http://eawag-bbd.ethz.ch/2nt/2nt_map.html",
+      "claim_scope": ["route", "S1", "S2"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": "An D, Gibson DT, Spain JC (1994) J Bacteriol 176(24):7462-7467",
+      "locator": "Oxidative release of nitrite from 2-nitrotoluene by a three-component enzyme system from Pseudomonas sp. strain JS42",
+      "claim_scope": ["S1 reaction", "three-component dioxygenase", "nitrite release", "enzyme activity trait"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG PATHWAY",
+      "record_id": "map00633",
+      "locator": "Nitrotoluene degradation",
+      "claim_scope": ["route", "S3", "S4", "S5", "meta-cleavage downstream"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": "Haigler BE, Wallace WH, Spain JC (1994) Appl Environ Microbiol 60(9):3466-3469",
+      "locator": "Biodegradation of 2-nitrotoluene by Pseudomonas sp. strain JS42",
+      "claim_scope": ["organism identity", "aerobic growth", "sole carbon and energy source", "mineralization", "morphology"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Acidovorax 属层面的细胞形态/运动性/产孢等共性性状"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": "Parales JV, Kumar A, Parales RE, Gibson DT (1996) Gene 181(1-2):57-61",
+      "locator": "Cloning and sequencing of the genes encoding 2-nitrotoluene dioxygenase from Pseudomonas sp. JS42",
+      "claim_scope": ["S1 enzyme", "ntdAaAbAcAd genes"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件（null）；所给主链为文献中占主导的好氧双加氧起始路线，氧条件未在主链层面强行指定。",
+    "2-硝基甲苯 2,3-双加氧酶（S1）及 2-羟基-6-氧代-2,4-庚二烯酸水解酶（S3）无正式分配的独立 EC 编号，按规则填 null，未用近似 EC 占位。",
+    "Acidovorax sp. JS42 的 NCBI TaxID、基因组登录号与大小、菌种保藏编号、pH 与盐度范围等未能可靠确认，均填 null。",
+    "S3–S5 的 meta-fission 下游酶在 JS42 中未逐一实验确证，系基于该菌完全矿化 2-硝基甲苯的能力与通用邻苯二酚间位开环途径的推断性归属。",
+    "菌株运动性、产孢等性状依据 Acidovorax 属层面共性填写，置信度标为 low。"
+  ]
+}

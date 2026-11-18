@@ -1,0 +1,340 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_017",
+  "pollutant_name_zh": "2-甲基喹啉",
+  "pollutant_name_en": "2-Methylquinoline",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Quinaldine  pathway",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "2-甲基喹啉在好氧条件下经 Quinaldine pathway 降解，主链为：2-甲基喹啉 → 2-甲基喹啉-4-醇 → 2-甲基喹啉-3,4-二醇 → 2-乙酰氨基-3-羟基苯甲醛 → 2-乙酰氨基-3-羟基苯甲酸 → 3-羟基邻氨基苯甲酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-Methylquinoline",
+          "smiles": "Cc1ccc2ccccc2n1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Methylquinolin-4-ol",
+          "smiles": "Cc1cc(O)c2ccccc2n1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "quinaldine 4-oxidoreductase",
+        "ec_number": "1.17.99.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "Rü61a",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-Methylquinolin-4-ol",
+          "smiles": "Cc1cc(O)c2ccccc2n1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Methylquinolin-3,4-diol",
+          "smiles": "Cc1c(O)c(O)c2ccccc2n1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "2-methylquinolin-4-ol 3-monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "Rü61a",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-Methylquinolin-3,4-diol",
+          "smiles": "Cc1c(O)c(O)c2ccccc2n1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Acetamido-3-hydroxybenzaldehyde",
+          "smiles": "CC(=O)Nc1c(O)cccc1C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring cleavage",
+      "enzyme": {
+        "name": "2-methylquinolin-3,4-diol 2,3-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "Rü61a",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-Acetamido-3-hydroxybenzaldehyde",
+          "smiles": "CC(=O)Nc1c(O)cccc1C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Acetamido-3-hydroxybenzoate",
+          "smiles": "CC(=O)Nc1c(O)cccc1C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "2-acetamido-3-hydroxybenzaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "Rü61a",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-Acetamido-3-hydroxybenzoate",
+          "smiles": "CC(=O)Nc1c(O)cccc1C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Hydroxyanthranilate",
+          "smiles": "Nc1c(O)cccc1C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "deacetylation",
+      "enzyme": {
+        "name": "2-acetamido-3-hydroxybenzoate deacetylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "Rü61a",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter sp.",
+      "strain": "Rü61a",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades quinaldine",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "quinaldine 4-oxidoreductase and related quinaldine degradation enzymes",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "pleomorphic rods and cocci (rod-coccus cycle)",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-positive",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "soil",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["3-Hydroxyanthranilate"],
+    "explanation": "3-羟基邻氨基苯甲酸是芳烃降解与 central metabolism 的常见入口，可进一步进入三羧酸循环或相关代谢途径。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Quinaldine pathway main route",
+        "steps S1-S5",
+        "organism Arthrobacter sp. Rü61a"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

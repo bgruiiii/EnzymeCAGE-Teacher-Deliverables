@@ -1,0 +1,338 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_110",
+  "pollutant_name_zh": "2,5-二羟基苯甲酸根",
+  "pollutant_name_en": "2,5-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "gentisate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）；该路线第一步为龙胆酸1,2-双加氧酶催化的需氧开环反应，故路线本身属好氧降解。路线名称按题面原样填写 gentisate degradation II，即谷胱甘肽非依赖型（经马来酸）的龙胆酸降解变体，区别于谷胱甘肽依赖型（经富马酰丙酮酸）的 gentisate degradation I。"
+  },
+  "route_summary": "主链（gentisate degradation II，谷胱甘肽非依赖型变体）共三步：① 龙胆酸（2,5-二羟基苯甲酸根）在龙胆酸1,2-双加氧酶（EC 1.13.11.4）作用下加氧开环，生成马来酰丙酮酸（maleylpyruvate）；② 马来酰丙酮酸被马来酰丙酮酸水解酶直接水解为马来酸（maleate，顺丁烯二酸）和丙酮酸（此步不需要谷胱甘肽，这是与 gentisate degradation I 经富马酰丙酮酸路线的根本区别）；③ 马来酸经马来酸异构酶（EC 5.2.1.1）顺反异构化为富马酸（fumarate）。终产物丙酮酸和富马酸进入中心碳代谢。整条路线以 Moraxella osloensis 为代表菌：该菌的龙胆酸1,2-双加氧酶已被纯化并研究（Crawford 等，1975），且文献报道其龙胆酸降解为谷胱甘肽非依赖型（Crawford & Frick, 1977）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,5-Dihydroxybenzoate",
+          "smiles": "O=C([O-])c1c(O)ccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "molecular oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylpyruvate",
+          "smiles": "O=C(O)/C=C\\C(=O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧酶催化的芳香环氧化开环（1,2-位裂解）",
+      "enzyme": {
+        "name": "gentisate 1,2-dioxygenase",
+        "ec_number": "1.13.11.4",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Moraxella osloensis",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "Crawford 等所用的 Moraxella osloensis 降解菌株未给出可确认的菌株编号，故 strain 填 null；本步反应在两种龙胆酸降解变体中相同。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "maleylpyruvate",
+          "smiles": "O=C(O)/C=C\\C(=O)CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleate",
+          "smiles": "O=C(O)/C=C\\C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解裂解（C–C 键水解，谷胱甘肽非依赖）",
+      "enzyme": {
+        "name": "maleylpyruvate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Moraxella osloensis",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "马来酰丙酮酸水解酶未见公认 EC 编号，故 ec_number 填 null；该步在 Moraxella osloensis 中的直接酶学证据有限，归属置信度低。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "maleate",
+          "smiles": "O=C(O)/C=C\\C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarate",
+          "smiles": "O=C(O)/C=C/C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "顺反异构化（cis-trans isomerization）",
+      "enzyme": {
+        "name": "maleate isomerase",
+        "ec_number": "5.2.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Moraxella osloensis",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "Moraxella osloensis 中马来酸异构酶的直接实验证据有限，依据谷胱甘肽非依赖型龙胆酸途径的文献描述归属。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Moraxella osloensis",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温菌（嗜温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（严格好氧）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "19976"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以龙胆酸（gentisate，2,5-二羟基苯甲酸）为碳源和能源生长；对糖类利用能力很弱（不发酵产酸）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解龙胆酸（2,5-二羟基苯甲酸）；其龙胆酸降解途径为谷胱甘肽非依赖型（经马来酸/顺丁烯二酸）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "龙胆酸1,2-双加氧酶（gentisate 1,2-dioxygenase，EC 1.13.11.4）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动（nonmotile）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "球杆状至短杆状（coccobacilli），常成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要为人体黏膜（上呼吸道、泌尿生殖道）共生菌及机会致病菌，宿主相关性较强；亦有自环境分离的报道",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "fumarate"],
+    "explanation": "主链终产物为丙酮酸和富马酸：丙酮酸经丙酮酸脱氢生成乙酰-CoA 等进入中心碳代谢；富马酸本身就是三羧酸循环中间体，可直接进入 TCA 循环被进一步氧化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "终产物进入中心碳代谢",
+      "summary": "丙酮酸进入丙酮酸代谢（如氧化脱羧为乙酰-CoA），富马酸直接进入三羧酸循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "gentisate degradation I（谷胱甘肽依赖型变体）",
+      "summary": "在 Pseudomonas alcaligenes NCIB 9867 等细菌中，马来酰丙酮酸经谷胱甘肽依赖的马来酰丙酮酸异构酶（EC 5.2.1.4）异构化为富马酰丙酮酸（fumarylpyruvate），再由富马酰丙酮酸水解酶（EC 3.7.1.5）水解为富马酸和丙酮酸。该分支为另一条已报道的龙胆酸降解路线，不属于本回答被评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page: gentisate degradation II",
+      "claim_scope": ["路线 gentisate degradation II 的主链反应序列（谷胱甘肽非依赖型：gentisate→maleylpyruvate→maleate+pyruvate→fumarate）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Crawford RL, Hutton SW, Chapman PJ (1975) Purification and properties of gentisate 1,2-dioxygenase from Moraxella osloensis. Journal of Bacteriology 121(3):794-799",
+      "claim_scope": ["Moraxella osloensis 产生龙胆酸1,2-双加氧酶（EC 1.13.11.4）并降解龙胆酸", "Moraxella osloensis 利用龙胆酸作为碳源"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Crawford RL, Frick TD (1977) Rapid spectrophotometric differentiation between glutathione-dependent and glutathione-independent gentisate and homogentisate pathways. Applied and Environmental Microbiology 34(2):170-174",
+      "claim_scope": ["部分细菌（含 Moraxella osloensis）的龙胆酸途径为谷胱甘肽非依赖型，马来酰丙酮酸直接水解为马来酸与丙酮酸，马来酸再异构化为富马酸"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Bergey's Manual of Systematics of Archaea and Bacteria, Moraxella osloensis 种属描述",
+      "claim_scope": ["Moraxella osloensis 基本生物学性状：革兰氏阴性、好氧、球杆状成对、不运动、不产孢、嗜温、主要栖息于人黏膜"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "ATCC 19976",
+      "locator": "ATCC 目录：Moraxella osloensis（模式株）ATCC 19976",
+      "claim_scope": ["Moraxella osloensis 模式株保藏编号"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz / IUBMB EC",
+      "record_id": "5.2.1.1",
+      "locator": "EC 5.2.1.1 maleate isomerase（马来酸异构酶，maleate ⇌ fumarate）",
+      "claim_scope": ["马来酸异构酶 EC 5.2.1.1 及其催化的顺反异构化反应"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "gentisate degradation I 与 II 同两种已知变体（谷胱甘肽依赖型：经富马酰丙酮酸；谷胱甘肽非依赖型：经马来酸）的对应关系系依据现有文献知识判定，存在编号对调的可能；若题面所指路线实为富马酰丙酮酸变体，则第2、3步应为 maleylpyruvate→fumarylpyruvate（EC 5.2.1.4）→fumarate+pyruvate（EC 3.7.1.5）。",
+    "马来酰丙酮酸水解酶未见公认 EC 编号，故第2步 ec_number 填 null。",
+    "Moraxella osloensis 的 ncbi_taxid、基因组信息、温度、pH、盐度等性状缺乏可靠来源，相应字段均填 null。",
+    "各步底物与产物的 SMILES 以中性酸或单羧酸根形式给出，质子化状态可能与数据库表示略有差异（如 maleylpyruvate 亦可存在烯醇互变异构体）。"
+  ]
+}

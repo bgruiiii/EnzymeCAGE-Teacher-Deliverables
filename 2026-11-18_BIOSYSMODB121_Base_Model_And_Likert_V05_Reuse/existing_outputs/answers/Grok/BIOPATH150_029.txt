@@ -1,0 +1,437 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_029",
+  "pollutant_name_zh": "环己醇",
+  "pollutant_name_en": "Cyclohexanol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "cyclohexanol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。所填评分主链为Acinetobacter sp. NCIMB 9871中已实验证实、并与KEGG map00930环己醇至己二酸段一致的好氧连续路线；环己酮单加氧步骤依赖分子氧。厌氧转化不纳入评分主链。"
+  },
+  "route_summary": "环己醇经NAD+依赖的脱氢生成环己酮，再由NADPH与氧气依赖的环己酮单加氧酶进行Baeyer-Villiger氧化生成ε-己内酯；内酯水解为6-羟基己酸后，经两步NAD+依赖脱氢生成己二酸。己二酸是本主链终点，其后经酰基CoA活化与β氧化样裂解进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Cyclohexanol",
+          "smiles": "OC1CCCCC1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Cyclohexanone",
+          "smiles": "O=C1CCCCC1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "NAD+依赖的醇脱氢",
+      "enzyme": {
+        "name": "cyclohexanol dehydrogenase",
+        "ec_number": "1.1.1.245",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该菌株环己醇脱氢酶基因常被记为chnA，但未以单独克隆文献核验，故gene_or_protein置null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Cyclohexanone",
+          "smiles": "O=C1CCCCC1",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "epsilon-caprolactone",
+          "smiles": "O=C1CCCCCO1",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Baeyer-Villiger单加氧",
+      "enzyme": {
+        "name": "cyclohexanone monooxygenase",
+        "ec_number": "1.14.13.22",
+        "gene_or_protein": "chnB",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 1.14.13.22在部分现行酶学数据库中被转移为EC 1.14.14.28，酶身份不变；此处保留与原始文献及KEGG一致的原编号。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "epsilon-caprolactone",
+          "smiles": "O=C1CCCCCO1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-hydroxyhexanoic acid",
+          "smiles": "OCCCCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "内酯水解",
+      "enzyme": {
+        "name": "caprolactone hydrolase",
+        "ec_number": "3.1.1.83",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该菌株内酯水解酶基因常被记为chnC，但未以单独克隆文献核验，故gene_or_protein置null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "6-hydroxyhexanoic acid",
+          "smiles": "OCCCCCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-oxohexanoic acid",
+          "smiles": "O=CCCCCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "NAD+依赖的醇脱氢",
+      "enzyme": {
+        "name": "6-hydroxyhexanoate dehydrogenase",
+        "ec_number": "1.1.1.258",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该菌株6-羟基己酸脱氢酶基因常被记为chnD，但未以单独克隆文献核验，故gene_or_protein置null。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "6-oxohexanoic acid",
+          "smiles": "O=CCCCCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "adipic acid",
+          "smiles": "OC(=O)CCCCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "NAD+依赖的醛脱氢",
+      "enzyme": {
+        "name": "6-oxohexanoate dehydrogenase",
+        "ec_number": "1.2.1.63",
+        "gene_or_protein": "chnE",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter sp.",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter sp.",
+      "strain": "NCIMB 9871",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "NCIMB",
+            "accession": "9871"
+          },
+          "raw_text": "Acinetobacter sp. strain NCIMB 9871",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可代谢环己醇并以其作为碳源",
+          "raw_text": "The metabolism of cyclohexanol by Acinetobacter NCIB 9871",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解环己醇与环己酮，经ε-己内酯生成己二酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有环己酮单加氧酶活性",
+          "raw_text": "Acinetobacter cyclohexanone monooxygenase",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "评分主链止于己二酸。己二酸经酰基CoA活化后沿β氧化样途径裂解为琥珀酰CoA和乙酰CoA，从而进入中心代谢；该下游段的具体酶未在NCIMB 9871中逐一核实，故不列入评分步骤。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "adipate beta-oxidation-like cleavage",
+      "summary": "己二酸活化为己二酰CoA后，经脱氢、加水、再脱氢和硫解，生成琥珀酰CoA与乙酰CoA并汇入TCA循环。此为环己醇专属主链之后的共享下游途径。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "anaerobic cyclohexanol degradation",
+      "summary": "反硝化等厌氧条件下亦有微生物转化环己醇，通常先氧化为环己酮，但后续开环不依赖好氧Baeyer-Villiger单加氧酶。该路线不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Donoghue NA, Trudgill PW. 1975. The metabolism of cyclohexanol by Acinetobacter NCIB 9871. European Journal of Biochemistry.",
+      "claim_scope": ["reaction_sequence", "enzyme_activity", "organism", "F1_oxygen_tolerance", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Chen YC, Peoples OP, Walsh CT. 1988. Acinetobacter cyclohexanone monooxygenase: gene cloning and sequence determination. Journal of Bacteriology.",
+      "claim_scope": ["enzyme", "gene_chnB", "F9_enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Iwaki H, Hasegawa Y, Teraoka M, Tokuyama T, Bergeron H, Lau PCK. 1999. Identification of a transcriptional activator (ChnR) and a 6-oxohexanoate dehydrogenase (ChnE) in the cyclohexanol catabolic pathway in Acinetobacter sp. strain NCIMB 9871 and localization of the genes that encode them. Applied and Environmental Microbiology.",
+      "claim_scope": ["enzyme", "gene_chnE", "F5_culture_collection"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "KEGG",
+      "record_id": "map00930",
+      "locator": "KEGG pathway map00930 Caprolactam degradation，其中环己醇至己二酸段及对应EC编号",
+      "claim_scope": ["ec_number", "reaction_stoichiometry"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为未指定；评分主链按经典好氧Baeyer-Villiger路线填写，oxygen_condition记为aerobic。",
+    "环己酮单加氧酶保留EC 1.14.13.22；该编号后续可能转移为EC 1.14.14.28。",
+    "菌株历史上亦称Acinetobacter NCIB 9871或Acinetobacter calcoaceticus NCIMB 9871，现写作Acinetobacter sp. NCIMB 9871；物种级TaxID与基因组登录号未核实，置null。",
+    "温度、pH、盐度、呼吸末端电子受体、运动性、细胞形态、革兰氏染色、产孢、基因组和栖息地广适性无该菌株专属可靠数据，置null，不用属级特征代替。",
+    "仅填写有明确文献对应的基因符号chnB与chnE；chnA、chnC、chnD未单独核验，置null。",
+    "NAD(P)+与NAD(P)H的SMILES未填写。己二酸之后的步骤属于下游延续，不列入评分主链。"
+  ]
+}

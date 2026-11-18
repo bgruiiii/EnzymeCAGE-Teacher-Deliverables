@@ -1,0 +1,319 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_103",
+  "pollutant_name_zh": "2-异丙基苯酚",
+  "pollutant_name_en": "2-Isopropylphenol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-isopropylphenol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；按现有知识将主链填写为ipso羟化脱异丙基生成邻苯二酚，随后进入邻苯二酚1,2-双加氧酶及β-酮己二酸相关下游。"
+  },
+  "route_summary": "在证据有限的情况下，2-异丙基苯酚的主链可概括为：先经ipso羟化/脱烷基作用生成邻苯二酚和丙酮；邻苯二酚由邻苯二酚1,2-双加氧酶开环生成顺,顺-己二烯二酸；顺,顺-己二烯二酸再由muconate cycloisomerase转化为muconolactone，并继续进入β-酮己二酸途径。起始酶与对应菌株的直接证据不足，整体置信度偏低。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-isopropylphenol",
+          "smiles": "CC(C)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "acetone",
+          "smiles": "CC(=O)C",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ipso-hydroxylation/dealkylation",
+      "enzyme": {
+        "name": "2-isopropylphenol 2-monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "起始ipso羟化脱异丙基的直接酶学证据有限，且可能存在生成3-异丙基邻苯二酚的支路。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis,cis-muconic acid",
+          "smiles": "O=C(O)C=CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring-cleavage dioxygenation",
+      "enzyme": {
+        "name": "catechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "邻苯二酚1,2-双加氧酶在Pseudomonas中常见，但针对本底物路线的直接菌株证据未充分展开。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "cis,cis-muconic acid",
+          "smiles": "O=C(O)C=CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "muconolactone",
+          "smiles": "O=C(O)CC1OC(=O)C=C1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "cyclization isomerization",
+      "enzyme": {
+        "name": "muconate cycloisomerase",
+        "ec_number": "5.3.3.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "muconolactone之后的β-酮己二酸途径步骤未在本答案中逐项展开。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": "内部知识：Pseudomonas putida 常以约30 °C为适宜生长温度。",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": "内部知识：Pseudomonas putida 通常为好氧菌。",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": "内部知识：Pseudomonas putida 通常在中性pH附近生长较好。",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": "内部知识：Pseudomonas putida 以有氧呼吸为主，氧气为常见末端电子受体。",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用芳香族化合物和有机酸等作为碳源",
+          "raw_text": "内部知识：Pseudomonas putida 能利用多种芳香族化合物及有机酸。",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解酚类及多种芳香族化合物",
+          "raw_text": "内部知识：Pseudomonas putida 具有较广的芳香族化合物降解能力。",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有酚羟化酶和邻苯二酚1,2-双加氧酶活性",
+          "raw_text": "内部知识：Pseudomonas putida 常见酚羟化酶与邻苯二酚1,2-双加氧酶活性。",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "有鞭毛，能运动",
+          "raw_text": "内部知识：Pseudomonas putida 通常有鞭毛并能运动。",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": "内部知识：Pseudomonas putida 为杆菌。",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "内部知识：Pseudomonas putida 为革兰氏阴性菌。",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": "内部知识：Pseudomonas putida 不形成芽孢。",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、水体及污染环境中",
+          "raw_text": "内部知识：Pseudomonas putida 常见于土壤、水体和污染环境。",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "succinyl-CoA",
+      "acetyl-CoA"
+    ],
+    "explanation": "邻苯二酚经β-酮己二酸途径最终可生成琥珀酰辅酶A和乙酰辅酶A；本轮仅展开到muconolactone，后续步骤未逐项列出。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "beta-ketoadipate pathway",
+      "summary": "muconolactone经beta-ketoadipate enol-lactone、beta-ketoadipate，最终生成琥珀酰辅酶A和乙酰辅酶A进入中心代谢。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida species-level traits"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "2-isopropylphenol ipso-hydroxylation to catechol and acetone"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "catechol ortho-cleavage to cis,cis-muconate",
+        "muconate cycloisomerization to muconolactone"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "起始ipso羟化脱异丙基的直接酶学证据有限，且可能存在生成3-异丙基邻苯二酚的支路。",
+    "邻苯二酚后续β-酮己二酸途径在Pseudomonas中常见，但本答案未逐项展开全部酶与菌株证据。",
+    "丙酮作为副产物的后续同化路径未纳入主链。"
+  ]
+}

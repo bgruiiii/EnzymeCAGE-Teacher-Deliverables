@@ -1,0 +1,166 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_144",
+  "pollutant_name_zh": "4-(三甲基铵基)丁酸根",
+  "pollutant_name_en": "4-(Trimethylammonio)butanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "γ-butyrobetaine degradation III",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。III号路线与I/II的反应边界未能逐条核对；本主链按需氧C-N氧化裂解推断，不采用经由L-肉碱的经典羟基化路线。"
+  },
+  "route_summary": "在指定的γ-butyrobetaine degradation III下，主链推断为：4-(三甲基铵基)丁酸根经单加氧裂解除去三甲胺，生成琥珀酸半醛，再氧化为琥珀酸进入中心代谢。酶的EC号与对应菌株未能可靠唯一确定。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-(trimethylammonio)butanoate",
+          "smiles": "C[N+](C)(C)CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinate semialdehyde",
+          "smiles": "O=CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化裂解",
+      "enzyme": {
+        "name": "γ-butyrobetaine monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步按与肉碱单加氧酶类似的需氧C-N裂解推断，碳骨架主产物为琥珀酸半醛；还原辅因子可能是NADH或NADPH，EC号与微生物无单一可靠候选。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "succinate semialdehyde",
+          "smiles": "O=CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinate",
+          "smiles": "[O-]C(=O)CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "醛氧化",
+      "enzyme": {
+        "name": "succinate-semialdehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "琥珀酸半醛氧化为琥珀酸是标准反应，但辅酶特异性未唯一确定，故不填写EC 1.2.1.16、1.2.1.24或1.2.1.79中的任何一个；对应菌株未知。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["succinate"],
+    "explanation": "琥珀酸可进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "trimethylamine metabolism",
+      "summary": "裂解产生的三甲胺可进一步转化为氧化三甲胺或进入其他氮代谢途径，不计入本主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "hydroxylation via L-carnitine",
+      "summary": "4-(三甲基铵基)丁酸根也可经γ-丁酰甜菜碱双加氧酶（EC 1.14.11.1）羟基化为L-肉碱，再由肉碱脱氢酶（EC 1.1.1.108）氧化为3-脱氢肉碱并进一步裂解。该分支不是本题指定的III号主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["route", "reaction", "enzyme"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未能可靠核对MetaCyc中γ-butyrobetaine degradation III与I、II的反应差异，本主链是推断而非数据库逐条核对结果。",
+    "III号路线也可能是厌氧裂解（三甲胺加巴豆酸或3-丁烯酸）或逐级脱甲基至4-氨基丁酸，而非琥珀酸半醛路线。",
+    "第一步酶名是功能推断，EC号、基因名和微生物均无单一可靠候选，故EC与微生物留空。",
+    "还原辅因子记为NADH仅是单一候选占位意义上的推断，NADPH不能排除，因此相关置信度为低。",
+    "第二步脱氢酶的EC不能在1.2.1.16、1.2.1.24与1.2.1.79之间唯一确定。"
+  ]
+}

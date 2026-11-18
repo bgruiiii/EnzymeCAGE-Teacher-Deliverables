@@ -1,0 +1,332 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_061",
+  "pollutant_name_zh": "亚甲基琥珀酸根（衣康酸根）",
+  "pollutant_name_en": "Methylenesuccinate(2-)",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "itaconate degradation",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "衣康酸根经 itaconate degradation 主链三步：先由 itaconate CoA-transferase 转化为 itaconyl-CoA，再由 itaconyl-CoA hydratase 水合为 citramalyl-CoA，最后由 citramalyl-CoA lyase 裂解为 pyruvate 和 acetyl-CoA。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "itaconate",
+          "smiles": "C=C(CC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "succinyl-CoA",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "itaconyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "succinate",
+          "smiles": "[O-]C(=O)CCC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA transfer",
+      "enzyme": {
+        "name": "itaconate CoA-transferase",
+        "ec_number": "2.8.3.22",
+        "gene_or_protein": "IchA",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Yersinia pestis",
+        "strain": null,
+        "ncbi_taxid": 632,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "itaconyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "citramalyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "itaconyl-CoA hydratase",
+        "ec_number": "4.2.1.56",
+        "gene_or_protein": "IchB",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Yersinia pestis",
+        "strain": null,
+        "ncbi_taxid": 632,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "citramalyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "lyase cleavage",
+      "enzyme": {
+        "name": "citramalyl-CoA lyase",
+        "ec_number": "4.1.3.25",
+        "gene_or_protein": "IchC",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Yersinia pestis",
+        "strain": null,
+        "ncbi_taxid": 632,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Yersinia pestis",
+      "strain": null,
+      "ncbi_taxid": 632,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "facultative anaerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades itaconate via itaconyl-CoA and citramalyl-CoA",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "itaconate CoA-transferase, itaconyl-CoA hydratase, citramalyl-CoA lyase",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "non-motile",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA"],
+    "explanation": "第三步产物丙酮酸和乙酰辅酶A进入中心碳代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["itaconate degradation pathway", "Yersinia pestis itaconate catabolism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["itaconate CoA-transferase", "EC 2.8.3.22", "IchA"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["itaconyl-CoA hydratase", "EC 4.2.1.56", "IchB"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["citramalyl-CoA lyase", "EC 4.1.3.25", "IchC"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Yersinia pestis general traits"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

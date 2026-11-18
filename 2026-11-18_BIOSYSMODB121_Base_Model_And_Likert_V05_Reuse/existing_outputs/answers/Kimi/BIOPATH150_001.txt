@@ -1,0 +1,337 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_001",
+  "pollutant_name_zh": "2-金刚烷酮",
+  "pollutant_name_en": "2-Adamantanone",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Adamantanone degradation",
+    "is_single_continuous_route": true,
+    "notes": "按题面固定路线填写；主链按好氧环酮降解中常见的 Baeyer–Villiger 内酯化—内酯水解开环处理，后续步骤置信度已逐步降低。"
+  },
+  "route_summary": "主链为 2-金刚烷酮经 NADPH 依赖 Baeyer–Villiger 单加氧生成桥环内酯 4-oxahomoadamantan-5-one，再经内酯水解开环得到 7-hydroxybicyclo[3.3.1]nonane-3-carboxylic acid；其仲醇进一步氧化为 7-oxobicyclo[3.3.1]nonane-3-carboxylic acid 的后续步骤仅作低置信度主链延伸，未断言进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-Adamantanone",
+          "smiles": "C1C2CC3CC1CC(C2)C3=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-oxahomoadamantan-5-one",
+          "smiles": "C1C2CC3CC1CC(C2)C(=O)O3",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Baeyer-Villiger monooxygenation (lactone formation)",
+      "enzyme": {
+        "name": "cyclohexanone monooxygenase",
+        "ec_number": "1.14.13.22",
+        "gene_or_protein": "CHMO",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "产物区域/立体化学按常见主内酯处理；该菌主要作为 CHMO 参考酶来源，不等于已证明其可凭本条路线完全矿化 2-金刚烷酮。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-oxahomoadamantan-5-one",
+          "smiles": "C1C2CC3CC1CC(C2)C(=O)O3",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "7-hydroxybicyclo[3.3.1]nonane-3-carboxylic acid",
+          "smiles": "C1(C(=O)O)CC2CC(O)CC(C1)C2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "lactone hydrolysis (ring opening)",
+      "enzyme": {
+        "name": "carboxylic ester hydrolase (lactone-hydrolysing)",
+        "ec_number": "3.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "内酯水解酶为按环酮/内酯降解类推的候选水解酶；针对该桥环内酯的直接酶证据不足。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "7-hydroxybicyclo[3.3.1]nonane-3-carboxylic acid",
+          "smiles": "C1(C(=O)O)CC2CC(O)CC(C1)C2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "7-oxobicyclo[3.3.1]nonane-3-carboxylic acid",
+          "smiles": "C1(C(=O)O)CC2CC(=O)CC(C1)C2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "secondary alcohol oxidation",
+      "enzyme": {
+        "name": "alcohol dehydrogenase",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "由仲醇羟基酸氧化为酮酸是推断性主链延伸；未找到该路线专属脱氢酶或直接反应记录。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter calcoaceticus",
+      "strain": "NCIMB 9871",
+      "ncbi_taxid": 471,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "obligate aerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "NCIMB",
+            "accession": "9871"
+          },
+          "raw_text": "NCIMB 9871",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen (O2)"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "cyclohexanone/cyclohexanol-type alicyclic ketone system; growth on 2-adamantanone is not asserted",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degradation/oxidation of alicyclic alcohols and ketones via a Baeyer-Villiger monooxygenase system",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "NADPH-dependent Baeyer-Villiger monooxygenase activity (cyclohexanone monooxygenase)",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "non-motile",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "short rods to coccobacilli",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "未把任何中心代谢物列为评分主链终点；剩余双环酮羧酸进一步开环并进入中心代谢的证据不足。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "进一步氧化开环（未确证）",
+      "summary": "7-oxobicyclo[3.3.1]nonane-3-carboxylic acid 可能再经 Baeyer–Villiger/水解或类似环己酮降解逻辑打开剩余环己酮环，但本答案不将其列为评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "Baeyer-Villiger 区域异构内酯分支",
+      "summary": "2-金刚烷酮羰基另一侧 C–C 键迁移可产生区域异构/立体异构内酯；该分支不属于本答案被评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "1.14.13.22",
+      "locator": null,
+      "claim_scope": ["cyclohexanone monooxygenase EC number and NADPH-dependent Baeyer-Villiger monooxygenase reaction class"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["2-adamantanone Baeyer-Villiger oxidation to 4-oxahomoadamantan-5-one", "Acinetobacter calcoaceticus NCIMB 9871 used as the reference CHMO source"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCIMB",
+      "record_id": "9871",
+      "locator": null,
+      "claim_scope": ["culture collection accession for the reference strain"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "471",
+      "locator": null,
+      "claim_scope": ["species-level taxid for Acinetobacter calcoaceticus"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["general phenotype of Acinetobacter calcoaceticus: aerobic Gram-negative non-motile non-spore-forming short rods/coccobacilli"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["inferred lactone hydrolysis and secondary alcohol oxidation downstream of the adamantanone Baeyer-Villiger lactone"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "2-金刚烷酮 Baeyer–Villiger 氧化的区域选择性与产物构型未给出直接来源；本答案按常见主内酯 4-oxahomoadamantan-5-one 处理。",
+    "内酯水解酶和后续仲醇脱氢酶为按环酮降解逻辑给出的低置信度候选；未找到路线专属直接记录。",
+    "ORG_001 主要作为 CHMO 参考酶来源菌使用，并未断言其为可完全矿化 2-金刚烷酮的完整途径菌。",
+    "15 项性状中无可靠数值或原文来源者已按 null/unknown 记录。"
+  ]
+}

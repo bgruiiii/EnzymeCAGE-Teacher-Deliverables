@@ -1,0 +1,529 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_107",
+  "pollutant_name_zh": "烟酸根",
+  "pollutant_name_en": "Nicotinate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "nicotinate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。nicotinate degradation I对应Pseudomonas好氧烟酸降解主链（经6-羟基烟酸根与2,5-二羟基吡啶至富马酸），故氧条件记为aerobic。主链为单线连续反应，终点为富马酸。"
+  },
+  "route_summary": "烟酸根在好氧条件下由烟酸脱氢酶羟基化为6-羟基烟酸根，再经单加氧酶氧化脱羧生成2,5-二羟基吡啶；随后双加氧开环为N-甲酰马来酰胺酸，依次水解脱甲酰基、酰胺水解得到马来酸，最后顺反异构为富马酸并进入中心代谢。代表菌为具有完整nic簇的Pseudomonas putida KT2440。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "nicotinate",
+          "smiles": "O=C([O-])c1cccnc1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-hydroxynicotinate",
+          "smiles": "O=C([O-])c1ccc(O)nc1",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "羟基化",
+      "enzyme": {
+        "name": "nicotinate dehydrogenase",
+        "ec_number": "1.17.1.5",
+        "gene_or_protein": "nicA/nicB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 1.17.1.5以NADP+为电子受体；NicAB为钼蝶呤羟化酶，生理直接电子受体可能不完全等同于该标准式。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "6-hydroxynicotinate",
+          "smiles": "O=C([O-])c1ccc(O)nc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,5-dihydroxypyridine",
+          "smiles": "Oc1ccc(O)cn1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱羧",
+      "enzyme": {
+        "name": "6-hydroxynicotinate 3-monooxygenase",
+        "ec_number": "1.14.13.114",
+        "gene_or_protein": "nicC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2,5-dihydroxypyridine",
+          "smiles": "Oc1ccc(O)cn1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-formylmaleamate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)NC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧开环",
+      "enzyme": {
+        "name": "2,5-dihydroxypyridine 5,6-dioxygenase",
+        "ec_number": "1.13.11.9",
+        "gene_or_protein": "nicX",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "N-formylmaleamate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)NC=O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleamate",
+          "smiles": "[O-]C(=O)/C=C\\C(N)=O",
+          "role": "main"
+        },
+        {
+          "name": "formate",
+          "smiles": "O=C[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱甲酰基",
+      "enzyme": {
+        "name": "N-formylmaleamate deformylase",
+        "ec_number": "3.5.1.106",
+        "gene_or_protein": "nicD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "maleamate",
+          "smiles": "[O-]C(=O)/C=C\\C(N)=O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "酰胺水解",
+      "enzyme": {
+        "name": "maleamate amidohydrolase",
+        "ec_number": "3.5.1.107",
+        "gene_or_protein": "nicF",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "maleate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarate",
+          "smiles": "[O-]C(=O)/C=C/C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "顺反异构",
+      "enzyme": {
+        "name": "maleate isomerase",
+        "ec_number": "5.2.1.1",
+        "gene_or_protein": "nicE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "47054"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以烟酸根作为唯一碳源和氮源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可好氧降解烟酸根，并能利用多种有机酸和芳香化合物；KT2440不携带TOL质粒",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有nic簇编码的烟酸脱氢酶及烟酸好氧降解酶系活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动，具极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "AE015451",
+            "genome_size_bp": 6181863,
+            "gc_percent": 61.6
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤、淡水与植物根际均可定殖的代谢多能环境细菌，非单一栖息地专性种",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["fumarate"],
+    "explanation": "主链终产物富马酸可经富马酸酶进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA cycle",
+      "summary": "富马酸水合为苹果酸后继续进入三羧酸循环，不计入烟酸降解主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "nicotinate degradation II",
+      "summary": "厌氧发酵路线（如Eubacterium barkeri），产物与酶系不同于本题好氧主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Jiménez JI et al. Deciphering the genetic determinants for aerobic nicotinic acid degradation: the nic cluster from Pseudomonas putida KT2440. Proc Natl Acad Sci U S A. 2008;105(32):11329-11334.",
+      "claim_scope": ["pathway_reactions", "enzyme_identity", "gene_names", "nicotinate_as_carbon_nitrogen_source", "organism_KT2440"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Nelson KE et al. Complete genome sequence and comparative analysis of the metabolically versatile Pseudomonas putida KT2440. Environ Microbiol. 2002;4(12):799-808.",
+      "claim_scope": ["genome_accession", "genome_size", "gc_content", "gram_negative", "aerobic_lifestyle", "metabolic_versatility", "habitat_generalism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "160488",
+      "locator": "NCBI Taxonomy Browser, Pseudomonas putida KT2440, taxid 160488",
+      "claim_scope": ["ncbi_taxid", "organism_name", "strain"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "47054",
+      "locator": "ATCC 47054, Pseudomonas putida strain KT2440",
+      "claim_scope": ["culture_collection"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB Enzyme Nomenclature",
+      "record_id": null,
+      "locator": "EC 1.17.1.5; EC 1.14.13.114; EC 1.13.11.9; EC 3.5.1.106; EC 3.5.1.107; EC 5.2.1.1",
+      "claim_scope": ["ec_numbers", "reaction_stoichiometry"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["temperature_preference", "salinity_category", "motility", "cell_morphology", "sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "NicAB生理电子受体是否严格为NADP+存在差异，S1采用EC 1.17.1.5标准反应式。",
+    "6-羟基烟酸根存在6-羟基与6-氧代互变异构，SMILES采用6-羟基式。",
+    "温度范围、最适温度、pH与盐度数值缺少可核对的原始测定，相关数值置null。",
+    "EC 1.14.13.114、EC 3.5.1.106与EC 3.5.1.107为后续IUBMB编号，基因与反应归属以Jiménez等2008年对KT2440 nic簇的功能鉴定为准。"
+  ]
+}

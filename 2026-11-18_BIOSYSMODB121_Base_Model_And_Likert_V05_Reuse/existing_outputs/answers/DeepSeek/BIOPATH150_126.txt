@@ -1,0 +1,545 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_126",
+  "pollutant_name_zh": "丁烷",
+  "pollutant_name_en": "Butane",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "butane degradation",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "丁烷经末端单加氧生成1-丁醇，再经醇脱氢和醛脱氢生成丁酸；丁酸经CoA活化后进入β-氧化，依次生成丁酰-CoA、巴豆酰-CoA、3-羟基丁酰-CoA、乙酰乙酰-CoA，最终硫解为乙酰-CoA进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Butane",
+          "smiles": "CCCC",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-Butanol",
+          "smiles": "CCCCO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "butane monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas butanovora",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "butane monooxygenase EC number not determined"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "1-Butanol",
+          "smiles": "CCCCO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Butanal",
+          "smiles": "CCCC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "alcohol oxidation",
+      "enzyme": {
+        "name": "alcohol dehydrogenase",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas butanovora",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "Butanal",
+          "smiles": "CCCC=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Butyrate",
+          "smiles": "CCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldehyde oxidation",
+      "enzyme": {
+        "name": "aldehyde dehydrogenase",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas butanovora",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "Butyrate",
+          "smiles": "CCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Butyryl-CoA",
+          "smiles": "CCCC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "CoA ligation",
+      "enzyme": {
+        "name": "butyrate--CoA ligase",
+        "ec_number": "6.2.1.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas butanovora",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "Butyryl-CoA",
+          "smiles": "CCCC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Crotonyl-CoA",
+          "smiles": "CC=CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "acyl-CoA dehydrogenase",
+        "ec_number": "1.3.8.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas butanovora",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "Crotonyl-CoA",
+          "smiles": "CC=CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Hydroxybutyryl-CoA",
+          "smiles": "CC(O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "enoyl-CoA hydratase",
+        "ec_number": "4.2.1.17",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas butanovora",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "3-Hydroxybutyryl-CoA",
+          "smiles": "CC(O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetoacetyl-CoA",
+          "smiles": "CC(=O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "3-hydroxyacyl-CoA dehydrogenase",
+        "ec_number": "1.1.1.35",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas butanovora",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S7"
+      ],
+      "substrates": [
+        {
+          "name": "Acetoacetyl-CoA",
+          "smiles": "CC(=O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolysis",
+      "enzyme": {
+        "name": "acetyl-CoA C-acetyltransferase",
+        "ec_number": "2.3.1.16",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas butanovora",
+        "strain": "ATCC 43655",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas butanovora",
+      "strain": "ATCC 43655",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": "aerobic butane-degrading bacterium",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "43655"
+          },
+          "raw_text": "ATCC 43655",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "aerobic respiration with oxygen as terminal electron acceptor",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "butane and other short-chain alkanes",
+          "raw_text": "utilizes butane as carbon and energy source",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades butane and short-chain alkanes",
+          "raw_text": "butane degradation",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "butane monooxygenase activity",
+          "raw_text": "butane monooxygenase",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile by polar flagella",
+          "raw_text": "Pseudomonas species are motile by polar flagella",
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": "rod-shaped bacterium",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": "Gram-negative bacterium",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": "non-spore-forming",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Acetyl-CoA"
+    ],
+    "explanation": "丁烷最终经β-氧化生成乙酰辅酶A，进入三羧酸循环等中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "F1_oxygen_tolerance"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "F5_culture_collection"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "butane degradation pathway",
+        "enzymes"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "organism identity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "F6_respiration_electron_acceptor",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity",
+        "F10_motility",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "butane monooxygenase 的具体 EC 编号未确定。",
+    "Pseudomonas butanovora ATCC 43655 的 NCBI TaxID 与基因组信息未确定。",
+    "温度、pH、盐度等培养条件未在来源中明确。"
+  ]
+}

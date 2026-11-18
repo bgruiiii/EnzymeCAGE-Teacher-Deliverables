@@ -1,0 +1,443 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_031",
+  "pollutant_name_zh": "醛式-D-半乳糖醛酸根",
+  "pollutant_name_en": "aldehydo-D-galacturonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-galacturonate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线范围填写；氧条件未指定。"
+  },
+  "route_summary": "在D-galacturonate degradation I主链中，aldehydo-D-galacturonate依次经uronate isomerase、tagaturonate reductase、altronate dehydratase、2-dehydro-3-deoxygluconate kinase和KDPG aldolase作用，生成丙酮酸与D-甘油醛-3-磷酸进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "aldehydo-D-galacturonate",
+          "smiles": "O=CC(O)C(O)C(O)C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-tagaturonate",
+          "smiles": "OCC(=O)C(O)C(O)C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "uronate isomerase",
+        "ec_number": "5.3.1.12",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "D-tagaturonate",
+          "smiles": "OCC(=O)C(O)C(O)C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-altronate",
+          "smiles": "OCC(O)C(O)C(O)C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "reduction",
+      "enzyme": {
+        "name": "tagaturonate reductase",
+        "ec_number": "1.1.1.58",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "D-altronate",
+          "smiles": "OCC(O)C(O)C(O)C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-D-gluconate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydration",
+      "enzyme": {
+        "name": "altronate dehydratase",
+        "ec_number": "4.2.1.8",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-D-gluconate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-D-gluconate 6-phosphate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)C(O)COP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxygluconate kinase",
+        "ec_number": "2.7.1.45",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-D-gluconate 6-phosphate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)C(O)COP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "D-glyceraldehyde 3-phosphate",
+          "smiles": "O=CC(O)COP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxy-6-phosphogluconate aldolase",
+        "ec_number": "4.1.2.14",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸兼厌氧发酵",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "具备D-半乳糖醛酸等糖醛酸降解途径，可作为碳源利用",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解半乳糖醛酸/葡萄糖醛酸等己糖醛酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有D-半乳糖醛酸降解相关酶活性（uronate isomerase、tagaturonate reductase、altronate dehydratase、KDG kinase、KDPG aldolase）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "U00096.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": "Escherichia coli K-12 substr. MG1655 genome accession U00096.3; length 4641652 bp; GC 50.8%",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "常见于温血动物肠道，也可存在于水、土壤等环境",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "D-glyceraldehyde 3-phosphate"
+    ],
+    "explanation": "路线末端产生丙酮酸和D-甘油醛-3-磷酸，二者均可进入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "central carbon metabolism",
+      "summary": "D-glyceraldehyde 3-phosphate可进入糖酵解/糖异生，丙酮酸可进入三羧酸循环或发酵途径。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "D-galacturonate degradation I",
+      "claim_scope": [
+        "route",
+        "steps",
+        "enzymes",
+        "carbon substrate utilization",
+        "degradation capacity",
+        "enzyme activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "511145",
+      "locator": "Escherichia coli str. K-12 substr. MG1655",
+      "claim_scope": [
+        "organism identity",
+        "ncbi_taxid"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "U00096.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655 genome",
+      "claim_scope": [
+        "F14_genome_basic"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Escherichia coli K-12 general traits",
+      "claim_scope": [
+        "F1_oxygen_tolerance",
+        "F2_temperature",
+        "F6_respiration_electron_acceptor",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation",
+        "F15_habitat_generalism"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定。",
+    "部分酶基因与菌株表型未逐项核实。",
+    "SMILES未标注立体化学。"
+  ]
+}

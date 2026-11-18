@@ -1,0 +1,640 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_045",
+  "pollutant_name_zh": "苯乙酸根",
+  "pollutant_name_en": "Benzeneacetate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "phenylacetate degradation I (aerobic)",
+    "is_single_continuous_route": true,
+    "notes": "苯乙酸根即phenylacetate。本路线为好氧paa杂交途径：CoA活化后环氧化、异构为氧杂环庚三烯、水解开环再经β氧化样步骤，不是厌氧苯甲酰辅酶A路线。"
+  },
+  "route_summary": "好氧条件下，苯乙酸根先被活化为苯乙酰辅酶A，经多组分环氧化酶生成环1,2-环氧中间体，异构为2-氧杂环庚三烯-2(3H)-亚基乙酰辅酶A后由双功能酶PaaZ开环并氧化为3-氧代-5,6-脱氢辛二酰辅酶A，再经硫解、水合、脱氢和再次硫解生成乙酰辅酶A与琥珀酰辅酶A，进入中心代谢。大肠杆菌K-12具有完整paa操纵子，可作为该连续主链的代表菌。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "phenylacetate",
+          "smiles": "[O-]C(=O)Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-])C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "phenylacetyl-CoA",
+          "smiles": "CC(C)(COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-])C(O)C(=O)NCCC(=O)NCCSC(=O)Cc4ccccc4",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA ligation",
+      "enzyme": {
+        "name": "phenylacetate-CoA ligase",
+        "ec_number": "6.2.1.30",
+        "gene_or_protein": "paaK",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "phenylacetyl-CoA",
+          "smiles": "CC(C)(COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-])C(O)C(=O)NCCC(=O)NCCSC(=O)Cc4ccccc4",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-(1,2-epoxy-1,2-dihydrophenyl)acetyl-CoA",
+          "smiles": "C4=CC=CC5(CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-])C4O5",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "epoxidation",
+      "enzyme": {
+        "name": "phenylacetyl-CoA 1,2-epoxidase",
+        "ec_number": "1.14.13.149",
+        "gene_or_protein": "paaABCDE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该多组分环氧化酶文献与途径数据库普遍使用EC 1.14.13.149；IUBMB可能已将其转入EC 1.14.14系列，酶身份仍对应paaABCDE。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-(1,2-epoxy-1,2-dihydrophenyl)acetyl-CoA",
+          "smiles": "C4=CC=CC5(CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-])C4O5",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxepin-2(3H)-ylideneacetyl-CoA",
+          "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-])C=C4CC=CC=CO4",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "ring-1,2-epoxyphenylacetyl-CoA isomerase",
+        "ec_number": "5.3.3.18",
+        "gene_or_protein": "paaG",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-oxepin-2(3H)-ylideneacetyl-CoA",
+          "smiles": "O=C(SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-])C=C4CC=CC=CO4",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxo-5,6-dehydrosuberyl-CoA semialdehyde",
+          "smiles": "O=CCC=CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolytic ring opening",
+      "enzyme": {
+        "name": "oxepin-CoA hydrolase",
+        "ec_number": "3.3.2.12",
+        "gene_or_protein": "paaZ",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "开环醛中间体由PaaZ的水解结构域生成，可能在双功能酶内被通道化而不大量游离。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "3-oxo-5,6-dehydrosuberyl-CoA semialdehyde",
+          "smiles": "O=CCC=CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxo-5,6-dehydrosuberyl-CoA",
+          "smiles": "[O-]C(=O)CC=CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aldehyde dehydrogenation",
+      "enzyme": {
+        "name": "3-oxo-5,6-dehydrosuberyl-CoA semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.91",
+        "gene_or_protein": "paaZ",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "大肠杆菌PaaZ醛脱氢酶结构域实验报道使用NAD+，而EC 1.2.1.91官方反应式常写NADP+；此处按大肠杆菌酶学填写NAD+。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "3-oxo-5,6-dehydrosuberyl-CoA",
+          "smiles": "[O-]C(=O)CC=CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-])C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-dehydroadipyl-CoA",
+          "smiles": "[O-]C(=O)CCC=CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolysis",
+      "enzyme": {
+        "name": "3-oxoadipyl-CoA thiolase",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": "paaJ",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "2,3-dehydroadipyl-CoA",
+          "smiles": "[O-]C(=O)CCC=CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxyadipyl-CoA",
+          "smiles": "[O-]C(=O)CCC(O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "2,3-dehydroadipyl-CoA hydratase",
+        "ec_number": "4.2.1.17",
+        "gene_or_protein": "paaF",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "PaaF归属烯酰辅酶A水合酶通用编号EC 4.2.1.17，途径数据库如此注释，但是否另有专一EC未再拆分。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "3-hydroxyadipyl-CoA",
+          "smiles": "[O-]C(=O)CCC(O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": "[O-]C(=O)CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "3-hydroxyadipyl-CoA dehydrogenase",
+        "ec_number": "1.1.1.35",
+        "gene_or_protein": "paaH",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "PaaH常被注释为3-羟酰辅酶A脱氢酶EC 1.1.1.35，部分来源使用EC 1.1.1.157；此处取前者。"
+    },
+    {
+      "step_id": "S9",
+      "order": 9,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S8"],
+      "substrates": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": "[O-]C(=O)CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-])C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinyl-CoA",
+          "smiles": "[O-]C(=O)CCC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolysis",
+      "enzyme": {
+        "name": "3-oxoadipyl-CoA thiolase",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": "paaJ",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用苯乙酸作为碳源和能源，亦可利用葡萄糖",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解苯乙酸根，经paa途径生成乙酰辅酶A和琥珀酰辅酶A",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "paa操纵子编码苯乙酸-CoA连接酶、苯乙酰-CoA环氧化酶、开环水解酶及β氧化样酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "具周生鞭毛，可运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地相对特化，以温血动物肠道和实验室环境为主，并非广适型自由生活环境降解菌",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA", "succinyl-CoA"],
+    "explanation": "主链末端硫解产生的乙酰辅酶A与琥珀酰辅酶A可进入三羧酸循环；乙酰辅酶A也可进入乙醛酸循环等中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA cycle",
+      "summary": "琥珀酰辅酶A与乙酰辅酶A进入三羧酸循环继续氧化。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "PaaZ醛脱氢酶受阻时的内酯死端",
+      "summary": "若PaaZ不能及时氧化开环醛，氧杂环庚三烯中间体可形成七元环内酯类死端产物，不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "phenylacetate degradation I (aerobic); E. coli paaABCDEFGHIJK",
+      "claim_scope": ["reaction", "enzyme", "ec_number", "gene", "substrate", "product"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Escherichia coli K-12 substr. MG1655 general physiology and paa pathway host",
+      "claim_scope": ["organism_identity", "physiology", "degradation_trait"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655 chromosome",
+      "claim_scope": ["genome_accession", "genome_size", "gc_percent"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "辅酶A硫酯与环氧、氧杂环庚三烯中间体的SMILES按已知连接关系书写，未标注双键与手性立体化学。",
+    "EC 1.14.13.149可能已转移至EC 1.14.14系列，本题保留途径文献常用编号。",
+    "PaaZ醛脱氢酶辅因子在大肠杆菌实验与EC 1.2.1.91官方反应式之间存在NAD+与NADP+差异。",
+    "PaaF与PaaH使用β氧化通用EC编号，专一编号在不同数据库中可能不一致。",
+    "性状与基因组数值来自对该模式菌株的既有知识，未做现场数据库检索，无原文摘录；盐度范围与温度、pH的上下限未填写。"
+  ]
+}

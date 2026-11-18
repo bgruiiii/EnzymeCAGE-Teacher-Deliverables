@@ -1,0 +1,357 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_069",
+  "pollutant_name_zh": "3-氯儿茶酚",
+  "pollutant_name_en": "3-Chlorocatechol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "3-chlorocatechol degradation I (ortho)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本路线为修饰邻位裂解（clc途径），首步双加氧开环依赖分子氧，故按好氧连续主链填写；路线名称按题面原样保留。"
+  },
+  "route_summary": "3-氯儿茶酚经修饰邻位裂解主链降解：氯代儿茶酚1,2-双加氧酶在分子氧参与下将芳环邻位开环为2-氯-顺,顺-粘康酸；氯代粘康酸环异构酶环化并脱氯生成反式二烯内酯；二烯内酯水解酶水解生成马来酰乙酸；马来酰乙酸还原酶以NADH将其还原为3-氧代己二酸。3-氧代己二酸随后进入β-酮己二酸途径。代表菌为Pseudomonas knackmussii B13。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3-chlorocatechol",
+          "smiles": "Oc1cccc(Cl)c1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-chloro-cis,cis-muconate",
+          "smiles": "OC(=O)C(Cl)=CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧邻位开环",
+      "enzyme": {
+        "name": "chlorocatechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": "clcA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "氯代儿茶酚1,2-双加氧酶通常与儿茶酚1,2-双加氧酶同归EC 1.13.11.1，IUBMB无单独编号。SMILES未标注顺反异构，构型以英文名cis,cis为准。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-chloro-cis,cis-muconate",
+          "smiles": "OC(=O)C(Cl)=CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "trans-dienelactone",
+          "smiles": "O=C1C=CC(=CC(=O)O)O1",
+          "role": "main"
+        },
+        {
+          "name": "chloride",
+          "smiles": "[Cl-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "环异构化并脱氯",
+      "enzyme": {
+        "name": "chloromuconate cycloisomerase",
+        "ec_number": "5.5.1.7",
+        "gene_or_protein": "clcB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "经典clc途径中2-氯-顺,顺-粘康酸生成反式二烯内酯；5-氯粘康酸内酯可能为瞬时中间体，主链不单列。部分数据库只写dienelactone而不区分顺反。SMILES未标注E/Z，构型以英文名trans为准。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "trans-dienelactone",
+          "smiles": "O=C1C=CC(=CC(=O)O)O1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylacetate",
+          "smiles": "OC(=O)C=CC(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "内酯水解",
+      "enzyme": {
+        "name": "dienelactone hydrolase",
+        "ec_number": "3.1.1.45",
+        "gene_or_protein": "clcD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "马来酰乙酸SMILES未标注顺式双键，构型以maleyl为准。clcD可水解顺式与反式二烯内酯。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "maleylacetate",
+          "smiles": "OC(=O)C=CC(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "OC(=O)CC(=O)CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": "clcE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "B13的ClcE以NADH为辅因子；EC 1.3.1.32的正式反应式有时写成NAD(P)依赖。NADH与NAD+的完整SMILES未填写。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas knackmussii",
+      "strain": "B13",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以3-氯苯甲酸为碳源生长，并可转化3-氯儿茶酚",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解氯代芳香化合物，经修饰邻位裂解途径",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有氯代儿茶酚1,2-双加氧酶及clc修饰邻位裂解途径酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["3-oxoadipate"],
+    "explanation": "本主链止于3-氧代己二酸。该化合物是β-酮己二酸途径的入口，可进一步转化为琥珀酰辅酶A和乙酰辅酶A进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-oxoadipate degradation",
+      "summary": "3-氧代己二酸经3-氧代己二酸辅酶A转移酶和3-氧代己二酰辅酶A硫解酶等转化为琥珀酰辅酶A与乙酰辅酶A，不属于氯代儿茶酚专属主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "3-chlorocatechol meta-cleavage",
+      "summary": "儿茶酚2,3-双加氧酶可对3-氯儿茶酚进行间位开环，但通常不能构成有效矿化主链，且3-氯儿茶酚可使间位裂解酶失活。该分支不属于本题评分的邻位主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "modified ortho-cleavage clc pathway: 3-chlorocatechol to 2-chloro-cis,cis-muconate (clcA, EC 1.13.11.1), to trans-dienelactone (clcB, EC 5.5.1.7), to maleylacetate (clcD, EC 3.1.1.45), to 3-oxoadipate (clcE, EC 1.3.1.32)",
+      "claim_scope": ["reaction", "enzyme", "ec_number", "gene"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas knackmussii B13 (formerly Pseudomonas sp. B13) harbors the clc pathway for 3-chlorobenzoate and 3-chlorocatechol ortho degradation",
+      "claim_scope": ["organism", "degradation_capacity", "enzyme_activity", "carbon_substrate"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas knackmussii species and Pseudomonas genus traits: Gram-negative rod, aerobic respiration with oxygen, motile, non-spore-forming",
+      "claim_scope": ["oxygen_tolerance", "respiration", "motility", "morphology", "gram", "sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "本次未联网核对MetaCyc或EAWAG-BBD原始记录，步骤、EC与代表菌依据经典clc途径知识填写。",
+    "TaxID、保藏编号、基因组登录号、温度、pH、盐度及栖息地广适性未核实，已置null。",
+    "环异构化产物按经典途径记为trans-dienelactone；若来源库只标注dienelactone，顺反信息可能未区分。",
+    "SMILES采用非立体简式，双键构型以化合物英文名为准。"
+  ]
+}

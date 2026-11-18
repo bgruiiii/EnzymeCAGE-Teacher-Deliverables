@@ -1,0 +1,465 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_090",
+  "pollutant_name_zh": "肉桂酸根",
+  "pollutant_name_en": "Cinnamate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "cinnamate and 3-hydroxycinnamate degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": false,
+    "notes": "题面未指定氧条件；该命名路线依赖分子氧进行双加氧、单加氧和间位开环，故记为 aerobic。肉桂酸根与 3-羟基肉桂酸根是汇合到 2,3-二羟基肉桂酸根的两条入口，不是单一线性入口。"
+  },
+  "route_summary": "肉桂酸根由 Rieske 型双加氧酶生成顺式-2,3-二氢二醇，再脱氢为 2,3-二羟基肉桂酸根；3-羟基肉桂酸根由黄素型单加氧酶在 2 位羟化，汇合到同一中间体。2,3-二羟基肉桂酸根经 1,2-间位开环和水解，生成路线终点 2-羟基戊二烯酸根，并释放富马酸根。代表菌暂记为 Rhodococcus jostii RHA1，酶的四位 EC 与基因名未确认。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "cinnamate",
+          "smiles": "O=C([O-])/C=C/c1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(2E)-3-(5,6-dihydroxycyclohexa-1,3-dien-1-yl)prop-2-enoate",
+          "smiles": "O=C([O-])/C=C/C1=CC=CC(O)C1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aromatic dioxygenation",
+      "enzyme": {
+        "name": "cinnamate dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus jostii",
+        "strain": "RHA1",
+        "ncbi_taxid": 101510,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "双加氧位置按与 3-苯丙酸 Hca 途径的类比定为侧链邻位的 2,3-位；绝对立体化学未写入 SMILES，四位 EC 与基因名未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "(2E)-3-(5,6-dihydroxycyclohexa-1,3-dien-1-yl)prop-2-enoate",
+          "smiles": "O=C([O-])/C=C/C1=CC=CC(O)C1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-dihydroxycinnamate",
+          "smiles": "O=C([O-])/C=C/c1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "cinnamate dihydrodiol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus jostii",
+        "strain": "RHA1",
+        "ncbi_taxid": 101510,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "脱氢酶按顺式二氢二醇脱氢酶类比命名，未确认其是否被归入 EC 1.3.1.19，故 EC 填 null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "3-hydroxycinnamate_entry",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3-hydroxycinnamate",
+          "smiles": "O=C([O-])/C=C/c1cccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-dihydroxycinnamate",
+          "smiles": "O=C([O-])/C=C/c1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aromatic monooxygenation",
+      "enzyme": {
+        "name": "3-hydroxycinnamate 2-hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus jostii",
+        "strain": "RHA1",
+        "ncbi_taxid": 101510,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步是题面路线名称中的 3-羟基肉桂酸根入口，羟化位点定为 2 位以汇合到 2,3-二羟基肉桂酸根，而不是 4 位生成咖啡酸根；EC 未确认。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2", "S3"],
+      "substrates": [
+        {
+          "name": "2,3-dihydroxycinnamate",
+          "smiles": "O=C([O-])/C=C/c1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxonona-2,4,7-triene-1,9-dioate",
+          "smiles": "O=C([O-])/C=C/C(=O)C=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol ring cleavage",
+      "enzyme": {
+        "name": "2,3-dihydroxycinnamate 1,2-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus jostii",
+        "strain": "RHA1",
+        "ncbi_taxid": 101510,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "开环方式按 2,3-二羟基苯丙酸 1,2-双加氧酶（MhpB 类）的近侧间位切割类比，开环产物双键位置据此编号；确切 EC 未确认。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxonona-2,4,7-triene-1,9-dioate",
+          "smiles": "O=C([O-])/C=C/C(=O)C=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypentadienoate",
+          "smiles": "C=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "fumarate",
+          "smiles": "O=C([O-])/C=C/C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxonona-2,4,7-triene-1,9-dioate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus jostii",
+        "strain": "RHA1",
+        "ncbi_taxid": 101510,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "碳骨架裂解给出 C5 的 2-羟基戊二烯酸根和 C4 副产物；因肉桂酸根侧链为反式双键，副产物记为富马酸根而非马来酸根，此点为化学推断。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Rhodococcus jostii",
+      "strain": "RHA1",
+      "ncbi_taxid": 101510,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用联苯等多种芳香化合物；本题路线相关底物为肉桂酸根和 3-羟基肉桂酸根",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱降解联苯、多氯联苯、邻苯二甲酸酯及其他芳香化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 Rieske 型芳香环双加氧酶及间位开环双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "非运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状至球杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性，细胞壁含分枝菌酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "CP000431",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA"],
+    "explanation": "本路线评分终点是 2-羟基戊二烯酸根，它不直接进入中心代谢；经间位裂解下游途径可转化为丙酮酸和乙酰辅酶A。副产物富马酸根可进入 TCA 循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "meta-cleavage lower pathway",
+      "summary": "2-羟基戊二烯酸根水合为 4-羟基-2-氧代戊酸，再醛缩裂解为丙酮酸与乙醛，乙醛经乙酰化脱氢生成乙酰辅酶A。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "cinnamoyl-CoA beta-oxidation to benzoyl-CoA",
+      "summary": "肉桂酸根也可经辅酶A连接、水合和硫解生成苯甲酰辅酶A，该路线不产生 2-羟基戊二烯酸根，不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "MetaCyc-style pathway name: cinnamate and 3-hydroxycinnamate degradation to 2-hydroxypentadienoate; reconstructed by analogy to the Hca/Mhp upper pathway",
+      "claim_scope": ["reaction", "enzyme", "substrate", "product"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Rhodococcus jostii RHA1 phenotype from the published genome and aromatic-catabolism literature",
+      "claim_scope": ["organism", "F1_oxygen_tolerance", "F2_temperature", "F6_respiration_electron_acceptor", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI",
+      "record_id": "CP000431",
+      "locator": "Rhodococcus jostii RHA1 chromosome GenBank accession, recalled not re-queried",
+      "claim_scope": ["F14_genome_basic"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为未指定，此处按该命名路线的加氧化学将 oxygen_condition 标为 aerobic。",
+    "整条路线的代表菌暂定为 Rhodococcus jostii RHA1，依据是该菌的芳香分解代谢研究背景，本次未直接检索 MetaCyc 或原始论文核对菌株归属。",
+    "各步酶只填写功能名；四位 EC 编号和基因名未能确认，故填 null，未用相近酶的 EC 占位。",
+    "顺式二氢二醇的绝对构型未写入 SMILES。",
+    "开环水解的四碳副产物按反式侧链保留推断为富马酸根。",
+    "温度数值、pH、盐度、保藏编号、基因组碱基数、GC 含量和栖息地广适性没有可靠原文，相应字段为 null。"
+  ]
+}

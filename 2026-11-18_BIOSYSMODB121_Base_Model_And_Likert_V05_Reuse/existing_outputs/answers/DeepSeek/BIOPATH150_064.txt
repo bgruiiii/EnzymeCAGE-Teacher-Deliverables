@@ -1,0 +1,296 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_064",
+  "pollutant_name_zh": "3,4-二羟基苯磺酸根",
+  "pollutant_name_en": "3,4-Dihydroxybenzenesulfonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-sulfocatechol degradation",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "3,4-二羟基苯磺酸根（4-磺基邻苯二酚）经4-磺基邻苯二酚3,4-双加氧酶开环生成3-磺基粘康酸，再经环异构化生成4-磺基内酯，随后水解为3-磺基乳酸，最后经脱硫反应生成丙酮酸和亚硫酸盐。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3,4-Dihydroxybenzenesulfonate",
+          "smiles": "O=S(=O)([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Sulfomuconate",
+          "smiles": "[O-]C(=O)C=C(S(=O)(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring cleavage",
+      "enzyme": {
+        "name": "4-sulfocatechol 3,4-dioxygenase",
+        "ec_number": "1.13.11.51",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "EC number and strain assignment inferred from literature; exact source not verified."
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-Sulfomuconate",
+          "smiles": "[O-]C(=O)C=C(S(=O)(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Sulfolactone",
+          "smiles": "O=C1O[C@@H](CC(=O)[O-])C=C1S(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "cycloisomerization",
+      "enzyme": {
+        "name": "3-sulfomuconate cycloisomerase",
+        "ec_number": "5.5.1.7",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "EC number inferred; exact enzyme characterization not verified."
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-Sulfolactone",
+          "smiles": "O=C1O[C@@H](CC(=O)[O-])C=C1S(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Sulfolactate",
+          "smiles": "[O-]C(=O)C(O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "4-sulfolactone hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "EC number not assigned; enzyme name from pathway context."
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "3-Sulfolactate",
+          "smiles": "[O-]C(=O)C(O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Sulfite",
+          "smiles": "O=S([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "desulfonation",
+      "enzyme": {
+        "name": "3-sulfolactate sulfolyase",
+        "ec_number": "4.4.1.19",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "EC number inferred; exact enzyme characterization not verified."
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Hydrogenophaga intermedia",
+      "strain": "S1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Pyruvate"
+    ],
+    "explanation": "丙酮酸进入中心代谢途径。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [],
+  "uncertainties": [
+    "EC numbers and exact strain assignment are inferred from literature and may be uncertain.",
+    "Trait data were not verified against primary sources and are left null where unknown."
+  ]
+}

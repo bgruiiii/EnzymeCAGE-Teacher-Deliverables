@@ -1,0 +1,639 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_053",
+  "pollutant_name_zh": "三聚氰胺",
+  "pollutant_name_en": "Melamine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "melamine degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；已报道的三聚氰胺脱氨及氰尿酸矿化各步骤均在好氧条件下研究。主链为线性连续路线：三聚氰胺经三次连续水解脱氨生成氰尿酸，再经开环水解经缩二脲、脲基甲酸酯完全矿化为 NH3 与 CO2。"
+  },
+  "route_summary": "三聚氰胺（melamine）首先由三聚氰胺脱氨酶 TriA（melamine deaminase, EC 3.5.4.36）经三次连续水解脱氨，依次生成 ammeline、ammelide 和氰尿酸（cyanuric acid），每步释放一分子 NH3；随后氰尿酸由氰尿酸酰胺水解酶 AtzD（EC 3.5.2.15）开环水解（经 1-羧基缩二脲自发脱羧）生成缩二脲（biuret）和 CO2；缩二脲再由缩二脲酰胺水解酶 AtzE（EC 3.5.1.84）水解为脲基甲酸酯（allophanate）和 NH3；最后脲基甲酸酯由脲基甲酸酯水解酶 AtzF（EC 3.5.1.54）水解为 NH3 与 CO2，实现环骨架完全矿化。前半段（脱氨）以 Pseudomonas sp. NRRL B-12227 为代表菌，后半段（氰尿酸矿化）以 Pseudomonas sp. ADP 为代表菌。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Melamine",
+          "smiles": "Nc1nc(N)nc(N)n1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Ammeline",
+          "smiles": "Nc1nc(N)nc(O)n1",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱氨（hydrolytic deamination）",
+      "enzyme": {
+        "name": "Melamine deaminase (TriA)",
+        "ec_number": "3.5.4.36",
+        "gene_or_protein": "triA",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "NRRL B-12227",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "TriA 的 EC 编号 3.5.4.36 取自 KEGG/BRENDA 注释。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Ammeline",
+          "smiles": "Nc1nc(N)nc(O)n1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Ammelide",
+          "smiles": "Nc1nc(O)nc(O)n1",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱氨（hydrolytic deamination）",
+      "enzyme": {
+        "name": "Melamine deaminase (TriA)",
+        "ec_number": "3.5.4.36",
+        "gene_or_protein": "triA",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "NRRL B-12227",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Ammelide",
+          "smiles": "Nc1nc(O)nc(O)n1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Cyanuric acid",
+          "smiles": "O=C1NC(=O)NC(=O)N1",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱氨（hydrolytic deamination）",
+      "enzyme": {
+        "name": "Melamine deaminase (TriA)",
+        "ec_number": "3.5.4.36",
+        "gene_or_protein": "triA",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "NRRL B-12227",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "部分菌株中 ammelide → cyanuric acid 由 ammelide aminohydrolase 催化；此处按 TriA 的多步脱氨活性合并表示。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "Cyanuric acid",
+          "smiles": "O=C1NC(=O)NC(=O)N1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Biuret",
+          "smiles": "NC(=O)NC(N)=O",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "酰胺水解开环（amidohydrolase ring cleavage，经1-羧基缩二脲自发脱羧）",
+      "enzyme": {
+        "name": "Cyanuric acid amidohydrolase (AtzD)",
+        "ec_number": "3.5.2.15",
+        "gene_or_protein": "atzD",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "ADP",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "Biuret",
+          "smiles": "NC(=O)NC(N)=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Allophanate",
+          "smiles": "NC(=O)NC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解（biuret amidohydrolysis）",
+      "enzyme": {
+        "name": "Biuret amidohydrolase (AtzE)",
+        "ec_number": "3.5.1.84",
+        "gene_or_protein": "atzE",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "ADP",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "AtzE 的酶学功能主要依据 atzDEF 操纵子及基因注释证据。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "Allophanate",
+          "smiles": "NC(=O)NC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解（allophanate hydrolysis，矿化终步骤）",
+      "enzyme": {
+        "name": "Allophanate hydrolase (AtzF)",
+        "ec_number": "3.5.1.54",
+        "gene_or_protein": "atzF",
+        "confidence": "high",
+        "evidence_id": "EVID_007"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "ADP",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_007",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "NRRL B-12227",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "NRRL",
+            "accession": "B-12227"
+          },
+          "raw_text": "Pseudomonas sp. strain NRRL B-12227",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以三聚氰胺（melamine）作为唯一氮源生长，脱氨后释放氰尿酸（化能异养）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解三聚氰胺至氰尿酸；文献报道可利用多种s-三嗪类化合物作为氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "melamine deaminase (TriA) 脱氨酶活性，催化三聚氰胺连续水解脱氨",
+          "raw_text": "Melamine deaminase and atrazine chlorohydrolase: 98 percent identical but functionally different (Seffernick et al., 2001)",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rod-shaped，按 Pseudomonas 属推断）",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "经s-三嗪类化合物富集自环境（土壤）样品分离的降解菌，栖息地以土壤为主",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "ADP",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温（mesophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "矿化莠去津（atrazine）并可利用氰尿酸等s-三嗪代谢产物作为碳源和氮源（化能异养）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱降解s-三嗪类除草剂（atrazine、simazine 等）并矿化氰尿酸、缩二脲、脲基甲酸酯",
+          "raw_text": "Isolation and characterization of a Pseudomonas sp. that mineralizes the s-triazine herbicide atrazine (Mandelbaum et al., 1993)",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "atrazine chlorohydrolase (AtzA) 脱氯水解活性及氰尿酸水解酶 (AtzD) 等s-三嗪水解酶活性",
+          "raw_text": "On the origins of cyanuric acid hydrolase: purification, substrates, and prevalence of AtzD from Pseudomonas sp. strain ADP (Fruchey et al., 2003)",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自长期施用s-三嗪类除草剂的农业土壤；主要栖息于受除草剂影响的土壤环境",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["Ammonia (NH3)", "Carbon dioxide (CO2)"],
+    "explanation": "路线终产物为 NH3 与 CO2：NH4+ 经 GS-GOGAT（谷氨酰胺合成酶-谷氨酸合酶）途径同化进入氮代谢，CO2 释放或经羧化反应利用；三嗪环碳全部矿化，无中间产物直接进入糖酵解或三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "氨同化（ammonium assimilation）",
+      "summary": "矿化释放的 NH4+ 经 GS-GOGAT 循环同化为谷氨酰胺/谷氨酸，进入细胞氮代谢；CO2 排出细胞或被羧化酶固定。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "TrzN 单酶水解分支",
+      "summary": "在 Arthrobacter aurescens TC1 等菌中，s-三嗪水解酶 TrzN 可直接将三聚氰胺逐步水解为氰尿酸，不依赖 TriA，中间产物累积特征不同。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "莠去津降解汇合分支",
+      "summary": "Pseudomonas sp. ADP 中莠去津经 AtzA→AtzB→AtzC 生成氰尿酸后进入本路线的氰尿酸矿化段（AtzD→AtzE→AtzF），为与本主链共享下游的分支。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UM-BBD (EAWAG-BBD)",
+      "record_id": null,
+      "locator": "https://eawag-bbd.ethz.ch/mel/mel_map.html",
+      "claim_scope": ["route", "reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG PATHWAY",
+      "record_id": "map00797",
+      "locator": "https://www.genome.jp/kegg-bin/show_pathway?map00797",
+      "claim_scope": ["reaction", "enzyme_ec"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Seffernick JL, de Souza ML, Sadowsky MJ, Wackett LP. J Bacteriol. 2001;183(8):2405-2410",
+      "claim_scope": ["enzyme", "reaction", "organism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Mandelbaum RT, Wackett LP, Allan DL. Appl Environ Microbiol. 1993;59(6):1695-1701",
+      "claim_scope": ["organism", "traits"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Fruchey I, Shapir N, Sadowsky MJ, Wackett LP. Appl Environ Microbiol. 2003;69(6):3653-3657",
+      "claim_scope": ["enzyme", "reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "García-González V, Govantes F, Porrúa O, Santero E. J Bacteriol. 2005;187(1):155-167",
+      "claim_scope": ["enzyme", "gene"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Shapir N, Sadowsky MJ, Wackett LP. J Bacteriol. 2005;187(11):3731-3738",
+      "claim_scope": ["enzyme", "reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Cook AM, Hütter R. J Agric Food Chem. 1981;29(6):1135-1143",
+      "claim_scope": ["organism", "reaction", "traits"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["traits"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "第3步（ammelide → cyanuric acid）在部分菌株中由 ammelide aminohydrolase 而非 TriA 催化，本答案按 TriA 的多功能脱氨活性合并表示，置信度较低。",
+    "TriA 来源菌株 NRRL B-12227 的分类命名在不同文献中写作 Pseudomonas sp. 或 Pseudaminobacter sp.，本答案按 TriA 原始文献记为 Pseudomonas sp.。",
+    "题面未指定氧条件（oxygen_condition=null）；以上各步均在好氧条件下被研究和报道。",
+    "三聚氰胺脱氨酶 TriA 的 EC 编号 3.5.4.36 取自 KEGG/BRENDA 注释，个别数据库未对该反应单独编号。"
+  ]
+}

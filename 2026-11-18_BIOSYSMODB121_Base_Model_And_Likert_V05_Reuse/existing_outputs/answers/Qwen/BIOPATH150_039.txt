@@ -1,0 +1,229 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_039",
+  "pollutant_name_zh": "D-脯氨酸甜菜碱",
+  "pollutant_name_en": "D-proline betaine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "proline betaine degradation I",
+    "is_single_continuous_route": null,
+    "notes": "题面指定路线为 proline betaine degradation I；氧条件未指定，按 null 处理。"
+  },
+  "route_summary": "在题面指定的 proline betaine degradation I 路线下，D-脯氨酸甜菜碱按已知微生物代谢记录可经两步 N-去甲基化转化：先生成 N-甲基-D-脯氨酸，再生成 D-脯氨酸。由于可核实的酶学编号、辅因子、副产物和菌株性状来源不足，相关不确定字段按 null 或低置信度记录。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-proline betaine",
+          "smiles": "C[N+]1(C)CCCC1C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-methyl-D-proline",
+          "smiles": "C[NH+]1CCCC1C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N-demethylation",
+      "enzyme": {
+        "name": "D-proline betaine demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "酶 EC 编号、辅因子/副产物及完整反应计量未完全确认；此处仅记录主底物到主产物的转化。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "N-methyl-D-proline",
+          "smiles": "C[NH+]1CCCC1C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-proline",
+          "smiles": "[NH+]1CCCC1C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N-demethylation",
+      "enzyme": {
+        "name": "N-methyl-D-proline demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "酶 EC 编号、辅因子/副产物及完整反应计量未完全确认；此处仅记录主底物到主产物的转化。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "D-proline"
+    ],
+    "explanation": "该指定路线记录到 D-脯氨酸为止；D-脯氨酸可进入其他脯氨酸降解或氨基酸代谢途径，但未包含在本题指定路线范围内。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "D-proline degradation",
+      "summary": "D-脯氨酸可进一步被氧化或开环进入氨基酸/有机酸代谢，但本题路线范围仅指定为 proline betaine degradation I。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：Pseudomonas putida 中 D-脯氨酸甜菜碱经 N-去甲基化生成 N-甲基-D-脯氨酸和 D-脯氨酸的路线回忆；未直接检索外部记录。",
+      "claim_scope": [
+        "route_steps",
+        "enzyme_names",
+        "microorganism_assignment"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "路线是否还应包含 D-脯氨酸进一步降解步骤未确认。",
+    "首选酶的 EC 编号、基因/蛋白名称、辅因子和副产物未确认。",
+    "具体菌株、保藏编号、基因组信息及 15 项性状缺乏可直接引用的来源，因此多项填 null。"
+  ]
+}

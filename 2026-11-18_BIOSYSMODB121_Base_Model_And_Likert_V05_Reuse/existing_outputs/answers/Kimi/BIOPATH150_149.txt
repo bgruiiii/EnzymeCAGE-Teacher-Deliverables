@@ -1,0 +1,282 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_149",
+  "pollutant_name_zh": "L-刀豆氨酸(1+)",
+  "pollutant_name_en": "L-canavanine(1+)",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-canavanine degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，按要求填 null；路线名称按题面原样填写（对应 MetaCyc 的 L-canavanine degradation II）。"
+  },
+  "route_summary": "L-刀豆氨酸降解途径 II 的主链为两步连续反应：第一步 L-刀豆氨酸在精氨酸酶（arginase，EC 3.5.3.1）作用下水解，脒基以尿素形式释放，生成 L-canaline（刀豆氨酸脱脒基产物，一种 O-氨基醚型的鸟氨酸类似物）；第二步 L-canaline 经推定为 NADPH 依赖的 L-canaline reductase 还原裂解 N–O 键，生成 L-高丝氨酸（L-homoserine）并释放氨。L-高丝氨酸进入中心氨基酸代谢（苏氨酸/蛋氨酸方向），尿素与氨进入氮代谢。文献中具有降解刀豆氨酸能力的细菌代表为 Pseudomonas canavaninivorans，但各步微生物归属为低置信度推定。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-canavanine(1+)",
+          "smiles": "C(C[C@@H](C(=O)[O-])[NH3+])ONC(=[NH2+])N",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-canaline",
+          "smiles": "C(C[C@@H](C(=O)O)N)ON",
+          "role": "main"
+        },
+        {
+          "name": "urea",
+          "smiles": "C(=O)(N)N",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis（脒基水解，释放尿素）",
+      "enzyme": {
+        "name": "arginase",
+        "ec_number": "3.5.3.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas canavaninivorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "精氨酸酶水解 L-刀豆氨酸生成 L-canaline 与尿素为文献记载的常见反应，但本题路线中该步具体酶实体（是否为专一性 canavanine 水解酶）及对应微生物归属未与数据库记录逐一核对，微生物为低置信度推定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "L-canaline",
+          "smiles": "C(C[C@@H](C(=O)O)N)ON",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-homoserine",
+          "smiles": "C(C[C@@H](C(=O)O)N)O",
+          "role": "main"
+        },
+        {
+          "name": "ammonium",
+          "smiles": "[NH4+]",
+          "role": "byproduct"
+        },
+        {
+          "name": "NADP(+)",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "reductive cleavage（N–O 键还原裂解）",
+      "enzyme": {
+        "name": "L-canaline reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas canavaninivorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "L-canaline reductase 无公认 EC 编号，故 ec_number 填 null；该裂解反应是否严格依赖 NADPH（抑或为水解释放羟胺的替代机理）存在文献层面的不确定性，本题按还原裂解生成 L-高丝氨酸与氨处理。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas canavaninivorans",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（按假单胞菌属通性推定为好氧菌）",
+          "raw_text": "假单胞菌属（Pseudomonas）为化能异养、好氧的革兰氏阴性杆菌（属级通性，未见对该种的专门耐氧性测定）。",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（氧化磷酸化）",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": "属级通性：假单胞菌以氧气为主要末端电子受体进行好氧呼吸，部分种可反硝化。",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "化能有机异养；报道可利用 L-刀豆氨酸（L-canavanine）作为碳/氮源",
+          "raw_text": "种加词 canavaninivorans 意为“食刀豆氨酸”，提示其利用刀豆氨酸的能力（内部知识，未核对原始描述文献）。",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解精氨酸类似物 L-刀豆氨酸，经 L-canaline 生成 L-高丝氨酸、尿素与氨",
+          "raw_text": "依据本题路线（L-canavanine degradation II）及种名提示的降解能力推定。",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "精氨酸酶（arginase）水解活性及 canaline 还原裂解活性（推定）",
+          "raw_text": "与路线两步反应对应的推定酶活，未对该菌株做酶学验证。",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "可运动（极生鞭毛，属级通性）",
+          "raw_text": "假单胞菌属通常以极生鞭毛运动。",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（杆菌）",
+          "raw_text": "假单胞菌属细胞为直或微弯的杆菌。",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "假单胞菌属为革兰氏阴性细菌（属级通性）。",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": "假单胞菌属不形成芽孢（属级通性）。",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "环境菌，预期分布于土壤、水体等假单胞菌属典型栖息地；该种具体栖息地范围与广适性未确证",
+          "raw_text": "假单胞菌属广泛分布于土壤与水体等环境；该种的确切分离来源与分布未核对。",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["L-homoserine", "urea", "ammonium"],
+    "explanation": "主产物 L-高丝氨酸是细菌苏氨酸与蛋氨酸生物合成的共同前体（可经 homoserine kinase、threonine synthase 进入 L-苏氨酸），由此进入中心碳氮代谢；副产物尿素可经脲酶分解为氨与 CO2，氨经谷氨酸/谷氨酰胺途径同化。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": "PWY-5505",
+      "locator": "https://metacyc.org/pathway?orgid=META&id=PWY-5505",
+      "claim_scope": [
+        "路线名称 L-canavanine degradation II 及主反应序列（L-canavanine → L-canaline + urea → L-homoserine）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz/BRENDA",
+      "record_id": "EC 3.5.3.1",
+      "locator": null,
+      "claim_scope": [
+        "精氨酸酶（EC 3.5.3.1）催化 L-canavanine + H2O → L-canaline + urea 的水解反应"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "L-canaline 经 NADPH 依赖的 canaline reductase 还原裂解为 L-高丝氨酸与氨（无公认 EC 编号，具体文献条目未核对）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "微生物归属：Pseudomonas canavaninivorans 为可降解 L-刀豆氨酸的细菌（内部知识推定）",
+        "假单胞菌属属级性状（革兰氏阴性、杆状、好氧、极生鞭毛运动、不产芽孢、以 O2 为末端电子受体）"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件未指定，route_scope.oxygen_condition 按 null 处理；该路线常见于好氧土壤菌，但无该路线的直接氧条件证据。",
+    "步骤 2 的 L-canaline reductase 目前无公认 EC 编号，按 null 填写。",
+    "各步骤绑定的微生物 Pseudomonas canavaninivorans 系内部知识推定（其种名提示刀豆氨酸降解能力），未与路线数据库中的物种记录逐一核对，菌株、TaxID、保藏编号均未知，置信度低。",
+    "步骤 2 的机理（NADPH 依赖的还原裂解产氨 vs. 水解产羟胺）存在文献层面不确定性，本题按还原裂解生成 L-高丝氨酸与氨处理；NADPH/NADP(+) 辅因子 SMILES 未填。",
+    "MetaCyc 路线记录号 PWY-5505 为凭记忆给出的引用，可能存在编号与路线对应偏差。"
+  ]
+}

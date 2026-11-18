@@ -1,0 +1,622 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_004",
+  "pollutant_name_zh": "咖啡因",
+  "pollutant_name_en": "Caffeine",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Caffeine (fungal) pathway",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线。主链按真菌好氧降解整理：咖啡因依次经 N3、N1、N7 脱甲基生成 1,7-二甲基黄嘌呤（paraxanthine）、7-甲基黄嘌呤、黄嘌呤，随后进入嘌呤降解生成尿酸、尿囊素、尿囊酸、尿素，最终矿化为氨与CO2。脱甲基步骤以 Aspergillus tamarii 等丝状真菌为代表，下游嘌呤降解以模式菌 Aspergillus nidulans FGSC A4 为代表。"
+  },
+  "route_summary": "好氧真菌咖啡因降解主链：Caffeine → 1,7-Dimethylxanthine（paraxanthine）→ 7-Methylxanthine → Xanthine → Uric acid → Allantoin → Allantoate → Urea + Glyoxylate → NH3 + CO2。前三步为连续氧化N-脱甲基（释放甲醛），由产咖啡因脱甲基酶的丝状真菌（如 Aspergillus tamarii）完成；黄嘌呤之后为典型真菌嘌呤降解链，由黄嘌呤脱氢酶、尿酸氧化酶、尿囊素酶、尿囊酸酶和脲酶催化（以 Aspergillus nidulans 的酶学注释为代表）。乙醛酸进入中心碳代谢，氨被同化。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "Caffeine", "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C", "role": "main"},
+        {"name": "Oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "1,7-Dimethylxanthine (paraxanthine)", "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2)C", "role": "main"},
+        {"name": "Formaldehyde", "smiles": "C=O", "role": "byproduct"}
+      ],
+      "reaction_type": "oxidative N3-demethylation (putative monooxygenation)",
+      "enzyme": {
+        "name": "caffeine N3-demethylase (putative monooxygenase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus tamarii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "真菌咖啡因N3-脱甲基酶未纯化表征，无指定EC编号；反应类型依产物（1,7-二甲基黄嘌呤）与甲醛释放推定为单加氧酶型脱甲基。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "1,7-Dimethylxanthine (paraxanthine)", "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2)C", "role": "main"},
+        {"name": "Oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "7-Methylxanthine", "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2", "role": "main"},
+        {"name": "Formaldehyde", "smiles": "C=O", "role": "byproduct"}
+      ],
+      "reaction_type": "oxidative N1-demethylation (putative monooxygenation)",
+      "enzyme": {
+        "name": "1,7-dimethylxanthine N1-demethylase (putative monooxygenase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus tamarii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "N1-脱甲基酶未表征，无EC编号；依据丝状真菌转化paraxanthine生成7-甲基黄嘌呤的产物证据推定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "7-Methylxanthine", "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2", "role": "main"},
+        {"name": "Oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Xanthine", "smiles": "C1=NC2=C(N1)C(=O)NC(=O)N2", "role": "main"},
+        {"name": "Formaldehyde", "smiles": "C=O", "role": "byproduct"}
+      ],
+      "reaction_type": "oxidative N7-demethylation (putative monooxygenation)",
+      "enzyme": {
+        "name": "7-methylxanthine demethylase (putative monooxygenase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus tamarii",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "真菌7-甲基黄嘌呤脱甲基步骤主要依据途径图谱与产物检测推定，对应酶未表征；不采用细菌来源的EC 1.14.13.204。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "Xanthine", "smiles": "C1=NC2=C(N1)C(=O)NC(=O)N2", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Uric acid", "smiles": "O=C1NC(=O)C2=C(N1)NC(=O)N2", "role": "main"}
+      ],
+      "reaction_type": "oxidation (hydroxylation/dehydrogenation)",
+      "enzyme": {
+        "name": "xanthine dehydrogenase",
+        "ec_number": "1.17.1.4",
+        "gene_or_protein": "hxA",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus nidulans",
+        "strain": "FGSC A4",
+        "ncbi_taxid": 227321,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "A. nidulans 黄嘌呤脱氢酶以NAD+为电子受体（产物含NADH，未逐一列出）。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {"name": "Uric acid", "smiles": "O=C1NC(=O)C2=C(N1)NC(=O)N2", "role": "main"},
+        {"name": "Oxygen", "smiles": "O=O", "role": "cofactor"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Allantoin", "smiles": "C1(C(=O)NC(=O)N1)NC(=O)N", "role": "main"},
+        {"name": "Carbon dioxide", "smiles": "C(=O)=O", "role": "byproduct"},
+        {"name": "Hydrogen peroxide", "smiles": "OO", "role": "byproduct"}
+      ],
+      "reaction_type": "oxidation (urate oxidation, ring rearrangement)",
+      "enzyme": {
+        "name": "urate oxidase (uricase)",
+        "ec_number": "1.7.3.3",
+        "gene_or_protein": "uaZ",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus nidulans",
+        "strain": "FGSC A4",
+        "ncbi_taxid": 227321,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "实际经由 5-hydroxyisourate 与 2-oxo-4-hydroxy-4-carboxy-5-ureidoimidazoline（OHCU）中间体，分别由 hydroxyisourate hydrolase（EC 3.5.2.17）与 OHCU decarboxylase（EC 4.1.1.97）催化；此处按主链合并为一步表示。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {"name": "Allantoin", "smiles": "C1(C(=O)NC(=O)N1)NC(=O)N", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Allantoate", "smiles": "C(C(=O)O)(NC(=O)N)NC(=O)N", "role": "main"}
+      ],
+      "reaction_type": "hydrolysis (ring opening)",
+      "enzyme": {
+        "name": "allantoinase",
+        "ec_number": "3.5.2.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus nidulans",
+        "strain": "FGSC A4",
+        "ncbi_taxid": 227321,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {"name": "Allantoate", "smiles": "C(C(=O)O)(NC(=O)N)NC(=O)N", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Urea", "smiles": "C(=O)(N)N", "role": "main"},
+        {"name": "Glyoxylate", "smiles": "C(=O)C(=O)[O-]", "role": "byproduct"}
+      ],
+      "reaction_type": "hydrolytic C-N cleavage (ureide hydrolysis)",
+      "enzyme": {
+        "name": "allantoicase (allantoate amidohydrolase)",
+        "ec_number": "3.5.3.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus nidulans",
+        "strain": "FGSC A4",
+        "ncbi_taxid": 227321,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "曲霉等丝状真菌以 allantoicase（生成尿素+乙醛酸）为主；部分真菌（如酵母）走 allantoate amidohydrolase（EC 3.5.1.54）路线生成 ureidoglycolate。每分子尿囊酸理论生成2分子尿素。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {"name": "Urea", "smiles": "C(=O)(N)N", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Ammonia", "smiles": "N", "role": "main"},
+        {"name": "Carbon dioxide", "smiles": "C(=O)=O", "role": "byproduct"}
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "urease",
+        "ec_number": "3.5.1.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus nidulans",
+        "strain": "FGSC A4",
+        "ncbi_taxid": 227321,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "每分子尿素生成2分子氨与1分子CO2，完成咖啡因的矿化。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Aspergillus tamarii",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F1_oxygen_tolerance": {
+          "value": "好氧（严格好氧的丝状真菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温（常温腐生丝状真菌）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用咖啡因作为碳源/氮源，并降解其二甲基黄嘌呤中间体",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解咖啡因及甲基黄嘌呤类（1,7-二甲基黄嘌呤、7-甲基黄嘌呤）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "咖啡因N-脱甲基酶（推定单加氧酶）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "非运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "分隔菌丝体，形成曲霉型分生孢子梗与分生孢子头",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "真菌（几丁质-葡聚糖细胞壁），革兰氏染色不适用",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "产生无性分生孢子（conidia）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤及富含有机质环境（食品、植物材料等）中常见的广适性腐生丝状真菌",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Aspergillus nidulans",
+      "strain": "FGSC A4",
+      "ncbi_taxid": 227321,
+      "traits": {
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "FGSC",
+            "accession": "A4"
+          },
+          "raw_text": "Aspergillus nidulans FGSC A4",
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以葡萄糖等碳水化合物为主要碳源；可利用嘌呤类（黄嘌呤、尿酸）作为氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "完整降解嘌呤类化合物：黄嘌呤→尿酸→尿囊素→尿囊酸→尿素→氨/CO2",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "黄嘌呤脱氢酶（hxA，EC 1.17.1.4）与尿酸氧化酶（uaZ，EC 1.7.3.3）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "非运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "分隔菌丝；分生孢子梗顶囊产生绿色分生孢子链",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "真菌细胞壁（几丁质/葡聚糖），革兰氏染色不适用",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "产生无性分生孢子及闭囊壳内子囊孢子（有性，同宗配合）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤腐生、世界性分布的模式丝状真菌，栖息地较广",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["Glyoxylate", "Ammonia", "Carbon dioxide"],
+    "explanation": "尿囊酸裂解产生的乙醛酸经乙醛酸循环/甘油酸途径进入中心碳代谢；脲酶释放的氨经谷氨酰胺合成酶-谷氨酸合酶途径同化为氮源，CO2逸出或被再固定，实现咖啡因骨架的完全矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "Glyoxylate utilization and nitrogen assimilation",
+      "summary": "乙醛酸进入乙醛酸循环或异化进入三羧酸循环；氨经GS-GOGAT途径同化，构成含氮嘌呤环完全矿化的终点。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "Bacterial N-demethylation pathway",
+      "summary": "细菌（如 Pseudomonas putida CBB5）经 NdmA/NdmB/NdmC 依次脱甲基：咖啡因→theobromine（3,7-二甲基黄嘌呤）→7-甲基黄嘌呤→黄嘌呤，首个中间体与真菌路线（paraxanthine）不同；不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "Bacterial C-8 oxidation pathway",
+      "summary": "细菌（如 Pseudomonas sp. CBB1）经咖啡因脱氢酶（EC 1.17.5.2）将咖啡因C8氧化为1,3,7-trimethyluric acid，再逐步脱甲基；不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD / UM-BBD Caffeine Pathway Map",
+      "record_id": null,
+      "locator": "https://eawag-bbd.ethz.ch/caffeine/caffeine_map.html",
+      "claim_scope": ["咖啡因真菌降解主链的反应顺序：caffeine→1,7-dimethylxanthine→7-methylxanthine→xanthine→uric acid→allantoin→allantoate→urea"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "Hakil M et al. (1998) Enzyme and Microbial Technology 22:355-359",
+      "locator": null,
+      "claim_scope": ["丝状真菌（含 Aspergillus tamarii）将咖啡因脱甲基为1,7-二甲基黄嘌呤（paraxanthine）并进一步生成7-甲基黄嘌呤"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "https://metacyc.org/",
+      "claim_scope": ["caffeine degradation II (fungi) 途径：caffeine→1,7-dimethylxanthine→7-methylxanthine→xanthine"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "AspGD / FungiDB（Aspergillus nidulans 嘌呤降解基因-酶注释）",
+      "record_id": null,
+      "locator": "https://www.aspgd.org/",
+      "claim_scope": ["A. nidulans hxA 编码黄嘌呤脱氢酶（EC 1.17.1.4）", "A. nidulans uaZ 编码尿酸氧化酶（EC 1.7.3.3）", "A. nidulans 具备尿囊素酶（EC 3.5.2.5）、尿囊酸酶（EC 3.5.3.4）与脲酶（EC 3.5.1.5）完成嘌呤矿化"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "227321",
+      "locator": "https://www.ncbi.nlm.nih.gov/Taxonomy/",
+      "claim_scope": ["Aspergillus nidulans FGSC A4 的分类学身份与TaxID"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["曲霉属丝状真菌的一般生物学性状（好氧、非运动、菌丝形态、产孢方式、细胞壁组成、栖息地）"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "FGSC (Fungal Genetics Stock Center)",
+      "record_id": "A4",
+      "locator": "http://www.fgsc.net/",
+      "claim_scope": ["Aspergillus nidulans FGSC A4 的菌种保藏机构与编号"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "S1–S3 的真菌N-脱甲基酶均未纯化表征，无指定EC编号，酶名为推定的单加氧酶活性；未采用细菌来源的脱甲基酶EC编号。",
+    "S5 实际经由 5-hydroxyisourate 与 OHCU 两个中间体（HIU水解酶 EC 3.5.2.17、OHCU脱羧酶 EC 4.1.1.97），为保持主链粒度合并为一步。",
+    "下游嘌呤降解各步以模式菌 Aspergillus nidulans 的酶学注释为代表；咖啡因降解真菌（如 A. tamarii）体内同样存在嘌呤降解能力，但具体菌-酶对应未经逐一实验确认。",
+    "S7 中部分真菌（如酵母）走 allantoate amidohydrolase（EC 3.5.1.54）路线生成 ureidoglycolate，而非 allantoicase 路线。",
+    "Aspergillus tamarii 的菌株号、保藏编号、TaxID与基因组信息未在所用来源中明确，故填 null。"
+  ]
+}

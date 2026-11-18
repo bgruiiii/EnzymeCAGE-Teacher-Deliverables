@@ -1,0 +1,1080 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_005",
+  "pollutant_name_zh": "4-羧基-4'-磺酸基偶氮苯",
+  "pollutant_name_en": "4-Carboxylato-4'-sulfonatoazobenzene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-Carboxy-4'-Sulfoazobenzene pathway",
+    "is_single_continuous_route": false,
+    "notes": "题面指定路线为4-Carboxy-4'-Sulfoazobenzene pathway（好氧）。该路线在偶氮键还原断裂后分为磺胺酸与4-氨基苯甲酸两条支路，两条支路在3-氧代己二酸处汇合，因此不是单一线性连续路线。"
+  },
+  "route_summary": "好氧条件下，4-羧基-4'-磺酸基偶氮苯首先经偶氮还原酶将N=N偶氮键还原断裂，生成两个主产物：4-氨基苯甲酸（PABA）与磺胺酸。随后分两条支路矿化：磺胺酸支路中，磺胺酸经磺胺酸3,4-双加氧酶氧化脱氨生成4-磺酸儿茶酚，再经邻位开环生成4-磺黏康酸（4-sulfomuconate），环化形成4-磺黏康酸内酯后水解脱磺生成马来酰乙酸并释放亚硫酸盐，最后由马来酰乙酸还原酶生成3-氧代己二酸；4-氨基苯甲酸支路中，PABA经4-氨基苯甲酸3,4-双加氧酶氧化脱氨生成3,4-二羟基苯甲酸（原儿茶酸），经原儿茶酸3,4-双加氧酶开环为3-羧基-顺,顺-黏康酸，再经β-酮己二酸途径（环异构化、脱羧、内酯水解）生成3-氧代己二酸。两支路在3-氧代己二酸汇合，经3-氧代己二酸CoA转移酶与3-氧代己二酰CoA硫解酶生成琥珀酰辅酶A与乙酰辅酶A进入TCA循环，彻底矿化（碳骨架→CO2，氮→NH3，磺酸基→亚硫酸盐/硫酸盐）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Carboxy-4'-sulfoazobenzene",
+          "smiles": "O=C(O)c1ccc(N=Nc2ccc(S(=O)(=O)O)cc2)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Aminobenzoic acid",
+          "smiles": "Nc1ccc(C(=O)O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Sulfanilic acid",
+          "smiles": "Nc1ccc(S(=O)(=O)O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "偶氮键还原裂解",
+      "enzyme": {
+        "name": "Azoreductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "偶氮键还原裂解的具体微生物与具体酶蛋白未能可靠确认，microorganism整体置null；磺化偶氮染料在好氧/混合培养条件下的还原裂解为公认现象，具体承担菌株（如早期羧基偶氮染料降解研究中报道的假单胞菌菌株）未能核实。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "B_sulfanilate",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Sulfanilic acid",
+          "smiles": "Nc1ccc(S(=O)(=O)O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Sulfocatechol",
+          "smiles": "Oc1ccc(S(=O)(=O)O)cc1O",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱氨双加氧（羟基化脱氨）",
+      "enzyme": {
+        "name": "Sulfanilate 3,4-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "S-322",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "菌株Pseudomonas putida S-322的磺胺酸降解归属基于经典文献记忆，置信度中等偏下；酶为Rieske型双组份双加氧酶，具体EC编号未见可靠记录。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "B_sulfanilate",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-Sulfocatechol",
+          "smiles": "Oc1ccc(S(=O)(=O)O)cc1O",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Sulfomuconate",
+          "smiles": "O=C(O)C=CC(S(=O)(=O)O)=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "邻位开环双加氧（intradiol cleavage）",
+      "enzyme": {
+        "name": "4-Sulfocatechol 1,2-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "该开环酶在文献中亦见4-sulfocatechol 2,3-dioxygenase等命名（编号约定不同）；产物4-sulfomuconate与3-sulfomuconate的命名同样存在编号歧义，此处按邻位裂解化学采用4-sulfomuconate。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "B_sulfanilate",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-Sulfomuconate",
+          "smiles": "O=C(O)C=CC(S(=O)(=O)O)=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Sulfomuconolactone",
+          "smiles": "O=C(O)C1C=C(S(=O)(=O)O)C(=O)O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环异构化（内酯化）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "4-sulfomuconate环化为4-sulfomuconolactone的催化酶（环异构酶类或自发反应）未能确认，enzyme整体置null；4-sulfomuconolactone的SMILES为按化学结构推导的最佳估计。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "B_sulfanilate",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-Sulfomuconolactone",
+          "smiles": "O=C(O)C1C=C(S(=O)(=O)O)C(=O)O1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Maleylacetate",
+          "smiles": "O=C(O)C=CC(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Sulfite",
+          "smiles": "O=S(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解脱磺（释放亚硫酸盐）",
+      "enzyme": {
+        "name": "4-Sulfomuconolactone hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "4-sulfomuconolactone水解脱磺的酶学归属在不同菌株（Hydrogenophaga、Variovorax、Pseudomonas putida S-322等）中均有报道，此处按低置信度推断填写。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "B_sulfanilate",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "Maleylacetate",
+          "smiles": "O=C(O)C=CC(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipate",
+          "smiles": "O=C(O)CCC(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "烯酸还原",
+      "enzyme": {
+        "name": "Maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "马来酰乙酸还原酶反应本身为经典反应；该步在Hydrogenophaga intermedia S1中的归属为低置信度推断。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": "B_aminobenzoate",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-Aminobenzoic acid",
+          "smiles": "Nc1ccc(C(=O)O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,4-Dihydroxybenzoic acid",
+          "smiles": "O=C(O)c1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱氨双加氧（羟基化脱氨）",
+      "enzyme": {
+        "name": "4-Aminobenzoate 3,4-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_003",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "承担该步的具体菌株未能可靠确认，按经典假单胞菌文献以Pseudomonas putida泛指，置信度低；酶的EC编号未见可靠记录。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": "B_aminobenzoate",
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "3,4-Dihydroxybenzoic acid",
+          "smiles": "O=C(O)c1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Carboxy-cis,cis-muconate",
+          "smiles": "O=C(O)C=C(C(=O)O)C=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "邻位开环双加氧（intradiol cleavage）",
+      "enzyme": {
+        "name": "Protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S9",
+      "order": 9,
+      "branch_id": "B_aminobenzoate",
+      "predecessor_step_ids": ["S8"],
+      "substrates": [
+        {
+          "name": "3-Carboxy-cis,cis-muconate",
+          "smiles": "O=C(O)C=C(C(=O)O)C=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Carboxymuconolactone",
+          "smiles": "O=C(O)C1=CC(=O)OC1C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环异构化（内酯化）",
+      "enzyme": {
+        "name": "3-Carboxy-cis,cis-muconate cycloisomerase",
+        "ec_number": "5.5.1.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "4-carboxymuconolactone的SMILES为按化学结构推导的最佳估计。"
+    },
+    {
+      "step_id": "S10",
+      "order": 10,
+      "branch_id": "B_aminobenzoate",
+      "predecessor_step_ids": ["S9"],
+      "substrates": [
+        {
+          "name": "4-Carboxymuconolactone",
+          "smiles": "O=C(O)C1=CC(=O)OC1C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipate enol-lactone",
+          "smiles": "O=C1OC(=CC(=O)O)CC1",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "4-Carboxymuconolactone decarboxylase",
+        "ec_number": "4.1.1.44",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S11",
+      "order": 11,
+      "branch_id": "B_aminobenzoate",
+      "predecessor_step_ids": ["S10"],
+      "substrates": [
+        {
+          "name": "3-Oxoadipate enol-lactone",
+          "smiles": "O=C1OC(=CC(=O)O)CC1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipate",
+          "smiles": "O=C(O)CCC(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "内酯水解",
+      "enzyme": {
+        "name": "3-Oxoadipate enol-lactone hydrolase",
+        "ec_number": "3.1.1.24",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S12",
+      "order": 12,
+      "branch_id": "B_convergence",
+      "predecessor_step_ids": ["S6", "S11"],
+      "substrates": [
+        {
+          "name": "3-Oxoadipate",
+          "smiles": "O=C(O)CCC(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Succinyl-CoA",
+          "smiles": "O=C(O)CCC(=O)SCoA",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipyl-CoA",
+          "smiles": "O=C(O)CCC(=O)CC(=O)SCoA",
+          "role": "main"
+        },
+        {
+          "name": "Succinate",
+          "smiles": "O=C(O)CCC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA转移（辅酶A硫酯化）",
+      "enzyme": {
+        "name": "3-Oxoadipate CoA-transferase",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该步为两条支路在3-氧代己二酸汇合后的共同下游反应；CoA类化合物SMILES中SCoA为缩写。"
+    },
+    {
+      "step_id": "S13",
+      "order": 13,
+      "branch_id": "B_convergence",
+      "predecessor_step_ids": ["S12"],
+      "substrates": [
+        {
+          "name": "3-Oxoadipyl-CoA",
+          "smiles": "O=C(O)CCC(=O)CC(=O)SCoA",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Succinyl-CoA",
+          "smiles": "O=C(O)CCC(=O)SCoA",
+          "role": "main"
+        },
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(=O)SCoA",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "硫解（C-C键断裂）",
+      "enzyme": {
+        "name": "3-Oxoadipyl-CoA thiolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_003",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "β-酮己二酰CoA硫解酶（β-ketoadipyl-CoA thiolase，PcaF）的EC编号未能可靠确认，置null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "S-322",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 4,
+            "optimum_c": 30,
+            "maximum_c": 40,
+            "preference": "中温性，最适约30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌（土壤/淡水来源）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 5,
+            "optimum": 7,
+            "maximum": 9
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用4-氨基苯磺酸盐（磺胺酸盐）作为碳源/硫源生长，并可利用多种芳香族化合物与有机酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解磺化芳香族化合物：磺胺酸经4-磺酸儿茶酚开环、脱磺后经β-酮己二酸途径矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "磺胺酸3,4-双加氧酶活性（将磺胺酸氧化脱氨为4-磺酸儿茶酚）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动性阳性（极生丛鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直或稍弯杆状，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性菌种，广泛见于土壤、淡水、活性污泥及植物根际等生境",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Hydrogenophaga intermedia",
+      "strain": "S1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用4-磺酸儿茶酚及磺化芳香族降解中间体作为生长底物",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧矿化磺化芳香族化合物（经4-磺酸儿茶酚邻位开环途径）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-磺酸儿茶酚开环双加氧酶活性（邻位裂解）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动性阳性（具鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "属水平上为环境广布菌（土壤、淡水、活性污泥等生境均可分离），非专性栖息菌",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 4,
+            "optimum_c": 30,
+            "maximum_c": 40,
+            "preference": "中温性，最适约30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌（土壤/淡水来源）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 5,
+            "optimum": 7,
+            "maximum": 9
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种芳香族化合物（4-氨基苯甲酸、原儿茶酸、苯甲酸等）及有机酸为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经β-酮己二酸（3-氧代己二酸）途径好氧矿化多种芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "原儿茶酸3,4-双加氧酶（EC 1.13.11.3）及β-酮己二酸途径酶系活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动性阳性（极生丛鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直或稍弯杆状，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性菌种，广泛见于土壤、淡水及植物根际等生境",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["Succinyl-CoA", "Acetyl-CoA"],
+    "explanation": "磺胺酸支路与4-氨基苯甲酸支路在3-氧代己二酸处汇合，经3-氧代己二酸CoA转移酶与3-氧代己二酰CoA硫解酶（β-酮己二酸途径末端反应）生成琥珀酰辅酶A与乙酰辅酶A，二者进入TCA循环，污染物碳骨架彻底氧化为CO2，氮以NH3形式释放，磺酸基以亚硫酸盐/硫酸盐形式释放。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA循环（三羧酸循环）",
+      "summary": "琥珀酰辅酶A直接进入TCA循环；乙酰辅酶A与草酰乙酸缩合后经TCA循环氧化，实现污染物的彻底矿化。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1反应：好氧/混合培养条件下4-羧基-4'-磺酸基偶氮苯经偶氮键还原裂解生成4-氨基苯甲酸与磺胺酸（基于磺化偶氮染料生物降解领域的公认知识）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2反应及微生物：Pseudomonas putida S-322经磺胺酸3,4-双加氧酶将磺胺酸氧化脱氨为4-磺酸儿茶酚",
+        "ORG_001菌株降解性状（F7/F8/F9）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S3-S6反应及微生物：Hydrogenophaga intermedia S1（原Pseudomonas intermedia S1）经4-磺酸儿茶酚邻位开环、4-磺黏康酸/磺黏康酸内酯脱磺及马来酰乙酸还原实现矿化",
+        "ORG_002菌株降解性状（F7/F8/F9）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S7-S13反应：4-氨基苯甲酸经原儿茶酸与β-酮己二酸途径好氧矿化为琥珀酰辅酶A与乙酰辅酶A（经典芳香族化合物代谢途径）",
+        "ORG_003（Pseudomonas putida）的β-酮己二酸途径降解性状（F7/F8/F9）"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida物种水平的形态与生理性状（革兰氏阴性、好氧、运动、不产芽孢、中温等）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Hydrogenophaga属水平性状（革兰氏阴性、好氧、杆状、不产芽孢、环境广布）"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "第1步（偶氮键断裂）的具体微生物与酶蛋白未能可靠确认，microorganism整体置null；好氧条件下磺化偶氮化合物的还原裂解（可由NAD(P)H依赖的黄素偶氮还原酶或非特异性胞内还原当量介导）为公认现象，但具体承担菌株不确定。",
+    "4-磺酸儿茶酚开环酶在文献中亦见4-sulfocatechol 2,3-dioxygenase等命名（依底物编号约定不同），本答案按邻位裂解的化学逻辑命名为1,2-dioxygenase；产物4-sulfomuconate与3-sulfomuconate的命名亦存在编号歧义。",
+    "4-sulfomuconate环化为4-sulfomuconolactone一步的催化酶未能确认，该步enzyme整体置null；该内酯化可能由环异构酶类催化或部分自发进行。",
+    "各步菌株归属（Pseudomonas putida S-322、Hydrogenophaga intermedia S1、Pseudomonas putida泛指）基于经典文献记忆，部分为低置信度；未编造保藏号、基因组编号、TaxID与数值，未知项均置null。",
+    "4-sulfomuconolactone、4-carboxymuconolactone的SMILES为按化学结构推导的最佳估计；辅酶A类化合物SMILES中SCoA为缩写。"
+  ]
+}

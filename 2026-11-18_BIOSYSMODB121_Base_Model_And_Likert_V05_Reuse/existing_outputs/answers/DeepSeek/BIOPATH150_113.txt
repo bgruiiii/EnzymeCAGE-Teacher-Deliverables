@@ -1,0 +1,329 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_113",
+  "pollutant_name_zh": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+  "pollutant_name_en": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-tyrosine degradation IV (to 4-methylphenol)",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "该路线将L-酪氨酸经转氨、脱羧、氧化和脱羧四步转化为4-甲基苯酚（对甲酚），在Clostridium difficile中研究较多。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-tyrosine",
+          "smiles": "N[C@@H](Cc1ccc(O)cc1)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylpyruvate",
+          "smiles": "O=C(O)C(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "transamination",
+      "enzyme": {
+        "name": "tyrosine aminotransferase",
+        "ec_number": "2.6.1.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylpyruvate",
+          "smiles": "O=C(O)C(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylacetaldehyde",
+          "smiles": "O=CCc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "4-hydroxyphenylpyruvate decarboxylase",
+        "ec_number": "4.1.1.80",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetaldehyde",
+          "smiles": "O=CCc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "O=C(O)Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetaldehyde dehydrogenase",
+        "ec_number": "1.2.1.53",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "O=C(O)Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-methylphenol",
+          "smiles": "Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetate decarboxylase",
+        "ec_number": "4.1.1.83",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium difficile",
+        "strain": "630",
+        "ncbi_taxid": 272563,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Clostridium difficile",
+      "strain": "630",
+      "ncbi_taxid": 272563,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜中温"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "obligate anaerobe",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "fermentation",
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "ferments carbohydrates and amino acids",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "produces p-cresol from L-tyrosine",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-hydroxyphenylacetate decarboxylase",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-positive",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "spore-forming",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_009089.1",
+            "genome_size_bp": 4290252,
+            "gc_percent": 29.06
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F15_habitat_generalism": {
+          "value": "gut-associated",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "L-tyrosine degradation IV to 4-methylphenol",
+        "Clostridium difficile 630 pathway",
+        "enzyme assignments"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

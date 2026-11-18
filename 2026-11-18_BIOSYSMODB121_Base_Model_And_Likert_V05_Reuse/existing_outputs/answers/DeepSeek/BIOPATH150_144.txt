@@ -1,0 +1,321 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_144",
+  "pollutant_name_zh": "4-(三甲基铵基)丁酸根",
+  "pollutant_name_en": "4-(Trimethylammonio)butanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "γ-butyrobetaine degradation III",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "γ-丁基甜菜碱（4-(三甲基铵基)丁酸根）经4-(三甲基铵基)丁酸根单加氧酶羟基化为L-肉碱，再经L-肉碱脱氢酶氧化为3-脱氢肉碱，随后由3-脱氢肉碱醛缩酶裂解为三甲胺和丙二酸半醛，丙二酸半醛经丙二酸半醛脱氢酶转化为乙酰辅酶A。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-(Trimethylammonio)butanoate",
+          "smiles": "C[N+](C)(C)CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-Carnitine",
+          "smiles": "C[N+](C)(C)C[C@@H](CC(=O)[O-])O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "4-(trimethylammonio)butanoate monooxygenase",
+        "ec_number": "1.14.13.229",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "L-Carnitine",
+          "smiles": "C[N+](C)(C)C[C@@H](CC(=O)[O-])O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "L-carnitine dehydrogenase",
+        "ec_number": "1.1.1.108",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "3-Dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "main"
+        },
+        {
+          "name": "Malonate semialdehyde",
+          "smiles": "O=CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "3-dehydrocarnitine aldolase",
+        "ec_number": "4.1.2.34",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "Malonate semialdehyde",
+          "smiles": "O=CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative decarboxylation",
+      "enzyme": {
+        "name": "malonate-semialdehyde dehydrogenase (acetylating)",
+        "ec_number": "1.2.1.15",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "versatile heterotroph; utilizes organic acids, amino acids, and aromatic compounds",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades various aromatic compounds and can grow on γ-butyrobetaine",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": "motile by polar flagella",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": 6181863,
+            "gc_percent": 61.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性，常见于土壤、水体和植物根际",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Acetyl-CoA"],
+    "explanation": "乙酰辅酶A进入三羧酸循环和中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida KT2440 general phenotypic traits"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["γ-butyrobetaine degradation III pathway steps and enzymes"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

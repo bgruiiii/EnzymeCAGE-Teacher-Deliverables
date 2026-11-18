@@ -1,0 +1,380 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_008",
+  "pollutant_name_zh": "异菌脲",
+  "pollutant_name_en": "Iprodione",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Iprodione pathway",
+    "is_single_continuous_route": true,
+    "notes": "题面指定Iprodione pathway。主链为好氧微生物催化的连续水解路线；各步水解本身不以氧气为直接共底物。菌株级身份与后段辅产物未能确认的字段按要求置null。"
+  },
+  "route_summary": "好氧条件下，异菌脲主链为水解途径：iprodione先由iprodione hydrolase切除N-异丙基氨甲酰侧链，生成N-(3,5-dichlorophenyl)-2,4-dioxoimidazolidine，并释放isopropylamine与carbon dioxide；该乙内酰脲水解开环为(3,5-dichlorophenylureido)acetic acid，再转化为3,5-dichlorophenylurea，最后水解为3,5-dichloroaniline。文献中的代表菌为Arthrobacter sp.。第3步辅产物以及各酶的正式EC号、基因符号和菌株编号未能确认。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "iprodione",
+          "smiles": "CC(C)NC(=O)N1CC(=O)N(C1=O)c1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-(3,5-dichlorophenyl)-2,4-dioxoimidazolidine",
+          "smiles": "O=C1CNC(=O)N1c1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "isopropylamine",
+          "smiles": "CC(C)N",
+          "role": "byproduct"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "酰胺水解",
+      "enzyme": {
+        "name": "iprodione hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "主产物即3-(3,5-dichlorophenyl)imidazolidine-2,4-dione；侧链以不稳定氨基甲酸形式脱落并分解为isopropylamine与carbon dioxide。正式EC号与基因符号未核实，故置null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "N-(3,5-dichlorophenyl)-2,4-dioxoimidazolidine",
+          "smiles": "O=C1CNC(=O)N1c1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(3,5-dichlorophenylureido)acetic acid",
+          "smiles": "OC(=O)CNC(=O)Nc1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解开环",
+      "enzyme": {
+        "name": "hydantoin hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "开环生成(3,5-dichlorophenylureido)acetic acid符合乙内酰脲水解计量，但是否由经典乙内酰脲酶催化未能确认，故EC与基因置null，酶名仅为功能推断。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "(3,5-dichlorophenylureido)acetic acid",
+          "smiles": "OC(=O)CNC(=O)Nc1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,5-dichlorophenylurea",
+          "smiles": "NC(=O)Nc1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": null,
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "3,5-dichlorophenylurea是已报道的下游代谢物，但本步酶未知，故enzyme置null。底物与该脲的质量差为C2H2O2；若另消耗水则与glycolic acid平衡，若净引入一个氧原子则与glyoxylic acid平衡，二者均未确证，故不列入产物。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "3,5-dichlorophenylurea",
+          "smiles": "NC(=O)Nc1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,5-dichloroaniline",
+          "smiles": "Nc1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脲水解",
+      "enzyme": {
+        "name": "phenylurea hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "苯基脲水解为苯胺、二氧化碳和氨的计量是明确的，但异菌脲途径中催化该步的具体酶、EC和基因未确认，酶名仅为功能类名。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter sp.",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解异菌脲",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有异菌脲水解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状至球状，具杆-球循环",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本主链止于3,5-dichloroaniline，芳环尚未进入中心代谢。二氧化碳和异丙胺等小分子副产物可被细胞进一步利用，但不构成该途径已确认的中心代谢入口。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3,5-dichloroaniline further degradation",
+      "summary": "3,5-二氯苯胺可由其他微生物继续脱氯并开环，但该过程通常不属于Iprodione pathway本体，且具体路线因菌株而异，此处不展开。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "rearrangement to iprodione isomer RP 30228",
+      "summary": "异菌脲可重排为异构体RP 30228，该过程主要为非生物转化，不属于本次评分的微生物水解主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "iprodione hydrolytic main route",
+        "iprodione hydrolase",
+        "pathway intermediates through 3,5-dichloroaniline"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Arthrobacter sp. association with aerobic iprodione degradation"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Arthrobacter genus oxygen relation",
+        "respiration",
+        "morphology",
+        "Gram reaction",
+        "sporulation"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "functional enzyme names inferred for hydantoin ring opening and phenylurea hydrolysis"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "初始酶的常用功能名是iprodione hydrolase，但完整四位EC号未确认；记忆中的基因符号ipaH未经核实，故gene_or_protein置null。",
+    "第2步和第4步酶名只是功能类名，不是已核实的专一酶；第3步酶整体未知。",
+    "第3步辅产物未确证：质量差分为C2H2O2，水解加一分子水对应glycolic acid，净加氧对应glyoxylic acid，二者都未写入产物。",
+    "降解菌文献中有时写作Arthrobacter，有时归入Paenarthrobacter；具体菌株、TaxID、保藏号和基因组登录号未知，故置null，也未指定完成全途径的菌株。",
+    "温度、pH、盐度、碳源、运动性、栖息地广适性和基因组定量性状没有可靠的菌株级来源，置null。"
+  ]
+}

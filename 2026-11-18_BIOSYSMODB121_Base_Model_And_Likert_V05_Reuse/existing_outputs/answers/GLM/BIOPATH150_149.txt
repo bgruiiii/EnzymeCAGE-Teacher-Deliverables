@@ -1,0 +1,312 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_149",
+  "pollutant_name_zh": "L-刀豆氨酸(1+)",
+  "pollutant_name_en": "L-canavanine(1+)",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-canavanine degradation II",
+    "is_single_continuous_route": true,
+    "notes": "氧条件题面未指定，填null；路线名称按题面给定原样填写；主链按微生物降解L-刀豆氨酸的经典反应序列（胍基水解生成canaline，再转化为homoserine）重建。"
+  },
+  "route_summary": "L-刀豆氨酸(L-canavanine)降解主链（题面指定路线：L-canavanine degradation II）：第1步，L-canavanine经精氨酸酶型水解断裂胍基C–N键，生成L-canaline并释放尿素；第2步，L-canaline经L-canaline aminotransferase（转氨/裂解，N–O键断裂）转化为L-homoserine，碳骨架进入苏氨酸/甲硫氨酸及中心碳代谢；副产物尿素可经脲酶矿化为CO2与NH3。代表降解菌为土壤/根际来源的好氧革兰氏阴性菌Pseudomonas putida。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-canavanine",
+          "smiles": "NC(=N)NOCC[C@H](N)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-canaline",
+          "smiles": "NOCC[C@H](N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "urea",
+          "smiles": "NC(=O)N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解（amidinohydrolase型，胍基C–N键断裂释放尿素）",
+      "enzyme": {
+        "name": "arginase (L-arginine amidinohydrolase)",
+        "ec_number": "3.5.3.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "精氨酸酶水解L-canavanine生成L-canaline与尿素是经典生化反应；但特定降解菌中催化该步的可能是底物特异性更强的canavanine hydrolase类酶，其基因与EC编号未确证，菌株信息未知。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "L-canaline",
+          "smiles": "NOCC[C@H](N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-homoserine",
+          "smiles": "OCC[C@H](N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "2-hydroxyiminopropanoate",
+          "smiles": "CC(=NO)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "转氨基/N–O键断裂（canaline的aminooxy氮转移至α-酮酸）",
+      "enzyme": {
+        "name": "L-canaline aminotransferase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "L-canaline转化为L-homoserine的酶学机制未确证：可能为转氨机制（伴2-hydroxyiminopropanoate生成）、水解机制（伴hydroxylamine生成）或还原机制（伴NH3生成）；酶的EC编号、基因与对应菌株均未知。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性；最适生长温度约25–30 °C，可在较低温度下生长"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧，需要分子氧生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（不需要高盐环境）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 6.0,
+            "optimum": 7.0,
+            "maximum": 8.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种氨基酸、有机酸与芳香族化合物；能以L-刀豆氨酸等胍基氨基酸作为氮源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱降解能力：可降解多种芳香族化合物及环境有机污染物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "精氨酸酶型水解活性，可将L-刀豆氨酸水解为L-canaline与尿素",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动，具极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，典型双层细胞包膜含外膜与肽聚糖",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性高的泛化种：广泛分布于土壤、淡水与植物根际",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "L-homoserine",
+      "urea"
+    ],
+    "explanation": "主链末端产物L-homoserine为中心代谢相关氨基酸，可进入苏氨酸/甲硫氨酸生物合成途径，或经转氨生成4-hydroxy-2-oxobutanoate并进一步裂解为pyruvate进入糖酵解/TCA循环；副产物urea可经脲酶(urease, EC 3.5.1.5)水解为CO2与NH3，完成L-刀豆氨酸胍基碳与氮的矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "尿素水解（脲酶）",
+      "summary": "urea + H2O → CO2 + 2 NH3，由脲酶(urease, EC 3.5.1.5)催化，将canavanine胍基来源的碳与氮矿化。"
+    },
+    {
+      "name": "L-homoserine进入中心碳代谢",
+      "summary": "L-homoserine可经苏氨酸/甲硫氨酸合成途径同化，或经转氨生成4-hydroxy-2-oxobutanoate并裂解为pyruvate（及C1片段），进入糖酵解与TCA循环。"
+    },
+    {
+      "name": "2-hydroxyiminopropanoate的去向（未确证）",
+      "summary": "S2副产物2-hydroxyiminopropanoate（pyruvate oxime）可经水解释放pyruvate与hydroxylamine，hydroxylamine再经还原或氧化代谢处理；该去向未确证，仅作下游提示。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "经O-ureidohomoserine的脱亚氨分支",
+      "summary": "L-canavanine + H2O → O-ureido-L-homoserine + NH3（脱亚氨/加水），后者再水解释放urea并生成L-homoserine；该分支可能对应数据库中另一条L-canavanine degradation路线变体，不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "canavanine:glycine amidinotransferase分支",
+      "summary": "L-canavanine的脒基转移给glycine，生成guanidinoacetate并释放L-canaline；guanidinoacetate可进一步水解释放glycine与urea。不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1反应：L-canavanine + H2O → L-canaline + urea",
+        "酶：arginase (EC 3.5.3.1) 可水解L-canavanine"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "微生物：Pseudomonas putida 种级一般性状（专性好氧、革兰氏阴性、直杆状、运动、不产芽孢、土壤/根际广布、广谱底物利用）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2反应：L-canaline → L-homoserine（催化机制与酶均未确证）"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "无法确证题面路线'L-canavanine degradation II'在源数据库（如MetaCyc/UniPathway）中的精确反应序列与酶注释，主链按经典微生物降解文献与生物化学逻辑重建，可能存在偏差。",
+    "S1中水解L-刀豆氨酸的酶按精氨酸酶(EC 3.5.3.1)处理，但特定降解菌中可能存在底物特异性的canavanine hydrolase类酶；对应基因与菌株信息未知。",
+    "S2的酶学机制不确定：可能为转氨（伴2-hydroxyiminopropanoate生成）、水解（伴hydroxylamine生成）或还原（伴NH3生成）类型，EC编号与基因未知。",
+    "题面未指定氧条件；本答案按Pseudomonas putida专性好氧处理。",
+    "未指定具体菌株，微生物按种级填写，保藏编号与基因组信息为null；种级性状为教科书级一般知识，数值性状（温度、pH等）置信度低。"
+  ]
+}

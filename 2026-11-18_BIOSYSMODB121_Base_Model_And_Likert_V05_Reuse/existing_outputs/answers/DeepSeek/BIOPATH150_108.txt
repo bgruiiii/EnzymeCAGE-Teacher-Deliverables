@@ -1,0 +1,210 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_108",
+  "pollutant_name_zh": "甲基膦酸根",
+  "pollutant_name_en": "Methylphosphonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methylphosphonate degradation II",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "甲基膦酸根通过甲基膦酸单加氧酶（MpnM）氧化裂解 C-P 键，生成甲醛和磷酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Methylphosphonate",
+          "smiles": "C[P](=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        },
+        {
+          "name": "Phosphate",
+          "smiles": "OP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative C-P bond cleavage",
+      "enzyme": {
+        "name": "methylphosphonate monooxygenase",
+        "ec_number": "1.14.99.60",
+        "gene_or_protein": "mpnM",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bacillus subtilis",
+        "strain": "168",
+        "ncbi_taxid": 224308,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Bacillus subtilis",
+      "strain": "168",
+      "ncbi_taxid": 224308,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 10,
+            "optimum_c": 37,
+            "maximum_c": 50,
+            "preference": "中温菌（嗜中温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "facultative anaerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 6,
+            "optimum": 7,
+            "maximum": 8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "glucose (heterotrophic)",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades methylphosphonate via methylphosphonate monooxygenase; can use phosphonates as phosphorus source",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "methylphosphonate monooxygenase (EC 1.14.99.60)",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile by peritrichous flagella",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-positive",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "endospore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "AL009126.3",
+            "genome_size_bp": 4214810,
+            "gc_percent": 43.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "ubiquitous in soil, rhizosphere, plants, and aquatic environments; generalist",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Bacillus subtilis 168 general traits",
+        "organism identity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "methylphosphonate degradation II",
+        "methylphosphonate monooxygenase",
+        "EC 1.14.99.60"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

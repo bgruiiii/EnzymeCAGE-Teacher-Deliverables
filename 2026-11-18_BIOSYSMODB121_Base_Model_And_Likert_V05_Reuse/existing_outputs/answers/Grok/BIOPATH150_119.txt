@@ -1,0 +1,453 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_119",
+  "pollutant_name_zh": "对甲酚",
+  "pollutant_name_en": "P-Cresol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-methylphenol degradation to protocatechuate",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。该命名路线的末步为需分子氧的单加氧反应，代表菌行好氧呼吸，故记为aerobic。前两步的对甲酚甲基羟化酶以水为氧供体、以电子受体而非O2为氧化剂。"
+  },
+  "route_summary": "好氧条件下，4-甲基苯酚先由对甲酚甲基羟化酶（EC 1.17.99.1）经4-羟基苯甲醇氧化为4-羟基苯甲醛，再由4-羟基苯甲醛脱氢酶（EC 1.2.1.64）生成4-羟基苯甲酸，最后由4-羟基苯甲酸3-单加氧酶（EC 1.14.13.2）羟化为原儿茶酸。代表菌为Pseudomonas mendocina KR1。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-methylphenol",
+          "smiles": "Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        },
+        {
+          "name": "oxidized electron acceptor",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzyl alcohol",
+          "smiles": "OCc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "reduced electron acceptor",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "甲基羟化",
+      "enzyme": {
+        "name": "p-cresol methylhydroxylase",
+        "ec_number": "1.17.99.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas mendocina",
+        "strain": "KR1",
+        "ncbi_taxid": 300,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzyl alcohol",
+          "smiles": "OCc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxidized electron acceptor",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "reduced electron acceptor",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醇脱氢",
+      "enzyme": {
+        "name": "p-cresol methylhydroxylase",
+        "ec_number": "1.17.99.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas mendocina",
+        "strain": "KR1",
+        "ncbi_taxid": 300,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "经典主链由同一对甲酚甲基羟化酶继续将醇氧化为醛；个别菌株可能由独立的芳醇脱氢酶完成。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoate",
+          "smiles": "O=C(O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛脱氢",
+      "enzyme": {
+        "name": "4-hydroxybenzaldehyde dehydrogenase",
+        "ec_number": "1.2.1.64",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas mendocina",
+        "strain": "KR1",
+        "ncbi_taxid": 300,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzoate",
+          "smiles": "O=C(O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C(O)c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "芳香环单加氧羟化",
+      "enzyme": {
+        "name": "4-hydroxybenzoate 3-monooxygenase",
+        "ec_number": "1.14.13.2",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas mendocina",
+        "strain": "KR1",
+        "ncbi_taxid": 300,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas mendocina",
+      "strain": "KR1",
+      "ncbi_taxid": 300,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "对甲酚（4-甲基苯酚）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解甲苯与对甲酚，并经对羟基苯甲酸生成原儿茶酸",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "对甲酚甲基羟化酶",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动，极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "原儿茶酸通常经原儿茶酸3,4-双加氧酶邻位开环进入β-酮己二酸途径，最终生成琥珀酰辅酶A和乙酰辅酶A。Pseudomonas mendocina KR1的甲苯/对甲酚下游途径按邻位裂解理解；本题主链止于原儿茶酸。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "beta-ketoadipate pathway",
+      "summary": "原儿茶酸邻位开环生成3-羧基顺,顺-粘康酸，再经β-酮己二酸途径进入中心代谢，产生琥珀酰辅酶A与乙酰辅酶A。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "anaerobic p-cresol oxidation to benzoyl-CoA",
+      "summary": "反硝化等厌氧条件下，一些菌可将对甲酚氧化为对羟基苯甲酸，再经辅酶A活化与脱羟基进入苯甲酰辅酶A途径，不生成原儿茶酸。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "anaerobic fumarate addition",
+      "summary": "某些厌氧菌可通过富马酸加成将对甲酚甲基转化为4-羟基苄基琥珀酸，不属于本题至原儿茶酸的好氧主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "ExplorEnz",
+      "record_id": "1.17.99.1",
+      "locator": "EC 1.17.99.1 p-cresol methylhydroxylase: 4-methylphenol is oxidized to 4-hydroxybenzaldehyde via free 4-hydroxybenzyl alcohol, using water and an electron acceptor",
+      "claim_scope": ["S1_reaction", "S2_reaction", "enzyme_EC_1.17.99.1"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "ExplorEnz",
+      "record_id": "1.2.1.64",
+      "locator": "EC 1.2.1.64 4-hydroxybenzaldehyde dehydrogenase: 4-hydroxybenzaldehyde + NAD+ + H2O = 4-hydroxybenzoate + NADH + H+",
+      "claim_scope": ["S3_reaction", "enzyme_EC_1.2.1.64"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "ExplorEnz",
+      "record_id": "1.14.13.2",
+      "locator": "EC 1.14.13.2 4-hydroxybenzoate 3-monooxygenase: 4-hydroxybenzoate + NADPH + H+ + O2 = protocatechuate + NADP+ + H2O",
+      "claim_scope": ["S4_reaction", "enzyme_EC_1.14.13.2"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI Taxonomy",
+      "record_id": "300",
+      "locator": "Pseudomonas mendocina species taxid 300; strain KR1 operates the aerobic toluene lower pathway from p-cresol through 4-hydroxybenzoate to protocatechuate",
+      "claim_scope": ["organism_KR1", "pathway_assignment", "ncbi_taxid"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas mendocina species characters: Gram-negative rod, motile by polar flagella, aerobic respiration with oxygen, non-spore-forming, mesophilic",
+      "claim_scope": ["F1_oxygen_tolerance", "F2_temperature", "F6_respiration_electron_acceptor", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "P. mendocina KR1 utilizes toluene and p-cresol and carries p-cresol methylhydroxylase and p-hydroxybenzoate hydroxylase activities of this route",
+      "claim_scope": ["F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；依据末步需要分子氧及代表菌生理，将本路线判定为好氧。",
+    "对甲酚甲基羟化酶的经典纯化与基因克隆来自Pseudomonas putida NCIMB 9866/9869；KR1具有同源的连续氧化至原儿茶酸的能力，但未核实的基因符号未填写。",
+    "第二步在经典主链中由同一甲基羟化酶完成，不排除个别菌株由独立芳醇脱氢酶催化。",
+    "体内电子受体（如天青蛋白或细胞色素）未指定为单一化合物。",
+    "KR1的温度、pH、盐度精确范围、基因组登录号与保藏编号缺乏可直接引用的测定值，故置null；物种TaxID 300不代替菌株专属编号。",
+    "对羟基苯甲酸3-单加氧酶沿用生物降解文献常用编号EC 1.14.13.2；酶学委员会后来可能将其改分，本题不采用未核对的新编号。"
+  ]
+}

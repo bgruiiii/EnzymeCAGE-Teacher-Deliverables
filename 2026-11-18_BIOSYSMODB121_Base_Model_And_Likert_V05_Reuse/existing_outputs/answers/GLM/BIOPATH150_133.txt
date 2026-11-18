@@ -1,0 +1,739 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_133",
+  "pollutant_name_zh": "4-香豆酸根",
+  "pollutant_name_en": "4-Coumarate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-coumarate degradation (aerobic)",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定的好氧路线给出单一线性主链：4-香豆酸根先经CoA活化与非氧化侧链断裂生成4-羟基苯甲醛，再经4-羟基苯甲酸、原儿茶酸（3,4-二羟基苯甲酸）进入β-酮己二酸途径，最终生成琥珀酰CoA与乙酰CoA。"
+  },
+  "route_summary": "好氧条件下，4-香豆酸根（对羟基肉桂酸）的降解主链为： 先由4-香豆酸-CoA连接酶（hydroxycinnamoyl-CoA synthetase，Fcs）以ATP将其活化为4-香豆酰CoA； 再由4-羟基肉桂酰CoA水合裂解酶（Ech/Hpal类双功能酶）经非氧化侧链断裂生成4-羟基苯甲醛与乙酰CoA； 4-羟基苯甲醛经4-羟基苯甲醛脱氢酶（Vdh）氧化为4-羟基苯甲酸； 后者经4-羟基苯甲酸3-单加氧酶（PobA）羟基化为原儿茶酸； 原儿茶酸经3,4-双加氧酶（PcaGH）内位开环生成3-羧基-顺,顺-粘康酸； 依次经PcaB环异构、PcaC脱羧、PcaD内酯水解生成3-氧代己二酸（β-酮己二酸）； 最后经PcaIJ（CoA转移）与PcaF（硫解）生成琥珀酰CoA和乙酰CoA进入三羧酸循环。全过程可由Pseudomonas putida KT2440完成。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Coumarate",
+          "smiles": "Oc1ccc(/C=C/C(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@H](O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Coumaroyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@H](O)C(=O)NCCC(=O)NCCSC(=O)/C=C/c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)O)C(O)C1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "Diphosphate",
+          "smiles": "O=P(O)(O)OP(=O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA硫酯化（ATP依赖的酰基活化）",
+      "enzyme": {
+        "name": "4-coumarate-CoA ligase (hydroxycinnamoyl-CoA synthetase)",
+        "ec_number": "6.2.1.33",
+        "gene_or_protein": "fcs",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 6.2.1.33 为中等把握；细菌中该酶常以 feruloyl/hydroxycinnamoyl-CoA synthetase（fcs）注释，通常可同时活化阿魏酸与4-香豆酸。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-Coumaroyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@H](O)C(=O)NCCC(=O)NCCSC(=O)/C=C/c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "非氧化侧链断裂（水合-醛醇裂解）",
+      "enzyme": {
+        "name": "4-hydroxycinnamoyl-CoA hydratase-lyase",
+        "ec_number": null,
+        "gene_or_protein": "ech（亦见 hpal/couA 等同源的双功能水合-裂解/醛醇酶）",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该步常由双功能水合-裂解酶一次完成（Hpal/CouA类），也可能拆分为水合（生成3-羟基-3-(4-羟苯基)丙酰CoA）与醛醇裂解两步；未能确认确切EC编号。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-Hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]2O[C@H](n3cnc4c(N)ncnc34)[C@H](O)[C@@H]2O)[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxybenzoate",
+          "smiles": "O=C([O-])c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "N1([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@H](n4cnc5c(N)ncnc45)[C@H](O)[C@@H]3O)[C@H](O)[C@@H]2O)C=C(C(N)=O)CC=C1",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛氧化（NAD+依赖脱氢）",
+      "enzyme": {
+        "name": "4-hydroxybenzaldehyde dehydrogenase",
+        "ec_number": "1.2.1.64",
+        "gene_or_protein": "vdh",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 1.2.1.64 为中等把握；细菌中该活性常以香草醛脱氢酶（vdh）注释，兼有对羟基苯甲醛底物活性。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-Hydroxybenzoate",
+          "smiles": "O=C([O-])c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "N1([C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@H](n4cnc5c(N)ncnc45)[C@H](O)[C@@H]3O)[C@H](O)[C@@H]2O)C=C(C(N)=O)CC=C1",
+          "role": "cofactor"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Protocatechuate (3,4-dihydroxybenzoate)",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]2O[C@H](n3cnc4c(N)ncnc34)[C@H](O)[C@@H]2O)[C@H](O)[C@@H]1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "芳香环3位羟基化（FAD依赖单加氧）",
+      "enzyme": {
+        "name": "4-hydroxybenzoate 3-monooxygenase",
+        "ec_number": "1.14.13.2",
+        "gene_or_protein": "pobA",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "Protocatechuate (3,4-dihydroxybenzoate)",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Carboxy-cis,cis-muconate",
+          "smiles": "O=C([O-])C=C(C(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "原儿茶酸3,4位内位双加氧开环",
+      "enzyme": {
+        "name": "protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": "pcaGH (pcaG/pcaH)",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "3-Carboxy-cis,cis-muconate",
+          "smiles": "O=C([O-])C=C(C(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Carboxymuconolactone",
+          "smiles": "O=C1OC(CC(=O)O)C=C1C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环异构（内酯化）",
+      "enzyme": {
+        "name": "3-carboxy-cis,cis-muconate cycloisomerase",
+        "ec_number": "5.5.1.2",
+        "gene_or_protein": "pcaB",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 5.5.1.2 为中等把握。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "4-Carboxymuconolactone",
+          "smiles": "O=C1OC(CC(=O)O)C=C1C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipate enol-lactone",
+          "smiles": "O=C1OC(=CC(=O)O)CC1",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧（伴随双键重排）",
+      "enzyme": {
+        "name": "4-carboxymuconolactone decarboxylase (gamma-carboxymuconolactone decarboxylase)",
+        "ec_number": "4.1.1.44",
+        "gene_or_protein": "pcaC",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 4.1.1.44 为中等把握。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S7"
+      ],
+      "substrates": [
+        {
+          "name": "3-Oxoadipate enol-lactone",
+          "smiles": "O=C1OC(=CC(=O)O)CC1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipate (beta-ketoadipate)",
+          "smiles": "O=C([O-])CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "内酯水解（烯醇内酯酶解）",
+      "enzyme": {
+        "name": "3-oxoadipate enol-lactonase",
+        "ec_number": "3.1.1.24",
+        "gene_or_protein": "pcaD",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 3.1.1.24 为中等把握。"
+    },
+    {
+      "step_id": "S9",
+      "order": 9,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S8"
+      ],
+      "substrates": [
+        {
+          "name": "3-Oxoadipate (beta-ketoadipate)",
+          "smiles": "O=C([O-])CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Succinyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@H](O)C(=O)NCCC(=O)NCCSC(=O)CCC(=O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipyl-CoA (beta-ketoadipyl-CoA)",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@H](O)C(=O)NCCC(=O)NCCSC(=O)CC(=O)CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Succinate",
+          "smiles": "O=C([O-])CCC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA转移",
+      "enzyme": {
+        "name": "3-oxoadipate CoA-transferase",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": "pcaIJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 2.8.3.6 为中等把握。"
+    },
+    {
+      "step_id": "S10",
+      "order": 10,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S9"
+      ],
+      "substrates": [
+        {
+          "name": "3-Oxoadipyl-CoA (beta-ketoadipyl-CoA)",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@H](O)C(=O)NCCC(=O)NCCSC(=O)CC(=O)CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@H](O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Succinyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@H](O)C(=O)NCCC(=O)NCCSC(=O)CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "硫解（C-C键断裂）",
+      "enzyme": {
+        "name": "3-oxoadipyl-CoA thiolase",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": "pcaF",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 2.3.1.174 把握较低，该酶亦常被注释为广谱乙酰-CoA酰基转移酶/硫解酶类。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温性，常规培养与生长最佳温度约30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（依赖有氧呼吸生长的需氧菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（陆生/淡水来源，常规低盐培养基生长）"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种芳香化合物（4-香豆酸/对香豆酸、阿魏酸、4-羟基苯甲酸、原儿茶酸、香草酸、苯甲酸等）以及多种有机酸、氨基酸作为唯一碳源与能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱芳香族化合物降解能力：可降解多种单环芳香酸（羟基苯甲酸类、苯基丙烷/羟肉桂酸类、木质素衍生单体等）并经β-酮己二酸途径完全矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有4-香豆酸降解相关酶系活性：羟肉桂酰-CoA连接酶/水合裂解酶、4-羟基苯甲酸3-单加氧酶（PobA）、原儿茶酸3,4-双加氧酶（PcaGH）及β-酮己二酸途径酶系",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具运动性（借极生鞭毛游动）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（典型外膜-肽聚糖-细胞质膜包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002947",
+            "genome_size_bp": 6181863,
+            "gc_percent": 61.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性强：广泛分布于土壤、淡水水体、植物根际及腐木等多种环境，本菌株谱系分离自土壤",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Succinyl-CoA",
+      "Acetyl-CoA"
+    ],
+    "explanation": "主链末端由3-氧代己二酰CoA（β-酮己二酰CoA）经硫解生成琥珀酰CoA与乙酰CoA；侧链断裂步骤（S2）亦产生乙酰CoA。琥珀酰CoA与乙酰CoA直接进入三羧酸循环完成中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "三羧酸循环",
+      "summary": "乙酰CoA与琥珀酰CoA进入TCA循环，被彻底氧化为CO2与H2O"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "4-coumarate 3-羟化分支",
+      "summary": "部分微生物含4-香豆酸3-羟化酶（4-coumarate 3-hydroxylase），先将4-香豆酸根羟化为咖啡酸，再经咖啡酰CoA与3,4-二羟基苯甲醛生成原儿茶酸，汇入同一开环途径",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "脱羧生成4-乙烯基苯酚分支",
+      "summary": "部分细菌（如某些芽孢杆菌、乳酸菌等）经对香豆酸脱羧酶将4-香豆酸脱羧生成4-乙烯基苯酚后再行降解",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida KT2440 一般生理性状（温度、氧耐受、pH、呼吸方式、运动性、细胞形态、革兰氏染色、芽孢、栖息地广适性）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_002947",
+      "locator": null,
+      "claim_scope": [
+        "P. putida KT2440 基因组（accession、大小约6.18 Mb、G+C约61.5%）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "160488",
+      "locator": null,
+      "claim_scope": [
+        "P. putida KT2440 物种与菌株身份（TaxID）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "4-香豆酸根好氧降解主链各步反应、酶名与EC编号归属",
+        "P. putida KT2440 含相应途径基因（fcs/ech/vdh 上层途径及 pob/pca β-酮己二酸途径基因簇）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Nelson KE et al., Complete genome sequence and comparative analysis of the metabolically versatile Pseudomonas putida KT2440, Environ Microbiol 4(12):799-808, 2002",
+      "claim_scope": [
+        "P. putida KT2440 基因组测序与芳香底物利用谱"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "S1的EC编号（6.2.1.33）与S2酶的EC（未给出，填null）把握有限，不同菌中相关酶命名与EC归属不一。",
+    "P. putida KT2440 上层途径（fcs/ech/vdh，或称hca类基因簇）的基因命名及该菌能否以4-香豆酸为唯一碳源生长，基于文献常识，把握中等。",
+    "S6（5.5.1.2）、S7（4.1.1.44）、S8（3.1.1.24）、S9（2.8.3.6）的EC编号为中等把握，S10（2.3.1.174）把握较低。",
+    "中间代谢物（4-carboxymuconolactone、3-oxoadipate enol-lactone等）的SMILES按标准结构书写，未提供立体化学信息。",
+    "KT2440的菌种保藏编号未能确认，F5_culture_collection 为空；基因组数值（6,181,863 bp、G+C 61.5%）与TaxID基于记忆填写，未实时核对。"
+  ]
+}

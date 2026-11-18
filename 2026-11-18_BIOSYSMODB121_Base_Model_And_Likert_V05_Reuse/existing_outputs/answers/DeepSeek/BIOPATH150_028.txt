@@ -1,0 +1,395 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_028",
+  "pollutant_name_zh": "肌酸酐",
+  "pollutant_name_en": "creatinine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "creatinine degradation I",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "肌酸酐经肌酸酐酶、肌酸酶、肌氨酸氧化酶、甲醛脱氢酶和甲酸脱氢酶逐步降解，主要碳链生成肌氨酸、甘氨酸、甲醛、甲酸和二氧化碳。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "creatinine",
+          "smiles": "CN1C(=O)C=C(N)N1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "creatine",
+          "smiles": "CN(CC(=O)O)C(=N)N",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "creatininase",
+        "ec_number": "3.5.2.10",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "creatine",
+          "smiles": "CN(CC(=O)O)C(=N)N",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "sarcosine",
+          "smiles": "CNCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "urea",
+          "smiles": "NC(N)=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "creatinase",
+        "ec_number": "3.5.3.3",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "sarcosine",
+          "smiles": "CNCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycine",
+          "smiles": "NCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        },
+        {
+          "name": "hydrogen peroxide",
+          "smiles": "OO",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "sarcosine oxidase",
+        "ec_number": "1.5.3.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "formate",
+          "smiles": "C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "formaldehyde dehydrogenase",
+        "ec_number": "1.2.1.46",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "formate",
+          "smiles": "C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "formate dehydrogenase",
+        "ec_number": "1.2.1.2",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "嗜中温"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "heterotrophic; utilizes various organic acids and amino acids",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades creatinine and other organic compounds",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "creatininase, creatinase, sarcosine oxidase, formaldehyde dehydrogenase, formate dehydrogenase",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "motile by polar flagella",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "ubiquitous in soil, water, and plant surfaces",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "glycine",
+      "carbon dioxide"
+    ],
+    "explanation": "甘氨酸进入中心代谢，二氧化碳释放。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "creatinine degradation I pathway",
+        "enzymes and reactions"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "酶EC编号和菌株信息基于通用知识，未指定具体来源。"
+  ]
+}

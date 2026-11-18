@@ -1,0 +1,322 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_041",
+  "pollutant_name_zh": "琥珀酰-CoA",
+  "pollutant_name_en": "succinyl-CoA",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "propanoyl CoA degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，oxygen_condition保持null。路线名称按题面原样填写。该路线主链终点为琥珀酰-CoA，三步反应本身不直接依赖分子氧。"
+  },
+  "route_summary": "指定路线 propanoyl CoA degradation I（甲基丙二酰-CoA途径）为连续三步主链：丙酰-CoA经ATP依赖羧化生成(S)-甲基丙二酰-CoA，再差向异构为(R)-甲基丙二酰-CoA，最后由腺苷钴胺素依赖的变位酶重排为琥珀酰-CoA。题面污染物琥珀酰-CoA是该路线终产物并可汇入TCA循环，而不是该路线的起始降解底物。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "propanoyl-CoA",
+          "smiles": "CCC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "hydrogencarbonate",
+          "smiles": "OC(=O)[O-]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-methylmalonyl-CoA",
+          "smiles": "CC(C(=O)O)C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "phosphate",
+          "smiles": "OP(=O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "carboxylation",
+      "enzyme": {
+        "name": "propionyl-CoA carboxylase",
+        "ec_number": "6.4.1.3",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Propionibacterium freudenreichii",
+        "strain": "subsp. shermanii",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "生物素为该酶辅基，未作为化学计量底物列出。代表菌生理上常逆向使用该可逆反应参与丙酸发酵。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "(S)-methylmalonyl-CoA",
+          "smiles": "CC(C(=O)O)C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(R)-methylmalonyl-CoA",
+          "smiles": "CC(C(=O)O)C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "epimerization",
+      "enzyme": {
+        "name": "methylmalonyl-CoA epimerase",
+        "ec_number": "5.1.99.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Propionibacterium freudenreichii",
+        "strain": "subsp. shermanii",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "(S)与(R)异构体的SMILES未标注C2绝对构型，构型以英文名为准。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "(R)-methylmalonyl-CoA",
+          "smiles": "CC(C(=O)O)C(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinyl-CoA",
+          "smiles": "O=C(O)CCC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "carbon-skeleton rearrangement",
+      "enzyme": {
+        "name": "methylmalonyl-CoA mutase",
+        "ec_number": "5.4.99.2",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Propionibacterium freudenreichii",
+        "strain": "subsp. shermanii",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该酶以腺苷钴胺素为结合辅基，辅酶B12不作为化学计量底物列出。产物琥珀酰-CoA即题面污染物，是本指定路线终点。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Propionibacterium freudenreichii",
+      "strain": "subsp. shermanii",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "耐氧厌氧菌",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "发酵",
+            "terminal_electron_acceptor": "延胡索酸"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用乳酸、葡萄糖和甘油",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经典丙酸发酵菌，含可逆的丙酰-CoA与琥珀酰-CoA甲基丙二酰-CoA途径酶",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "丙酰-CoA羧化酶、甲基丙二酰-CoA差向异构酶和甲基丙二酰-CoA变位酶",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "多形性杆菌，可呈棒状或球杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要适应乳品发酵体系与动物消化道等特定厌氧营养环境，栖息地广适性较低",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA"],
+    "explanation": "本路线终产物琥珀酰-CoA是TCA循环中间体，可经琥珀酰-CoA合成酶转化为琥珀酸并汇入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA cycle",
+      "summary": "琥珀酰-CoA可经琥珀酰-CoA合成酶生成琥珀酸，随后进入三羧酸循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "propanoyl CoA degradation II",
+      "summary": "2-甲基柠檬酸循环将丙酰-CoA转化为丙酮酸，不经过琥珀酰-CoA，不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["pathway_reactions", "enzyme_identity", "ec_number", "reaction_direction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["organism_enzyme_source", "enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["oxygen_tolerance", "fermentation", "carbon_substrates", "morphology", "gram_stain", "motility", "sporulation"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["temperature_optimum", "degradation_capacity", "habitat_generalism"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "琥珀酰-CoA是propanoyl CoA degradation I的终产物而非起始底物；本答案给出题面指定路线主链，而不是以琥珀酰-CoA为底物另选降解路线。",
+    "Propionibacterium freudenreichii subsp. shermanii是三步酶的经典生化来源，但生理上多将该可逆途径用于丙酸发酵（琥珀酰-CoA至丙酰-CoA），作为降解方向代表菌存在方向性不确定。",
+    "两种甲基丙二酰-CoA的SMILES只给出连接关系及CoA部分立体化学，未标注C2绝对构型，构型以英文名为准。",
+    "TaxID、保藏编号、基因组登录号、pH、盐度及温度上下限未经核实，已置null，未作猜测。"
+  ]
+}

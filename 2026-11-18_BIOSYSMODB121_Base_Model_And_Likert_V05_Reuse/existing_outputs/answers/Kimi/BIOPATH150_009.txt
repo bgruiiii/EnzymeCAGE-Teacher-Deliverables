@@ -1,0 +1,329 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_009",
+  "pollutant_name_zh": "D-柠檬烯",
+  "pollutant_name_en": "D-Limonene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Limonene degradation III (to perillate)",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线名原样保留；该路线为好氧三步连续主链，终产物为 perillate（紫苏酸）。"
+  },
+  "route_summary": "好氧条件下，D-柠檬烯先由柠檬烯 7-单加氧酶（limonene 7-monooxygenase, EC 1.14.13.142）在 C7 甲基上羟化生成紫苏醇（perillyl alcohol），再由 NAD+ 依赖的紫苏醇脱氢酶（perillyl alcohol dehydrogenase, EC 1.1.1.305）氧化为紫苏醛（perillaldehyde），最后经醛脱氢酶氧化为紫苏酸（perillate / perillic acid）。三步主链均由嗜热菌 Bacillus stearothermophilus BR388（部分文献重分类为 Geobacillus stearothermophilus）完成，紫苏酸为主要积累终产物。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-limonene",
+          "smiles": "CC1=CC[C@@H](CC1)C(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "oxygen (O2)",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "perillyl alcohol",
+          "smiles": "CC(=C)C1CC=C(CO)CC1",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "monooxygenation（C7 甲基羟化，NADPH 依赖）",
+      "enzyme": {
+        "name": "limonene 7-monooxygenase (limonene hydroxylase)",
+        "ec_number": "1.14.13.142",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Bacillus stearothermophilus",
+        "strain": "BR388",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "EC 1.14.13.142 依据 MetaCyc 风格注释，置信度中等；BR388 的柠檬烯羟化酶已有文献表征。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "perillyl alcohol",
+          "smiles": "CC(=C)C1CC=C(CO)CC1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "perillaldehyde",
+          "smiles": "CC(=C)C1CC=C(C=O)CC1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation（NAD+ 依赖的醇脱氢）",
+      "enzyme": {
+        "name": "perillyl alcohol dehydrogenase",
+        "ec_number": "1.1.1.305",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Bacillus stearothermophilus",
+        "strain": "BR388",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "EC 1.1.1.305 为 MetaCyc 风格注释，建议核实。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "perillaldehyde",
+          "smiles": "CC(=C)C1CC=C(C=O)CC1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "perillic acid (perillate)",
+          "smiles": "CC(=C)C1CC=C(C(=O)O)CC1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation（NAD+ 依赖的醛脱氢生成羧酸）",
+      "enzyme": {
+        "name": "perillaldehyde dehydrogenase (NAD+-dependent aldehyde dehydrogenase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bacillus stearothermophilus",
+        "strain": "BR388",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该步未见特异性 EC 编号，暂填 null（可能属 NAD+ 依赖醛脱氢酶类）。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Bacillus stearothermophilus",
+      "strain": "BR388",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 60,
+            "maximum_c": null,
+            "preference": "嗜热（thermophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（氧气）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用单萜 D-柠檬烯进行生物转化（经富集分离获得，可将柠檬烯氧化至紫苏醇/紫苏酸）；亦可利用常规有机碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "单萜类（柠檬烯）降解/生物转化：D-柠檬烯 → 紫苏醇 → 紫苏醛 → 紫苏酸",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "柠檬烯 7-单加氧酶（羟化酶）活性，以及 NAD+ 依赖的紫苏醇脱氢酶与紫苏醛脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "能运动（周生鞭毛，种水平描述）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细胞（rod-shaped，直或略弯杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（Gram-positive，报道可有染色可变性）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "形成内生芽孢（endospore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自地热温泉等高温环境（黄石国家公园热泉富集物）；种水平上亦见于堆肥、土壤等高温环境，整体偏嗜热窄适而非广温广适",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "该路线终止于紫苏酸（perillate）；在本题资料范围内未显示直接进入三羧酸循环等中心代谢的产物，故 products 为空。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "perillate 后续代谢",
+      "summary": "在 Bacillus stearothermophilus BR388 中紫苏酸（perillate）为主要积累终产物；其进一步开环或其他降解未在该路线资料中阐明。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "Limonene 1,2-epoxide pathway",
+      "summary": "Rhodococcus erythropolis DCL14 等经柠檬烯 1,2-单加氧酶生成柠檬烯-1,2-环氧化物，再经柠檬烯-1,2-二醇等中间体降解；与本主链（7-位羟化至紫苏酸）不同，不属于被评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "Carveol/carvone pathway (limonene 6-hydroxylation)",
+      "summary": "经柠檬烯 6-单加氧酶生成 trans-carveol，再氧化为 carvone 的途径；不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc/BioCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page: limonene degradation III (to perillate)",
+      "claim_scope": ["路线主链反应序列", "步骤酶注释（limonene 7-monooxygenase EC 1.14.13.142；perillyl alcohol dehydrogenase EC 1.1.1.305）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "evid-placeholder",
+      "source_type": "UNKNOWN",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [],
+      "confidence": "unknown"
+    }
+  ],
+  "uncertainties": []
+}

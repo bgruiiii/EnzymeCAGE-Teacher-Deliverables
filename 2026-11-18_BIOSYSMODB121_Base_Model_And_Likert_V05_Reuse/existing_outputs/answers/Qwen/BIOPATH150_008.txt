@@ -1,0 +1,233 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_008",
+  "pollutant_name_zh": "异菌脲",
+  "pollutant_name_en": "Iprodione",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Iprodione pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线填写；仅列出证据相对明确的初始水解主链，后续3,5-二氯苯胺降解未展开。"
+  },
+  "route_summary": "在好氧条件下，异菌脲主链先由异菌脲水解酶水解N-羧酰胺侧链，生成3-(3,5-二氯苯基)-5-乙基-5-甲基乙内酰脲；随后发生水解脱芳基，生成3,5-二氯苯胺。后续氯代苯胺/氯代儿茶酚降解证据不足，本题未展开。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Iprodione",
+          "smiles": "CCC1(C)N(C(=O)N)C(=O)N(c2cc(Cl)cc(Cl)c2)C1=O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-(3,5-dichlorophenyl)-5-ethyl-5-methylhydantoin",
+          "smiles": "CCC1(C)NC(=O)N(c2cc(Cl)cc(Cl)c2)C1=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "iprodione hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "D5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "产物是否同时释放NH3/CO2及精确EC编号未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-(3,5-dichlorophenyl)-5-ethyl-5-methylhydantoin",
+          "smiles": "CCC1(C)NC(=O)N(c2cc(Cl)cc(Cl)c2)C1=O",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,5-dichloroaniline",
+          "smiles": "Nc1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "5-ethyl-5-methylhydantoin",
+          "smiles": "CCC1(C)NC(=O)NC1=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic N-dearylation",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "D5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "催化该步的酶与EC编号未确认；5-乙基-5-甲基乙内酰脲是否为主产物之一未确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter sp.",
+      "strain": "D5",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "未确认该主链产物进入中心代谢的具体节点；3,5-二氯苯胺通常需进一步降解。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1 reaction",
+        "S1 enzyme",
+        "S1 microorganism",
+        "S2 reaction",
+        "S2 microorganism"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "异菌脲及中间体SMILES为结构推导，未逐条核对数据库。",
+    "第二步及后续步骤的酶、EC编号和完整下游途径证据不足。",
+    "菌株15项性状缺乏可引用来源，均置为null。"
+  ]
+}

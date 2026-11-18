@@ -1,0 +1,405 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_120",
+  "pollutant_name_zh": "6-磺酸基-d-奎诺糖",
+  "pollutant_name_en": "6-Sulfo-d-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation II",
+    "is_single_continuous_route": true,
+    "notes": "氧条件题面未指定（null）；路线名称按题面原样保留。该途径按文献在好氧菌 Pseudomonas putida SQ1 中表征，为磺糖酵解变体途径（不经磷酸化的醛缩裂解）。"
+  },
+  "route_summary": "在指定路线 sulfoquinovose degradation II 下，6-磺酸基-D-奎诺糖（SQ）由恶臭假单胞菌 Pseudomonas putida SQ1 通过磺糖酵解变体途径降解：①磺酸奎诺糖异构酶将 SQ 异构为 6-磺酸基-D-果糖；②磺酸果糖醛缩酶将其裂解为二羟丙酮与 3-磺酸基乳醛；③3-磺酸基乳醛脱氢酶把 3-磺酸基乳醛氧化为 3-磺酸基乳酸（末端 C3-磺酸盐产物，分泌至胞外）；④二羟丙酮经二羟丙酮激酶磷酸化为二羟丙酮磷酸，进入中心碳代谢（糖酵解下半段/ED 段生成丙酮酸）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-quinovose",
+          "smiles": "O=C[C@H](O)[C@@H](O)[C@H](O)[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-sulfo-D-fructose",
+          "smiles": "OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛糖-酮糖异构化",
+      "enzyme": {
+        "name": "sulfoquinovose isomerase",
+        "ec_number": "5.3.1.31",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该酶在 P. putida SQ1 中的具体基因名未确定；EC 5.3.1.31 依据磺酸奎诺糖异构酶这一已命名活性。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "6-sulfo-D-fructose",
+          "smiles": "OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone",
+          "smiles": "OCC(=O)CO",
+          "role": "main"
+        },
+        {
+          "name": "3-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛醇裂解（不经磷酸化的 C—C 键逆醛醇断裂）",
+      "enzyme": {
+        "name": "sulfofructose aldolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "磺酸果糖醛缩酶的 EC 编号与编码基因未知（填 null）；该步是本途径区别于大肠杆菌磷酸化型磺糖酵解（degradation I 型）的关键步骤。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-sulfolactaldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-sulfolactate",
+          "smiles": "OC(=O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛氧化（NAD+ 依赖脱氢）",
+      "enzyme": {
+        "name": "3-sulfolactaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "3-磺酸基乳醛脱氢酶的 EC 编号与基因名未知（填 null）；3-磺酸基乳醛的立体构型（D/L）在本回答中以未标注立体处理。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "dihydroxyacetone",
+          "smiles": "OCC(=O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "OCC(=O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磷酸化（激酶反应）",
+      "enzyme": {
+        "name": "dihydroxyacetone kinase",
+        "ec_number": "2.7.1.29",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "SQ1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "二羟丙酮激酶为通用中心代谢酶而非 SQ 途径特异酶，在 P. putida SQ1 中的具体基因未知；该步为连接中心代谢的推断步骤，故反应证据填 null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "SQ1",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 4,
+            "optimum_c": 30,
+            "maximum_c": 40,
+            "preference": "中温性，最适约30 °C（菌株SQ1无专门报道，按物种典型值）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧（专性需氧）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（土壤/淡水来源，仅耐受低盐）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以 6-磺酸基-D-奎诺糖（及磺脂 SQDG 水解释放的 SQ）为唯一碳源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经磺糖酵解变体途径降解磺酸糖 SQ：生成二羟丙酮进入中心代谢，并分泌 3-磺酸基乳酸（C3-磺酸盐）作为末端产物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "磺酸奎诺糖异构酶、磺酸果糖醛缩酶、3-磺酸基乳醛脱氢酶等磺糖酵解酶系活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具运动性（鞭毛游动）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（外膜-肽聚糖细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "泛栖息性：代谢广谱的机会营养菌，广泛存在于土壤与淡水等多种环境（菌株 SQ1 经 SQ 富集培养分离）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "dihydroxyacetone phosphate"
+    ],
+    "explanation": "二羟丙酮磷酸（DHAP）经糖酵解/ED 下半段转化为丙酮酸，好氧下进入三羧酸循环彻底氧化供能；磺酸部分以 3-磺酸基乳酸形式分泌于胞外，不再进入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "糖酵解下半段（DHAP→丙酮酸）",
+      "summary": "二羟丙酮磷酸经磷酸丙糖异构酶、3-磷酸甘油醛脱氢酶、丙酮酸激酶等代谢为丙酮酸，进入 TCA 循环氧化。"
+    },
+    {
+      "name": "3-磺酸基乳酸的胞外分泌",
+      "summary": "P. putida SQ1 不能进一步降解 3-磺酸基乳酸，将其分泌至胞外；环境中其他细菌可进一步利用该 C3-磺酸盐。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "sulfoquinovose degradation I（大肠杆菌 K-12 磷酸化型磺糖酵解 EMP 样途径）",
+      "summary": "SQ→6-磺酸-D-果糖（异构酶）→6-磺酸-D-果糖-1-磷酸（磺酸果糖激酶）→DHAP+3-磺酸基乳醛（磺酸果糖-1-磷酸醛缩酶）→2,3-二羟基-1-丙磺酸（3-磺酸基乳醛还原酶），代表菌 Escherichia coli K-12（yih 基因簇）；与本题指定路线不同，仅作对照。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "经 6-磺酸-D-葡萄糖酸的 ED 样磺糖酵解途径（sulfo-ED）",
+      "summary": "SQ 先被氧化为 6-磺酸-D-葡萄糖酸，再脱水生成 2-脱氢-3-脱氧-6-磺酸-D-葡萄糖酸，经醛缩裂解为丙酮酸+3-磺酸基乳醛；见于其他好氧菌（具体菌株在本知识范围内不确定）。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Felux AK, Denger K, Weiss M, Cook AM, Schleheck DA. Sulfoquinovose degradation by Pseudomonas putida SQ1. Proc Natl Acad Sci USA (2015)",
+      "claim_scope": [
+        "主链各步反应及酶（S1-S3）",
+        "Pseudomonas putida SQ1 对 SQ 的利用与途径归属",
+        "菌株 SQ 的底物利用、降解能力与酶系性状"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida 物种级典型性状（形态、革兰氏、呼吸、运动性、温度、pH、盐度等）",
+        "二羟丙酮激酶作为通用中心代谢酶的 EC 归属"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway: sulfoquinovose degradation II",
+      "claim_scope": [
+        "路线范围名称来源"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "对数据库路线编号 sulfoquinovose degradation II 的确切反应构成存在不确定性：本答案按 Felux 等（2015）对 Pseudomonas putida SQ1 的磺糖酵解变体途径（SQ→6-磺酸-D-果糖→二羟丙酮+3-磺酸基乳醛→3-磺酸基乳酸）给出主链；若该编号实际对应其他变体（如大肠杆菌磷酸化型磺糖酵解），主链步骤将不同。",
+    "磺酸果糖醛缩酶与 3-磺酸基乳醛脱氢酶的 EC 编号及编码基因未知，均填 null。",
+    "P. putida SQ1 菌株级性状（温度、pH、盐度、保藏编号、基因组信息）无可靠记忆：数值项填 null，物种级典型值以低置信度标注。",
+    "第 4 步（二羟丙酮磷酸化）为连接中心代谢的通用激酶步骤，非 SQ 途径特异反应，已标注为推断并填 null 反应证据。"
+  ]
+}

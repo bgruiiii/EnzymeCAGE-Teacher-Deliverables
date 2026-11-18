@@ -1,0 +1,485 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_023",
+  "pollutant_name_zh": "4-羟基苯乙酸根",
+  "pollutant_name_en": "4-Hydroxyphenylacetate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-hydroxyphenylacetate degradation",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "4-羟基苯乙酸根经4-羟基苯乙酸3-单加氧酶羟基化为3,4-二羟基苯乙酸，再经间位开环、脱氢、脱羧、异构化、水合和醛缩裂解，最终生成丙酮酸和琥珀酸半醛，后者可氧化为琥珀酸进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Hydroxyphenylacetate",
+          "smiles": "OC(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,4-Dihydroxyphenylacetate",
+          "smiles": "OC(=O)Cc1ccc(O)c(O)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetate 3-monooxygenase",
+        "ec_number": "1.14.13.3",
+        "gene_or_protein": "HpaBC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3,4-Dihydroxyphenylacetate",
+          "smiles": "OC(=O)Cc1ccc(O)c(O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-Carboxymethyl-2-hydroxymuconate semialdehyde",
+          "smiles": "O=CC(O)=CC=C(CC(=O)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring cleavage",
+      "enzyme": {
+        "name": "3,4-dihydroxyphenylacetate 2,3-dioxygenase",
+        "ec_number": "1.13.11.15",
+        "gene_or_protein": "HpaD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "5-Carboxymethyl-2-hydroxymuconate semialdehyde",
+          "smiles": "O=CC(O)=CC=C(CC(=O)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-Carboxymethyl-2-hydroxymuconate",
+          "smiles": "OC(=O)C(O)=CC=C(CC(=O)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "5-carboxymethyl-2-hydroxymuconate semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.85",
+        "gene_or_protein": "HpaE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "5-Carboxymethyl-2-hydroxymuconate",
+          "smiles": "OC(=O)C(O)=CC=C(CC(=O)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxyhepta-2,4-diene-1,7-dioate",
+          "smiles": "OC(=O)C(O)=CC=CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization/decarboxylation",
+      "enzyme": {
+        "name": "5-carboxymethyl-2-hydroxymuconate delta-isomerase",
+        "ec_number": "5.3.3.10",
+        "gene_or_protein": "HpaF",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "EC 和反应类型可能为脱羧而非异构化"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-Hydroxyhepta-2,4-diene-1,7-dioate",
+          "smiles": "OC(=O)C(O)=CC=CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Oxohept-3-enedioate",
+          "smiles": "OC(=O)C(=O)C=CCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "2-hydroxyhepta-2,4-diene-1,7-dioate isomerase",
+        "ec_number": "5.3.3.11",
+        "gene_or_protein": "HpaG",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "2-Oxohept-3-enedioate",
+          "smiles": "OC(=O)C(=O)C=CCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,4-Dihydroxyhept-2-enedioate",
+          "smiles": "OC(=O)C(O)=CC(O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "2-oxohept-3-enedioate hydratase",
+        "ec_number": null,
+        "gene_or_protein": "HpaH",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "EC 未知"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "2,4-Dihydroxyhept-2-enedioate",
+          "smiles": "OC(=O)C(O)=CC(O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Succinate semialdehyde",
+          "smiles": "O=CCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "2,4-dihydroxyhept-2-enedioate aldolase",
+        "ec_number": null,
+        "gene_or_protein": "HpaI",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "EC 未知"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "Succinate semialdehyde",
+          "smiles": "O=CCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Succinate",
+          "smiles": "OC(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "succinate-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.16",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "W",
+        "ncbi_taxid": 562,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "W",
+      "ncbi_taxid": 562,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "mesophile"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "facultative anaerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "9637"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "facultative anaerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "glucose and other carbohydrates",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades 4-hydroxyphenylacetate via homoprotocatechuate pathway",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": "motile by peritrichous flagella",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "generalist, found in intestinal tract and environmental waters",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Pyruvate", "Succinate"],
+    "explanation": "丙酮酸和琥珀酸可进入中心碳代谢（糖酵解/TCA循环）。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["4-hydroxyphenylacetate degradation pathway", "enzyme assignments", "Escherichia coli W pathway steps"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Escherichia coli W general traits"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

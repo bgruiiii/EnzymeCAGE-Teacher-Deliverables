@@ -1,0 +1,234 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_008",
+  "pollutant_name_zh": "异菌脲",
+  "pollutant_name_en": "Iprodione",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Iprodione pathway",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线，好氧条件；主链为线性两步，依据 EAWAG-BBD（原 UM-BBD）Iprodione pathway 及 Athiel et al. (1995) 报道的 Arthrobacter 类菌株降解途径。"
+  },
+  "route_summary": "好氧条件下，自土壤富集分离的一株 Arthrobacter 类（Arthrobacter-like）菌株首先对异菌脲进行 N-脱异丙基化，生成 3-(3,5-二氯苯基)-2,4-二氧代-1-咪唑烷甲酰胺（去异丙基异菌脲）；随后经水解作用（咪唑烷二酮环断裂并脱去氨甲酰基）生成 3,5-二氯苯胺。3,5-二氯苯胺为该菌降解的终产物并在培养物中积累，未观察到进一步矿化。两步反应的催化酶、基因及 EC 编号均未见报道，故 enzyme 填 null；菌株未鉴定到种。途径依据 Athiel et al. (1995, Appl Environ Microbiol 61:3216-3220) 及 EAWAG-BBD Iprodione pathway 地图。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Iprodione",
+          "smiles": "CC(C)NC(=O)N1C(=O)N(c2cc(Cl)cc(Cl)c2)C(=O)C1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-(3,5-Dichlorophenyl)-2,4-dioxo-1-imidazolidinecarboxamide",
+          "smiles": "NC(=O)N1C(=O)N(c2cc(Cl)cc(Cl)c2)C(=O)C1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "N-dealkylation（N-脱异丙基化）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "脱异丙基的具体反应机理（氧化脱烷基或水解）及副产物（可能为丙酮等）未确定；催化酶未鉴定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-(3,5-Dichlorophenyl)-2,4-dioxo-1-imidazolidinecarboxamide",
+          "smiles": "NC(=O)N1C(=O)N(c2cc(Cl)cc(Cl)c2)C(=O)C1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,5-Dichloroaniline",
+          "smiles": "Nc1cc(Cl)cc(Cl)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis（咪唑烷二酮环水解断裂并释放 3,5-二氯苯胺）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该步为多键断裂的整体转化，环状骨架其余部分的产物（C2N2O2 片段的去向，如 CO2、NH3 等小分子）未表征；3,5-二氯苯胺为终产物并积累。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter sp.",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解二羧酰亚胺类杀菌剂异菌脲，生成 3-(3,5-二氯苯基)-2,4-二氧代-1-咪唑烷甲酰胺和 3,5-二氯苯胺",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（Gram-positive）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "自（农药处理）土壤中富集分离，仅见土壤来源报道，栖息地广适性未知",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "主链终产物为 3,5-二氯苯胺；该 Arthrobacter 类菌株未将其进一步降解或矿化，未进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3,5-二氯苯胺的后续归趋",
+      "summary": "在该 Arthrobacter 类菌株培养物中 3,5-二氯苯胺积累；环境中其他微生物可进一步转化该类氯代苯胺，但不属于本路线范围。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "经 3-(3,5-二氯苯基)-2,4-咪唑烷二酮 / N-(3,5-二氯苯基)脲 的替代途径",
+      "summary": "在植物、土壤及其他微生物体系中报道异菌脲可先脱去 N-异丙基氨甲酰基生成 3-(3,5-二氯苯基)-2,4-咪唑烷二酮，或经 N-(3,5-二氯苯基)脲再生成 3,5-二氯苯胺；该分支不属于被评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Athiel P, Mercadier C, Vega D, Bastide J, Davet P, Brunel B, Cleyet-Marel JC. Degradation of iprodione by a soil Arthrobacter-like strain. Appl Environ Microbiol. 1995;61(9):3216-3220.",
+      "claim_scope": [
+        "pathway",
+        "organism",
+        "traits"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD (formerly UM-BBD, University of Minnesota Biocatalysis/Biodegradation Database)",
+      "record_id": null,
+      "locator": "https://eawag-bbd.ethz.ch/ipro/ipro_map.html (Iprodione Pathway Map)",
+      "claim_scope": [
+        "pathway",
+        "reaction"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "第一步 N-脱异丙基化的反应机理（氧化或水解）及副产物（可能为丙酮等）未确定。",
+    "两步反应的催化酶、基因与 EC 编号均无报道，故两步的 enzyme 均填 null。",
+    "降解菌仅鉴定为 Arthrobacter-like 菌株，未定种名，无菌株编号、保藏编号与基因组数据，相应字段填 null。",
+    "EAWAG-BBD（原 UM-BBD）Iprodione pathway 地图未给出各步反应的酶学信息；本回答主链按该地图与 Athiel et al. (1995) 报道的两个代谢物构建。"
+  ]
+}

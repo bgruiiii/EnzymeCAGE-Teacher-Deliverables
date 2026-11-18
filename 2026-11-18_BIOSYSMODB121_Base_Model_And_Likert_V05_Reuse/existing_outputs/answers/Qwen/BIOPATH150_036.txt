@@ -1,0 +1,317 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_036",
+  "pollutant_name_zh": "间苯二酚",
+  "pollutant_name_en": "Resorcinol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "resorcinol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；此处按间苯二酚常见好氧降解主链填写，至β-酮己二酸进入中心代谢。"
+  },
+  "route_summary": "间苯二酚先被羟基化生成羟基氢醌（1,2,4-三羟基苯），再经羟基氢醌1,2-双加氧酶开环生成马来酰乙酸，随后还原为β-酮己二酸并进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "resorcinol",
+          "smiles": "Oc1cccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "hydroxyquinol",
+          "smiles": "Oc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "resorcinol hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "辅酶与计量关系按单加氧酶常识填写；EC编号未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "hydroxyquinol",
+          "smiles": "Oc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylacetate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "intradiol ring cleavage",
+      "enzyme": {
+        "name": "hydroxyquinol 1,2-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "产物结构与SMILES未确认；EC编号未确认。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "maleylacetate",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "beta-ketoadipate",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "reduction",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "β-酮己二酸结构与SMILES未确认；EC编号未确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter calcoaceticus",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "需氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用间苯二酚作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经羟基氢醌途径降解间苯二酚",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有间苯二酚羟化酶和羟基氢醌1,2-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "球杆菌",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "见于土壤和水体等环境",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "beta-ketoadipate"
+    ],
+    "explanation": "β-酮己二酸可进入β-酮己二酸途径，最终转化为琥珀酰辅酶A和乙酰辅酶A进入三羧酸循环。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "resorcinol to hydroxyquinol step",
+        "hydroxyquinol to maleylacetate step",
+        "maleylacetate to beta-ketoadipate step",
+        "Acinetobacter calcoaceticus involvement"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Acinetobacter calcoaceticus general traits",
+        "resorcinol utilization trait"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定；本答案按常见好氧主链填写。",
+    "关键酶EC编号未填写，避免不确定猜测。",
+    "Acinetobacter calcoaceticus菌株与多数生理性状缺乏直接来源，填为低置信度或null。",
+    "maleylacetate与beta-ketoadipate的SMILES未确认。"
+  ]
+}

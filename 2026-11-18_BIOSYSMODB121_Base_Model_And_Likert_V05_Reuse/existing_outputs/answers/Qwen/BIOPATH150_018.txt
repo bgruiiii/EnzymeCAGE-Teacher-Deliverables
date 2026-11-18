@@ -1,0 +1,377 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_018",
+  "pollutant_name_zh": "四溴双酚A",
+  "pollutant_name_en": "Tetrabromobisphenol A",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Tetrabromobisphenol A pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线填写好氧 Tetrabromobisphenol A 主降解路线；部分酶、辅因子与生理性状缺少可核验来源，按规则置 null 或低置信。"
+  },
+  "route_summary": "好氧条件下，四溴双酚A经氧化脱溴生成2,6-二溴-4-(2-羟基丙烷-2-基)苯酚，再经侧链裂解生成2,6-二溴氢醌和丙酮；2,6-二溴氢醌进一步脱溴/羟基化为羟基醌，经羟基醌1,2-双加氧酶开环生成马来酰乙酸，并由马来酰乙酸还原酶还原为3-氧代己二酸，从而进入β-酮己二酸途径。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Tetrabromobisphenol A",
+          "smiles": "CC(C)(c1cc(Br)c(O)c(Br)c1)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,6-dibromo-4-(2-hydroxypropan-2-yl)phenol",
+          "smiles": "CC(C)(O)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        },
+        {
+          "name": "bromide",
+          "smiles": "[Br-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative debromination",
+      "enzyme": {
+        "name": "tetrabromobisphenol A monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas sp. TTNP3",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "初始氧化脱溴酶缺少正式EC编号；O2/NAD(P)H等辅因子及计量未列出。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2,6-dibromo-4-(2-hydroxypropan-2-yl)phenol",
+          "smiles": "CC(C)(O)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,6-dibromohydroquinone",
+          "smiles": "Oc1c(Br)cc(O)cc1Br",
+          "role": "main"
+        },
+        {
+          "name": "acetone",
+          "smiles": "CC(C)=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative side-chain cleavage",
+      "enzyme": {
+        "name": "2,6-dibromo-4-(2-hydroxypropan-2-yl)phenol monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas sp. TTNP3",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该侧链裂解步骤的酶学名称与EC编号未完全确定；辅因子与计量未列出。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2,6-dibromohydroquinone",
+          "smiles": "Oc1c(Br)cc(O)cc1Br",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "hydroxyquinol",
+          "smiles": "Oc1c(O)cc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "bromide",
+          "smiles": "[Br-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "debrominating hydroxylation",
+      "enzyme": {
+        "name": "2,6-dibromohydroquinone hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas sp. TTNP3",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "2,6-二溴氢醌到羟基醌可能包含连续脱溴/羟基化；此处按主链简化为一步，溴离子计量未完全展开。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "hydroxyquinol",
+          "smiles": "Oc1c(O)cc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylacetate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aromatic ring cleavage",
+      "enzyme": {
+        "name": "hydroxyquinol 1,2-dioxygenase",
+        "ec_number": "1.13.11.32",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas sp. TTNP3",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "maleylacetate 的SMILES未填写以避免不确定结构表示。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "maleylacetate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "O=C(O)CC(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "reduction",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.74",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas sp. TTNP3",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "NADPH/NADP+等辅因子与计量未列出。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sphingomonas sp. TTNP3",
+      "strain": "TTNP3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "chemoheterotrophic; can use brominated aromatic compounds such as tetrabromobisphenol A",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades tetrabromobisphenol A and brominated phenolic intermediates",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "tetrabromobisphenol A monooxygenase and hydroxyquinol 1,2-dioxygenase activities",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "3-oxoadipate"
+    ],
+    "explanation": "3-氧代己二酸（β-酮己二酸）可进入β-酮己二酸途径，进一步转化为琥珀酰辅酶A和乙酰辅酶A。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "beta-ketoadipate pathway",
+      "summary": "3-氧代己二酸经β-酮己二酸途径进入中心碳代谢，最终生成琥珀酰辅酶A和乙酰辅酶A。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Tetrabromobisphenol A aerobic degradation pathway",
+        "Sphingomonas sp. TTNP3 degradation capacity",
+        "hydroxyquinol 1,2-dioxygenase and maleylacetate reductase steps",
+        "basic aerobic Gram-negative traits of Sphingomonas sp. TTNP3"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "初始TBBPA氧化脱溴酶、侧链裂解酶和2,6-二溴氢醌羟基化酶缺少正式EC编号与基因名。",
+    "O2、NAD(P)H等辅因子及完整化学计量未逐步列出，因可核验来源不足。",
+    "2,6-二溴氢醌到羟基醌可能包含连续脱溴/羟基化中间物，此处按主链简化为一步。",
+    "Sphingomonas sp. TTNP3 的保藏编号、TaxID、基因组信息与多数生理性状缺少可直接引用来源，相关字段为null。"
+  ]
+}

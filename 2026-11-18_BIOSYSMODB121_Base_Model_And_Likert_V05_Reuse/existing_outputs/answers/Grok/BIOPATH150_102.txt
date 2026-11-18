@@ -1,0 +1,298 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_102",
+  "pollutant_name_zh": "2-丙基苯酚",
+  "pollutant_name_en": "2-Propylphenol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "2-propylphenol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本回答将好氧芳香环邻位羟化后的间位开裂定为唯一被评分主链；该选择来自短链邻烷基酚的通用生化逻辑，不是实验专一证据，也不排除侧链氧化或其他开环方式。"
+  },
+  "route_summary": "主链按好氧间位开裂组织：2-丙基苯酚先羟化为3-丙基儿茶酚，再外二醇开环为2-羟基-6-氧代壬-2,4-二烯酸，水解得到2-羟基戊-2,4-二烯酸和丁酸；前者经下游互变异构、水合和醛缩裂解进入丙酮酸与乙醛。前三步是污染物专一片段，后三步是通用间位裂解下游。全程缺少可核验的化合物专一菌株与实验来源，酶赋值置信度低，微生物置空。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-propylphenol",
+          "smiles": "CCCc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-propylcatechol",
+          "smiles": "CCCc1c(O)c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "芳香环邻位羟化",
+      "enzyme": {
+        "name": "phenol 2-monooxygenase",
+        "ec_number": "1.14.13.7",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "羟化位置按邻甲酚生成3-甲基儿茶酚的类比，取未取代邻位生成3-丙基儿茶酚；酚2-单加氧酶能否以2-丙基苯酚为底物未经可核验实验证实。还原辅因子是NADH还是NADPH不确定，故未写入，水的计量也未列入产物。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-propylcatechol",
+          "smiles": "CCCc1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxonona-2,4-dienoate",
+          "smiles": "CCCC(=O)C=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "外二醇双加氧开环",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "按3-烷基儿茶酚的近端间位开裂类比，丙基留在酮基一侧，产物为2-羟基-6-氧代壬-2,4-二烯酸；远端开裂未被列为主链。双键立体化学未在SMILES中指定。没有2-丙基苯酚或3-丙基儿茶酚的专一实验来源。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxonona-2,4-dienoate",
+          "smiles": "CCCC(=O)C=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "butanoate",
+          "smiles": "CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解裂解",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxonona-2,4-dienoate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "水解切断酮基与相邻烯碳，等摩尔生成2-羟基戊-2,4-二烯酸和丁酸，二者都是该步主产物。EC 3.7.1.9的官方反应是2-羟基粘康酸半醛水解释放甲酸，不能确认覆盖该C9底物，故EC置null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "C=CCC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "烯醇-酮互变异构",
+      "enzyme": {
+        "name": "4-oxalocrotonate tautomerase",
+        "ec_number": "5.3.2.6",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "此步起为通用间位裂解下游，不再是2-丙基苯酚专一反应。EC 5.3.2.6的主反应是4-草酰巴豆酸互变，对2-羟基戊-2,4-二烯酸的赋值属类比；该互变也可部分自发进行。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "C=CCC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合",
+      "enzyme": {
+        "name": "2-oxopent-4-enoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "底物一旦是2-氧代戊-4-烯酸，水合为4-羟基-2-氧代戊酸属于标准下游反应；它与2-丙基苯酚之间的连接依赖前面的类比步骤。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛缩裂解",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxopentanoate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "丙酮酸和乙醛都是该步等摩尔主产物，并作为芳香环碳进入中心代谢的节点。没有可指定到某株菌的证据。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetaldehyde", "butanoate"],
+    "explanation": "芳香环碳经S6进入丙酮酸和乙醛；丙基侧链碳加一个环碳在S3以丁酸释放。三者均可继续进入中心代谢，但后续不再属于2-丙基苯酚专一主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "butanoate beta-oxidation",
+      "summary": "丁酸可活化为丁酰辅酶A，经β-氧化生成乙酰辅酶A。这是通用脂肪酸代谢，不是2-丙基苯酚专一反应。"
+    },
+    {
+      "name": "pyruvate and acetaldehyde assimilation",
+      "summary": "丙酮酸可进入三羧酸循环；乙醛可氧化为乙酸并进一步形成乙酰辅酶A。这是通用中心代谢续接。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "para-hydroxylation to 2-propylhydroquinone",
+      "summary": "2-丙基苯酚也可能先在对位羟化生成2-丙基氢醌再开环。没有化合物专一证据，不纳入被评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "propyl side-chain oxidation before ring cleavage",
+      "summary": "丙基侧链也可能先发生ω-氧化，再进行芳香环降解。对短链邻烷基酚通常不是首选逻辑，且无专一证据，不纳入被评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "intradiol cleavage of 3-propylcatechol",
+      "summary": "3-丙基儿茶酚理论上可走邻位开裂。3-烷基儿茶酚的常见路线是间位开裂，邻位开裂未列为主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：邻烷基酚以邻甲酚为代表，经酚羟化生成3-烷基儿茶酚，再由儿茶酚2,3-双加氧酶近端间位开裂并水解；2-丙基苯酚按同一化学逻辑外推",
+      "claim_scope": ["route_assignment", "reaction", "enzyme"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：间位裂解下游途径中，2-羟基戊-2,4-二烯酸经互变异构、水合和醛缩酶裂解生成丙酮酸与乙醛；对应常用EC为5.3.2.6、4.2.1.80和4.1.3.39",
+      "claim_scope": ["reaction", "enzyme", "central_metabolism_entry"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "未找到可核验的2-丙基苯酚降解实验文献、数据库记录、菌株保藏号或基因组证据，主链按邻烷基酚间位开裂通式推断。",
+    "各步微生物未知，microorganism置null，organism_profiles为空，15项性状没有可填写的菌株载体。",
+    "单加氧步骤的电子供体未能在NADH与NADPH之间确定，因此未写入还原辅因子，该步计量不完整。",
+    "开环是近端还是远端间位裂解、以及是否存在侧链先氧化或对位羟化，均无化合物专一证据。",
+    "C9开环产物的水解酶没有确认的EC编号。",
+    "2-羟基-6-氧代壬-2,4-二烯酸和2-羟基戊-2,4-二烯酸的双键立体化学未在SMILES中指定。"
+  ]
+}

@@ -1,0 +1,614 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_014",
+  "pollutant_name_zh": "2-硝基苯甲酸根",
+  "pollutant_name_en": "2-Nitrobenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "2-nitrobenzoate degradation II",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "2-硝基苯甲酸根在好氧条件下经2-硝基苯甲酸2-单加氧酶催化生成2-硝基苯酚，再经2-硝基苯酚2-单加氧酶转化为邻苯二酚，随后进入β-酮己二酸途径，依次生成顺,顺-粘康酸、粘康酸内酯、3-氧代己二酸烯醇内酯、3-氧代己二酸、3-氧代己二酰-CoA，最终裂解为乙酰-CoA和琥珀酰-CoA。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-nitrobenzoate",
+          "smiles": "[O-]C(=O)c1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-nitrophenol",
+          "smiles": "Oc1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "2-nitrobenzoate 2-monooxygenase",
+        "ec_number": "1.14.13.166",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "KU-7",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-nitrophenol",
+          "smiles": "Oc1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "2-nitrophenol 2-monooxygenase",
+        "ec_number": "1.14.13.167",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "KU-7",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis,cis-muconate",
+          "smiles": "[O-]C(=O)\\C=C/C=C\\C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dioxygenation",
+      "enzyme": {
+        "name": "catechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "cis,cis-muconate",
+          "smiles": "[O-]C(=O)\\C=C/C=C\\C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "muconolactone",
+          "smiles": "O=C1OC(=CC1)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "cycloisomerization",
+      "enzyme": {
+        "name": "muconate cycloisomerase",
+        "ec_number": "5.5.1.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "muconolactone",
+          "smiles": "O=C1OC(=CC1)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "muconolactone Delta-isomerase",
+        "ec_number": "5.3.3.4",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "[O-]C(=O)CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "3-oxoadipate enol-lactonase",
+        "ec_number": "3.1.1.24",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "[O-]C(=O)CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "CoA transfer",
+      "enzyme": {
+        "name": "3-oxoadipate CoA-transferase",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_007"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_007",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "succinyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolysis",
+      "enzyme": {
+        "name": "beta-ketoadipyl-CoA thiolase",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_008"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_008"
+      },
+      "reaction_evidence_id": "EVID_008",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas fluorescens",
+      "strain": "KU-7",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA", "succinyl-CoA"],
+    "explanation": "末端产物进入三羧酸循环。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["step S1 reaction", "enzyme", "microorganism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["step S2 reaction", "enzyme", "microorganism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["step S3 reaction", "enzyme", "microorganism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["step S4 reaction", "enzyme", "microorganism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["step S5 reaction", "enzyme", "microorganism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["step S6 reaction", "enzyme", "microorganism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["step S7 reaction", "enzyme", "microorganism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["step S8 reaction", "enzyme", "microorganism"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "2-硝基苯甲酸根降解II的具体酶EC编号和菌株信息基于内部知识，可能存在偏差。"
+  ]
+}

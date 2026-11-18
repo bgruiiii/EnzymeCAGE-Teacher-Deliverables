@@ -1,0 +1,425 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_038",
+  "pollutant_name_zh": "4-硝基甲苯",
+  "pollutant_name_en": "4-Nitrotoluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-nitrotoluene degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；本答案按该路线的文献生化事实填写为好氧。主链采用最早阐明的甲基侧链氧化至原儿茶酸途径，代表菌为Pseudomonas sp. TW3。罗马数字I与部分还原途径的数据库原始对应关系本次未能核对，见uncertainties。"
+  },
+  "route_summary": "好氧条件下，4-硝基甲苯经单加氧酶将甲基氧化为4-硝基苯甲醇，再由醇脱氢酶和醛脱氢酶依次生成4-硝基苯甲醛和4-硝基苯甲酸；4-硝基苯甲酸经硝基部分还原生成4-羟氨基苯甲酸，再由裂解酶转化为原儿茶酸并进入中心芳香代谢。代表菌株为Pseudomonas sp. TW3。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-nitrotoluene",
+          "smiles": "Cc1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-nitrobenzyl alcohol",
+          "smiles": "OCc1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧反应",
+      "enzyme": {
+        "name": "4-nitrotoluene monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "正式EC编号及TW3上层途径基因符号本次不能唯一核定。NADH与O2依据4-硝基甲苯甲基氧化文献列入。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-nitrobenzyl alcohol",
+          "smiles": "OCc1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-nitrobenzaldehyde",
+          "smiles": "O=Cc1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醇脱氢",
+      "enzyme": {
+        "name": "4-nitrobenzyl alcohol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "EC编号未核定。辅酶按NAD+填写，不排除个别菌株使用NADP+。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-nitrobenzaldehyde",
+          "smiles": "O=Cc1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-nitrobenzoate",
+          "smiles": "O=C(O)c1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛脱氢",
+      "enzyme": {
+        "name": "4-nitrobenzaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "EC编号未核定。SMILES采用中性羧酸形式；生理pH下主要为4-硝基苯甲酸根。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-nitrobenzoate",
+          "smiles": "O=C(O)c1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxylaminobenzoate",
+          "smiles": "ONc1ccc(C(=O)O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "硝基部分还原",
+      "enzyme": {
+        "name": "4-nitrobenzoate nitroreductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步在部分数据库中归入独立的4-nitrobenzoate degradation。反应消耗两当量NAD(P)H并释放水，但TW3辅酶专一性未在本次唯一核定，故未写入结构化辅因子。4-亚硝基苯甲酸按酶结合中间体处理，不单列。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-hydroxylaminobenzoate",
+          "smiles": "ONc1ccc(C(=O)O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C(O)c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "裂解转化",
+      "enzyme": {
+        "name": "4-hydroxylaminobenzoate lyase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "含氮产物按氨填写，化学计量未逐项复核。EC常未正式分配。该步与4-硝基苯甲酸降解途径重叠，但是原儿茶酸这一中心代谢入口所必需。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "TW3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以4-硝基甲苯为碳源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解4-硝基甲苯，并经4-硝基苯甲酸转化为原儿茶酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有4-硝基甲苯单加氧酶、4-硝基苯甲醇脱氢酶、4-硝基苯甲醛脱氢酶及4-硝基苯甲酸硝基还原相关活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["protocatechuate"],
+    "explanation": "主链终点原儿茶酸是中心芳香代谢入口，随后通常经原儿茶酸3,4-双加氧酶和β-酮己二酸途径生成琥珀酰辅酶A与乙酰辅酶A。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate ortho-cleavage via the beta-ketoadipate pathway",
+      "summary": "原儿茶酸开环后进入β-酮己二酸途径，生成琥珀酰辅酶A和乙酰辅酶A。该下游不属于4-硝基甲苯专属反应，未列入评分主链步骤。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "4-nitrotoluene partial reduction and rearrangement",
+      "summary": "Mycobacterium sp. HL 4-NT-1将4-硝基甲苯部分还原为4-羟氨基甲苯，再重排为2-氨基-5-甲基苯酚后开环。该分支不作为本题评分主链；若数据库实际把该途径标为degradation I，则本答案的主链归属需要更正。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Rhys-Williams W, Taylor SC, Williams PA. 1993. A novel pathway for the catabolism of 4-nitrotoluene by Pseudomonas. J Gen Microbiol. Haigler BE, Spain JC. 1993. Biodegradation of 4-nitrotoluene by Pseudomonas sp. strain 4NT. Appl Environ Microbiol. 4-硝基苯甲酸至原儿茶酸的连续转化与Pseudomonas sp. TW3的已知分解能力一致。",
+      "claim_scope": ["reaction", "enzyme", "organism", "cofactor", "carbon_source", "degradation_capacity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas属的通用细胞学特征：革兰氏阴性、杆状、不产芽孢。不是TW3菌株的实测记录。",
+      "claim_scope": ["cell_morphology", "gram_stain", "sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "未能核对MetaCyc或BioCyc原始途径对象，不能完全排除数据库将Mycobacterium sp. HL 4-NT-1的部分还原重排途径命名为4-nitrotoluene degradation I、而将甲基氧化途径命名为II。",
+    "各步EC编号多数未正式分配或不能唯一核定，基因符号亦未写入，均置null。",
+    "醇脱氢酶、醛脱氢酶的NAD+/NADP+专一性，以及4-硝基苯甲酸硝基还原酶的NADH/NADPH专一性在菌株间不完全一致；第4步因此未把具体辅酶写入结构化底物。",
+    "4-硝基苯甲酸至原儿茶酸两步在一些数据库中属于独立的4-nitrobenzoate degradation途径；此处因TW3可连续催化且原儿茶酸才是中心代谢入口而列入主链。",
+    "TW3的保藏号、NCBI TaxID、基因组登录号以及温度、pH、盐度、运动性和栖息地广适性没有可靠来源，置null。",
+    "4-羟氨基苯甲酸裂解步骤的含氮产物按氨填写，水和质子的精确化学计量未逐项复核。",
+    "部分后期文献把TW3称为Pseudomonas putida TW3；本答案保留原始属级名称Pseudomonas sp.，未改写种名。"
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_061",
+  "pollutant_name_zh": "亚甲基琥珀酸根（衣康酸根）",
+  "pollutant_name_en": "Methylenesuccinate(2-)",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "itaconate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线范围为 itaconate degradation；氧条件未指定。"
+  },
+  "route_summary": "衣康酸根（methylenesuccinate(2-)）按常见微生物 CoA 依赖途径降解：先由 itaconate CoA-transferase 活化为 itaconyl-CoA，再由 itaconyl-CoA hydratase 水合生成 (S)-citramalyl-CoA，最后由 (S)-citramalyl-CoA lyase 裂解为丙酮酸与乙酰-CoA；丙酮酸和乙酰-CoA 进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Methylenesuccinate(2-)",
+          "smiles": "C=C(C(=O)[O-])CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "itaconyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "acetate",
+          "smiles": "CC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA transfer",
+      "enzyme": {
+        "name": "Itaconate CoA-transferase",
+        "ec_number": "2.8.3.22",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 80,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步基因/蛋白与最适 CoA 供体未完全核实。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "itaconyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-citramalyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "Itaconyl-CoA hydratase",
+        "ec_number": "4.2.1.56",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 80,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "产物立体化学按常见 (S)-citramalyl-CoA 填写，未逐项核对原始文献。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "(S)-citramalyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "lyase cleavage",
+      "enzyme": {
+        "name": "(S)-citramalyl-CoA lyase",
+        "ec_number": "4.1.3.25",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 80,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "乙酰-CoA 在途径中循环利用；净中心代谢产物按丙酮酸与乙酰-CoA/乙酸体系理解。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 80,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "itaconate",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "itaconate degradation",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "CoA-dependent itaconate degradation enzyme activities",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "acetyl-CoA"
+    ],
+    "explanation": "末端裂解步骤生成丙酮酸与乙酰-CoA；乙酰-CoA 可参与 CoA 转移循环并进入中心代谢，丙酮酸直接进入中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "CoA-dependent itaconate degradation route: methylenesuccinate(2-) -> itaconyl-CoA -> (S)-citramalyl-CoA -> pyruvate + acetyl-CoA, commonly described for Pseudomonas putida",
+      "claim_scope": [
+        "S1 reaction",
+        "S2 reaction",
+        "S3 reaction",
+        "S1 enzyme",
+        "S2 enzyme",
+        "S3 enzyme",
+        "Pseudomonas putida association",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定。",
+    "具体菌株、基因与蛋白序列未核实。",
+    "辅因子 CoA 供体及立体化学按常见 CoA 依赖途径填写，未逐项核对原始文献。"
+  ]
+}

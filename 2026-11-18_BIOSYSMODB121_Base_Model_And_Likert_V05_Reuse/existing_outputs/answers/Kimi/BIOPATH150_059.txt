@@ -1,0 +1,581 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_059",
+  "pollutant_name_zh": "色氨酸",
+  "pollutant_name_en": "Tryptophan",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-tryptophan degradation to 2-amino-3-carboxymuconate semialdehyde",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；该路线即经典犬尿氨酸途径（kynurenine pathway）前半段，L-tryptophan 经 N-formylkynurenine、kynurenine、3-hydroxykynurenine、3-hydroxyanthranilate 生成 2-amino-3-carboxymuconate semialdehyde；其中 TDO、KMO、3-HAO 均为依赖 O2 的加氧酶，实际为需氧过程。"
+  },
+  "route_summary": "主链共 5 步：①L-色氨酸经色氨酸 2,3-双加氧酶（TDO, EC 1.13.11.11）氧化开环生成 N-甲酰-L-犬尿氨酸；②犬尿氨酸甲酰胺酶（EC 3.5.1.9）去甲酰化生成 L-犬尿氨酸并释放甲酸；③犬尿氨酸 3-单加氧酶（EC 1.14.13.9）羟化生成 3-羟基-L-犬尿氨酸；④犬尿氨酸酶（EC 3.7.1.3）裂解释放 L-丙氨酸并生成 3-羟基邻氨基苯甲酸；⑤3-羟基邻氨基苯甲酸 3,4-双加氧酶（EC 1.13.11.6）开环生成终产物 2-氨基-3-羧基粘康酸半醛（ACMS）。前两步以铜绿假单胞菌 PAO1（KynA/KynB）为代表，后三步以酿酒酵母 S288c（Bna4/Bna5/Bna1）为代表；酿酒酵母本身含有完整 BNA 途径。"
+  ,
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-tryptophan",
+          "smiles": "N[C@@H](Cc1c[nH]c2ccccc12)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-formyl-L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1ccccc1NC=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative pyrrole-ring cleavage (oxidation, heme dioxygenase)",
+      "enzyme": {
+        "name": "tryptophan 2,3-dioxygenase",
+        "ec_number": "1.13.11.11",
+        "gene_or_protein": "kynA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": "PAO1",
+        "ncbi_taxid": 208964,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "P. aeruginosa 体内色氨酸主要经 anthranilate 支路降解，此处以其 kynA（TDO）作为该步代表；酶与反应本身证据充分。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "N-formyl-L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1ccccc1NC=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1ccccc1N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "formate",
+          "smiles": "C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic deformylation (amidohydrolase)",
+      "enzyme": {
+        "name": "kynurenine formamidase",
+        "ec_number": "3.5.1.9",
+        "gene_or_protein": "kynB",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": "PAO1",
+        "ncbi_taxid": 208964,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1ccccc1N)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxy-L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1c(N)c(O)ccc1)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "FAD-dependent monooxygenation (hydroxylation)",
+      "enzyme": {
+        "name": "kynurenine 3-monooxygenase",
+        "ec_number": "1.14.13.9",
+        "gene_or_protein": "BNA4",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": "S288c",
+        "ncbi_taxid": 559292,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "该步以酿酒酵母 Bna4 为代表；部分细菌（如 Ralstonia/Cupriavidus、Pseudomonas fluorescens）也报道有 KMO 同源酶。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "3-hydroxy-L-kynurenine",
+          "smiles": "N[C@@H](CC(=O)c1c(N)c(O)ccc1)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxyanthranilate",
+          "smiles": "O=C(O)c1c(N)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "L-alanine",
+          "smiles": "N[C@@H](C)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "PLP-dependent hydrolytic C-C bond cleavage",
+      "enzyme": {
+        "name": "kynureninase",
+        "ec_number": "3.7.1.3",
+        "gene_or_protein": "BNA5",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": "S288c",
+        "ncbi_taxid": 559292,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "酵母 Bna5 偏好 3-羟基犬尿氨酸为底物；细菌 kynureninase（如 P. aeruginosa KynU）主要作用于犬尿氨酸生成邻氨基苯甲酸，属另一支路。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "3-hydroxyanthranilate",
+          "smiles": "O=C(O)c1c(N)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-amino-3-carboxymuconate semialdehyde",
+          "smiles": "O=C(O)C(N)=C(C(=O)O)C=CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "non-heme Fe(II) dioxygenative ring cleavage",
+      "enzyme": {
+        "name": "3-hydroxyanthranilate 3,4-dioxygenase",
+        "ec_number": "1.13.11.6",
+        "gene_or_protein": "BNA1",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Saccharomyces cerevisiae",
+        "strain": "S288c",
+        "ncbi_taxid": 559292,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "ACMS 为该路线终点，随后可自发环化生成喹啉酸进入 NAD+ 从头合成。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas aeruginosa",
+      "strain": "PAO1",
+      "ncbi_taxid": 208964,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": 42,
+            "preference": "嗜温（mesophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "以好氧生长为主，可利用硝酸盐进行厌氧呼吸（反硝化），通常归为兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "15692"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸为主，缺氧时进行反硝化厌氧呼吸",
+            "terminal_electron_acceptor": "氧气（缺氧时为硝酸盐）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种有机酸、氨基酸与糖类作唯一碳源，能以 L-色氨酸经犬尿氨酸途径为碳氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "代谢多样性高，可降解多种芳香族化合物、氨基酸及部分异生物质",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "色氨酸 2,3-双加氧酶（KynA）与犬尿氨酸甲酰胺酶（KynB）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具极生单鞭毛，有运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002516.2",
+            "genome_size_bp": 6264403,
+            "gc_percent": 66.6
+          },
+          "raw_text": "Complete genome sequence of Pseudomonas aeruginosa PAO1: chromosome of 6,264,403 bp, G+C content 66.6% (Stover et al., Nature 2000)",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息范围广：土壤、水体、植物根际及医院环境，并可在人和动物体内机会性定植",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Saccharomyces cerevisiae",
+      "strain": "S288c",
+      "ncbi_taxid": 559292,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "嗜温（mesophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（既能好氧呼吸也能酒精发酵）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 5.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "204508"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸与酒精发酵（兼性厌氧）",
+            "terminal_electron_acceptor": "氧气（有氧呼吸时）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以葡萄糖等可发酵糖类为主要碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解谱较窄，但具完整犬尿氨酸途径（BNA1-BNA7），可将 L-色氨酸转化为 NAD+ 前体",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "犬尿氨酸途径酶活性：Bna2（TDO）、Bna7（甲酰胺酶）、Bna4（KMO）、Bna5（犬尿氨酸酶）、Bna1（3-羟基邻氨基苯甲酸双加氧酶）",
+          "raw_text": "Identification of the BNA genes (BNA1-BNA7) encoding the kynurenine pathway enzymes in Saccharomyces cerevisiae",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "无运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "卵圆形单细胞酵母，出芽繁殖",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "真核细胞，细胞壁为葡聚糖-甘露聚糖，革兰氏染色通常呈阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "可形成子囊孢子（ascospores）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "GCA_000146045.2",
+            "genome_size_bp": 12157105,
+            "gc_percent": 38.3
+          },
+          "raw_text": "Saccharomyces cerevisiae S288c reference genome (R64, GCA_000146045.2), approximately 12.16 Mb, ~38% G+C",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "广布于果实、植物表面等含糖环境及发酵制品，亦为广泛使用的模式生物",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_002",
+  "central_metabolism_entry": {
+    "products": ["L-alanine", "formate"],
+    "explanation": "副产物 L-丙氨酸可经转氨生成丙酮酸进入中心碳代谢，甲酸可进入一碳代谢；主产物 2-amino-3-carboxymuconate semialdehyde 本身进入下游 NAD+ 从头合成而非经典中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "ACMS to quinolinate / de novo NAD+ biosynthesis",
+      "summary": "2-amino-3-carboxymuconate semialdehyde 自发环化生成喹啉酸（quinolinate），再经喹啉酸磷酸核糖转移酶进入 de novo NAD+ 合成途径。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "L-kynurenine to anthranilate branch",
+      "summary": "多数假单胞菌中犬尿氨酸酶（KynU）直接水解 L-犬尿氨酸生成邻氨基苯甲酸，继而经邻氨基苯甲酸 1,2-双加氧酶进入儿茶酚支路；不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "Tryptophanase (indole) branch",
+      "summary": "色氨酸酶（TnaA, EC 4.1.99.1）将 L-色氨酸裂解为吲哚、丙酮酸和氨；不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway: L-tryptophan degradation to 2-amino-3-carboxymuconate semialdehyde",
+      "claim_scope": ["route", "reaction", "enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Kurnasov O et al., Chemistry & Biology (2003), 'NAD biosynthesis: identification of the tryptophan to quinolinate pathway in bacteria'（细菌 kynA/kynB/kynU 等犬尿氨酸途径基因的鉴定，含 Pseudomonas aeruginosa）",
+      "claim_scope": ["reaction", "enzyme", "microorganism", "trait"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Panozzo C et al., FEBS Letters (2002), 'Aerobic and anaerobic NAD+ metabolism in Saccharomyces cerevisiae'（BNA1-BNA7 基因编码完整犬尿氨酸途径）",
+      "claim_scope": ["reaction", "enzyme", "microorganism", "trait"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Stover CK et al., Nature 406:959-964 (2000), 'Complete genome sequence of Pseudomonas aeruginosa PAO1, an opportunistic pathogen'",
+      "claim_scope": ["trait"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive (DSMZ)",
+      "record_id": "DSM 22644",
+      "locator": "BacDive strain entry for Pseudomonas aeruginosa PAO1 (physiology, morphology, culture collections)",
+      "claim_scope": ["trait", "microorganism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "Saccharomyces Genome Database (SGD)",
+      "record_id": null,
+      "locator": "SGD reference strain S288c (genome R64 / GCA_000146045.2) and BNA gene annotations",
+      "claim_scope": ["trait", "enzyme", "microorganism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["trait"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；本路线中 TDO、KMO、3-HAO 均为依赖 O2 的加氧酶，实际为需氧过程，但 route_scope.oxygen_condition 按题面保留 null。",
+    "步骤 3–5 以真核微生物酿酒酵母 S288c 为代表；细菌中亦存在同源犬尿氨酸途径（如 Cupriavidus/Ralstonia），但单菌证据不如酵母完整。",
+    "步骤 1–2 的代表菌 P. aeruginosa PAO1 在体内主要走 anthranilate 支路，其 kynA/kynB 催化本题前两步属基因注释与体外证据支持。",
+    "部分生理性状（盐度、最适 pH 等）缺乏直接来源，已按纪律填 null 或以 INTERNAL_KNOWLEDGE_ONLY 低置信度给出。"
+  ]
+}

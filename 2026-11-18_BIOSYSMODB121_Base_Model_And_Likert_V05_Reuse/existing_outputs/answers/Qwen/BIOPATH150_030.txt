@@ -1,0 +1,343 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_030",
+  "pollutant_name_zh": "D-半乳糖酸根",
+  "pollutant_name_en": "D-galactonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-galactonate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线范围为 D-galactonate degradation；氧条件未指定。"
+  },
+  "route_summary": "D-半乳糖酸根经 D-半乳糖酸脱水酶形成 2-酮-3-脱氧-D-半乳糖酸，再由激酶磷酸化为 2-酮-3-脱氧-D-半乳糖酸-6-磷酸，最后经醛缩酶裂解为丙酮酸和 D-甘油醛-3-磷酸，进入中心碳代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-galactonate",
+          "smiles": "[O-]C(=O)C(O)C(O)C(O)C(O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-D-galactonate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydration",
+      "enzyme": {
+        "name": "D-galactonate dehydratase",
+        "ec_number": "4.2.1.6",
+        "gene_or_protein": "garD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "SMILES 为开链简化表示，未指定全部立体化学。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-D-galactonate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-D-galactonate 6-phosphate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)C(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxygalactonokinase",
+        "ec_number": "2.7.1.58",
+        "gene_or_protein": "garK",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "ATP/ADP 的 SMILES 未填写。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-D-galactonate 6-phosphate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)C(O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "D-glyceraldehyde 3-phosphate",
+          "smiles": "O=CC(O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxy-D-galactonate-6-phosphate aldolase",
+        "ec_number": "4.1.2.29",
+        "gene_or_protein": "garL",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "产物进入中心代谢后的后续分支未纳入本题主链。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温，最适约37°C"
+          },
+          "raw_text": "Escherichia coli is a mesophile with optimum growth around 37°C",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": "Escherichia coli is facultatively anaerobic",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": "Escherichia coli grows optimally near neutral pH",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "47076"
+          },
+          "raw_text": "Escherichia coli K-12 substr. MG1655 is deposited as ATCC 47076",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧呼吸/发酵",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "E. coli performs aerobic respiration when oxygen is available and can also grow anaerobically",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用D-半乳糖酸作为碳源和能源",
+          "raw_text": "D-galactonate can be catabolized by Escherichia coli K-12 via the gar pathway",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可通过D-半乳糖酸降解途径将D-半乳糖酸转化为丙酮酸和D-甘油醛-3-磷酸",
+          "raw_text": "D-galactonate degradation yields pyruvate and glyceraldehyde-3-phosphate",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有D-半乳糖酸脱水酶、2-酮-3-脱氧半乳糖酸激酶和2-酮-3-脱氧-D-半乳糖酸-6-磷酸醛缩酶活性",
+          "raw_text": "garD, garK and garL encode the activities of D-galactonate degradation",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": "Escherichia coli cells are rod-shaped",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Escherichia coli is Gram-negative",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": "Escherichia coli does not form spores",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": "Escherichia coli str. K-12 substr. MG1655 complete genome, RefSeq NC_000913.3, 4641652 bp, GC about 50.8%",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "实验室驯化菌株；其物种常见于肠道及多种外界环境，能在多种培养条件下生长",
+          "raw_text": "E. coli K-12 is a laboratory strain derived from E. coli, a species associated with intestine and diverse environments",
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "D-glyceraldehyde 3-phosphate"
+    ],
+    "explanation": "D-半乳糖酸降解的最终主产物为丙酮酸和 D-甘油醛-3-磷酸，二者可进入糖酵解、三羧酸循环等中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "D-galactonate degradation main route: D-galactonate -> 2-dehydro-3-deoxy-D-galactonate -> 2-dehydro-3-deoxy-D-galactonate 6-phosphate -> pyruvate + D-glyceraldehyde 3-phosphate in Escherichia coli K-12",
+      "claim_scope": [
+        "pathway",
+        "steps",
+        "enzymes",
+        "microorganism",
+        "carbon_utilization",
+        "degradation_capacity",
+        "enzyme_activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655 complete genome",
+      "claim_scope": [
+        "organism_identity",
+        "genome_basic"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general Escherichia coli K-12 physiology traits",
+      "claim_scope": [
+        "traits"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "47076",
+      "locator": "Escherichia coli K-12 MG1655 culture collection accession",
+      "claim_scope": [
+        "culture_collection"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，无法判断该路线在好氧或厌氧条件下的偏好。",
+    "SMILES 采用开链简化表示，未完全指定立体化学。",
+    "部分菌株表型性状未逐项核验原始文献，故以内部知识或未知处理。"
+  ]
+}

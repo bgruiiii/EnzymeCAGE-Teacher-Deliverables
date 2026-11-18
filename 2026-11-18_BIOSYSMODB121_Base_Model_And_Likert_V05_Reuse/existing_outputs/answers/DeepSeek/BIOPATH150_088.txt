@@ -1,0 +1,251 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_088",
+  "pollutant_name_zh": "2-羟基-3-磺酸基丙酸根",
+  "pollutant_name_en": "2-Hydroxy-3-sulfonatopropanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfolactate degradation III",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "2-羟基-3-磺酸基丙酸根（磺基乳酸）经磺基乳酸脱氢酶氧化为3-磺酸基丙酮酸，再经磺基丙酮酸脱羧酶脱羧生成磺基乙醛，最后经磺基乙醛乙酰转移酶裂解产生乙酰辅酶A和亚硫酸盐。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-3-sulfonatopropanoate",
+          "smiles": "O=C([O-])C(O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Sulfonatopyruvate",
+          "smiles": "O=C([O-])C(=O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Sulfolactate dehydrogenase",
+        "ec_number": "1.1.1.334",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": 246200,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-Sulfonatopyruvate",
+          "smiles": "O=C([O-])C(=O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Sulfoacetaldehyde",
+          "smiles": "O=CCS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "Sulfopyruvate decarboxylase",
+        "ec_number": "4.1.1.97",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": 246200,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Sulfoacetaldehyde",
+          "smiles": "O=CCS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O)C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+          "role": "main"
+        },
+        {
+          "name": "Sulfite",
+          "smiles": "[O-]S(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "acetyl transfer / C-S cleavage",
+      "enzyme": {
+        "name": "Sulfoacetaldehyde acetyltransferase",
+        "ec_number": "2.3.1.187",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": 246200,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Ruegeria pomeroyi",
+      "strain": "DSS-3",
+      "ncbi_taxid": 246200,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA"],
+    "explanation": "乙酰辅酶A进入中心代谢（如三羧酸循环）。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [],
+  "uncertainties": []
+}

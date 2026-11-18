@@ -1,0 +1,396 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_024",
+  "pollutant_name_zh": "(S)-4-羟基扁桃酸",
+  "pollutant_name_en": "(S)-4-Hydroxymandelate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-hydroxymandelate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本主链含膜结合脱氢酶（电子进入呼吸链）和需氧单加氧酶，故判定为好氧。主链为(S)-4-羟基扁桃酸至原儿茶酸的连续转化；原儿茶酸开环以后不计入该命名路线。"
+  },
+  "route_summary": "(S)-4-羟基扁桃酸由L-扁桃酸脱氢酶氧化为4-羟基苯甲酰甲酸，经苯甲酰甲酸脱羧酶脱羧生成4-羟基苯甲醛，再由NAD+依赖的芳香醛脱氢酶氧化为4-羟基苯甲酸，最后由4-羟基苯甲酸3-单加氧酶羟基化为原儿茶酸。代表菌为可利用该底物生长的Acinetobacter calcoaceticus NCIB 8250。原儿茶酸随后经β-酮己二酸途径进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(S)-4-hydroxymandelate",
+          "smiles": "O=C(O)[C@@H](O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "electron acceptor",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoylformate",
+          "smiles": "O=C(O)C(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "reduced electron acceptor",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱氢",
+      "enzyme": {
+        "name": "(S)-mandelate dehydrogenase",
+        "ec_number": "1.1.99.31",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIB 8250",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该菌的L-扁桃酸脱氢酶为膜结合FMN酶，可氧化(S)-4-羟基扁桃酸；生理电子受体是呼吸链组分而非NAD(P)+，具体受体未指定。EC 1.1.99.31的(R)/(S)记载存在历史混淆。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzoylformate",
+          "smiles": "O=C(O)C(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "benzoylformate decarboxylase",
+        "ec_number": "4.1.1.7",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIB 8250",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "苯甲酰甲酸脱羧酶可作用于4-羟基苯甲酰甲酸。硫胺素焦磷酸和镁离子为催化辅因子，未作为计量底物列出。菌株基因名未核实。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoate",
+          "smiles": "O=C(O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛脱氢",
+      "enzyme": {
+        "name": "benzaldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.28",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIB 8250",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "4-羟基苯甲醛由NAD+依赖的芳香醛脱氢酶氧化；其是否与EC 1.2.1.28为同一蛋白，在NCIB 8250中未再核实。该菌另有NADP+依赖醛脱氢酶，不作为本步首选。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzoate",
+          "smiles": "O=C(O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C(O)c1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧羟基化",
+      "enzyme": {
+        "name": "4-hydroxybenzoate 3-monooxygenase",
+        "ec_number": "1.14.13.2",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIB 8250",
+        "ncbi_taxid": 471,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "此步把命名路线的上游产物4-羟基苯甲酸导入原儿茶酸，是该菌利用4-羟基扁桃酸所必需的连接步骤。基因名及EC是否已转移至新编号未核实，故基因置null，EC沿用1.14.13.2。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter calcoaceticus",
+      "strain": "NCIB 8250",
+      "ncbi_taxid": 471,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "NCIB",
+            "accession": "8250"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以(S)-4-羟基扁桃酸作为唯一碳源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解4-羟基扁桃酸、扁桃酸及苯甲酸类芳香化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有可氧化(S)-4-羟基扁桃酸的L-扁桃酸脱氢酶及扁桃酸途径相关酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "球杆菌",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "主链止于原儿茶酸。原儿茶酸经原儿茶酸3,4-双加氧酶起始的β-酮己二酸途径开环，最终生成琥珀酰辅酶A和乙酰辅酶A进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "beta-ketoadipate pathway",
+      "summary": "原儿茶酸由原儿茶酸3,4-双加氧酶（EC 1.13.11.3）邻位开环为3-羧基-顺,顺-粘康酸，再经β-酮己二酸烯醇内酯、β-酮己二酸，生成琥珀酰辅酶A和乙酰辅酶A。不动杆菌走邻位裂解而非间位裂解。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "Pseudomonas putida racemase route",
+      "summary": "在Pseudomonas putida中，(S)-4-羟基扁桃酸可先经扁桃酸消旋酶变为(R)-对映体，再由(R)-扁桃酸脱氢酶氧化为4-羟基苯甲酰甲酸，此后与本主链汇合。该分支不作为本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "4-hydroxymandelate degradation: (S)-mandelate dehydrogenase, benzoylformate decarboxylase, NAD+-dependent aromatic aldehyde dehydrogenase, 4-hydroxybenzoate 3-monooxygenase",
+      "claim_scope": ["reaction", "enzyme", "ec_number", "stoichiometry"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Acinetobacter calcoaceticus NCIB 8250 metabolism of mandelate and 4-hydroxymandelate",
+      "claim_scope": ["microorganism", "F5_culture_collection", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "standard taxonomic characters of the genus Acinetobacter",
+      "claim_scope": ["F1_oxygen_tolerance", "F6_respiration_electron_acceptor", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "EC 1.1.99.31在不同数据库中的(R)/(S)选择性记载有历史混淆；本答案采用不动杆菌中直接作用于(S)-对映体的L-扁桃酸脱氢酶。",
+    "第一步生理电子受体未具体到某一化合物，故SMILES为null。",
+    "NCIB 8250的现行物种界定、等价保藏编号和基因组登录号未核实，温度、pH、盐度、基因组和栖息地广适性记为null。",
+    "4-羟基苯甲醛脱氢酶归入EC 1.2.1.28，以及4-羟基苯甲酸3-单加氧酶是否已改用新EC编号，均未在本次逐条复核。",
+    "不同途径库可能把4-hydroxymandelate degradation的边界划在4-羟基苯甲酸；此处将连接至原儿茶酸的单加氧步骤列入主链，开环以后仅记为下游。"
+  ]
+}

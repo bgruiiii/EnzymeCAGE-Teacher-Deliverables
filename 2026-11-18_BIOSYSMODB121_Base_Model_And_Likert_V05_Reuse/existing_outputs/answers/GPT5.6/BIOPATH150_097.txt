@@ -1,0 +1,359 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_097",
+  "pollutant_name_zh": "三甲胺",
+  "pollutant_name_en": "Trimethylamine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "trimethylamine degradation",
+    "is_single_continuous_route": true,
+    "notes": "采用以三甲胺氧化为三甲胺-N-氧化物并连续脱甲基的主链；题面未指定氧条件。"
+  },
+  "route_summary": "三甲胺可先经三甲胺单加氧酶氧化为三甲胺-N-氧化物，随后依次脱甲基生成二甲胺、甲胺和甲醛，甲胺进一步氧化生成甲醛与氨。该主链对应好氧甲基营养菌中的已知三甲胺利用模式。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Trimethylamine N-oxide",
+          "smiles": "C[N+](C)(C)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化",
+      "enzyme": {
+        "name": "Trimethylamine monooxygenase",
+        "ec_number": "1.14.13.148",
+        "gene_or_protein": "tmm",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Methylobacterium aminovorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "具体菌株、基因组编号和该菌株中酶的实验注释未确定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Trimethylamine N-oxide",
+          "smiles": "C[N+](C)(C)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Dimethylamine",
+          "smiles": "CNC",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱甲基",
+      "enzyme": {
+        "name": "Trimethylamine N-oxide demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Methylobacterium aminovorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "该脱甲基酶的标准EC编号和具体蛋白名称缺乏确定注释。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "Dimethylamine",
+          "smiles": "CNC",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Methylamine",
+          "smiles": "CN",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱甲基",
+      "enzyme": {
+        "name": "Dimethylamine monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Methylobacterium aminovorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "二甲胺单加氧酶的EC编号和具体基因未确定；该步按连续脱甲基主链表示。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "Methylamine",
+          "smiles": "CN",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱氨",
+      "enzyme": {
+        "name": "Methylamine dehydrogenase",
+        "ec_number": "1.5.99.30",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Methylobacterium aminovorans",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "具体电子受体、辅因子和菌株特异性酶亚基未确定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Methylobacterium aminovorans",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "Formaldehyde"
+    ],
+    "explanation": "甲醛可进入甲基营养菌的甲醛同化或氧化代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "关于Methylobacterium aminovorans利用甲胺类化合物的分类与生理研究",
+      "claim_scope": [
+        "微生物身份",
+        "三甲胺相关甲基营养能力"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "三甲胺经三甲胺单加氧酶、连续脱甲基反应和甲胺脱氢酶降解的生化路径研究",
+      "claim_scope": [
+        "主反应链",
+        "三甲胺单加氧酶",
+        "甲胺脱氢酶",
+        "连续脱甲基反应"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，因此未将路线条件强制标记为好氧。",
+    "具体菌株、NCBI TaxID、保藏编号和基因组基本信息未确定。",
+    "三甲胺-N-氧化物脱甲基酶和二甲胺单加氧酶的标准EC编号未确定。"
+  ]
+}

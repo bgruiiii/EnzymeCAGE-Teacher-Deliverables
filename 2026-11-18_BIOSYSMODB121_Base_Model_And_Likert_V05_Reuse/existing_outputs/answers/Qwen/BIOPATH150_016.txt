@@ -1,0 +1,315 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_016",
+  "pollutant_name_zh": "对伞花烃",
+  "pollutant_name_en": "p-CYMENE",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "p-Cymene degradation to p-cumate",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线范围填写：好氧条件下将对伞花烃氧化至对异丙基苯甲酸（p-cumate）。"
+  },
+  "route_summary": "在好氧条件下，Pseudomonas putida F1 通过对伞花烃甲基的依次氧化，经由对异丙基苄醇和对异丙基苯甲醛，生成对异丙基苯甲酸（p-cumate）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "p-cymene",
+          "smiles": "Cc1ccc(C(C)C)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "p-cumic alcohol",
+          "smiles": "OCc1ccc(C(C)C)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "methyl hydroxylation",
+      "enzyme": {
+        "name": "p-cymene methylhydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 390235,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "第一步单加氧酶的EC编号与具体蛋白组成未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "p-cumic alcohol",
+          "smiles": "OCc1ccc(C(C)C)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "p-cumic aldehyde",
+          "smiles": "O=Cc1ccc(C(C)C)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "alcohol oxidation",
+      "enzyme": {
+        "name": "p-cumic alcohol dehydrogenase",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 390235,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "醇脱氢酶的具体同工酶或基因未确认。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "p-cumic aldehyde",
+          "smiles": "O=Cc1ccc(C(C)C)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "p-cumate",
+          "smiles": "O=C([O-])c1ccc(C(C)C)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldehyde oxidation",
+      "enzyme": {
+        "name": "p-cumic aldehyde dehydrogenase",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 390235,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "醛脱氢酶的具体同工酶或基因未确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 390235,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温（具体数值未确认）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700007"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用对伞花烃及其氧化产物（如p-cumate）作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解芳香烃，至少可将p-cymene氧化为p-cumate",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有p-cymene甲基单加氧酶、醇脱氢酶和醛脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_009512",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、水体等环境，常见于芳香烃污染生境",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "p-cumate"
+    ],
+    "explanation": "本题指定路线止于p-cumate；其后续降解未纳入主链。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "p-cymene to p-cumate pathway",
+        "enzyme names",
+        "Pseudomonas putida F1 general traits"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "390235",
+      "locator": null,
+      "claim_scope": [
+        "organism name",
+        "strain",
+        "ncbi_taxid"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome",
+      "record_id": "NC_009512",
+      "locator": null,
+      "claim_scope": [
+        "genome accession"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700007",
+      "locator": null,
+      "claim_scope": [
+        "culture collection"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "第一步单加氧酶的EC编号未确认。",
+    "醇脱氢酶与醛脱氢酶的具体基因或蛋白未确认。",
+    "多数生理生化性状缺少直接文献来源，未确认项已置为null或低置信度。"
+  ]
+}

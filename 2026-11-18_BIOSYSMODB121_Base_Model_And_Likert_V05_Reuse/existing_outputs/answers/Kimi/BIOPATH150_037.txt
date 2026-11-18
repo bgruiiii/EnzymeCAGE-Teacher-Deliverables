@@ -1,0 +1,422 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_037",
+  "pollutant_name_zh": "吡啶-3-甲醛肟",
+  "pollutant_name_en": "Pyridine-3-carbaldehyde oxime",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "Aldoxime degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，按 null 处理；路线按题面指定的 Aldoxime degradation 填写：醛肟脱水→腈水合→酰胺水解三步连续主链。"
+  },
+  "route_summary": "吡啶-3-甲醛肟（nicotinaldehyde oxime）先经醛肟脱水酶（aldoxime dehydratase, EC 4.2.1.115）脱水生成 3-氰基吡啶（nicotinonitrile），再经腈水合酶（nitrile hydratase, EC 4.2.1.84）水合为烟酰胺（nicotinamide），最后经酰胺酶（amidase, EC 3.5.1.4）水解为烟酸（nicotinic acid）并释放氨；烟酸可进一步经吡啶/烟酸降解途径进入中心代谢。第一步的菌-酶对应（Pseudomonas chlororaphis B23 的 OxdA）为文献中醛肟脱水酶的代表体系，对该具体底物的直接证据有限；第二、三步以工业上转化 3-氰基吡啶的 Rhodococcus rhodochrous J1 为代表菌。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Pyridine-3-carbaldehyde oxime",
+          "smiles": "ON=Cc1cccnc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Cyanopyridine (nicotinonitrile)",
+          "smiles": "N#Cc1cccnc1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱水反应（aldoxime dehydration，醛肟脱水生成腈）",
+      "enzyme": {
+        "name": "aldoxime dehydratase (OxdA)",
+        "ec_number": "4.2.1.115",
+        "gene_or_protein": "oxdA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas chlororaphis",
+        "strain": "B23",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "OxdA 对脂肪族醛肟研究较多，对吡啶-3-甲醛肟这一具体芳香醛肟的直接底物证据有限，菌-酶对应为代表性推断。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-Cyanopyridine (nicotinonitrile)",
+          "smiles": "N#Cc1cccnc1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Nicotinamide",
+          "smiles": "NC(=O)c1cccnc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合反应（nitrile hydration，腈水合生成酰胺）",
+      "enzyme": {
+        "name": "nitrile hydratase",
+        "ec_number": "4.2.1.84",
+        "gene_or_protein": "NHase alpha/beta subunits",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus rhodochrous",
+        "strain": "J1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Nicotinamide",
+          "smiles": "NC(=O)c1cccnc1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Nicotinic acid",
+          "smiles": "O=C(O)c1cccnc1",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解反应（amide hydrolysis，酰胺水解生成羧酸与氨）",
+      "enzyme": {
+        "name": "amidase",
+        "ec_number": "3.5.1.4",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Rhodococcus rhodochrous",
+        "strain": "J1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该步沿用 S2 代表菌 J1 的酰胺酶活性（J1 基因组/腈代谢基因簇中含酰胺酶），缺少针对烟酰胺底物的直接动力学证据，置信度低。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas chlororaphis",
+      "strain": "B23",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "有机化能异养，可利用脂肪族醛肟及腈类化合物",
+          "raw_text": "Pseudomonas chlororaphis B23 可同化醛肟/腈类并产醛肟脱水酶与腈水合酶（描述性摘录）",
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可转化醛肟类与腈类化合物（产醛肟脱水酶 OxdA 与腈水合酶）",
+          "raw_text": "aldoxime dehydratase (OxdA) from Pseudomonas chlororaphis B23 catalyzes dehydration of aldoximes to nitriles（描述性摘录）",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "醛肟脱水酶活性（aldoxime dehydratase, OxdA, EC 4.2.1.115）",
+          "raw_text": "OxdA from Pseudomonas chlororaphis B23, a heme-containing aldoxime dehydratase（描述性摘录）",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤及植物根际环境来源的假单胞菌，属环境广适型",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Rhodococcus rhodochrous",
+      "strain": "J1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用腈类化合物（如 3-氰基吡啶）等含氮有机物",
+          "raw_text": "Rhodococcus rhodochrous J1 以腈水合酶转化 3-氰基吡啶为烟酰胺（工业规模，描述性摘录）",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "腈类化合物的生物转化/降解（工业上用于由 3-氰基吡啶生产烟酰胺及由丙烯腈生产丙烯酰胺）",
+          "raw_text": "industrial conversion of 3-cyanopyridine to nicotinamide by R. rhodochrous J1 nitrile hydratase（描述性摘录）",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "腈水合酶活性（nitrile hydratase, EC 4.2.1.84）",
+          "raw_text": "nitrile hydratase of Rhodococcus rhodochrous J1（描述性摘录）",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "无运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状-球状（rod-coccus 生长循环）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（Gram-positive，放线菌型细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤来源的放线菌，常见于受腈类/含氮有机物影响的环境，具一定环境广适性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["Nicotinic acid"],
+    "explanation": "主链终点烟酸（nicotinic acid）可经 6-羟基烟酸途径等吡啶环降解途径进一步开环矿化，其碳骨架进入中心碳代谢、氮以氨形式进入氮代谢；本评分主链在烟酸处交出。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "Nitrilase 直接水解支路",
+      "summary": "3-氰基吡啶可由腈水解酶（nitrilase, EC 3.5.5.1）一步水解直接生成烟酸与氨，不经烟酰胺中间体；该支路不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Kato Y. 等关于 Pseudomonas chlororaphis B23 醛肟脱水酶（aldoxime dehydratase, OxdA）的系列研究：醛肟脱水生成相应腈（heme 依赖型脱水酶）",
+      "claim_scope": ["S1 反应（醛肟→腈脱水）", "S1 首选酶 aldoxime dehydratase EC 4.2.1.115", "S1 代表菌 Pseudomonas chlororaphis B23"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Nagasawa T., Yamada H. 等关于 Rhodococcus rhodochrous J1 腈水合酶（nitrile hydratase, EC 4.2.1.84）的研究：工业规模将 3-氰基吡啶水合为烟酰胺",
+      "claim_scope": ["S2 反应（3-氰基吡啶→烟酰胺）", "S2 首选酶 nitrile hydratase EC 4.2.1.84", "S2 代表菌 Rhodococcus rhodochrous J1"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "腈/酰胺代谢常识：红球菌腈水合酶体系伴随酰胺酶，可将烟酰胺水解为烟酸并释放氨（缺少针对本底物的直接文献定位）",
+      "claim_scope": ["S3 反应（烟酰胺→烟酸+氨）", "S3 首选酶 amidase EC 3.5.1.4"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas chlororaphis 的一般微生物学性状（革兰氏阴性、好氧、杆状、土壤/根际来源），无逐条原文引证",
+      "claim_scope": ["ORG_001 一般性状"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Rhodococcus rhodochrous 的一般微生物学性状（革兰氏阳性放线菌、好氧、杆-球生长循环、无运动性、不产孢），无逐条原文引证",
+      "claim_scope": ["ORG_002 一般性状"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "S1：醛肟脱水酶的代表体系（Pseudomonas chlororaphis B23 OxdA）对该具体底物吡啶-3-甲醛肟的直接底物特异性证据有限，属代表性推断。",
+    "S3：酰胺酶步沿用 S2 代表菌 J1，缺少针对烟酰胺底物的直接实验证据。",
+    "两株代表菌的温度、pH、盐度、保藏编号与基因组编号等性状未获得可靠来源，按 null 如实记录。",
+    "题面未指定氧条件（oxygen_condition 为 null），主链各酶（醛肟脱水酶、腈水合酶、酰胺酶）均不依赖氧，路线在好氧代表菌中描述。"
+  ]
+}

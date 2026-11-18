@@ -1,0 +1,350 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_030",
+  "pollutant_name_zh": "D-半乳糖酸根",
+  "pollutant_name_en": "D-galactonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-galactonate degradation",
+    "is_single_continuous_route": true,
+    "notes": "路线名称按题面原样填写，未改选其他路线；氧条件未指定（null）。该路线为大肠杆菌K-12的dgo途径（非磷酸化De Ley–Doudoroff型），为单条连续主链；DgoT负责底物转运，属非酶促主链步骤。"
+  },
+  "route_summary": "D-galactonate（D-半乳糖酸根）在大肠杆菌K-12中经dgo操纵子（dgoR/dgoK/dgoA/dgoD/dgoT）编码的非磷酸化De Ley–Doudoroff型途径降解为中央代谢物：(1) D-galactonate dehydratase（dgoD，EC 4.2.1.6）催化D-半乳糖酸根脱水生成2-dehydro-3-deoxy-D-galactonate；(2) 2-dehydro-3-deoxy-D-galactonate aldolase（dgoA，EC 4.1.2.21）将其醛醇裂解为pyruvate与D-glyceraldehyde；(3) D-glyceraldehyde kinase（dgoK，EC 2.7.1.28）以ATP将D-glyceraldehyde磷酸化为D-glyceraldehyde-3-phosphate。pyruvate与D-甘油醛-3-磷酸随后进入糖酵解/TCA循环等中央代谢。大肠杆菌为兼性厌氧菌，该途径在有氧与厌氧条件下均可运行。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-galactonate",
+          "smiles": "OC[C@@H](O)[C@H](O)[C@H](O)[C@@H](O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-D-galactonate",
+          "smiles": "OC[C@@H](O)[C@H](O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydration（脱水消除）",
+      "enzyme": {
+        "name": "D-galactonate dehydratase",
+        "ec_number": "4.2.1.6",
+        "gene_or_protein": "dgoD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-D-galactonate",
+          "smiles": "OC[C@@H](O)[C@H](O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "D-glyceraldehyde",
+          "smiles": "OC[C@@H](O)C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage（醛醇裂解）",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxy-D-galactonate aldolase",
+        "ec_number": "4.1.2.21",
+        "gene_or_protein": "dgoA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 4.1.2.21按常用数据库对大肠杆菌DgoA的注释填写；IUBMB条目4.1.2.21的规范名称为2-dehydro-3-deoxy-D-gluconate aldolase（葡糖酸型底物，C4构型相反），是否已为半乳糖酸型醛缩酶另设EC条目未核实。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "D-glyceraldehyde",
+          "smiles": "OC[C@@H](O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2C3OC(COP(=O)([O-])OP(=O)([O-])OP(=O)([O-])[O-])C(O)C3O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-glyceraldehyde-3-phosphate",
+          "smiles": "O=P([O-])([O-])OC[C@@H](O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "Nc1ncnc2c1ncn2C3OC(COP(=O)([O-])OP(=O)([O-])[O-])C(O)C3O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "phosphorylation（磷酸化）",
+      "enzyme": {
+        "name": "D-glyceraldehyde kinase",
+        "ec_number": "2.7.1.28",
+        "gene_or_protein": "dgoK",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "DgoK的EC编号2.7.1.28（triose kinase类反应：D-glyceraldehyde + ATP = D-glyceraldehyde-3-phosphate + ADP）凭内部知识填写，未经外部数据库核实。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温性，最适生长温度约37 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧（好氧呼吸为主，亦可厌氧呼吸与发酵）",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用D-半乳糖酸作为唯一碳源与能源（经dgo操纵子）；亦利用葡萄糖、D-半乳糖、甘油等多种碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "对糖类与糖酸类底物代谢能力强（如D-半乳糖酸、D-葡萄糖酸、阿拉伯糖等）；缺乏对外源持久性污染物的显著广谱降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "D-galactonate dehydratase（DgoD）、2-dehydro-3-deoxy-D-galactonate aldolase（DgoA）与D-glyceraldehyde kinase（DgoK）活性（dgo操纵子，可诱导表达）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状，约0.5 μm × 1.0–3.0 μm，单个或成对",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，具内膜-外膜（外膜含脂多糖）细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性较强：以人和温血动物肠道为主要栖息地，亦可在土壤、水体等外环境中存活",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "D-glyceraldehyde-3-phosphate"
+    ],
+    "explanation": "第2步醛醇裂解生成的pyruvate直接进入中央代谢（经丙酮酸脱氢酶复合体进入TCA循环，或在厌氧条件下进入发酵途径）；第3步生成的D-glyceraldehyde-3-phosphate进入糖酵解/糖异生途径。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "糖酵解/糖异生",
+      "summary": "D-glyceraldehyde-3-phosphate经甘油醛-3-磷酸脱氢酶、磷酸甘油酸激酶等EMP途径酶向下代谢至pyruvate，或反向参与糖异生。"
+    },
+    {
+      "name": "TCA循环（经pyruvate）",
+      "summary": "pyruvate氧化脱羧生成乙酰CoA进入三羧酸循环；厌氧条件下经混合酸发酵等途径再生NAD+。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "D-glyceraldehyde的还原/氧化旁路",
+      "summary": "某些微生物中D-glyceraldehyde可被还原为glycerol或氧化为D-glycerate后进一步代谢；在大肠杆菌K-12的D-galactonate降解主链中，D-glyceraldehyde由DgoK磷酸化进入糖酵解。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "D-galactonate降解主链三步反应及产物",
+        "酶DgoD（EC 4.2.1.6）/DgoA（EC 4.1.2.21）/DgoK（EC 2.7.1.28）归属",
+        "大肠杆菌K-12经dgo操纵子利用D-半乳糖酸"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli K-12 MG1655菌株身份（TaxID 511145，ATCC 700926）",
+        "基因组NC_000913，4,641,652 bp，GC约50.8%"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "大肠杆菌生理与形态性状：革兰氏阴性、兼性厌氧、杆状、无芽孢、可运动、中温（约37 °C）、肠道/环境栖息"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "DgoA的EC编号按常用数据库注释填为4.1.2.21，但IUBMB条目4.1.2.21的规范名称为2-dehydro-3-deoxy-D-gluconate aldolase（葡糖酸型底物，C4构型与半乳糖酸型相反）；是否存在独立的半乳糖酸型醛缩酶EC条目未核实。",
+    "DgoK的EC编号2.7.1.28（triose kinase类反应）凭内部知识填写，未经外部数据库核实。",
+    "全部证据为内部知识（INTERNAL_KNOWLEDGE_ONLY），无数据库记录号或文献定位信息；ATCC 700926、基因组NC_000913（4,641,652 bp）等菌株信息未经外部来源核实。",
+    "题面未指定氧条件（null）；大肠杆菌为兼性厌氧菌，该dgo途径在有氧与厌氧条件下均可运行。"
+  ]
+}

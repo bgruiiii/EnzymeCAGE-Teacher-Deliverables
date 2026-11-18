@@ -1,0 +1,497 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_101",
+  "pollutant_name_zh": "2,2'-联苯酚",
+  "pollutant_name_en": "2,2'-Biphenol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "2,2'-dihydroxybiphenyl degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本主链为好氧加氧途径，代表菌为能以2,2'-联苯酚为生长底物的Pseudomonas azelaica HBP1：先3-位羟基化，再间位开环并水解。评分主链沿2-羟基戊-2,4-二烯酸进入中心代谢；水杨酸为水解步骤的化学计量主产物，转入独立下游途径，不计入本主链步骤。"
+  },
+  "route_summary": "好氧条件下，Pseudomonas azelaica HBP1降解2,2'-联苯酚的主链为：2-羟基联苯3-单加氧酶将2,2'-联苯酚羟基化为2,2',3-三羟基联苯；外二醇双加氧酶将其间位开环为2-羟基-6-氧代-6-(2-羟基苯基)己-2,4-二烯酸；水解酶裂解生成水杨酸与2-羟基戊-2,4-二烯酸。后者经水合和醛缩裂解生成丙酮酸与乙醛，乙醛再由乙酰化脱氢酶转化为乙酰辅酶A。丙酮酸与乙酰辅酶A进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,2'-dihydroxybiphenyl",
+          "smiles": "Oc1ccccc1-c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,2',3-trihydroxybiphenyl",
+          "smiles": "Oc1ccccc1-c1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "2-hydroxybiphenyl 3-monooxygenase",
+        "ec_number": "1.14.13.44",
+        "gene_or_protein": "HbpA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas azelaica",
+        "strain": "HBP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 1.14.13.44的法定反应底物是2-羟基联苯；同一酶HbpA被证明亦可在3位羟基化2,2'-联苯酚。该EC后来可能被转入1.14.14亚类，新编号未能确认，故保留经典编号。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2,2',3-trihydroxybiphenyl",
+          "smiles": "Oc1ccccc1-c1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxo-6-(2-hydroxyphenyl)hexa-2,4-dienoate",
+          "smiles": "O=C(O)C(O)=CC=CC(=O)c1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol dioxygenation",
+      "enzyme": {
+        "name": "2,2',3-trihydroxybiphenyl 1,2-dioxygenase",
+        "ec_number": "1.13.11.39",
+        "gene_or_protein": "HbpC",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas azelaica",
+        "strain": "HBP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "HBP1消耗2,2',3-三羟基联苯，簇内外二醇双加氧酶为HbpC；其法定EC 1.13.11.39对应2,3-二羟基联苯的近端间位切割，对三羟基底物为同类反应。开环产物立体化学未在SMILES中标出。同一转化在二苯并呋喃途径中由Sphingomonas wittichii RW1的DbfB催化，此处不另立菌株。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxo-6-(2-hydroxyphenyl)hexa-2,4-dienoate",
+          "smiles": "O=C(O)C(O)=CC=CC(=O)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "salicylate",
+          "smiles": "O=C(O)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "O=C(O)C(O)=CC=C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxo-6-(2-hydroxyphenyl)hexa-2,4-dienoate hydrolase",
+        "ec_number": "3.7.1.8",
+        "gene_or_protein": "HbpD",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas azelaica",
+        "strain": "HBP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 3.7.1.8的法定底物是2-羟基-6-氧代-6-苯基己-2,4-二烯酸，产物为苯甲酸而非水杨酸。2'-羟基类似物水解生成水杨酸是二苯并呋喃/羟基联苯途径的标准化学；HBP1中由HbpD执行该步为中等置信。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "O=C(O)C(O)=CC=C",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "2-hydroxypenta-2,4-dienoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas azelaica",
+        "strain": "HBP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该反应是联苯下游途径的标准步骤，EC 4.2.1.80亦称2-氧代戊-4-烯酸水合酶，底物与2-羟基戊-2,4-二烯酸为互变异构关系。HBP1能矿化2,2'-联苯酚，故生理上须进行此步，但该菌中对应基因未被本回答确证，故不填写基因名。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxovalerate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas azelaica",
+        "strain": "HBP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "丙酮酸在此步已进入中心代谢；主链下一步只延续乙醛。HBP1中醛缩酶基因未确证。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@@H](n2cnc3c(N)ncnc32)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "acetylating dehydrogenation",
+      "enzyme": {
+        "name": "acetaldehyde dehydrogenase (acetylating)",
+        "ec_number": "1.2.1.10",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas azelaica",
+        "strain": "HBP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "联苯下游途径的标准酶是乙酰化乙醛脱氢酶EC 1.2.1.10，直接生成乙酰辅酶A。不能排除该菌先由普通醛脱氢酶生成乙酸再活化为乙酰辅酶A；HBP1中具体基因未确证。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas azelaica",
+      "strain": "HBP1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用2,2'-联苯酚作为生长碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解2-羟基联苯和2,2'-联苯酚等羟基联苯",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有2-羟基联苯3-单加氧酶HbpA活性，并可进一步代谢2,2',3-三羟基联苯",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA"],
+    "explanation": "4-羟基-2-氧代戊酸醛缩裂解直接生成丙酮酸；乙醛经乙酰化脱氢生成乙酰辅酶A。二者分别进入中心碳代谢。水杨酸不在本主链内进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "salicylate degradation",
+      "summary": "S3生成的水杨酸可经水杨酸羟化酶转化为儿茶酚，再进入儿茶酚邻位或间位裂解。HBP1采用哪一条儿茶酚途径未能确认，故不写入评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "direct extradiol cleavage of 2,2'-dihydroxybiphenyl",
+      "summary": "部分BphC类外二醇双加氧酶可不经3-羟基化，直接间位切割2,2'-联苯酚，生成与S2相同的开环产物2-羟基-6-氧代-6-(2-羟基苯基)己-2,4-二烯酸，随后同样水解为水杨酸和2-羟基戊-2,4-二烯酸。该路线与HBP1已报道的经2,2',3-三羟基联苯的生长代谢主链不同，不纳入评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Kohler HPE, Schmid A, van der Maarel M. 1993. Metabolism of 2,2'-dihydroxybiphenyl by Pseudomonas sp. strain HBP1: production and consumption of 2,2',3-trihydroxybiphenyl. J. Bacteriol.; Kohler et al. 1988 growth of Pseudomonas sp. HBP1 on 2-hydroxybiphenyl and 2,2'-dihydroxybiphenyl.",
+      "claim_scope": ["organism", "growth_substrate", "S1_reaction", "pathway"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Suske WA et al. 1997. J. Biol. Chem. 2-hydroxybiphenyl 3-monooxygenase from Pseudomonas azelaica HBP1; IUBMB EC 1.14.13.44.",
+      "claim_scope": ["enzyme_S1", "HbpA", "EC_1.14.13.44"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "HBP1 hbp cluster extradiol dioxygenase HbpC and hydrolase HbpD; ring-cleavage chemistry equivalent to the 2,2',3-trihydroxybiphenyl step of dibenzofuran degradation.",
+      "claim_scope": ["enzyme_S2", "enzyme_S3", "meta_cleavage", "hydrolysis"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB EC 4.2.1.80, EC 4.1.3.39 and EC 1.2.1.10 as the canonical lower pathway from 2-hydroxypenta-2,4-dienoate to pyruvate and acetyl-CoA.",
+      "claim_scope": ["S4_reaction", "S5_reaction", "S6_reaction", "EC_lower_pathway"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Genus Pseudomonas phenotypic definition: Gram-negative rods, aerobic respiration, non-endospore-forming.",
+      "claim_scope": ["morphology", "gram", "oxygen", "sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为空，主链按该化合物已知的好氧加氧降解填写。",
+    "HBP1文献将2,2',3-三羟基联苯作为2,2'-联苯酚代谢的产生并消耗中间体，故主链采用先3-羟基化再开环；直接间位开环作为非评分替代分支。",
+    "S2与S3的EC分别按HbpC/HbpD所属酶类填写，法定底物与本步底物不完全相同。",
+    "S4至S6的EC对应联苯下游标准反应；HBP1能矿化该底物，但水合酶、醛缩酶和乙醛脱氢酶的菌株级基因未确认，故基因名为null。",
+    "EC 1.14.13.44可能已被转移至EC 1.14.14亚类，新编号未确认。",
+    "菌株保藏号、NCBI TaxID、基因组登录号、温度、pH、盐度、运动性和栖息地广适性无可靠来源，均填null。",
+    "水杨酸之后的儿茶酚裂解方式未知，未写入主链。",
+    "开环产物与2-羟基戊-2,4-二烯酸的双键立体化学未指定。"
+  ]
+}

@@ -1,0 +1,438 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_077",
+  "pollutant_name_zh": "3,4-二羟基苯甲酸根",
+  "pollutant_name_en": "3,4-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "protocatechuate degradation III (para-cleavage pathway)",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "3,4-二羟基苯甲酸根经 protocatechuate 4,5-二加氧酶开环，进入 para-cleavage 途径，依次生成 2-羟基-4-羧基粘康酸半醛、2-吡喃酮-4,6-二羧酸、4-羧基-2-羟基粘康酸-6-半醛、4-草酰美沙康酸、4-羧基-4-羟基-2-氧代己二酸，最终裂解为丙酮酸和草酰乙酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3,4-Dihydroxybenzoate",
+          "smiles": "[O-]C(=O)c1ccc(O)c(O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxy-4-carboxymuconate semialdehyde",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring cleavage",
+      "enzyme": {
+        "name": "protocatechuate 4,5-dioxygenase",
+        "ec_number": "1.13.11.8",
+        "gene_or_protein": "LigAB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": 1123262,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-4-carboxymuconate semialdehyde",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Pyrone-4,6-dicarboxylate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "2-hydroxy-4-carboxymuconate semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.97",
+        "gene_or_protein": "LigC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": 1123262,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-Pyrone-4,6-dicarboxylate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Carboxy-2-hydroxymuconate-6-semialdehyde",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2-pyrone-4,6-dicarboxylate hydrolase",
+        "ec_number": "3.1.1.77",
+        "gene_or_protein": "LigI",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": 1123262,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-Carboxy-2-hydroxymuconate-6-semialdehyde",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Oxalomesaconate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "4-carboxy-2-hydroxymuconate-6-semialdehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "LigD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": 1123262,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "4-Oxalomesaconate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Carboxy-4-hydroxy-2-oxoadipate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "4-oxalomesaconate hydratase",
+        "ec_number": null,
+        "gene_or_protein": "LigJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": 1123262,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "4-Carboxy-4-hydroxy-2-oxoadipate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Oxaloacetate",
+          "smiles": "[O-]C(=O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "4-carboxy-4-hydroxy-2-oxoadipate aldolase",
+        "ec_number": null,
+        "gene_or_protein": "LigK",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": 1123262,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sphingobium sp. SYK-6",
+      "strain": "SYK-6",
+      "ncbi_taxid": 1123262,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "mesophilic"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes protocatechuate and various lignin-derived aromatic compounds",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades a broad range of aromatic compounds including lignin-derived monomers",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "possesses protocatechuate 4,5-dioxygenase and other aromatic ring-cleaving enzymes",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_015976.1",
+            "genome_size_bp": 4190000,
+            "gc_percent": 62.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "found in soil and capable of degrading lignin-derived aromatic compounds",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": "PROTOCATECHUATE-DEGRADATION-III-PWY",
+      "locator": null,
+      "claim_scope": [
+        "route",
+        "enzymes"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI",
+      "record_id": "1123262",
+      "locator": null,
+      "claim_scope": [
+        "organism"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Sphingobium sp. SYK-6 general characteristics",
+      "claim_scope": [
+        "traits"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI",
+      "record_id": "NC_015976.1",
+      "locator": null,
+      "claim_scope": [
+        "genome"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

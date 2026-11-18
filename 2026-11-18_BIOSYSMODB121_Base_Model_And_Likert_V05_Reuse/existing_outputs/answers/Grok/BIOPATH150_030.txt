@@ -1,0 +1,373 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_030",
+  "pollutant_name_zh": "D-半乳糖酸根",
+  "pollutant_name_en": "D-galactonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-galactonate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。本主链为大肠杆菌De Ley-Doudoroff途径的三步连续反应，各步均不直接消耗分子氧。"
+  },
+  "route_summary": "D-半乳糖酸根经脱水生成2-脱氢-3-脱氧-D-半乳糖酸，再在ATP参与下磷酸化为2-脱氢-3-脱氧-6-磷酸-D-半乳糖酸，随后醛缩裂解为丙酮酸和D-甘油醛-3-磷酸，进入中心碳代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-galactonate",
+          "smiles": "OC[C@@H](O)[C@H](O)[C@H](O)[C@@H](O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-D-galactonate",
+          "smiles": "OC[C@@H](O)[C@H](O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱水反应",
+      "enzyme": {
+        "name": "D-galactonate dehydratase",
+        "ec_number": "4.2.1.6",
+        "gene_or_protein": "dgoD",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-D-galactonate",
+          "smiles": "OC[C@@H](O)[C@H](O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-6-phospho-D-galactonate",
+          "smiles": "[O-]P(=O)([O-])OC[C@@H](O)[C@H](O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "Nc1ncnc2c1ncn2[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]1O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磷酸化反应",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxygalactonokinase",
+        "ec_number": "2.7.1.58",
+        "gene_or_protein": "dgoK",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-6-phospho-D-galactonate",
+          "smiles": "[O-]P(=O)([O-])OC[C@@H](O)[C@H](O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "D-glyceraldehyde 3-phosphate",
+          "smiles": "O=C[C@H](O)COP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛缩裂解反应",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxy-6-phosphogalactonate aldolase",
+        "ec_number": "4.1.2.21",
+        "gene_or_protein": "dgoA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用D-半乳糖酸以及葡萄糖等多种糖和糖酸作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可通过De Ley-Doudoroff途径降解D-半乳糖酸，生成丙酮酸和D-甘油醛-3-磷酸",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有D-半乳糖酸脱水酶、2-脱氢-3-脱氧半乳糖酸激酶和2-脱氢-3-脱氧-6-磷酸半乳糖酸醛缩酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "周生鞭毛，可运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "以温血动物肠道共栖为主，也可在水体、沉积物和受粪便污染环境中存活，栖息地广适性中等，不属于极端广布种",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "D-glyceraldehyde 3-phosphate"],
+    "explanation": "丙酮酸可进入丙酮酸脱氢或发酵代谢，D-甘油醛-3-磷酸进入糖酵解下半支路，二者均汇入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "糖酵解下半支路",
+      "summary": "D-甘油醛-3-磷酸可继续经糖酵解下半段转化为丙酮酸。"
+    },
+    {
+      "name": "丙酮酸代谢",
+      "summary": "丙酮酸可氧化脱羧为乙酰辅酶A进入TCA循环，或在无氧条件下进入混合酸发酵。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "EcoCyc",
+      "record_id": "GALACTCAT-PWY",
+      "locator": "D-galactonate degradation",
+      "claim_scope": ["reaction", "substrates", "products", "route"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "EcoCyc",
+      "record_id": "GALACTCAT-PWY",
+      "locator": "dgoD, dgoK, dgoA",
+      "claim_scope": ["enzyme", "ec_number", "gene"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "EcoCyc",
+      "record_id": "ECOLI",
+      "locator": "Escherichia coli K-12 substr. MG1655",
+      "claim_scope": ["microorganism", "pathway_organism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Escherichia coli K-12 standard physiology",
+      "claim_scope": ["F1_oxygen_tolerance", "F2_temperature", "F6_respiration_electron_acceptor", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "Escherichia coli MG1655",
+      "claim_scope": ["F5_culture_collection"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655",
+      "claim_scope": ["F14_genome_basic"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "EcoCyc",
+      "record_id": "GALACTCAT-PWY",
+      "locator": "dgo operon catabolic capacity",
+      "claim_scope": ["F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Escherichia coli general ecology and growth preferences",
+      "claim_scope": ["F3_pH", "F4_salinity", "F15_habitat_generalism"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "本次未联机复核数据库，途径、酶、EC与菌株信息来自既有知识；EcoCyc途径编号记忆为GALACTCAT-PWY。",
+    "经典酶学实验完成于Escherichia coli K-12，此处用其测序参考菌株K-12 substr. MG1655代表完整dgo途径。",
+    "SMILES按D-半乳糖开链C4差向异构及脱水、C6磷酸化、C3-C4醛缩裂解书写，未作联机结构核对。",
+    "温度极限、pH极限、盐度数值和基因组GC含量缺乏可确认的单一来源数值，相关子字段留空。"
+  ]
+}

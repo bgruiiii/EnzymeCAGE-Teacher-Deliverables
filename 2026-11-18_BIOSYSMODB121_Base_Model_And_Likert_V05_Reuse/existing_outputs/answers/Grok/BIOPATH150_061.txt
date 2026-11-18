@@ -1,0 +1,315 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_061",
+  "pollutant_name_zh": "亚甲基琥珀酸根（衣康酸根）",
+  "pollutant_name_en": "Methylenesuccinate(2-)",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "itaconate degradation",
+    "is_single_continuous_route": true,
+    "notes": "氧条件按题面保持null。评分主链为连续的辅酶A依赖三步反应，反应式本身不消耗分子氧。"
+  },
+  "route_summary": "衣康酸（亚甲基琥珀酸根）经辅酶A依赖途径降解：琥珀酰辅酶A:衣康酸辅酶A转移酶将其活化为衣康酰辅酶A并释放琥珀酸，衣康酰辅酶A水合酶加水生成(S)-柠苹酰辅酶A，再由(S)-柠苹酰辅酶A裂解酶裂解为丙酮酸与乙酰辅酶A，二者进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "itaconate",
+          "smiles": "C=C(C(=O)[O-])CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "succinyl-CoA",
+          "smiles": "[O-]C(=O)CCC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])[O-])n1cnc2c(N)ncnc12",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "itaconyl-CoA",
+          "smiles": "C=C(C(=O)[O-])CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])[O-])n1cnc2c(N)ncnc12",
+          "role": "main"
+        },
+        {
+          "name": "succinate",
+          "smiles": "[O-]C(=O)CCC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA transfer",
+      "enzyme": {
+        "name": "succinyl-CoA:itaconate CoA-transferase",
+        "ec_number": null,
+        "gene_or_protein": "Ict",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": "PAO1",
+        "ncbi_taxid": 208964,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "正式EC编号未核对到可确认的单一登录号，故置空。辅酶A连接于衣康酸饱和臂羧基（C4），以便后续可裂解为乙酰辅酶A与丙酮酸。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "itaconyl-CoA",
+          "smiles": "C=C(C(=O)[O-])CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])[O-])n1cnc2c(N)ncnc12",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-citramalyl-CoA",
+          "smiles": "CC(O)(C(=O)[O-])CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])[O-])n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "itaconyl-CoA hydratase",
+        "ec_number": null,
+        "gene_or_protein": "Ich",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": "PAO1",
+        "ncbi_taxid": 208964,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "产物为(S)-柠苹酰辅酶A；SMILES只写连接关系，未写入立体异构标记。EC编号未确认，置空。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "(S)-citramalyl-CoA",
+          "smiles": "CC(O)(C(=O)[O-])CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])[O-])n1cnc2c(N)ncnc12",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)([O-])[O-])n1cnc2c(N)ncnc12",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "carbon-carbon lyase cleavage",
+      "enzyme": {
+        "name": "(S)-citramalyl-CoA lyase",
+        "ec_number": null,
+        "gene_or_protein": "Ccl",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": "PAO1",
+        "ncbi_taxid": 208964,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "部分二次资料将此酶标为EC 4.1.3.25，但未核验酶学委员会正式条目，故EC置空。丙酮酸与乙酰辅酶A均为该步主产物。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas aeruginosa",
+      "strain": "PAO1",
+      "ncbi_taxid": 208964,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性呼吸型好氧菌，可用硝酸盐进行厌氧呼吸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "15692"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用衣康酸作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经辅酶A依赖途径降解衣康酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有琥珀酰辅酶A:衣康酸辅酶A转移酶、衣康酰辅酶A水合酶和(S)-柠苹酰辅酶A裂解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动，单极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "AE004091",
+            "genome_size_bp": null,
+            "gc_percent": 66.6
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性，可分布于土壤、水体、植物与动物相关等多种生境",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA"],
+    "explanation": "主链终产物丙酮酸与乙酰辅酶A进入中心碳代谢，乙酰辅酶A可进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "中心碳代谢",
+      "summary": "丙酮酸可转化为乙酰辅酶A，乙酰辅酶A进入三羧酸循环，不再属于衣康酸降解主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Sasikaran et al., Nat Chem Biol. 2014, 10:371-377, doi:10.1038/nchembio.1482；Cooper & Kornberg, Biochem J. 1964, 91:82-91",
+      "claim_scope": ["itaconate degradation route", "CoA transfer", "hydration", "lyase cleavage", "Ict", "Ich", "Ccl", "Pseudomonas aeruginosa"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas aeruginosa PAO1 standard strain description; ATCC 15692",
+      "claim_scope": ["oxygen tolerance", "temperature optimum", "culture collection", "respiration", "motility", "morphology", "Gram stain", "sporulation", "habitat generalism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI",
+      "record_id": "AE004091",
+      "locator": "Stover et al., Nature 2000, 406:959-964; NCBI accession AE004091 (P. aeruginosa PAO1)",
+      "claim_scope": ["genome accession", "GC content"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "三步酶的正式EC编号未经酶学委员会条目核对，全部置空，未采用未经核验的EC 4.1.3.25等编号。",
+    "代表菌写为Pseudomonas aeruginosa PAO1，因其参考基因组对应已阐明的衣康酸降解基因簇，且该种已被实验证明可降解衣康酸；关键酶学实验未必都以PAO1为菌株，故微生物置信度为medium。",
+    "衣康酰辅酶A的辅酶A区域化学按可裂解为乙酰辅酶A与丙酮酸的C4硫酯书写；(S)-柠苹酰辅酶A的SMILES未标注立体构型。",
+    "温度只填写广泛采用的最适37°C，未把42°C生长能力写成耐受上限；pH与盐度缺乏可核对的原始数值范围，故置空。基因组碱基数在不同版本记录间可能差1 bp，故不填写精确bp。",
+    "个别菌株可能以酰基辅酶A连接酶而非辅酶A转移酶活化衣康酸；该变体未纳入本评分主链。"
+  ]
+}

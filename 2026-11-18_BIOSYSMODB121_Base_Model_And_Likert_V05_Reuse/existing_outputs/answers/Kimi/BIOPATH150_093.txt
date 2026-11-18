@@ -1,0 +1,623 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_093",
+  "pollutant_name_zh": "苯乙烯",
+  "pollutant_name_en": "Styrene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "styrene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面氧条件为 null（未指定）；此处按文献中最经典、证据最强的好氧环氧化主链（styrene → styrene oxide → phenylacetaldehyde → phenylacetate → phenylacetyl-CoA）给出，与 KEGG map00643 一致。"
+  },
+  "route_summary": "苯乙烯微生物降解主链为环氧化途径：①苯乙烯经苯乙烯单加氧酶（StyA/StyB）环氧化生成环氧苯乙烷（styrene oxide）；②环氧苯乙烷经苯乙烯氧化物异构酶（StyC）重排为苯乙醛（phenylacetaldehyde）；③苯乙醛经苯乙醛脱氢酶（StyD）氧化为苯乙酸（phenylacetic acid）；④苯乙酸经苯乙酸-CoA连接酶（PaaK）活化为苯乙酰-CoA，随后经 paa 杂合途径开环进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Styrene",
+          "smiles": "C=Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Styrene oxide (phenyloxirane)",
+          "smiles": "C1OC1c1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "单加氧环氧化（FAD 依赖 monooxygenation/epoxidation）",
+      "enzyme": {
+        "name": "Styrene monooxygenase",
+        "ec_number": "1.14.13.66",
+        "gene_or_protein": "styA（与还原酶组分 styB 协同）",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "S12",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_008"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "StyA 为 FAD 依赖单加氧酶，需 StyB（NADH:FAD 氧化还原酶）提供 FADH2；该酶的 EC 归属（1.14.13.66）以 ExplorEnz 现行版本为准，个别数据库可能有更新或转移。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Styrene oxide (phenyloxirane)",
+          "smiles": "C1OC1c1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Phenylacetaldehyde",
+          "smiles": "O=CCc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环氧化物异构化重排（Meinwald 型重排，isomerization）",
+      "enzyme": {
+        "name": "Styrene oxide isomerase",
+        "ec_number": "5.3.99.7",
+        "gene_or_protein": "styC",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "VLB120",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步为膜结合的异构酶催化，无需辅因子；底物与产物 SMILES 未标注立体化学。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Phenylacetaldehyde",
+          "smiles": "O=CCc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Phenylacetic acid",
+          "smiles": "O=C(O)Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD(P)+ 依赖醛脱氢氧化（aldehyde dehydrogenation/oxidation）",
+      "enzyme": {
+        "name": "Phenylacetaldehyde dehydrogenase",
+        "ec_number": "1.2.1.39",
+        "gene_or_protein": "styD",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "VLB120",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步亦可由其他广谱醛脱氢酶催化；sty 基因簇中的 styD 为首选注释。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "Phenylacetic acid",
+          "smiles": "O=C(O)Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@@H](O)C(=O)NCCC(=O)NCCSH",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Phenylacetyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@@H](O)C(=O)NCCC(=O)NCCSC(=O)Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ATP 依赖 CoA 连接/活化（acid-CoA ligation）",
+      "enzyme": {
+        "name": "Phenylacetate-CoA ligase",
+        "ec_number": "6.2.1.21",
+        "gene_or_protein": "paaK",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_003",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "反应同时消耗 ATP 并生成 AMP 与 PPi（未逐一列出）；苯乙酰-CoA 之后经 paa 环羟化途径降解，不在本主链内展开。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "S12",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌"
+          },
+          "raw_text": "常规培养温度为 30 °C",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧",
+          "raw_text": "Pseudomonas putida 为专性好氧菌",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700801"
+          },
+          "raw_text": "Pseudomonas putida S12 保藏于 ATCC（编号 700801）",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": "专性好氧呼吸，以 O2 为末端电子受体",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以苯乙烯、甲苯等芳香烃及多种有机酸为碳源和能源",
+          "raw_text": "可利用苯乙烯作为唯一碳源与能源生长",
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解苯乙烯、甲苯等芳香族化合物；具突出的有机溶剂耐受性",
+          "raw_text": "P. putida S12 为经典溶剂耐受、苯乙烯/甲苯降解菌",
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "苯乙烯单加氧酶（StyA/StyB）活性，将苯乙烯环氧化为环氧苯乙烷",
+          "raw_text": "编码苯乙烯单加氧酶，催化苯乙烯 → 环氧苯乙烷",
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具运动性（极生鞭毛）",
+          "raw_text": "motile（极生鞭毛）",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（杆菌）",
+          "raw_text": "rod-shaped cells",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Gram-negative",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": "假单胞菌属不产芽孢",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "CP010583",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": "Pseudomonas putida S12 完整基因组（染色体）GenBank 登录号 CP010583；具体大小与 GC 含量未核实",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤、水体、根际及污染场地等多种环境中常见的广适性环境菌",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "VLB120",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌"
+          },
+          "raw_text": "实验室培养于 30 °C",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": "aerobic degradation of styrene",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": "好氧条件下降解苯乙烯",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以苯乙烯为唯一碳源和能源生长",
+          "raw_text": "styrene as sole source of carbon and energy",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解苯乙烯及相关芳香族化合物",
+          "raw_text": "characterization of the styrene degradation pathway",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "苯乙烯单加氧酶（StyA/StyB）、苯乙烯氧化物异构酶（StyC）与苯乙醛脱氢酶（StyD）活性",
+          "raw_text": "styABCD 基因簇编码苯乙烯降解上段途径各酶",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细菌",
+          "raw_text": "鉴定为 Pseudomonas sp.（假单胞菌属为杆状）",
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "鉴定为 Pseudomonas sp.（属内均为革兰氏阴性）",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": "假单胞菌属不产芽孢",
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 10,
+            "optimum_c": 37,
+            "maximum_c": 45,
+            "preference": "中温菌（嗜温）"
+          },
+          "raw_text": "生长温度约 10–45 °C，最适 37 °C",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": "facultatively anaerobic",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（普通环境/肠道菌）"
+          },
+          "raw_text": "non-halophilic",
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": "中性环境生长良好，最适 pH 约 7",
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": "Escherichia coli K-12 MG1655 保藏于 ATCC（编号 700926）",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性：好氧呼吸与发酵",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": "respiratory and fermentative metabolism；好氧时以 O2 为末端电子受体",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以葡萄糖等碳水化合物为主要碳源",
+          "raw_text": "utilizes glucose and a variety of carbon sources",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经 paa 杂合途径好氧降解苯乙酸（phenylacetate）",
+          "raw_text": "Catabolism of phenylacetic acid in Escherichia coli: characterization of a new aerobic hybrid pathway",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "苯乙酸-CoA 连接酶（PaaK）活性",
+          "raw_text": "PaaK catalyzes the activation of phenylacetate to phenylacetyl-CoA",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "具周生鞭毛，可运动",
+          "raw_text": "motile（周生鞭毛）",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（短杆菌）",
+          "raw_text": "rod-shaped cells",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Gram-negative",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": "non-spore-forming",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "U00096.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": "Escherichia coli K-12 MG1655 完整基因组 U00096.3，4,641,652 bp，GC 约 50.8%",
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "哺乳动物肠道共生菌，亦可在水、土壤等外环境中存活，具较广栖息适应性",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA", "succinyl-CoA"],
+    "explanation": "苯乙酸活化生成的苯乙酰-CoA 经 paa 杂合途径（环羟化/开环/β-氧化样反应）最终生成乙酰-CoA 与琥珀酰-CoA，进入三羧酸循环完成矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "phenylacetyl-CoA degradation (paa hybrid pathway)",
+      "summary": "苯乙酰-CoA 经 PaaABCDE 环羟化、PaaZ 等开环及后续 β-氧化样反应降解为乙酰-CoA 与琥珀酰-CoA，进入中心碳代谢。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "styrene dioxygenation (cis-glycol) route",
+      "summary": "部分菌株（如某些红球菌/假单胞菌）经双加氧将苯乙烯转化为顺式-苯乙烯二氢二醇，再脱氢生成 3-乙烯基邻苯二酚进入邻苯二酚途径；不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG PATHWAY",
+      "record_id": "map00643",
+      "locator": "https://www.kegg.jp/pathway/map00643",
+      "claim_scope": ["苯乙烯降解途径反应序列（styrene → styrene oxide → phenylacetaldehyde → phenylacetate）", "各步 EC 编号对应关系"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": "doi:10.1128/AEM.64.6.2032-2043.1998",
+      "locator": "Panke S, Witholt B, Schmid A, Wubbolts MG (1998) Appl Environ Microbiol 64(6):2032-2043",
+      "claim_scope": ["Pseudomonas sp. VLB120 的苯乙烯降解途径及 styABCD 基因/酶学表征", "VLB120 好氧培养与苯乙烯唯一碳源生长"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Ferrández A, Miñambres B, García B, Olivera ER, Luengo JM, García JL, Díaz E (1998) J Biol Chem 273(40):25974-25986",
+      "claim_scope": ["Escherichia coli K-12 的苯乙酸 paa 杂合降解途径", "PaaK（phenylacetate-CoA ligase, EC 6.2.1.21）的鉴定"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": "ATCC 700801",
+      "locator": "BacDive 中 Pseudomonas putida S12（ATCC 700801）菌株记录",
+      "claim_scope": ["P. putida S12 的形态、革兰氏染色、运动性、好氧性、培养温度与保藏编号等性状"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome/GenBank",
+      "record_id": "CP010583",
+      "locator": "Pseudomonas putida S12 complete genome",
+      "claim_scope": ["P. putida S12 完整基因组登录号"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": "ATCC 700926",
+      "locator": "BacDive 中 Escherichia coli K-12 MG1655（ATCC 700926）菌株记录",
+      "claim_scope": ["E. coli K-12 MG1655 的形态、革兰氏染色、兼性厌氧、温度与 pH 生长范围、运动性、保藏编号等性状"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome/GenBank",
+      "record_id": "U00096.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655 complete genome",
+      "claim_scope": ["E. coli K-12 MG1655 基因组大小、GC 含量与 TaxID 511145"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida S12 可降解苯乙烯/甲苯并具有有机溶剂耐受性的一般文献认知"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "苯乙烯单加氧酶的 EC 归属（1.14.13.66）在不同数据库版本中可能存在更新或转移，建议以 ExplorEnz 最新条目为准。",
+    "Pseudomonas sp. VLB120 后续文献中被建议归入 Pseudomonas taiwanensis，此处按原始文献（Panke et al. 1998）的命名填写；其保藏编号与基因组统计值未核实，置 null。",
+    "Pseudomonas putida S12 的菌株级 NCBI TaxID、基因组大小与 GC 含量精确值未核实，置 null。",
+    "题面未指定氧条件（null），主链按证据最强的好氧环氧化途径给出；若要求厌氧途径，则该物质暂无充分报道的厌氧降解主链。"
+  ]
+}

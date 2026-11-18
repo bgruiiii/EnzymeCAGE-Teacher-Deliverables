@@ -1,0 +1,337 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_005",
+  "pollutant_name_zh": "4-羧基-4'-磺酸基偶氮苯",
+  "pollutant_name_en": "4-Carboxylato-4'-sulfonatoazobenzene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-Carboxy-4'-Sulfoazobenzene pathway",
+    "is_single_continuous_route": false,
+    "notes": "该路线包含偶氮键断裂以及两个芳胺产物的后续好氧转化。"
+  },
+  "route_summary": "首先发生4-Carboxylato-4'-sulfonatoazobenzene的偶氮键还原断裂，生成4-aminobenzoate和4-aminobenzenesulfonate；随后两种芳胺分别进入对应的好氧芳香族降解分支。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Carboxylato-4'-sulfonatoazobenzene",
+          "smiles": "O=C([O-])c1ccc(N=Nc2ccc(S(=O)(=O)[O-])cc2)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Aminobenzoate",
+          "smiles": "Nc1ccc(C(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "4-Aminobenzenesulfonate",
+          "smiles": "Nc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Reductive azo-bond cleavage",
+      "enzyme": {
+        "name": "Azo reductase",
+        "ec_number": "1.7.1.6",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该反应类型和酶分类可支持偶氮键断裂，但本路线中具体承担该反应的菌株未确定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "B1",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-Aminobenzoate",
+          "smiles": "Nc1ccc(C(=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Protocatechuate",
+          "smiles": "O=C([O-])c1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Aerobic deaminating hydroxylation",
+      "enzyme": {
+        "name": "4-Aminobenzoate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "4-aminobenzoate的具体氧化产物和路线内对应菌株缺少直接来源支持。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "B2",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-Aminobenzenesulfonate",
+          "smiles": "Nc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Sulfocatechol",
+          "smiles": "Oc1ccc(S(=O)(=O)[O-])c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Aerobic dioxygenation and deamination",
+      "enzyme": {
+        "name": "4-Aminobenzenesulfonate 3,4-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "菌株S1与4-aminobenzenesulfonate转化的关联有文献报道，但本步骤的EC编号和完整反应计量未确定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Hydrogenophaga intermedia",
+      "strain": "S1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": "aerobic degradation of 4-aminobenzenesulfonate",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "Oxygen"
+          },
+          "raw_text": "aerobic degradation",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用4-aminobenzenesulfonate作为芳香族碳源或底物",
+          "raw_text": "growth on 4-aminobenzenesulfonate",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解芳香族磺酸类化合物",
+          "raw_text": "degradation of aromatic sulfonates",
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-aminobenzenesulfonate 3,4-dioxygenase activity",
+          "raw_text": "4-aminobenzenesulfonate 3,4-dioxygenase activity",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "Protocatechuate",
+      "4-Sulfocatechol"
+    ],
+    "explanation": "两种芳香族二羟基化产物可分别继续进入芳香族化合物的开环和中心代谢途径，但本题范围内未确定其后续完整步骤。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1偶氮键还原断裂",
+        "Azo reductase",
+        "4-Carboxylato-4'-sulfonatoazobenzene到4-Aminobenzoate和4-Aminobenzenesulfonate"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2的4-aminobenzoate好氧转化",
+        "4-Aminobenzoate 3,4-dioxygenase",
+        "Protocatechuate生成"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Hydrogenophaga intermedia S1",
+        "4-aminobenzenesulfonate 3,4-dioxygenase",
+        "4-Sulfocatechol生成"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Hydrogenophaga intermedia S1的好氧性",
+        "芳香族磺酸类底物利用",
+        "氧作为末端电子受体"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "偶氮键断裂步骤的具体菌株未确定。",
+    "4-aminobenzoate分支的具体菌株和后续开环步骤未确定。",
+    "4-aminobenzenesulfonate 3,4-dioxygenase的EC编号未确定。",
+    "部分化合物的电荷状态和反应计量可能随数据库记录规范而异。"
+  ]
+}

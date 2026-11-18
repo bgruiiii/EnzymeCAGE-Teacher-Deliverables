@@ -1,0 +1,377 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_128",
+  "pollutant_name_zh": "L-苏糖醇",
+  "pollutant_name_en": "l-Threitol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-threitol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；按连续的三步 L-threitol degradation 主链整理。"
+  },
+  "route_summary": "主链为：L-threitol 先经 NAD+ 依赖性脱氢生成 L-erythrulose，再由 ATP 依赖性 L-erythrulose kinase 磷酸化为 L-erythrulose 1-phosphate，最后由 ketotetrose-phosphate aldolase 裂解为 dihydroxyacetone phosphate 和 formaldehyde。dihydroxyacetone phosphate 可直接进入糖酵解，formaldehyde 需经下游一碳代谢处理。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-threitol",
+          "smiles": "C([C@H]([C@H](CO)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+]([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H]([C@H](O)[C@@H]3O)n3cnc4c(N)ncnc34)[C@@H](O)[C@H]2O)c1",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-erythrulose",
+          "smiles": "C([C@H](C(=O)CO)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H]([C@H](O)[C@@H]3O)n3cnc4c(N)ncnc34)[C@@H](O)[C@H]2O)C=CC1",
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+ 依赖性仲醇氧化",
+      "enzyme": {
+        "name": "L-threitol dehydrogenase",
+        "ec_number": "1.1.1.122",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Klebsiella aerogenes",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "该 EC 记录在数据库中常以 D-threitol dehydrogenase 或多底物多元醇脱氢酶表述；其用于 L-threitol 的底物特异性为中等置信。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "L-erythrulose",
+          "smiles": "C([C@H](C(=O)CO)O)O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2C3OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C3O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-erythrulose 1-phosphate",
+          "smiles": "C([C@H](C(=O)COP(=O)(O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "Nc1ncnc2c1ncn2C3OC(COP(=O)(O)OP(=O)(O)O)C(O)C3O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP 依赖性磷酸化",
+      "enzyme": {
+        "name": "L-erythrulose kinase",
+        "ec_number": "2.7.1.53",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Klebsiella aerogenes",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "L-erythrulose 1-phosphate",
+          "smiles": "C([C@H](C(=O)COP(=O)(O)O)O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "O=C(CO)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "逆醛醇裂解",
+      "enzyme": {
+        "name": "ketotetrose-phosphate aldolase",
+        "ec_number": "4.1.2.2",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Klebsiella aerogenes",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "formaldehyde 的后续氧化或一碳同化不属于本题所给主链。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Klebsiella aerogenes",
+      "strain": null,
+      "ncbi_taxid": 548,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温菌；未确认到该历史路线菌株的具体温度边界"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧，可进行好氧呼吸和发酵",
+            "terminal_electron_acceptor": "氧气（好氧呼吸时）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可代谢 L-threitol 作为碳源底物",
+          "raw_text": "L-threitol degradation",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可将 L-threitol 经 L-erythrulose 1-phosphate 分解为 dihydroxyacetone phosphate 和 formaldehyde",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 L-threitol dehydrogenase、L-erythrulose kinase 和 ketotetrose-phosphate aldolase 组成的连续降解活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性，通常具周生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地较广，可见于土壤、水体、植物以及人和动物肠道等环境，并可作为机会致病菌出现",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "dihydroxyacetone phosphate",
+      "formaldehyde"
+    ],
+    "explanation": "dihydroxyacetone phosphate 是糖酵解/糖异生的直接中间体；formaldehyde 是该醛缩酶反应的化学计量产物，但不属于常规中心碳代谢中间体，通常还需经一碳氧化或同化途径继续处置。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "formaldehyde one-carbon metabolism",
+      "summary": "甲醛可经甲醛和甲酸氧化系统转化为 CO2，或进入一碳同化；本题所给路线证据未唯一确定 Klebsiella aerogenes 中的后续酶系，故不纳入主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway query/page: L-threitol degradation; organism association: Klebsiella aerogenes",
+      "claim_scope": [
+        "路线名称",
+        "三步反应顺序",
+        "L-erythrulose 1-phosphate 裂解产物",
+        "Klebsiella aerogenes 与路线的关联"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz / IUBMB ENZYME",
+      "record_id": "1.1.1.122",
+      "locator": "Official EC entry 1.1.1.122",
+      "claim_scope": [
+        "第一步脱氢酶 EC 归属",
+        "threitol/erythrulose 氧化还原化学"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz / IUBMB ENZYME",
+      "record_id": "2.7.1.53",
+      "locator": "Official EC entry 2.7.1.53",
+      "claim_scope": [
+        "L-erythrulose kinase 反应",
+        "ATP 依赖性生成 L-erythrulose 1-phosphate"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz / IUBMB ENZYME",
+      "record_id": "4.1.2.2",
+      "locator": "Official EC entry 4.1.2.2",
+      "claim_scope": [
+        "ketotetrose-phosphate aldolase 反应",
+        "生成 glycerone phosphate 和 formaldehyde"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "548",
+      "locator": "Klebsiella aerogenes species record",
+      "claim_scope": [
+        "物种身份",
+        "NCBI TaxID"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Klebsiella aerogenes 的一般微生物学性状知识；本回答未能为历史路线菌株解析到单一原始表型记录",
+      "claim_scope": [
+        "氧耐受性",
+        "中温偏好",
+        "呼吸方式",
+        "运动性",
+        "细胞形态",
+        "革兰氏染色",
+        "芽孢形成",
+        "一般栖息地"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，因此 route_scope.oxygen_condition 保留为 null；主链反应本身不能唯一限定氧条件。",
+    "历史资料常使用旧名 Aerobacter aerogenes 或 Enterobacter aerogenes；本回答按现行名称 Klebsiella aerogenes 归并，但未能确认原始实验菌株，故 strain 为 null。",
+    "第一步所用酶的 EC 1.1.1.122 记录在命名上存在 D-threitol dehydrogenase/多底物多元醇脱氢酶表述，其 L-threitol 底物特异性置信度低于后两步。",
+    "formaldehyde 的具体下游代谢未由本题指定路线唯一确定，未计入被评分主链。"
+  ]
+}

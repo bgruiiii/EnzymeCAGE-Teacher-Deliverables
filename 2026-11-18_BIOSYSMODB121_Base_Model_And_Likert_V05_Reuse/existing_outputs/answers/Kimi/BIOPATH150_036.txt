@@ -1,0 +1,487 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_036",
+  "pollutant_name_zh": "间苯二酚",
+  "pollutant_name_en": "Resorcinol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "resorcinol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）；主链按最经典的好氧羟化-开环路线给出，厌氧（发酵/反硝化）还原型替代路线列入 alternative_branches，不计入评分主链。"
+  },
+  "route_summary": "好氧主链（代表菌 Corynebacterium glutamicum ATCC 13032）：间苯二酚经间苯二酚羟化酶（黄素单加氧酶）羟化生成羟基醌（1,2,4-苯三醇），再由羟基醌1,2-双加氧酶邻位开环生成马来酰乙酸，经马来酰乙酸还原酶还原为3-氧代己二酸（β-酮己二酸），随后经3-氧代己二酸CoA转移酶与3-氧代己二酰CoA硫解酶生成乙酰辅酶A和琥珀酰辅酶A，进入三羧酸循环完成矿化。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Resorcinol",
+          "smiles": "C1=CC(=CC(=C1)O)O",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen (O2)",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD(P)H",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Hydroxyquinol (benzene-1,2,4-triol)",
+          "smiles": "C1=CC(=C(C=C1O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD(P)+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydroxylation (flavin-dependent monooxygenation)",
+      "enzyme": {
+        "name": "resorcinol hydroxylase (resorcinol monooxygenase)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Corynebacterium glutamicum",
+        "strain": "ATCC 13032",
+        "ncbi_taxid": 1718,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "该羟化酶未见权威EC编号与确证基因名；电子供体（NADH或NADPH）未确证。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Hydroxyquinol (benzene-1,2,4-triol)",
+          "smiles": "C1=CC(=C(C=C1O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen (O2)",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Maleylacetate ((2Z)-4-oxohex-2-enedioic acid)",
+          "smiles": "O=C(O)/C=C\\C(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "intradiol ring-cleavage dioxygenation (ortho cleavage)",
+      "enzyme": {
+        "name": "hydroxyquinol 1,2-dioxygenase",
+        "ec_number": "1.13.11.37",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Corynebacterium glutamicum",
+        "strain": "ATCC 13032",
+        "ncbi_taxid": 1718,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "开环初产物（2,4-二羟基-顺,顺-粘康酸形式）经互变异构为马来酰乙酸，通常直接记为马来酰乙酸。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Maleylacetate ((2Z)-4-oxohex-2-enedioic acid)",
+          "smiles": "O=C(O)/C=C\\C(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD(P)H",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipate (3-oxohexanedioic acid)",
+          "smiles": "O=C(O)CC(=O)CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD(P)+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD(P)H-dependent reduction",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Corynebacterium glutamicum",
+        "strain": "ATCC 13032",
+        "ncbi_taxid": 1718,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "3-Oxoadipate (3-oxohexanedioic acid)",
+          "smiles": "O=C(O)CC(=O)CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Succinyl-CoA",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Succinate",
+          "smiles": "O=C(O)CCC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA transfer (CoA-transferase)",
+      "enzyme": {
+        "name": "3-oxoadipate CoA-transferase",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Corynebacterium glutamicum",
+        "strain": "ATCC 13032",
+        "ncbi_taxid": 1718,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "该步为β-酮己二酸途径公共步骤；CoA酯SMILES因结构过长留空。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "3-Oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A (CoA-SH)",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Succinyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolysis (beta-ketothiolase cleavage)",
+      "enzyme": {
+        "name": "3-oxoadipyl-CoA thiolase (beta-ketoadipyl-CoA thiolase)",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Corynebacterium glutamicum",
+        "strain": "ATCC 13032",
+        "ncbi_taxid": 1718,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "CoA酯SMILES因结构过长留空。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Corynebacterium glutamicum",
+      "strain": "ATCC 13032",
+      "ncbi_taxid": 1718,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "嗜中温（mesophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "13032"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（氧化磷酸化）",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用葡萄糖等糖类、乙酸/乳酸等有机酸，并能以间苯二酚等多种芳香族化合物为唯一碳源与能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种芳香族化合物，包括苯甲酸、苯酚、间苯二酚、3-羟基苯甲酸、4-羟基苯甲酸、原儿茶酸、龙胆酸、咖啡酸、香草酸等（主要经β-酮己二酸途径及龙胆酸途径）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "间苯二酚羟化酶、羟基醌1,2-双加氧酶（芳香环开环双加氧酶）与马来酰乙酸还原酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "无运动性（non-motile）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "直或稍弯的多形性棒状杆菌，折断分裂后常呈V形/栅栏状排列（coryneform rods）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_003450",
+            "genome_size_bp": 3309401,
+            "gc_percent": 53.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛存在于土壤、污水、植物材料及动物源环境，亦为工业氨基酸发酵常用菌株，栖息地适应性较广",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Acetyl-CoA", "Succinyl-CoA"],
+    "explanation": "间苯二酚碳骨架经β-酮己二酸途径生成乙酰辅酶A与琥珀酰辅酶A，二者均为三羧酸循环中心代谢物，由此完全进入中心代谢并被矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "β-酮己二酸途径汇流与TCA循环",
+      "summary": "3-氧代己二酸经CoA转移酶与硫解酶生成乙酰辅酶A和琥珀酰辅酶A后进入三羧酸循环彻底氧化为CO2。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "厌氧发酵型还原途径（resorcinol reductive pathway）",
+      "summary": "发酵性细菌（如某些厌氧梭菌）中，间苯二酚经间苯二酚还原酶还原为1,3-环己二酮（二氢间苯二酚），再经水解开环生成5-氧代己酸（5-氧代己酸/5-oxocaproate），进入发酵代谢。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "反硝化条件下的羟化-还原途径",
+      "summary": "反硝化菌（如 Azoarcus anaerobius）利用含钼的间苯二酚羟化酶（以水作为氧原子供体）将间苯二酚转化为羟基氢醌（1,2,4-苯三醇），随后经还原步骤进一步降解。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Huang Y, Zhao KX, Shen XH, Chaudhry MT, Jiang CY, Liu SJ. Genetic characterization of the resorcinol catabolic pathway in Corynebacterium glutamicum. Applied and Environmental Microbiology. 2006;72(11):7238-7245",
+      "claim_scope": ["route", "S1", "S2", "S3", "organism:ORG_001", "F7", "F9"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "1.13.11.37",
+      "locator": "KEGG ENZYME 1.13.11.37 hydroxyquinol 1,2-dioxygenase; reaction: benzene-1,2,4-triol + O2 → maleylacetate",
+      "claim_scope": ["S2"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "1.3.1.32",
+      "locator": "BRENDA/ENZYME 1.3.1.32 maleylacetate reductase: maleylacetate + NAD(P)H → 3-oxoadipate",
+      "claim_scope": ["S3"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "2.8.3.6;2.3.1.174",
+      "locator": "KEGG ENZYME 2.8.3.6 (3-oxoadipate CoA-transferase) and 2.3.1.174 (3-oxoadipyl-CoA thiolase), beta-ketoadipate pathway (map01220)",
+      "claim_scope": ["S4", "S5"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD/UM-BBD",
+      "record_id": "resorcinol pathway map",
+      "locator": "http://eawag-bbd.ethz.ch/res/res_map.html",
+      "claim_scope": ["route"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome/GenBank",
+      "record_id": "NC_003450",
+      "locator": "Corynebacterium glutamicum ATCC 13032 complete chromosome (GenBank BA000036)",
+      "claim_scope": ["F14", "taxonomy"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "DSMZ/BacDive",
+      "record_id": "DSM 20300",
+      "locator": "BacDive strain entry: Corynebacterium glutamicum type strain DSM 20300 = ATCC 13032 (morphology, physiology, culture conditions, culture collections)",
+      "claim_scope": ["F1", "F2", "F5", "F10", "F11", "F12", "F13"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["F3", "F6", "F8", "F15"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，主链按最经典的好氧羟化-开环-β-酮己二酸路线给出；厌氧条件下存在还原型替代途径（已列入 alternative_branches）。",
+    "步骤1的间苯二酚羟化酶未见权威EC编号与确证基因名，电子供体未确定。",
+    "Corynebacterium glutamicum ATCC 13032 完成全路径的依据主要为遗传学与中间体证据，个别步骤（如马来酰乙酸还原）的酶学确证有限。",
+    "基因组大小/GC含量及若干培养性状数值为常用参考值，建议以 NCBI 与 BacDive 记录复核。"
+  ]
+}

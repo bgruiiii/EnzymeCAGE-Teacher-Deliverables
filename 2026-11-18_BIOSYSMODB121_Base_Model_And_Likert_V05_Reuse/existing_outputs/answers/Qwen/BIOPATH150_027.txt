@@ -1,0 +1,393 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_027",
+  "pollutant_name_zh": "儿茶酚",
+  "pollutant_name_en": "Catechol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "catechol degradation to β-ketoadipate",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；经典β-酮己二酸途径通常为好氧邻位裂解途径。"
+  },
+  "route_summary": "儿茶酚经邻位裂解的β-酮己二酸主链：儿茶酚由儿茶酚1,2-双加氧酶开环生成顺,顺-粘康酸；顺,顺-粘康酸环化为粘康酸内酯；粘康酸内酯异构为3-氧代己二酸烯醇内酯；最后由烯醇内酯水解酶水解生成β-酮己二酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis,cis-muconic acid",
+          "smiles": "O=C(O)C=CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative ring cleavage",
+      "enzyme": {
+        "name": "catechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": "catA",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "题面未指定氧条件；该经典反应通常需氧。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "cis,cis-muconic acid",
+          "smiles": "O=C(O)C=CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "muconolactone",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "intramolecular cyclization",
+      "enzyme": {
+        "name": "muconate cycloisomerase",
+        "ec_number": "5.5.1.1",
+        "gene_or_protein": "catB",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "粘康酸内酯的SMILES未确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "muconolactone",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": "O=C(O)CC1=COC(=O)C1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "muconolactone Delta-isomerase",
+        "ec_number": "5.3.3.4",
+        "gene_or_protein": "catC",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "不同资料对粘康酸内酯与3-氧代己二酸烯醇内酯的命名和异构步骤记载略有差异。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": "O=C(O)CC1=COC(=O)C1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "β-ketoadipate",
+          "smiles": "O=C(O)CC(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "3-oxoadipate enol-lactone hydrolase",
+        "ec_number": "3.1.1.24",
+        "gene_or_protein": "catD",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用儿茶酚等芳香族化合物作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种芳香族化合物，包括苯甲酸盐和儿茶酚等",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有儿茶酚1,2-双加氧酶、粘康酸环异构酶、粘康酸内酯异构酶和3-氧代己二酸烯醇内酯水解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、水体及植物根际等环境",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "β-ketoadipate"
+    ],
+    "explanation": "本路线终产物为β-酮己二酸；其进一步转化为琥珀酰-CoA和乙酰-CoA属于下游中心代谢，超出本题指定路线范围。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "map00362",
+      "locator": "Benzoate degradation pathway: catechol to beta-ketoadipate",
+      "claim_scope": [
+        "route",
+        "steps"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "1.13.11.1",
+      "locator": "catechol 1,2-dioxygenase reaction",
+      "claim_scope": [
+        "enzyme",
+        "reaction"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "5.5.1.1",
+      "locator": "muconate cycloisomerase reaction",
+      "claim_scope": [
+        "enzyme",
+        "reaction"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "5.3.3.4",
+      "locator": "muconolactone Delta-isomerase reaction",
+      "claim_scope": [
+        "enzyme",
+        "reaction"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "3.1.1.24",
+      "locator": "3-oxoadipate enol-lactone hydrolase reaction",
+      "claim_scope": [
+        "enzyme",
+        "reaction"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida is a known catechol-degrading bacterium via ortho cleavage",
+      "claim_scope": [
+        "microorganism"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general phenotypic traits of Pseudomonas putida",
+      "claim_scope": [
+        "organism traits"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；经典β-酮己二酸途径通常为好氧。",
+    "粘康酸内酯与3-氧代己二酸烯醇内酯的结构/SMILES未完全核实，部分SMILES为null。",
+    "不同数据库对该路线是否单列粘康酸内酯异构酶步骤记载略有差异。"
+  ]
+}

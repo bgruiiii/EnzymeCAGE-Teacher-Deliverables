@@ -1,0 +1,460 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_067",
+  "pollutant_name_zh": "4-乙基苯酚",
+  "pollutant_name_en": "4-Ethylphenol",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "4-ethylphenol degradation (anaerobic)",
+    "is_single_continuous_route": null,
+    "notes": "题面指定厌氧主链。下列步骤是按厌氧乙苯侧链加工（水依赖羟化、脱氢、ATP依赖羧化、裂解为芳酰辅酶A）再衔接对羟基苯甲酰辅酶A还原脱羟基所推断的连续主链，不是有氧氢醌途径。酶与菌多为模式体系的首选对应，不是逐反应已闭合的高置信实验事实。"
+  },
+  "route_summary": "厌氧条件下4-乙基苯酚的推断主链为：侧链亚甲基以水为氧供体羟化生成1-(4-羟基苯基)乙醇，再脱氢为4'-羟基苯乙酮，经ATP依赖羧化生成3-(4-羟基苯基)-3-氧代丙酸，随后形成4-羟基苯甲酰辅酶A（并预期释放乙酰辅酶A），再还原脱羟基为苯甲酰辅酶A，从而进入厌氧苯甲酰辅酶A途径。该主链在4-乙基苯酚上的纯培养逐步证据并不完整，不确定处已降置信度或置空。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-ethylphenol",
+          "smiles": "CCc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-(4-hydroxyphenyl)ethanol",
+          "smiles": "CC(O)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "厌氧羟化（水作为氧供体）",
+      "enzyme": {
+        "name": "ethylbenzene dehydrogenase",
+        "ec_number": "1.17.99.2",
+        "gene_or_protein": "ebdA",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "按乙苯脱氢酶的水依赖羟化类比，不表示已确证该酶在体内转化4-乙基苯酚；生理电子受体未列出。若由该酶催化，醇产物可能为S构型，但SMILES未标注手性。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "1-(4-hydroxyphenyl)ethanol",
+          "smiles": "CC(O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4'-hydroxyacetophenone",
+          "smiles": "CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "NAD依赖的脱氢",
+      "enzyme": {
+        "name": "(S)-1-phenylethanol dehydrogenase",
+        "ec_number": "1.1.1.311",
+        "gene_or_protein": "ped",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "脱氢酶对1-(4-羟基苯基)乙醇的底物特异性按(S)-1-苯乙醇脱氢酶类比，未经单独确证。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4'-hydroxyacetophenone",
+          "smiles": "CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-(4-hydroxyphenyl)-3-oxopropanoic acid",
+          "smiles": "O=C(O)CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP依赖的羧化",
+      "enzyme": {
+        "name": "acetophenone carboxylase",
+        "ec_number": "6.4.1.8",
+        "gene_or_protein": "apcA",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "辅因子计量按苯乙酮羧化酶的已知反应类比；该酶对4'-羟基苯乙酮的底物特异性未确证。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "3-(4-hydroxyphenyl)-3-oxopropanoic acid",
+          "smiles": "O=C(O)CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "辅酶A依赖的裂解",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "具体酶、EC与基因未知，故酶对象置空。预期机制是先活化为β-酮酰辅酶A再硫解，净反应可能还消耗ATP；C2辅产物按硫解写作乙酰辅酶A，也可能以乙酸形式释放。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "reduced ferredoxin",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "benzoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        },
+        {
+          "name": "oxidized ferredoxin",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "还原性脱羟基",
+      "enzyme": {
+        "name": "4-hydroxybenzoyl-CoA reductase",
+        "ec_number": "1.3.7.9",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Aromatoleum aromaticum",
+        "strain": "EbN1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "4-羟基苯甲酰辅酶A还原酶本身是厌氧酚类代谢的标准酶；它与4-乙基苯酚主链的连接依赖上游推断。未确认EbN1中对应基因名，故基因置空。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Aromatoleum aromaticum",
+      "strain": "EbN1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "反硝化呼吸",
+            "terminal_electron_acceptor": "硝酸盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "乙苯",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "厌氧反硝化条件下降解乙苯等芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "乙苯脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["benzoyl-CoA", "acetyl-CoA"],
+    "explanation": "苯甲酰辅酶A是厌氧芳香化合物进入中心代谢的共同中间体，随后经苯甲酰辅酶A还原与修饰的β-氧化生成乙酰辅酶A；主链裂解步骤还预期直接释放一分子乙酰辅酶A。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "anaerobic benzoyl-CoA pathway",
+      "summary": "苯甲酰辅酶A由苯甲酰辅酶A还原酶（EC 1.3.7.8）还原脱芳构，再经水合、脱氢和水解进入乙酰辅酶A等中心代谢物。该下游过程不属于4-乙基苯酚专属步骤。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "4-ethylphenol degradation (aerobic)",
+      "summary": "有氧途径通常将4-乙基苯酚转化为1-(4-羟基苯基)乙醇和4'-羟基苯乙酮，再经Baeyer-Villiger型氧化生成4-羟基苯乙酸酯并水解为氢醌，不属于本题厌氧主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": "由厌氧乙苯途径侧链反应类比到4-乙基苯酚，并衔接4-羟基苯甲酰辅酶A还原脱羟基",
+      "claim_scope": ["route_summary", "step.reaction"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "ethylbenzene dehydrogenase, EC 1.17.99.2, catalytic subunit gene ebdA",
+      "claim_scope": ["enzyme.name", "enzyme.ec_number", "enzyme.gene_or_protein"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "(S)-1-phenylethanol dehydrogenase, EC 1.1.1.311, gene ped",
+      "claim_scope": ["enzyme.name", "enzyme.ec_number", "enzyme.gene_or_protein"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "acetophenone carboxylase, EC 6.4.1.8, subunit gene apcA",
+      "claim_scope": ["enzyme.name", "enzyme.ec_number", "enzyme.gene_or_protein"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "4-hydroxybenzoyl-CoA reductase, EC 1.3.7.9",
+      "claim_scope": ["enzyme.name", "enzyme.ec_number"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Aromatoleum aromaticum EbN1（曾用名Azoarcus sp. EbN1）作为厌氧乙苯降解模式菌的一般生物学性状",
+      "claim_scope": ["microorganism", "traits"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "4-乙基苯酚厌氧降解主链缺少可在本回答中逐条核对的纯培养闭合实验，步骤按厌氧乙苯侧链途径加上对羟基苯甲酰辅酶A还原脱羟基推断。",
+    "乙苯脱氢酶、1-苯乙醇脱氢酶和苯乙酮羧化酶对相应对羟基底物的体内专一性未确证，相关步骤的酶与菌置信度为low。",
+    "3-(4-羟基苯基)-3-氧代丙酸至4-羟基苯甲酰辅酶A的具体酶、EC编号、基因和ATP计量未知，酶对象已置空；乙酰辅酶A是按硫解机制填写的辅产物，也可能是乙酸。",
+    "对甲酚甲基羟化酶（EC 1.17.99.1）体外可氧化4-乙基苯酚，但是否构成厌氧生长主链的起始酶并不明确，故未作为首选。",
+    "未确认的TaxID、保藏号、基因组登录号与大小、GC含量、温度极限、pH和盐度数值均置null，不用近似值占位。",
+    "不能仅凭分离生境判断栖息地广适性，F15置null；运动性无可靠记忆，置null。",
+    "未把同一模式菌写成已实验证明可完成全部4-乙基苯酚厌氧主链的菌株，故complete_pathway_organism_profile_id为null。"
+  ]
+}

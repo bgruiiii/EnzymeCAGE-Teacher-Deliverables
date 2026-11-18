@@ -1,0 +1,486 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_125",
+  "pollutant_name_zh": "甲基叔丁基醚",
+  "pollutant_name_en": "Methyl tert-butyl ether",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methyl tert-butyl ether degradation",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "甲基叔丁基醚经单加氧酶起始裂解生成叔丁醇和甲醛；叔丁醇进一步氧化为2-甲基丙烷-1,2-二醇，再转化为2-甲基-2-羟基丙酸；该酸经CoA活化、变位和脱氢后进入3-羟基丁酰-CoA，最终裂解为乙酰-CoA进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Methyl tert-butyl ether",
+          "smiles": "COC(C)(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "tert-Butyl alcohol",
+          "smiles": "CC(C)(C)O",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "MTBE monooxygenase",
+        "ec_number": "1.14.13.241",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium austroafricanum",
+        "strain": "IFP 2012",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "tert-Butyl alcohol",
+          "smiles": "CC(C)(C)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Methylpropane-1,2-diol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "tert-Butanol monooxygenase",
+        "ec_number": "1.14.13.242",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium austroafricanum",
+        "strain": "IFP 2012",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-Methylpropane-1,2-diol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Methyl-2-hydroxypropanoate",
+          "smiles": "CC(C)(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "2-Methylpropane-1,2-diol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium austroafricanum",
+        "strain": "IFP 2012",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "EC编号未确定"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-Methyl-2-hydroxypropanoate",
+          "smiles": "CC(C)(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxyisobutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "CoA ligation",
+      "enzyme": {
+        "name": "2-Hydroxyisobutyrate--CoA ligase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium austroafricanum",
+        "strain": "IFP 2012",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "EC编号未确定"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-Hydroxyisobutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Hydroxybutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "2-Hydroxyisobutyryl-CoA mutase",
+        "ec_number": "5.4.99.13",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium austroafricanum",
+        "strain": "IFP 2012",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "3-Hydroxybutyryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetoacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "3-Hydroxybutyryl-CoA dehydrogenase",
+        "ec_number": "1.1.1.157",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium austroafricanum",
+        "strain": "IFP 2012",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "Acetoacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolysis",
+      "enzyme": {
+        "name": "Acetyl-CoA C-acetyltransferase",
+        "ec_number": "2.3.1.9",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium austroafricanum",
+        "strain": "IFP 2012",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Mycobacterium austroafricanum",
+      "strain": "IFP 2012",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用甲基叔丁基醚、叔丁醇和2-羟基异丁酸作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解甲基叔丁基醚及其代谢物叔丁醇",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "单加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性，抗酸",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Acetyl-CoA"],
+    "explanation": "乙酰-CoA进入三羧酸循环等中心代谢途径。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "MTBE monooxygenase EC 1.14.13.241",
+      "claim_scope": ["enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "tert-butanol monooxygenase EC 1.14.13.242",
+      "claim_scope": ["enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "2-hydroxyisobutyryl-CoA mutase EC 5.4.99.13",
+      "claim_scope": ["enzyme"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "3-hydroxybutyryl-CoA dehydrogenase EC 1.1.1.157",
+      "claim_scope": ["enzyme"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "acetyl-CoA C-acetyltransferase EC 2.3.1.9",
+      "claim_scope": ["enzyme"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Mycobacterium austroafricanum IFP 2012 general traits",
+      "claim_scope": ["organism"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "部分酶EC编号未确定",
+    "菌株基因组信息未知",
+    "TBA降解中间步骤的酶和EC编号存在不确定性"
+  ]
+}

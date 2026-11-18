@@ -1,0 +1,403 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_013",
+  "pollutant_name_zh": "4-硝基苯酚",
+  "pollutant_name_en": "4-Nitrophenol",
+  "route_scope": {
+    "oxygen_condition": "mixed",
+    "chosen_route_name": "4-nitrophenol degradation II",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线填写；该路线以 hydroquinone 为关键中间体，并汇入 3-oxoadipate。"
+  },
+  "route_summary": "在兼性条件下，4-硝基苯酚经 4-nitrophenol hydroxylase 作用生成 hydroquinone 并释放亚硝酸盐；hydroquinone 再经 hydroquinone hydroxylase、hydroxyquinol 1,2-dioxygenase 和 maleylacetate reductase 转化为 3-oxoadipate，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Nitrophenol",
+          "smiles": "O=[N+]([O-])c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "hydroquinone",
+          "smiles": "Oc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "nitrite",
+          "smiles": "[O-]N=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "羟化并释放亚硝酸盐",
+      "enzyme": {
+        "name": "4-nitrophenol hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. WBC-3",
+        "strain": "WBC-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "初始羟化产物与辅因子计量基于数据库路线归纳，EC 编号未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "hydroquinone",
+          "smiles": "Oc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1,2,4-benzenetriol",
+          "smiles": "Oc1c(O)cc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "羟化",
+      "enzyme": {
+        "name": "hydroquinone hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. WBC-3",
+        "strain": "WBC-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 编号未确认；辅因子计量为常见单加氧酶形式。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "1,2,4-benzenetriol",
+          "smiles": "Oc1c(O)cc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylacetate",
+          "smiles": "O=C(O)C=CC(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧开环",
+      "enzyme": {
+        "name": "hydroxyquinol 1,2-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. WBC-3",
+        "strain": "WBC-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 编号未确认；开环产物质子化状态未细化。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "maleylacetate",
+          "smiles": "O=C(O)C=CC(=O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "O=C(O)CC(=O)CCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "还原",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. WBC-3",
+        "strain": "WBC-3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 编号未确认；辅因子计量按常见还原反应归纳。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp. WBC-3",
+      "strain": "WBC-3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以 4-硝基苯酚作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "能降解 4-硝基苯酚等硝基芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 4-nitrophenol hydroxylase 活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "3-oxoadipate"
+    ],
+    "explanation": "3-oxoadipate 可作为 beta-ketoadipate 途径中间体，进一步进入三羧酸循环相关代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-oxoadipate 进入中心代谢",
+      "summary": "3-oxoadipate 可经辅酶A转移酶等步骤转化为琥珀酰辅酶A和乙酰辅酶A。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway name: 4-nitrophenol degradation II",
+      "claim_scope": [
+        "route",
+        "steps",
+        "enzyme",
+        "microorganism",
+        "trait:F7_carbon_substrate_utilization",
+        "trait:F8_degradation_capacity_broad",
+        "trait:F9_enzyme_activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general Pseudomonas taxonomy characteristics",
+      "claim_scope": [
+        "trait:F11_cell_morphology",
+        "trait:F12_gram_cell_envelope",
+        "trait:F13_sporulation"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "EC 编号未逐项确认，相关字段填 null。",
+    "辅因子与质子化状态按常见反应形式归纳，未细化化学计量。",
+    "菌株多数生理性状缺乏直接来源，未知项填 null。"
+  ]
+}

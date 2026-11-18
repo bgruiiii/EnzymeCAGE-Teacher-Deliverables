@@ -1,0 +1,413 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_090",
+  "pollutant_name_zh": "肉桂酸根",
+  "pollutant_name_en": "Cinnamate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "cinnamate and 3-hydroxycinnamate degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": true,
+    "notes": "题面氧条件未指定，故保留 null；路线中若干芳环二羟基化/开环步骤为氧依赖反应。路线名同时含 3-hydroxycinnamate，本答案将其作为汇入支路说明，评分主链按 cinnamate 到 2-hydroxypenta-2,4-dienoate。"
+  },
+  "route_summary": "主链按题面路线取肉桂酸为起点：肉桂酸先经类 3-phenylpropionate/cinnamate 双加氧酶体系进行芳环顺式二羟基化，再脱氢生成 (E)-3-(2,3-dihydroxyphenyl)acrylate；随后经外二醇开环形成 2-hydroxy-6-oxonona-2,4,7-trienedioate，最后水解释放主产物 2-hydroxypenta-2,4-dienoate，并伴生 fumarate。代表菌统一用 Escherichia coli K-12 MG1655；3-hydroxycinnamate 进入支路不列入评分主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "cinnamate",
+          "smiles": "O=C([O-])/C=C/c1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis-3-[(E)-2-carboxylatoethenyl]cyclohexa-3,5-diene-1,2-diol",
+          "smiles": "O=C([O-])/C=C/C1=CC=CC(O)C1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "arene cis-dihydroxylation; Rieske non-heme dioxygenation",
+      "enzyme": {
+        "name": "3-phenylpropionate/cinnamate dioxygenase",
+        "ec_number": "1.14.12.19",
+        "gene_or_protein": "hcaA/hcaB",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "顺式二氢二醇中间体未标注绝对/相对立体化学；EC 1.14.12.19 的接受名偏向 3-phenylpropionate dioxygenase，用于肉桂酸底物按该路线记录。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "cis-3-[(E)-2-carboxylatoethenyl]cyclohexa-3,5-diene-1,2-diol",
+          "smiles": "O=C([O-])/C=C/C1=CC=CC(O)C1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(E)-3-(2,3-dihydroxyphenyl)acrylate",
+          "smiles": "O=C([O-])/C=C/c1c(O)c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "cis-dihydrodiol dehydrogenation; rearomatization",
+      "enzyme": {
+        "name": "cinnamate cis-dihydrodiol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "该脱氢步骤的确定 EC 编号未填写，避免误用 benzoate/benzene 顺式二醇脱氢酶 EC。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "(E)-3-(2,3-dihydroxyphenyl)acrylate",
+          "smiles": "O=C([O-])/C=C/c1c(O)c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxonona-2,4,7-trienedioate",
+          "smiles": "O=C([O-])C(O)=CC=CC(=O)/C=C/C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol aromatic ring cleavage; meta-cleavage dioxygenation",
+      "enzyme": {
+        "name": "2,3-dihydroxycinnamate extradiol dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "该外二醇开环酶的确定 EC 编号未填写；开链产物按可水解生成 2-hydroxypenta-2,4-dienoate 与 fumarate 的 C9 中间体表示。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxonona-2,4,7-trienedioate",
+          "smiles": "O=C([O-])C(O)=CC=CC(=O)/C=C/C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "O=C([O-])C(O)=CC=C",
+          "role": "main"
+        },
+        {
+          "name": "fumarate",
+          "smiles": "O=C([O-])/C=C/C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-C bond hydrolysis of ring-cleavage product",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxonona-2,4,7-trienedioate hydrolase",
+        "ec_number": "3.7.1.14",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "EC 3.7.1.14 的接受名对应饱和侧链底物 2-hydroxy-6-oxonona-2,4-dienedioate hydrolase；本步为肉桂酸不饱和类似物，故置信度为 medium。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温（嗜中温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": "% NaCl (w/v)",
+            "category": "非嗜盐（常规低盐培养；具体耐受数值未引用）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": "ATCC 700926",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧代谢；好氧条件下以呼吸为主",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "葡萄糖等常规碳源；与本题相关，可经肉桂酸/3-羟基肉桂酸-苯丙酸途径利用芳香酸并生成 2-hydroxypenta-2,4-dienoate",
+          "raw_text": "cinnamate and 3-hydroxycinnamate degradation to 2-hydroxypentadienoate",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "芳香酸/苯丙酸类化合物间位开环降解；兼性利用多种糖和有机酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "cinnamate/3-phenylpropionate dioxygenation、cis-dihydrodiol dehydrogenation、extradiol ring cleavage 和 ring-cleavage-product hydrolysis",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有鞭毛、可运动（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（bacillus）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative（革兰氏阴性，具外膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢/内生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": "Escherichia coli str. K-12 substr. MG1655 complete genome NC_000913.3; 4,641,652 bp; GC 50.8%",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要为温血动物肠道共生/兼性致病菌，也可随粪便进入水体、土壤和沉积物并短期存活；宿主相关但具一定环境存活能力",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "3-hydroxycinnamate entry branch",
+      "summary": "3-hydroxycinnamate（按常见命名为 m-coumarate）可先羟基化为 3,4-dihydroxycinnamate/caffeate，再经外二醇开环和水解汇入同类 C9 开链中间体，最终生成 2-hydroxypenta-2,4-dienoate；该支路用于解释路线名，不计入肉桂酸评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway: cinnamate and 3-hydroxycinnamate degradation to 2-hydroxypentadienoate",
+      "claim_scope": [
+        "chosen_route",
+        "reaction_sequence",
+        "enzyme_assignment",
+        "organism_context"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Assembly/Genome",
+      "record_id": "GCF_000005845.2",
+      "locator": "NC_000913.3",
+      "claim_scope": [
+        "genome_basic",
+        "strain_identity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "511145",
+      "locator": "Escherichia coli str. K-12 substr. MG1655",
+      "claim_scope": [
+        "organism_identity",
+        "ncbi_taxid"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "Escherichia coli K-12 MG1655",
+      "claim_scope": [
+        "culture_collection"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ENZYME (ExPASy)",
+      "record_id": "3.7.1.14",
+      "locator": "https://enzyme.expasy.org/EC/3.7.1.14",
+      "claim_scope": [
+        "enzyme_ec",
+        "hydrolase_reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ENZYME (ExPASy)",
+      "record_id": "1.14.12.19",
+      "locator": "https://enzyme.expasy.org/EC/1.14.12.19",
+      "claim_scope": [
+        "enzyme_ec",
+        "dioxygenase_reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "general_phenotype",
+        "temperature_ph_salinity_ranges_not_numerically_bound",
+        "gram_morphology_oxygen_respiration"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "S2 与 S3 的具体 EC 编号未确定，按规则填 null，而非借用相近芳香族化合物的 EC。",
+    "S1 顺式二氢二醇 SMILES 未给立体化学；S4 底物为肉桂酸不饱和类似物，而 EC 3.7.1.14 接受名对应饱和侧链底物。",
+    "题面氧条件为 null；尽管路线含氧依赖双加氧/开环步骤，route_scope.oxygen_condition 未擅自改为 aerobic。"
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_102",
+  "pollutant_name_zh": "2-丙基苯酚",
+  "pollutant_name_en": "2-Propylphenol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-propylphenol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；按已知假单胞菌好氧邻烷基酚侧链氧化主链归纳，辅因子与部分酶编号未完全确认。"
+  },
+  "route_summary": "2-丙基苯酚的微生物降解主链按邻烷基酚侧链氧化途径处理：先羟化侧链生成2-(1-羟基丙基)苯酚，再氧化为2-丙酰苯酚，随后经Baeyer-Villiger型单加氧/水解生成儿茶酚和丙酸；儿茶酚可由儿茶酚1,2-双加氧酶邻位裂解生成顺,顺-己二烯二酸进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-Propylphenol",
+          "smiles": "CCCc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-(1-Hydroxypropyl)phenol",
+          "smiles": "CCC(O)c1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "side-chain hydroxylation",
+      "enzyme": {
+        "name": "2-propylphenol monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "辅因子、计量与EC编号未确认；该步依据假单胞菌邻烷基酚侧链羟化知识推断。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-(1-Hydroxypropyl)phenol",
+          "smiles": "CCC(O)c1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Propionylphenol",
+          "smiles": "CCC(=O)c1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "alcohol oxidation",
+      "enzyme": {
+        "name": "2-(1-hydroxypropyl)phenol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "辅酶类型与EC编号未确认；该步为侧链醇到酮的氧化，依据邻烷基酚代谢知识推断。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-Propionylphenol",
+          "smiles": "CCC(=O)c1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "Propanoate",
+          "smiles": "CCC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Baeyer-Villiger oxidation and hydrolysis",
+      "enzyme": {
+        "name": "2-propionylphenol monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "Baeyer-Villiger单加氧酶对丙酰基类似物的专一性及EC未确认；总反应推断生成儿茶酚与丙酸。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "Catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis,cis-Muconate",
+          "smiles": "O=C(O)C=CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aromatic ring ortho-cleavage",
+      "enzyme": {
+        "name": "catechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "儿茶酚邻位裂解是好氧假单胞菌常见途径，但其与本路线上游偶联的具体菌株证据未完全确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（专性需氧、非发酵型）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用2-丙基苯酚等烷基酚/酚类作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解酚类及邻烷基酚等芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有烷基酚侧链单加氧/羟化、醇脱氢、Baeyer-Villiger单加氧及儿茶酚1,2-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "运动（通常具鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性环境菌，常见于土壤、淡水及受污染环境",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "cis,cis-muconate",
+      "propanoate"
+    ],
+    "explanation": "儿茶酚经邻位裂解生成顺,顺-己二烯二酸（cis,cis-muconate）进入β-酮己二酸途径；丙酸可进入丙酰辅酶A代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida o-alkylphenol side-chain oxidation pathway (2-propylphenol to catechol/propanoate and catechol ortho-cleavage)",
+      "claim_scope": [
+        "S1 reaction",
+        "S2 reaction",
+        "S3 reaction",
+        "S4 reaction",
+        "enzyme assignments",
+        "microorganism assignment",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida general physiological and morphological traits",
+      "claim_scope": [
+        "F1_oxygen_tolerance",
+        "F2_temperature",
+        "F6_respiration_electron_acceptor",
+        "F10_motility",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation",
+        "F15_habitat_generalism"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未由题面指定，本答案按常见好氧假单胞菌途径归纳。",
+    "具体菌株、保藏编号与基因组信息未确认。",
+    "前三步酶的EC编号、辅因子与反应计量未完全确认。",
+    "2-丙酰苯酚单加氧酶是否等同于2-羟基苯乙酮单加氧酶样Baeyer-Villiger单加氧酶活性未确认。"
+  ]
+}

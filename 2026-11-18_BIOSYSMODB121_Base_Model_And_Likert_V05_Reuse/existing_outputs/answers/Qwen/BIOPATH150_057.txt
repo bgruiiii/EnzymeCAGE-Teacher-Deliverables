@@ -1,0 +1,348 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_057",
+  "pollutant_name_zh": "2-硝基甲苯",
+  "pollutant_name_en": "2-Nitrotoluene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-nitrotoluene degradation",
+    "is_single_continuous_route": true,
+    "notes": "氧条件未指定；按题面给定的 2-nitrotoluene degradation 路线填写。"
+  },
+  "route_summary": "在指定路线下，2-硝基甲苯的微生物降解主链按甲基逐步氧化展开：2-硝基甲苯先氧化为2-硝基苄醇，再氧化为2-硝基苯甲醛和2-硝基苯甲酸；随后硝基被还原为氨基生成邻氨基苯甲酸，最后经邻氨基苯甲酸双加氧酶转化为儿茶酚进入中心代谢。具体酶编号、菌株性状及来源证据不足处按 null 或低置信度处理。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-Nitrotoluene",
+          "smiles": "Cc1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Nitrobenzyl alcohol",
+          "smiles": "OCc1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "甲基单加氧氧化",
+      "enzyme": {
+        "name": "2-nitrotoluene monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "O-1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "初始甲基氧化酶的 EC 编号与菌株性状来源不足。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-Nitrobenzyl alcohol",
+          "smiles": "OCc1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Nitrobenzaldehyde",
+          "smiles": "O=Cc1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醇氧化为醛",
+      "enzyme": {
+        "name": "alcohol dehydrogenase",
+        "ec_number": "1.1.1.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "O-1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步可能由广谱醇脱氢酶催化，具体同工酶未确认。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-Nitrobenzaldehyde",
+          "smiles": "O=Cc1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Nitrobenzoic acid",
+          "smiles": "O=C(O)c1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛氧化为羧酸",
+      "enzyme": {
+        "name": "aldehyde dehydrogenase",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "O-1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "醛脱氢酶的具体底物特异性未在本答案中核实。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-Nitrobenzoic acid",
+          "smiles": "O=C(O)c1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Aminobenzoic acid",
+          "smiles": "Nc1ccccc1C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "硝基还原为氨基",
+      "enzyme": {
+        "name": "2-nitrobenzoate reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "O-1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "2-硝基苯甲酸还原为邻氨基苯甲酸的酶 EC 编号不确定。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "2-Aminobenzoic acid",
+          "smiles": "Nc1ccccc1C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化脱氨脱羧",
+      "enzyme": {
+        "name": "anthranilate 1,2-dioxygenase",
+        "ec_number": "1.14.12.2",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "O-1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "邻氨基苯甲酸进入儿茶酚的辅因子与副产物未在本答案中展开。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "O-1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "catechol"
+    ],
+    "explanation": "主链末端生成儿茶酚，可作为芳香族化合物降解的入口进入儿茶酚中心代谢途径。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "route",
+        "steps",
+        "enzymes",
+        "microorganism"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，无法确认该路线在题面条件下是否为唯一主链。",
+    "2-硝基甲苯单加氧酶和2-硝基苯甲酸还原酶的 EC 编号未知。",
+    "Pseudomonas sp. strain O-1 的 15 项性状缺少可直接引用的来源，故多项填 null。"
+  ]
+}

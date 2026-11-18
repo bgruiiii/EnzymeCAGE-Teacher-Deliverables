@@ -1,0 +1,321 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_049",
+  "pollutant_name_zh": "甘油",
+  "pollutant_name_en": "Glycerol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "glycerol degradation I",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "甘油经甘油激酶磷酸化为甘油-3-磷酸，再由甘油-3-磷酸脱氢酶（醌）氧化生成二羟基丙酮磷酸，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Glycerol",
+          "smiles": "OCC(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Glycerol 3-phosphate",
+          "smiles": "OCC(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": {
+        "name": "Glycerol kinase",
+        "ec_number": "2.7.1.30",
+        "gene_or_protein": "glpK",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Glycerol 3-phosphate",
+          "smiles": "OCC(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "Ubiquinone-8",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Dihydroxyacetone phosphate",
+          "smiles": "OCC(=O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "Ubiquinol-8",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Glycerol-3-phosphate dehydrogenase (quinone)",
+        "ec_number": "1.1.5.3",
+        "gene_or_protein": "glpD",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "嗜温菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "facultative anaerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "47076"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "facultative anaerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "glycerol, glucose, and other carbohydrates",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "capable of degrading glycerol via glycerol kinase and glycerol-3-phosphate dehydrogenase",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "glycerol kinase, glycerol-3-phosphate dehydrogenase (quinone)",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile by peritrichous flagella",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "widely distributed in intestinal tracts and other environments; facultative anaerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Dihydroxyacetone phosphate"],
+    "explanation": "二羟基丙酮磷酸是糖酵解中间产物，可进入中心碳代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "glycerol kinase reaction",
+        "EC 2.7.1.30",
+        "Escherichia coli K-12 MG1655"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "glycerol-3-phosphate dehydrogenase (quinone) reaction",
+        "EC 1.1.5.3",
+        "Escherichia coli K-12 MG1655"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli K-12 MG1655 general traits",
+        "oxygen tolerance",
+        "respiration",
+        "carbon substrate utilization",
+        "motility",
+        "cell morphology",
+        "Gram stain",
+        "sporulation",
+        "habitat"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli K-12 MG1655 genome accession and size",
+        "NC_000913.3",
+        "4641652 bp",
+        "50.8% GC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli K-12 MG1655 culture collection",
+        "ATCC 47076"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧气条件未指定，选用的甘油-3-磷酸脱氢酶为醌依赖型（EC 1.1.5.3），在厌氧条件下可能使用其他同工酶。"
+  ]
+}

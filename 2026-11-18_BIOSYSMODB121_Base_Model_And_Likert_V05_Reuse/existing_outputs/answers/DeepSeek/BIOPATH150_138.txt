@@ -1,0 +1,490 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_138",
+  "pollutant_name_zh": "甲萘威",
+  "pollutant_name_en": "Carbaryl",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "carbaryl degradation",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "甲萘威经水解生成1-萘酚和甲胺，随后1-萘酚经1,2-二羟基萘、2-羟基色烯-2-羧酸、2'-羟基亚苄基丙酮酸、水杨醛、水杨酸、儿茶酚，最终开环进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Carbaryl",
+          "smiles": "CNC(=O)Oc1cccc2ccccc12",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-Naphthol",
+          "smiles": "Oc1cccc2ccccc12",
+          "role": "main"
+        },
+        {
+          "name": "Methylamine",
+          "smiles": "CN",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "carbaryl hydrolase",
+        "ec_number": "3.5.1.-",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5pp",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "1-Naphthol",
+          "smiles": "Oc1cccc2ccccc12",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "1,2-Dihydroxynaphthalene",
+          "smiles": "Oc1c(O)ccc2ccccc12",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "1-naphthol 2-monooxygenase",
+        "ec_number": "1.14.13.219",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5pp",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "1,2-Dihydroxynaphthalene",
+          "smiles": "Oc1c(O)ccc2ccccc12",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxychromene-2-carboxylate",
+          "smiles": "OC(=O)C1(O)Oc2ccccc2C=C1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dioxygenation",
+      "enzyme": {
+        "name": "1,2-dihydroxynaphthalene dioxygenase",
+        "ec_number": "1.13.11.34",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5pp",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-Hydroxychromene-2-carboxylate",
+          "smiles": "OC(=O)C1(O)Oc2ccccc2C=C1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2'-Hydroxybenzylidenepyruvate",
+          "smiles": "O=C(O)C(=O)C=Cc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "2-hydroxychromene-2-carboxylate isomerase",
+        "ec_number": "5.99.1.2",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5pp",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "2'-Hydroxybenzylidenepyruvate",
+          "smiles": "O=C(O)C(=O)C=Cc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Salicylaldehyde",
+          "smiles": "O=Cc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydratase-aldolase",
+      "enzyme": {
+        "name": "2'-hydroxybenzylidenepyruvate hydratase-aldolase",
+        "ec_number": "4.1.2.45",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5pp",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "Salicylaldehyde",
+          "smiles": "O=Cc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Salicylate",
+          "smiles": "O=C(O)c1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "salicylaldehyde dehydrogenase",
+        "ec_number": "1.2.1.65",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5pp",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "Salicylate",
+          "smiles": "O=C(O)c1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "salicylate 1-monooxygenase",
+        "ec_number": "1.14.13.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5pp",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S7"
+      ],
+      "substrates": [
+        {
+          "name": "Catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis,cis-Muconate",
+          "smiles": "O=C(O)C=CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dioxygenation",
+      "enzyme": {
+        "name": "catechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "C5pp",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "C5pp",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes carbaryl as sole carbon source",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades carbaryl and naphthalene-related compounds",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "carbaryl hydrolase and naphthalene degradation enzymes",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "isolated from carbaryl-contaminated soil; soil bacterium",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "cis,cis-Muconate"
+    ],
+    "explanation": "cis,cis-Muconate is further metabolized via the beta-ketoadipate pathway into central metabolites."
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [],
+  "uncertainties": [
+    "酶的EC编号和菌株性状部分未知",
+    "氧条件未指定"
+  ]
+}

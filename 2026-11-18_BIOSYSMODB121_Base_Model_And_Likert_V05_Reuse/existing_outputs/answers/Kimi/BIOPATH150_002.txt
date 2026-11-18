@@ -1,0 +1,100 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_002",
+  "pollutant_name_zh": "磺草灵",
+  "pollutant_name_en": "Asulam",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Asulam pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定原样填写 'Asulam pathway'（好氧）。该路线在 EAWAG-BBD/UM-BBD 数据库中仅明确记录磺草灵水解生成磺胺这一步，故评分主链只含一步；N-乙酰化支路作为非评分支路列于 alternative_branches。"
+  },
+  "route_summary": "好氧条件下，磺草灵（Asulam，N-(4-氨基苯磺酰基)氨基甲酸甲酯）的主链降解为一步水解反应：磺酰氨基甲酸酯中的氨基甲酸酯键被水解并脱羧，生成主产物磺胺（Sulfanilamide，4-氨基苯磺酰胺），同时释放副产物甲醇与二氧化碳。数据库未记录该路线中磺胺后续的具体酶促反应，故主链止于此步；文献报道该水解多由土壤微生物（混合体系）完成，具体酶（EC）与纯培养菌株未鉴定，故相应字段如实填 null。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Asulam",
+          "smiles": "COC(=O)NS(=O)(=O)c1ccc(N)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Sulfanilamide",
+          "smiles": "Nc1ccc(S(=O)(=O)N)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Methanol",
+          "smiles": "CO",
+          "role": "byproduct"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解（磺酰氨基甲酸酯的氨基甲酸酯键断裂并脱羧）",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "催化该步水解的酶（氨基甲酸酯水解酶类）及其 EC 编号未见明确报道，enzyme 整体填 null；文献中该转化多归因于土壤微生物混合培养，未鉴定到具体物种/菌株，microorganism 整体填 null。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "Asulam pathway 仅明确记录磺草灵水解为磺胺这一步，未给出磺胺进一步降解并进入中心代谢的具体中间体，故不指定中心代谢进入点。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "N-乙酰化支路（N-acetylasulam / N-acetylsulfanilamide）",
+      "summary": "磺草灵或其水解产物磺胺的苯胺氨基可被微生物（尤其真菌）N-乙酰化，生成 N-乙酰磺草灵（4-乙酰氨基苯磺酰基氨基甲酸甲酯）与 N-乙酰磺胺；通常视为解毒性死端支路，不属于被评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD / UM-BBD (Biocatalysis/Biodegradation Database)",
+      "record_id": "Asulam Pathway",
+      "locator": null,
+      "claim_scope": [
+        "主路线反应：Asulam 水解生成 Sulfanilamide（并释放甲醇与 CO2）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "N-乙酰化支路（N-acetylasulam、N-acetylsulfanilamide）为解毒性死端支路"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "催化磺草灵水解的酶未鉴定，无可靠 EC 编号与基因信息，故 S1 的 enzyme 填 null。",
+    "该转化的降解微生物未鉴定到具体物种/菌株（多为土壤混合体系研究），S1 的 microorganism 填 null，因此本题不含 organism_profiles 及 15 项性状记录。",
+    "磺胺（Sulfanilamide）的后续降解反应在 Asulam pathway 中未被数据库明确记录，主链仅一步。",
+    "N-乙酰化支路的具体酶与微生物不确定，仅作为非评分支路列出。"
+  ]
+}

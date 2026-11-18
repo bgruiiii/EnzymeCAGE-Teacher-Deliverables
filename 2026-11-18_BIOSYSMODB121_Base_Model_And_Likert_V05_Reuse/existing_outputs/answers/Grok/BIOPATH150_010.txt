@@ -1,0 +1,286 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_010",
+  "pollutant_name_zh": "甲胺磷",
+  "pollutant_name_en": "Methamidophos",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Methamidophos pathway",
+    "is_single_continuous_route": true,
+    "notes": "好氧培养条件下的水解主链；各步本身不直接消耗氧气。初始断裂位点在文献中不完全一致，此处以P–N键先断裂的线性途径作为评分主链。"
+  },
+  "route_summary": "好氧条件下甲胺磷微生物降解主链为三步水解：甲胺磷先断裂P–N键生成O,S-二甲基硫代磷酸并释放氨，再断裂P–S键生成磷酸单甲酯与甲硫醇，最后磷酸单甲酯水解为磷酸与甲醇。代表菌取文献中报道的Hyphomicrobium sp. MAP-1；除第一步的甲胺磷水解酶外，后续专一酶与EC号未能可靠核定。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Methamidophos",
+          "smiles": "COP(=O)(N)SC",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "O,S-dimethyl phosphorothioic acid",
+          "smiles": "COP(=O)(O)SC",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "P–N键水解",
+      "enzyme": {
+        "name": "methamidophos hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Hyphomicrobium sp.",
+        "strain": "MAP-1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "P–N键先断裂是常见报道之一，但P–S或P–O先断裂亦有文献支持。甲胺磷水解酶名称见于相关研究，正式EC号与基因名未能核定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "O,S-dimethyl phosphorothioic acid",
+          "smiles": "COP(=O)(O)SC",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "methyl dihydrogen phosphate",
+          "smiles": "COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "methanethiol",
+          "smiles": "CS",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "P–S键水解",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Hyphomicrobium sp.",
+        "strain": "MAP-1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "O,S-二甲基硫代磷酸下一步优先切断P–S还是P–O尚未定论；此处采用生成磷酸单甲酯与甲硫醇的路径。催化该步的专一酶未知。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "methyl dihydrogen phosphate",
+          "smiles": "COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "phosphoric acid",
+          "smiles": "OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "methanol",
+          "smiles": "CO",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磷酸单酯水解",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Hyphomicrobium sp.",
+        "strain": "MAP-1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "磷酸单甲酯水解为磷酸与甲醇在化学上合理，但是否由MAP-1的某一种已鉴定磷酸酯酶催化并未核实，故酶置空。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Hyphomicrobium sp.",
+      "strain": "MAP-1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "甲胺磷降解",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "甲胺磷水解活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["phosphoric acid", "ammonia", "methanol", "methanethiol"],
+    "explanation": "磷酸进入磷代谢，氨进入氮代谢；甲醇与甲硫醇可作为一碳或含硫小分子继续代谢，但具体下游酶步未纳入本主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "甲醇与甲硫醇的后续代谢",
+      "summary": "甲醇可进入一碳代谢，甲硫醇可被进一步氧化；这些步骤不属于甲胺磷骨架降解主链，且未绑定到已核定的专一酶。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "P-S bond cleavage initiation",
+      "summary": "另一常见起始方式是甲胺磷先断裂P–S键，生成O-甲基磷酰胺酸酯与甲硫醇，再继续水解。该分支不计入本次评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "依据对甲胺磷好氧生物降解文献的记忆整理，包括Hyphomicrobium sp. MAP-1降解甲胺磷及其中间体水解途径的报道；本次未核对原文页码。",
+      "claim_scope": ["reaction", "enzyme", "organism", "degradation_trait"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "初始水解可发生在P–N、P–S或P–O键，本主链仅采用P–N先断裂的一种线性途径。",
+    "第二步对硫代磷酸二酯是优先切断P–S还是P–O，证据不足。",
+    "除第一步使用文献中的甲胺磷水解酶名称外，各步EC号、基因及后续专一酶均未核定。",
+    "Hyphomicrobium sp. MAP-1的TaxID、保藏号、基因组与多数生理性状未能核实，故置为null。",
+    "未能确认同一菌株已用纯化酶证明完成全部三步，因此未指定完整途径代表菌。"
+  ]
+}

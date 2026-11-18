@@ -1,0 +1,199 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_144",
+  "pollutant_name_zh": "4-(三甲基铵基)丁酸根",
+  "pollutant_name_en": "4-(Trimethylammonio)butanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "γ-butyrobetaine degradation III",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；路线名称按题面原样填写。"
+  },
+  "route_summary": "在指定路线 γ-butyrobetaine degradation III 下，按还原性 C-N 裂解主链处理：4-(三甲基铵基)丁酸根被还原裂解为丁酸根和三甲胺；具体 EC 编号、辅因子与菌株信息不确定。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-(Trimethylammonio)butanoate",
+          "smiles": "[O-]C(=O)CCC[N+](C)(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "butanoate",
+          "smiles": "CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原性 C-N 裂解",
+      "enzyme": {
+        "name": "gamma-butyrobetaine reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sporogenes",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步按 γ-butyrobetaine degradation III 的还原裂解主链填写；EC 编号、电子供体/辅因子及具体菌株未确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Clostridium sporogenes",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "obligately anaerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "can utilize gamma-butyrobetaine as a carbon and energy source",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades quaternary ammonium compounds including gamma-butyrobetaine",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "gamma-butyrobetaine reductase activity",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-positive",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "endospore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "butanoate"
+    ],
+    "explanation": "丁酸根为该路线的直接碳骨架终产物，可经丁酰辅酶 A/β-氧化相关途径进入中心代谢；本题未展开下游步骤。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1 reaction",
+        "S1 enzyme",
+        "S1 microorganism"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_001 traits"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "路线 γ-butyrobetaine degradation III 的正式酶学编号、辅因子/电子供体与具体菌株未确认。",
+    "氧条件题面未指定，无法确认该路线在该案例中是否严格厌氧。",
+    "微生物性状仅按 Clostridium sporogenes 的一般生物学特征低置信度填写，多数来源未核实。"
+  ]
+}

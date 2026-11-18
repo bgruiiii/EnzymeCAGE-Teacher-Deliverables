@@ -1,0 +1,378 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_132",
+  "pollutant_name_zh": "1-甲基-2-吡咯烷酮",
+  "pollutant_name_en": "1-Methyl-2-pyrrolidinone",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "N-methylpyrrolidone degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线为 N-methylpyrrolidone degradation；氧条件未提供。"
+  },
+  "route_summary": "在指定路线下，1-甲基-2-吡咯烷酮先经脱甲基作用生成2-吡咯烷酮，随后2-吡咯烷酮水解开环生成4-氨基丁酸；4-氨基丁酸经转氨作用生成琥珀酸半醛，再氧化为琥珀酸并进入三羧酸循环。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "1-Methyl-2-pyrrolidinone",
+          "smiles": "O=C1CCCN1C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Pyrrolidinone",
+          "smiles": "O=C1CCCN1",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "N-demethylation",
+      "enzyme": {
+        "name": "N-methyl-2-pyrrolidone demethylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "第一步脱甲基酶的正式EC编号、辅因子、电子受体及是否严格依赖氧尚未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-Pyrrolidinone",
+          "smiles": "O=C1CCCN1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-aminobutanoate",
+          "smiles": "[NH3+]CCCC([O-])=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "lactam hydrolysis",
+      "enzyme": {
+        "name": "2-pyrrolidone hydrolase",
+        "ec_number": "3.5.2.11",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-aminobutanoate",
+          "smiles": "[NH3+]CCCC([O-])=O",
+          "role": "main"
+        },
+        {
+          "name": "2-oxoglutarate",
+          "smiles": "O=C([O-])C(=O)CCC(=O)[O-]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinate semialdehyde",
+          "smiles": "O=CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "L-glutamate",
+          "smiles": "[NH3+]C(CCC(=O)[O-])C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "transamination",
+      "enzyme": {
+        "name": "4-aminobutyrate transaminase",
+        "ec_number": "2.6.1.19",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "succinate semialdehyde",
+          "smiles": "O=CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinate",
+          "smiles": "O=C([O-])CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "succinate-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.24",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "NAD+依赖性与质子计量未逐项细化。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "路线相关 Pseudomonas putida 可利用 1-甲基-2-吡咯烷酮及其降解中间体作为碳源和氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解 1-甲基-2-吡咯烷酮，经 2-吡咯烷酮、4-氨基丁酸、琥珀酸半醛生成琥珀酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 N-methyl-2-pyrrolidone 脱甲基、2-pyrrolidone 水解、4-氨基丁酸转氨及琥珀酸半醛脱氢相关活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "常见于土壤、根际和水体等环境，栖息地较广",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "succinate"
+    ],
+    "explanation": "琥珀酸可直接进入三羧酸循环，作为中心代谢入口。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Internal reconstruction of the N-methylpyrrolidone degradation route: 1-methyl-2-pyrrolidinone -> 2-pyrrolidinone -> 4-aminobutanoate -> succinate semialdehyde -> succinate in Pseudomonas putida.",
+      "claim_scope": [
+        "steps",
+        "enzyme_assignment",
+        "microorganism_assignment",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "General phenotypic knowledge of Pseudomonas putida: aerobic, Gram-negative, rod-shaped, motile, non-spore-forming, soil/rhizosphere-associated, mesophilic, near-neutral pH optimum.",
+      "claim_scope": [
+        "organism_traits",
+        "step_trait_evidence",
+        "F1_oxygen_tolerance",
+        "F2_temperature",
+        "F3_pH",
+        "F6_respiration_electron_acceptor",
+        "F10_motility",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation",
+        "F15_habitat_generalism"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，无法判断该路线在有氧或厌氧下的适用性。",
+    "第一步脱甲基酶的正式EC编号、辅因子和电子受体不确定。",
+    "未指定具体菌株；性状按 Pseudomonas putida 物种层面的一般知识填写。",
+    "辅因子如 NAD+/NADH 仅以名称列出，未提供SMILES与完整计量。"
+  ]
+}

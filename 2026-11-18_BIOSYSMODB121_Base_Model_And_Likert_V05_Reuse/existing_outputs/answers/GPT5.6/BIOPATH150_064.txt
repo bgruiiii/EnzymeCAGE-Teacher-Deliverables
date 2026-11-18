@@ -1,0 +1,262 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_064",
+  "pollutant_name_zh": "3,4-二羟基苯磺酸根",
+  "pollutant_name_en": "3,4-Dihydroxybenzenesulfonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-sulfocatechol degradation",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "4-sulfocatechol经邻位双加氧开环生成3-sulfomuconate，随后脱磺酸生成cis,cis-muconate并释放亚硫酸根。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3,4-Dihydroxybenzenesulfonate",
+          "smiles": "O=S(=O)([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Sulfomuconate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "邻位双加氧开环",
+      "enzyme": {
+        "name": "4-Sulfocatechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步反应和菌株关联依据有限；3-sulfomuconate的结构式未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-Sulfomuconate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis,cis-Muconate",
+          "smiles": "O=C(O)/C=C\\C=C/C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Sulfite",
+          "smiles": "[O-]S(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱磺酸",
+      "enzyme": {
+        "name": "3-Sulfomuconate desulfonase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Hydrogenophaga intermedia",
+        "strain": "S1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "脱磺酸酶的标准EC编号及确切产物离子形态未确认。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Hydrogenophaga intermedia",
+      "strain": "S1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "cis,cis-Muconate"
+    ],
+    "explanation": "cis,cis-Muconate可继续进入β-ketoadipate相关中心代谢途径，但本题路线范围不继续展开。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "4-sulfocatechol degradation主链",
+        "4-sulfocatechol 1,2-dioxygenase",
+        "3-sulfomuconate desulfonase",
+        "Hydrogenophaga intermedia S1"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定。",
+    "3-sulfomuconate的确切结构和SMILES未确认。",
+    "3-sulfomuconate desulfonase的EC编号未确认。",
+    "菌株及其具体反应步骤对应关系证据不足。",
+    "15项菌株性状缺少可核验的最强来源。"
+  ]
+}

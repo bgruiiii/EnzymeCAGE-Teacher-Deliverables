@@ -1,0 +1,389 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_051",
+  "pollutant_name_zh": "(2Z)-2-羟基戊-2,4-二烯酸根",
+  "pollutant_name_en": "(2Z)-2-hydroxypenta-2,4-dienoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2-hydroxypenta-2,4-dienoate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，oxygen_condition 按题面保持 null。所选路线为芳香族化合物 meta（间位）裂解途径的通用下游代谢段，三步反应本身均不直接依赖分子氧，在兼性厌氧的 E. coli K-12 中即可完成。"
+  },
+  "route_summary": "2-hydroxypenta-2,4-dienoate（2-oxopent-4-enoate 的烯醇式）是多种芳香族化合物 meta（间位）裂解途径的通用开环中间体。其降解主链共三步：(1) 2-hydroxypenta-2,4-dienoate hydratase（mhpD，EC 4.2.1.80）将 (2Z)-2-hydroxypenta-2,4-dienoate 水合并酮式互变生成 4-hydroxy-2-oxopentanoate；(2) 4-hydroxy-2-oxopentanoate aldolase（mhpE，EC 4.1.3.39）经逆羟醛裂解生成 pyruvate 与 acetaldehyde；(3) acetaldehyde dehydrogenase (acylating)（mhpF，EC 1.2.1.10）在 coenzyme A 与 NAD+ 参与下把 acetaldehyde 氧化酰化为 acetyl-CoA。终产物 pyruvate 与 acetyl-CoA 汇入中心碳代谢（糖酵解/TCA 循环）。代表菌为 Escherichia coli K-12（mhp 操纵子），三步可在同一菌株内完成。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(2Z)-2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=C/C=C(O)/C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "unknown"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合反应（hydro-lyase 逆反应：向烯醇式 C=C 加水并酮式互变）",
+      "enzyme": {
+        "name": "2-hydroxypenta-2,4-dienoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": "mhpD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "EC 4.2.1.80 的反应与底物 (2Z) 构型依据公认 meta 裂解途径知识，未能在线核对；产物 4-hydroxy-2-oxopentanoate 的立体化学（文献多为 (4S) 构型）未在 SMILES 中标注。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛缩裂解（retro-aldol C-C 键断裂）",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxopentanoate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": "mhpE",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "EC 4.1.3.39（同义名 4-hydroxy-2-oxovalerate aldolase）与酶名依据内部知识，未能在线核对。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)C1OC(COP(=O)(O)OP(=O)(O)OCC2OC(n3cnc4c(N)ncnc34)C(O)C2O)C(O)C1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "C1=C(C(=O)N)CC=CN1C2OC(COP(=O)(O)OP(=O)(O)OCC3OC(n4cnc5c(N)ncnc45)C(O)C3O)C(O)C2O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化酰化（CoA 依赖的脱氢反应，形成硫酯）",
+      "enzyme": {
+        "name": "acetaldehyde dehydrogenase (acylating)",
+        "ec_number": "1.2.1.10",
+        "gene_or_protein": "mhpF",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "本步为 mhp 操纵子内 mhpF 催化的乙醛下游处理步骤；若评分主链仅计至 pyruvate + acetaldehyde，则本步应视为主链之后的下游延伸。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温菌，常规最适生长温度约37 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧，耐氧，有氧与无氧条件下均能生长",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌，常规培养基含约0.5%-1% NaCl即可良好生长，无特殊盐度需求"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧呼吸（有氧呼吸为主，兼可发酵与无氧呼吸）",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "化能异养；可利用葡萄糖等多种糖类和有机酸，并可经 mhp 途径以 3-(3-羟基苯基)丙酸（3-hydroxyphenylpropionate）为唯一碳源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种芳香族化合物（如 3-(3-羟基苯基)丙酸、苯乙酸、4-羟基苯乙酸等），经相应 meta 裂解途径生成 2-hydroxypenta-2,4-dienoate 等开环中间体并进一步矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具 mhpD（2-hydroxypenta-2,4-dienoate hydratase，EC 4.2.1.80）、mhpE（4-hydroxy-2-oxopentanoate aldolase，EC 4.1.3.39）与 mhpF（acetaldehyde dehydrogenase (acylating)，EC 1.2.1.10）酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "可运动（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状，单个或成对存在",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，具外膜-肽聚糖-内膜的典型双层细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性较高：天然栖居于人和温血动物肠道，亦常见于水体、土壤等环境生境，并是广泛使用的实验室模式菌",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "acetyl-CoA"
+    ],
+    "explanation": "pyruvate 与 acetyl-CoA 是中心碳代谢（糖酵解/TCA 循环）的直接节点：2-hydroxypenta-2,4-dienoate 的碳架经 mhpD/mhpE 裂解为 pyruvate 与 acetaldehyde，后者经 mhpF 转化为 acetyl-CoA，共同汇入中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "乙醛经乙酸氧化的替代分支",
+      "summary": "acetaldehyde 亦可经 NAD+ 依赖的乙醛脱氢酶（EC 1.2.1.3）氧化为 acetate，再由乙酰辅酶A合成酶（EC 6.2.1.1）活化为 acetyl-CoA；该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Díaz E, Ferrández A, Prieto MA, García JL. Biodegradation of aromatic compounds by Escherichia coli. Microbiol Mol Biol Rev. 2001;65(4):523-569（综述：E. coli K-12 mhp 操纵子 mhpD/mhpE/mhpF 分别编码 2-hydroxypenta-2,4-dienoate hydratase、4-hydroxy-2-oxopentanoate aldolase、acetaldehyde dehydrogenase (acylating)，完成 2-hydroxypenta-2,4-dienoate 降解为丙酮酸与乙酰辅酶A）",
+      "claim_scope": [
+        "S1_reaction",
+        "S1_enzyme_and_gene",
+        "S2_reaction",
+        "S2_enzyme_and_gene",
+        "S3_reaction",
+        "S3_enzyme_and_gene",
+        "E_coli_K12_as_pathway_organism",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz",
+      "record_id": "EC 4.2.1.80",
+      "locator": "2-hydroxypenta-2,4-dienoate hydratase：(2Z)-2-hydroxypenta-2,4-dienoate + H2O = 4-hydroxy-2-oxopentanoate",
+      "claim_scope": [
+        "S1_reaction"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz",
+      "record_id": "EC 4.1.3.39",
+      "locator": "4-hydroxy-2-oxopentanoate aldolase：4-hydroxy-2-oxopentanoate = pyruvate + acetaldehyde",
+      "claim_scope": [
+        "S2_reaction"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz",
+      "record_id": "EC 1.2.1.10",
+      "locator": "acetaldehyde dehydrogenase (acylating)：acetaldehyde + CoA + NAD+ = acetyl-CoA + NADH",
+      "claim_scope": [
+        "S3_reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000913",
+      "locator": "Escherichia coli K-12 substr. MG1655 complete genome（约4.64 Mb，GC约50.8%，taxid 511145）",
+      "claim_scope": [
+        "organism_identity",
+        "ncbi_taxid",
+        "F14_genome_basic"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "E_coli_K12_general_traits"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "各步 EC 编号与反应式基于公认的 meta 裂解途径生化知识（内部知识/文献记忆），未能在线核对数据库原始记录；EC 4.2.1.80 与 EC 4.1.3.39 的对应关系置信度中等。",
+    "题面未指定氧条件；本答案按兼性厌氧的 E. coli K-12 作答，三步反应本身均不直接消耗分子氧。",
+    "第 3 步（acetaldehyde→acetyl-CoA）为 mhp 操纵子内 mhpF 催化的步骤；若评分主链仅至 pyruvate + acetaldehyde，该步应视为下游延伸。",
+    "4-hydroxy-2-oxopentanoate 的立体化学（文献多为 (4S) 构型）未在 SMILES 中标注；底物 (2Z) 构型按题面给定。",
+    "E. coli K-12 MG1655 的性状数值（ATCC 700926、基因组 4,641,652 bp、GC 50.8% 等）来自内部知识，未核对原始记录。",
+    "mhpD/mhpE/mhpF 基因名按 E. coli K-12 惯例命名，具体基因编号未核对。"
+  ]
+}

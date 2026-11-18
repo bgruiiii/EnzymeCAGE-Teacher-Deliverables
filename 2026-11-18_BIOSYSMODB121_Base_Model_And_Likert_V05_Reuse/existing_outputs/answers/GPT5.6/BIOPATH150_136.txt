@@ -1,0 +1,228 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_136",
+  "pollutant_name_zh": "磺酸基乙醛",
+  "pollutant_name_en": "Sulfonatoacetaldehyde",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoacetaldehyde degradation IV",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "磺酸基乙醛经磺酸基乙醛乙酰转移酶催化，在无机磷酸参与下裂解为乙酰磷酸和亚硫酸盐。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Sulfonatoacetaldehyde",
+          "smiles": "[O-]S(=O)(=O)CC=O",
+          "role": "main"
+        },
+        {
+          "name": "Phosphate",
+          "smiles": "OP(=O)(O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Acetyl phosphate",
+          "smiles": "CC(=O)OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "Sulfite",
+          "smiles": "[O-]S([O-])=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磺酸基乙醛的磷酸解脱磺酸",
+      "enzyme": {
+        "name": "Sulfoacetaldehyde acetyltransferase",
+        "ec_number": "2.3.1.57",
+        "gene_or_protein": "xsc",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Paracoccus pantotrophus",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "具体菌株及该路线在该菌中的完整生理条件未确定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Paracoccus pantotrophus",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Acetyl phosphate"
+    ],
+    "explanation": "乙酰磷酸可继续进入乙酸代谢或经磷酸转乙酰酶反应形成乙酰辅酶A。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "EC",
+      "record_id": "2.3.1.57",
+      "locator": "Sulfoacetaldehyde acetyltransferase reaction",
+      "claim_scope": [
+        "S1反应转化",
+        "S1首选酶",
+        "EC编号"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1对应微生物为Paracoccus pantotrophus"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "具体菌株、保藏编号、基因组信息及15项生理性状缺少可核实来源。",
+    "氧条件未由题面指定，且该路线的实际生理电子受体条件未确定。"
+  ]
+}

@@ -1,0 +1,530 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_045",
+  "pollutant_name_zh": "苯乙酸根",
+  "pollutant_name_en": "Benzeneacetate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "phenylacetate degradation I (aerobic)",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "苯乙酸根经苯乙酰-CoA活化、环氧化、异构化、水解、硫解等步骤，最终生成乙酰-CoA和琥珀酰-CoA。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Phenylacetate",
+          "smiles": "[O-]C(=O)Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "CoA",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Phenylacetyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)n2cnc3c(N)ncnc32)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCSC(=O)Cc1ccccc1)O",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "Diphosphate",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "activation / CoA ligation",
+      "enzyme": {
+        "name": "Phenylacetate-CoA ligase",
+        "ec_number": "6.2.1.30",
+        "gene_or_protein": "PaaK",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Phenylacetyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)n2cnc3c(N)ncnc32)O)OP(=O)(O)O)C(C(=O)NCCC(=O)NCCSC(=O)Cc1ccccc1)O",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-(1,2-Epoxy-1,2-dihydrophenyl)acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "epoxidation",
+      "enzyme": {
+        "name": "Phenylacetyl-CoA 1,2-epoxidase",
+        "ec_number": "1.14.13.208",
+        "gene_or_protein": "PaaA/PaaB/PaaC/PaaD/PaaE",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-(1,2-Epoxy-1,2-dihydrophenyl)acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Oxepin-2(3H)-ylideneacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "2-(1,2-Epoxy-1,2-dihydrophenyl)acetyl-CoA isomerase",
+        "ec_number": "5.3.3.22",
+        "gene_or_protein": "PaaG",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-Oxepin-2(3H)-ylideneacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxo-5,6-dehydrosuberyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2-Oxepin-2(3H)-ylideneacetyl-CoA hydrolase",
+        "ec_number": "3.7.1.15",
+        "gene_or_protein": "PaaF",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "3-Oxo-5,6-dehydrosuberyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "CoA",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Hydroxyadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)n2cnc3c(N)ncnc32)O)OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolytic cleavage",
+      "enzyme": {
+        "name": "3-Oxo-5,6-dehydrosuberyl-CoA thiolase",
+        "ec_number": "2.3.1.223",
+        "gene_or_protein": "PaaZ",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "3-Hydroxyadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "3-Hydroxyadipyl-CoA dehydrogenase",
+        "ec_number": "1.1.1.259",
+        "gene_or_protein": "PaaH",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "3-Oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "CoA",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Succinyl-CoA",
+          "smiles": "O=C(O)CCC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)n2cnc3c(N)ncnc32)O)OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "Acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1C(C(C(O1)n2cnc3c(N)ncnc32)O)OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolytic cleavage",
+      "enzyme": {
+        "name": "3-Oxoadipyl-CoA thiolase",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": "PaaJ",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 8,
+            "optimum_c": 37,
+            "maximum_c": 45,
+            "preference": "嗜中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "facultative anaerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": 0,
+            "optimum": 0.5,
+            "maximum": 6,
+            "unit": "% NaCl",
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 4.4,
+            "optimum": 7.0,
+            "maximum": 9.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "47076"
+          },
+          "raw_text": "ATCC 47076",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "glucose, lactose, and other carbohydrates",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades phenylacetate via aerobic pathway",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "phenylacetate-CoA ligase, phenylacetyl-CoA epoxidase, etc.",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "motile by peritrichous flagella",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "commensal of intestinal tract of warm-blooded animals; can survive in environment",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Acetyl-CoA", "Succinyl-CoA"],
+    "explanation": "乙酰-CoA和琥珀酰-CoA进入TCA循环等中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["organism_traits"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI",
+      "record_id": "NC_000913.3",
+      "locator": null,
+      "claim_scope": ["genome"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "phenylacetate degradation I (aerobic)",
+      "claim_scope": ["pathway_steps", "enzymes"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": []
+}

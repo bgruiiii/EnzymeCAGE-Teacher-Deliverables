@@ -1,0 +1,425 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_088",
+  "pollutant_name_zh": "2-羟基-3-磺酸基丙酸根",
+  "pollutant_name_en": "2-Hydroxy-3-sulfonatopropanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfolactate degradation III",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；该路线文献上在好氧条件下被表征（Denger et al. 2009）。MetaCyc/BioCyc 中 sulfolactate degradation I/II/III 的具体菌种与首步归属无法完全确证，本答案按表征最完整的 Chromohalobacter salexigens DSM 3043 的氧化-脱羧主链（SlcD–ComDE–Xsc–Pta）填写；不确定性见 uncertainties。"
+  },
+  "route_summary": "sulfolactate degradation III 主链（按 Chromohalobacter salexigens DSM 3043 表征的氧化-脱羧路线）：第一步，(S)-sulfolactate（2-羟基-3-磺酸基丙酸根）经 NAD+ 依赖的 (S)-sulfolactate dehydrogenase（SlcD，EC 1.1.1.337）氧化为 3-sulfopyruvate；第二步，3-sulfopyruvate 经 3-sulfopyruvate decarboxylase（ComDE，EC 4.1.1.79）脱羧生成 sulfoacetaldehyde 并释放 CO2；第三步，sulfoacetaldehyde 经 sulfoacetaldehyde acetyltransferase（Xsc，EC 2.3.1.234）进行磷酸解式 C-S 键裂解，生成 acetyl phosphate 并释放 sulfite；第四步，acetyl phosphate 经 phosphate acetyltransferase（Pta，EC 2.3.1.8）转化为 acetyl-CoA 进入中心代谢。净结果：1 分子 sulfolactate → acetyl-CoA + CO2 + sulfite。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3-sulfolactate",
+          "smiles": "O=C([O-])C(O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)([O-])OP(=O)(O)OC[C@H]2O[C@H](n3cnc4c(N)ncnc34)[C@H](O)[C@@H]2O)[C@H](O)[C@@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-sulfopyruvate",
+          "smiles": "O=C([O-])C(=O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)([O-])OP(=O)(O)OC[C@H]3O[C@H](n4cnc5c(N)ncnc45)[C@H](O)[C@@H]3O)[C@H](O)[C@@H]2O)C=CC1",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation (NAD+-dependent dehydrogenation)",
+      "enzyme": {
+        "name": "(S)-sulfolactate dehydrogenase (SlcD)",
+        "ec_number": "1.1.1.337",
+        "gene_or_protein": "slcD",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Chromohalobacter salexigens",
+        "strain": "DSM 3043",
+        "ncbi_taxid": 290398,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "EC 1.1.1.337 与基因名 slcD 的归属置信度中等；若题面路线 III 实指 sulfolactate sulfo-lyase 一步裂解变体，则本步不适用。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-sulfopyruvate",
+          "smiles": "O=C([O-])C(=O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "sulfoacetaldehyde",
+          "smiles": "O=CCS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "3-sulfopyruvate decarboxylase (ComDE)",
+        "ec_number": "4.1.1.79",
+        "gene_or_protein": "comD / comE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Chromohalobacter salexigens",
+        "strain": "DSM 3043",
+        "ncbi_taxid": 290398,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "sulfoacetaldehyde",
+          "smiles": "O=CCS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "phosphate",
+          "smiles": "O=P([O-])([O-])[O-]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl phosphate",
+          "smiles": "CC(=O)OP(=O)(O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "sulfite",
+          "smiles": "O=S([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "desulfonative phosphorolysis (C-S bond cleavage)",
+      "enzyme": {
+        "name": "sulfoacetaldehyde acetyltransferase (Xsc)",
+        "ec_number": "2.3.1.234",
+        "gene_or_protein": "xsc",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Chromohalobacter salexigens",
+        "strain": "DSM 3043",
+        "ncbi_taxid": 290398,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "Xsc 酶本身（EC 2.3.1.234）表征充分；其在 C. salexigens DSM 3043 中执行本步的证据部分为 pathway 推断。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "acetyl phosphate",
+          "smiles": "CC(=O)OP(=O)(O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc23)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "phosphate",
+          "smiles": "O=P([O-])([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "phosphotransacetylation (CoA-dependent)",
+      "enzyme": {
+        "name": "phosphate acetyltransferase (Pta)",
+        "ec_number": "2.3.1.8",
+        "gene_or_protein": "pta",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Chromohalobacter salexigens",
+        "strain": "DSM 3043",
+        "ncbi_taxid": 290398,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "Pta 为文献推定的持家酶步骤（Denger et al. 2009 提出的路线组成）。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Chromohalobacter salexigens",
+      "strain": "DSM 3043",
+      "ncbi_taxid": 290398,
+      "traits": {
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（mesophile）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": 0.5,
+            "optimum": null,
+            "maximum": 3.0,
+            "unit": "mol/L NaCl",
+            "category": "中度嗜盐菌（moderately halophilic）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSMZ",
+            "accession": "DSM 3043"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以 3-sulfolactate（2-羟基-3-磺酸基丙酸根）为唯一碳源与能源进行好氧异养生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "有机磺酸盐降解：将 C3-磺酸盐 sulfolactate 完全降解为 acetyl-CoA、CO2 与 sulfite",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "(S)-sulfolactate dehydrogenase（SlcD）与 3-sulfopyruvate decarboxylase（ComDE）等有机磺酸盐降解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（鞭毛）",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_007963",
+            "genome_size_bp": 3696649,
+            "gc_percent": 63.9
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "分布较广的中度嗜盐环境菌：主要栖息于盐田、咸水湖等高盐环境，耐盐范围宽（约 0.5–3 mol/L NaCl），为高盐生境中的广适型代表",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "acetyl-CoA"
+    ],
+    "explanation": "主链碳产物 acetyl-CoA 进入三羧酸循环/乙醛酸循环等中心碳代谢；释放的 sulfite 经亚硫酸盐排出或同化途径处理，CO2 释放。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "sulfolactate sulfo-lyase 直接裂解路线",
+      "summary": "在 Paracoccus pantotrophus NKNCYSA 等菌中，sulfolactate 可被 sulfolactate sulfo-lyase（SuyAB）一步裂解为 pyruvate 与 sulfite；若题面路线 III 实指该变体，则主链应为该一步反应，而非本答案的氧化-脱羧链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "3-sulfopyruvate 转氨生成 L-cysteate 支路",
+      "summary": "C. salexigens DSM 3043 中报道的分叉支路：3-sulfopyruvate 经转氨生成 L-cysteate（Denger et al. 2009 的 bifurcated pathway），不属于本答案被评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Denger K, Mayer J, Buhmann M, Weinitschke S, Smits THM, Cook AM. Bifurcated degradative pathway of 3-sulfolactate in Chromohalobacter salexigens DSM 3043. J Bacteriol. 2009;191(17):5648-5656",
+      "claim_scope": [
+        "route",
+        "reaction",
+        "enzyme",
+        "microorganism",
+        "traits:F7,F8,F9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": "sulfolactate degradation III",
+      "locator": null,
+      "claim_scope": [
+        "route identity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA/ExplorEnz",
+      "record_id": "EC 1.1.1.337; EC 4.1.1.79; EC 2.3.1.234; EC 2.3.1.8",
+      "locator": null,
+      "claim_scope": [
+        "enzyme EC assignment"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive (DSMZ)",
+      "record_id": "DSM 3043",
+      "locator": null,
+      "claim_scope": [
+        "organism traits"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome (RefSeq)",
+      "record_id": "NC_007963",
+      "locator": null,
+      "claim_scope": [
+        "genome",
+        "taxonomy"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "MetaCyc 中 “sulfolactate degradation III” 与 sulfolactate degradation I/II 的具体菌种与首步反应归属无法确证；本答案按 Chromohalobacter salexigens DSM 3043 的氧化-脱羧主链（SlcD–ComDE–Xsc–Pta）填写，该化学反应链也可能对应编号 I 或 II（例如在 Roseovarius nubinhibens ISM 中的同类路线）。",
+    "若题面路线 III 实指 sulfolactate sulfo-lyase（SuyAB）一步裂解路线（如 Paracoccus pantotrophus NKNCYSA：sulfolactate → pyruvate + sulfite），则本答案主链不正确，已在 alternative_branches 中声明。",
+    "EC 1.1.1.337（(S)-sulfolactate dehydrogenase）编号、slcD 基因名及 NAD+ 依赖性的置信度为中等。",
+    "菌株部分性状（最适 pH、最适温度、最适盐度、运动性等）缺乏直接可核验来源，已按低置信度填写或留空。"
+  ]
+}

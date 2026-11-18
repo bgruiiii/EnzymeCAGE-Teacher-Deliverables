@@ -1,0 +1,342 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_038",
+  "pollutant_name_zh": "4-硝基甲苯",
+  "pollutant_name_en": "4-Nitrotoluene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-nitrotoluene degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故 oxygen_condition 保留为 null；该命名路线按连续主链处理：先氧化对硝基甲苯的甲基，再由对硝基苯甲酸经脱硝/双加氧生成原儿茶酸。"
+  },
+  "route_summary": "主链为 4-nitrotoluene → 4-nitrobenzyl alcohol → 4-nitrobenzaldehyde → 4-nitrobenzoate → protocatechuate，并在对硝基苯甲酸转化为原儿茶酸时释放 nitrite；原儿茶酸可继续进入原儿茶酸/β-酮己二酸下游。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-Nitrotoluene",
+          "smiles": "Cc1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Nitrobenzyl alcohol",
+          "smiles": "OCc1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "methyl-group monooxygenation",
+      "enzyme": {
+        "name": "4-nitrotoluene monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "4NT",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该甲基羟化酶未见可确认的专属 EC 编号，故 ec_number 填 null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-Nitrobenzyl alcohol",
+          "smiles": "OCc1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Nitrobenzaldehyde",
+          "smiles": "O=Cc1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "benzyl alcohol oxidation",
+      "enzyme": {
+        "name": "4-nitrobenzyl alcohol dehydrogenase",
+        "ec_number": "1.1.1.90",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "4NT",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "采用芳基醇脱氢酶通用 EC 1.1.1.90 作为首选；对该 4-硝基取代底物的专属酶学参数未展开。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-Nitrobenzaldehyde",
+          "smiles": "O=Cc1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Nitrobenzoate",
+          "smiles": "O=C([O-])c1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldehyde oxidation to carboxylate",
+      "enzyme": {
+        "name": "4-nitrobenzaldehyde dehydrogenase",
+        "ec_number": "1.2.1.28",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "4NT",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "采用苯甲醛脱氢酶 NAD+ 通用 EC 1.2.1.28 作为首选；未确认是否存在更高优先级的专属 EC。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-Nitrobenzoate",
+          "smiles": "O=C([O-])c1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Protocatechuate",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Nitrite",
+          "smiles": "[O-]N=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dioxygenation with nitrite elimination",
+      "enzyme": {
+        "name": "4-nitrobenzoate dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "4NT",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "对硝基苯甲酸脱硝生成原儿茶酸的酶未见可确认 EC 编号，故 ec_number 填 null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "4NT",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "uses 4-nitrotoluene as a growth substrate via 4-nitrobenzoate and protocatechuate",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades the nitroaromatic compound 4-nitrotoluene through 4-nitrobenzoate to protocatechuate with nitrite release",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-nitrotoluene monooxygenase, 4-nitrobenzyl alcohol dehydrogenase, 4-nitrobenzaldehyde dehydrogenase and 4-nitrobenzoate dioxygenase activities",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped cells",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "protocatechuate"
+    ],
+    "explanation": "本命名主链的末端主产物为 protocatechuate；其通常经原儿茶酸开环进入 β-酮己二酸途径，再汇入三羧酸循环。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway name: 4-nitrotoluene degradation I",
+      "claim_scope": [
+        "chosen route name",
+        "S1-S4 reaction sequence",
+        "main substrates and products",
+        "preferred enzyme names for S1-S4"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Haigler and Spain, Applied and Environmental Microbiology, 1991, 4-nitrotoluene biodegradation by Pseudomonas sp. strain 4NT",
+      "claim_scope": [
+        "Pseudomonas sp. strain 4NT",
+        "growth on 4-nitrotoluene",
+        "4-nitrotoluene conversion through 4-nitrobenzyl alcohol and 4-nitrobenzaldehyde to 4-nitrobenzoate",
+        "4-nitrobenzoate conversion to protocatechuate with nitrite release"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "genus-level Pseudomonas traits used only where strain-specific data were unavailable",
+        "aerobic respiration with oxygen as terminal electron acceptor",
+        "Gram-negative rod-shaped non-spore-forming cell envelope"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；虽然路线反应为氧化/加氧型，oxygen_condition 仍按题面填 null。",
+    "Pseudomonas sp. strain 4NT 的 NCBI TaxID、保藏编号、基因组登录号及温度/pH/盐度数值未确认，均填 null。",
+    "S1 与 S4 的首选酶可按路线命名，但未确认可靠专属 EC 编号；S2/S3 使用通用芳基醇/苯甲醛脱氢酶 EC。"
+  ]
+}

@@ -1,0 +1,348 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_114",
+  "pollutant_name_zh": "萘",
+  "pollutant_name_en": "Naphthalene",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "naphthalene degradation (anaerobic)",
+    "is_single_continuous_route": true,
+    "notes": "按厌氧硫酸盐还原型萘降解主链填写；下游开环与裂解步骤以概括性步骤表示，未确定项填 null。"
+  },
+  "route_summary": "在厌氧条件下，萘的主链通常以羧化生成 2-萘甲酸为起始，随后活化为 2-萘甲酰辅酶 A，并经还原性去芳构化与开环进入乙酰辅酶 A。多数具体酶与 EC 编号未确定，因此相应字段填 null。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "naphthalene",
+          "smiles": "c1ccc2ccccc2c1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-naphthoate",
+          "smiles": "O=C([O-])c1ccc2ccccc2c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "carboxylation",
+      "enzyme": {
+        "name": "naphthalene carboxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacterium sp.",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "厌氧萘羧化酶尚无公认 EC 编号；2-萘甲酸为主要报道羧化产物。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-naphthoate",
+          "smiles": "O=C([O-])c1ccc2ccccc2c1",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-naphthoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA ligation",
+      "enzyme": {
+        "name": "2-naphthoate-CoA ligase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacterium sp.",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "具体酰基辅酶 A 合成酶基因与 EC 编号未确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-naphthoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "reduced ferredoxin",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5,6,7,8-tetrahydro-2-naphthoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "oxidized ferredoxin",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "reductive dearomatization",
+      "enzyme": {
+        "name": "2-naphthoyl-CoA reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacterium sp.",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "还原程度与产物命名可能随菌株而异；缺乏标准 EC 编号。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "5,6,7,8-tetrahydro-2-naphthoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring cleavage and beta-oxidation-like cleavage",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Desulfobacterium sp.",
+        "strain": "NaphS2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该步为概括性下游开环与裂解，未拆分为单独酶促反应；具体酶、中间体与化学计量未知。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Desulfobacterium sp.",
+      "strain": "NaphS2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "obligately anaerobic sulfate-reducing bacterium",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "anaerobic respiration",
+            "terminal_electron_acceptor": "sulfate"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "naphthalene and 2-naphthoate as carbon/electron sources",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "anaerobic naphthalene degradation via carboxylation to 2-naphthoate",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "naphthalene carboxylase activity",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "sulfate-reducing sediment/marine enrichment habitat",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "acetyl-CoA"
+    ],
+    "explanation": "还原性开环后的脂环族酰基辅酶 A 经 β-氧化样裂解进入乙酰辅酶 A。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "acetyl-CoA oxidation",
+      "summary": "乙酰辅酶 A 进入中心代谢并进一步氧化。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "anaerobic naphthalene degradation begins with carboxylation to 2-naphthoate",
+        "2-naphthoate is ligated to CoA and reductively dearomatized in sulfate-reducing bacteria",
+        "Desulfobacterium sp. strain NaphS2 is an anaerobic sulfate-reducing naphthalene-degrading bacterium"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "厌氧萘降解的多数酶未获得纯酶或明确 EC 编号。",
+    "下游开环与 β-氧化样步骤的具体中间体、酶与化学计量不明确。",
+    "菌株分类、NCBI TaxID、保藏编号与基因组信息未填写。"
+  ]
+}

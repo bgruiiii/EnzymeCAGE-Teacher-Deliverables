@@ -1,0 +1,358 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_016",
+  "pollutant_name_zh": "对伞花烃",
+  "pollutant_name_en": "p-CYMENE",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "p-Cymene degradation to p-cumate",
+    "is_single_continuous_route": true,
+    "notes": "按题面路线名称填写。主链为好氧条件下苯环甲基侧链的连续三步氧化，终点为p-cumate，不包含其后的开环。"
+  },
+  "route_summary": "好氧条件下，对伞花烃的甲基侧链先被单加氧羟化为对异丙基苯甲醇，再经醇脱氢生成对异丙基苯甲醛，最后经醛脱氢生成对异丙基苯甲酸（p-cumate）。三步均可由Pseudomonas putida F1完成，异丙基侧链在该主链中保留。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "p-cymene",
+          "smiles": "CC(C)c1ccc(C)cc1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "p-cumic alcohol",
+          "smiles": "CC(C)c1ccc(CO)cc1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "甲基单加氧反应",
+      "enzyme": {
+        "name": "p-cymene monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": "CymAa/CymAb",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "羟化酶催化亚基的基因归属不如还原酶CymAa与铁氧还蛋白CymAb明确，且无可靠的专用四位EC编号，故EC置null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "p-cumic alcohol",
+          "smiles": "CC(C)c1ccc(CO)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "p-cumic aldehyde",
+          "smiles": "CC(C)c1ccc(C=O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "醇脱氢反应",
+      "enzyme": {
+        "name": "p-cumic alcohol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "CymB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "CymB为NAD+依赖的对异丙基苯甲醇脱氢酶；专用四位EC编号不确定，故ec_number为null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "p-cumic aldehyde",
+          "smiles": "CC(C)c1ccc(C=O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "p-cumate",
+          "smiles": "CC(C)c1ccc(C(=O)O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "醛脱氢反应",
+      "enzyme": {
+        "name": "p-cumic aldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "CymC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "CymC为NAD+依赖的对异丙基苯甲醛脱氢酶，产物按质子化的p-cumate书写；专用四位EC编号不确定，故ec_number为null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 351746,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用对伞花烃作为唯一碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解对伞花烃、甲苯及其他单环芳香烃",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有对伞花烃单加氧酶、对异丙基苯甲醇脱氢酶和对异丙基苯甲醛脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "CP000712",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "物种层面可分布于土壤、淡水及植物根际等多种非极端生境，广适性中等；菌株F1自身的栖息地广度缺少独立定量证据",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本题路线止于p-cumate，该产物仍是芳香酸中间体，尚未进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "p-cumate ring cleavage",
+      "summary": "p-cumate可继续由cmt途径的环羟基化双加氧酶及后续开环酶降解并接入中心代谢；该段超出本题路线范围，此处不展开具体入口代谢物。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "isopropyl side-chain oxidation",
+      "summary": "部分微生物氧化对伞花烃的异丙基侧链而非甲基，产物不进入本题的p-cumate主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Eaton RW. 1997. p-Cymene catabolic pathway in Pseudomonas putida F1: cloning and characterization of DNA encoding conversion of p-cymene to p-cumate. Journal of Bacteriology 179(10):3171-3180.",
+      "claim_scope": ["pathway_steps", "enzyme_names", "gene_names", "organism_for_reaction", "carbon_source"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida species-level bacteriological description",
+      "claim_scope": ["oxygen_tolerance", "temperature_preference", "respiration", "morphology", "gram_stain", "motility", "sporulation", "habitat_generalism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI",
+      "record_id": "CP000712",
+      "locator": "NCBI Genome, Pseudomonas putida F1 chromosome",
+      "claim_scope": ["genome_accession", "taxonomy"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "三步酶均无在本次可确信引用的专用四位EC编号，ec_number一律为null，未用苯甲醇或苯甲醛脱氢酶的通用EC占位。",
+    "对伞花烃单加氧酶仅填写还原酶与铁氧还蛋白组分CymAa/CymAb，未猜测羟化酶亚基基因名。",
+    "NAD+与NADH的SMILES未填写，以避免错误结构式。",
+    "菌株F1的温度、pH、盐度定量范围、保藏编号、基因组大小和GC含量缺少可直接核对的原文，均置null。",
+    "TaxID 351746与基因组登录号CP000712为回忆所得的标准标识，本次未重新检索数据库。"
+  ]
+}

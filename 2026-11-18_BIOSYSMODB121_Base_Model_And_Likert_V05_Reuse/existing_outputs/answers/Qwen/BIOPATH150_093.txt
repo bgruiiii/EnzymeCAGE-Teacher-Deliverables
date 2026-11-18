@@ -1,0 +1,284 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_093",
+  "pollutant_name_zh": "苯乙烯",
+  "pollutant_name_en": "Styrene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "styrene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线名称为 styrene degradation；氧条件未指定。"
+  },
+  "route_summary": "在未指定氧条件下，按常见的苯乙烯微生物上途径主链：苯乙烯先被苯乙烯单加氧酶环氧化为苯乙烯氧化物，随后由苯乙烯氧化物异构酶转化为苯乙醛，再由苯乙醛脱氢酶氧化为苯乙酸；苯乙酸可进入苯乙酰-CoA途径继续降解。本回答主链止于苯乙酸，未展开后续开环细节。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "styrene",
+          "smiles": "C=Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "styrene oxide",
+          "smiles": "c1ccccc1C2CO2",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "环氧化",
+      "enzyme": {
+        "name": "styrene monooxygenase",
+        "ec_number": "1.14.14.11",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "氧条件未指定；辅因子（O2、还原黄素）未列出。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "styrene oxide",
+          "smiles": "c1ccccc1C2CO2",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "phenylacetaldehyde",
+          "smiles": "O=CCc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "异构化",
+      "enzyme": {
+        "name": "styrene oxide isomerase",
+        "ec_number": "5.3.99.7",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "未指定具体菌株；辅因子未涉及。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "phenylacetaldehyde",
+          "smiles": "O=CCc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "phenylacetic acid",
+          "smiles": "O=C(O)Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化",
+      "enzyme": {
+        "name": "phenylacetaldehyde dehydrogenase",
+        "ec_number": "1.2.1.39",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "未指定具体菌株；NAD+ 等辅因子未列出。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "苯乙烯降解代表菌可利用苯乙烯作为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解苯乙烯及其上途径中间体苯乙烯氧化物和苯乙醛",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有苯乙烯单加氧酶、苯乙烯氧化物异构酶和苯乙醛脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "通常具运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤和水体等环境",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "phenylacetic acid"
+    ],
+    "explanation": "苯乙酸是上途径末端产物，可经苯乙酰-CoA途径进一步开环并进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "phenylacetic acid catabolism",
+      "summary": "苯乙酸经苯乙酰-CoA途径进行开环降解，最终进入中心代谢。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "苯乙烯上途径：styrene -> styrene oxide -> phenylacetaldehyde -> phenylacetic acid",
+      "claim_scope": [
+        "steps",
+        "enzymes",
+        "microorganism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas sp. 的一般生理特征与苯乙烯降解代表菌的碳源利用",
+      "claim_scope": [
+        "organism traits"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，因此未明确好氧/厌氧分支。",
+    "未列出辅因子（O2、NAD+、还原黄素等）及其 SMILES。",
+    "代表菌仅填写为 Pseudomonas sp.，未指定具体菌株、保藏编号或基因组信息。"
+  ]
+}

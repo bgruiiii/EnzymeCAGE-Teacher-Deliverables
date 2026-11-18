@@ -1,0 +1,505 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_045",
+  "pollutant_name_zh": "苯乙酸根",
+  "pollutant_name_en": "Benzeneacetate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "phenylacetate degradation I (aerobic)",
+    "is_single_continuous_route": true,
+    "notes": "采用好氧苯乙酸CoA活化、芳环氧化开环并进入脂肪酸样β-氧化反应的主链。"
+  },
+  "route_summary": "苯乙酸根先被活化为phenylacetyl-CoA，随后经多组分氧化酶进行芳环环氧化和重排，形成脂肪酸样中间体并进一步转化为3,4-dihydroxyadipyl-CoA及3,4-dihydroxyadipate。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Benzeneacetate",
+          "smiles": "O=C([O-])Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "ATP",
+          "smiles": "CC(=O)OC1C(C(C(C(O1)COP(=O)(O)OP(=O)(O)O)O)O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Phenylacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "CC1C(C(C(C(O1)OP(=O)(O)O)O)O)O",
+          "role": "byproduct"
+        },
+        {
+          "name": "Diphosphate",
+          "smiles": "OP(=O)(O)OP(=O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA ligation",
+      "enzyme": {
+        "name": "Phenylacetate-CoA ligase",
+        "ec_number": "6.2.1.30",
+        "gene_or_protein": "PaaK",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "U",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Phenylacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-(1,2-Epoxycyclohexa-3,5-dien-1-yl)acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Aromatic-ring epoxidation",
+      "enzyme": {
+        "name": "Phenylacetyl-CoA oxygenase multicomponent system",
+        "ec_number": null,
+        "gene_or_protein": "PaaABCDE",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "U",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该多组分氧化酶系统的统一EC编号未确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-(1,2-Epoxycyclohexa-3,5-dien-1-yl)acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Oxepin-2(3H)-ylideneacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Epoxide-ring opening and oxepin rearrangement",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "U",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步通常被描述为非酶促重排或与后续酶促步骤耦联，首选酶未确定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-Oxepin-2(3H)-ylideneacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Oxo-5,6-dehydrosuberyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Hydrolytic ring cleavage",
+      "enzyme": {
+        "name": "Phenylacetyl-CoA ring-cleavage enzyme",
+        "ec_number": null,
+        "gene_or_protein": "PaaG",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "U",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "具体催化蛋白和EC编号存在命名不确定性。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "3-Oxo-5,6-dehydrosuberyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,4-Dehydroadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Acetyl-CoA",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA-dependent beta-oxidation-like cleavage",
+      "enzyme": {
+        "name": "3-Oxoacyl-CoA thiolase",
+        "ec_number": "2.3.1.16",
+        "gene_or_protein": "PaaI",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "U",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步的底物命名、反应方向及具体Paa蛋白归属存在不确定性。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "3,4-Dehydroadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,4-Dihydroxyadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Hydration and reduction of the adipyl-CoA intermediate",
+      "enzyme": {
+        "name": "Enoyl-CoA hydratase/dehydrogenase system",
+        "ec_number": null,
+        "gene_or_protein": "PaaF/PaaH",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "U",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "具体连续反应次序及单个酶的EC编号未确定。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "3,4-Dihydroxyadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,4-Dihydroxyadipate",
+          "smiles": "O=C(O)CC(O)C(O)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Coenzyme A",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Thioester hydrolysis",
+      "enzyme": {
+        "name": "Acyl-CoA thioesterase",
+        "ec_number": "3.1.2.2",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "U",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该水解产物作为主链末端中间体的具体酶学注释未确定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "U",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Acetyl-CoA",
+      "3,4-Dihydroxyadipate"
+    ],
+    "explanation": "苯乙酸碳骨架经CoA依赖的芳环开裂和脂肪酸样转化后，进入乙酰辅酶A及下游二羧酸代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": "phenylacetate degradation I (aerobic)",
+      "locator": null,
+      "claim_scope": [
+        "主路线反应顺序",
+        "PaaK介导的苯乙酸CoA活化",
+        "PaaABCDE介导的phenylacetyl-CoA好氧氧化",
+        "Pseudomonas putida U作为相关研究微生物"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "部分CoA酯中间体的标准结构表示和SMILES未确定。",
+    "芳环开裂后若干中间体的具体反应顺序及Paa蛋白对应关系存在不确定性。",
+    "菌株保藏号、NCBI TaxID及15项表型数据未提供可靠的单一来源。"
+  ]
+}

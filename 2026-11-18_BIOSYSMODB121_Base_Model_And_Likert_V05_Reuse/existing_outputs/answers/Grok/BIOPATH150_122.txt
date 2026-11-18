@@ -1,0 +1,368 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_122",
+  "pollutant_name_zh": "2,6-二羟基苯甲酸根",
+  "pollutant_name_en": "2,6-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "γ-resorcylate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。该路线含间苯二酚羟化酶与羟基氢醌1,2-双加氧酶，依赖分子氧，故记为aerobic。评分主链仅含该路线特征的四步酶促反应，止于3-氧代己二酸；其后的β-酮己二酸途径不并入主链。"
+  },
+  "route_summary": "2,6-二羟基苯甲酸根在好氧条件下沿γ-resorcylate degradation I降解：先脱羧生成间苯二酚，再单加氧生成羟基氢醌，随后1,2-双加氧开环为苹果酰乙酸，并还原为3-氧代己二酸，由此汇入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,6-dihydroxybenzoate",
+          "smiles": "O=C([O-])c1c(O)cccc1O",
+          "role": "main"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "resorcinol",
+          "smiles": "Oc1cccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "2,6-dihydroxybenzoate decarboxylase",
+        "ec_number": "4.1.1.103",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhizobium sp.",
+        "strain": "MTP-10005",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "resorcinol",
+          "smiles": "Oc1cccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "hydroxyquinol",
+          "smiles": "Oc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧羟基化",
+      "enzyme": {
+        "name": "resorcinol hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhizobium sp.",
+        "strain": "MTP-10005",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "间苯二酚羟化酶的完整EC编号未能确认，故ec_number记为null；辅因子按该途径常用的NADH填写。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "hydroxyquinol",
+          "smiles": "Oc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylacetate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧开环",
+      "enzyme": {
+        "name": "hydroxyquinol 1,2-dioxygenase",
+        "ec_number": "1.13.11.37",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhizobium sp.",
+        "strain": "MTP-10005",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "maleylacetate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "[O-]C(=O)CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Rhizobium sp.",
+        "strain": "MTP-10005",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 1.3.1.32正式反应接受NAD(P)H；此处按该降解途径常用的NADH填写，菌株水平的辅因子偏好未单独核实。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Rhizobium sp.",
+      "strain": "MTP-10005",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "2,6-二羟基苯甲酸（γ-resorcylate）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解2,6-二羟基苯甲酸，经间苯二酚与羟基氢醌开环至3-氧代己二酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2,6-二羟基苯甲酸脱羧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "3-氧代己二酸经β-酮己二酸途径转化为琥珀酰-CoA和乙酰-CoA后进入中心代谢；该段不计入本路线评分主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-oxoadipate degradation",
+      "summary": "3-氧代己二酸由CoA转移酶活化为3-氧代己二酰-CoA，再经硫解酶裂解为琥珀酰-CoA与乙酰-CoA。该段属于共享的β-酮己二酸途径，未作为γ-resorcylate degradation I的评分主链步骤。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "MetaCyc途径名γ-resorcylate degradation I，以及Rhizobium sp. MTP-10005中γ-resorcylate分解途径（脱羧至间苯二酚、羟化为羟基氢醌、开环为苹果酰乙酸、还原为3-氧代己二酸）的文献记忆；本次未实时检索数据库，无原文摘录。",
+      "claim_scope": ["pathway", "S1", "S2", "S3", "S4", "ORG_001", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Rhizobium属分类学特征及该路线需氧加氧反应所支持的好氧代谢推断；非MTP-10005菌株实测原文。",
+      "claim_scope": ["F1_oxygen_tolerance", "F6_respiration_electron_acceptor", "F12_gram_cell_envelope"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "间苯二酚羟化酶缺少已确认的完整EC编号，相关字段为null。",
+    "苹果酰乙酸还原酶EC 1.3.1.32允许NAD(P)H，主链按NADH填写，菌株水平辅因子偏好未单独核实。",
+    "Rhizobium sp. MTP-10005的TaxID、保藏号、基因组登录号以及温度、pH、盐度等实测性状没有可靠来源，均记为null。",
+    "主链止于3-氧代己二酸；β-酮己二酸途径仅作为下游延续，未写入评分主链。",
+    "各步基因或蛋白符号未确认，gene_or_protein记为null。"
+  ]
+}

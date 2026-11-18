@@ -1,0 +1,544 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_136",
+  "pollutant_name_zh": "磺酸基乙醛",
+  "pollutant_name_en": "Sulfonatoacetaldehyde",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoacetaldehyde degradation IV",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null），路线名称按题面原样填写为 sulfoacetaldehyde degradation IV。主链按文献中已知的厌氧（代表菌 Bilophila wadsworthia）途径呈现：磺酸基乙醛经异乙磺酸盐（isethionate）中间体断裂 C–S 键，碳骨架以乙酸进入中心代谢，硫以亚硫酸盐并最终以硫化物形式释放。"
+  },
+  "route_summary": "厌氧条件下（代表菌 Bilophila wadsworthia）：磺酸基乙醛先被 NADH 依赖的磺酸基乙醛还原酶（SarD）还原为异乙磺酸盐；再由甘氨酸自由基酶 isethionate sulfite-lyase（IslA，需 IslB 激活酶）断裂 C–S 键，生成乙醛与亚硫酸盐；乙醛经乙酰化乙醛脱氢酶氧化为乙酰辅酶A，随后经磷酸转乙酰酶、乙酸激酶以底物水平磷酸化生成乙酸并产出 ATP；释放的亚硫酸盐作为末端电子受体被异化型亚硫酸盐还原酶（DsrAB）还原为硫化氢。碳骨架进入中心代谢的入口产物为乙酸/乙酰辅酶A，硫最终以硫化物释放。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "sulfoacetaldehyde",
+          "smiles": "O=CCS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "isethionate",
+          "smiles": "OCCS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "还原（NADH 依赖的醛还原生成羟乙磺酸盐）",
+      "enzyme": {
+        "name": "sulfoacetaldehyde reductase",
+        "ec_number": null,
+        "gene_or_protein": "sarD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Bilophila wadsworthia",
+        "strain": "3_1_6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该酶尚无确认的 EC 编号（填 null）；辅因子偏好（NADH/NADPH）未能核对原始文献；该步与 MetaCyc 路线编号 IV 的对应关系为推断。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "isethionate",
+          "smiles": "OCCS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        },
+        {
+          "name": "sulfite",
+          "smiles": "O=S([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "C–S 键断裂（甘氨酸自由基酶催化的亚硫酸盐消除）",
+      "enzyme": {
+        "name": "isethionate sulfite-lyase",
+        "ec_number": null,
+        "gene_or_protein": "islA（甘氨酸自由基酶，需 islB 编码的激活酶活化）",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Bilophila wadsworthia",
+        "strain": "3_1_6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该酶为新近鉴定的甘氨酸自由基酶，无正式 EC 编号（填 null）；其活化机制细节未能核对原始文献。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](N2C=NC3=C2N=CN=C3N)[C@@H](O)[C@H]1OP(=O)(O)[O-])C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](N2C=NC3=C2N=CN=C3N)[C@@H](O)[C@H]1OP(=O)(O)[O-])C(O)C(=O)NCCC(=O)NCCSC(C)=O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "氧化（醛氧化并与辅酶A硫酯化生成乙酰辅酶A）",
+      "enzyme": {
+        "name": "acetaldehyde dehydrogenase (acetylating)",
+        "ec_number": "1.2.1.10",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Bilophila wadsworthia",
+        "strain": "3_1_6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "Bilophila wadsworthia 中具体执行该反应的醛脱氢酶基因未确认。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](N2C=NC3=C2N=CN=C3N)[C@@H](O)[C@H]1OP(=O)(O)[O-])C(O)C(=O)NCCC(=O)NCCSC(C)=O",
+          "role": "main"
+        },
+        {
+          "name": "phosphate",
+          "smiles": "OP(=O)(O)[O-]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl phosphate",
+          "smiles": "CC(=O)OP(=O)(O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](N2C=NC3=C2N=CN=C3N)[C@@H](O)[C@H]1OP(=O)(O)[O-])C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "基团转移（转乙酰基/磷酸解）",
+      "enzyme": {
+        "name": "phosphate acetyltransferase",
+        "ec_number": "2.3.1.8",
+        "gene_or_protein": "pta",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Bilophila wadsworthia",
+        "strain": "3_1_6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该步在 Bilophila wadsworthia 中的具体基因（pta）与酶学性质未确认。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "acetyl phosphate",
+          "smiles": "CC(=O)OP(=O)(O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "OP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](N2C=NC3=C2N=CN=C3N)[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetate",
+          "smiles": "CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "OP(=O)(O)OP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](N2C=NC3=C2N=CN=C3N)[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "底物水平磷酸化（激酶反应）",
+      "enzyme": {
+        "name": "acetate kinase",
+        "ec_number": "2.7.2.1",
+        "gene_or_protein": "ackA",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Bilophila wadsworthia",
+        "strain": "3_1_6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该步在 Bilophila wadsworthia 中的具体基因（ackA）未确认。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "sulfite",
+          "smiles": "O=S([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "hydrogen sulfide",
+          "smiles": "S",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "还原（异化型亚硫酸盐还原）",
+      "enzyme": {
+        "name": "dissimilatory sulfite reductase",
+        "ec_number": null,
+        "gene_or_protein": "dsrAB",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Bilophila wadsworthia",
+        "strain": "3_1_6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该步属于硫的末端还原（产 H2S）而非碳骨架降解，其 EC 编号未能确认（填 null）。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Bilophila wadsworthia",
+      "strain": "3_1_6",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温性，最适生长温度接近人体温度（约37°C），为人体/临床来源菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧呼吸（厌氧代谢）",
+            "terminal_electron_acceptor": "亚硫酸盐（还原为硫化氢）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "不发酵碳水化合物（asaccharolytic）；以牛磺酸及其结合型胆汁酸、异乙磺酸盐等有机磺酸盐作为相关底物/电子受体，生长依赖蛋白胨类复合底物与氨基酸",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经磺酸基乙醛中间体降解牛磺酸、异乙磺酸盐等有机磺酸盐并释放亚硫酸盐（进而还原为硫化氢）；降解谱限于有机磺酸盐类，属较窄的底物范围",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "磺酸基乙醛还原酶、异乙磺酸亚硫酸裂解酶（甘氨酸自由基酶）及异化型亚硫酸盐还原活性（产 H2S）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（直或略弯曲的杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "宿主相关专性厌氧菌，特化于人和动物肠道（尤其是富含胆汁的环境）以及临床感染灶（如阑尾炎、腹腔脓肿），栖息地谱较窄",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "acetate",
+      "acetyl-CoA"
+    ],
+    "explanation": "乙酸（或乙酰辅酶A）是磺酸基乙醛碳骨架进入中心代谢（乙酰辅酶A库、三羧酸循环相关反应，或经乙酸排出）的入口产物；硫以亚硫酸盐释放并被进一步还原为硫化氢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "好氧 Xsc 途径（sulfoacetaldehyde + 磷酸 → 乙酰磷酸 + 亚硫酸盐）",
+      "summary": "在好氧菌（如 Comamonas testosteroni T-2 等）中，磺酸基乙醛由 sulfoacetaldehyde sulfo-lyase (Xsc) 经磷酸解断裂 C–S 键，直接生成乙酰磷酸与亚硫酸盐，随后经乙酸激酶生成乙酸并入中心代谢。该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "氧化途径（经磺基乙酸）",
+      "summary": "磺酸基乙醛亦可被磺酸基乙醛脱氢酶氧化为磺基乙酸，再经磺基乙酰辅酶A相关反应进一步代谢；具体酶与对应菌株信息未确认，仅作文献层面的分支提示。该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1 反应（磺酸基乙醛还原为异乙磺酸盐）",
+        "S1 酶 sulfoacetaldehyde reductase (sarD)",
+        "S1 微生物 Bilophila wadsworthia"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2 反应（异乙磺酸盐断裂为乙醛与亚硫酸盐）",
+        "S2 酶 isethionate sulfite-lyase (islA/islB)",
+        "S2 微生物 Bilophila wadsworthia"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S3–S5 反应（乙醛 → 乙酰辅酶A → 乙酰磷酸 → 乙酸）",
+        "S3–S5 酶（乙酰化乙醛脱氢酶、磷酸转乙酰酶、乙酸激酶）",
+        "S3–S5 微生物 Bilophila wadsworthia"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S6 反应（亚硫酸盐还原为硫化氢）",
+        "S6 酶 dissimilatory sulfite reductase (dsrAB)",
+        "S6 微生物 Bilophila wadsworthia"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_001（Bilophila wadsworthia 3_1_6）15 项性状"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Ruff J, Denger K, Cook AM. Sulphoacetaldehyde acetyltransferase yields acetyl phosphate: purification from Comamonas testosteroni T-2 and properties of a novel enzyme of both taurine and isethionate dissimilation. Biochem J. 2003;369.",
+      "claim_scope": [
+        "替代分支：好氧 Xsc 途径（非评分主链）"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "未能直接核对数据库中 sulfoacetaldehyde degradation IV 的原始定义与步骤列表；主链按已知的厌氧（Bilophila wadsworthia，经异乙磺酸盐断裂 C–S 键）途径推断呈现，路线归属存在不确定性。",
+    "SarD（S1）与 IslA（S2）无确认的 EC 编号，均填 null，不做猜测。",
+    "S3–S5（乙酰化乙醛脱氢酶、磷酸转乙酰酶、乙酸激酶）及 S6（DsrAB）在 Bilophila wadsworthia 中的具体基因与酶学细节未确认，置信度记为 low。",
+    "Bilophila wadsworthia 的菌株号（3_1_6）依据相关文献记忆填写，未核对原始记录；其保藏编号、TaxID、基因组编号、基因组大小与 GC 含量等未知项一律填 null。",
+    "多数事实基于内部知识（INTERNAL_KNOWLEDGE_ONLY），未能提供数据库记录 ID；未提供原文摘录的性状其 raw_text 为 null。",
+    "题面氧条件为 null（未指定），本答案按该途径的厌氧性质作答，route_scope.oxygen_condition 仍按题面填 null。"
+  ]
+}

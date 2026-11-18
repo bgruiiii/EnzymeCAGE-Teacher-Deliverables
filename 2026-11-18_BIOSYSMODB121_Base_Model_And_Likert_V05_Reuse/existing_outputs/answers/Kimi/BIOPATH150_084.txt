@@ -1,0 +1,354 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_084",
+  "pollutant_name_zh": "咖啡因",
+  "pollutant_name_en": "Caffeine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "caffeine degradation I (main, plants)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故 oxygen_condition 填 null。该主链为连续三步氧化 N-脱甲基（N1→N3→N7），由 Rieske 型非血红素单加氧酶催化，本质上为好氧氧化过程；路线名按题面原样填写，微生物中以 Pseudomonas putida CBB5 的 N-脱甲基途径作为与该主链对应的代表体系。"
+  },
+  "route_summary": "主链：咖啡因（1,3,7-三甲基黄嘌呤）经 NdmA 催化的 N1-氧化脱甲基生成可可碱（3,7-二甲基黄嘌呤）并释放甲醛；可可碱经 NdmB 催化的 N3-脱甲基生成 7-甲基黄嘌呤；7-甲基黄嘌呤再经 NdmC（伴侣还原酶 NdmD）催化的 N7-脱甲基生成黄嘌呤。黄嘌呤作为该主链终产物进入嘌呤中心代谢。代表微生物为咖啡因降解菌 Pseudomonas putida CBB5，三个步骤的酶均已在该菌中鉴定。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Caffeine",
+          "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Theobromine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化N-脱甲基（Rieske非血红素单加氧酶催化的N1-脱甲基）",
+      "enzyme": {
+        "name": "caffeine N1-demethylase (NdmA)",
+        "ec_number": null,
+        "gene_or_protein": "ndmA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "NdmA 尚无正式 EC 编号；NAD(P)H 电子供体经伴侣还原酶传递，未单独列为底物。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Theobromine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "7-Methylxanthine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化N-脱甲基（Rieske非血红素单加氧酶催化的N3-脱甲基）",
+      "enzyme": {
+        "name": "theobromine N3-demethylase (NdmB)",
+        "ec_number": null,
+        "gene_or_protein": "ndmB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "NdmB 尚无正式 EC 编号。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "7-Methylxanthine",
+          "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Xanthine",
+          "smiles": "C1=NC2=C(N1)C(=O)NC(=O)N2",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化N-脱甲基（Rieske非血红素单加氧酶催化的N7-脱甲基）",
+      "enzyme": {
+        "name": "7-methylxanthine N7-demethylase (NdmC, with reductase partner NdmD)",
+        "ec_number": null,
+        "gene_or_protein": "ndmC / ndmD",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CBB5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "NdmC 的具体催化机制（含 NdmD 还原酶及谷胱甘肽转移酶依赖特征）来自后续文献，置信度略低于前两步。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "CBB5",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（文献中常规培养温度为30 °C）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以咖啡因作为唯一碳源和氮源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解咖啡因及多种相关嘌呤生物碱（甲基黄嘌呤类，如可可碱、7-甲基黄嘌呤等）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "表达 Rieske 非血红素单加氧酶 NdmA/NdmB/NdmC，催化甲基黄嘌呤的氧化 N-脱甲基（N1、N3、N7 位）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "经咖啡因富集从土壤中分离；假单胞菌属广布于土壤、水体及根际等多种环境，栖息地广适性较强",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Xanthine"],
+    "explanation": "主链终产物黄嘌呤（xanthine）是嘌呤中心代谢的中间物，可经黄嘌呤脱氢酶氧化为尿酸，继而沿嘌呤分解途径进一步矿化（如咖啡因降解 II 路线所示，最终生成 CO2 和 NH3）。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "xanthine oxidation to urate (purine degradation)",
+      "summary": "黄嘌呤经黄嘌呤脱氢酶（xanthine dehydrogenase）氧化为尿酸，继续经尿囊素、尿囊酸等中间体分解为乙醛酸与尿素/氨，进入中心代谢；在 Pseudomonas putida CBB5 中对应 caffeine degradation II 的下游部分。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "C8-oxidation route (caffeine to 1,3,7-trimethyluric acid)",
+      "summary": "部分细菌（如 Pseudomonas、Serratia 等）先经咖啡因 C8-氧化生成 1,3,7-三甲基尿酸，再行脱甲基，与本题评分的 N-脱甲基主链不同。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "minor N-demethylation branches to paraxanthine/theophylline",
+      "summary": "咖啡因亦可在 N3 或 N7 位发生次要脱甲基生成副黄嘌呤（paraxanthine）或茶碱（theophylline）等，但不属于本题指定的 main 主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Summers RM, Louie TM, Yu CLL, Subramanian M. Novel, highly specific N-demethylases enable bacteria to live on caffeine and related purine alkaloids. J Bacteriol 2011;193(8):2041-2049",
+      "claim_scope": ["S1 反应与 NdmA", "S2 反应与 NdmB", "ORG_001 以咖啡因为唯一碳氮源生长及广义甲基黄嘌呤降解能力", "ORG_001 常规培养温度30 °C"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": "PWY-6101",
+      "locator": "MetaCyc pathway: caffeine degradation I (main, plants)",
+      "claim_scope": ["主链反应序列：caffeine → theobromine → 7-methylxanthine → xanthine"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Summers RM et al. Caffeine junkie: an unprecedented glutathione S-transferase-dependent oxygenase required for caffeine degradation by Pseudomonas putida CBB5. J Bacteriol 2013",
+      "claim_scope": ["S3 反应与 NdmC/NdmD", "7-甲基黄嘌呤 N7-脱甲基步骤"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["ORG_001 属级一般性状：革兰氏阴性、杆状、极生鞭毛运动、不产孢、严格好氧"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "NdmA、NdmB、NdmC 目前均无正式分配的 EC 编号，三步的 ec_number 均填 null。",
+    "Pseudomonas putida CBB5 的菌株级 NCBI TaxID、菌种保藏机构编号及基因组登录号不能确定，相应字段均填 null。",
+    "题面路线名为植物主路线（caffeine degradation I (main, plants)）；微生物中与之相同的 N-脱甲基主链以 Pseudomonas putida CBB5 为代表，三个步骤均取自该菌，未混用其他菌株。",
+    "氧条件题面未指定；N-脱甲基反应由需氧的 Rieske 单加氧酶催化，但按题面要求 oxygen_condition 填 null。"
+  ]
+}

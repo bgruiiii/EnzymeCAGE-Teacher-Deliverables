@@ -1,0 +1,267 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_009",
+  "pollutant_name_zh": "D-柠檬烯",
+  "pollutant_name_en": "D-Limonene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Limonene degradation III (to perillate)",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "D-柠檬烯在好氧条件下通过 Limonene degradation III (to perillate) 路线被 Pseudomonas putida GS1 降解：D-柠檬烯先被 limonene 7-monooxygenase 羟化为 perillyl alcohol，再经 perillyl alcohol dehydrogenase 氧化为 perillaldehyde，最后经 perillaldehyde dehydrogenase 氧化为 perillate。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-Limonene",
+          "smiles": "CC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Perillyl alcohol",
+          "smiles": "OCC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "Limonene 7-monooxygenase",
+        "ec_number": "1.14.13.161",
+        "gene_or_protein": "limA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "GS1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Perillyl alcohol",
+          "smiles": "OCC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Perillaldehyde",
+          "smiles": "O=CC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "Perillyl alcohol dehydrogenase",
+        "ec_number": "1.1.1.288",
+        "gene_or_protein": "limB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "GS1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Perillaldehyde",
+          "smiles": "O=CC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Perillate",
+          "smiles": "O=C([O-])C1=CCC(CC1)C(=C)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "Perillaldehyde dehydrogenase",
+        "ec_number": "1.2.1.87",
+        "gene_or_protein": "limC",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "GS1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "GS1",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": "Pseudomonas putida is an aerobic bacterium",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "Pseudomonas putida is aerobic, using oxygen as terminal electron acceptor",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes D-limonene and its degradation intermediates perillyl alcohol, perillaldehyde, and perillate",
+          "raw_text": "Pseudomonas putida GS1 grows on D-limonene and degrades it to perillate",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades D-limonene to perillate",
+          "raw_text": "Limonene degradation III (to perillate) pathway",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "limonene 7-monooxygenase, perillyl alcohol dehydrogenase, perillaldehyde dehydrogenase",
+          "raw_text": "enzymes of the limonene degradation III pathway",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": "Pseudomonas putida is motile by polar flagella",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": "Pseudomonas putida cells are rod-shaped",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": "Pseudomonas putida is Gram-negative",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": "Pseudomonas putida does not form spores",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "versatile in habitats including soil, water, and rhizosphere",
+          "raw_text": "Pseudomonas putida is widely distributed in soil and water",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["pathway", "enzymes", "microorganism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["species_traits"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

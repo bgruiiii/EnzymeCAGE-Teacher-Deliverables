@@ -1,0 +1,304 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_076",
+  "pollutant_name_zh": "2,5-二羟基苯甲酸根",
+  "pollutant_name_en": "2,5-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "gentisate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。gentisate degradation I 为需氧连续主链：龙胆酸1,2-双加氧开环后，经谷胱甘肽依赖性顺反异构再水解，不包含马来酰丙酮酸直接水解分支。"
+  },
+  "route_summary": "2,5-二羟基苯甲酸根（龙胆酸）在需氧条件下由龙胆酸1,2-双加氧酶开环为马来酰丙酮酸，再异构为延胡索酰丙酮酸，最后水解为延胡索酸与丙酮酸，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,5-dihydroxybenzoate",
+          "smiles": "O=C([O-])c1cc(O)ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylpyruvate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧开环",
+      "enzyme": {
+        "name": "gentisate 1,2-dioxygenase",
+        "ec_number": "1.13.11.4",
+        "gene_or_protein": "nagI",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Ralstonia sp.",
+        "strain": "U2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "maleylpyruvate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarylpyruvate",
+          "smiles": "[O-]C(=O)/C=C/C(=O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "顺反异构",
+      "enzyme": {
+        "name": "maleylpyruvate isomerase",
+        "ec_number": "5.2.1.4",
+        "gene_or_protein": "nagL",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Ralstonia sp.",
+        "strain": "U2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该酶为谷胱甘肽依赖性异构酶；谷胱甘肽作辅因子参与催化但不进入净反应计量，故未列入底物或产物。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "fumarylpyruvate",
+          "smiles": "[O-]C(=O)/C=C/C(=O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarate",
+          "smiles": "[O-]C(=O)/C=C/C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解",
+      "enzyme": {
+        "name": "fumarylpyruvate hydrolase",
+        "ec_number": "3.7.1.5",
+        "gene_or_protein": "nagK",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Ralstonia sp.",
+        "strain": "U2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步酶在酶学分类中常归入 EC 3.7.1.5（acylpyruvate hydrolase），途径文献中的功能名称为 fumarylpyruvate hydrolase。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Ralstonia sp.",
+      "strain": "U2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用萘作为碳源，并经龙胆酸继续代谢2,5-二羟基苯甲酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解萘，并经gentisate degradation I将2,5-二羟基苯甲酸转化为延胡索酸和丙酮酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有龙胆酸1,2-双加氧酶、马来酰丙酮酸异构酶和延胡索酰丙酮酸水解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["fumarate", "pyruvate"],
+    "explanation": "延胡索酸可直接进入三羧酸循环；丙酮酸可转化为乙酰辅酶A后进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA cycle",
+      "summary": "延胡索酸进入三羧酸循环；丙酮酸经丙酮酸脱氢酶生成乙酰辅酶A后亦可进入三羧酸循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "gentisate degradation II",
+      "summary": "马来酰丙酮酸可由马来酰丙酮酸水解酶直接水解为马来酸与丙酮酸，马来酸再异构为延胡索酸。该分支不属于本题指定的 gentisate degradation I 主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "KEGG/MetaCyc gentisate degradation I：龙胆酸 + O2 → 马来酰丙酮酸 → 延胡索酰丙酮酸 → 延胡索酸 + 丙酮酸；EC 1.13.11.4、5.2.1.4、3.7.1.5",
+      "claim_scope": ["reaction", "substrate_product", "ec_number"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Zhou et al., J. Bacteriol. 2001, 183:700-708：Ralstonia sp. U2 的 nagI、nagL、nagK 分别编码龙胆酸1,2-双加氧酶、马来酰丙酮酸异构酶和延胡索酰丙酮酸水解酶，完成萘下游龙胆酸好氧降解",
+      "claim_scope": ["organism", "enzyme", "gene", "degradation_trait", "oxygen_trait"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Ralstonia 属的分类学特征：革兰氏阴性杆状细菌，不形成芽孢；此处由属级特征外推至菌株 U2",
+      "claim_scope": ["cell_morphology", "gram_stain", "sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为未指定；因 gentisate degradation I 第一步必须消耗分子氧，route_scope.oxygen_condition 填 aerobic。",
+    "Ralstonia sp. U2 曾称 Pseudomonas sp. U2；其 NCBI TaxID、保藏编号和基因组登录号本次未能确定，均置 null。",
+    "菌株水平的温度、pH、盐度、运动性、栖息地广适性及基因组数值缺乏可引用实测来源，置 null。",
+    "革兰氏染色、细胞形态和不产芽孢依据 Ralstonia 属特征外推，不是菌株 U2 的直接实验记录。",
+    "nagI、nagL、nagK 与三种酶的对应关系依据对 Zhou 等 2001 年文献的记忆，本次未重新核对原始序列记录。"
+  ]
+}

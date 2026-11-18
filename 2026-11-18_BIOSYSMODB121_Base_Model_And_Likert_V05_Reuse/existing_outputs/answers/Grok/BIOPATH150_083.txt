@@ -1,0 +1,326 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_083",
+  "pollutant_name_zh": "(-)-奎尼酸",
+  "pollutant_name_en": "(-)-Quinate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "quinate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。本主链三步本身不消耗分子氧；代表菌为好氧菌，下游原儿茶酸开环通常需氧，但不计入本路线主链。"
+  },
+  "route_summary": "(-)-奎尼酸降解主链以谷氨酸棒杆菌ATCC 13032的qsu途径为代表：奎尼酸由NAD+依赖的奎尼酸/莽草酸脱氢酶氧化为3-脱氢奎尼酸，再经3-脱氢奎尼酸脱水酶生成3-脱氢莽草酸，最后由3-脱氢莽草酸脱水酶脱水芳构化为原儿茶酸。原儿茶酸是本指定路线的终点，可经下游β-酮己二酸途径进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(-)-quinate",
+          "smiles": "C1[C@H]([C@@H]([C@@H](C[C@@]1(C(=O)O)O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+](c1)[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@@H](n3cnc4c(N)ncnc34)[C@H](O)[C@@H]2O)[C@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydroquinate",
+          "smiles": "C1[C@H]([C@@H](C(=O)C[C@@]1(C(=O)O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C=CC1)[C@@H]1O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]2O[C@@H](n3cnc4c(N)ncnc34)[C@H](O)[C@@H]2O)[C@H](O)[C@H]1O",
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱氢",
+      "enzyme": {
+        "name": "quinate/shikimate dehydrogenase",
+        "ec_number": "1.1.1.282",
+        "gene_or_protein": "qsuD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Corynebacterium glutamicum",
+        "strain": "ATCC 13032",
+        "ncbi_taxid": 196627,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步酶在谷氨酸棒杆菌中为可作用于奎尼酸和莽草酸的脱氢酶，故采用EC 1.1.1.282；部分文献将奎尼酸脱氢活性记为EC 1.1.1.24。辅因子按NAD+记录，EC定义允许NAD(P)+。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-dehydroquinate",
+          "smiles": "C1[C@H]([C@@H](C(=O)C[C@@]1(C(=O)O)O)O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydroshikimate",
+          "smiles": "C1[C@H]([C@@H](C(=O)C=C1C(=O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱水",
+      "enzyme": {
+        "name": "3-dehydroquinate dehydratase",
+        "ec_number": "4.2.1.10",
+        "gene_or_protein": "qsuB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Corynebacterium glutamicum",
+        "strain": "ATCC 13032",
+        "ncbi_taxid": 196627,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "分解代谢所用为II型3-脱氢奎尼酸脱水酶，与生物合成I型共用EC 4.2.1.10。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "3-dehydroshikimate",
+          "smiles": "C1[C@H]([C@@H](C(=O)C=C1C(=O)O)O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "C1=CC(=C(C=C1C(=O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱水芳构化",
+      "enzyme": {
+        "name": "3-dehydroshikimate dehydratase",
+        "ec_number": "4.2.1.118",
+        "gene_or_protein": "qsuC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Corynebacterium glutamicum",
+        "strain": "ATCC 13032",
+        "ncbi_taxid": 196627,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Corynebacterium glutamicum",
+      "strain": "ATCC 13032",
+      "ncbi_taxid": 196627,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "13032"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用奎尼酸、莽草酸和葡萄糖作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解奎尼酸和莽草酸等氢化芳香族化合物，并进一步代谢原儿茶酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有奎尼酸/莽草酸脱氢酶（QsuD）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "不规则杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性，细胞壁含分枝菌酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_003450",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要为土壤分离株，实验室碳源谱较宽，但自然分布有限，栖息地广适性中等偏低",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "指定路线主链止于原儿茶酸，原儿茶酸本身不是中心代谢物。谷氨酸棒杆菌可经β-酮己二酸途径将原儿茶酸转化为琥珀酰CoA和乙酰CoA后进入中心代谢；该过程属于下游延续而非本主链步骤。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate degradation I (ortho-cleavage pathway)",
+      "summary": "原儿茶酸经原儿茶酸3,4-双加氧酶邻位开环，进入β-酮己二酸途径，最终生成琥珀酰CoA与乙酰CoA。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "quinate degradation I (aerobic)",
+      "summary": "经典好氧路线同样经3-脱氢奎尼酸和3-脱氢莽草酸生成原儿茶酸，代表菌包括不动杆菌与假单胞菌；该命名路线不是本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Teramoto H, Inui M, Yukawa H. Regulation of expression of genes involved in quinate and shikimate utilization in Corynebacterium glutamicum. Appl Environ Microbiol. 2009;75(11):3461-3468.",
+      "claim_scope": ["qsu_pathway_reactions", "enzyme_identity", "gene_names", "quinate_and_shikimate_utilization"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Corynebacterium glutamicum ATCC 13032 species description and RefSeq genome NC_003450",
+      "claim_scope": ["oxygen_tolerance", "temperature_optimum", "gram_stain", "morphology", "motility", "sporulation", "culture_collection", "respiration", "genome_accession", "habitat_generalism"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面指定名称为quinate degradation II，公开文献对它与quinate degradation I (aerobic)的数据库边界并不总是明确区分；本答案采用谷氨酸棒杆菌ATCC 13032 qsu操纵子所代表的奎尼酸至原儿茶酸三步降解主链。",
+    "另一种可能的独立路线是以醌依赖奎尼酸脱氢酶（EC 1.1.5.8）起始的氧化途径；因其与完整降解主链的对应关系更不确定，未写入评分主链。",
+    "第一步辅因子按NAD+填写；EC 1.1.1.282定义为可接受NAD(P)+。",
+    "温度上下限、盐度数值、pH上下限以及基因组碱基数和GC含量缺乏可核对的单一原文数值，已置null。"
+  ]
+}

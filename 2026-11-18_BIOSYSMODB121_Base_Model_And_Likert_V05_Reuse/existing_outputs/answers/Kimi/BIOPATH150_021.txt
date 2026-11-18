@@ -1,0 +1,353 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_021",
+  "pollutant_name_zh": "甲苯",
+  "pollutant_name_en": "Toluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Toluene degradation to 2-hydroxypentadienoate (via toluene-cis-diol)",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线即经典 tod（toluene dioxygenase）间位裂解支路：甲苯→顺式-甲苯二氢二醇→3-甲基儿茶酚→2-羟基-6-氧代-2,4-庚二烯酸→2-羟基-2,4-戊二烯酸。参考菌 Pseudomonas putida F1 携带完整 tod 操纵子，可独立完成全部四步。"
+  },
+  "route_summary": "好氧条件下，Pseudomonas putida F1 通过 tod 操纵子降解甲苯：第一步由甲苯双加氧酶（TodC1C2，EC 1.14.12.11）以 NADH 为还原剂将甲苯顺式二羟化为顺式-甲苯二氢二醇；第二步顺式二氢二醇脱氢酶（TodB，EC 1.3.1.19）脱氢并芳构化生成 3-甲基儿茶酚；第三步 3-甲基儿茶酚 2,3-双加氧酶（TodE，EC 1.13.11.2）进行 meta 位开环，生成 2-羟基-6-氧代-2,4-庚二烯酸；第四步由 TodF 水解酶水解脱去乙酰基，得到路线终产物 2-羟基-2,4-戊二烯酸，并释放乙酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "Toluene", "smiles": "Cc1ccccc1", "role": "main"},
+        {"name": "Oxygen (O2)", "smiles": "O=O", "role": "cofactor"},
+        {"name": "NADH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "(1S,2R)-3-Methylcyclohexa-3,5-diene-1,2-diol (cis-toluene dihydrodiol)", "smiles": "CC1=CC=CC(O)C1O", "role": "main"},
+        {"name": "NAD+", "smiles": null, "role": "byproduct"},
+        {"name": "Water", "smiles": "O", "role": "byproduct"}
+      ],
+      "reaction_type": "Rieske 非血红素铁双加氧反应（芳环顺式二羟化，NADH 供还原力）",
+      "enzyme": {
+        "name": "Toluene 2,3-dioxygenase (toluene dioxygenase)",
+        "ec_number": "1.14.12.11",
+        "gene_or_protein": "todC1C2",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "cis-Toluene dihydrodiol ((1S,2R)-3-methylcyclohexa-3,5-diene-1,2-diol)", "smiles": "CC1=CC=CC(O)C1O", "role": "main"},
+        {"name": "NAD+", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-Methylcatechol", "smiles": "Cc1cccc(O)c1O", "role": "main"},
+        {"name": "NADH", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "NAD+ 依赖的脱氢反应（二氢二醇芳构化为儿茶酚）",
+      "enzyme": {
+        "name": "cis-Toluene dihydrodiol dehydrogenase",
+        "ec_number": "1.3.1.19",
+        "gene_or_protein": "todB",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "3-Methylcatechol", "smiles": "Cc1cccc(O)c1O", "role": "main"},
+        {"name": "Oxygen (O2)", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2-Hydroxy-6-oxohepta-2,4-dienoate", "smiles": "CC(=O)C=CC=C(O)C(=O)O", "role": "main"}
+      ],
+      "reaction_type": "外二醇（extradiol）双加氧开环，meta 位裂解",
+      "enzyme": {
+        "name": "3-Methylcatechol 2,3-dioxygenase (catechol 2,3-dioxygenase)",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "todE",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "2-Hydroxy-6-oxohepta-2,4-dienoate", "smiles": "CC(=O)C=CC=C(O)C(=O)O", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2-Hydroxypenta-2,4-dienoate", "smiles": "C=CC=C(O)C(=O)O", "role": "main"},
+        {"name": "Acetate", "smiles": "CC(=O)O", "role": "byproduct"}
+      ],
+      "reaction_type": "C–C 键水解（去乙酰基，生成 2-羟基戊二烯酸和乙酸）",
+      "enzyme": {
+        "name": "2-Hydroxy-6-oxohepta-2,4-dienoate hydrolase (TodF)",
+        "ec_number": null,
+        "gene_or_protein": "todF",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "TodF 的 EC 编号未能核定（各数据库标注不一致或未赋 EC），故 ec_number 填 null；酶名称与基因归属（todF）有文献支持。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 351746,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": 30, "maximum_c": null, "preference": "中温菌（mesophile），常规培养约 30°C"},
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（strict aerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": 7.0, "maximum": null},
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": "ATCC", "accession": "700007"},
+          "raw_text": "ATCC 700007: Pseudomonas putida F1",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸（氧化磷酸化）", "terminal_electron_acceptor": "氧气（O2）"},
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲苯为唯一碳源和能源生长；亦可利用苯、乙苯等多种单环芳香族化合物",
+          "raw_text": "Toluene degradation by Pseudomonas putida F1（文献标题）",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱芳烃降解菌：降解甲苯、苯、乙苯等；其甲苯双加氧酶可共代谢三氯乙烯（TCE）等多种卤代烃污染物",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "甲苯 2,3-双加氧酶（toluene dioxygenase, todC1C2）活性，并具有完整 tod 间位裂解途径酶系（todB/todE/todF 等）",
+          "raw_text": "Toluene degradation by Pseudomonas putida F1: genetic organization of the tod operon（文献标题）",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状杆菌（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": "NC_009512.1", "genome_size_bp": null, "gc_percent": null},
+          "raw_text": "Pseudomonas putida F1 chromosome, complete genome",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性较强的环境广布菌：常见于土壤、淡水及受石油/芳香烃污染的环境，可在多种寡营养至污染生境中定殖",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["2-Hydroxypenta-2,4-dienoate", "Acetate"],
+    "explanation": "路线终产物 2-羟基-2,4-戊二烯酸在 P. putida F1 中继续经 todGHI（水合酶、醛缩酶、酰化乙醛脱氢酶）转化为丙酮酸与乙酰辅酶A，进入三羧酸循环；副产物乙酸可经乙酰辅酶A合成途径直接进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2-羟基戊二烯酸继续矿化（todGHI 下游段）",
+      "summary": "2-Hydroxypenta-2,4-dienoate 经水合生成 4-hydroxy-2-oxopentanoate，再经醛缩裂解为丙酮酸和乙醛，乙醛氧化为乙酰辅酶A，最终进入 TCA 循环（属本路线范围之外的下游，不参与评分）。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "TOL（xyl）甲苯单加氧酶支路",
+      "summary": "Pseudomonas putida mt-2 等经 XylMA 依次将甲苯氧化为苄醇、苯甲醛、苯甲酸，再经儿茶酚间位或邻位裂解，属于不同的甲苯降解路线。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "甲苯 4-单加氧酶（tmo）支路",
+      "summary": "如 Pseudomonas mendocina KR1 经 toluene 4-monooxygenase 将甲苯羟化为对甲酚再进一步降解，不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD / UM-BBD",
+      "record_id": null,
+      "locator": "EAWAG-BBD pathway page: Toluene Degradation to 2-Hydroxypentadienoate (https://eawag-bbd.ethz.ch/tol2/tol2_map.html)",
+      "claim_scope": ["整条主链反应序列：甲苯→顺式-甲苯二氢二醇→3-甲基儿茶酚→2-羟基-6-氧代-2,4-庚二烯酸→2-羟基-2,4-戊二烯酸+乙酸", "代表菌 Pseudomonas putida F1"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG PATHWAY",
+      "record_id": "map00623",
+      "locator": "https://www.kegg.jp/pathway/map00623",
+      "claim_scope": ["甲苯降解（cis-diol 支路）各步反应", "EC 编号：toluene dioxygenase 1.14.12.11；cis-dihydrodiol dehydrogenase 1.3.1.19；catechol 2,3-dioxygenase 1.13.11.2"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Zylstra GJ, McCombie WR, Gibson DT, Finette BA (1988) Appl Environ Microbiol 54(6):1498-1503；Zylstra GJ, Gibson DT (1989) J Biol Chem 264(25):14940-14946",
+      "claim_scope": ["Pseudomonas putida F1 的 tod 操纵子基因组织", "todC1C2 编码甲苯双加氧酶、todB 编码顺式二氢二醇脱氢酶、todE 编码 3-甲基儿茶酚 2,3-双加氧酶", "F1 可利用甲苯作为底物"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Menn FM, Zylstra GJ, Gibson DT (1991) Gene 104(1):91-94",
+      "claim_scope": ["P. putida F1 的 todF 基因编码 2-羟基-6-氧代-2,4-庚二烯酸水解酶"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_009512.1",
+      "locator": "Pseudomonas putida F1 chromosome, complete genome",
+      "claim_scope": ["P. putida F1 基因组登录号"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "351746",
+      "locator": "NCBI Taxonomy: Pseudomonas putida F1",
+      "claim_scope": ["Pseudomonas putida F1 的 TaxID"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700007",
+      "locator": "ATCC 700007: Pseudomonas putida F1",
+      "claim_scope": ["菌种保藏编号 ATCC 700007"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["P. putida 一般微生物学性状：革兰氏阴性直杆菌、极生鞭毛运动、专性好氧呼吸、中温（最适约 30°C）、近中性 pH、不产孢、环境广布、可共代谢 TCE"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "第4步 TodF（2-羟基-6-氧代-2,4-庚二烯酸水解酶）的 EC 编号未能核定，各数据库标注不一致或未赋 EC，故 ec_number 填 null。",
+    "P. putida F1 的基因组大小与 GC% 具体数值未核对到直接来源，F14 相应子字段填 null。",
+    "NADH/NAD+ 辅因子的 SMILES 未填写（null），以避免给出不可靠结构。",
+    "ATCC 700007 与 NCBI TaxID 351746 为中等置信度记录，未经二次核验。",
+    "F2 温度与 F3 pH 的最适值为常规培养条件的内部知识，置信度 low；F4 盐度无来源，全部填 null。",
+    "顺式-甲苯二氢二醇的 SMILES 未标注立体构型（为连接性表示）。"
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_090",
+  "pollutant_name_zh": "肉桂酸根",
+  "pollutant_name_en": "Cinnamate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "cinnamate and 3-hydroxycinnamate degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "肉桂酸通过羟基化、双羟基化、间位开环和水解反应，最终生成2-羟基戊二烯酸酯。其中肉桂酸首先转化为3-羟基肉桂酸，然后转化为2,3-二羟基肉桂酸，再经间位开环生成C9中间体，最后水解生成2-羟基戊二烯酸酯和马来酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Cinnamate",
+          "smiles": "[O-]C(=O)/C=C/c1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Hydroxycinnamate",
+          "smiles": "[O-]C(=O)/C=C/c1cccc(O)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "cinnamate 3-monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-Hydroxycinnamate",
+          "smiles": "[O-]C(=O)/C=C/c1cccc(O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-Dihydroxycinnamate",
+          "smiles": "[O-]C(=O)/C=C/c1c(O)c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "3-hydroxycinnamate 2-monooxygenase",
+        "ec_number": "1.14.13.151",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2,3-Dihydroxycinnamate",
+          "smiles": "[O-]C(=O)/C=C/c1c(O)c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxy-6-oxo-6-(2-carboxyethenyl)hexa-2,4-dienoate",
+          "smiles": "[O-]C(=O)C(O)=CC=CC(=O)C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring cleavage",
+      "enzyme": {
+        "name": "2,3-dihydroxycinnamate 1,2-dioxygenase",
+        "ec_number": "1.13.11.16",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-6-oxo-6-(2-carboxyethenyl)hexa-2,4-dienoate",
+          "smiles": "[O-]C(=O)C(O)=CC=CC(=O)C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxypentadienoate",
+          "smiles": "[O-]C(=O)C(O)=CC=C",
+          "role": "main"
+        },
+        {
+          "name": "Maleate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxo-6-(2-carboxyethenyl)hexa-2,4-dienoate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 4,
+            "optimum_c": 30,
+            "maximum_c": 40,
+            "preference": "嗜温菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性需氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 6,
+            "optimum": 7,
+            "maximum": 8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用多种有机酸、氨基酸和芳香化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解多种芳香族化合物，如甲苯、二甲苯、肉桂酸等",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有儿茶酚2,3-双加氧酶等芳香环裂解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性，极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002947.1",
+            "genome_size_bp": 6181863,
+            "gc_percent": 61.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、水体和植物根际",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["pathway steps"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["organism traits"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

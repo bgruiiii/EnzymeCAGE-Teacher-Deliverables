@@ -1,0 +1,334 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_077",
+  "pollutant_name_zh": "3,4-二羟基苯甲酸根",
+  "pollutant_name_en": "3,4-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "protocatechuate degradation III (para-cleavage pathway)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition按题面置null；该途径首步为需O2的双加氧开环反应，本质上在好氧条件下进行。此路线即原儿茶酸4,5-裂解（para-裂解）途径，在Sphingobium sp. SYK-6（旧称Sphingomonas paucimobilis SYK-6）中研究最深入。"
+  },
+  "route_summary": "3,4-二羟基苯甲酸根（原儿茶酸）para-裂解主链共5步：①原儿茶酸4,5-双加氧酶（LigAB）将芳环在4,5位裂解开环，生成4-羧基-2-羟基黏康酸-6-半醛（CHMS）；②CHMS脱氢酶（LigC）以NAD+为辅因子将其氧化并内酯化为2-吡喃酮-4,6-二羧酸（PDC）；③PDC水解酶/内酯酶（LigI）开环生成4-草酰中康酸（OMA）；④OMA水合酶（LigJ）加水生成4-羧基-4-羟基-2-氧代己二酸（CHA）；⑤CHA醛缩酶（LigK）逆醛醇裂解为草酰乙酸与丙酮酸，进入中心碳代谢。全部5步的酶均在Sphingobium sp. SYK-6中得到遗传与生化确证。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "protocatechuate", "smiles": "O=C([O-])c1ccc(O)c(O)c1", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "4-carboxy-2-hydroxymuconate-6-semialdehyde", "smiles": "O=CC=C(C(=O)O)C=C(O)C(=O)O", "role": "main"}
+      ],
+      "reaction_type": "氧化性芳环开环（外二醇型4,5-双加氧）",
+      "enzyme": {
+        "name": "protocatechuate 4,5-dioxygenase",
+        "ec_number": "1.13.11.8",
+        "gene_or_protein": "ligA, ligB (LigAB)",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp.",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "4-carboxy-2-hydroxymuconate-6-semialdehyde", "smiles": "O=CC=C(C(=O)O)C=C(O)C(=O)O", "role": "main"},
+        {"name": "NAD(+)", "smiles": null, "role": "cofactor"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2-pyrone-4,6-dicarboxylate", "smiles": "C1=C(C=C(OC1=O)C(=O)O)C(=O)O", "role": "main"},
+        {"name": "NADH", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "NAD+依赖性脱氢氧化并内酯化",
+      "enzyme": {
+        "name": "4-carboxy-2-hydroxymuconate-6-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.64",
+        "gene_or_protein": "ligC (LigC)",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp.",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC编号1.2.1.64为中等置信度，建议与BRENDA/IUBMB核对。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "2-pyrone-4,6-dicarboxylate", "smiles": "C1=C(C=C(OC1=O)C(=O)O)C(=O)O", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "4-oxalomesaconate", "smiles": "O=C(O)C=C(CC(=O)C(=O)O)C(=O)O", "role": "main"}
+      ],
+      "reaction_type": "内酯水解开环（内酯酶）",
+      "enzyme": {
+        "name": "2-pyrone-4,6-dicarboxylate lactonase",
+        "ec_number": "3.1.1.57",
+        "gene_or_protein": "ligI (LigI)",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp.",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "4-oxalomesaconate", "smiles": "O=C(O)C=C(CC(=O)C(=O)O)C(=O)O", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "4-carboxy-4-hydroxy-2-oxoadipate", "smiles": "O=C(O)C(=O)CC(O)(C(=O)O)CC(=O)O", "role": "main"}
+      ],
+      "reaction_type": "水合反应（碳碳双键加水）",
+      "enzyme": {
+        "name": "4-oxalomesaconate hydratase",
+        "ec_number": "4.2.1.83",
+        "gene_or_protein": "ligJ (LigJ)",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp.",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {"name": "4-carboxy-4-hydroxy-2-oxoadipate", "smiles": "O=C(O)C(=O)CC(O)(C(=O)O)CC(=O)O", "role": "main"}
+      ],
+      "products": [
+        {"name": "oxaloacetate", "smiles": "O=C(O)CC(=O)C(=O)O", "role": "main"},
+        {"name": "pyruvate", "smiles": "CC(=O)C(=O)O", "role": "main"}
+      ],
+      "reaction_type": "逆醛醇裂解",
+      "enzyme": {
+        "name": "4-carboxy-4-hydroxy-2-oxoadipate aldolase",
+        "ec_number": "4.1.3.44",
+        "gene_or_protein": "ligK (LigK)",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp.",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC编号4.1.3.44为中等置信度；LigK兼具4-羟基-2-氧代戊二酸醛缩酶活性，部分注释体系可能使用EC 4.1.3.16。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sphingobium sp.",
+      "strain": "SYK-6",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": 30, "maximum_c": null, "preference": "中温菌（常规实验室培养温度为30°C）"},
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": null, "maximum": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": "NBRC", "accession": "103272"},
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "氧气（O2）"},
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以多种木质素衍生芳香族化合物（如香草酸、香草醛、丁香酸、阿魏酸）及原儿茶酸为碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种木质素衍生芳香化合物（β-O-4型二聚体、联苯类、二芳基丙烷、苯基香豆满及多种单芳环羧酸），芳香单体经原儿茶酸4,5-裂解（para-裂解）途径矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "原儿茶酸4,5-双加氧酶（LigAB）活性，并具CHMS脱氢酶、PDC内酯酶、OMA水合酶、CHA醛缩酶等芳环裂解下游酶系活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "短杆状（杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性；外膜含鞘糖脂、缺乏典型脂多糖（鞘氨醇单胞菌科特征）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自制浆造纸（kraft pulp）废水处理系统的活性污泥等受木质素污染的环境；所属鞘氨醇杆菌科细菌在土壤、淡水及芳香物污染场地中广泛分布，环境适应性较广",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["oxaloacetate", "pyruvate"],
+    "explanation": "途径终产物草酰乙酸直接进入三羧酸循环；丙酮酸经丙酮酸脱氢酶系转化为乙酰辅酶A后亦进入三羧酸循环，实现彻底矿化。"
+  },
+  "downstream_continuation": [
+    {"name": "三羧酸循环", "summary": "草酰乙酸与（由丙酮酸脱羧而来的）乙酰辅酶A进入TCA循环彻底氧化供能。"}
+  ],
+  "alternative_branches": [
+    {"name": "protocatechuate degradation II (ortho-cleavage pathway)", "summary": "由原儿茶酸3,4-双加氧酶（PcaGH）起始的β-酮己二酸（ortho裂解）途径，产物为琥珀酰-CoA与乙酰-CoA，常见于Pseudomonas putida、Acinetobacter等；不属于本评分主链。", "is_part_of_scored_main_route": false},
+    {"name": "protocatechuate degradation I (meta-cleavage pathway)", "summary": "由原儿茶酸2,3-双加氧酶起始的另一种裂解途径（如Paenibacillus macerans中报道）；不属于本评分主链。", "is_part_of_scored_main_route": false}
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway: protocatechuate degradation III (para-cleavage pathway)",
+      "claim_scope": ["reaction_sequence", "enzyme_assignment", "pathway_scope"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Masai E, Katayama Y, Fukuda M (2007) Biosci Biotechnol Biochem 71(1):1-15（SYK-6木质素衍生芳香物代谢途径综述）",
+      "claim_scope": ["organism_pathway_assignment", "gene_enzyme_mapping", "strain_physiology"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NBRC",
+      "record_id": "NBRC 103272",
+      "locator": "NBRC catalog entry for Sphingobium sp. SYK-6",
+      "claim_scope": ["culture_collection"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Yabuuchi E et al. (1990) Microbiol Immunol 34(2):99-119（Sphingomonas paucimobilis 属种描述）",
+      "claim_scope": ["gram_stain", "cell_morphology", "oxygen_tolerance", "non_spore_forming"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；该途径首步为需O2的双加氧反应，实际为好氧过程，oxygen_condition按题面置null。",
+    "第2步酶（CHMS脱氢酶，LigC）的EC 1.2.1.64与第5步酶（CHA醛缩酶，LigK）的EC 4.1.3.44为中等置信度，建议与BRENDA/IUBMB核对。",
+    "SYK-6的NBRC保藏号103272为中等置信度。",
+    "菌株级NCBI TaxID、基因组登录号、基因组大小与GC含量无可靠把握，按要求置null。",
+    "MetaCyc该途径的内部PWY编号未确认，相应evidence的record_id置null，仅给出路径名定位。"
+  ]
+}

@@ -1,0 +1,360 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_086",
+  "pollutant_name_zh": "(S)-2,3-二羟基丙烷-1-磺酸根",
+  "pollutant_name_en": "(S)-2,3-dihydroxypropane-1-sulfonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "3-sulfopropanediol degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故 oxygen_condition 填 null。该路线（MetaCyc '3-sulfopropanediol degradation I'）为线性三步主链：(S)-DHPS → (S)-3-磺基乳醛 → (S)-3-磺基乳酸 → 丙酮酸 + 亚硫酸氢根。"
+  },
+  "route_summary": "(S)-2,3-二羟基丙烷-1-磺酸根（DHPS，亦称 (2S)-3-磺基丙二醇，为磺基异鼠李糖/磺基喹诺糖降解的常见产物）按路线 '3-sulfopropanediol degradation I' 经三步降解：第 1 步由 NAD+ 依赖的 DHPS 3-脱氢酶（HpsN）氧化其 3-位羟基，生成 (S)-3-磺基乳醛（SLA）；第 2 步由 3-磺基乳醛脱氢酶（HpsO）将醛基氧化为羧基，生成 (S)-3-磺基乳酸；第 3 步由 3-磺基乳酸硫裂解酶（SuyAB）裂解 C–S 键，释放丙酮酸与亚硫酸氢根。丙酮酸进入中心碳代谢，亚硫酸（氢）盐可进一步氧化为硫酸根。代表菌为海洋 Roseobacter 类群细菌 Roseovarius nubinhibens ISM。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(S)-2,3-dihydroxypropane-1-sulfonate",
+          "smiles": "OC[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-3-sulfolactaldehyde",
+          "smiles": "O=C[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化还原反应（NAD+ 依赖性 3-位脱氢，醇氧化为醛）",
+      "enzyme": {
+        "name": "3-sulfopropanediol dehydrogenase (dihydroxypropanesulfonate 3-dehydrogenase)",
+        "ec_number": "1.1.1.337",
+        "gene_or_protein": "hpsN",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Roseovarius nubinhibens",
+        "strain": "ISM",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "EC 编号 1.1.1.337 凭内部知识填写，未与数据库逐一核对；该反应亦在 Cupriavidus pinatubonensis JMP134 中被直接证实（HpsN 纯化，Mayer 2010）。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "(S)-3-sulfolactaldehyde",
+          "smiles": "O=C[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-3-sulfolactate",
+          "smiles": "O=C([O-])[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化还原反应（醛脱氢酶，NAD+ 依赖，醛氧化为羧酸）",
+      "enzyme": {
+        "name": "3-sulfolactaldehyde dehydrogenase",
+        "ec_number": "1.2.1.86",
+        "gene_or_protein": "hpsO",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Roseovarius nubinhibens",
+        "strain": "ISM",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "基因名 hpsO 与 EC 编号 1.2.1.86 凭内部知识填写，可信度低；不排除该步在不同菌中由不同醛脱氢酶催化。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "(S)-3-sulfolactate",
+          "smiles": "O=C([O-])[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "bisulfite",
+          "smiles": "O=S([O-])O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "裂解反应（C–S 键断裂、脱硫，硫裂解酶）",
+      "enzyme": {
+        "name": "3-sulfolactate sulfo-lyase",
+        "ec_number": "4.4.1.24",
+        "gene_or_protein": "suyAB",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Roseovarius nubinhibens",
+        "strain": "ISM",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "SuyAB 酶最初在 Paracoccus pantotrophus NKNCYSA 中鉴定（Rein 2005）；EC 编号 4.4.1.24 凭内部知识填写，未核实。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Roseovarius nubinhibens",
+      "strain": "ISM",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温型（mesophilic）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic，好氧异养型 Roseobacter）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "海洋细菌，生长依赖海水盐分（marine, salt-requiring）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSMZ",
+            "accession": "DSM 15170"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（氧化磷酸化）",
+            "terminal_electron_acceptor": "氧气 (O2)"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以 (S)-2,3-二羟基丙烷-1-磺酸根（DHPS）为碳源（可作唯一碳源）生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解 C3 有机磺酸盐（DHPS 及 3-磺基乳酸等磺酸化中间体）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "NAD+ 依赖的二羟基丙烷磺酸盐 3-脱氢酶（HpsN）活性（DHPS 氧化为 3-磺基乳醛）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状/短杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "海洋浮游环境（marine planktonic），分离自海水，栖息地类型相对专一于海洋环境",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "主链碳骨架终产物为丙酮酸，可经丙酮酸脱氢酶复合体转化为乙酰-CoA 进入三羧酸循环；副产物亚硫酸氢根可进一步氧化为硫酸根用于硫同化或排出。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "3-磺基乳酸经磺基丙酮酸—磺基乙醛的替代降解走向",
+      "summary": "在部分细菌（如 Chromohalobacter salexigens DSM 3043）中，3-磺基乳酸不被硫裂解酶直接裂解，而由立体选择性 3-磺基乳酸脱氢酶（如 SlcC/ComC）氧化为 3-磺基丙酮酸，再经磺基丙酮酸脱羧酶（ComDE）生成磺基乙醛，最终由磺基乙醛乙酰转移酶（Xsc）裂解为乙酰-CoA 与亚硫酸盐。该走向不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway: 3-sulfopropanediol degradation I",
+      "claim_scope": [
+        "路线三步反应序列与化合物（DHPS → 3-磺基乳醛 → 3-磺基乳酸 → 丙酮酸 + 亚硫酸氢盐）",
+        "酶名称与基因（hpsN、hpsO、suyAB）及代表宿主归属 Roseovarius nubinhibens ISM"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Mayer J, Huhn T, Habeck M, Denger K, Hollemeyer K, Cook AM. Microbiology (2010) 156:1556-1564",
+      "claim_scope": [
+        "Cupriavidus pinatubonensis JMP134 利用 DHPS 并纯化鉴定二羟基丙烷磺酸盐 3-脱氢酶（HpsN），产物为 3-磺基乳醛"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Rein U, Gueta R, Denger K, Ruff J, Hollemeyer K, Cook AM. Microbiology (2005) 151:737-747",
+      "claim_scope": [
+        "3-磺基乳酸硫裂解酶 SuyAB 催化 3-磺基乳酸裂解为丙酮酸与亚硫酸（氢）盐"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Roseovarius nubinhibens ISM 的生理与表型信息（好氧、海洋来源、革兰氏阴性、中温、DSMZ 保藏号等）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "各步酶 EC 编号归属（1.1.1.337、1.2.1.86、4.4.1.24）的记忆性信息，未经数据库核实"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "三个酶的 EC 编号（1.1.1.337、1.2.1.86、4.4.1.24）均凭内部知识填写，未与 BRENDA/ExplorEnz 核实，可能不准确。",
+    "路线代表宿主按 MetaCyc '3-sulfopropanediol degradation I' 归属 Roseovarius nubinhibens ISM（凭记忆）；文献中 Cupriavidus pinatubonensis JMP134 亦为证实的 DHPS 降解菌（第 1 步 HpsN），Paracoccus pantotrophus NKNCYSA 为 SuyAB（第 3 步）的原始来源。",
+    "Roseovarius nubinhibens ISM 的 DSMZ 保藏号（DSM 15170）、运动性、细胞形态、基因组编号、TaxID 等未逐项核实；未知项一律填 null。",
+    "第 1、2 步的辅因子 NAD+/NADH 及 H2O、H+ 参与反应，但未逐一给出 SMILES 或全部列出。",
+    "中间体与底物的立体化学按题面给定的 (S)-构型书写（与磺基喹诺糖降解天然产物的构型一致）。"
+  ]
+}

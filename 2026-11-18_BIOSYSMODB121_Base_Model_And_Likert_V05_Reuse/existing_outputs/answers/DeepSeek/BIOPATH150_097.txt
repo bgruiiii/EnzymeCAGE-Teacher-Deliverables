@@ -1,0 +1,355 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_097",
+  "pollutant_name_zh": "三甲胺",
+  "pollutant_name_en": "Trimethylamine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "trimethylamine degradation",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "三甲胺经连续氧化脱甲基化降解：三甲胺先脱甲基生成二甲胺和甲醛，二甲胺再脱甲基生成甲胺和甲醛，甲胺氧化脱氨生成甲醛和氨；甲醛进入甲基营养菌中央代谢。主链以 Methylophilus methylotrophus W3A1 为代表菌，依次使用三甲胺脱氢酶、二甲胺脱氢酶和甲胺脱氢酶。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Dimethylamine",
+          "smiles": "CNC",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative demethylation",
+      "enzyme": {
+        "name": "trimethylamine dehydrogenase",
+        "ec_number": "1.5.99.9",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Methylophilus methylotrophus",
+        "strain": "W3A1",
+        "ncbi_taxid": 17,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Dimethylamine",
+          "smiles": "CNC",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Methylamine",
+          "smiles": "CN",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative demethylation",
+      "enzyme": {
+        "name": "dimethylamine dehydrogenase",
+        "ec_number": "1.5.99.10",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Methylophilus methylotrophus",
+        "strain": "W3A1",
+        "ncbi_taxid": 17,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "Methylamine",
+          "smiles": "CN",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative deamination",
+      "enzyme": {
+        "name": "methylamine dehydrogenase",
+        "ec_number": "1.4.99.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Methylophilus methylotrophus",
+        "strain": "W3A1",
+        "ncbi_taxid": 17,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Methylophilus methylotrophus",
+      "strain": "W3A1",
+      "ncbi_taxid": 17,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "obligately aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "methylotrophic growth on methanol, methylamine, dimethylamine, trimethylamine",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades trimethylamine, dimethylamine and methylamine via oxidative demethylation/deamination",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "trimethylamine dehydrogenase; dimethylamine dehydrogenase; methylamine dehydrogenase",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "Gram-negative rod",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "methylotrophic habitats including soil, freshwater and activated sludge",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Formaldehyde"
+    ],
+    "explanation": "甲胺脱氢产生的甲醛进入甲基营养菌中央代谢；可经 RuMP/丝氨酸循环同化，或进一步氧化为甲酸和 CO2。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "Formaldehyde oxidation/assimilation",
+      "summary": "甲醛进入 RuMP 或丝氨酸循环，或氧化为甲酸并最终矿化为 CO2。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Methylophilus methylotrophus W3A1 is a trimethylamine-degrading methylotroph; NCBI TaxID 17"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "trimethylamine dehydrogenase (EC 1.5.99.9) oxidatively demethylates trimethylamine to dimethylamine and formaldehyde"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "dimethylamine dehydrogenase (EC 1.5.99.10) oxidatively demethylates dimethylamine to methylamine and formaldehyde"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "methylamine dehydrogenase (EC 1.4.99.3) oxidatively deaminates methylamine to formaldehyde and ammonia"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Methylophilus methylotrophus W3A1 general traits: obligately aerobic, Gram-negative non-sporulating rod, uses methylotrophic substrates",
+        "Methylophilus methylotrophus W3A1 degrades trimethylamine, dimethylamine and methylamine via dehydrogenases"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，route_scope.oxygen_condition 为 null。",
+    "未提供外部数据库记录，相关证据为 INTERNAL_KNOWLEDGE_ONLY。",
+    "甲醛后续中央代谢步骤未作为评分主链逐步展开。"
+  ]
+}

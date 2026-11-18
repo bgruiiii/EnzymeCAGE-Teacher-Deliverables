@@ -1,0 +1,404 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_112",
+  "pollutant_name_zh": "2,3-二羟基苯甲酸根",
+  "pollutant_name_en": "2,3-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2,3-dihydroxybenzoate degradation",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "在题面未指定氧条件的情况下，按已知的2,3-二羟基苯甲酸降解主链填写：2,3-二羟基苯甲酸先由2,3-二羟基苯甲酸2,3-双加氧酶开环生成2-羟基-6-氧代庚-2,4-二烯二酸；随后由相应水解酶裂解为2-氧代戊-4-烯酸和草酸；2-氧代戊-4-烯酸经水合生成4-羟基-2-氧代戊酸，再由醛缩酶裂解生成丙酮酸和乙醛，从而进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,3-dihydroxybenzoate",
+          "smiles": "O=C([O-])c1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienedioate",
+          "smiles": "[O-]C(=O)C(O)=CC=CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative ring cleavage",
+      "enzyme": {
+        "name": "2,3-dihydroxybenzoate 2,3-dioxygenase",
+        "ec_number": "1.13.11.10",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "氧条件未指定；此处按已知需氧双加氧酶主链填写。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienedioate",
+          "smiles": "[O-]C(=O)C(O)=CC=CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "[O-]C(=O)C(=O)CC=C",
+          "role": "main"
+        },
+        {
+          "name": "oxalate",
+          "smiles": "[O-]C(=O)C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic cleavage",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxohepta-2,4-dienedioate hydrolase",
+        "ec_number": "3.7.1.19",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "草酸为副产物，后续去向未纳入本主链。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "[O-]C(=O)C(=O)CC=C",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "2-oxopent-4-enoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该步为meta-cleavage下游常见步骤，与Pseudomonas putida的关联基于已知途径归纳。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "[O-]C(=O)C(=O)CC(O)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxopentanoate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "乙醛通常可进一步氧化为乙酸或乙酰辅酶A，但此处作为副产物列出。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温，最适约30℃"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解2,3-二羟基苯甲酸等芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "2,3-dihydroxybenzoate 2,3-dioxygenase activity",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、根际和水体等环境，生态适应性较广",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "acetaldehyde"
+    ],
+    "explanation": "主链末端生成丙酮酸可直接进入中心代谢；乙醛通常可进一步氧化为乙酸或乙酰辅酶A。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ENZYME",
+      "record_id": "1.13.11.10",
+      "locator": "2,3-dihydroxybenzoate 2,3-dioxygenase",
+      "claim_scope": [
+        "S1 reaction",
+        "S1 enzyme EC 1.13.11.10",
+        "Pseudomonas putida enzyme activity",
+        "Pseudomonas putida degradation capacity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ENZYME",
+      "record_id": "3.7.1.19",
+      "locator": "2-hydroxy-6-oxohepta-2,4-dienedioate hydrolase",
+      "claim_scope": [
+        "S2 reaction",
+        "S2 enzyme EC 3.7.1.19"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ENZYME",
+      "record_id": "4.2.1.80",
+      "locator": "2-oxopent-4-enoate hydratase",
+      "claim_scope": [
+        "S3 reaction",
+        "S3 enzyme EC 4.2.1.80"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ENZYME",
+      "record_id": "4.1.3.39",
+      "locator": "4-hydroxy-2-oxopentanoate aldolase",
+      "claim_scope": [
+        "S4 reaction",
+        "S4 enzyme EC 4.1.3.39"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida general phenotypic traits"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "303",
+      "locator": "Pseudomonas putida",
+      "claim_scope": [
+        "Pseudomonas putida taxonomy identity",
+        "NCBI TaxID 303"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，本答案按已知需氧双加氧酶主链填写。",
+    "菌株、保藏编号、基因组信息等缺乏直接来源，相关字段填null。",
+    "步骤3和步骤4与Pseudomonas putida的关联基于常见meta-cleavage下游途径归纳。"
+  ]
+}

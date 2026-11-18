@@ -1,0 +1,400 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_022",
+  "pollutant_name_zh": "对甲苯磺酸根",
+  "pollutant_name_en": "Tosylate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-toluenesulfonate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "好氧主链：对甲苯磺酸盐经甲基逐步氧化为4-磺基苯甲醇、4-磺基苯甲醛、4-磺基苯甲酸，再经双加氧脱磺酸基生成原儿茶酸；整条路线可在同一菌株 Comamonas testosteroni T-2 中连续完成。"
+  },
+  "route_summary": "好氧条件下，对甲苯磺酸盐（tosylate）首先由两组分单加氧酶 TsaMB 在甲基上羟化生成4-磺基苯甲醇；随后由醇脱氢酶 TsaC 氧化为4-磺基苯甲醛，再由醛脱氢酶 TsaD 氧化为4-磺基苯甲酸；最后由4-磺基苯甲酸3,4-双加氧酶进行ipso位双加氧并脱去磺酸基（以亚硫酸盐形式释放），生成原儿茶酸（protocatechuate）。原儿茶酸随后进入芳环裂解/β-酮己二酸等中心代谢途径，亚硫酸盐被进一步氧化或同化。代表微生物为 Comamonas testosteroni T-2。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-toluenesulfonate (tosylate)",
+          "smiles": "Cc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "[O=O]",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-sulfobenzyl alcohol",
+          "smiles": "OCc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧（甲基羟化，两组分黄素单加氧酶）",
+      "enzyme": {
+        "name": "4-toluenesulfonate monooxygenase (two-component, TsaM oxygenase + TsaB reductase)",
+        "ec_number": null,
+        "gene_or_protein": "tsaM / tsaB",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Comamonas testosteroni",
+        "strain": "T-2",
+        "ncbi_taxid": 285,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该酶无已确认的EC编号，故EC填null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-sulfobenzyl alcohol",
+          "smiles": "OCc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-sulfobenzaldehyde",
+          "smiles": "O=Cc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化（醇脱氢）",
+      "enzyme": {
+        "name": "4-sulfobenzyl alcohol dehydrogenase (TsaC)",
+        "ec_number": null,
+        "gene_or_protein": "tsaC",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Comamonas testosteroni",
+        "strain": "T-2",
+        "ncbi_taxid": 285,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该醇脱氢酶的专属EC编号未确认，填null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-sulfobenzaldehyde",
+          "smiles": "O=Cc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-sulfobenzoate",
+          "smiles": "O=C([O-])c1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化（醛脱氢，加水）",
+      "enzyme": {
+        "name": "4-sulfobenzaldehyde dehydrogenase (TsaD)",
+        "ec_number": null,
+        "gene_or_protein": "tsaD",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Comamonas testosteroni",
+        "strain": "T-2",
+        "ncbi_taxid": 285,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该醛脱氢酶的专属EC编号未确认，填null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-sulfobenzoate",
+          "smiles": "O=C([O-])c1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "[O=O]",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate (3,4-dihydroxybenzoate)",
+          "smiles": "O=C([O-])c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "sulfite",
+          "smiles": "O=S([O-])[O-]",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "双加氧脱磺酸基（ipso位羟化并释放亚硫酸盐）",
+      "enzyme": {
+        "name": "4-sulfobenzoate 3,4-dioxygenase (two-component Rieske-type dioxygenase)",
+        "ec_number": "1.14.12.8",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Comamonas testosteroni",
+        "strain": "T-2",
+        "ncbi_taxid": 285,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "T-2中该双加氧酶的基因名称未见明确报道，gene_or_protein填null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Comamonas testosteroni",
+      "strain": "T-2",
+      "ncbi_taxid": 285,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温型（mesophilic）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（obligate aerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以对甲苯磺酸盐为唯一碳源和能源生长，也可利用多种有机酸等常见有机物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解芳香族磺酸盐：将对甲苯磺酸盐经4-磺基苯甲醇、4-磺基苯甲醛、4-磺基苯甲酸降解至原儿茶酸，实现脱磺酸基",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有4-甲苯磺酸单加氧酶（TsaMB）活性及4-磺基苯甲酸3,4-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（直杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、地表水及废水处理系统（如活性污泥）等多种环境，属环境广适型菌",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["protocatechuate (3,4-dihydroxybenzoate, 原儿茶酸)"],
+    "explanation": "主链终产物原儿茶酸为常见芳烃降解中心中间体，可经芳环裂解（如β-酮己二酸途径或4,5-裂解途径）进入三羧酸循环；脱下的磺酸基以亚硫酸盐形式释放，可被氧化为硫酸盐或进入硫同化途径。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate ring-cleavage / β-ketoadipate pathway",
+      "summary": "原儿茶酸经原儿茶酸双加氧酶开环后进入β-酮己二酸途径，最终生成琥珀酰-CoA与乙酰-CoA进入TCA循环。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": "4-toluenesulfonate degradation I",
+      "locator": "MetaCyc pathway: 4-toluenesulfonate degradation I",
+      "claim_scope": ["路线主链反应序列", "各步底物与产物"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Junker F, Kiewitz R, Cook AM (1997) Characterization of the p-toluenesulfonate operon tsaMBCD and tsaR in Comamonas testosteroni T-2. J Bacteriol 179(3):919-927",
+      "claim_scope": ["S1-S3反应及tsaM/tsaB/tsaC/tsaD基因", "菌株Comamonas testosteroni T-2对甲苯磺酸盐好氧降解"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Locher HH, Leisinger T, Cook AM (1991) 4-Sulphobenzoate 3,4-dioxygenase. Purification and properties of a desulphonative two-component enzyme system from Comamonas testosteroni T-2. Biochem J 274:833-842",
+      "claim_scope": ["S4反应：4-磺基苯甲酸脱磺酸基生成原儿茶酸与亚硫酸盐", "4-sulfobenzoate 3,4-dioxygenase (EC 1.14.12.8)"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Comamonas testosteroni 物种水平一般生理与形态性状（革兰氏阴性、杆状、极生鞭毛运动、不产芽孢、专性好氧、中温）"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "4-甲苯磺酸单加氧酶（TsaMB）、4-磺基苯甲醇脱氢酶（TsaC）、4-磺基苯甲醛脱氢酶（TsaD）均无经确认的专属EC编号，相应字段填null。",
+    "Comamonas testosteroni T-2 的菌种保藏编号、基因组登录号及基因组大小/GC含量等未确认，填null。",
+    "NAD+/NADH 的SMILES未填写以避免结构错误。",
+    "该菌株的最适温度30°C为基于常规培养条件的低置信度估计，未见系统的温度生长范围报道。"
+  ]
+}

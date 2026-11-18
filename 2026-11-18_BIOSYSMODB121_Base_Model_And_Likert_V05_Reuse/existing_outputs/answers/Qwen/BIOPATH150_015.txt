@@ -1,0 +1,299 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_015",
+  "pollutant_name_zh": "苔黑酚",
+  "pollutant_name_en": "Orcinol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Orcinol degradation pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线填写；好氧微生物降解主链。"
+  },
+  "route_summary": "在好氧条件下，苔黑酚（orcinol）经苔黑酚羟化酶作用生成 2,3,5-三羟基甲苯，再经三羟基甲苯双加氧酶开环生成甲基马来酰乙酸类中间体，随后可经马来酰乙酸还原酶转化为甲基-3-氧代己二酸类产物并继续进入下游代谢；代表微生物为 Pseudomonas sp. ORC。部分中间体精确互变异构、甲基位置和 SMILES 未完全确认。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Orcinol",
+          "smiles": "Cc1cc(O)cc(O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3,5-trihydroxytoluene",
+          "smiles": "Cc1c(O)c(O)cc(O)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "orcinol hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "ORC",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "羟化位置与产物命名可能存在同义名称；辅因子未列出。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2,3,5-trihydroxytoluene",
+          "smiles": "Cc1c(O)c(O)cc(O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-methylmaleylacetate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dioxygenative ring cleavage",
+      "enzyme": {
+        "name": "2,3,5-trihydroxytoluene 1,2-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "ORC",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "开环产物的精确结构、互变异构与 SMILES 未确认。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-methylmaleylacetate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-methyl-3-oxoadipate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "reduction/isomerization",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "ORC",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "甲基取代位置与产物互变异构状态未完全确认；SMILES 未填写。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "ORC",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "orcinol as sole carbon and energy source",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "orcinol aromatic ring degradation via hydroxylation and maleylacetate-type cleavage",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "orcinol hydroxylase activity",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile (typical Pseudomonas)",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "Pseudomonas 属菌株常见于土壤、水体等多种环境，栖息地较广",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "未确认最终硫解或辅酶 A 转移步骤及中心代谢入口产物。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Known aerobic orcinol degradation pathway in Pseudomonas sp. strain ORC: orcinol -> 2,3,5-trihydroxytoluene -> 2-methylmaleylacetate -> methyl-3-oxoadipate-like products.",
+      "claim_scope": [
+        "S1",
+        "S2",
+        "S3",
+        "ORG_001",
+        "F1_oxygen_tolerance",
+        "F6_respiration_electron_acceptor",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "General genus-level characteristics of Pseudomonas: Gram-negative rods, often motile, non-spore-forming, aerobic, common in soil and water.",
+      "claim_scope": [
+        "F10_motility",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation",
+        "F15_habitat_generalism"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Maleylacetate reductase (EC 1.3.1.32) catalyzes reduction of maleylacetate-type ring-cleavage intermediates toward 3-oxoadipate derivatives.",
+      "claim_scope": [
+        "S3 enzyme EC"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "苔黑酚羟化酶与三羟基甲苯双加氧酶的首选 EC 编号未确认，故填 null。",
+    "2-methylmaleylacetate 与 2-methyl-3-oxoadipate 的精确互变异构、甲基位置和 SMILES 未确认，故 SMILES 填 null。",
+    "Pseudomonas sp. ORC 的多数生理性状仅按 Pseudomonas 属一般特征低置信度填写，未获得菌株级来源。",
+    "辅因子（NAD(P)H、O2、H2O 等）未完全确认，本答案步骤仅列出主底物与主产物。"
+  ]
+}

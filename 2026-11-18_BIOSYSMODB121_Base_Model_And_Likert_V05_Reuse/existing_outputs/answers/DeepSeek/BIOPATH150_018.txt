@@ -1,0 +1,594 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_018",
+  "pollutant_name_zh": "四溴双酚A",
+  "pollutant_name_en": "Tetrabromobisphenol A",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Tetrabromobisphenol A pathway",
+    "is_single_continuous_route": false,
+    "notes": "好氧条件下，四溴双酚A经裂解、脱溴及后续中心代谢路径降解。"
+  },
+  "route_summary": "有氧条件下，四溴双酚A先经C-C键裂解生成2,6-二溴苯酚和2,6-二溴-4-(2-羟基丙-2-基)苯酚；后者脱水、脱溴生成4-异丙烯基苯酚，并进一步氧化为4-羟基苯乙酮。2,6-二溴苯酚则依次还原脱溴为2-溴苯酚、苯酚，再羟化为邻苯二酚，开环生成顺,顺-粘康酸后进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Tetrabromobisphenol A",
+          "smiles": "CC(C)(c1cc(Br)c(O)c(Br)c1)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,6-Dibromophenol",
+          "smiles": "Brc1cccc(Br)c1O",
+          "role": "main"
+        },
+        {
+          "name": "2,6-Dibromo-4-(2-hydroxypropan-2-yl)phenol",
+          "smiles": "CC(C)(O)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "C-C bond cleavage",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Sphingomonas",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "酶未确定，菌株基于文献记忆"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "A",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2,6-Dibromo-4-(2-hydroxypropan-2-yl)phenol",
+          "smiles": "CC(C)(O)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,6-Dibromo-4-isopropenylphenol",
+          "smiles": "C=C(C)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydration",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Sphingomonas",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "酶未确定"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "A",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2,6-Dibromo-4-isopropenylphenol",
+          "smiles": "C=C(C)c1cc(Br)c(O)c(Br)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Isopropenylphenol",
+          "smiles": "C=C(C)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "reductive debromination",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Sphingomonas",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "酶未确定"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "A",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-Isopropenylphenol",
+          "smiles": "C=C(C)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxyacetophenone",
+          "smiles": "CC(=O)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Sphingomonas",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "酶未确定"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "B",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2,6-Dibromophenol",
+          "smiles": "Brc1cccc(Br)c1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Bromophenol",
+          "smiles": "Brc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "reductive debromination",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Sphingomonas",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "酶未确定"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "B",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "2-Bromophenol",
+          "smiles": "Brc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Phenol",
+          "smiles": "Oc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "reductive debromination",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Sphingomonas",
+        "strain": "TTNP3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "酶未确定"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": "B",
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "Phenol",
+          "smiles": "Oc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "phenol 2-monooxygenase",
+        "ec_number": "1.14.13.7",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": "B",
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "Catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis,cis-Muconate",
+          "smiles": "O=C(O)C=CC=CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring cleavage",
+      "enzyme": {
+        "name": "catechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sphingomonas",
+      "strain": "TTNP3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["cis,cis-Muconate"],
+    "explanation": "邻苯二酚经catechol 1,2-dioxygenase开环生成顺,顺-粘康酸，后续进入β-酮己二酸途径。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "β-ketoadipate pathway",
+      "summary": "顺,顺-粘康酸经内酯化、异构化、内酯水解和硫解转化为乙酰辅酶A和琥珀酰辅酶A，进入TCA循环。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "step:S1",
+        "step:S2",
+        "step:S3",
+        "step:S4",
+        "step:S5",
+        "step:S6",
+        "microorganism:ORG_001"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "step:S7",
+        "step:S8",
+        "microorganism:ORG_002",
+        "enzyme:phenol 2-monooxygenase",
+        "enzyme:catechol 1,2-dioxygenase"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "TBBPA初始裂解、脱水及脱溴步骤的酶与菌株证据不足，相关EC/酶名以null表示。",
+    "所有性状因缺少可核实来源均置null。"
+  ]
+}

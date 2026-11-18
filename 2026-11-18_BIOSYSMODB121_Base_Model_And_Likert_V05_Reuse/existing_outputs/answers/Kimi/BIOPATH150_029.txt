@@ -1,0 +1,474 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_029",
+  "pollutant_name_zh": "环己醇",
+  "pollutant_name_en": "Cyclohexanol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "cyclohexanol degradation",
+    "is_single_continuous_route": true,
+    "notes": "chosen_route_name 按题面原样保留；氧条件题面为 null（未指定），未改选其他路线。"
+  },
+  "route_summary": "题面未指定氧条件；按 cyclohexanol degradation 的经典主链组织：cyclohexanol → cyclohexanone → epsilon-caprolactone → 6-hydroxyhexanoic acid → 6-oxohexanoic acid → adipic acid。该主链包含 O2/NADPH 依赖的 Baeyer–Villiger 单加氧步骤；adipic acid 之后进入中心代谢的衔接列为下游延续，不并入评分主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "cyclohexanol",
+          "smiles": "OC1CCCCC1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cyclohexanone",
+          "smiles": "O=C1CCCCC1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD+-dependent alcohol oxidation",
+      "enzyme": {
+        "name": "cyclohexanol dehydrogenase",
+        "ec_number": "1.1.1.245",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "cyclohexanone",
+          "smiles": "O=C1CCCCC1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "epsilon-caprolactone",
+          "smiles": "O=C1CCCCCO1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Baeyer-Villiger monooxygenation",
+      "enzyme": {
+        "name": "cyclohexanone monooxygenase",
+        "ec_number": "1.14.13.22",
+        "gene_or_protein": "chnB",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "epsilon-caprolactone",
+          "smiles": "O=C1CCCCCO1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-hydroxyhexanoic acid",
+          "smiles": "O=C(O)CCCCCO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "lactone hydrolysis",
+      "enzyme": {
+        "name": "epsilon-caprolactone hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "该内酯水解步骤未见可核实的专一 EC 编号，故 ec_number 置 null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "6-hydroxyhexanoic acid",
+          "smiles": "O=C(O)CCCCCO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-oxohexanoic acid",
+          "smiles": "O=C(O)CCCCC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD+-dependent oxidation of a terminal alcohol to an aldehyde",
+      "enzyme": {
+        "name": "6-hydroxyhexanoate dehydrogenase",
+        "ec_number": "1.1.1.258",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "6-oxohexanoic acid",
+          "smiles": "O=C(O)CCCCC=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "adipic acid",
+          "smiles": "O=C(O)CCCCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD+-dependent aldehyde oxidation to carboxylate",
+      "enzyme": {
+        "name": "6-oxohexanoate dehydrogenase",
+        "ec_number": "1.2.1.63",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter calcoaceticus",
+        "strain": "NCIMB 9871",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter calcoaceticus",
+      "strain": "NCIMB 9871",
+      "ncbi_taxid": 471,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": "Acinetobacter 为中温好氧菌；本回答未获得该菌株可靠的具体最低、最适、最高温度数值。",
+          "evidence_id": "EVID_007",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": "标准属志将 Acinetobacter 描述为严格好氧。",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "NCIMB",
+            "accession": "9871"
+          },
+          "raw_text": "菌株编号记为 NCIMB 9871；早期文献亦写作 NCIB 9871。",
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "专性好氧的革兰氏阴性菌，以氧气为末端电子受体进行好氧呼吸。",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用环己醇作碳源，经环己酮、epsilon-caprolactone、6-hydroxyhexanoic acid 氧化为 adipic acid",
+          "raw_text": "经典研究报道 Acinetobacter NCIB/NCIMB 9871 代谢 cyclohexanol，并生成 cyclohexanone、epsilon-caprolactone、6-hydroxyhexanoate 与 adipate。",
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解环己醇/环己酮等脂环族化合物；未见证据支持其为广谱 xenobiotic 降解菌",
+          "raw_text": "通路资料限于 cyclohexanol/cyclohexanone 经 Baeyer–Villiger 氧化为己二酸的降解链。",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "cyclohexanone monooxygenase（EC 1.14.13.22，Baeyer–Villiger）活性",
+          "raw_text": "UniProtKB P12022 条目给出 cyclohexanone monooxygenase，来源为 Acinetobacter calcoaceticus (strain NCIMB 9871)，EC 1.14.13.22，基因 chnB。",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动（无鞭毛）",
+          "raw_text": "Acinetobacter 标准描述为 nonmotile。",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "球杆状至短杆状（coccobacilli），常成对",
+          "raw_text": "Acinetobacter 细胞为 Gram-negative coccobacillary rods。",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（diderm 细胞包膜；可有染色可变性报道）",
+          "raw_text": "Acinetobacter 归为 Gram-negative bacteria。",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": "Acinetobacter 为 non-spore-forming。",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "较广适：土壤、水体/废水以及与人类活动相关环境均有 Acinetobacter 分布报道",
+          "raw_text": "Acinetobacter 广泛分布于土壤和水环境，亦可在医院等人类活动相关环境检出。",
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "succinyl-CoA",
+      "acetyl-CoA"
+    ],
+    "explanation": "评分主链止于 adipic acid；在可矿化该底物的菌中，adipic acid 通常经 CoA 活化并进行一轮 β-氧化，生成 succinyl-CoA 与 acetyl-CoA 后进入中心代谢。该衔接作为下游延续给出，不改写指定路线主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "adipate activation and beta-oxidation",
+      "summary": "adipic acid 先转化为 adipyl-CoA，再经脱氢、水合、氧化和硫解生成 succinyl-CoA 与 acetyl-CoA；该段属于环己醇降解后的常见下游矿化衔接。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD/UM-BBD",
+      "record_id": null,
+      "locator": "Cyclohexanol Pathway Map",
+      "claim_scope": [
+        "main_route",
+        "S1_reaction",
+        "S2_reaction",
+        "S3_reaction",
+        "S4_reaction",
+        "S5_reaction",
+        "F8_degradation_capacity_broad"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "1.1.1.245",
+      "locator": "Accepted name: cyclohexanol dehydrogenase; reaction: cyclohexanol + NAD+ = cyclohexanone + NADH + H+",
+      "claim_scope": [
+        "S1_enzyme",
+        "S1_reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UniProtKB",
+      "record_id": "P12022",
+      "locator": "Cyclohexanone monooxygenase; Acinetobacter calcoaceticus (strain NCIMB 9871); EC 1.14.13.22; gene chnB",
+      "claim_scope": [
+        "S2_enzyme",
+        "S2_microorganism",
+        "organism_identity",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "1.14.13.22",
+      "locator": "Accepted name: cyclohexanone monooxygenase; Baeyer-Villiger oxidation of cyclohexanone to epsilon-caprolactone",
+      "claim_scope": [
+        "S2_enzyme",
+        "S2_reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "1.1.1.258",
+      "locator": "Accepted name: 6-hydroxyhexanoate dehydrogenase; reaction: 6-hydroxyhexanoate + NAD+ = 6-oxohexanoate + NADH + H+",
+      "claim_scope": [
+        "S4_enzyme",
+        "S4_reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "1.2.1.63",
+      "locator": "Accepted name: 6-oxohexanoate dehydrogenase; reaction: 6-oxohexanoate + NAD+ + H2O = adipate + NADH + H+",
+      "claim_scope": [
+        "S5_enzyme",
+        "S5_reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "标准属志描述：Acinetobacter 为专性好氧、革兰氏阴性、不运动、球杆/短杆状、不形成芽孢；广泛存在于土壤和水环境。",
+      "claim_scope": [
+        "F1_oxygen_tolerance",
+        "F2_temperature",
+        "F6_respiration_electron_acceptor",
+        "F10_motility",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation",
+        "F15_habitat_generalism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCIMB",
+      "record_id": "NCIMB 9871",
+      "locator": "culture collection accession for strain NCIMB 9871",
+      "claim_scope": [
+        "F5_culture_collection",
+        "strain_identity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Donoghue & Trudgill, metabolism of cyclohexanol by Acinetobacter NCIB 9871: cyclohexanol -> cyclohexanone -> epsilon-caprolactone -> 6-hydroxyhexanoate -> adipate",
+      "claim_scope": [
+        "S1_microorganism",
+        "S3_microorganism",
+        "S4_microorganism",
+        "S5_microorganism",
+        "F7_carbon_substrate_utilization"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件在题面为 null；所填主链是经典的 O2 依赖 Baeyer–Villiger 环己醇降解路线。",
+    "S3 的 epsilon-caprolactone hydrolase 未填写专一 EC 编号；仅按通路中的内酯水解反应记录酶名。"
+  ]
+}

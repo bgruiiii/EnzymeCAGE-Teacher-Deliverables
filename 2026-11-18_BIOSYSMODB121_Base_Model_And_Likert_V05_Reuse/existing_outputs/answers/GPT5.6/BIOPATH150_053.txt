@@ -1,0 +1,422 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_053",
+  "pollutant_name_zh": "三聚氰胺",
+  "pollutant_name_en": "Melamine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "melamine degradation",
+    "is_single_continuous_route": true,
+    "notes": "采用三聚氰胺连续水解脱氨至氰尿酸，再由氰尿酸水解的主链；题面未指定氧条件。"
+  },
+  "route_summary": "三聚氰胺依次经三聚氰胺脱氨酶、ammeline脱氨酶和ammelide脱氨酶水解脱氨生成氰尿酸，随后氰尿酸酰胺水解酶将氰尿酸矿化为二氧化碳和氨。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Melamine",
+          "smiles": "NC1=NC(N)=NC(N)=N1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Ammeline",
+          "smiles": "NC1=NC(N)=NC(=O)=N1",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Hydrolytic deamination",
+      "enzyme": {
+        "name": "Melamine deaminase",
+        "ec_number": "3.5.1.105",
+        "gene_or_protein": "TrzA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "strain A",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "不同菌株中该反应的基因命名和EC归类可能存在差异。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Ammeline",
+          "smiles": "NC1=NC(N)=NC(=O)=N1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Ammelide",
+          "smiles": "NC1=NC(=O)=NC(=O)=N1",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Hydrolytic deamination",
+      "enzyme": {
+        "name": "Ammeline deaminase",
+        "ec_number": "3.5.1.107",
+        "gene_or_protein": "TrzB",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "strain A",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "Ammeline与ammelide的结构互变和文献命名可能导致反应式表示略有差异。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "Ammelide",
+          "smiles": "NC1=NC(=O)=NC(=O)=N1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Cyanuric acid",
+          "smiles": "O=C1NC(=O)NC(=O)N1",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Hydrolytic deamination",
+      "enzyme": {
+        "name": "Ammelide deaminase",
+        "ec_number": "3.5.1.108",
+        "gene_or_protein": "TrzC",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "strain A",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "酶的EC编号采用三聚氰胺降解相关脱氨酶的常用归类。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "Cyanuric acid",
+          "smiles": "O=C1NC(=O)NC(=O)N1",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "main"
+        },
+        {
+          "name": "Ammonia",
+          "smiles": "N",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Hydrolytic ring cleavage and mineralization",
+      "enzyme": {
+        "name": "Cyanuric acid amidohydrolase",
+        "ec_number": "3.5.1.13",
+        "gene_or_protein": "AtzD",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "strain A",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": null,
+      "uncertainty": "反应过程中可能短暂形成allophanate等中间体，但未将其列入评分主链。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "strain A",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Carbon dioxide",
+      "Ammonia"
+    ],
+    "explanation": "主链末端将三聚氰胺环氮以氨形式释放，并将环碳矿化为二氧化碳。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Melamine to ammeline by melamine deaminase",
+        "TrzA",
+        "EC 3.5.1.105"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Ammeline to ammelide by ammeline deaminase",
+        "TrzB",
+        "EC 3.5.1.107"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Ammelide to cyanuric acid by ammelide deaminase",
+        "TrzC",
+        "EC 3.5.1.108"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 3.5.1.13",
+      "locator": null,
+      "claim_scope": [
+        "Cyanuric acid hydrolysis to carbon dioxide and ammonia",
+        "Cyanuric acid amidohydrolase",
+        "AtzD"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas sp. strain A associated with melamine degradation pathway"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，因此各步骤的氧条件不作推断。",
+    "Pseudomonas sp. strain A的NCBI TaxID、保藏编号和基因组基本信息未确定。",
+    "氰尿酸水解过程中可能存在未纳入主链的短寿命中间体。"
+  ]
+}

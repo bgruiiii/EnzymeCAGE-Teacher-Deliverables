@@ -1,0 +1,326 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_056",
+  "pollutant_name_zh": "甲基乙二醛",
+  "pollutant_name_en": "Methylglyoxal",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methylglyoxal degradation V",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。本回答将指定路线理解为谷胱甘肽非依赖的乙二醛酶III主链：甲基乙二醛直接生成(R)-乳酸，再氧化为丙酮酸。乙二醛酶III步骤本身不消耗氧气。罗马数字V与该化学路线的对应属于推断，见uncertainties。"
+  },
+  "route_summary": "甲基乙二醛降解路线V在此按谷胱甘肽非依赖途径给出：甲基乙二醛由乙二醛酶III直接转化为(R)-乳酸，(R)-乳酸再由D-乳酸脱氢酶氧化为丙酮酸并进入中心代谢。该主链不经过S-乳酰谷胱甘肽，从而区别于乙二醛酶I/II路线。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "methylglyoxal",
+          "smiles": "CC(=O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(R)-lactate",
+          "smiles": "C[C@@H](O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "intramolecular disproportionation",
+      "enzyme": {
+        "name": "glyoxalase III",
+        "ec_number": "4.2.1.130",
+        "gene_or_protein": "hchA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "乙二醛酶III将甲基乙二醛直接转化为D-乳酸这一反应有文献支持，但将其定为题面路线V是机制与策展时间上的推断。EC 4.2.1.130在多个二级数据库中用于该酶，官方EC指定状态仍宜核对。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "(R)-lactate",
+          "smiles": "C[C@@H](O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "D-lactate dehydrogenase",
+        "ec_number": "1.1.1.28",
+        "gene_or_protein": "ldhA",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "D-乳酸氧化为丙酮酸是否被纳入同一条命名途径，还是仅属下游延续，边界不确定。大肠杆菌有氧生理氧化更依赖膜结合、醌为受体的Dld；此处采用途径图中常见的NAD依赖反应及EC 1.1.1.28。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "葡萄糖（优先碳源），亦可利用多种糖类与有机酸",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可经乙二醛酶及多种醛还原酶或脱氢酶解毒甲基乙二醛，并能代谢多种糖、有机酸和氨基酸",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "Hsp31/HchA具有乙二醛酶III活性，无需谷胱甘肽即可将甲基乙二醛转化为D-乳酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "周生鞭毛，可运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": "Escherichia coli str. K-12 substr. MG1655 chromosome, RefSeq NC_000913.3, 4641652 bp, GC 50.8%",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "以温血动物肠道为主要生境，也可在水体、土壤、食物和废水中存活，生境广适性中等偏广，但不是极端环境广布菌",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "丙酮酸是中心代谢节点，可进入丙酮酸脱氢酶途径生成乙酰辅酶A，或参与发酵与糖异生。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "pyruvate oxidation and TCA",
+      "summary": "丙酮酸可氧化脱羧为乙酰辅酶A后进入三羧酸循环，也可在厌氧条件下发酵为混合有机酸。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "methylglyoxal degradation I",
+      "summary": "谷胱甘肽依赖的乙二醛酶I/II路线：甲基乙二醛先生成(R)-S-乳酰谷胱甘肽，再水解为(R)-乳酸。不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "lactaldehyde reduction route",
+      "summary": "甲基乙二醛被还原为乳醛，乳醛再氧化为乳酸并通向丙酮酸。不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "direct methylglyoxal dehydrogenase route",
+      "summary": "甲基乙二醛由2-氧代醛脱氢酶直接氧化为丙酮酸。不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "acetol reduction route",
+      "summary": "甲基乙二醛被醛酮还原酶还原为羟基丙酮。不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Subedi KP, Choi D, Kim I, Min B, Park C. Hsp31 of Escherichia coli K-12 is glyoxalase III. Mol Microbiol. 2011;81(4):926-936.",
+      "claim_scope": ["S1_reaction", "S1_enzyme", "S1_organism", "F9_enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "EC 1.1.1.28 D-lactate dehydrogenase catalyzes (R)-lactate + NAD+ = pyruvate + NADH + H+; Escherichia coli ldhA carries this NAD-dependent activity.",
+      "claim_scope": ["S2_reaction", "S2_enzyme", "S2_organism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000913.3",
+      "locator": "NCBI RefSeq chromosome NC_000913.3, Escherichia coli str. K-12 substr. MG1655",
+      "claim_scope": ["F14_genome_basic", "strain_identity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Standard species description of Escherichia coli K-12: facultative anaerobe, mesophile with optimum near 37 C, Gram-negative non-spore-forming rod, peritrichous flagella, glucose-utilizing enteric bacterium that also persists outside the gut.",
+      "claim_scope": ["F1_oxygen_tolerance", "F2_temperature", "F3_pH", "F4_salinity", "F6_respiration_electron_acceptor", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation", "F15_habitat_generalism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "ATCC 700926, Escherichia coli MG1655",
+      "claim_scope": ["F5_culture_collection"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面只给定路线名称methylglyoxal degradation V，未给出反应式。将其对应为谷胱甘肽非依赖的乙二醛酶III途径，是根据该机制独立、且晚于经典乙二醛酶I/II、乳醛还原和直接脱氢路线被阐明所作的推断；若数据库罗马数字顺序不同，主链化学会错误。",
+    "另外两种可能被编号为路线V的化学是：甲基乙二醛由EC 1.2.1.23直接氧化为丙酮酸，以及甲基乙二醛先还原为乳醛。本次未采用这两条作为评分主链。",
+    "乙二醛酶III的EC 4.2.1.130来自二级数据库常见注释，定义性文献主要确立的是酶名、基因hchA和D-乳酸产物，不一定包含该EC编号。",
+    "D-乳酸到丙酮酸是否属于命名途径内部步骤存在边界不确定性；大肠杆菌有氧条件下主要生理酶是醌依赖的Dld，而非此处写出的NAD依赖ldhA。",
+    "代表菌株写为K-12 MG1655，是因为其参考基因组含hchA；定义性实验报告的是Escherichia coli K-12，未在本次证据中逐一核对是否特指MG1655。",
+    "温度耐受极限、pH范围和盐度数值未在可靠来源中逐项核对，故未填写近似极限。"
+  ]
+}

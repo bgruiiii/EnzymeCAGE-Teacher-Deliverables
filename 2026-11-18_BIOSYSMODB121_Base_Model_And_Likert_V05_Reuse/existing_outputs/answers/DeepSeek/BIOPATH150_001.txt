@@ -1,0 +1,204 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_001",
+  "pollutant_name_zh": "2-金刚烷酮",
+  "pollutant_name_en": "2-Adamantanone",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Adamantanone degradation",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "在好氧条件下，2-金刚烷酮首先被2-金刚烷酮单加氧酶（EC 1.14.13.92）催化发生Baeyer-Villiger氧化，生成1,4-环己二酮，随后可进入中心代谢途径进一步降解。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-Adamantanone",
+          "smiles": "O=C1C2CC3CC1CC(C2)C3",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "1,4-Cyclohexanedione",
+          "smiles": "O=C1CCC(=O)CC1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Baeyer-Villiger oxidation",
+      "enzyme": {
+        "name": "2-adamantanone monooxygenase",
+        "ec_number": "1.14.13.92",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "产物身份和酶促机制不确定；该途径可能包含多个中间步骤。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "2-adamantanone",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades adamantane and 2-adamantanone",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "2-adamantanone monooxygenase activity",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "soil and water",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "2-Adamantanone degradation",
+        "2-adamantanone monooxygenase"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "产物身份和酶促机制不确定",
+    "该途径可能包含多个中间步骤"
+  ]
+}

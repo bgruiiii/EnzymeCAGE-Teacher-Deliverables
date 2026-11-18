@@ -1,0 +1,816 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_125",
+  "pollutant_name_zh": "甲基叔丁基醚",
+  "pollutant_name_en": "Methyl tert-butyl ether",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methyl tert-butyl ether degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）；MTBE的微生物降解以好氧氧化为主线，本主链按好氧路线给出。"
+  },
+  "route_summary": "好氧条件下，甲基叔丁基醚（MTBE）先被单加氧酶（如Mycobacterium vaccae JOB5的丙烷单加氧酶）氧化为甲酸叔丁酯；甲酸叔丁酯经酯水解生成叔丁醇与甲酸；叔丁醇被细胞色素P450单加氧酶（Aquincola tertiaricarbonis L108）羟基化为2-甲基丙烷-1,2-二醇，再经脱氢氧化为2-羟基异丁酸；2-羟基异丁酸经CoA活化生成2-羟基异丁酰CoA，经辅酶B12依赖的2-羟基异丁酰CoA变位酶重排为3-羟基异丁酰CoA，水解释出3-羟基异丁酸；3-羟基异丁酸氧化为甲基丙二酸半醛，再经氧化脱羧生成丙酰CoA进入中央代谢（经丙酰CoA羧化与甲基丙二酰CoA变位生成琥珀酰CoA进入TCA循环）；甲酸进入C1代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "methyl tert-butyl ether",
+          "smiles": "COC(C)(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "tert-butyl formate",
+          "smiles": "O=COC(C)(C)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "单加氧氧化（醚氧甲基氧化为甲酸酯基，O-脱烷基氧化）",
+      "enzyme": {
+        "name": "propane monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium vaccae",
+        "strain": "JOB5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "MTBE初始氧化产物在不同体系中可包括tert-butyl formate（主）及经半缩醛裂解的tert-butanol+formaldehyde；本步按主流好氧降解路线取tert-butyl formate为主产物。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "tert-butyl formate",
+          "smiles": "O=COC(C)(C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "tert-butanol",
+          "smiles": "CC(C)(O)C",
+          "role": "main"
+        },
+        {
+          "name": "formate",
+          "smiles": "C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "酯水解（甲酸酯水解）",
+      "enzyme": {
+        "name": "tert-butyl formate esterase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium vaccae",
+        "strain": "JOB5",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "tert-butyl formate在近中性pH下可大量自发水解；专一性酯酶的酶学证据有限，酶名按功能命名，可能存在非酶促贡献。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "tert-butanol",
+          "smiles": "CC(C)(O)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-methylpropane-1,2-diol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "单加氧羟基化（叔醇甲基位羟基化）",
+      "enzyme": {
+        "name": "cytochrome P450 monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aquincola tertiaricarbonis",
+        "strain": "L108",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "P450对叔丁醇的氧化产物可被进一步氧化；部分文献提出可不经二醇直接生成2-hydroxy-2-methylpropanal/2-hydroxyisobutyrate（见alternative_branches）。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-methylpropane-1,2-diol",
+          "smiles": "CC(C)(O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxyisobutyrate",
+          "smiles": "CC(C)(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "脱氢氧化（伯醇基氧化为羧酸）",
+      "enzyme": {
+        "name": "2-methylpropane-1,2-diol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Aquincola tertiaricarbonis",
+        "strain": "L108",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该步可能经由2-hydroxy-2-methylpropanal中间体分两步完成；具体脱氢酶未见分子水平鉴定，酶名按功能命名。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxyisobutyrate",
+          "smiles": "CC(C)(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)(O)O)n2cnc3c(N)ncnc23",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxyisobutyryl-CoA",
+          "smiles": "CC(C)(O)C(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)(O)O)n2cnc3c(N)ncnc23",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "CoA活化（酰基CoA合成，消耗ATP）",
+      "enzyme": {
+        "name": "2-hydroxyisobutyryl-CoA ligase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Aquincola tertiaricarbonis",
+        "strain": "L108",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "2-羟基异丁酸CoA活化的专一性连接酶未见明确鉴定，可能为广谱酰基CoA连接酶。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxyisobutyryl-CoA",
+          "smiles": "CC(C)(O)C(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)(O)O)n2cnc3c(N)ncnc23",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxyisobutyryl-CoA",
+          "smiles": "CC(CO)C(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)(O)O)n2cnc3c(N)ncnc23",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "分子内重排（辅酶B12依赖的变位反应）",
+      "enzyme": {
+        "name": "2-hydroxyisobutyryl-CoA mutase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Aquincola tertiaricarbonis",
+        "strain": "L108",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "2-羟基异丁酸向3-羟基异丁酸(酰CoA)的转化另有经甲基丙烯酸(酯)水合的替代路线假说；本主链采用Aquincola tertiaricarbonis研究中报道的B12依赖变位酶路线。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "3-hydroxyisobutyryl-CoA",
+          "smiles": "CC(CO)C(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)(O)O)n2cnc3c(N)ncnc23",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxyisobutyrate",
+          "smiles": "CC(CO)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)(O)O)n2cnc3c(N)ncnc23",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "硫酯水解",
+      "enzyme": {
+        "name": "3-hydroxyisobutyryl-CoA hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Aquincola tertiaricarbonis",
+        "strain": "L108",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "3-羟基异丁酰CoA也可不经水解直接氧化为甲基丙二酸半醛（CoA依赖脱氢路线），各菌株细节未完全确定。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S7"
+      ],
+      "substrates": [
+        {
+          "name": "3-hydroxyisobutyrate",
+          "smiles": "CC(CO)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "methylmalonate semialdehyde",
+          "smiles": "O=CC(C)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "脱氢氧化（β-羟酸氧化为半醛）",
+      "enzyme": {
+        "name": "3-hydroxyisobutyrate dehydrogenase",
+        "ec_number": "1.1.1.31",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Aquincola tertiaricarbonis",
+        "strain": "L108",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该酶为常见缬氨酸分解代谢酶，其在A. tertiaricarbonis中参与MTBE降解的证据为间接推断。"
+    },
+    {
+      "step_id": "S9",
+      "order": 9,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S8"
+      ],
+      "substrates": [
+        {
+          "name": "methylmalonate semialdehyde",
+          "smiles": "O=CC(C)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)(O)O)n2cnc3c(N)ncnc23",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "propionyl-CoA",
+          "smiles": "CCC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H]([C@H](O)[C@@H]1OP(=O)(O)O)n2cnc3c(N)ncnc23",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱羧（CoA酰化脱羧）",
+      "enzyme": {
+        "name": "methylmalonate semialdehyde dehydrogenase (acylating)",
+        "ec_number": "1.2.1.27",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Aquincola tertiaricarbonis",
+        "strain": "L108",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "与S8同理，该步酶为常见缬氨酸分解代谢酶，参与MTBE碳流的具体菌株证据为间接。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Mycobacterium vaccae",
+      "strain": "JOB5",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（陆生来源）"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以丙烷为唯一碳源和能源生长（丙烷营养型）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "以丙烷为生长底物时共代谢氧化甲基叔丁基醚（MTBE）、甲基叔戊基醚（TAME）等汽油含氧醚及叔丁醇；不能以MTBE为唯一碳源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "丙烷单加氧酶（可溶性双铁单加氧酶类）活性，可共代谢氧化MTBE与叔丁醇",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "无运动性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（抗酸染色阳性，含分枝菌酸的细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤栖息的腐生菌，陆地环境分布广泛，栖息地广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Aquincola tertiaricarbonis",
+      "strain": "L108",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲基叔丁基醚（MTBE）、叔丁醇（TBA）及2-羟基异丁酸等含叔碳化合物为唯一碳源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "能降解并利用甲基叔丁基醚、叔丁醇、2-羟基异丁酸等叔碳化合物；为MTBE污染场地分离的降解菌",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "细胞色素P450单加氧酶系统（氧化MTBE与叔丁醇）及辅酶B12依赖的2-hydroxyisobutyryl-CoA mutase活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自受汽油/MTBE污染的含水层（德国Leuna场地），栖息于有机污染淡水含水层生境，对污染水生生境适应，栖息地偏特化",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_002",
+  "central_metabolism_entry": {
+    "products": [
+      "propionyl-CoA",
+      "formate"
+    ],
+    "explanation": "丙酰CoA经丙酰CoA羧化酶（EC 6.4.1.3）、甲基丙二酰CoA差向异构酶（EC 5.1.99.1）和甲基丙二酰CoA变位酶（EC 5.4.99.2）转化为琥珀酰CoA，进入三羧酸循环；甲酸进入C1代谢（氧化为CO2或经同化途径利用）。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "propionyl-CoA to succinyl-CoA",
+      "summary": "丙酰CoA经甲基丙二酰CoA途径（丙酰CoA羧化酶→甲基丙二酰CoA差向异构酶→甲基丙二酰CoA变位酶）转化为琥珀酰CoA，进入TCA循环。"
+    },
+    {
+      "name": "formate metabolism",
+      "summary": "甲酸可经甲酸脱氢酶氧化为CO2，或进入C1同化代谢。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "MTBE经半缩醛裂解为tert-butanol+formaldehyde",
+      "summary": "MTBE甲氧基经单加氧羟基化形成半缩醛中间体后直接裂解为叔丁醇与甲醛，该支路见于哺乳动物/真菌P450体系及部分共代谢体系。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "tert-butanol直接氧化为2-hydroxy-2-methylpropanal",
+      "summary": "叔丁醇的单加氧氧化可越过2-甲基丙烷-1,2-二醇，直接生成不稳定的2-hydroxy-2-methylpropanal，随后氧化为2-羟基异丁酸。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "经methacrylate(甲基丙烯酸)的异构路线",
+      "summary": "2-羟基异丁酸可经脱水生成甲基丙烯酸（或活化为其CoA酯后经水合）转化为3-羟基异丁酸(酰CoA)，为2-羟基异丁酰CoA变位酶路线之外的替代假说。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Smith CA, O'Reilly KT, Hyman MR. 2003. Applied and Environmental Microbiology（丙烷生长的Mycobacterium vaccae JOB5共代谢氧化MTBE/TAME的初始反应：生成tert-butyl formate与tert-butanol）",
+      "claim_scope": [
+        "S1.reaction",
+        "S1.enzyme",
+        "S1.microorganism",
+        "S2.reaction",
+        "S2.microorganism",
+        "ORG_001.F7",
+        "ORG_001.F8",
+        "ORG_001.F9"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Schuster J, et al.（A cytochrome P450 system is involved in tert-butyl alcohol and methyl tert-butyl ether degradation in Aquincola tertiaricarbonis L108，约2012）",
+      "claim_scope": [
+        "S3.reaction",
+        "S3.enzyme",
+        "S3.microorganism",
+        "ORG_002.F9"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Rohwerder T, Müller RH 等（Aquincola tertiaricarbonis L108中辅酶B12依赖的2-hydroxyisobutyryl-CoA mutase及2-羟基异丁酸代谢的系列研究）",
+      "claim_scope": [
+        "S5.reaction",
+        "S6.reaction",
+        "S6.enzyme",
+        "S6.microorganism",
+        "ORG_002.F9"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Lechner U, et al. 2007. Aquincola tertiaricarbonis gen. nov., sp. nov.（自德国Leuna受污染含水层分离的叔碳化合物降解菌，菌株L108）",
+      "claim_scope": [
+        "ORG_002.identity",
+        "ORG_002.F1",
+        "ORG_002.F6",
+        "ORG_002.F7",
+        "ORG_002.F8",
+        "ORG_002.F11",
+        "ORG_002.F12",
+        "ORG_002.F15",
+        "S4.microorganism",
+        "S5.microorganism",
+        "S7.microorganism",
+        "S8.microorganism",
+        "S9.microorganism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S4.reaction",
+        "S5.reaction",
+        "S7.reaction",
+        "S8.reaction",
+        "S8.enzyme",
+        "S9.reaction",
+        "S9.enzyme"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_001.F1",
+        "ORG_001.F2",
+        "ORG_001.F6",
+        "ORG_001.F10",
+        "ORG_001.F11",
+        "ORG_001.F12",
+        "ORG_001.F13",
+        "ORG_001.F15"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_002.F13"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "MTBE第一步氧化产物在文献中报道包括tert-butyl formate（主）与经半缩醛裂解的tert-butanol+formaldehyde两种形式，本答案主链采用tert-butyl formate路线。",
+    "tert-butyl formate的水解可能大量为非酶促（自发）反应，专一性酯酶证据有限。",
+    "S4（2-甲基丙烷-1,2-二醇→2-羟基异丁酸）的具体脱氢酶及其是否经由2-hydroxy-2-methylpropanal中间体未在分子水平确证。",
+    "2-hydroxyisobutyrate下游存在辅酶B12依赖的2-hydroxyisobutyryl-CoA mutase路线与经methacrylate的替代路线两种报道/假说，本主链采用前者。",
+    "S7–S9所用酶与经典缬氨酸分解代谢酶同源，其在MTBE降解菌中的具体参与证据多为间接。",
+    "两株菌的多项生理性状、保藏编号、TaxID及基因组信息未能核实，相应字段均为null。"
+  ]
+}

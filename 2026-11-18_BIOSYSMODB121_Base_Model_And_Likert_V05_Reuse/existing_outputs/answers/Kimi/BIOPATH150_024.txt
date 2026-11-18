@@ -1,0 +1,387 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_024",
+  "pollutant_name_zh": "(S)-4-羟基扁桃酸",
+  "pollutant_name_en": "(S)-4-Hydroxymandelate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-hydroxymandelate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，按原样保留为 null。主链按指定路线取 (S)-4-羟基扁桃酸 → 4-羟基苯甲酰甲酸 → 4-羟基苯甲醛 → 4-羟基苯甲酸；4-羟基苯甲酸继续羟基化生成原儿茶酸列入 downstream_continuation，不计入本评分主链。"
+  },
+  "route_summary": "指定路线为线性三步主链：先由 4-hydroxymandelate oxidase 将 (S)-4-羟基扁桃酸氧化为 4-羟基苯甲酰甲酸，再脱羧生成 4-羟基苯甲醛，最后氧化为 4-羟基苯甲酸；后者可经下游 4-羟基苯甲酸降解途径进入原儿茶酸/β-酮己二酸通路。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(S)-4-Hydroxymandelate",
+          "smiles": "O=C([O-])[C@@H](O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoylformate",
+          "smiles": "O=C([O-])C(=O)c1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "hydrogen peroxide",
+          "smiles": "OO",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "FAD-dependent oxidation of an (S)-2-hydroxy acid to the corresponding 2-oxo acid",
+      "enzyme": {
+        "name": "4-hydroxymandelate oxidase",
+        "ec_number": "1.1.3.19",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "ATCC 12633",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "代表菌按扁桃酸/取代扁桃酸降解的 Pseudomonas putida 模式菌株承载；若无该菌株对 (S)-4-羟基扁桃酸的直接生长记录，应视为代表性归属。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzoylformate",
+          "smiles": "O=C([O-])C(=O)c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "thiamine-diphosphate-dependent decarboxylation of a 2-oxo acid",
+      "enzyme": {
+        "name": "benzoylformate decarboxylase",
+        "ec_number": "4.1.1.7",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "ATCC 12633",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "该步按苯甲酰甲酸脱羧酶作用于对羟基取代类似物处理；若存在专门的 4-hydroxybenzoylformate decarboxylase 记录，应替换此酶归属。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-hydroxybenzaldehyde",
+          "smiles": "O=Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxybenzoate",
+          "smiles": "O=C([O-])c1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "NAD+-dependent aldehyde oxidation to the corresponding carboxylate",
+      "enzyme": {
+        "name": "4-hydroxybenzaldehyde dehydrogenase",
+        "ec_number": "1.2.1.64",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "ATCC 12633",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "主链终点按指定路线名限定为 4-羟基苯甲酸；继续生成原儿茶酸的反应放入 downstream_continuation。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "ATCC 12633",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温菌；具体最低/最适/最高温度未在本条来源中确定"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": "% NaCl (w/v)",
+            "category": "非嗜盐；具体耐盐范围未确定"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "12633"
+          },
+          "raw_text": "ATCC 12633",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "扁桃酸/羟基化芳香酸及相关芳香化合物；本路线以 (S)-4-羟基扁桃酸为入口底物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "芳香化合物降解菌，可将羟基化芳香酸导入 4-羟基苯甲酸/原儿茶酸方向矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-hydroxymandelate 氧化并连续转化为 4-hydroxybenzoate 的酶活组合",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动性阳性，具极性鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆菌/短杆状细胞",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性腐生/环境菌，见于土壤、淡水及植物根际等含芳香化合物环境，而非单一特化栖息地",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "protocatechuate"
+    ],
+    "explanation": "本评分主链止于 4-羟基苯甲酸；其下游通常由 4-hydroxybenzoate 3-monooxygenase 生成原儿茶酸，再经原儿茶酸邻位裂解/β-酮己二酸通路进入 TCA 循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "4-hydroxybenzoate degradation I (protocatechuate)",
+      "summary": "4-hydroxybenzoate 经 4-hydroxybenzoate 3-monooxygenase（EC 1.14.13.2）羟基化为 protocatechuate，随后进入 protocatechuate ortho-cleavage/β-ketoadipate pathway。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway name as specified: 4-hydroxymandelate degradation; reaction sequence (S)-4-hydroxymandelate -> 4-hydroxybenzoylformate -> 4-hydroxybenzaldehyde -> 4-hydroxybenzoate",
+      "claim_scope": [
+        "route",
+        "reaction_S1",
+        "reaction_S2",
+        "reaction_S3",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz/IUBMB Enzyme Nomenclature",
+      "record_id": "EC 1.1.3.19",
+      "locator": "Accepted name: 4-hydroxymandelate oxidase; reaction: (S)-4-hydroxymandelate + O2 = 4-hydroxybenzoylformate + H2O2",
+      "claim_scope": [
+        "enzyme_S1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz/IUBMB Enzyme Nomenclature",
+      "record_id": "EC 4.1.1.7",
+      "locator": "Accepted name: benzoylformate decarboxylase; used here for the 4-hydroxy-substituted benzoylformate analog",
+      "claim_scope": [
+        "enzyme_S2"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz/IUBMB Enzyme Nomenclature",
+      "record_id": "EC 1.2.1.64",
+      "locator": "Accepted name: 4-hydroxybenzaldehyde dehydrogenase; reaction: 4-hydroxybenzaldehyde + NAD+ + H2O = 4-hydroxybenzoate + NADH + 2 H+",
+      "claim_scope": [
+        "enzyme_S3"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "12633",
+      "locator": "Pseudomonas putida (Trevisan) Migula ATCC 12633",
+      "claim_scope": [
+        "organism_identity",
+        "F5_culture_collection"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "DSMZ BacDive",
+      "record_id": null,
+      "locator": "Strain entry: Pseudomonas putida ATCC 12633 / DSM 291; basic phenotype summarized as aerobic, motile, Gram-negative rods",
+      "claim_scope": [
+        "basic_phenotype",
+        "F1_oxygen_tolerance",
+        "F2_temperature",
+        "F4_salinity",
+        "F6_respiration_electron_acceptor",
+        "F10_motility",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation",
+        "F15_habitat_generalism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "303",
+      "locator": "Pseudomonas putida (species)",
+      "claim_scope": [
+        "ncbi_taxid",
+        "organism_identity"
+      ],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为 null；虽然氧化步骤在酶学上使用 O2，但 route_scope.oxygen_condition 未擅自改写。",
+    "S2 的脱羧酶按 benzoylformate decarboxylase (EC 4.1.1.7) 归属；对 4-hydroxybenzoylformate 的专一性证据强度为中等。",
+    "代表菌 Pseudomonas putida ATCC 12633 与扁桃酸/取代扁桃酸降解体系相关；若数据库记录给出另一专性 4-hydroxymandelate 降解菌，应以该记录替换 microorganism/profile。"
+  ]
+}

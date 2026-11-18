@@ -1,0 +1,276 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_055",
+  "pollutant_name_zh": "儿茶酚",
+  "pollutant_name_en": "Catechol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "catechol degradation to 2-hydroxypentadienoate II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；该路线为meta-裂解（外二醇裂解）型途径，由双加氧酶启动，通常在好氧条件下进行。"
+  },
+  "route_summary": "儿茶酚经meta-裂解途径降解为2-羟基-2,4-戊二烯酸：第一步由儿茶酚2,3-双加氧酶（EC 1.13.11.2，xylE）催化开环生成2-羟基黏康酸半醛；第二步由2-羟基黏康酸半醛水解酶（EC 3.7.1.9，xylF）水解C-C键，脱去甲酸，生成路线终点2-羟基-2,4-戊二烯酸（2-hydroxypentadienoate）。代表微生物为携带TOL质粒pWW0的Pseudomonas putida mt-2。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "catechol",
+          "smiles": "C1=CC(=C(C=C1)O)O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxymuconate semialdehyde",
+          "smiles": "O=CC=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧开环反应（extradiol/meta-裂解）",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "xylE",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-hydroxymuconate semialdehyde",
+          "smiles": "O=CC=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-2,4-pentadienoate",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "formate",
+          "smiles": "C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-C键水解（去甲酰化，释放甲酸）",
+      "enzyme": {
+        "name": "2-hydroxymuconate-semialdehyde hydrolase",
+        "ec_number": "3.7.1.9",
+        "gene_or_protein": "xylF",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": 340177,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（常温）菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（严格好氧）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气 (O2)"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以甲苯、间/对二甲苯等芳香烃为唯一碳源与能源（由TOL质粒pWW0编码的代谢途径）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种芳香族化合物（甲苯、二甲苯、苯甲酸类、儿茶酚等），芳香环经meta-裂解途径进入中心代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "儿茶酚2,3-双加氧酶（xylE）与2-羟基黏康酸半醛水解酶（xylF）活性，催化儿茶酚meta-开环及后续水解",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性环境菌，常见于土壤、淡水、植物根际及芳香烃污染场地等多种栖息地",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA"],
+    "explanation": "路线终点2-羟基-2,4-戊二烯酸可继续经2-氧代-4-戊烯酸水合酶（EC 4.2.1.80）生成4-羟基-2-氧代戊酸，再经醛缩酶（EC 4.1.3.39）裂解为丙酮酸与乙醛；乙醛经酰化型乙醛脱氢酶（EC 1.2.1.10）生成乙酰-CoA。丙酮酸与乙酰-CoA由此进入中心碳代谢（TCA循环）。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "2-hydroxypentadienoate degradation",
+      "summary": "2-羟基-2,4-戊二烯酸 → 4-羟基-2-氧代戊酸 → 丙酮酸 + 乙醛 → 乙酰-CoA，进入三羧酸循环；在TOL质粒pWW0上由xylJ/xylK/xylQ编码。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "氧化/脱氢支路（经2-羟基黏康酸，对应 route I）",
+      "summary": "2-羟基黏康酸半醛经NAD+依赖的2-羟基黏康酸半醛脱氢酶（EC 1.2.1.85）氧化为2-羟基黏康酸，互变异构为2-氧代-3-己烯二酸后经2-氧代-3-己烯二酸脱羧酶（EC 4.1.1.77）脱羧，同样生成2-羟基-2,4-戊二烯酸并释放CO2；与主链汇于同一终点产物。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "ortho-裂解支路（β-酮己二酸途径）",
+      "summary": "儿茶酚经儿茶酚1,2-双加氧酶（EC 1.13.11.1）开环生成顺,顺-黏康酸，经β-酮己二酸途径最终生成琥珀酰-CoA与乙酰-CoA，不经2-羟基戊二烯酸，不属于本路线。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page: catechol degradation to 2-hydroxypentadienoate II（路线定义与反应、酶EC归属）",
+      "claim_scope": ["route_scope", "S1 反应与酶", "S2 反应与酶"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Assinder SJ, Williams PA (1990) The TOL plasmids: determinants of the catabolism of toluene and the xylenes. Advances in Microbial Physiology 31:1-69（Pseudomonas putida mt-2 的 TOL 质粒 pWW0 下途径 xylE/xylF）",
+      "claim_scope": ["S1 微生物归属", "S2 微生物归属", "xylE/xylF 基因-酶对应", "F7/F8/F9 性状"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida 一般生理学常识（革兰氏阴性、好氧、杆状、有鞭毛、不产孢、中温、土壤广布）",
+      "claim_scope": ["F1/F2/F3/F6/F10/F11/F12/F13/F15 性状"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "MetaCyc 中 'catechol degradation to 2-hydroxypentadienoate I' 与 'II' 的命名对应关系存在一定不确定性：本答案按 II = 水解支路（2-羟基黏康酸半醛水解酶一步水解生成2-羟基-2,4-戊二烯酸并释放甲酸）填写主链；若 II 实为脱氢支路，则主链应为 儿茶酚 → 2-羟基黏康酸半醛 → 2-羟基黏康酸 → 2-氧代-3-己烯二酸 → 2-羟基-2,4-戊二烯酸（脱氢支路已列入 alternative_branches）。",
+    "Pseudomonas putida mt-2 的菌种保藏编号与完整基因组序列信息未确认，F5、F14 相关字段按要求填 null；其近缘衍生株 KT2440 已测序但不可直接替代 mt-2 身份数据。"
+  ]
+}

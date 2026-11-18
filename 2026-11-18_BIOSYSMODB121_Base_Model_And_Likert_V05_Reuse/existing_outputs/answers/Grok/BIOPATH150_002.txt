@@ -1,0 +1,87 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_002",
+  "pollutant_name_zh": "磺草灵",
+  "pollutant_name_en": "Asulam",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Asulam pathway",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线名称原样采用。好氧条件下已确证的主转化是氨基甲酸甲酯键水解生成磺胺；该水解本身不消耗氧气。后续矿化未确证为同一连续主链，故不纳入。"
+  },
+  "route_summary": "好氧条件下磺草灵的主链为一步水解：asulam与水反应，裂解甲氧羰基并脱羧，生成主产物磺胺（sulfanilamide），同时释放甲醇和二氧化碳。该产物是土壤与水体中反复记录的主要代谢物。特异性酶、EC编号和对应菌株未能可靠确定，故留空。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "asulam",
+          "smiles": "COC(=O)NS(=O)(=O)c1ccc(N)cc1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "sulfanilamide",
+          "smiles": "Nc1ccc(S(N)(=O)=O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "methanol",
+          "smiles": "CO",
+          "role": "byproduct"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氨基甲酸酯水解并脱羧",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "文献通常把该转化合并记为asulam生成磺胺；机理上可能先水解为不稳定的(4-氨基苯基)磺酰基氨基甲酸，再自发脱羧放出二氧化碳。未鉴定到可可靠引用的特异性酶与菌株。相同产物也可由非生物水解产生。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本主链止于磺胺，没有可靠证据将其连接到某一中心代谢入口产物。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "磺胺后续转化",
+      "summary": "磺胺在部分土壤中可被微生物缓慢继续转化，但具体步骤、酶和菌种未确证，不纳入本评分主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "asulam_hydrolysis_to_sulfanilamide"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "未检索到可可靠引用的磺草灵水解酶名称、EC编号及对应模式菌株，酶与微生物整体留空。",
+    "氨基甲酸酯水解不消耗氧气，但是好氧土壤和水体中记录的主要转化；是否存在依赖加氧酶的平行好氧路线未能确证。",
+    "磺胺之后是否经磺胺酸或4-磺基儿茶酚进入修饰邻位裂解并汇入中心代谢，支持不足，未写入主链。"
+  ]
+}

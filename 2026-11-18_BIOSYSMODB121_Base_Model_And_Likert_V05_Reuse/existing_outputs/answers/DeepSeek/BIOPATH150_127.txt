@@ -1,0 +1,307 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_127",
+  "pollutant_name_zh": "D-苏糖醇",
+  "pollutant_name_en": "D-Threitol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-threitol degradation",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "D-苏糖醇通过D-苏糖醇脱氢酶氧化为D-苏糖，再经D-苏糖激酶磷酸化为D-苏糖-4-磷酸，最后经D-苏糖-4-磷酸-3-差向异构酶转化为D-赤藓糖-4-磷酸，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-threitol",
+          "smiles": "OC[C@@H](O)[C@@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-threose",
+          "smiles": "O=C[C@H](O)[C@@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "D-threitol dehydrogenase",
+        "ec_number": "1.1.1.185",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium smegmatis",
+        "strain": "mc2 155",
+        "ncbi_taxid": 246196,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "D-threose",
+          "smiles": "O=C[C@H](O)[C@@H](O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "C1=NC=NC2=C1N=CN2[C@@H]3O[C@H](COP(=O)(O)OP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]3O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-threose 4-phosphate",
+          "smiles": "O=C[C@H](O)[C@@H](O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "C1=NC=NC2=C1N=CN2[C@@H]3O[C@H](COP(=O)(O)OP(=O)(O)O)[C@@H](O)[C@H]3O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": {
+        "name": "D-threose kinase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium smegmatis",
+        "strain": "mc2 155",
+        "ncbi_taxid": 246196,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "D-threose 4-phosphate",
+          "smiles": "O=C[C@H](O)[C@@H](O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-erythrose 4-phosphate",
+          "smiles": "O=C[C@@H](O)[C@@H](O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "epimerization",
+      "enzyme": {
+        "name": "D-threose-4-phosphate 3-epimerase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Mycobacterium smegmatis",
+        "strain": "mc2 155",
+        "ncbi_taxid": 246196,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Mycobacterium smegmatis",
+      "strain": "mc2 155",
+      "ncbi_taxid": 246196,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "mesophilic"
+          },
+          "raw_text": "Mycobacterium smegmatis grows optimally at 37°C",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": "Mycobacterium smegmatis is an aerobic bacterium",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700084"
+          },
+          "raw_text": "Mycobacterium smegmatis mc2 155 is available as ATCC 700084",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": "aerobic respiration with oxygen as terminal electron acceptor",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes various carbon sources including sugars and polyols",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades D-threitol via D-threose and D-erythrose 4-phosphate",
+          "raw_text": "Mycobacterium smegmatis degrades D-threitol",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "D-threitol dehydrogenase, D-threose kinase, D-threose-4-phosphate 3-epimerase",
+          "raw_text": "enzymes of D-threitol degradation pathway",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "non-motile",
+          "raw_text": "Mycobacterium smegmatis is non-motile",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": "Mycobacterium smegmatis is a rod-shaped bacterium",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-positive, acid-fast",
+          "raw_text": "Mycobacterium smegmatis is Gram-positive and acid-fast",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": "Mycobacterium smegmatis does not form spores",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_008596.1",
+            "genome_size_bp": 6988209,
+            "gc_percent": 67.4
+          },
+          "raw_text": "Mycobacterium smegmatis mc2 155 genome: NC_008596.1, 6,988,209 bp, 67.4% GC",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "ubiquitous in soil, water, and biofilms",
+          "raw_text": "Mycobacterium smegmatis is widely distributed in the environment",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "D-erythrose 4-phosphate"
+    ],
+    "explanation": "D-赤藓糖-4-磷酸是戊糖磷酸途径的中心代谢物。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "D-threitol degradation pathway",
+        "enzymes",
+        "reaction steps"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Mycobacterium smegmatis mc2 155 traits"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": []
+}

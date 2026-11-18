@@ -1,0 +1,318 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_058",
+  "pollutant_name_zh": "2,6-二硝基甲苯",
+  "pollutant_name_en": "2,6-Dinitrotoluene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2,6-dinitrotoluene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；已阐明的 Burkholderia cepacia R34 降解途径为好氧途径，主链为线性连续路线（两个硝基依次以亚硝酸盐形式脱除，随后还原生成三羟基甲苯并开环矿化）。"
+  },
+  "route_summary": "2,6-二硝基甲苯在 Burkholderia cepacia R34 中的好氧降解主链：第一步由二硝基甲苯双加氧酶（DntA，Rieske 型双加氧酶系统）在硝基邻位进行双加氧并脱去一个亚硝酸根，生成 3-甲基-4-硝基儿茶酚；第二步由黄素单加氧酶（DntB）在剩余硝基所连碳上单加氧并脱去第二个亚硝酸根，生成 2-羟基-3-甲基-1,4-苯醌；第三步由 NAD(P)H 依赖的醌还原酶将醌还原为 2,3,6-三羟基甲苯；此后三羟基甲苯经间位开环进入下游矿化（开环产物结构未完全确证，未列入主链）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,6-Dinitrotoluene",
+          "smiles": "Cc1c([N+](=O)[O-])cccc1[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-Methyl-4-nitrocatechol",
+          "smiles": "Oc1c(O)c(C)c([N+](=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "Nitrite",
+          "smiles": "[N+](=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "双加氧并脱硝（dioxygenation with nitrite elimination）",
+      "enzyme": {
+        "name": "dinitrotoluene dioxygenase (DntAaAbAcAd)",
+        "ec_number": null,
+        "gene_or_protein": "dntA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Burkholderia cepacia",
+        "strain": "R34",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该双加氧酶无确定 EC 编号，已填 null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-Methyl-4-nitrocatechol",
+          "smiles": "Oc1c(O)c(C)c([N+](=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxy-3-methyl-1,4-benzoquinone",
+          "smiles": "O=C1C(O)=C(C)C(=O)C=C1",
+          "role": "main"
+        },
+        {
+          "name": "Nitrite",
+          "smiles": "[N+](=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧并脱硝（monooxygenation with nitrite elimination）",
+      "enzyme": {
+        "name": "methylnitrocatechol monooxygenase (DntB)",
+        "ec_number": null,
+        "gene_or_protein": "dntB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Burkholderia cepacia",
+        "strain": "R34",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "醌产物的取代基位置依据底物 3-甲基-4-硝基儿茶酚的结构与脱硝单加氧的区域选择性推导；该酶无确定 EC 编号。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-3-methyl-1,4-benzoquinone",
+          "smiles": "O=C1C(O)=C(C)C(=O)C=C1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3,6-Trihydroxytoluene",
+          "smiles": "Cc1c(O)c(O)ccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醌还原（NAD(P)H-dependent quinone reduction）",
+      "enzyme": {
+        "name": "NAD(P)H-dependent quinone reductase (putative DntD)",
+        "ec_number": null,
+        "gene_or_protein": "dntD",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Burkholderia cepacia",
+        "strain": "R34",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "醌还原酶的基因归属（dntD）与 EC 编号均不确定；还原产物 2,3,6-三羟基甲苯的取代基位置依据上游中间体结构推导。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Burkholderia cepacia",
+      "strain": "R34",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": "Aerobic degradation of dinitrotoluenes and pathway for bacterial degradation of 2,6-dinitrotoluene（论文标题）",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以2,6-二硝基甲苯为唯一碳源和能源进行好氧生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解2,4-二硝基甲苯、2,6-二硝基甲苯等二硝基甲苯类硝基芳香化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "二硝基甲苯双加氧酶（DntA）活性及硝基儿茶酚单加氧酶（DntB）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛，依据 Burkholderia 属级特征）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "2,3,6-三羟基甲苯经间位（extradiol）开环后进入下游代谢并被矿化进入中心代谢；开环产物及具体中心代谢中间物在主要文献中未完全确证，故未列入主链产物。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "ring cleavage and mineralization",
+      "summary": "2,3,6-三羟基甲苯经开环双加氧反应（推测为间位开环）开环，随后经下游反应矿化进入中心代谢；开环产物结构未确证。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "anaerobic reductive transformation",
+      "summary": "在厌氧条件下，2,6-二硝基甲苯可经硝基还原被转化为氨基硝基甲苯（如 2-amino-6-nitrotoluene）并进一步还原为二氨基甲苯；该还原性转化不属于被评分的好氧主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "doi:10.1128/AEM.66.5.2139-2147.2000",
+      "locator": "Nishino SF, Paoli GC, Spain JC. Aerobic degradation of dinitrotoluenes and pathway for bacterial degradation of 2,6-dinitrotoluene. Appl Environ Microbiol. 2000;66(5):2139-2147",
+      "claim_scope": [
+        "2,6-dinitrotoluene degradation pathway in Burkholderia cepacia R34",
+        "initial dioxygenation to 3-methyl-4-nitrocatechol with nitrite release",
+        "monooxygenase-mediated removal of the second nitro group",
+        "formation of trihydroxytoluene and ring cleavage"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD (formerly UM-BBD)",
+      "record_id": null,
+      "locator": "2,6-Dinitrotoluene Pathway Map (https://eawag-bbd.ethz.ch/)",
+      "claim_scope": [
+        "2,6-dinitrotoluene degradation pathway intermediates and enzymes"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Burkholderia cepacia 属级形态与生理特征（革兰氏阴性、杆状、有运动性、不产芽孢）"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "主链各步酶均未找到可靠 EC 编号，已按要求填 null。",
+    "第2步产物（2-羟基-3-甲基-1,4-苯醌）与第3步产物（2,3,6-三羟基甲苯）的取代基位置系依据 3-甲基-4-硝基儿茶酚结构和脱硝反应区域选择性推导，置信度有限。",
+    "第3步醌还原酶的基因归属（dntD）不确定。",
+    "开环反应及其下游产物结构未确证，未列入被评分主链。",
+    "Burkholderia cepacia R34 的保藏编号、基因组信息及 NCBI TaxID 未核实，已填 null。"
+  ]
+}

@@ -1,0 +1,447 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_058",
+  "pollutant_name_zh": "2,6-二硝基甲苯",
+  "pollutant_name_en": "2,6-Dinitrotoluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "2,6-dinitrotoluene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（原为null）；文献中2,6-DNT唯一被完整描述的微生物矿化途径为好氧途径（Nishino et al. 2000），故主链按好氧降解填写；chosen_route_name按题面给定的路线名称原样填写。"
+  },
+  "route_summary": "2,6-二硝基甲苯（2,6-DNT）的好氧微生物降解主链共5步：（1）初始双加氧酶（2,4-DNT双加氧酶DntA型，EC 1.14.12.-）对2,6-DNT进行2,3-位双加氧并释放亚硝酸根，生成3-甲基-4-硝基儿茶酚（3M4NC）；（2）脱硝基单加氧酶（DntB同源蛋白，EC 1.14.13.-）氧化脱去第二个硝基并释放亚硝酸根，生成2,3,6-三羟基甲苯；（3）间位（外二醇）环开裂双加氧酶（EC 1.13.11.-）将2,3,6-三羟基甲苯开环为2,5-二羟基-6-氧代庚-2,4-二烯酸；（4）C—C键水解酶裂解释放乙酸，生成2,5-二羟基戊-2,4-二烯酸；（5）经互变/水合与醛缩裂解生成丙酮酸和羟基乙醛进入中枢代谢。两个硝基均以亚硝酸根形式释放。第（1）步反应在Burkholderia sp. DNT中有明确记载（该菌将2,6-DNT氧化为3M4NC并积累），完整矿化途径由Nishino等（2000）分离的Burkholderia属2,6-DNT降解菌株执行。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "2,6-dinitrotoluene", "smiles": "Cc1c([N+](=O)[O-])cccc1[N+](=O)[O-]", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"},
+        {"name": "NADPH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-methyl-4-nitrocatechol", "smiles": "Oc1c(O)c(C)c([N+](=O)[O-])cc1", "role": "main"},
+        {"name": "nitrite", "smiles": "[N+](=O)[O-]", "role": "byproduct"}
+      ],
+      "reaction_type": "芳环双加氧并消除亚硝酸根（氧化脱硝）",
+      "enzyme": {
+        "name": "2,4-dinitrotoluene dioxygenase",
+        "ec_number": "1.14.12.-",
+        "gene_or_protein": "dntAcAd（dntA操纵元末端加氧酶组分；对2,6-DNT催化2,3-位双加氧）",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Burkholderia sp. DNT",
+        "strain": "DNT",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "Burkholderia sp. DNT（原Pseudomonas sp. DNT）的2,4-DNT双加氧酶（DntA）可氧化2,6-DNT生成3M4NC有文献记载；2,6-DNT完全降解分离株中的初始酶为同源双加氧酶，其具体基因命名与完整EC编号未能核实。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "3-methyl-4-nitrocatechol", "smiles": "Oc1c(O)c(C)c([N+](=O)[O-])cc1", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"},
+        {"name": "NADPH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2,3,6-trihydroxytoluene", "smiles": "Cc1c(O)c(O)ccc1O", "role": "main"},
+        {"name": "nitrite", "smiles": "[N+](=O)[O-]", "role": "byproduct"}
+      ],
+      "reaction_type": "单加氧氧化脱硝基（经羟基醌/氢醌中间体）",
+      "enzyme": {
+        "name": "3-methyl-4-nitrocatechol monooxygenase",
+        "ec_number": "1.14.13.-",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Burkholderia sp. (2,6-dinitrotoluene-degrading isolate)",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "本步酶名与EC为类比2,4-DNT途径中4-甲基-5-硝基儿茶酚单加氧酶（DntB）的推测；直接产物可能为2-羟基-3-甲基-1,4-苯醌，随后经NAD(P)H依赖的还原生成2,3,6-三羟基甲苯，此处合并为一步表述。2,3,6-三羟基甲苯的结构由3M4NC氧化脱硝的化学计量推导。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "2,3,6-trihydroxytoluene", "smiles": "Cc1c(O)c(O)ccc1O", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2,5-dihydroxy-6-oxohepta-2,4-dienoate", "smiles": "CC(=O)C(O)=CC=C(O)C(=O)O", "role": "main"}
+      ],
+      "reaction_type": "间位（外二醇）环开裂",
+      "enzyme": {
+        "name": "2,3,6-trihydroxytoluene 2,3-dioxygenase",
+        "ec_number": "1.13.11.-",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Burkholderia sp. (2,6-dinitrotoluene-degrading isolate)",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "环开裂位点与产物由与3-甲基儿茶酚间位开裂（生成C7甲基酮型半醛）的类比推导；若开裂发生在二醇另一侧，产物可能为2,4-二羟基-3-甲基-6-氧代己-2,4-二烯酸。酶名与EC未在文献中核实。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "2,5-dihydroxy-6-oxohepta-2,4-dienoate", "smiles": "CC(=O)C(O)=CC=C(O)C(=O)O", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2,5-dihydroxypenta-2,4-dienoate", "smiles": "OC(=O)C(O)=CC=C(O)", "role": "main"},
+        {"name": "acetate", "smiles": "CC(=O)O", "role": "main"}
+      ],
+      "reaction_type": "水解酶催化的C—C键裂解（释放乙酸）",
+      "enzyme": {
+        "name": "2,5-dihydroxy-6-oxohepta-2,4-dienoate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Burkholderia sp. (2,6-dinitrotoluene-degrading isolate)",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "产物（乙酸与C5二烯酸）由与2-羟基-6-氧代庚-2,4-二烯酸水解酶（XylF/DmpE型，释放乙酸）反应的类比推导，未直接核实；水解酶的正式名称与EC编号未知。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {"name": "2,5-dihydroxypenta-2,4-dienoate", "smiles": "OC(=O)C(O)=CC=C(O)", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "pyruvate", "smiles": "CC(=O)C(=O)O", "role": "main"},
+        {"name": "glycolaldehyde", "smiles": "OCC=O", "role": "main"}
+      ],
+      "reaction_type": "互变/水合与醛缩裂解（间位开裂下游途径合并步）",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxopentanoate aldolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Burkholderia sp. (2,6-dinitrotoluene-degrading isolate)",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该步将C5二烯酸经互变/水合（生成4,5-二羟基-2-氧代戊酸）与醛缩裂解合并表述，产物丙酮酸与羟基乙醛由化学计量推导；实际酶、中间体与EC编号未核实。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Burkholderia sp. DNT",
+      "strain": "DNT",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（好氧降解菌，降解反应依赖分子氧）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": null, "maximum": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": null, "accession": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2（分子氧）"},
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以2,4-二硝基甲苯为唯一碳源、氮源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解2,4-二硝基甲苯（经4-甲基-5-硝基儿茶酚→2-羟基-5-甲基醌→2,4,5-三羟基甲苯途径）；可将2,6-二硝基甲苯氧化为3-甲基-4-硝基儿茶酚并积累该中间产物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2,4-二硝基甲苯双加氧酶（dntA编码）活性，并具4-甲基-5-硝基儿茶酚单加氧酶（dntB编码）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆菌（杆状细胞）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "狭适性（特化于二硝基甲苯污染的工业生境，分离自弹药/炸药生产相关污染场地）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Burkholderia sp. (2,6-dinitrotoluene-degrading isolate)",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（好氧降解菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": null, "maximum": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": null, "accession": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2（分子氧）"},
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以2,6-二硝基甲苯为唯一碳源、氮源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解并矿化2,6-二硝基甲苯（经3-甲基-4-硝基儿茶酚→2,3,6-三羟基甲苯→间位环开裂途径）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2,6-DNT初始双加氧酶、3-甲基-4-硝基儿茶酚脱硝单加氧酶及环开裂双加氧酶活性（2,6-DNT诱导表达）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆菌（杆状细胞）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "狭适性（分离自二硝基甲苯污染场地，依赖硝基芳烃类底物的特化生境）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_002",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetate", "glycolaldehyde"],
+    "explanation": "S4水解释放的乙酸经乙酰辅酶A进入TCA循环；S5醛缩裂解生成的丙酮酸进入糖酵解/TCA中枢代谢，并副产羟基乙醛（glycolaldehyde，可被进一步氧化代谢）。2,6-DNT的两个硝基均以亚硝酸根形式释放。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "厌氧硝基还原分支：2,6-DNT → 2-amino-6-nitrotoluene → 2,6-diaminotoluene",
+      "summary": "在缺氧/厌氧条件（如厌氧污泥、混合培养体系）下，2,6-DNT经硝基还原酶逐步还原为2-氨基-6-硝基甲苯，并进一步生成2,6-二氨基甲苯（甲苯二胺，工业加氢还原产物对应的还原途径）；多为微生物群落水平的过程，执行菌多为未定种的厌氧混合菌群，未纳入本题好氧主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "Burkholderia sp. DNT中的死端转化：2,6-DNT → 3-methyl-4-nitrocatechol（积累）",
+      "summary": "2,4-DNT降解菌Burkholderia sp. DNT可将2,6-DNT氧化为3-甲基-4-硝基儿茶酚（3M4NC），但该中间体在此菌株中不再被进一步代谢而积累，故该菌株不能以2,6-DNT生长；3M4NC的后续矿化仅在2,6-DNT降解分离株中发生。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "Applied and Environmental Microbiology",
+      "record_id": null,
+      "locator": "Nishino S.F., Paoli G.C., Spain J.C. Aerobic degradation of dinitrotoluenes and pathway for bacterial degradation of 2,6-dinitrotoluene. Appl. Environ. Microbiol. (2000) 66(5): 2139-2147",
+      "claim_scope": [
+        "S1：Burkholderia sp. DNT将2,6-DNT氧化为3-甲基-4-硝基儿茶酚",
+        "S2：2,6-DNT降解菌经3M4NC的后续脱硝代谢",
+        "ORG_002：好氧代谢、以2,6-DNT为底物生长并矿化",
+        "ORG_001：好氧代谢及对2,6-DNT的转化"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S3/S4/S5：环开裂产物、水解产物与醛缩裂解产物结构及酶类的类比推导",
+        "ORG_001/ORG_002：革兰氏阴性、杆菌、不产芽孢等分类学性状",
+        "ORG_001：分离生境背景"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "Applied and Environmental Microbiology",
+      "record_id": null,
+      "locator": "Haigler B.E., Spain J.C.（1993年前后）关于菌株DNT（Pseudomonas/Burkholderia sp. DNT）好氧降解2,4-DNT的途径与酶学研究（4-甲基-5-硝基儿茶酚途径）",
+      "claim_scope": [
+        "S1酶：2,4-DNT双加氧酶（dntA）存在于菌株DNT",
+        "ORG_001：以2,4-DNT为唯一碳源生长",
+        "2,4-DNT途径代谢物（4M5NC、2H5MQ、2,4,5-THT）作为2,6-DNT途径的类比基础"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "3M4NC脱硝后的代谢物（2,3,6-三羟基甲苯）、环开裂产物（2,5-二羟基-6-氧代庚-2,4-二烯酸）及水解/醛缩产物（乙酸、2,5-二羟基戊-2,4-二烯酸、丙酮酸、羟基乙醛）系依据与已证实的2,4-DNT途径（4M5NC→2H5MQ→2,4,5-THT）及儿茶酚间位开裂化学的类比推导，作答时未能逐字核实原始文献中的中间体命名。",
+    "2,6-DNT降解菌株（Nishino等2000年分离）的具体菌株编号与种名未能确定，ORG_002以未定种的Burkholderia sp.表示，其15项性状大多未知。",
+    "S3环开裂位点存在两种可能：本回答采用与3-甲基儿茶酚间位开裂一致的C7甲基酮型半醛（2,5-二羟基-6-氧代庚-2,4-二烯酸）；另一可能产物为2,4-二羟基-3-甲基-6-氧代己-2,4-二烯酸。",
+    "S2的酶（3-甲基-4-硝基儿茶酚单加氧酶）名称与EC为类比推测，直接产物可能为2-羟基-3-甲基-1,4-苯醌，经还原后才生成2,3,6-三羟基甲苯，本回答将其合并为一步。",
+    "各酶EC编号均为未完全指定的形式（1.14.12.-、1.14.13.-、1.13.11.-），S4水解酶与S5醛缩酶的EC编号未知。",
+    "文献出处（Nishino et al. 2000；Haigler & Spain 1993）凭记忆给出，卷期页码可能存在偏差；菌株DNT与ORG_002的温度、pH、盐度、保藏编号、基因组等性状数据均未知，如实置null。"
+  ]
+}

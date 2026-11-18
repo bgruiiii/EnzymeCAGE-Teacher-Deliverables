@@ -1,0 +1,359 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_034",
+  "pollutant_name_zh": "3-(3-Hydroxyphenyl)propanoate",
+  "pollutant_name_en": "3-(3-Hydroxyphenyl)propanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "3-phenylpropanoate and 3-(3-hydroxyphenyl)propanoate degradation to 2-hydroxypentadienoate",
+    "is_single_continuous_route": true,
+    "notes": "题面氧条件为 null；本记录不擅自改填。主链按所给路线名，从 3-(3-hydroxyphenyl)propanoate 出发，经 3-(2,3-dihydroxyphenyl)propanoate、外二醇开环产物，水解到 2-hydroxypentadienoate；琥珀酸为同步生成的 C4 产物。"
+  },
+  "route_summary": "主链为三步：MhpA 将 3-(3-hydroxyphenyl)propanoate 羟基化为 3-(2,3-dihydroxyphenyl)propanoate；MhpB 进行 meta/外二醇开环生成 2-hydroxy-6-oxonona-2,4-dienedioate；MhpC 水解该 C9 开环产物为终点 2-hydroxy-2,4-pentadienoate，并放出 succinate。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3-(3-Hydroxyphenyl)propanoate",
+          "smiles": "O=C(O)CCc1cccc(O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-(2,3-Dihydroxyphenyl)propanoate",
+          "smiles": "O=C(O)CCc1c(O)c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aromatic hydroxylation (monooxygenation)",
+      "enzyme": {
+        "name": "3-(3-hydroxyphenyl)propanoate monooxygenase",
+        "ec_number": "1.14.13.127",
+        "gene_or_protein": "mhpA / MhpA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-(2,3-Dihydroxyphenyl)propanoate",
+          "smiles": "O=C(O)CCc1c(O)c(O)ccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxonona-2,4-dienedioate",
+          "smiles": "O=C(O)C(O)=CC=CC(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol aromatic ring-cleavage dioxygenation",
+      "enzyme": {
+        "name": "2,3-dihydroxyphenylpropionate 1,2-dioxygenase",
+        "ec_number": "1.13.11.16",
+        "gene_or_protein": "mhpB / MhpB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxonona-2,4-dienedioate",
+          "smiles": "O=C(O)C(O)=CC=CC(=O)CCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-2,4-pentadienoate",
+          "smiles": "O=C(O)C(O)=CC=C",
+          "role": "main"
+        },
+        {
+          "name": "succinate",
+          "smiles": "O=C(O)CCC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "carbon-carbon bond hydrolysis of meta-cleavage product",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxonona-2,4-dienedioate hydrolase",
+        "ec_number": "3.7.1.14",
+        "gene_or_protein": "mhpC / MhpC",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 83333,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 83333,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37.0,
+            "maximum_c": null,
+            "preference": "嗜温（中温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "CGSC",
+            "accession": "6300"
+          },
+          "raw_text": "MG1655 (CGSC# 6300)",
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧，好氧呼吸为主",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用 3-(3-hydroxyphenyl)propanoate 作为碳源，经 mhp 途径降解",
+          "raw_text": "3-phenylpropanoate and 3-(3-hydroxyphenyl)propanoate degradation to 2-hydroxypentadienoate",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解苯丙酸类化合物：3-phenylpropanoate 与 3-(3-hydroxyphenyl)propanoate 汇入同一开环-水解路径至 2-hydroxypentadienoate",
+          "raw_text": "3-phenylpropanoate and 3-(3-hydroxyphenyl)propanoate degradation to 2-hydroxypentadienoate",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "MhpA 单加氧酶、MhpB 外二醇双加氧酶、MhpC C-C 水解酶活性",
+          "raw_text": "3-phenylpropanoate and 3-(3-hydroxyphenyl)propanoate degradation to 2-hydroxypentadienoate",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（bacillus）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": "Escherichia coli str. K-12 substr. MG1655, complete genome; 4,641,652 bp; 50.8% GC",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "实验室适应的肠杆菌；祖先为人源肠道分离株，生态位以宿主相关/培养条件为主而非广适环境",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "2-hydroxy-2,4-pentadienoate",
+      "succinate"
+    ],
+    "explanation": "2-hydroxy-2,4-pentadienoate 是题面主链终点；在延续降解中通常可经水合/醛缩/氧化进入丙酮酸与乙酰-CoA。同步生成的 succinate 可直接进入三羧酸循环。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "3-phenylpropanoate entry branch",
+      "summary": "3-phenylpropanoate 可由 Hca 系统氧化生成同一 3-(2,3-dihydroxyphenyl)propanoate 中间体后汇入开环-水解主链；该分支解释题面路线名中的另一底物，但不作为本污染物被评分主链的一部分。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EcoCyc",
+      "record_id": null,
+      "locator": "Escherichia coli K-12 substr. MG1655; mhpA/mhpB/mhpC reactions in 3-(3-hydroxyphenyl)propanoate degradation to 2-hydroxypentadienoate",
+      "claim_scope": [
+        "route reactions",
+        "enzyme names",
+        "EC numbers",
+        "genes",
+        "substrate-product assignments",
+        "organism-pathway association"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655 complete genome",
+      "claim_scope": [
+        "F14_genome_basic",
+        "strain identity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "83333",
+      "locator": "Escherichia coli str. K-12 substr. MG1655",
+      "claim_scope": [
+        "ncbi_taxid",
+        "organism identity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "CGSC",
+      "record_id": "6300",
+      "locator": "E. coli Genetic Stock Center strain CGSC# 6300 (MG1655)",
+      "claim_scope": [
+        "F5_culture_collection",
+        "strain identity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general, well-established physiology of Escherichia coli K-12",
+      "claim_scope": [
+        "F1_oxygen_tolerance",
+        "F2_temperature",
+        "F3_pH",
+        "F4_salinity",
+        "F6_respiration_electron_acceptor",
+        "F10_motility",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation",
+        "F15_habitat_generalism"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为 null；虽然主链中的 MhpA/MhpB 反应涉及 O2，本记录仍按要求将 route_scope.oxygen_condition 保留为 null。"
+  ]
+}

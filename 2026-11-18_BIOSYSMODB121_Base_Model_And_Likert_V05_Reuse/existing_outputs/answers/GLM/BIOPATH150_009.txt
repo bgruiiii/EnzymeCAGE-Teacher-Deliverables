@@ -1,0 +1,364 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_009",
+  "pollutant_name_zh": "D-柠檬烯",
+  "pollutant_name_en": "D-Limonene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Limonene degradation III (to perillate)",
+    "is_single_continuous_route": true,
+    "notes": "路线名称按题面原样保留：Limonene degradation III (to perillate)。该路线为好氧条件下的线性三步主链：D-柠檬烯C-7位甲基羟化生成紫苏醇，再经两步脱氢氧化为紫苏酸。"
+  },
+  "route_summary": "好氧条件下，D-柠檬烯先经 limonene 7-monooxygenase 在C-7位甲基上羟化生成紫苏醇；紫苏醇经 perillyl-alcohol dehydrogenase 氧化为紫苏醛；紫苏醛再经 perillyl-aldehyde dehydrogenase 氧化为紫苏酸，即'Limonene degradation III (to perillate)'主链。经典执行菌为恶臭假单胞菌，可完成全链。本答案中酶、菌与性状信息均来自内部知识，未实时核对数据库。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-Limonene",
+          "smiles": "CC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Perillyl alcohol",
+          "smiles": "OCC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧羟化（C-7位甲基末端羟化，依赖分子氧）",
+      "enzyme": {
+        "name": "limonene 7-monooxygenase",
+        "ec_number": "1.14.14.54",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "EC编号1.14.14.54按IUBMB对(+)-柠烯7-单加氧酶的归类凭记忆填写，未实时核对；细菌体系中电子供体亦可能为NADH而非NADPH；执行菌只到种水平，具体菌株与酶基因未鉴定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "Perillyl alcohol",
+          "smiles": "OCC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Perillyl aldehyde",
+          "smiles": "O=CC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醇脱氢氧化（伯醇氧化为醛）",
+      "enzyme": {
+        "name": "perillyl-alcohol dehydrogenase",
+        "ec_number": "1.1.1.141",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "EC 1.1.1.141凭内部知识填写，未实时核对数据库；该酶在执行菌中的基因与具体菌株未鉴定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "Perillyl aldehyde",
+          "smiles": "O=CC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Perillate",
+          "smiles": "O=C(O)C1=CCC(CC1)C(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛脱氢氧化（醛氧化为羧酸）",
+      "enzyme": {
+        "name": "perillyl-aldehyde dehydrogenase",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "EC 1.2.1.3为通用NAD依赖性醛脱氢酶编号，是否存在紫苏醛脱氢酶的专属EC未核实；对应菌株与基因未鉴定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 4,
+            "optimum_c": 28,
+            "maximum_c": 37,
+            "preference": "中温性，最适约28–30 °C；4 °C可缓慢生长，41 °C不生长"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（非发酵型，无氧条件下不生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐，无盐需求，普通无盐培养基可生长"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 5.0,
+            "optimum": 7.0,
+            "maximum": 9.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "碳源谱广：可利用多种有机酸、氨基酸及芳香族化合物（如苯甲酸、甲苯、苯乙烯等）生长；不利用蔗糖",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱降解菌：可降解多种芳香族与脂肪族污染物（甲苯、苯乙烯、烷烃等），常用于生物修复，并可代谢D-柠檬烯等单萜",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具多种加氧酶/脱氢酶体系；本路线中表现为将D-柠檬烯氧化为紫苏醇、紫苏醛并至紫苏酸的活性（柠烯7-单加氧酶、紫苏醇脱氢酶、紫苏醛脱氢酶）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动，极生鞭毛（通常多于1根）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直或微弯的杆菌，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，具含脂多糖外膜的典型细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性强：广布于土壤、淡水、植物根际及腐殖质环境等多种生境的广适种",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本题指定路线止于紫苏酸；紫苏酸进一步的开环降解及其与中央代谢（如柠檬酸循环）的衔接不在该路线范围内，缺少可核实信息，故 products 留空。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "Limonene degradation via carveol/carvone",
+      "summary": "柠烯C-6位羟化生成香芹醇、进而氧化为香芹酮的分支，见于部分假单胞菌与真菌，不属于本题主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "Limonene degradation via limonene-1,2-oxide/limonene-1,2-diol",
+      "summary": "如 Rhodococcus erythropolis DCL14 报道的经柠烯-1,2-环氧化物水合为柠烯-1,2-二醇的好氧降解分支，不属于本题主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["pathway_topology", "reaction_sequence_limonene_to_perillate"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["enzyme_identity", "ec_number_assignment"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["organism_pathway_association", "enzyme_activity_trait"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["organism_species_level_traits"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "三个酶的EC编号（1.14.14.54、1.1.1.141、1.2.1.3）均凭内部知识填写，未实时核对IUBMB/BRENDA等数据库，存在编号偏差风险。",
+    "微生物仅确定到种水平（Pseudomonas putida，strain=null），具体执行菌株、酶基因、保藏信息与基因组信息未知，相应字段为null。",
+    "第一步单加氧反应的电子供体按EC 1.14.14.x惯例记为NADPH；细菌体系中亦可能为NADH。",
+    "温度、pH等数值型性状来自物种水平的一般微生物学知识，未经原始文献核对，置信度为low。"
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_111",
+  "pollutant_name_zh": "D-肉碱",
+  "pollutant_name_en": "D-carnitine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-carnitine degradation I",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "D-肉碱通过D-肉碱脱氢酶氧化生成3-脱氢肉碱；3-脱氢肉碱经3-脱氢肉碱水解酶裂解为丙二酸半醛、甲醛和三甲胺；丙二酸半醛经丙二酸半醛脱氢酶（乙酰化）转化为乙酰辅酶A和CO2，甲醛经甲醛脱氢酶氧化为甲酸。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-carnitine",
+          "smiles": "C[N+](C)(C)CC(O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "D-carnitine dehydrogenase",
+        "ec_number": "1.1.1.254",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "AK1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "malonate semialdehyde",
+          "smiles": "O=CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        },
+        {
+          "name": "trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "3-dehydrocarnitine hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "AK1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "formate",
+          "smiles": "O=C[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "formaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "AK1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "malonate semialdehyde",
+          "smiles": "O=CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)C(O)C(C)(C)COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "CO2",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidative decarboxylation",
+      "enzyme": {
+        "name": "malonate semialdehyde dehydrogenase (acetylating)",
+        "ec_number": "1.2.1.15",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "AK1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "AK1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "acetyl-CoA",
+      "formate"
+    ],
+    "explanation": "丙二酸半醛进入乙酰辅酶A，甲醛进入甲酸。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [],
+  "uncertainties": [
+    "3-dehydrocarnitine hydrolase 的 EC 编号未确定",
+    "formaldehyde dehydrogenase 的 EC 编号未确定",
+    "Pseudomonas sp. AK1 的性状数据未在本地字段中给出"
+  ]
+}

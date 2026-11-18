@@ -1,0 +1,391 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_068",
+  "pollutant_name_zh": "3-氯苯甲酸根",
+  "pollutant_name_en": "3-Chlorobenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "3-chlorobenzoate degradation I (via chlorocatechol)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故 oxygen_condition 置空；该路线实际为好氧改良邻位裂解（modified ortho-cleavage）途径，依赖双加氧酶与单加氧/还原反应，通常在好氧条件下进行。"
+  },
+  "route_summary": "3-氯苯甲酸根先经 ben 基因编码的苯甲酸1,2-双加氧酶生成顺式二氢二醇，再经二氢二醇脱氢酶脱氢脱羧生成3-氯邻苯二酚；随后经 clc 基因簇编码的改良邻位裂解途径：氯代邻苯二酚1,2-双加氧酶开环生成2-氯-cis,cis-粘康酸，氯代粘康酸环异构酶环化并脱氯生成反式二烯内酯，二烯内酯水解酶水解为马来酰乙酸，马来酰乙酸还原酶还原为3-氧代己二酸；3-氧代己二酸再经β-酮己二酸途径生成琥珀酰-CoA与乙酰-CoA进入三羧酸循环。代表菌为 Pseudomonas knackmussii B13（原 Pseudomonas sp. strain B13）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "3-chlorobenzoate", "smiles": "O=C([O-])c1cccc(Cl)c1", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"},
+        {"name": "NADH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-chlorobenzoate-cis-1,2-dihydrodiol", "smiles": "O=C([O-])C1(O)C(O)C=CC=C1Cl", "role": "main"},
+        {"name": "NAD(+)", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "Rieske 型双加氧（dioxygenation，需 NADH 与 O2）",
+      "enzyme": {
+        "name": "benzoate 1,2-dioxygenase",
+        "ec_number": "1.14.12.10",
+        "gene_or_protein": "benABC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "中间体二氢二醇的取代位次在不同数据库中写法不一，SMILES 为近似表示。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "3-chlorobenzoate-cis-1,2-dihydrodiol", "smiles": "O=C([O-])C1(O)C(O)C=CC=C1Cl", "role": "main"},
+        {"name": "NAD(+)", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-chlorocatechol", "smiles": "Oc1cccc(Cl)c1O", "role": "main"},
+        {"name": "carbon dioxide", "smiles": "O=C=O", "role": "byproduct"},
+        {"name": "NADH", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "脱氢并脱羧芳构化（dehydrogenation/decarboxylation）",
+      "enzyme": {
+        "name": "1,2-dihydroxy-1,2-dihydrobenzoate dehydrogenase",
+        "ec_number": "1.3.1.25",
+        "gene_or_protein": "benD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该步常与上一步在注释中合并写作“3-chlorobenzoate → 3-chlorocatechol”。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "3-chlorocatechol", "smiles": "Oc1cccc(Cl)c1O", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "2-chloro-cis,cis-muconate", "smiles": "O=C([O-])/C(Cl)=C\\C=C\\C(=O)[O-]", "role": "main"}
+      ],
+      "reaction_type": "邻位（intradiol）开环双加氧",
+      "enzyme": {
+        "name": "chlorocatechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": "clcA",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "2-chloro-cis,cis-muconate", "smiles": "O=C([O-])/C(Cl)=C\\C=C\\C(=O)[O-]", "role": "main"}
+      ],
+      "products": [
+        {"name": "trans-dienelactone (trans-4-carboxymethylenebut-2-en-4-olide)", "smiles": "O=C1OC(=C/C(=O)O)C=C1", "role": "main"},
+        {"name": "chloride", "smiles": "[Cl-]", "role": "byproduct"}
+      ],
+      "reaction_type": "环异构化伴脱卤（cycloisomerization with dehalogenation）",
+      "enzyme": {
+        "name": "chloromuconate cycloisomerase",
+        "ec_number": "5.5.1.7",
+        "gene_or_protein": "clcB",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {"name": "trans-dienelactone (trans-4-carboxymethylenebut-2-en-4-olide)", "smiles": "O=C1OC(=C/C(=O)O)C=C1", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "maleylacetate (4-oxohex-2-enedioate)", "smiles": "O=C(O)/C=C\\C(=O)CC(=O)O", "role": "main"}
+      ],
+      "reaction_type": "内酯水解（lactone hydrolysis）",
+      "enzyme": {
+        "name": "dienelactone hydrolase",
+        "ec_number": "3.1.1.45",
+        "gene_or_protein": "clcD",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {"name": "maleylacetate (4-oxohex-2-enedioate)", "smiles": "O=C(O)/C=C\\C(=O)CC(=O)O", "role": "main"},
+        {"name": "NADH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-oxoadipate", "smiles": "O=C(O)CCC(=O)CC(=O)O", "role": "main"},
+        {"name": "NAD(+)", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "还原（双键还原，maleylacetate reduction）",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": "clcE",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas knackmussii",
+      "strain": "B13",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": 30, "maximum_c": null, "preference": "嗜中温（mesophile）"},
+          "raw_text": "3-氯苯甲酸降解研究中 Pseudomonas sp. B13 通常在 30 °C 下培养",
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（专性好氧）",
+          "raw_text": "B13 的降解途径依赖需氧的双加氧酶反应，该菌为好氧假单胞菌",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": null, "accession": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "氧气（O2）"},
+          "raw_text": "作为好氧假单胞菌，以氧为末端电子受体进行氧化磷酸化",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以3-氯苯甲酸酯（3-chlorobenzoate）为唯一碳源和能源生长，也可利用苯甲酸等芳香化合物",
+          "raw_text": "Pseudomonas sp. strain B13 经3-氯苯甲酸为唯一碳源富集获得并以其生长",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可矿化3-氯苯甲酸酯等氯代芳香化合物，经由 clc 基因簇编码的氯代邻苯二酚改良邻位裂解途径",
+          "raw_text": "B13 携带 clcABDE 基因，编码氯代邻苯二酚1,2-双加氧酶、氯代粘康酸环异构酶、二烯内酯水解酶与马来酰乙酸还原酶",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "氯代邻苯二酚1,2-双加氧酶（chlorocatechol 1,2-dioxygenase, ClcA）等氯代邻苯二酚降解酶活性",
+          "raw_text": "B13 提取物中检测到对氯代邻苯二酚具有高亲和力的1,2-双加氧酶活性",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": "Pseudomonas 属细菌通常具极生鞭毛而有运动性",
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（杆菌）",
+          "raw_text": "Pseudomonas knackmussii 为杆状细胞",
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Pseudomonas 为革兰氏阴性菌",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": "假单胞菌属不形成芽孢",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自经3-氯苯甲酸长期富集驯化的污染环境样品，主要栖息于受氯代芳香化合物污染的土壤/水体，属污染环境特化降解菌，栖息地广适性有限",
+          "raw_text": "B13 是以3-氯苯甲酸为底物连续富集获得的降解菌株",
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "主链终产物3-氧代己二酸（3-oxoadipate）经β-酮己二酸途径：3-氧代己二酸CoA转移酶（EC 2.8.3.6）与3-氧代己二酰-CoA硫解酶（EC 2.3.1.174）作用，生成琥珀酰-CoA与乙酰-CoA，进入三羧酸循环被完全矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-oxoadipate degradation（β-酮己二酸途径）",
+      "summary": "3-氧代己二酸先由3-氧代己二酸CoA转移酶（pcaI/pcaJ，EC 2.8.3.6）活化为3-氧代己二酰-CoA，再经硫解酶（pcaF，EC 2.3.1.174）裂解为琥珀酰-CoA与乙酰-CoA进入TCA循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "3-chlorobenzoate degradation II（厌氧，经3-氯苯甲酰-CoA还原脱氯）",
+      "summary": "在反硝化等厌氧条件下（如 Thauera chlorobenzoica），3-氯苯甲酸先被活化为3-氯苯甲酰-CoA，经还原脱氯生成苯甲酰-CoA后进入苯甲酰-CoA中心途径；该分支不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway: 3-chlorobenzoate degradation I (via chlorocatechol)",
+      "claim_scope": ["主链反应序列", "酶-EC 指派", "反应方程式"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "map00362",
+      "locator": "KEGG PATHWAY: Benzoate degradation；3-chlorobenzoate → 3-chlorocatechol → 2-chloromuconate → dienelactone → maleylacetate → 3-oxoadipate",
+      "claim_scope": ["路线步骤", "EC 编号"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Dorn E, Knackmuss H-J (1978) Biochemical Journal 174: 73-84 / 85-94",
+      "claim_scope": ["Pseudomonas sp. B13 以3-氯苯甲酸为唯一碳源生长并经氯代邻苯二酚ortho途径降解", "培养条件约30 °C"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Reineke W, Knackmuss H-J (1988) Annual Review of Microbiology 42: 263-287",
+      "claim_scope": ["clc 基因（clcABDE）编码的氯代邻苯二酚降解酶系", "改良邻位裂解途径酶学"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["B13 形态与生理：革兰氏阴性杆菌、极生鞭毛运动、不产芽孢、好氧呼吸"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Miyazaki R 等：Complete genome sequence of Pseudomonas knackmussii B13（Genome Announcements, 2015）",
+      "claim_scope": ["菌株分类身份 Pseudomonas knackmussii B13"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "菌株 B13 的 NCBI TaxID、菌种保藏编号与基因组登录号未经核实，按纪律置空。",
+    "中间体 3-氯苯甲酸-cis-二氢二醇的 SMILES 为近似结构表示（取代位次与立体化学未逐一核对）。",
+    "3-氧代己二酸之后的 β-酮己二酸步骤（CoA 转移与硫解）未计入评分主链，列于 downstream_continuation。"
+  ]
+}

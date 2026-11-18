@@ -1,0 +1,365 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_150",
+  "pollutant_name_zh": "(-)-奎尼酸",
+  "pollutant_name_en": "(-)-Quinate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "quinate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。quinate degradation I主链三步为脱氢与两次脱水，本身不消耗分子氧；该路线通常由好氧菌执行，且终点原儿茶酸的下游开环需要氧气。"
+  },
+  "route_summary": "(-)-奎尼酸降解途径I是一条三步线性主链：(-)-quinate经NAD+依赖的奎尼酸/莽草酸脱氢酶氧化为3-dehydroquinate，再脱水为3-dehydroshikimate，继续脱水生成protocatechuate。该命名路线止于原儿茶酸；原儿茶酸开环并进入中心代谢属于下游β-酮己二酸途径，不计入本主链。三步均可由Acinetobacter baylyi ADP1的quiABC完成。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(-)-quinate",
+          "smiles": "C1[C@H]([C@@H]([C@@H](C[C@@]1(C(=O)O)O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydroquinate",
+          "smiles": "C1C(=O)[C@@H](O)[C@H](O)C[C@@]1(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "quinate/shikimate dehydrogenase",
+        "ec_number": "1.1.1.282",
+        "gene_or_protein": "quiA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "ADP1的QuiA按EC 1.1.1.282分类，因其同时氧化奎尼酸和莽草酸；仅描述奎尼酸脱氢这一反应时也可用EC 1.1.1.24。此处按该菌实际酶填写1.1.1.282。主代谢物SMILES为中性酸常用立体写法，本次未重新联网核对。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-dehydroquinate",
+          "smiles": "C1C(=O)[C@@H](O)[C@H](O)C[C@@]1(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydroshikimate",
+          "smiles": "O=C1C=C(C(=O)O)C[C@@H](O)[C@H]1O",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydration",
+      "enzyme": {
+        "name": "3-dehydroquinate dehydratase",
+        "ec_number": "4.2.1.10",
+        "gene_or_protein": "quiB",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "分解代谢II型3-脱氢奎尼酸脱水酶与生物合成I型酶共用EC 4.2.1.10；ADP1中对应本降解步骤的是quiB编码的分解型酶。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "3-dehydroshikimate",
+          "smiles": "O=C1C=C(C(=O)O)C[C@@H](O)[C@H]1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C(O)c1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydration",
+      "enzyme": {
+        "name": "3-dehydroshikimate dehydratase",
+        "ec_number": "4.2.1.118",
+        "gene_or_protein": "quiC",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter baylyi",
+      "strain": "ADP1",
+      "ncbi_taxid": 62977,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "奎尼酸可作为唯一碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解奎尼酸、莽草酸，并将原儿茶酸经β-酮己二酸途径进一步分解",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有奎尼酸/莽草酸脱氢酶（QuiA）活性，可将奎尼酸氧化为3-脱氢奎尼酸",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "球杆菌",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_005966.1",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "本主链止于原儿茶酸，原儿茶酸本身不是中心代谢中间体。在Acinetobacter baylyi ADP1中，原儿茶酸经β-酮己二酸途径开环并多步转化后生成琥珀酰辅酶A和乙酰辅酶A，由此进入中心代谢；该过程不属于quinate degradation I。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate degradation I (beta-ketoadipate pathway)",
+      "summary": "原儿茶酸经3,4-双加氧邻位开环进入β-酮己二酸途径，最终生成琥珀酰辅酶A与乙酰辅酶A。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "shikimate convergent entry",
+      "summary": "同一QuiA也可将莽草酸氧化为3-脱氢莽草酸，在主链第三步之前汇入；底物不是奎尼酸，故不属于被评分的奎尼酸降解主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "protocatechuate meta-cleavage",
+      "summary": "部分微生物对原儿茶酸采取间位开环，而非ADP1所用的邻位开环；该分支位于本主链终点之后，不属于quinate degradation I评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway name: quinate degradation I; sequence (-)-quinate to 3-dehydroquinate to 3-dehydroshikimate to protocatechuate",
+      "claim_scope": ["S1_reaction", "S2_reaction", "S3_reaction", "route_boundary"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB Enzyme Nomenclature",
+      "record_id": "1.1.1.282",
+      "locator": "quinate/shikimate dehydrogenase (NAD+); Acinetobacter baylyi ADP1 QuiA",
+      "claim_scope": ["S1_enzyme", "ec_number"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB Enzyme Nomenclature",
+      "record_id": "4.2.1.10",
+      "locator": "3-dehydroquinate dehydratase; Acinetobacter baylyi ADP1 catabolic QuiB",
+      "claim_scope": ["S2_enzyme", "ec_number"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB Enzyme Nomenclature",
+      "record_id": "4.2.1.118",
+      "locator": "3-dehydroshikimate dehydratase; Acinetobacter baylyi ADP1 QuiC",
+      "claim_scope": ["S3_enzyme", "ec_number"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI Taxonomy",
+      "record_id": "62977",
+      "locator": "Acinetobacter baylyi ADP1 quiA quiB quiC quinate catabolism",
+      "claim_scope": ["organism_identity", "pathway_genes", "carbon_source", "degradation_capacity", "enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI Nucleotide",
+      "record_id": "NC_005966.1",
+      "locator": "Acinetobacter baylyi ADP1 chromosome RefSeq",
+      "claim_scope": ["genome_accession"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "genus Acinetobacter and A. baylyi standard phenotype",
+      "claim_scope": ["oxygen_tolerance", "temperature_preference", "respiration", "motility", "morphology", "gram", "sporulation"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；主链三步不消耗分子氧，但代表菌为专性好氧菌，下游原儿茶酸开环需氧。",
+    "主链边界按quinate degradation I取至原儿茶酸，未把β-酮己二酸途径并入评分主链。",
+    "第一步酶EC采用与ADP1 QuiA对应的1.1.1.282，而非仅描述奎尼酸脱氢反应的1.1.1.24。",
+    "主代谢物SMILES按中性酸常用立体写法填写，本次未重新检索数据库核对绝对构型字符串。",
+    "温度数值范围、pH、盐度、菌种保藏号、基因组碱基数与GC含量未经本次可核对原文确认，故置null；未用近似值占位。",
+    "可能存在的quinate degradation II因具体反应序列不够确定，未写入替代分支，以避免编造。"
+  ]
+}

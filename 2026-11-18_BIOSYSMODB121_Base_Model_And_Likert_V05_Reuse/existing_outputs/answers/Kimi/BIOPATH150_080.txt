@@ -1,0 +1,887 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_080",
+  "pollutant_name_zh": "(2E)-3-(4-羟基-3-甲氧基苯基)丙-2-烯酸根",
+  "pollutant_name_en": "(2E)-3-(4-hydroxy-3-methoxyphenyl)prop-2-enoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "ferulate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null），按原样保留；但主链中的O-去甲基化（第4步）与开环双加氧（第5步）依赖分子氧，实际为好氧降解。"
+  },
+  "route_summary": "经典的CoA依赖型阿魏酸（ferulate）降解主链：①阿魏酸根在阿魏酰-CoA合成酶（Fcs）作用下与CoA、ATP生成阿魏酰-CoA；②烯酰-CoA水合酶/醛缩酶（Ech）将水合后的硫酯逆羟醛裂解为香草醛和乙酰-CoA；③香草醛经NAD+依赖的香草醛脱氢酶（LigV/Vdh）氧化为香草酸；④香草酸由双组分O-去甲基酶VanAB去甲基生成原儿茶酸并释放甲醛；⑤原儿茶酸经原儿茶酸3,4-双加氧酶（PcaHG）内二醇开环生成β-羧基-顺,顺-粘康酸，随后沿β-酮己二酸途径生成乙酰-CoA与琥珀酰-CoA进入三羧酸循环。Pseudomonas sp. HR199已被证明可完成阿魏酸至原儿茶酸的连续转化。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "ferulate",
+          "smiles": "COC1=CC(=CC=C1O)/C=C/C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N",
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@@H]1[C@H]([C@H]([C@@H](O1)N2C=NC3=C(N=CN=C32)N)OP(=O)(O)O)O)[C@@H](C(=O)NCCC(=O)NCCS)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "feruloyl-CoA",
+          "smiles": "COC1=CC(=CC=C1O)/C=C/C(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@@H]2O[C@H](N3C=NC4=C(N=CN=C43)N)[C@H](O)[C@@H]2OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)O)O)O)N",
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "[O-]P(=O)([O-])OP(=O)([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP依赖的酸-硫醇连接（CoA硫酯化）",
+      "enzyme": {
+        "name": "feruloyl-CoA synthetase (ferulate--CoA ligase)",
+        "ec_number": "6.2.1.34",
+        "gene_or_protein": "fcs",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "HR199",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "feruloyl-CoA",
+          "smiles": "COC1=CC(=CC=C1O)/C=C/C(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@@H]2O[C@H](N3C=NC4=C(N=CN=C43)N)[C@H](O)[C@@H]2OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "vanillin",
+          "smiles": "COC1=CC(=CC=C1O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@@H]2O[C@H](N3C=NC4=C(N=CN=C43)N)[C@H](O)[C@@H]2OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "侧链水合并逆羟醛裂解（hydration/retro-aldol cleavage）",
+      "enzyme": {
+        "name": "enoyl-CoA hydratase/aldolase (trans-feruloyl-CoA hydratase/lyase)",
+        "ec_number": "4.2.1.101",
+        "gene_or_protein": "ech",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "AN103",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该酶兼具水合酶与醛缩酶（裂合酶）活性，EC 4.2.1.101仅覆盖其水合酶半反应；裂解半反应由同一蛋白完成。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "vanillin",
+          "smiles": "COC1=CC(=CC=C1O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)([O-])OP(=O)([O-])OC[C@@H]4[C@H]([C@H]([C@@H](O4)[N+]5=CC=CC(=C5)C(=O)N)O)O)O)O)N",
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "vanillate",
+          "smiles": "COC1=CC(=CC=C1O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C=CC1)[C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@H](N4C=NC5=C(N=CN=C54)N)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛氧化为羧酸（NAD+依赖脱氢）",
+      "enzyme": {
+        "name": "vanillin dehydrogenase",
+        "ec_number": "1.2.1.67",
+        "gene_or_protein": "ligV",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Sphingomonas paucimobilis",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_003",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "SYK-6现多写作Sphingobium sp. SYK-6；其香草醛脱氢酶除ligV外还有同源备份基因，此处取已表征的LigV。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "vanillate",
+          "smiles": "COC1=CC(=CC=C1O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN(C=CC1)[C@@H]2O[C@H](COP(=O)([O-])OP(=O)([O-])OC[C@H]3O[C@H](N4C=NC5=C(N=CN=C54)N)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "C1=CC(=C(C=C1C(=O)[O-])O)O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)([O-])OP(=O)([O-])OC[C@@H]4[C@H]([C@H]([C@@H](O4)[N+]5=CC=CC(=C5)C(=O)N)O)O)O)O)N",
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化性O-去甲基化（双组分Rieske型单加氧）",
+      "enzyme": {
+        "name": "vanillate O-demethylase (VanAB two-component monooxygenase)",
+        "ec_number": "1.14.13.82",
+        "gene_or_protein": "vanA/vanB",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "HR199",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "VanAB为双组分系统（VanA加氧酶、VanB还原酶）；EC 1.14.13.82的编号归属置信度中等。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "protocatechuate",
+          "smiles": "C1=CC(=C(C=C1C(=O)[O-])O)O",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-carboxy-cis,cis-muconate (beta-carboxy-cis,cis-muconate)",
+          "smiles": "O=C([O-])C=CC(=CC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "内二醇开环双加氧（intradiol ring cleavage, 3,4-裂解）",
+      "enzyme": {
+        "name": "protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": "pcaHG",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_004",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "ADP1（=BD413）的PcaHG为β-酮己二酸途径经典研究对象，此处引用的是综述级证据；开环产物随后经pcaB/pcaC/pcaD/pcaIJ/pcaF进入中心代谢。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "HR199",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温（未见一手温度范围数据）"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以阿魏酸、香草醛、香草酸等芳香族化合物为碳源",
+          "raw_text": "Biochemical and genetic analyses of ferulic acid catabolism in Pseudomonas sp. strain HR199（文献题名）",
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "将羟基肉桂酸类（阿魏酸）经CoA途径降解至原儿茶酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "阿魏酰-CoA合成酶（Fcs）与烯酰-CoA水合酶/醛缩酶（Ech）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（假单胞菌典型极生鞭毛，属级推断）",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "自环境样品经阿魏酸富集分离的芳香族降解菌，栖息地广适性不明",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas fluorescens",
+      "strain": "AN103",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温（荧光假单胞菌一般可在低温至约30°C生长，具体数值未见一手来源）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以阿魏酸为底物经阿魏酰-CoA转化生成香草醛和乙酰-CoA",
+          "raw_text": "Metabolism of ferulic acid to vanillin. A bacterial gene of the enoyl-SCoA hydratase/isomerase superfamily encodes an enzyme for the hydration and cleavage of a hydroxycinnamic acid SCoA thioester（文献题名）",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "羟基肉桂酸硫酯的水合-裂解（由阿魏酸生产香草醛的生物转化）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "烯酰-CoA水合酶/醛缩酶（Ech）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛，属级推断）",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "用于阿魏酸生物转化的研究菌株，具体分离源与栖息地广适性不明",
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_003",
+      "organism_name": "Sphingomonas paucimobilis",
+      "strain": "SYK-6",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（常规培养约30°C）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "NBRC",
+            "accession": "103272"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "利用香草醛、香草酸等木质素衍生单环芳香化合物为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解木质素衍生的双芳基与单芳基化合物",
+          "raw_text": "a degrader of lignin-derived biaryls and monoaryls（基因组论文题名摘录）",
+          "evidence_id": "EVID_012",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "香草醛脱氢酶（LigV）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "AP012222",
+            "genome_size_bp": 4199332,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "木质素衍生芳香物降解研究模式菌（文献记载与制浆废液处理环境相关），栖息地广适性不明",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_004",
+      "organism_name": "Acinetobacter baylyi",
+      "strain": "ADP1",
+      "ncbi_taxid": 62977,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温（常规培养30–37°C，未见一手耐受极限数据）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "经β-酮己二酸途径矿化原儿茶酸等多种芳香族化合物",
+          "raw_text": "The beta-ketoadipate pathway and the biology of self-identity（综述题名）",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广泛的芳香族化合物降解能力（β-酮己二酸途径模式菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "原儿茶酸3,4-双加氧酶（PcaHG）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "球杆状（coccobacilli）",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_005966",
+            "genome_size_bp": 3598621,
+            "gc_percent": 40.3
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_013",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "自土壤富集分离（Juni BD413），不动杆菌属广布于土壤与淡水环境，栖息地广适性中等（推断）",
+          "raw_text": null,
+          "evidence_id": "EVID_011",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA", "succinyl-CoA"],
+    "explanation": "第2步生成的乙酰-CoA直接进入中心代谢；第5步生成的β-羧基-顺,顺-粘康酸经β-酮己二酸途径（pcaB/pcaC/pcaD生成β-酮己二酸，再经pcaIJ/pcaF）最终裂解为乙酰-CoA与琥珀酰-CoA，进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "β-ketoadipate pathway（β-酮己二酸途径）",
+      "summary": "β-羧基-顺,顺-粘康酸经内酯化与异构（pcaB/pcaC/pcaD）生成β-酮己二酸，再由β-酮己二酰-CoA转移酶（pcaIJ）与硫解酶（pcaF）裂解为乙酰-CoA与琥珀酰-CoA进入TCA循环。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "阿魏酸非氧化脱羧生成4-乙烯基愈创木酚",
+      "summary": "部分细菌（如芽孢杆菌属、乳酸菌等）经酚酸脱羧酶（ferulic acid decarboxylase/phenolic acid decarboxylase）将阿魏酸脱羧为4-乙烯基愈创木酚，再可氧化为香草酸，不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "原儿茶酸4,5-间位开环（LigAB途径）",
+      "summary": "在Sphingobium sp. SYK-6等菌中，原儿茶酸由原儿茶酸4,5-双加氧酶（LigAB, EC 1.13.11.8）间位开环进入CHMOD途径矿化，而非本主链采用的3,4-内二醇开环。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "香草酸脱羧生成愈创木酚",
+      "summary": "部分菌株以香草酸脱羧酶将香草酸脱羧为愈创木酚（去毒/副产旁路，非矿化主链）。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Overhage J, Priefert H, Steinbüchel A. Biochemical and genetic analyses of ferulic acid catabolism in Pseudomonas sp. strain HR199. Appl Environ Microbiol. 1999;65(11):4837-4847.",
+      "claim_scope": ["S1_reaction", "S1_enzyme", "ORG_001_traits"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Gasson MJ, et al. Metabolism of ferulic acid to vanillin. A bacterial gene of the enoyl-SCoA hydratase/isomerase superfamily encodes an enzyme for the hydration and cleavage of a hydroxycinnamic acid SCoA thioester. J Biol Chem. 1998;273(7):4163-4170.",
+      "claim_scope": ["S2_reaction", "S2_enzyme", "ORG_002_traits"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Masai E, et al. Characterization of ligV essential for catabolism of vanillin by Sphingomonas paucimobilis SYK-6. Biosci Biotechnol Biochem. 2007;71(10):2487-2492.",
+      "claim_scope": ["S3_reaction", "S3_enzyme", "ORG_003_traits"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Priefert H, Rabenhorst J, Steinbüchel A. Molecular characterization of genes of Pseudomonas sp. strain HR199 involved in bioconversion of vanillin to protocatechuate. J Bacteriol. 1997;179(8):2595-2607.",
+      "claim_scope": ["S4_reaction", "S4_enzyme", "ORG_001_traits"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Harwood CS, Parales RE. The beta-ketoadipate pathway and the biology of self-identity. Annu Rev Microbiol. 1996;50:553-590.",
+      "claim_scope": ["S5_reaction", "S5_enzyme", "ORG_004_traits", "downstream_beta_ketoadipate"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_011",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["general_phenotypic_traits"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_012",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Masai E, et al. Complete genome sequence of Sphingobium sp. strain SYK-6, a degrader of lignin-derived biaryls and monoaryls. J Bacteriol. 2012;194(2):534-535.",
+      "claim_scope": ["ORG_003_genome", "ORG_003_traits", "ORG_003_culture_collection"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_013",
+      "source_type": "DATABASE_DIRECT",
+      "database": "GenBank/RefSeq",
+      "record_id": "NC_005966",
+      "locator": "Acinetobacter sp. ADP1 complete chromosome",
+      "claim_scope": ["ORG_004_genome", "ORG_004_taxonomy"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "EC 1.14.13.82（vanillate O-demethylase）编号归属置信度中等：VanAB为双组分系统（VanA加氧酶、VanB还原酶），不同数据库对EC归属的表述可能不同。",
+    "Pseudomonas sp. HR199与Pseudomonas fluorescens AN103未见公开全基因组与保藏编号记录，相关性状以null如实记录。",
+    "Sphingobium sp. SYK-6（原Sphingomonas paucimobilis SYK-6）的NBRC 103272保藏号与染色体大小引用自基因组论文的二手记忆，GC含量未核对，置null。",
+    "题面未指定氧条件（null）；主链第4、5步依赖分子氧，整条主链在生理上属于好氧降解。"
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "slot": "B480-0202",
+  "source_request_relative_to_project_root": "LIKERT_V05_RELEASE_20261108/S12_APPROVED_CASE060_094_20261115/scoring/F4I-S12-0002/REQUEST.json",
+  "source_request_sha256": "012fa35caabe70873043add0c3cd8d7a13d7817311375813743f2a5838599b5d",
+  "export_request_sha256": "012fa35caabe70873043add0c3cd8d7a13d7817311375813743f2a5838599b5d",
+  "source_result_sha256": "466ea45e76940a256bd54abcb72c31753f2e1fe7fa0432d709cb1af967a29148",
+  "scope": "EXACT_ORIGINAL_ROUTE_LOCKED_INPUT_ONLY",
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "reviews": [],
+    "normalized_response": {
+      "schema_id": "LIKERT_V05_S8_PARTIAL",
+      "rater_type": "AI",
+      "identity": {
+        "anonymous_item_id": "F4I-S12-0002",
+        "answer_sha256": "d07fe1f11b4b055045b27e64d925d71f17dec8c11a0d9556ade6e62813257aaf",
+        "batch": "S12_USER_APPROVED_SCOPE_NEW_RATINGS",
+        "case_id": "BIOPATH150_060",
+        "program_and_materials_sha256": "b1206bf33a30041ad8adc7272eaafdd9bc244ab85a2a8040e65abed39c39077a",
+        "repair_identity_sha256": "e6476b3796f4bba3a85bcec281c540117c40dcd7454a817b2c727546f1c21921",
+        "repair_item_id": "F4I-S12-0002",
+        "repair_version": "S12_APPROVED_SCOPE_20261115",
+        "requested_dimensions": [
+          "D1",
+          "D2",
+          "D3a",
+          "D3b",
+          "D4",
+          "D5",
+          "D6"
+        ],
+        "rubric_sha256": "99cafc4eaa6c3fb1c5e6279744d32d4637a00b0c9d46f030c680b0dc6aabd732",
+        "source_artifact_sha256": "e47b0af6469eb13455b4d71a86d9f66c0175c200444743fdd844e54ad686cf3c"
+      },
+      "dimensions": {
+        "D1": {
+          "score_status": "SCORED",
+          "score": 5,
+          "rationale": "四步主链、每步酶/EC和微生物均已给出，route_scope.chosen_route_name原样填写；但15项性状全部为null且无来源，属仅占位或必要内容遗漏。主要模块均有涉及，但完整性与任务符合度只能取5-6档下沿5。",
+          "answer_locator": "steps[0..3]; organism_profiles[0].traits（F1..F15全为null）; route_scope.chosen_route_name",
+          "evidence_refs": [
+            {
+              "ref_type": "ANSWER_TEXT",
+              "ref_id": "F4I-S12-0002",
+              "support_scope": "答案包含4步且每步有底物/产物、酶/EC和微生物；15项性状全为null",
+              "locator": "steps; organism_profiles[0].traits"
+            },
+            {
+              "ref_type": "GOLD_SLICE",
+              "ref_id": "SCOPE_ROLES.tsv#case:BIOPATH150_060",
+              "support_scope": "本题四个REQUIRED步骤：S02 ENTRY、S01 MAJOR、S03 MAJOR、S04 TERMINAL",
+              "locator": "SCOPE_ROLES.tsv"
+            }
+          ],
+          "rule_ids_cited": [
+            "C01",
+            "P44"
+          ],
+          "key_error": "N",
+          "key_error_argument": null,
+          "ne_basis": null,
+          "ne_unverified": null,
+          "missing_basis": null
+        },
+        "D2": {
+          "score_status": "SCORED",
+          "score": 7,
+          "rationale": "主链方向与碳骨架转化基本对应：S1脱羧、S2脱氢、S3脱氨、S4脱羧至题名终点；未见方向反转或核心断链。局部问题包括未列NAD+/H2O/H+等辅因子、立体未指定，以及S3/S4以2-hydroxymuconate互变异构体表述底物/产物；按D2局部计量/表达问题处理，取7-8档下沿7。",
+          "answer_locator": "steps[0..3].substrates/products；S3 product 2-Hydroxymuconate；S4 substrate 2-Hydroxymuconate",
+          "evidence_refs": [
+            {
+              "ref_type": "GOLD_SLICE",
+              "ref_id": "reaction_gold.tsv#case:BIOPATH150_060",
+              "support_scope": "gold四步顺序及主转化：S02脱羧、S01脱氢、S03脱氨、S04脱羧",
+              "locator": "reaction_gold.tsv"
+            },
+            {
+              "ref_type": "ANSWER_TEXT",
+              "ref_id": "F4I-S12-0002",
+              "support_scope": "答案四步主转化及S3/S4的2-hydroxymuconate表述",
+              "locator": "steps[0..3].substrates/products"
+            }
+          ],
+          "rule_ids_cited": [
+            "P103",
+            "P104",
+            "C06"
+          ],
+          "key_error": "N",
+          "key_error_argument": null,
+          "ne_basis": null,
+          "ne_unverified": null,
+          "missing_basis": null
+        },
+        "D3a": {
+          "score_status": "SCORED",
+          "score": 6,
+          "rationale": "逐目标看：S1对应gold S02，酶名/EC 4.1.1.45一致，可判S；S2对应gold S01，EC 1.2.1.32一致，可判S；S3名称一致但EC 3.5.1.73与gold 3.5.99.5未核配对，且产物以2-hydroxymuconate互变异构体表达，按U保留；S4 EC 4.1.1.77与gold一致，但酶名/底物以2-hydroxymuconate表达，目标对应仍待核。部分目标已支持、MAJOR/末端仍有U，按C05不能进入7，取5-6档上沿6；无已确认KEY失败。",
+          "answer_locator": "steps[0].enzyme EC 4.1.1.45; steps[1].enzyme EC 1.2.1.32; steps[2].enzyme EC 3.5.1.73; steps[3].enzyme EC 4.1.1.77",
+          "evidence_refs": [
+            {
+              "ref_type": "GOLD_SLICE",
+              "ref_id": "enzyme_gold.tsv#case:BIOPATH150_060",
+              "support_scope": "gold各步酶：S02 EC 4.1.1.45；S01 EC 1.2.1.32；S03 EC 3.5.99.5；S04 EC 4.1.1.77",
+              "locator": "enzyme_gold.tsv"
+            },
+            {
+              "ref_type": "GOLD_SLICE",
+              "ref_id": "reaction_gold.tsv#case:BIOPATH150_060",
+              "support_scope": "gold S03产物为(3E)-2-oxohex-3-enedioate，S04产物为(2Z)-2-hydroxypenta-2,4-dienoate；相关表述存在互变异构体待核",
+              "locator": "reaction_gold.tsv"
+            },
+            {
+              "ref_type": "GOLD_SLICE",
+              "ref_id": "SCOPE_ROLES.tsv#case:BIOPATH150_060",
+              "support_scope": "S02 ENTRY、S04 TERMINAL、S01/S03 MAJOR",
+              "locator": "SCOPE_ROLES.tsv"
+            },
+            {
+              "ref_type": "ANSWER_TEXT",
+              "ref_id": "F4I-S12-0002",
+              "support_scope": "答案S3 EC 3.5.1.73与S4酶/底物表述",
+              "locator": "steps[2].enzyme; steps[3].enzyme"
+            }
+          ],
+          "rule_ids_cited": [
+            "C02",
+            "C03",
+            "C04",
+            "C05"
+          ],
+          "key_error": "N",
+          "key_error_argument": null,
+          "ne_basis": null,
+          "ne_unverified": null,
+          "missing_basis": null
+        },
+        "D3b": {
+          "score_status": "SCORED",
+          "score": 7,
+          "rationale": "四个步骤均填Pseudomonas fluorescens（TaxID 294）；该物种在gold的S01-S04均有策展关联，物种级身份与单步关联可靠。但未给菌株/基因组，complete_pathway_organism_profile_id所暗示的整路能力未由原答证据独立落实；按身份/能力分层，取7-8档下沿7。",
+          "answer_locator": "organism_profiles[0] Pseudomonas fluorescens TaxID 294; steps[*].microorganism均引用ORG_001",
+          "evidence_refs": [
+            {
+              "ref_type": "GOLD_SLICE",
+              "ref_id": "organism_gold.tsv#case:BIOPATH150_060",
+              "support_scope": "P. fluorescens TaxID 294在S01、S02、S03、S04均有策展关联记录",
+              "locator": "organism_gold.tsv"
+            },
+            {
+              "ref_type": "GOLD_SLICE",
+              "ref_id": "source_pathway_annotations.tsv#case:BIOPATH150_060",
+              "support_scope": "Pathway-complete标签对TaxID 294存在，但属旧路径级标签，不自动证明原答整路能力",
+              "locator": "source_pathway_annotations.tsv"
+            },
+            {
+              "ref_type": "ANSWER_TEXT",
+              "ref_id": "F4I-S12-0002",
+              "support_scope": "仅给物种、无strain/genome/evidence；complete_pathway_organism_profile_id=ORG_001",
+              "locator": "organism_profiles[0]; steps[*].microorganism"
+            }
+          ],
+          "rule_ids_cited": [
+            "P69",
+            "P106",
+            "P107",
+            "P110"
+          ],
+          "key_error": "N",
+          "key_error_argument": null,
+          "ne_basis": null,
+          "ne_unverified": null,
+          "missing_basis": null
+        },
+        "D4": {
+          "score_status": "MISSING",
+          "score": 1,
+          "rationale": "15项性状全部value为null且无evidence，按P44全部必需性状为null/空值时D4记MISSING=1，不宣称检测到科学错误。",
+          "answer_locator": "organism_profiles[0].traits：F1_oxygen_tolerance至F15_habitat_generalism均为value:null、evidence_id:null",
+          "evidence_refs": [
+            {
+              "ref_type": "ANSWER_TEXT",
+              "ref_id": "F4I-S12-0002",
+              "support_scope": "15项性状全部为null且无来源",
+              "locator": "organism_profiles[0].traits"
+            },
+            {
+              "ref_type": "GOLD_SLICE",
+              "ref_id": "trait_gold.tsv#case:BIOPATH150_060",
+              "support_scope": "P. fluorescens 294在冻结trait表中有多项可用观测/预测行，说明原答并非因全局无资料而只能全null",
+              "locator": "trait_gold.tsv"
+            }
+          ],
+          "rule_ids_cited": [
+            "P44",
+            "C08"
+          ],
+          "key_error": "N",
+          "key_error_argument": null,
+          "ne_basis": null,
+          "ne_unverified": null,
+          "missing_basis": "15项性状均未交付具体值：organism_profiles[0].traits.F1_oxygen_tolerance至F15_habitat_generalism的value与evidence_id全部为null。"
+        },
+        "D5": {
+          "score_status": "SCORED",
+          "score": 1,
+          "rationale": "evidence_registry为空，steps、enzyme、microorganism及所有trait的evidence_id均为null；关键结论没有任何可定位来源或生成记录，属MISSING_SOURCE低分档。按既有条款单纯来源缺失默认不cap，故key_error=N。",
+          "answer_locator": "evidence_registry: []; steps[*].reaction_evidence_id/trait_evidence_id以及enzyme/microorganism的evidence_id全为null",
+          "evidence_refs": [
+            {
+              "ref_type": "ANSWER_TEXT",
+              "ref_id": "F4I-S12-0002",
+              "support_scope": "无任何证据登记，所有证据引用字段为空",
+              "locator": "evidence_registry; steps[*]; organism_profiles[0].traits"
+            },
+            {
+              "ref_type": "RUBRIC_CLAUSE",
+              "ref_id": "P34",
+              "support_scope": "MISSING_SOURCE评低分档，默认不触发关键错误cap",
+              "locator": "P34"
+            }
+          ],
+          "rule_ids_cited": [
+            "P30",
+            "P34",
+            "P41",
+            "P98"
+          ],
+          "key_error": "N",
+          "key_error_argument": null,
+          "ne_basis": null,
+          "ne_unverified": null,
+          "missing_basis": null
+        },
+        "D6": {
+          "score_status": "SCORED",
+          "score": 6,
+          "rationale": "原答普遍标low/unknown，未把预测写成实证观测，这一点正面；但没有uncertainties说明，未交代各步和性状未知的具体边界、冲突或待验证点，披露过于笼统，按5-6档取6。",
+          "answer_locator": "steps[*].enzyme.confidence=low; steps[*].microorganism.confidence=low; organism_profiles[0].traits均confidence=unknown; uncertainties=[]",
+          "evidence_refs": [
+            {
+              "ref_type": "ANSWER_TEXT",
+              "ref_id": "F4I-S12-0002",
+              "support_scope": "普遍低/未知置信但无具体不确定性说明",
+              "locator": "confidence字段; uncertainties"
+            },
+            {
+              "ref_type": "RUBRIC_CLAUSE",
+              "ref_id": "P119",
+              "support_scope": "单点过度确信与系统性误导分开；本答未见系统性误导但披露笼统",
+              "locator": "P119"
+            }
+          ],
+          "rule_ids_cited": [
+            "P45",
+            "P119",
+            "P121"
+          ],
+          "key_error": "N",
+          "key_error_argument": null,
+          "ne_basis": null,
+          "ne_unverified": null,
+          "missing_basis": null
+        }
+      }
+    },
+    "normalizations": [],
+    "actual_request_sha256": "026f2d7fb903ab175ae270f440bc47bd098f680f1f944e6825a6e174c42fc7b4"
+  }
+}

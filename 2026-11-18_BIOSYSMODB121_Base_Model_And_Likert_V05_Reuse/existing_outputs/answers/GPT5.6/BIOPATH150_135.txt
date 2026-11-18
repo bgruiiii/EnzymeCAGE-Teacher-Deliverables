@@ -1,0 +1,74 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_135",
+  "pollutant_name_zh": "柠檬烯",
+  "pollutant_name_en": "Limonene",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "limonene degradation IV (anaerobic)",
+    "is_single_continuous_route": null,
+    "notes": "厌氧柠檬烯转化的具体酶、菌株及后续反应缺乏足够直接证据。"
+  },
+  "route_summary": "在厌氧条件下，柠檬烯可经双键水合生成α-terpineol；该反应的特异性酶和对应菌株在当前证据中未能可靠确定。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Limonene",
+          "smiles": "CC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "Water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "alpha-Terpineol",
+          "smiles": "CC1=CCC(CC1)C(C)(C)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Anaerobic alkene hydration",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该步代表厌氧柠檬烯转化的保守主反应假设；特异性水合酶、EC编号及经验证的对应微生物未确定。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "未能可靠确定该路线进入中心代谢的具体中间体。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1反应方向",
+        "厌氧柠檬烯经水合生成alpha-Terpineol的主链假设"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "特异性反应酶及EC编号未知。",
+    "对应微生物、菌株及其15项性状未知。",
+    "后续降解步骤及中心代谢入口未知。",
+    "alpha-Terpineol的SMILES采用代表性结构表示，未关联特定数据库记录。"
+  ]
+}

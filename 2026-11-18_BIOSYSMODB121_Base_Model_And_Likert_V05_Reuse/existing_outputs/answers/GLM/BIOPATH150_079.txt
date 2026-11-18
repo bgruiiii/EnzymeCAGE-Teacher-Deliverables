@@ -1,0 +1,426 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_079",
+  "pollutant_name_zh": "2,2'-二羟基-3,3'-二甲氧基-5,5'-二羧基联苯",
+  "pollutant_name_en": "2,2'-Dihydroxy-3,3'-dimethoxy-5,5'-dicarboxybiphenyl",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "5,5'-dehydrodivanillate degradation",
+    "is_single_continuous_route": true,
+    "notes": "氧条件题面未指定（null）；该路线实际为好氧菌 Sphingobium sp. SYK-6 中的好氧、线性连续途径。chosen_route_name 按题面原样填写。"
+  },
+  "route_summary": "5,5'-脱氢双香草酸（DDVA，即 2,2'-二羟基-3,3'-二甲氧基-5,5'-二羧基联苯）的微生物降解主链来自模式菌株 Sphingobium sp. SYK-6（曾名 Sphingomonas paucimobilis / Pseudomonas paucimobilis SYK-6，好氧菌）：①LigX（Rieske 型 O-脱甲基加氧酶）将 DDVA 3,3'-位两个甲氧基脱甲基，生成 2,2',3,3'-四羟基-5,5'-二羧基联苯并释放甲醛；②LigZ（2,2',3,3'-四羟基-5,5'-二羧基联苯双加氧酶）氧化裂解联苯 5-5' 分子间 C-C 键，生成 5-羧基香草酸（5-carboxyvanillate）；③LigW2（5-羧基香草酸脱羧酶）脱羧生成香草酸（vanillate）；④VanA/VanB（香草酸 O-脱甲基酶）脱甲基生成原儿茶酸（protocatechuate）；⑤LigAB（原儿茶酸 4,5-双加氧酶）将原儿茶酸 4,5-位开环生成 4-羧基-2-羟基黏康酸-6-半醛，汇入原儿茶酸降解枢纽，最终经下游反应以丙酮酸、草酰乙酸进入 TCA 循环。整条主链为单一连续好氧途径，集中于 SYK-6 一株菌完成。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,2'-Dihydroxy-3,3'-dimethoxy-5,5'-dicarboxybiphenyl",
+          "smiles": "COc1c(O)c(-c2c(O)c(OC)cc(C(=O)O)c2)cc(C(=O)O)c1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,2',3,3'-Tetrahydroxy-5,5'-dicarboxybiphenyl",
+          "smiles": "Oc1c(O)c(-c2c(O)c(O)cc(C(=O)O)c2)cc(C(=O)O)c1",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "O-脱甲基（Rieske 型非血红素铁单加氧酶反应，伴随甲醛释放）",
+      "enzyme": {
+        "name": "5,5'-dehydrodivanillate O-demethylase (LigX)",
+        "ec_number": null,
+        "gene_or_protein": "ligX",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "LigX 的电子传递组分（还原酶/铁氧还蛋白）及其 EC 编号未能确证。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2,2',3,3'-Tetrahydroxy-5,5'-dicarboxybiphenyl",
+          "smiles": "Oc1c(O)c(-c2c(O)c(O)cc(C(=O)O)c2)cc(C(=O)O)c1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-Carboxyvanillate",
+          "smiles": "COc1c(O)c(C(=O)O)cc(C(=O)O)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化裂解联苯 5-5' 分子间 C-C 键（双加氧酶反应）",
+      "enzyme": {
+        "name": "2,2',3,3'-tetrahydroxy-5,5'-dicarboxybiphenyl dioxygenase (LigZ)",
+        "ec_number": null,
+        "gene_or_protein": "ligZ",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "文献常述 LigZ 将 2,2',3,3'-四羟基-5,5'-二羧基联苯裂解生成 5-羧基香草酸；该步共产物与精确化学计量未能确证（底物已脱去甲氧基而产物含甲氧基，反应细节如是否经 HOPDA 类开环中间体存疑），故置信度中等。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "5-Carboxyvanillate",
+          "smiles": "COc1c(O)c(C(=O)O)cc(C(=O)O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Vanillate",
+          "smiles": "COc1cc(C(=O)O)ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧（非氧化脱羧反应）",
+      "enzyme": {
+        "name": "5-carboxyvanillate decarboxylase (LigW2)",
+        "ec_number": null,
+        "gene_or_protein": "ligW2",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "LigW 与 LigW2 均被报道具有 5-羧基香草酸脱羧酶活性，本步首选 LigW2；生理主酶未完全确证。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "Vanillate",
+          "smiles": "COc1cc(C(=O)O)ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "Protocatechuate",
+          "smiles": "O=C(O)c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "O-脱甲基（Rieske 型单加氧酶反应，伴随甲醛释放）",
+      "enzyme": {
+        "name": "vanillate O-demethylase (VanA/VanB)",
+        "ec_number": "1.14.13.82",
+        "gene_or_protein": "vanA, vanB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "Protocatechuate",
+          "smiles": "O=C(O)c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "Oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Carboxy-2-hydroxymuconate-6-semialdehyde",
+          "smiles": "O=C(O)C(O)=CC(C(=O)O)=CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "原儿茶酸 4,5-位开环（外二醇型双加氧酶反应）",
+      "enzyme": {
+        "name": "protocatechuate 4,5-dioxygenase (LigAB)",
+        "ec_number": null,
+        "gene_or_protein": "ligA, ligB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sphingobium sp. SYK-6",
+        "strain": "SYK-6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "LigAB 的 EC 编号未能确证，填 null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sphingobium sp. SYK-6",
+      "strain": "SYK-6",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（专性好氧菌，依赖分子氧进行呼吸）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种木素衍生芳香化合物作为碳源与能源，如 5,5'-dehydrodivanillate、vanillate、ferulate、syringate 及 β-芳基醚模型二聚体等",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱降解木素衍生芳香化合物（单体及 5-5' 联苯型、β-O-4 芳基醚型等二聚体模型物），是木素衍生物降解研究的模式菌株",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具木素衍生芳香物降解酶系活性：DDVA O-脱甲基酶、2,2',3,3'-四羟基-5,5'-二羧基联苯双加氧酶、5-羧基香草酸脱羧酶、香草酸 O-脱甲基酶、原儿茶酸 4,5-双加氧酶等",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（短杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性；属鞘氨醇单胞菌科，外膜含糖鞘脂而缺乏典型 LPS",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自富含木素的制浆/造纸废水环境；偏向栖息于木素衍生物丰富的生境，栖息广适性证据不足",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "pyruvate",
+      "oxaloacetate"
+    ],
+    "explanation": "主链在原儿茶酸处汇入木素衍生芳香化合物的中心降解枢纽；原儿茶酸经 4,5-开环（LigAB）及下游反应（4-carboxy-2-hydroxymuconate-6-semialdehyde → 4-oxalomesaconate / 2-pyrone-4,6-dicarboxylate 等）最终生成丙酮酸与草酰乙酸进入 TCA 循环；O-脱甲基释放的甲醛进入 C1 代谢被同化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate 4,5-cleavage pathway",
+      "summary": "原儿茶酸 4,5-开环产物 4-羧基-2-羟基黏康酸-6-半醛经脱氢与水解/互变（4-oxalomesaconate、2-pyrone-4,6-dicarboxylate 等中间体）进一步转化为丙酮酸与草酰乙酸，进入中心碳代谢（TCA 循环）。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Sphingobium sp. SYK-6（曾名 Sphingomonas paucimobilis SYK-6）木素衍生芳香化合物降解的原始研究论文与综述（Masai/Katayama/Fukuda 等团队系列工作）；具体文献记录 ID 未能逐条核对，故 record_id 为空",
+      "claim_scope": [
+        "S1-S5 各步反应与酶（LigX、LigZ、LigW2、VanA/VanB、LigAB）",
+        "Sphingobium sp. SYK-6 为 5,5'-dehydrodivanillate 降解菌株"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Sphingobium sp. SYK-6 的基本性状（好氧、革兰氏阴性、底物谱、不产芽孢等）"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "S2（LigZ）产物按文献常述填为 5-羧基香草酸（5-carboxyvanillate），但该步共产物与精确化学计量未能确证；底物 2,2',3,3'-四羟基-5,5'-二羧基联苯已无甲氧基而产物含甲氧基，反应细节（是否经 HOPDA 类开环中间体或存在未鉴定的共底物）存疑。",
+    "5-羧基香草酸脱羧酶在 SYK-6 中报道有 LigW 与 LigW2 两种同工酶，本答案首选 LigW2；生理主酶未完全确证。",
+    "LigX、LigZ、LigW2、LigAB 的 EC 编号未能确证，均填 null；LigX（Rieske 型加氧酶）的电子传递组分亦未确证。",
+    "Sphingobium sp. SYK-6 的 NCBI TaxID、菌种保藏信息、基因组登录号/大小/GC%、生长温度/pH/盐度数值及运动性未能确证，相关性状填 null/unknown。",
+    "本答案各步事实来自训练知识中的 SYK-6 相关文献记忆，未能逐条核对原始出处，证据整体置信度为中等。",
+    "氧条件题面未指定（null）；该途径实际为好氧途径。"
+  ]
+}

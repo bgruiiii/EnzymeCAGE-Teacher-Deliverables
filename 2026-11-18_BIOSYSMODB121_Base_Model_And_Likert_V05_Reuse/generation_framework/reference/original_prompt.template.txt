@@ -1,0 +1,54 @@
+# 任务
+{{CASE_METADATA_BLOCK}}
+
+题目：请给出所述物质在指定条件与指定路线下的微生物降解主链（main route）。
+每一步给主底物和主产物的英文名及SMILES、一个首选酶及EC、一个对应微生物。
+同一菌去重，填写15项性状及各项最强来源；不确定项为null。
+本题路线范围已由题面指定：route_scope.chosen_route_name 必须原样填写题面给定的路线名称，不得改选其他路线。
+
+# 回答要求
+1. 只返回一个 JSON 对象。JSON 之外不要输出任何解释文字，不要使用 markdown 代码围栏（三个反引号），不要把答案拆成多段或多个对象。
+2. 每个 step 必须给出主底物与主产物（substrates 与 products 各至少一个成员，成员含 name 英文名与 smiles），并绑定一个首选 enzyme（含 ec_number）与一个对应 microorganism。
+3. organism_profiles 在同一道题内按"物种 + 菌株"去重：物种相同而菌株不同不得合并为同一条 profile；每条 profile 只出现一次，由 step.microorganism.organism_profile_id 引用。不要求"整条路径只有一个代表菌"，每一步都要写该步对应的菌。
+4. 下方空白模板里 steps、organism_profiles、evidence_registry 数组中的那一个成员只是可复制的格式样板：它不限制"只能有一步 / 只能有一个菌 / 只能有一条证据"，也不是本题答案。请按真实内容把样板复制成需要数量的成员后填写，不得把空样板原样照抄当作答案。
+5. 未知的酶、菌、EC 编号、保藏编号、基因组编号、TaxID、数值与性状一律填 null，不要编造、不要猜测、不要用近似值占位，这样缺失会被如实记录。整个酶未知时把 enzyme 整体填 null；整个微生物未知时把 microorganism 整体填 null。一旦填写某个字段，只允许一个候选值。枚举字段的取值范围以 Schema 为准（role ∈ main/cofactor/byproduct/unknown，confidence ∈ high/medium/low/unknown，route_scope.oxygen_condition ∈ aerobic/anaerobic/mixed/unknown/null，evidence.source_type 见 Schema 中的枚举），枚举字段未知时填 unknown，不要自造枚举之外的词。
+6. 每个事实至多引用一个最强证据。step.reaction_evidence_id、step.trait_evidence_id、enzyme.evidence_id、microorganism.evidence_id 以及每一项性状的 evidence_id 都是单个字符串（不是数组），指向 evidence_registry 中已登记的 evidence_id；同一条 evidence_id 允许被多处复用；没有任何来源时填 null，并把该事实的 confidence 填为 low 或 unknown。
+7. ORG_001、EVID_001、S1 这类标识符是本条回答内部自建的局部标签，不是任何数据库的真实 ID，也不要求你预先知道它们。请自行按 ORG_001/ORG_002…、EVID_001/EVID_002…、S1/S2… 连续编号，并保证本条回答内部引用自洽。
+8. 真实存在多个底物或多个主产物时，用数组把它们全部返回（例如某一步同时消耗主底物与辅因子、同时生成主产物与副产物），不会被"单候选"规则误删；用 role 区分 main 与 cofactor/byproduct。
+9. alternative_branches、downstream_continuation、central_metabolism_entry、complete_pathway_organism_profile_id、uncertainties 是可选保留字段，本轮不评分：知道就填，不知道就留空数组或 null，禁止为了填满它们而编造内容。alternative_branches 的每个成员必须带 is_part_of_scored_main_route（布尔值），用于声明该分支不属于被评分的主链。
+10. 模板中的字段顺序只是为了便于人阅读，JSON 键顺序不作为通过门，你可以按任意键顺序输出；必填字段（Schema 中 required 列出的字段）缺一不可，缺失会被记为格式错误；若你额外输出了 Schema 之外的字段，采集程序只会原样保留并记录一条 warning，不会删除它，但请尽量与 Schema 字段集合保持一致，不要随意增加。
+11. 不要填写 model、model_id、anonymous_model_id 等任何模型身份字段：模板与 Schema 中都不存在这些字段，模型身份由采集程序写在外层记录里。
+12. route_summary、notes、explanation、summary、uncertainty、raw_text 等文字字段用中文书写；化学物质名、酶名、物种名、SMILES、EC 编号、数据库名可保留英文原文。
+
+# 15项性状
+每个 organism_profile 的 traits 必须一次返回全部 15 项，按下列展示顺序排列。
+每一项统一外壳为 {"value": ..., "raw_text": ..., "evidence_id": ..., "confidence": ...}：value 按该项结构填写；raw_text 是你据以填写 value 的原文摘录，没有原文则 null；evidence_id 指向 evidence_registry 中已登记的条目，没有来源则 null；confidence ∈ {high, medium, low, unknown}。
+
+| 展示顺序 | 字段 ID | 性状名称 | value 的结构 |
+|---|---|---|---|
+| 1 | F2_temperature | 温度 | 对象 {minimum_c, optimum_c, maximum_c, preference}，前三项为摄氏数值，preference 为中文温度偏好描述 |
+| 2 | F1_oxygen_tolerance | 氧耐受性 | 一个字符串（一个耐氧类型描述）；unknown 或 null 可用 |
+| 3 | F4_salinity | 盐度 | 对象 {minimum, optimum, maximum, unit, category}，unit 写单位，category 为中文盐度类别描述 |
+| 4 | F3_pH | 酸碱度 | 对象 {minimum, optimum, maximum} |
+| 5 | F5_culture_collection | 菌种保藏 | 对象 {collection, accession}，collection 为保藏机构缩写，accession 为该机构编号；至多一个编号 |
+| 6 | F6_respiration_electron_acceptor | 呼吸方式与末端电子受体 | 对象 {respiration_mode, terminal_electron_acceptor}，各写一个主要呼吸方式与一个主要末端电子受体 |
+| 7 | F7_carbon_substrate_utilization | 碳源/底物利用 | 一个字符串（一个主要碳源或底物利用描述） |
+| 8 | F8_degradation_capacity_broad | 广义降解能力 | 一个字符串 |
+| 9 | F9_enzyme_activity | 酶活 | 一个字符串（一个主要活性描述） |
+| 10 | F10_motility | 运动性 | 一个字符串 |
+| 11 | F11_cell_morphology | 细胞形态 | 一个字符串 |
+| 12 | F12_gram_cell_envelope | 革兰氏染色/细胞包膜 | 一个字符串（一个 Gram 或细胞包膜描述） |
+| 13 | F13_sporulation | 产孢/芽孢 | 一个字符串 |
+| 14 | F14_genome_basic | 基因组基本信息 | 对象 {genome_accession, genome_size_bp, gc_percent}，genome_size_bp 为整数 |
+| 15 | F15_habitat_generalism | 栖息地广适性 | 一个字符串（依据本地字段描述栖息地广适性，不能与"一个栖息地名称"默认为同义） |
+
+补充纪律：
+- 15 项必须全部出现，缺任何一项即字段集合不符。某项完全未知时：字符串型填 value: null；对象型可整体填 value: null，也可保留对象结构并把各子键填 null。
+- 温度观测值的统计 minimum/maximum 不自动等于生物学耐受极限；此处只规定返回结构，不要求你做科学转换，照实填写来源给出的数值即可。
+- ncbi_taxid 只在 profile 身份区（organism_profiles[].ncbi_taxid）填写一次；F14 如引用身份数据，不要产生重复又互相矛盾的拷贝。
+
+# 完整空白填写格式（biodegradation_answer_v2）
+{{BLANK_TEMPLATE_JSON}}
+
+# 机器校验 Schema（compact，字段定义以此为准）
+{{COMPACT_SCHEMA_JSON}}

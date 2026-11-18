@@ -1,0 +1,311 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_110",
+  "pollutant_name_zh": "2,5-二羟基苯甲酸根",
+  "pollutant_name_en": "2,5-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "gentisate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线为 gentisate degradation II；氧条件未指定。"
+  },
+  "route_summary": "在 gentisate degradation II 主链中，2,5-二羟基苯甲酸根先由 gentisate 1,2-dioxygenase 开环生成 3-maleylpyruvate，再经 maleylpyruvate isomerase 异构为 3-fumarylpyruvate，最后由 fumarylpyruvate hydrolase 水解为 fumarate 与 pyruvate，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,5-Dihydroxybenzoate",
+          "smiles": "O=C([O-])c1c(O)ccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-maleylpyruvate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化开环",
+      "enzyme": {
+        "name": "gentisate 1,2-dioxygenase",
+        "ec_number": "1.13.11.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ralstonia sp. U2",
+        "strain": "U2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-maleylpyruvate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-fumarylpyruvate",
+          "smiles": "[O-]C(=O)/C=C/C(=O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "顺反异构化",
+      "enzyme": {
+        "name": "maleylpyruvate isomerase",
+        "ec_number": "5.2.1.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ralstonia sp. U2",
+        "strain": "U2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-fumarylpyruvate",
+          "smiles": "[O-]C(=O)/C=C/C(=O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarate",
+          "smiles": "[O-]C(=O)/C=C/C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解",
+      "enzyme": {
+        "name": "fumarylpyruvate hydrolase",
+        "ec_number": "3.7.1.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ralstonia sp. U2",
+        "strain": "U2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Ralstonia sp. U2",
+      "strain": "U2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用 2,5-二羟基苯甲酸根（gentisate）作为碳源/底物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解 2,5-二羟基苯甲酸根（gentisate）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "gentisate 1,2-dioxygenase 活性（EC 1.13.11.4）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "fumarate",
+      "pyruvate"
+    ],
+    "explanation": "终产物延胡索酸与丙酮酸可进入三羧酸循环及中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "fumarate",
+      "summary": "进入三羧酸循环。"
+    },
+    {
+      "name": "pyruvate",
+      "summary": "进入中心碳代谢。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "gentisate degradation II in Ralstonia sp. U2: gentisate -> 3-maleylpyruvate -> 3-fumarylpyruvate -> fumarate + pyruvate",
+      "claim_scope": [
+        "pathway_steps",
+        "enzyme",
+        "microorganism",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general taxonomic traits of Ralstonia sp. U2 / Ralstonia genus",
+      "claim_scope": [
+        "F1_oxygen_tolerance",
+        "F6_respiration_electron_acceptor",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；本答案保持 route_scope.oxygen_condition 为 null。",
+    "菌株保藏编号、基因组信息与多数生理性状缺乏直接来源，相关项填 null。",
+    "部分属级生理性状基于内部分类学知识填写，置信度较低。"
+  ]
+}

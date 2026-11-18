@@ -1,0 +1,306 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_135",
+  "pollutant_name_zh": "柠檬烯",
+  "pollutant_name_en": "Limonene",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "limonene degradation IV (anaerobic)",
+    "is_single_continuous_route": true,
+    "notes": "路线名称按题面原样填写；该路线对应 MetaCyc PWY-6482，代表菌为反硝化β-变形菌 Castellaniella defragrans 65Phen（旧名 Alcaligenes defragrans 65Phen）。"
+  },
+  "route_summary": "在厌氧（反硝化）条件下，Castellaniella defragrans 65Phen 对柠檬烯的降解主链为：柠檬烯经不依赖分子氧的氧化性羟化（氧原子来源于水，按 EC 记录以 NAD+ 为电子受体）生成紫苏醇（perillyl alcohol，由 limonene dehydrogenase 催化），紫苏醇再被氧化为紫苏醛（perillaldehyde，由 perillyl-alcohol dehydrogenase 催化），紫苏醛进一步氧化为紫苏酸（perillic acid）。这三步构成 limonene degradation IV (anaerobic) 的被表征主链；紫苏酸之后的进一步降解与进入中心代谢的路径尚未阐明。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "limonene",
+          "smiles": "CC1=CCC(CC1)C(=C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "perillyl alcohol",
+          "smiles": "C=C(C)C1CC=C(CO)CC1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化性羟化/脱氢（氧原子来源于水；按 EC 记录以 NAD+ 为电子受体）",
+      "enzyme": {
+        "name": "limonene dehydrogenase",
+        "ec_number": "1.1.1.297",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "底物对映体（(R)- 与 (S)-limonene 均可被该菌降解）与体内实际电子受体偶联方式未完全确定；此处按通用非立体指定 SMILES 与 EC 记录（NAD+）填写。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "perillyl alcohol",
+          "smiles": "C=C(C)C1CC=C(CO)CC1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "perillaldehyde",
+          "smiles": "C=C(C)C1CC=C(C=O)CC1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醇脱氢氧化（伯醇→醛，NAD+ 依赖）",
+      "enzyme": {
+        "name": "perillyl-alcohol dehydrogenase",
+        "ec_number": "1.1.1.298",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "EC 1.1.1.298 与 perillyl-alcohol dehydrogenase 的对应关系把握较低；若该编号有误，本步酶仍应为一 NAD+ 依赖的醇脱氢酶。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "perillaldehyde",
+          "smiles": "C=C(C)C1CC=C(C=O)CC1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "perillic acid",
+          "smiles": "C=C(C)C1CC=C(C(=O)O)CC1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛氧化为羧酸（醛脱氢酶反应，NAD+ 依赖）",
+      "enzyme": {
+        "name": "perillaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "本步酶未见专门的生化鉴定与 EC 编号；紫苏酸（perillic acid）之后的下游降解途径未知。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Castellaniella defragrans",
+      "strain": "65Phen",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧：能进行反硝化（厌氧下以硝酸盐为末端电子受体生长），也能好氧生长",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "呼吸型代谢（氧化磷酸化）；厌氧条件下进行反硝化",
+            "terminal_electron_acceptor": "硝酸盐（nitrate）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以单萜类化合物（如 limonene、β-myrcene、α-pinene）为唯一碳源和能源进行反硝化生长",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "厌氧降解多种单萜：limonene、α-pinene、α-phellandrene、β-myrcene、linalool、p-cymene 等",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "limonene dehydrogenase 活性：不依赖分子氧将柠檬烯氧化性羟化为紫苏醇（perillyl alcohol）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rods）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "现有记录主要来自以单萜富集的污水/活性污泥分离株，缺乏跨多种自然栖息地的分布数据，栖息地广适性总体不明",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "该路线在紫苏酸（perillic acid）之后的下游降解与进入中心代谢的路径尚未被阐明，无法给出确定的中心代谢进入产物。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": "PWY-6482",
+      "locator": "https://metacyc.org/pathway?orgid=META&id=PWY-6482",
+      "claim_scope": ["limonene degradation IV (anaerobic) 主链反应序列与中间体", "各步酶归属", "对应菌株 Castellaniella defragrans 65Phen"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA/ExplorEnz",
+      "record_id": "EC 1.1.1.297",
+      "locator": null,
+      "claim_scope": ["limonene dehydrogenase 的 EC 编号与催化反应（limonene + H2O + NAD+ → perillyl alcohol）", "该酶来源于 Castellaniella defragrans"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": "doi:10.3389/fmicb.2014.00346",
+      "locator": "Marmulla R, Harder J. Microbial monoterpene transformations—a review. Front Microbiol. 2014;5:346",
+      "claim_scope": ["厌氧单萜降解综述：C. defragrans 中 limonene → perillyl alcohol → perillaldehyde → perillic acid 的转化", "该菌的广义单萜降解能力"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": "Appl Environ Microbiol. 1995;61(11):3804-3808",
+      "locator": "Harder J, Probian C. Microbial degradation of monoterpenes in the absence of molecular oxygen",
+      "claim_scope": ["反硝化条件下以单萜为唯一碳源富集分离 Alcaligenes defragrans（含 65Phen）", "硝酸盐作为厌氧生长末端电子受体", "分离来源为污水/活性污泥等样品"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": "Syst Appl Microbiol. 1998;21(2):237-244",
+      "locator": "Foss S, Heyen U, Harder J. Alcaligenes defragrans sp. nov., description of four strains isolated on alkenoic monoterpenes and toluene",
+      "claim_scope": ["分类学与基本生理性状：革兰氏阴性杆状细胞、不产孢、反硝化"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA/ExplorEnz",
+      "record_id": "EC 1.1.1.298",
+      "locator": null,
+      "claim_scope": ["perillyl-alcohol dehydrogenase 的 EC 编号（对应关系待核实）"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "各步中 limonene dehydrogenase（EC 1.1.1.297）的归属证据相对较强；perillyl-alcohol dehydrogenase 与 EC 1.1.1.298 的对应把握较低，如编号有误则本步酶仍属 NAD+ 依赖醇脱氢酶。",
+    "第三步 perillaldehyde → perillic acid 未见专门的酶学鉴定，EC 编号留空。",
+    "紫苏酸之后的下游降解途径（开环、β-氧化及进入中心代谢）目前未知。",
+    "体内生理电子受体与反硝化电子传递链的偶联方式未阐明，此处按 EC 记录标注 NAD+ 依赖性。",
+    "Castellaniella defragrans 65Phen 的菌种保藏编号、NCBI TaxID 与基因组信息未能可靠确认，均填 null。",
+    "该菌旧名为 Alcaligenes defragrans 65Phen；温度、pH、盐度、运动性等性状未见针对该菌株的明确记录，按未知处理。"
+  ]
+}

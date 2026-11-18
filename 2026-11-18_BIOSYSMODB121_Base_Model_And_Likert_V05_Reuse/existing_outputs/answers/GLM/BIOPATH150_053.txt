@@ -1,0 +1,493 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_053",
+  "pollutant_name_zh": "三聚氰胺",
+  "pollutant_name_en": "Melamine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "melamine degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，oxygen_condition按要求保留null；文献中承担该途径的菌株（Klebsiella terrigena为兼性厌氧菌、Pseudomonas sp. ADP为好氧菌）均在有氧培养条件下实现降解，各步反应本身均为水解反应。"
+  },
+  "route_summary": "三聚氰胺（melamine）先经三步水解脱氨：melamine→ammeline→ammelide→cyanuric acid（每步释放1分子NH3）；随后cyanuric acid经AtzD水解开环生成biuret并释放CO2；biuret经AtzE水解释氨生成allophanate；allophanate经AtzF水解为2分子NH3与2分子CO2，氮以NH3形式进入氮同化、碳以CO2释出。脱氨三步以Klebsiella terrigena（肠源性三聚氰胺转化菌）为代表菌，cyanuric acid下游三步以Pseudomonas sp. ADP（携带atzDEF，位于质粒pADP-1）为代表菌。另有biuret经TrzF直接水解为urea再经urease分解的分支，不属于本题计分主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "Melamine", "smiles": "Nc1nc(N)nc(N)n1", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Ammeline", "smiles": "Nc1nc(N)nc(O)n1", "role": "main"},
+        {"name": "Ammonia", "smiles": "N", "role": "byproduct"}
+      ],
+      "reaction_type": "hydrolytic deamination（水解脱氨）",
+      "enzyme": {
+        "name": "Melamine deaminase (TriA)",
+        "ec_number": null,
+        "gene_or_protein": "triA",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Klebsiella terrigena",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "TriA的酶学证据来自Pseudomonas属菌株，与该步对应菌Klebsiella terrigena并非同一株；melamine deaminase未见正式EC编号。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "Ammeline", "smiles": "Nc1nc(N)nc(O)n1", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Ammelide", "smiles": "Nc1nc(O)nc(O)n1", "role": "main"},
+        {"name": "Ammonia", "smiles": "N", "role": "byproduct"}
+      ],
+      "reaction_type": "hydrolytic deamination（水解脱氨）",
+      "enzyme": {
+        "name": "Melamine deaminase (TriA)",
+        "ec_number": null,
+        "gene_or_protein": "triA",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Klebsiella terrigena",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "TriA可连续催化melamine与ammeline两步脱氨；部分文献亦将该步酶称为ammeline deaminase；EC编号未分配。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "Ammelide", "smiles": "Nc1nc(O)nc(O)n1", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Cyanuric acid", "smiles": "O=c1[nH]c(=O)[nH]c(=O)[nH]1", "role": "main"},
+        {"name": "Ammonia", "smiles": "N", "role": "byproduct"}
+      ],
+      "reaction_type": "hydrolytic deamination（水解脱氨）",
+      "enzyme": {
+        "name": "Ammelide aminohydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Klebsiella terrigena",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "ammelide→cyanuric acid一步在Klebsiella terrigena中缺乏基因与酶学层面的直接证据，由该菌整体转化（melamine→cyanuric acid）推断；酶与菌的对应关系不确定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "Cyanuric acid", "smiles": "O=c1[nH]c(=O)[nH]c(=O)[nH]1", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Biuret", "smiles": "NC(=O)NC(=O)N", "role": "main"},
+        {"name": "Carbon dioxide", "smiles": "O=C=O", "role": "byproduct"}
+      ],
+      "reaction_type": "hydrolytic ring opening with CO2 release（水解开环并释放CO2）",
+      "enzyme": {
+        "name": "Cyanuric acid hydrolase (AtzD)",
+        "ec_number": "3.5.2.15",
+        "gene_or_protein": "atzD",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "ADP",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "AtzD的EC编号3.5.2.15为依记忆的数据库注释信息，中等置信。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {"name": "Biuret", "smiles": "NC(=O)NC(=O)N", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Allophanate", "smiles": "NC(=O)NC(=O)O", "role": "main"},
+        {"name": "Ammonia", "smiles": "N", "role": "byproduct"}
+      ],
+      "reaction_type": "hydrolytic deamination（水解脱氨）",
+      "enzyme": {
+        "name": "Biuret hydrolase (AtzE)",
+        "ec_number": null,
+        "gene_or_protein": "atzE",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "ADP",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "AtzE产物为allophanate并释放NH3，EC编号未分配；在携带trzF的菌株中biuret走直接生成urea的分支。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "MAIN",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {"name": "Allophanate", "smiles": "NC(=O)NC(=O)O", "role": "main"},
+        {"name": "Water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "Ammonia", "smiles": "N", "role": "main"},
+        {"name": "Carbon dioxide", "smiles": "O=C=O", "role": "main"}
+      ],
+      "reaction_type": "amide hydrolysis（酰胺水解）",
+      "enzyme": {
+        "name": "Allophanate hydrolase (AtzF)",
+        "ec_number": "3.5.1.54",
+        "gene_or_protein": "atzF",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "ADP",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "AtzF的EC编号3.5.1.54为依记忆填写，中等置信。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Klebsiella terrigena",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": "中温菌（来源于温血动物肠道，中温生长）"},
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（facultative anaerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": null, "maximum": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": null, "accession": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "有氧呼吸（兼性厌氧，厌氧时行发酵）", "terminal_electron_acceptor": "分子氧（O2）"},
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可代谢三聚氰胺（以其为氮源底物，脱氨转化为氰尿酸并释放氨）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "将三聚氰胺逐步脱氨转化为氰尿酸；未见其进一步完全矿化氰尿酸的可靠证据",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "整体表现为三聚氰胺脱氨活性（三聚氰胺→氰尿酸，并释放氨）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "无鞭毛、不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（短杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，具多糖荚膜",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖居于动物肠道（可从肠内容物/粪便分离）；克雷伯菌属亦见于土壤、水体等环境，栖息地谱较广",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "ADP",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": "中温菌（常规约30°C培养）"},
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": null, "maximum": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": null, "accession": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "分子氧（O2）"},
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以阿特拉津、氰尿酸等s-三嗪类化合物作为唯一氮源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "能经atz基因群（AtzA–F）将阿特拉津及其s-三嗪中间体（含氰尿酸开环途径）完全矿化为CO2与NH3",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "阿特拉津/氰尿酸降解酶系活性（AtzA–F，其中AtzD为氰尿酸水解酶）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自受阿特拉津污染/处理的土壤；假单胞菌属广布于土壤、水体等多种生境，属栖息地广适型",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["Ammonia", "Carbon dioxide"],
+    "explanation": "主链终点为矿化产物：三聚氰胺环上的3个碳全部以CO2释放，6个氮全部以NH3释放；NH3可经谷氨酰胺合成酶/谷氨酸合酶（GS/GOGAT）或谷氨酸脱氢酶（GDH）同化为谷氨酸、谷氨酰胺，从而衔接氨基酸与核苷酸合成等中央氮代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "氨同化进入中央氮代谢",
+      "summary": "末步释放的NH3经GS/GOGAT或谷氨酸脱氢酶同化为谷氨酸/谷氨酰胺，进入氨基酸与核苷酸合成等中央代谢；CO2进入碳循环或逸出。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "biuret→urea→NH3/CO2（TrzF-urease分支）",
+      "summary": "在携带trzF的菌株（如某些Pseudomonas属菌株）中，biuret被biuret hydrolase（TrzF）直接水解为urea并释放NH3与CO2；urea再经urease（EC 3.5.1.5）水解为2分子NH3与CO2。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Zheng et al. (2013), 'Melamine-induced renal toxicity is mediated by the gut microbiota', Science Translational Medicine（肠道菌群将三聚氰胺转化为氰尿酸；Klebsiella terrigena为关键转化菌）",
+      "claim_scope": ["S1-S3: melamine经脱氨转化为cyanuric acid（整体转化证据）", "ORG_001: 三聚氰胺代谢与肠道栖居性状"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Martinez et al. (2001), J. Bacteriol. 183: 5684-5697（阿特拉津代谢质粒pADP-1全序列，含atzD/atzE/atzF氰尿酸下游分解基因，宿主为Pseudomonas sp. ADP）",
+      "claim_scope": ["S4-S6: cyanuric acid→biuret→allophanate→NH3/CO2及AtzD/AtzE/AtzF", "ORG_002: 酶系活性"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Seffernick et al. (2001), J. Bacteriol. 183: 2405-2409（melamine deaminase TriA催化melamine→ammeline并可继续脱氨至ammelide）",
+      "claim_scope": ["S1-S2: 酶与反应（TriA两步脱氨）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Mandelbaum et al. (1995), Appl. Environ. Microbiol. 61: 1451-1457（自阿特拉津污染土壤分离Pseudomonas sp. strain ADP，可矿化阿特拉津）",
+      "claim_scope": ["ORG_002: 分离生境与阿特拉津/s-三嗪底物利用性状"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["ORG_001: 属级一般微生物学性状（革兰氏染色、形态、运动性、芽孢、氧耐受）"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["ORG_002: 属级一般微生物学性状（革兰氏染色、形态、芽孢、氧耐受、呼吸方式）"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "melamine/ammeline/ammelide三步脱氨酶均未见正式EC编号，相应字段填null。",
+    "AtzD的EC 3.5.2.15与AtzF的EC 3.5.1.54为依记忆的注释信息（中等置信）；AtzE未查到可靠EC编号，填null。",
+    "Klebsiella terrigena的菌株号、保藏信息、TaxID、基因组信息未知；Pseudomonas sp. ADP的保藏号与TaxID亦未确认，均填null。",
+    "S1、S2的酶学证据（TriA）来自Pseudomonas属菌株，与该两步对应菌Klebsiella terrigena并非同一株；K. terrigena仅被证明整体将三聚氰胺转化为氰尿酸，三个中间步骤为途径推断。",
+    "Pseudomonas sp. ADP不含triA、不能降解三聚氰胺，仅承担cyanuric acid及其下游步骤；本题无单一模式菌覆盖全链，故complete_pathway_organism_profile_id为null。",
+    "两株菌的温度、盐度、pH范围及基因组等性状缺乏可引来源，填null；属级一般性状以内部知识低置信度填写。"
+  ]
+}

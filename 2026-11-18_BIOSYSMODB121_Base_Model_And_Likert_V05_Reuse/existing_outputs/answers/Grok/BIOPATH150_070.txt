@@ -1,0 +1,339 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_070",
+  "pollutant_name_zh": "3-氯甲苯",
+  "pollutant_name_en": "3-Chlorotoluene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "3-chlorotoluene degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。本题将“3-chlorotoluene degradation II”按常见排序理解为苯环双加氧主链（相对的甲基侧链氧化不计入评分主链）；该编号对应若与来源库相反，则主链化学不同。"
+  },
+  "route_summary": "主链按甲苯双加氧酶途径类推：3-氯甲苯先被双加氧为顺式二氢二醇（cis-5-氯-3-甲基环己-3,5-二烯-1,2-二醇），再脱氢生成5-氯-3-甲基儿茶酚，随后由儿茶酚2,3-双加氧酶间位开环为4-氯-2-羟基-6-氧代庚-2,4-二烯酸。区域选择性与氯代类似物的下游矿化存在不确定性，未把未核实的水解步骤写入主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3-chlorotoluene",
+          "smiles": "Cc1cccc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis-5-chloro-3-methylcyclohexa-3,5-diene-1,2-diol",
+          "smiles": "CC1=CC(Cl)=CC(O)C1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "芳香环双加氧",
+      "enzyme": {
+        "name": "toluene dioxygenase",
+        "ec_number": "1.14.12.11",
+        "gene_or_protein": "todC1C2BA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "产物区域选择性按甲苯2,3-双加氧酶将甲基固定、在非氯取代一侧进行2,3-加成推断，相当于5-氯-3-甲基环己-3,5-二烯-1,2-二醇；ipso加氯取向及其他区域异构体未排除。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "cis-5-chloro-3-methylcyclohexa-3,5-diene-1,2-diol",
+          "smiles": "CC1=CC(Cl)=CC(O)C1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-chloro-3-methylcatechol",
+          "smiles": "Oc1c(O)c(C)cc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "顺式二醇脱氢",
+      "enzyme": {
+        "name": "cis-1,2-dihydrobenzene-1,2-diol dehydrogenase",
+        "ec_number": "1.3.1.19",
+        "gene_or_protein": "todD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "todD对甲苯顺式二氢二醇的脱氢是明确的；对5-氯-3-甲基类似物的转化按底物宽泛性类推，本题未逐条核对动力学数据。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "5-chloro-3-methylcatechol",
+          "smiles": "Oc1c(O)c(C)cc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-chloro-2-hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "CC(=O)C=C(Cl)C=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "间位开环",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "todE",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 351746,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "开环位点按todE对3-甲基儿茶酚的近端间位切割类推，氯原子落在链上C4；5-氯-3-甲基儿茶酚是否被该酶高效转化、以及是否改走修饰邻位裂解，均未在本题中用实验文献核实。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 351746,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用甲苯作为唯一碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解苯、甲苯、乙苯等单环芳香烃，并能共代谢转化多种取代芳香烃",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "甲苯双加氧酶、顺式二醇脱氢酶和儿茶酚2,3-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "CP000712.1",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "主链止于氯代间位开环产物，不能确认其已被水解为丙酮酸、乙酸或乙醛等中心代谢物，故不填写中心代谢入口产物。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TOD下游水解",
+      "summary": "非氯代的2-羟基-6-氧代庚-2,4-二烯酸通常由水解酶继续分解并进入中心代谢；4-氯代类似物是否同样水解、脱氯并汇入中心代谢，本题未确认，因此不写入评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "methyl side-chain oxidation to 3-chlorobenzoate",
+      "summary": "另一条已有文献的起始路线是甲基侧链氧化：3-氯甲苯经二甲苯单加氧酶生成3-氯苯甲醇，再经醇脱氢和醛脱氢生成3-氯苯甲酸，之后可衔接3-氯苯甲酸的修饰邻位裂解。该分支不是本题按“degradation II”评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "3-chlorotoluene ring-dioxygenation sequence",
+        "toluene dioxygenase EC 1.14.12.11",
+        "todD EC 1.3.1.19",
+        "todE EC 1.13.11.2",
+        "Pseudomonas putida F1 upper pathway"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida F1 traits",
+        "ncbi_taxid 351746",
+        "genome accession CP000712.1"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "“3-chlorotoluene degradation II”被对应为苯环双加氧主链，依据是常见的途径I（甲基侧链氧化）/途径II（苯环双加氧）排序；若来源库编号相反，则评分主链应改为侧链氧化至3-氯苯甲酸。",
+    "顺式二氢二醇与5-氯-3-甲基儿茶酚的区域选择性由甲苯双加氧酶结合取向推断，未在本题中用原始波谱或数据库记录复核。",
+    "间位开环产物结构按3-甲基儿茶酚的近端切割类推，todE对5-氯-3-甲基儿茶酚的实际活性与切割位点未核实。",
+    "Pseudomonas putida F1可共代谢转化氯代甲苯，但是否能单独矿化3-氯甲苯未确认，因此complete_pathway_organism_profile_id为null。",
+    "保藏编号、pH、盐度、温度数值极限、基因组大小、GC含量和栖息地广适性无可靠原文，已置null。"
+  ]
+}

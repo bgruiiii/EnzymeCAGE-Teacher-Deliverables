@@ -1,0 +1,600 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_112",
+  "pollutant_name_zh": "2,3-二羟基苯甲酸根",
+  "pollutant_name_en": "2,3-Dihydroxybenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "2,3-dihydroxybenzoate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本答案采用文献中记载最充分的好氧主链：脱羧生成儿茶酚后进入邻位开环和β-酮己二酸途径，直至中心代谢。间位开环不计入评分主链。"
+  },
+  "route_summary": "好氧条件下，2,3-二羟基苯甲酸根由2,3-二羟基苯甲酸脱羧酶脱羧为儿茶酚并释放二氧化碳；儿茶酚经儿茶酚1,2-双加氧酶邻位开环生成顺,顺-粘康酸，再经内酯化、异构、水解得到3-氧代己二酸，随后由辅酶A转移和硫解生成琥珀酰辅酶A与乙酰辅酶A，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,3-dihydroxybenzoate",
+          "smiles": "Oc1cccc(C(=O)[O-])c1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "2,3-dihydroxybenzoate decarboxylase",
+        "ec_number": "4.1.1.46",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": null,
+        "ncbi_taxid": 5061,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "脱羧酶在多种真菌和细菌中有报道；此处取酶学表征最经典的Aspergillus niger为代表，未绑定可核验的菌株保藏号。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis,cis-muconate",
+          "smiles": "[O-]C(=O)/C=C\\C=C/C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ortho ring cleavage",
+      "enzyme": {
+        "name": "catechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": "catA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "邻位开环是2,3-二羟基苯甲酸脱羧后的常见后续主链。Acinetobacter baylyi ADP1是该酶的模式菌，并非2,3-二羟基苯甲酸降解的原分离株。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "cis,cis-muconate",
+          "smiles": "[O-]C(=O)/C=C\\C=C/C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "muconolactone",
+          "smiles": "O=C([O-])CC1C=CC(=O)O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "cycloisomerization",
+      "enzyme": {
+        "name": "muconate cycloisomerase",
+        "ec_number": "5.5.1.1",
+        "gene_or_protein": "catB",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "生物产物为(+)-(S)-粘康酸内酯；SMILES未标注立体化学。该步菌对应β-酮己二酸途径，而非2,3-二羟基苯甲酸原分离实验。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "muconolactone",
+          "smiles": "O=C([O-])CC1C=CC(=O)O1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": "O=C([O-])CC1=CCC(=O)O1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "muconolactone Delta-isomerase",
+        "ec_number": "5.3.3.4",
+        "gene_or_protein": "catC",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该步酶与菌对应儿茶酚β-酮己二酸途径；与2,3-二羟基苯甲酸的连接依赖上游脱羧生成儿茶酚。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "3-oxoadipate enol-lactone",
+          "smiles": "O=C([O-])CC1=CCC(=O)O1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "[O-]C(=O)CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "3-oxoadipate enol-lactonase",
+        "ec_number": "3.1.1.24",
+        "gene_or_protein": "catD",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该步酶与菌对应儿茶酚β-酮己二酸途径；与2,3-二羟基苯甲酸的连接依赖上游脱羧生成儿茶酚。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "[O-]C(=O)CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "succinyl-CoA",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "succinate",
+          "smiles": "[O-]C(=O)CCC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "CoA transfer",
+      "enzyme": {
+        "name": "3-oxoadipate CoA-transferase",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": "pcaI/pcaJ",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "琥珀酸来自辅因子琥珀酰辅酶A的离去基团，不是芳香底物碳骨架的直接裂解产物。辅酶A类SMILES未填写。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "thiolysis",
+      "enzyme": {
+        "name": "3-oxoadipyl-CoA thiolase",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": "pcaF",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 62977,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "乙酰辅酶A与琥珀酰辅酶A均含来自3-氧代己二酰辅酶A的碳，同为主产物。辅酶A类SMILES未填写。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Aspergillus niger",
+      "strain": null,
+      "ncbi_taxid": 5061,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用葡萄糖等多种碳水化合物，并能转化2,3-二羟基苯甲酸",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具2,3-二羟基苯甲酸脱羧能力，并可转化多种芳香化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2,3-二羟基苯甲酸脱羧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "有隔菌丝的丝状真菌，形成分生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "真菌细胞壁（含几丁质与葡聚糖），不适用细菌革兰氏染色",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "产生分生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "世界性分布的腐生真菌，可在土壤、腐败植物材料和多种人工环境中生长，生境与底物广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Acinetobacter baylyi",
+      "strain": "ADP1",
+      "ncbi_taxid": 62977,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用多种有机碳源，包括苯甲酸和儿茶酚等芳香化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经邻位开环和β-酮己二酸途径降解多种芳香化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "儿茶酚1,2-双加氧酶及β-酮己二酸途径相关酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "无鞭毛，通常不游动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "球杆状或短杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "土壤来源、碳源谱较宽的环境细菌，可利用多种有机底物，栖息地广适性中等",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA", "succinyl-CoA"],
+    "explanation": "β-酮己二酸途径末端硫解生成乙酰辅酶A和琥珀酰辅酶A，二者可直接进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA cycle",
+      "summary": "乙酰辅酶A与琥珀酰辅酶A进入三羧酸循环后可进一步矿化。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "catechol meta-cleavage",
+      "summary": "儿茶酚也可由儿茶酚2,3-双加氧酶（EC 1.13.11.2）间位开环生成2-羟基粘康酸半醛，再进入间位裂解途径。该分支不是本答案评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "EC 4.1.1.46的经典反应及Aspergillus niger作为2,3-二羟基苯甲酸脱羧酶表征来源的酶学共识",
+      "claim_scope": ["S1_reaction", "EC_4.1.1.46", "Aspergillus_niger_decarboxylase"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Acinetobacter baylyi ADP1儿茶酚邻位开环及β-酮己二酸途径的基因-酶对应关系（catA、catB、catC、catD、pcaIJ、pcaF）",
+      "claim_scope": ["S2_to_S7_reactions", "beta_ketoadipate_pathway", "Acinetobacter_baylyi_ADP1"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Aspergillus niger作为常见丝状真菌的一般生物学性状",
+      "claim_scope": ["ORG_001_traits"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Acinetobacter baylyi ADP1作为革兰氏阴性好氧环境细菌的一般生物学性状",
+      "claim_scope": ["ORG_002_traits"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件未指定，主链按好氧脱羧—邻位开环—β-酮己二酸路线填写，不排除其他路线。",
+    "脱羧步骤与后续β-酮己二酸步骤使用了不同代表菌，不能据此认为任一单一菌株已被实验证明可独立完成全程。",
+    "Aspergillus niger未绑定菌株保藏号；两菌的温度、pH、盐度定量范围、基因组登录号和保藏号因缺乏可逐字核对的记录而置null。",
+    "辅酶A、琥珀酰辅酶A、3-氧代己二酰辅酶A和乙酰辅酶A的SMILES未填写，以避免长字符串错误。",
+    "粘康酸内酯SMILES未标注立体化学。"
+  ]
+}

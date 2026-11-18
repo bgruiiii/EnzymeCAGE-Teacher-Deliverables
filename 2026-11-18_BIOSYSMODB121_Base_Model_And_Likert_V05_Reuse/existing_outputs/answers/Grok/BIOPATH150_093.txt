@@ -1,0 +1,593 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_093",
+  "pollutant_name_zh": "苯乙烯",
+  "pollutant_name_en": "Styrene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "styrene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。主链采用证据最充分的好氧侧链氧化路线，并延续至苯乙酰辅酶A环氧化；环二加氧、环氧化物水解和厌氧转化不纳入评分主链。"
+  },
+  "route_summary": "苯乙烯好氧降解主链为侧链氧化后进入苯乙酸途径：苯乙烯经单加氧酶生成(S)-苯乙烯氧化物，异构化为苯乙醛，脱氢为苯乙酸，再活化为苯乙酰辅酶A，并由环-1,2-苯乙酰辅酶A环氧化酶启动芳香环氧化，随后开环进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "styrene",
+          "smiles": "C=Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-styrene oxide",
+          "smiles": "C1OC1c1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧环氧化",
+      "enzyme": {
+        "name": "styrene monooxygenase",
+        "ec_number": "1.14.14.11",
+        "gene_or_protein": "StyA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CA-3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该酶为StyA/StyB双组分系统，此处仅填写氧化酶组分StyA；产物名称为(S)构型，SMILES未标注立体化学。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "(S)-styrene oxide",
+          "smiles": "C1OC1c1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "phenylacetaldehyde",
+          "smiles": "O=CCc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "异构化",
+      "enzyme": {
+        "name": "styrene-oxide isomerase",
+        "ec_number": "5.3.99.7",
+        "gene_or_protein": "StyC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CA-3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "phenylacetaldehyde",
+          "smiles": "O=CCc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "phenylacetate",
+          "smiles": "O=C(O)Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+依赖的脱氢",
+      "enzyme": {
+        "name": "phenylacetaldehyde dehydrogenase",
+        "ec_number": "1.2.1.39",
+        "gene_or_protein": "StyD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CA-3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "phenylacetate",
+          "smiles": "O=C(O)Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "phenylacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "辅酶A连接",
+      "enzyme": {
+        "name": "phenylacetate-CoA ligase",
+        "ec_number": "6.2.1.30",
+        "gene_or_protein": "PaaK",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "U",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该步直接酶学证据来自苯乙酸降解模式株Pseudomonas putida U，而非上游苯乙烯降解株CA-3；CA-3能利用苯乙酸，但本答案未把其paaK当作已直接鉴定事实。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "phenylacetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-(1,2-epoxy-1,2-dihydrophenyl)acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "芳香环环氧化",
+      "enzyme": {
+        "name": "ring-1,2-phenylacetyl-CoA epoxidase",
+        "ec_number": "1.14.13.149",
+        "gene_or_protein": "PaaABCDE",
+        "confidence": "high",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "U",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "环氧化产物的机理证据主要来自paa途径研究；菌株U具有对应paa基因簇并降解苯乙酸，故作为代表菌，但该菌株并非本步产物结构的原始解析菌株。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "CA-3",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以苯乙烯为唯一碳源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解苯乙烯及其侧链氧化中间体，并可利用非芳香碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有苯乙烯单加氧酶、苯乙烯氧化物异构酶和苯乙醛脱氢酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动，具极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "非狭域专性菌，可在苯乙烯及多种非芳香碳源条件下生长，底物利用较广",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "U",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以苯乙酸为碳源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解苯乙酸，经苯乙酰辅酶A进行芳香环氧化并开环",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有苯乙酸辅酶A连接酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动，具极生鞭毛",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "假单胞菌属代谢广适种的菌株，可利用多种有机底物，并非单一生境专性菌",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA", "succinyl-CoA"],
+    "explanation": "苯乙烯经侧链氧化生成苯乙酸并活化为苯乙酰辅酶A后，进入好氧苯乙酸分解途径；芳香环开环裂解后形成乙酰辅酶A，并生成可转化为琥珀酰辅酶A的二羧酸辅酶A，由此汇入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "苯乙酰辅酶A环氧化物开环裂解",
+      "summary": "2-(1,2-环氧-1,2-二氢苯基)乙酰辅酶A经异构化生成氧杂环庚三烯辅酶A，再水解开环并氧化为脂肪族辅酶A硫酯，随后硫解释放乙酰辅酶A，并形成可进入中心代谢的琥珀酰辅酶A前体。后续各酶未逐一列入评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "苯乙烯环二加氧途径",
+      "summary": "部分细菌以双加氧酶直接攻击苯乙烯芳香环，生成顺式二醇或乙烯基儿茶酚后再代谢。该支路不是假单胞菌中占主导的侧链氧化主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "环氧化物水解支路",
+      "summary": "苯乙烯氧化物可被环氧化物水解酶转化为1-苯基乙二醇后再进入其他代谢路线。在含StyC的菌株中，异构化为苯乙醛是主反应。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "厌氧苯乙烯转化",
+      "summary": "某些厌氧或反硝化菌可转化苯乙烯，但途径证据明显少于好氧侧链氧化，未纳入主链，也不给出未核实的反应步骤。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "map00643",
+      "locator": "KEGG PATHWAY map00643 styrene degradation; EC 1.14.14.11, 5.3.99.7, 1.2.1.39, 6.2.1.30",
+      "claim_scope": ["reaction", "ec_number", "enzyme_name"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "O'Leary ND, O'Connor KE, Dobson ADW. 2002. Biochemistry, genetics and physiology of microbial styrene degradation. FEMS Microbiology Reviews 26:403-417.",
+      "claim_scope": ["pathway", "sty_genes", "Pseudomonas putida CA-3"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "O'Connor K, Buckley CM, Hartmans S, Dobson AD. 1995. Possible regulatory role for nonaromatic carbon sources in styrene degradation by Pseudomonas putida CA-3. Applied and Environmental Microbiology 61:544-548.",
+      "claim_scope": ["styrene_growth", "carbon_source_range", "strain_CA-3"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Olivera ER et al. 1998. Molecular characterization of the phenylacetic acid catabolic pathway in Pseudomonas putida U: the phenylacetyl-CoA catabolon. Proc Natl Acad Sci USA 95:6419-6424.",
+      "claim_scope": ["paaK", "phenylacetate_growth", "strain_U"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida species-level phenotype: Gram-negative rod, non-spore-forming, typically motile by polar flagella, obligate aerobe, mesophile",
+      "claim_scope": ["oxygen_tolerance", "temperature_preference", "respiration", "motility", "morphology", "gram", "sporulation"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Teufel R et al. 2010. Bacterial phenylalanine and phenylacetate catabolic pathway revealed. Proc Natl Acad Sci USA 107:14390-14395.",
+      "claim_scope": ["phenylacetyl-CoA_epoxidase", "paa_ring_cleavage"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，评分主链按最主要的好氧侧链氧化途径填写。",
+    "苯乙烯单加氧酶为双组分酶，酶标识只填写StyA，未把StyB写成并列候选。",
+    "(S)-苯乙烯氧化物的SMILES未标注立体化学，以避免错误的手性标记。",
+    "NAD(P)、ATP、辅酶A及苯乙酰辅酶A的SMILES未填写，避免结构式错误。",
+    "第4步和第5步的代表菌是苯乙酸途径模式株Pseudomonas putida U；CA-3能以苯乙烯为唯一碳源，表明具备完整矿化能力，但其paa基因未在本答案中作为已直接鉴定事实。",
+    "两株菌的温度、pH、盐度定量范围、保藏编号和基因组登录号无可靠来源，均记为null。",
+    "ncbi_taxid填写的是物种级编号303，不是菌株级TaxID。",
+    "环氧化物之后的开环、硫解各步未列入评分主链。"
+  ]
+}

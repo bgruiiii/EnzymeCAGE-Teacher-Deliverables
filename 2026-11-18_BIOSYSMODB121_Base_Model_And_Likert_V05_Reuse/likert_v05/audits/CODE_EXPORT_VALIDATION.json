@@ -1,0 +1,42 @@
+{
+  "PASS": true,
+  "independent_random_directory": true,
+  "actual_api_calls": 0,
+  "real_scoring_rerun": false,
+  "unit_tests": 15,
+  "synthetic_only": true,
+  "commands": [
+    {
+      "command": "python3 -B tools/verify_package.py .",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -B -m unittest discover -s tests -v",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -B tools/likert_cli.py prepare --item examples/synthetic_item.json --out work/request.json",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -B tools/likert_cli.py validate --request work/request.json --response examples/synthetic_response.json",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -B tools/likert_cli.py merge --request work/request.json --response examples/synthetic_response.json --out work/merged.json",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -B tools/likert_cli.py totals --rating work/merged.json",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -B tools/likert_cli.py prepare --item examples/synthetic_item.json --dimensions D3a --out work/partial.json",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -B tools/likert_cli.py merge --request work/partial.json --response examples/synthetic_repair_response.json --baseline examples/synthetic_repair_baseline.json --out work/partial_merged.json",
+      "exit_code": 0
+    }
+  ]
+}

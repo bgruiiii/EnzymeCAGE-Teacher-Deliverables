@@ -1,0 +1,352 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_144",
+  "pollutant_name_zh": "4-(三甲基铵基)丁酸根",
+  "pollutant_name_en": "4-(Trimethylammonio)butanoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "γ-butyrobetaine degradation III",
+    "is_single_continuous_route": true,
+    "notes": "路线名称按题面原样填写。题面未指定氧条件；所选路线的关键酶 CntA 属 Rieske 型单加氧酶，依赖分子氧，故按路线本身判定为好氧。"
+  },
+  "route_summary": "γ-丁酰甜菜碱（4-(三甲基铵基)丁酸根）在 Acinetobacter baumannii 中由两组分 Rieske 型单加氧酶系统 CntA（氧酶）/CntB（NADH 还原酶）在 C4 位（与季铵氮相邻的碳）羟化，生成 4-羟基-4-(三甲基铵基)丁酸根；该中间体为不稳定的半缩醛胺，自发断裂 C–N 键，释放三甲胺并生成琥珀酸半醛（4-氧丁酸根）；琥珀酸半醛再经琥珀酸半醛脱氢酶氧化为琥珀酸，进入 TCA 循环。含氮部分以三甲胺（副产物）形式释放。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-(trimethylammonio)butanoate",
+          "smiles": "C[N+](C)(C)CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-4-(trimethylammonio)butanoate",
+          "smiles": "C[N+](C)(C)C(O)CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "monooxygenation（C4 位羟化）",
+      "enzyme": {
+        "name": "γ-butyrobetaine 4-monooxygenase (CntA/CntB two-component Rieske oxygenase system)",
+        "ec_number": null,
+        "gene_or_protein": "cntA; cntB",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baumannii",
+        "strain": null,
+        "ncbi_taxid": 509064,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该酶无完整 EC 编号；羟化位点定为 C4 基于化学稳定性（生成可自发裂解的半缩醛胺）与文献记忆；CntB 的电子供体为 NADH 还是 NADPH 未确认；菌株信息未知。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-4-(trimethylammonio)butanoate",
+          "smiles": "C[N+](C)(C)C(O)CCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinic semialdehyde (4-oxobutanoate)",
+          "smiles": "O=CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "trimethylamine",
+          "smiles": "CN(C)C",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "spontaneous C–N bond cleavage（半缩醛胺分解，无酶催化）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Acinetobacter baumannii",
+        "strain": null,
+        "ncbi_taxid": 509064,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该步为自发（非酶）反应，故酶填 null；产物按化学计量推断；不排除存在尚未鉴定的辅助裂解酶。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "succinic semialdehyde (4-oxobutanoate)",
+          "smiles": "O=CCCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinate",
+          "smiles": "O=C([O-])CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aldehyde oxidation（脱氢氧化）",
+      "enzyme": {
+        "name": "succinate-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.24",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baumannii",
+        "strain": null,
+        "ncbi_taxid": 509064,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 编号 1.2.1.24 按记忆填写、未核验；NAD+ 与 NADP+ 依赖性未确认；该步是与中央代谢衔接的常规步骤，可能超出参考路线的计分范围。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter baumannii",
+      "strain": null,
+      "ncbi_taxid": 509064,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": 44,
+            "preference": "最适约 37℃（适应人体/哺乳动物体温）；44℃ 可生长（鲍曼不动杆菌的鉴别特征），总体为中温嗜体温型"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧（专性需氧、非发酵型）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "氧化性（非发酵）利用葡萄糖；可利用多种氨基酸与有机酸作为碳源/能源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "机会性病原菌，对多种有机底物具代谢能力；耐干燥、可在无生命表面长期存活并耐受多种抗生素与消毒剂",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "γ-丁酰甜菜碱 4-单加氧酶（CntA/CntB）活性：将 γ-丁酰甜菜碱经 4-羟基中间体转化为三甲胺",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "无鞭毛、不运动（部分菌株具 IV 型菌毛介导的颤动/表面运动）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "短球杆菌，常成双或短链排列",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰阴性（典型外膜/脂多糖细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性：自然环境（土壤、水体）与医院临床环境均有分布，为人体机会病原菌，耐干燥、可在无生命表面长期存活",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinate"],
+    "explanation": "琥珀酸半醛氧化为琥珀酸后进入 TCA 循环彻底氧化并产能；含氮部分以三甲胺形式释放，在本微生物路线内不再转化（宿主 FMO3 可将三甲胺氧化为 TMAO，但不属于本路线）。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA cycle",
+      "summary": "琥珀酸进入三羧酸循环，被进一步氧化为 CO2 并产生还原当量与能量。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "γ-butyrobetaine degradation I（经 L-肉碱的经典好氧路线）",
+      "summary": "γ-丁酰甜菜碱经 γ-butyrobetaine 2-oxoglutarate dioxygenase（EC 1.14.11.1）羟化为 L-carnitine，再经 carnitine dehydrogenase 氧化为 3-dehydrocarnitine，裂解为 trimethylamine 与 acetoacetate（Pseudomonas/Acinetobacter 的经典好氧降解路线），与本题计分主链不同。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Acinetobacter baumannii 一般微生物学性状：严格好氧非发酵、革兰阴性球杆菌、不运动、不产芽孢、最适约 37℃ 且 44℃ 可生长、环境与临床广适分布"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "γ-butyrobetaine 经 CntA（Rieske 型单加氧酶）/CntB（还原酶）羟化生成 4-hydroxy-4-(trimethylammonio)butanoate，并自发裂解为 trimethylamine 与 succinic semialdehyde；模式菌 Acinetobacter baumannii（源自对该领域文献的记忆性知识，未逐字核验）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "succinate-semialdehyde dehydrogenase 催化琥珀酸半醛氧化为琥珀酸并连接 TCA 循环（GABA 分流末端酶）；EC 1.2.1.24 按记忆填写"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "路线名称 'γ-butyrobetaine degradation III' 按题面原样填写；将其对应为 CntA/CntB 介导的'羟化—自发裂解—氧化'路线，是基于对 Acinetobacter γ-丁酰甜菜碱→三甲胺相关文献（约 2017 年前后）的记忆推断，未经数据库逐条核验；若参考路线为其他编号变体（如经 L-carnitine 或经 crotonobetainyl-CoA 的路线），本答案主链将与参考不匹配。",
+    "S1 酶（CntA/CntB）无完整 EC 编号；C4 羟化位点由化学稳定性（生成可自发裂解的半缩醛胺）与文献记忆共同支持。",
+    "S2 为自发反应，酶填 null；裂解产物按化学计量推断，不排除存在未鉴定的辅助裂解酶。",
+    "S3 的 EC 编号（1.2.1.24）与 NAD+/NADP+ 依赖性均按记忆填写，置信度低。",
+    "微生物仅鉴定到种（Acinetobacter baumannii），菌株与保藏编号未知；TaxID 509064 按记忆填写，未核验。",
+    "15 项性状全部来自内部知识（教科书级常识），raw_text 均为 null；F3、F4、F5、F14 等项无可靠数值，按要求填 null，未用近似值占位。"
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_128",
+  "pollutant_name_zh": "L-苏糖醇",
+  "pollutant_name_en": "l-Threitol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-threitol degradation",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "L-苏糖醇经L-苏糖醇脱氢酶氧化为L-苏糖，再经L-苏糖脱氢酶氧化为L-苏糖酸，随后经L-苏糖酸脱水酶脱水生成2-脱氢-3-脱氧-L-苏糖酸，最后由2-脱氢-3-脱氧-L-苏糖酸醛缩酶裂解为丙酮酸和甲醛。丙酮酸进入中心代谢，甲醛可进一步氧化为甲酸和CO2。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-threitol",
+          "smiles": "OC[C@@H](O)[C@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-threose",
+          "smiles": "O=C[C@@H](O)[C@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "L-threitol dehydrogenase",
+        "ec_number": "1.1.1.123",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": null,
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "酶和菌株信息基于一般文献知识，未提供直接证据。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "L-threose",
+          "smiles": "O=C[C@@H](O)[C@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-threonate",
+          "smiles": "O=C(O)[C@@H](O)[C@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "L-threose dehydrogenase",
+        "ec_number": "1.1.1.124",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": null,
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "酶和菌株信息基于一般文献知识，未提供直接证据。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "L-threonate",
+          "smiles": "O=C(O)[C@@H](O)[C@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-L-threonate",
+          "smiles": "O=C(O)C(=O)CCO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydration",
+      "enzyme": {
+        "name": "L-threonate dehydratase",
+        "ec_number": "4.2.1.42",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": null,
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "酶和菌株信息基于一般文献知识，未提供直接证据。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-L-threonate",
+          "smiles": "O=C(O)C(=O)CCO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxy-L-threonate aldolase",
+        "ec_number": "4.1.2.20",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": null,
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "酶和菌株信息基于一般文献知识，未提供直接证据。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas fluorescens",
+      "strain": null,
+      "ncbi_taxid": 294,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "丙酮酸进入中心代谢（如TCA循环或糖异生）。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "formaldehyde oxidation",
+      "summary": "甲醛可经甲醛脱氢酶氧化为甲酸，再经甲酸脱氢酶氧化为CO2。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [],
+  "uncertainties": [
+    "酶EC号与菌株信息基于一般文献知识，未提供直接证据。",
+    "SMILES为基于化学结构的推断，立体化学可能不完全准确。"
+  ]
+}

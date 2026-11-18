@@ -1,0 +1,479 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_095",
+  "pollutant_name_zh": "抗坏血酸根",
+  "pollutant_name_en": "Ascorbate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-ascorbate degradation V",
+    "is_single_continuous_route": true,
+    "notes": "路线名称按题面原样填写为'L-ascorbate degradation V'；氧条件题面未指定，填null；主链以记载最充分的微生物ula型L-抗坏血酸降解途径（大肠杆菌K-12）给出。"
+  },
+  "route_summary": "题面指定路线为'L-ascorbate degradation V'，氧条件未指定。由于无法从既有知识确证数据库中编号为'V'的具体路径版本，本答案以研究最充分的微生物L-抗坏血酸降解途径——大肠杆菌K-12的ula操纵子途径——重构主链：L-抗坏血酸经PEP依赖的PTS系统摄入并磷酸化为6-磷酸-L-抗坏血酸（伴随生成丙酮酸），经氧化与内酯水解生成6-磷酸-2,3-二酮-L-古洛糖酸，脱羧生成5-磷酸-L-木糖酮并释放CO2，还原为5-磷酸-L-木酮糖，经3-差向异构变为5-磷酸-L-核酮糖，最后经araD编码的4-差向异构生成5-磷酸-D-木酮糖，进入戊糖磷酸途径（中心代谢）。各步酶学归属的置信度已在相应字段标注，不确定项按要求填null。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-ascorbate",
+          "smiles": "C([C@@H]([C@H]1C(=C(C(=O)O1)O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "phosphoenolpyruvate",
+          "smiles": "C=C(OP(=O)(O)O)C(=O)O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-ascorbate 6-phosphate",
+          "smiles": "O=P(O)(O)OC[C@@H](O)[C@H]1C(=C(C(=O)O1)O)O",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "PEP依赖的磷酸转移（PTS基团转运伴随C6位磷酸化）",
+      "enzyme": {
+        "name": "L-ascorbate-specific phosphotransferase system (UlaT/UlaA/UlaB)",
+        "ec_number": null,
+        "gene_or_protein": "ulaT; ulaA; ulaB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "PTS各组分的命名（UlaT/UlaA/UlaB）与EC编号未能确认，EC填null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "L-ascorbate 6-phosphate",
+          "smiles": "O=P(O)(O)OC[C@@H](O)[C@H]1C(=C(C(=O)O1)O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-diketo-L-gulonate 6-phosphate",
+          "smiles": "O=P(O)(O)OCC(O)C(O)C(=O)C(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化与内酯水解（开环生成二酮酸）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步（氧化+内酯水解）可能为非酶促或由尚未确认的酶催化，是否有UlaD参与存在分歧，故enzyme填null；中间体SMILES未标注立体化学。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2,3-diketo-L-gulonate 6-phosphate",
+          "smiles": "O=P(O)(O)OCC(O)C(O)C(=O)C(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-xylosone 5-phosphate",
+          "smiles": "O=P(O)(O)OCC(O)C(O)C(=O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "α-酮酸脱羧（C1以CO2释放）",
+      "enzyme": {
+        "name": "2,3-diketo-L-gulonate 6-phosphate decarboxylase (UlaD)",
+        "ec_number": null,
+        "gene_or_protein": "ulaD",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "酶名与基因（ulaD）归属及EC编号基于不完整回忆，置信度低；产物L-xylosone 5-phosphate的立体化学未在SMILES中标注。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "L-xylosone 5-phosphate",
+          "smiles": "O=P(O)(O)OCC(O)C(O)C(=O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-xylulose 5-phosphate",
+          "smiles": "O=P(O)(O)OCC(O)C(O)C(=O)CO",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原（C1醛基还原为羟甲基）",
+      "enzyme": {
+        "name": "L-xylosone 5-phosphate reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "催化该步的酶与对应基因（可能与ulaE或ulaF相关）未能确认，EC未知；NADPH/NADP+的SMILES无法可靠给出，填null。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "L-xylulose 5-phosphate",
+          "smiles": "O=P(O)(O)OC[C@H](O)[C@@H](O)C(=O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-ribulose 5-phosphate",
+          "smiles": "O=P(O)(O)OC[C@H](O)[C@H](O)C(=O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "C3差向异构",
+      "enzyme": {
+        "name": "L-xylulose 5-phosphate 3-epimerase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "差向异构的步骤数与具体酶（可能涉及UlaE/UlaF）未能确认，EC填null；SMILES立体标注为近似。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "L-ribulose 5-phosphate",
+          "smiles": "O=P(O)(O)OC[C@H](O)[C@H](O)C(=O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-xylulose 5-phosphate",
+          "smiles": "O=P(O)(O)OC[C@@H](O)[C@H](O)C(=O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "C4差向异构",
+      "enzyme": {
+        "name": "L-ribulose-5-phosphate 4-epimerase (AraD)",
+        "ec_number": "5.1.3.4",
+        "gene_or_protein": "araD",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该酶常规属于L-阿拉伯糖分解途径（araD产物），其参与抗坏血酸途径末端衔接的记载基于部分记忆，存在不确定性。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 10,
+            "optimum_c": 37,
+            "maximum_c": 45,
+            "preference": "中温性，最适约37℃（宿主体温附近）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧菌（facultative anaerobe）：有氧行有氧呼吸，无氧可行发酵或厌氧呼吸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌；常规培养基（含约0.5%–1% NaCl）中生长良好"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 4.5,
+            "optimum": 7.0,
+            "maximum": 9.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "47076"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧：有氧呼吸为主，无氧时混合酸发酵或厌氧呼吸",
+            "terminal_electron_acceptor": "分子氧（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用葡萄糖等多种糖类及糖酸类（包括L-抗坏血酸，经ula操纵子途径）作为碳源与能源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "以单糖、二糖、糖酸等小分子碳源代谢为主；不具广谱外源污染物（如多环芳烃）降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "L-抗坏血酸特异性PTS磷酸转移系统（UlaT/UlaA/UlaB）活性及ulaD等编码的抗坏血酸分解酶活性（受底物诱导）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具周生鞭毛，可运动（实验室长期传代菌株运动性可变）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状，约0.4–0.7 μm × 1–3 μm，单个或成对存在",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性；具含脂多糖（LPS）的外膜与薄肽聚糖层",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性物种：主要栖居于温血动物下段肠道，也普遍见于淡水、土壤、污泥等环境，宿主内外均可生存",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "D-xylulose 5-phosphate"
+    ],
+    "explanation": "5-磷酸-D-木酮糖是戊糖磷酸途径的直接中间体，经转酮醇酶/转醛醇酶反应与糖酵解互通，从而完成L-抗坏血酸碳骨架向中心代谢的进入。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "pentose phosphate pathway",
+      "summary": "5-磷酸-D-木酮糖经转酮醇酶/转醛醇酶（tktA/tktB/talB等）进入戊糖磷酸途径，与糖酵解及核苷酸合成代谢相连。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "aerobic non-phosphorylated L-ascorbate degradation branch (via dehydroascorbate and 2,3-diketo-L-gulonate to oxalate + L-threonate)",
+      "summary": "经典有氧支路：L-抗坏血酸氧化为脱氢抗坏血酸并水解为2,3-二酮-L-古洛糖酸，再裂解为草酸与L-苏糖酸（多见于动、植物及部分微生物）；不属于本题被评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "大肠杆菌K-12经ula操纵子利用L-抗坏血酸：由PEP依赖PTS摄入并磷酸化为6-磷酸-L-抗坏血酸",
+        "6-磷酸中间体经氧化/水解、脱羧、还原与差向异构生成5-磷酸-D-木酮糖进入戊糖磷酸途径",
+        "大肠杆菌K-12可利用L-抗坏血酸作为碳源"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "大肠杆菌K-12基本生理性状：兼性厌氧、革兰氏阴性、直杆状、周生鞭毛、不产芽孢、温度与pH生长范围、非嗜盐、栖息地广适性"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "E. coli K-12 MG1655菌株身份（ATCC 47076）与基因组信息（RefSeq NC_000913.3，4,641,652 bp，GC约50.8%）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "L-核酮糖-5-磷酸4-差向异构酶（araD编码，EC 5.1.3.4）催化L-核酮糖-5-磷酸转化为D-木酮糖-5-磷酸"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面给定路线名'L-ascorbate degradation V'对应的具体数据库路径（MetaCyc/UniPathway编号及反应清单）无法从既有知识中确认，本答案以记载最充分的大肠杆菌ula操纵子途径作为主链的最近似重构，可能存在路线错配。",
+    "第2步（6-磷酸-L-抗坏血酸的氧化/水解）的酶学归属不确定，可能为非酶促或由未确认的酶催化，enzyme填null。",
+    "第3–5步的酶名、基因（ulaD及可能的ulaE/ulaF）与EC编号基于不完整回忆，置信度为low，EC填null。",
+    "第6步借用L-阿拉伯糖途径的araD基因产物（EC 5.1.3.4），其与抗坏血酸途径末端衔接的记载基于部分记忆。",
+    "多个磷酸化中间体的SMILES未标注或仅近似标注立体化学；NADPH/NADP+的SMILES无法可靠给出，填null。",
+    "全部证据来源均为内部知识（INTERNAL_KNOWLEDGE_ONLY），无外部数据库记录可直接引用，故各性状raw_text为null。"
+  ]
+}

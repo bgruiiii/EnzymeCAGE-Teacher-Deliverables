@@ -1,0 +1,537 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_111",
+  "pollutant_name_zh": "D-肉碱",
+  "pollutant_name_en": "D-carnitine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-carnitine degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）。该路线主要与厌氧/兼性厌氧条件相关：E. coli 的 cai 操纵子为厌氧诱导，肉碱在厌氧条件下作为电子受体被代谢。主链前两步（脱氢酶式 D→L 外消旋）与后两步（cai 系统的脱水/还原）分别对应不同微生物体系，故本路线为跨物种的连续主链。"
+  },
+  "route_summary": "D-肉碱（D-carnitine）首先经 D-carnitine 脱氢酶（NAD+ 为电子受体）氧化为 3-dehydrocarnitine（4-(trimethylazaniumyl)-3-氧代丁酸内盐），再由 L-carnitine 脱氢酶（carnitine dehydrogenase，EC 1.1.1.108）以 NADH 还原为 L-carnitine，完成 D→L 立体转换；随后 L-carnitine 经肉碱脱水酶（carnitine dehydratase，EC 4.2.1.89）脱水生成 crotonobetaine，最终由 crotonobetaine 还原酶（caiA 编码）将 C=C 双键还原，生成 gamma-butyrobetaine（γ-丁酰甜菜碱）。主链共 4 步：前两步为氧化还原式外消旋化（按 Pseudomonas putida 的脱氢酶体系归属，置信度低），后两步对应 Escherichia coli 厌氧诱导的 cai 操纵子途径，其终产物 gamma-butyrobetaine 在菌体内主要作为渗透保护物质积累或外排。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-carnitine",
+          "smiles": "C[N+](C)(C)CC(O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "NAD+ 依赖的醇脱氢氧化（3-位羟基氧化为酮）",
+      "enzyme": {
+        "name": "D-carnitine dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "D-carnitine 脱氢酶的 EC 编号与来源菌在文献中难以确证（本答案置 null，并按 Pseudomonas putida 低置信度归属）；若参考路线采用肉碱外消旋酶（carnitine racemase）机制，则本步与 S2 应合并为一步 D-carnitine → L-carnitine。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-carnitine",
+          "smiles": "C[N+](C)(C)CC(O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "NADH 依赖的酮还原（立体选择性生成 L-构型）",
+      "enzyme": {
+        "name": "carnitine dehydrogenase (L-carnitine dehydrogenase)",
+        "ec_number": "1.1.1.108",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "L-carnitine 脱氢酶（EC 1.1.1.108）的天然来源菌归属不确定（文献涉及 Pseudomonas 属等）；本步按其逆反应（还原）方向书写，与 S1 共同构成氧化还原式外消旋化。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "L-carnitine",
+          "smiles": "C[N+](C)(C)CC(O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "crotonobetaine",
+          "smiles": "C[N+](C)(C)CC=CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱水（β-消除生成烯键）",
+      "enzyme": {
+        "name": "carnitine dehydratase",
+        "ec_number": "4.2.1.89",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "在 E. coli cai 系统的现代模型中，该步可能以 CoA 硫酯（crotonobetainyl-CoA / L-carnitinyl-CoA）形式经 CoA 转移酶与水化酶催化；本答案采用经典非 CoA 的 carnitine dehydratase 形式。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "crotonobetaine",
+          "smiles": "C[N+](C)(C)CC=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "gamma-butyrobetaine",
+          "smiles": "C[N+](C)(C)CCCC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "烯键（C=C）还原",
+      "enzyme": {
+        "name": "crotonobetaine reductase",
+        "ec_number": null,
+        "gene_or_protein": "caiA",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "crotonobetaine 还原酶的 EC 编号未确证（置 null）；在 E. coli 中由 caiA 编码，该反应与厌氧电子传递及 CoA 转移偶联的细节存在不同模型。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 10,
+            "optimum_c": 37,
+            "maximum_c": 45,
+            "preference": "中温菌，最适约 37 °C（与温血动物肠道温度一致）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（有氧呼吸或厌氧呼吸/发酵均可生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌；常规培养基含约 0.5%–1% NaCl，可耐受数个百分点盐度"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 4.5,
+            "optimum": 7.0,
+            "maximum": 9.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧：以有氧呼吸为主，厌氧下可行混合酸发酵或厌氧呼吸",
+            "terminal_electron_acceptor": "O2（厌氧时亦可利用延胡索酸、硝酸盐、TMAO/DMSO 等替代电子受体；本路线中 crotonobetaine 本身可充当电子受体）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用葡萄糖等糖类（有氧氧化或混合酸发酵）、多种氨基酸与有机酸；L-carnitine/crotonobetaine 在厌氧 cai 系统中作为电子受体被代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广义降解能力有限：主要利用简单有机物；厌氧条件下可转化肉碱类化合物（L-carnitine、crotonobetaine、gamma-butyrobetaine），对多数复杂外源污染物无直接降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "厌氧诱导 cai 操纵子编码的 carnitine dehydratase（EC 4.2.1.89）、crotonobetaine reductase 及肉碱外消旋酶活性，将 L-carnitine 转化为 gamma-butyrobetaine",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具周生鞭毛，可运动",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状，约 0.5 µm × 1–3 µm，单个或成对存在",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性；薄肽聚糖层外覆含 LPS 的外膜",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性：主要栖居于人及温血动物肠道下段，亦普遍见于水体、土壤等外环境，环境适应性强（广适性菌种）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温偏低温的环境菌，最适约 30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（行有氧呼吸，不发酵）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌（土壤/淡水环境来源，耐低至中等盐度）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "47054"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "专性好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "非发酵型（O/F 试验氧化型）；可利用多种有机酸、氨基酸及部分糖类（葡萄糖氧化产酸），并代谢多种芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱降解能力：该种（含模式株 KT2440 及众多降解分离株）可降解多种芳香族/环状有机污染物；本案例中涉及 D-carnitine 的脱氢氧化（归属不确定）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "D-carnitine 脱氢酶活性：以 NAD+ 为电子受体将 D-carnitine 氧化为 3-dehydrocarnitine（该活性归属 P. putida 属文献推断，不确定）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "具极生鞭毛（丛生），可运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直或微弯杆状，约 0.5–1.0 µm × 1.5–4.0 µm",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（典型外膜-肽聚糖细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002947",
+            "genome_size_bp": null,
+            "gc_percent": 61.6
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性：广泛分布于土壤（尤其根际）、淡水及植物体表等环境，为常见环境广布菌；部分菌株具机会致病潜力",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "主链终点为 gamma-butyrobetaine（γ-丁酰甜菜碱），未直接进入中心代谢；在 E. coli 中该产物主要作为渗透保护剂积累或外排。gamma-butyrobetaine 的进一步转化（如其他生物中经 γ-butyrobetaine 双加氧酶羟化回到 L-carnitine，或肠道微生物产生 trimethylamine）不在本路线范围内。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "gamma-butyrobetaine further metabolism",
+      "summary": "gamma-butyrobetaine 在 E. coli 内不再进一步降解（作为渗透保护物质外排）；在其他生物中可被 γ-butyrobetaine 羟化/双加氧途径转化为 L-carnitine（肉碱合成方向），或经部分肠道微生物代谢产生 trimethylamine，均超出本路线范围。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "D-carnitine → L-carnitine 经 carnitine racemase（肉碱外消旋酶，CaiD）",
+      "summary": "E. coli cai 操纵子 caiD 编码的肉碱外消旋酶（烯酰-CoA 水化酶家族）可把 D-carnitine 直接外消旋为 L-carnitine，随后进入与主链 S3–S4 相同的 crotonobetaine → gamma-butyrobetaine 降解；若参考库的 D-carnitine degradation I 采用该机制，则主链第一步应为该单步外消旋反应，而非两步脱氢酶式外消旋。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "3-dehydrocarnitine 自发脱羧支路",
+      "summary": "3-dehydrocarnitine 为 β-酮酸，可自发脱羧生成 1-(trimethylazaniumyl)propan-2-one 并进一步分解（如裂解为 trimethylamine 与丙酮类片段）；该支路见于部分好氧肉碱降解体系，不属于本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1 反应（D-carnitine 经 NAD+ 氧化为 3-dehydrocarnitine）",
+        "S1 酶（D-carnitine dehydrogenase）",
+        "S2 反应（3-dehydrocarnitine 经 NADH 还原为 L-carnitine）",
+        "S2 酶（carnitine dehydrogenase，EC 1.1.1.108）",
+        "S1/S2 微生物归属（Pseudomonas putida，低置信度）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S3 反应（L-carnitine 脱水生成 crotonobetaine，carnitine dehydratase EC 4.2.1.89）",
+        "S4 反应（crotonobetaine 还原为 gamma-butyrobetaine，crotonobetaine reductase，caiA）",
+        "E. coli cai 操纵子（厌氧肉碱/crotonobetaine 代谢）",
+        "替代分支：carnitine racemase（CaiD）外消旋"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli K-12 MG1655 生理与形态性状（兼性厌氧、革兰阴性、无芽孢、运动性等）",
+        "E. coli K-12 MG1655 基因组信息（NC_000913，约 4.64 Mb，GC 约 50.8%）",
+        "E. coli K-12 MG1655 对应 ATCC 700926"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida KT2440 生理与形态性状（专性好氧、革兰阴性、极生鞭毛、无芽孢等）",
+        "P. putida KT2440 基因组信息（NC_002947，GC 约 61.6%）",
+        "P. putida KT2440 对应 ATCC 47054"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "D-carnitine 到 L-carnitine 的立体转换在文献中存在两种机制： 脱氢酶氧化–还原外消旋（本答案主链 S1–S2，按 Pseudomonas putida 体系归属）； E. coli 肉碱外消旋酶（carnitine racemase，CaiD）一步外消旋。若参考路线采用，主链前两步应合并为一步 D-carnitine → L-carnitine。",
+    "D-carnitine dehydrogenase 的 EC 编号与来源微生物均未能确证，本答案相应字段置 null，菌归属按 Pseudomonas putida 低置信度填写（文献线索亦涉及 Acinetobacter 等属）。",
+    "S3/S4 在 E. coli cai 系统的现代模型中可能以 CoA 硫酯（crotonobetainyl-CoA）形式进行，涉及 CaiB CoA 转移酶与 CaiC 合成酶；本答案采用经典非 CoA 形式。",
+    "crotonobetaine reductase 的 EC 编号未确证（置 null）；cai 系统为厌氧诱导，而题面氧条件未指定，本答案按厌氧/兼性条件处理。",
+    "所有 SMILES 均未标注立体化学；D-carnitine 与 L-carnitine 的立体差异由名称区分，crotonobetaine 的天然构型为 E 式。"
+  ]
+}

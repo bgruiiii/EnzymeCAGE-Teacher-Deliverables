@@ -1,0 +1,561 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_106",
+  "pollutant_name_zh": "香叶醇",
+  "pollutant_name_en": "Geraniol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "β myrcene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故保留为 null；本主链以题面物质 Geraniol 为起点，不向上游延伸至 β-myrcene。"
+  },
+  "route_summary": "Geraniol 在 β myrcene degradation 路线中先被氧化为 geranial，再氧化为 geranic acid，并活化为 geranoyl-CoA；随后经羧化形成 isohexenylglutaconyl-CoA、水合形成 3-hydroxy-3-isohexenylglutaryl-CoA，最后裂解生成 acetyl-CoA 和 7-methyl-3-oxooct-6-enoic acid。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "geraniol",
+          "smiles": "CC(=CCC/C(=C/CO)C)C",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "geranial",
+          "smiles": "CC(=CCC/C(=C/C=O)C)C",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "alcohol oxidation",
+      "enzyme": {
+        "name": "geraniol dehydrogenase",
+        "ec_number": "1.1.1.183",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "geranial",
+          "smiles": "CC(=CCC/C(=C/C=O)C)C",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "geranic acid",
+          "smiles": "CC(=CCC/C(=C/C(=O)O)C)C",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "aldehyde oxidation",
+      "enzyme": {
+        "name": "aldehyde dehydrogenase (NAD+)",
+        "ec_number": "1.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "醛脱氢步骤按 NAD+ 依赖的通类 EC 记录，具体同工酶未确定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "geranic acid",
+          "smiles": "CC(=CCC/C(=C/C(=O)O)C)C",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "geranoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "[O-]P(=O)([O-])OP(=O)([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "AMP-forming acyl-CoA synthesis",
+      "enzyme": {
+        "name": "geranoyl-CoA synthetase",
+        "ec_number": "6.2.1.3",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "该酰基-CoA 活化步骤的菌内基因归属未确定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "geranoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "bicarbonate",
+          "smiles": "O=C(O)[O-]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "isohexenylglutaconyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "phosphate",
+          "smiles": "O=P([O-])([O-])[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "ATP-dependent carboxylation",
+      "enzyme": {
+        "name": "geranoyl-CoA carboxylase",
+        "ec_number": "6.4.1.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "Geranoyl-CoA 之后的分解段按路线资料中的经典无环单萜降解模型记录。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "isohexenylglutaconyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxy-3-isohexenylglutaryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydration",
+      "enzyme": {
+        "name": "isohexenylglutaconyl-CoA hydratase",
+        "ec_number": "4.2.1.57",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_007"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "该水合酶在该菌株中的具体基因或蛋白未填写。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "3-hydroxy-3-isohexenylglutaryl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "7-methyl-3-oxooct-6-enoic acid",
+          "smiles": "O=C(O)CC(=O)CC=C(C)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "retro-aldol-like carbon-carbon cleavage",
+      "enzyme": {
+        "name": "3-hydroxy-3-isohexenylglutaryl-CoA lyase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_008",
+      "uncertainty": "该裂解反应及游离酮酸产物按拟议的无环单萜分解段记录，置信度较低。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Castellaniella defragrans",
+      "strain": "65Phen",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧，可进行反硝化生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧呼吸（反硝化）",
+            "terminal_electron_acceptor": "nitrate"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "β-myrcene、geraniol 等单萜",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解 β-myrcene，并将 linalool 或 geraniol 等无环单萜中间体纳入降解路线",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "geraniol dehydrogenase (NADP+) activity",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped cells",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_008",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "acetyl-CoA"
+    ],
+    "explanation": "第 6 步裂解产生 acetyl-CoA，可作为进入三羧酸循环及其他中心碳代谢的直接中间体；另一含碳产物的后续去向未继续外推。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway page: beta-myrcene degradation",
+      "claim_scope": [
+        "β myrcene degradation route context",
+        "geraniol to geranial to geranic acid to geranoyl-CoA sequence",
+        "proposed geranoyl-CoA degradation sequence"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Harder J, Probian C. Microbial degradation of monoterpenes in the absence of molecular oxygen. Applied and Environmental Microbiology 61:3804-3808 (1995)",
+      "claim_scope": [
+        "Castellaniella defragrans 65Phen monoterpene utilization",
+        "anaerobic denitrifying monoterpene degradation",
+        "organism oxygen and respiration traits"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.1.1.183",
+      "locator": "geraniol dehydrogenase (NADP+)",
+      "claim_scope": [
+        "geraniol oxidation to geranial",
+        "NADP+-dependent geraniol dehydrogenase reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.2.1.3",
+      "locator": "aldehyde dehydrogenase (NAD+)",
+      "claim_scope": [
+        "aldehyde oxidation to carboxylic acid",
+        "generic NAD+-dependent aldehyde dehydrogenase assignment"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 6.2.1.3",
+      "locator": "acid-CoA ligase (AMP-forming)",
+      "claim_scope": [
+        "AMP-forming carboxylic acid activation to acyl-CoA"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 6.4.1.5",
+      "locator": "geranoyl-CoA carboxylase",
+      "claim_scope": [
+        "ATP-dependent geranoyl-CoA carboxylation",
+        "isohexenylglutaconyl-CoA formation"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 4.2.1.57",
+      "locator": "isohexenylglutaconyl-CoA hydratase",
+      "claim_scope": [
+        "hydration of isohexenylglutaconyl-CoA",
+        "3-hydroxy-3-isohexenylglutaryl-CoA formation"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": null,
+      "locator": "Castellaniella defragrans 65Phen strain record",
+      "claim_scope": [
+        "cell morphology",
+        "Gram-negative envelope",
+        "strain-level phenotype"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；回答未把文献中常见的反硝化条件写入 route_scope.oxygen_condition。",
+    "Geranoyl-CoA 之后的羧化、水合与裂解段按无环单萜降解路线资料记录；这些步骤在 Castellaniella defragrans 65Phen 中的逐步实验归属存在不确定性。",
+    "7-methyl-3-oxooct-6-enoic acid 的进一步降解及酶的 EC 编号未确定，因此未继续扩展主链。"
+  ]
+}

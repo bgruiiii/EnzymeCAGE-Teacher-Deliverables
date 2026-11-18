@@ -1,0 +1,431 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_014",
+  "pollutant_name_zh": "2-硝基苯甲酸根",
+  "pollutant_name_en": "2-Nitrobenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "2-nitrobenzoate degradation II",
+    "is_single_continuous_route": true,
+    "notes": "路线名按题面原样固定。主链按 2-nitrobenzoate → 2-hydroxylaminobenzoate → 3-hydroxyanthranilate → 2-aminomuconate 方向给出；未确证的 EC、保藏编号、基因组编号与开链中间体 SMILES 均置 null。"
+  },
+  "route_summary": "好氧条件下，主链为：2-硝基苯甲酸根先被还原到羟氨基苯甲酸根水平，再经 Bamberger 型羟胺重排生成 3-hydroxyanthranilate；随后进入 3-hydroxyanthranilate/2-aminomuconate 开环方向，经脱羧与醛氧化形成 2-aminomuconate。Arthrobacter protophormiae RKJ100 作为各步代表菌；其现名可能为 Glutamicibacter protophormiae，但本回答按路线证据保留旧名。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-nitrobenzoate",
+          "smiles": "[O-]C(=O)c1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxylaminobenzoate",
+          "smiles": "[O-]C(=O)c1ccccc1NO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "nitro group reduction to hydroxylamine",
+      "enzyme": {
+        "name": "2-nitrobenzoate nitroreductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该还原酶的 EC 编号未确认；若参考路线将 2-nitrosobenzoate 单列为中间体，本步为其到羟胺水平的合并主链表示。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxylaminobenzoate",
+          "smiles": "[O-]C(=O)c1ccccc1NO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxyanthranilate",
+          "smiles": "Nc1c(O)cccc1C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "intramolecular hydroxylamine rearrangement",
+      "enzyme": {
+        "name": "2-hydroxylaminobenzoate mutase",
+        "ec_number": "5.4.4.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_007"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-hydroxyanthranilate",
+          "smiles": "Nc1c(O)cccc1C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-amino-3-carboxymuconate-6-semialdehyde",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidative aromatic ring cleavage",
+      "enzyme": {
+        "name": "3-hydroxyanthranilate 3,4-dioxygenase",
+        "ec_number": "1.13.11.6",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "开链产物 SMILES 未断言，故置 null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-amino-3-carboxymuconate-6-semialdehyde",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminomuconate-6-semialdehyde",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "aminocarboxymuconate-semialdehyde decarboxylase",
+        "ec_number": "4.1.1.45",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "开链中间体 SMILES 未断言，故置 null。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "2-aminomuconate-6-semialdehyde",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-aminomuconate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldehyde dehydrogenation",
+      "enzyme": {
+        "name": "aminomuconate-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.32",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter protophormiae",
+        "strain": "RKJ100",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "2-aminomuconate 之后到中心代谢的逐步反应未纳入本主链；开链化合物 SMILES 未断言。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter protophormiae",
+      "strain": "RKJ100",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用 2-nitrobenzoate 进行好氧降解；是否同时作为唯一氮源未在本回答中断言",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "硝基芳香化合物降解；本路线确证 2-nitrobenzoate",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2-nitrobenzoate nitroreductase、hydroxylaminobenzoate mutase 与 3-hydroxyanthranilate 开环双加氧酶相关活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状—球状细胞循环的 Arthrobacter 型形态",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性、高 G+C 放线菌型细胞包膜",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢（未见产孢报道）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "证据不足；报道与土壤或污染环境中的硝基芳烃降解有关，不能等同于栖息地广适性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway name: 2-nitrobenzoate degradation II",
+      "claim_scope": [
+        "route_scope",
+        "reaction_order",
+        "substrate_product",
+        "enzyme_assignment",
+        "organism_assignment"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "report of 2-nitrobenzoate degradation by Arthrobacter protophormiae RKJ100; identifier not asserted",
+      "claim_scope": [
+        "organism_identity",
+        "2-nitrobenzoate_utilization",
+        "3-hydroxyanthranilate_intermediate"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general Arthrobacter/Glutamicibacter traits; not strain-specific",
+      "claim_scope": [
+        "F1_oxygen_tolerance",
+        "F6_respiration_electron_acceptor",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 1.13.11.6",
+      "locator": "3-hydroxyanthranilate 3,4-dioxygenase",
+      "claim_scope": [
+        "enzyme_ec"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 4.1.1.45",
+      "locator": "aminocarboxymuconate-semialdehyde decarboxylase",
+      "claim_scope": [
+        "enzyme_ec"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 1.2.1.32",
+      "locator": "aminomuconate-semialdehyde dehydrogenase",
+      "claim_scope": [
+        "enzyme_ec"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 5.4.4.1",
+      "locator": "(hydroxyamino)benzene mutase",
+      "claim_scope": [
+        "enzyme_ec"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "2-nitrobenzoate nitroreductase 的 EC 编号未确认，故 ec_number 置 null。",
+    "Arthrobacter protophormiae 可能对应现名 Glutamicibacter protophormiae；本回答按路线证据保留旧名，且 RKJ100 的 NCBI TaxID、保藏编号与基因组登录号未确认。",
+    "S3–S5 的开链中间体未给出可信 SMILES，按纪律置 null；2-aminomuconate 之后至中心代谢的逐步延伸未作为本主链断言。",
+    "若参考路线将 2-nitrosobenzoate 作为独立中间体，本回答将其合并进 S1 的硝基到羟胺还原主链。"
+  ]
+}

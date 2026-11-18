@@ -1,0 +1,303 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_135",
+  "pollutant_name_zh": "柠檬烯",
+  "pollutant_name_en": "Limonene",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "limonene degradation IV (anaerobic)",
+    "is_single_continuous_route": true,
+    "notes": "路线名称按题面固定为limonene degradation IV (anaerobic)。主链为Castellaniella defragrans 65Phen中柠檬烯至紫苏酸的连续上游途径；(R)-与(S)-柠檬烯均为首步酶底物，SMILES不标注立体构型。紫苏酸之后的CoA活化与开环未列入评分主链。"
+  },
+  "route_summary": "厌氧反硝化条件下，Castellaniella defragrans 65Phen以含钼柠檬烯脱氢酶、用水作羟基氧来源，将柠檬烯烯丙位甲基羟化为紫苏醇；紫苏醇再依次氧化为紫苏醛和紫苏酸。紫苏酸的活化、开环及汇入中心代谢尚未完整阐明，故未写入主链步骤。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "limonene",
+          "smiles": "CC(=C)C1CCC(=CC1)C",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "perillyl alcohol",
+          "smiles": "CC(=C)C1CCC(=CC1)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "脱氢羟化",
+      "enzyme": {
+        "name": "limonene dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "生理电子受体的化学身份未确定，故未写入反应式。该酶对(R)-与(S)-柠檬烯均可作用，此处用无立体标记的limonene表示主底物。四位EC编号未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "perillyl alcohol",
+          "smiles": "CC(=C)C1CCC(=CC1)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "perillaldehyde",
+          "smiles": "CC(=C)C1CCC(=CC1)C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醇脱氢",
+      "enzyme": {
+        "name": "perillyl alcohol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步为同一菌株环状单萜厌氧代谢的拟定氧化步骤，具体脱氢酶与辅因子未纯化鉴定，EC置null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "perillaldehyde",
+          "smiles": "CC(=C)C1CCC(=CC1)C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "perillic acid",
+          "smiles": "CC(=C)C1CCC(=CC1)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛脱氢",
+      "enzyme": {
+        "name": "perillaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Castellaniella defragrans",
+        "strain": "65Phen",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步为拟定的醛氧化步骤，具体醛脱氢酶、EC与生理辅因子未确证。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Castellaniella defragrans",
+      "strain": "65Phen",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "反硝化",
+            "terminal_electron_acceptor": "硝酸盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以单萜烯为碳源并偶联硝酸盐还原生长",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "厌氧转化环状单萜柠檬烯，经紫苏醇生成紫苏酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有柠檬烯脱氢酶活性，可羟化柠檬烯烯丙位甲基生成紫苏醇",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "紫苏酸本身不是中心代谢入口。预计需经CoA活化及类似β-氧化的开环后碳骨架才汇入中心代谢，具体入口产物未确定。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "perillate activation and beta-oxidation-like cleavage",
+      "summary": "文献拟定紫苏酸经酰基CoA连接酶活化为perillyl-CoA，再经类似β-氧化的反应开环并汇入中心代谢；各步酶、EC与中间体尚未完整确定，故不列入评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "aerobic limonene 1,2-epoxide pathway",
+      "summary": "好氧条件下柠檬烯可经单加氧酶生成1,2-环氧化物后再转化，氧来源与酶均不同于本厌氧主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "aerobic carveol-carvone pathway",
+      "summary": "好氧条件下柠檬烯亦可被羟化为香芹醇并氧化为香芹酮，不属于本题厌氧主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "aerobic monooxygenase route to perillyl alcohol",
+      "summary": "好氧单加氧酶也能把柠檬烯氧化为紫苏醇，但氧原子来自分子氧，与本题以水为氧源的柠檬烯脱氢酶不同。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Puentes-Cala E, Liebeke M, Markert S, Harder J. Limonene dehydrogenase hydroxylates the allylic methyl group of cyclic monoterpenes in the anaerobic terpene degradation by Castellaniella defragrans. J Biol Chem. 2018.",
+      "claim_scope": ["S1_reaction", "limonene_dehydrogenase", "perillyl_alcohol_product", "organism_65Phen", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Petasch J, Disch EM, Markert S, Becher D, Schweder T, Hüttel B, Reinhardt R, Harder J. The oxygen-independent metabolism of cyclic monoterpenes in Castellaniella defragrans 65Phen. BMC Microbiol. 2014.",
+      "claim_scope": ["S2_proposed_oxidation", "S3_proposed_oxidation", "cyclic_monoterpene_anaerobic_metabolism", "organism_65Phen"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Foss S, Heyen U, Harder J. Alcaligenes defragrans sp. nov., description of four strains isolated on alkenoic monoterpenes. Syst Appl Microbiol. 1998.",
+      "claim_scope": ["F1_oxygen_tolerance", "F6_respiration_electron_acceptor", "F7_carbon_substrate_utilization", "F11_cell_morphology", "F12_gram_cell_envelope"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "柠檬烯脱氢酶尚无已确认的四位EC编号，生理电子受体化学身份未写入反应式。",
+    "紫苏醇至紫苏醛、紫苏醛至紫苏酸为同一菌株环状单萜厌氧代谢的拟定步骤，具体酶与EC未确证。",
+    "65Phen的保藏编号、NCBI TaxID和基因组登录号未能可靠核对，相关字段置null。",
+    "温度、pH、盐度、运动性、产孢和栖息地广适性缺少可引用的定量或原文依据，置null。"
+  ]
+}

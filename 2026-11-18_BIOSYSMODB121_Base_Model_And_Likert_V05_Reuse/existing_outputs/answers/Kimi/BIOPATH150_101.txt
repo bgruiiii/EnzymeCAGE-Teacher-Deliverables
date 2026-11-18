@@ -1,0 +1,354 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_101",
+  "pollutant_name_zh": "2,2'-联苯酚",
+  "pollutant_name_en": "2,2'-Biphenol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "2,2'-dihydroxybiphenyl degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；主链按 O2 依赖的羟基化-开环-水解上段路线处理，不额外改选其他路线。"
+  },
+  "route_summary": "主链为：2,2'-dihydroxybiphenyl 经 NADH 依赖的 HbpA 在 3 位羟基化生成 2,2',3-trihydroxybiphenyl；随后经 biphenyl-2,3-diol 1,2-dioxygenase 型 extradiol 开环生成 2-hydroxy-6-(2-hydroxyphenyl)-6-oxo-2,4-hexadienoic acid；再经 HOPDA hydrolase 水解为 salicylic acid 与 2-hydroxy-2,4-pentadienoic acid。后续水杨酸和 C5 片段进入中心代谢的菌株特异性步骤未扩展为本轮评分主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2,2'-dihydroxybiphenyl",
+          "smiles": "Oc1ccccc1-c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,2',3-trihydroxybiphenyl",
+          "smiles": "Oc1c(O)cccc1-c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NADH-dependent aromatic 3-monooxygenation",
+      "enzyme": {
+        "name": "2-hydroxybiphenyl 3-monooxygenase",
+        "ec_number": "1.14.13.44",
+        "gene_or_protein": "HbpA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas azelaica",
+        "strain": "HBP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "2,2',3-trihydroxybiphenyl",
+          "smiles": "Oc1c(O)cccc1-c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-(2-hydroxyphenyl)-6-oxo-2,4-hexadienoic acid",
+          "smiles": "O=C(O)C(O)=CC=CC(=O)c1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "extradiol meta ring-cleavage dioxygenation",
+      "enzyme": {
+        "name": "biphenyl-2,3-diol 1,2-dioxygenase",
+        "ec_number": "1.13.11.39",
+        "gene_or_protein": "HbpC",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas azelaica",
+        "strain": "HBP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": null,
+      "uncertainty": "开环酶按 biphenyl-2,3-diol 1,2-dioxygenase/EC 1.13.11.39 指派；其作用于 2,2',3-trihydroxybiphenyl 的 HBP1 体内步骤由该菌降解 2,2'-dihydroxybiphenyl 并消耗 2,2',3-trihydroxybiphenyl 的报道推定。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-(2-hydroxyphenyl)-6-oxo-2,4-hexadienoic acid",
+          "smiles": "O=C(O)C(O)=CC=CC(=O)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "salicylic acid",
+          "smiles": "O=C(O)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "2-hydroxy-2,4-pentadienoic acid",
+          "smiles": "O=C(O)C(O)=CC=C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "C-C bond hydrolysis of meta-cleavage dienoate",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxo-6-phenylhexa-2,4-dienoate hydrolase",
+        "ec_number": "3.7.1.8",
+        "gene_or_protein": "HbpD",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas azelaica",
+        "strain": "HBP1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas azelaica",
+      "strain": "HBP1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": "2-hydroxybiphenyl 3-monooxygenase, a novel NADH-dependent, FAD-containing aromatic hydroxylase",
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSMZ",
+            "accession": "DSM 9128"
+          },
+          "raw_text": "Pseudomonas azelaica HBP1 (DSM 9128)",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "2-hydroxybiphenyl and 2,2'-dihydroxybiphenyl as growth substrates",
+          "raw_text": "Degradation of 2-hydroxybiphenyl and 2,2'-dihydroxybiphenyl by Pseudomonas sp. strain HBP1",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degradation of hydroxylated biphenyls, including 2-hydroxybiphenyl and 2,2'-dihydroxybiphenyl",
+          "raw_text": "Degradation of 2-hydroxybiphenyl and 2,2'-dihydroxybiphenyl by Pseudomonas sp. strain HBP1",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "NADH-dependent FAD-containing 2-hydroxybiphenyl 3-monooxygenase activity (HbpA)",
+          "raw_text": "Purification and characterization of 2-hydroxybiphenyl 3-monooxygenase, a novel NADH-dependent, FAD-containing aromatic hydroxylase from Pseudomonas azelaica HBP1",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped cells",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Kohler H.-P.E., Kohler-Staub D., Focht D.D. (1988) Applied and Environmental Microbiology: Degradation of 2-hydroxybiphenyl and 2,2'-dihydroxybiphenyl by Pseudomonas sp. strain HBP1.",
+      "claim_scope": [
+        "chosen route organism",
+        "growth on 2,2'-dihydroxybiphenyl",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Suske W.A. et al. (1997) Journal of Biological Chemistry 272:24257-24265: Purification and characterization of 2-hydroxybiphenyl 3-monooxygenase, a novel NADH-dependent, FAD-containing aromatic hydroxylase from Pseudomonas azelaica HBP1.",
+      "claim_scope": [
+        "HbpA enzyme",
+        "EC 1.14.13.44",
+        "NADH-dependent aromatic monooxygenation",
+        "F1_oxygen_tolerance",
+        "F9_enzyme_activity"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 1.13.11.39",
+      "locator": "enzyme entry for biphenyl-2,3-diol 1,2-dioxygenase; extradiol meta-cleavage dioxygenation",
+      "claim_scope": [
+        "EC 1.13.11.39",
+        "S2 ring-cleavage reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 3.7.1.8",
+      "locator": "enzyme entry for 2-hydroxy-6-oxo-6-phenylhexa-2,4-dienoate hydrolase (HOPDA hydrolase)",
+      "claim_scope": [
+        "EC 3.7.1.8",
+        "S3 hydrolysis reaction"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "DSMZ",
+      "record_id": "DSM 9128",
+      "locator": "strain catalogue designation cited as Pseudomonas azelaica HBP1 (DSM 9128)",
+      "claim_scope": [
+        "F5_culture_collection"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Genus-level general knowledge for Pseudomonas: Gram-negative, rod-shaped, non-spore-forming; used only for low-confidence generic traits.",
+      "claim_scope": [
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "文献中同一菌株可见 Pseudomonas sp. strain HBP1 与 Pseudomonas azelaica HBP1 两种写法；本答案采用 Pseudomonas azelaica HBP1。",
+    "salicylic acid 与 2-hydroxy-2,4-pentadienoic acid 之后进入中心代谢的菌株特异性步骤未作为评分主链展开；定量培养性状、盐度/pH/温度范围和基因组信息因缺乏可靠来源而填 null。"
+  ]
+}

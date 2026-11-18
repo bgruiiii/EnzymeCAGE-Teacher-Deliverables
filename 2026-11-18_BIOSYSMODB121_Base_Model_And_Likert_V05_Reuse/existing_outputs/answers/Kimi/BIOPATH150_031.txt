@@ -1,0 +1,440 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_031",
+  "pollutant_name_zh": "醛式-D-半乳糖醛酸根",
+  "pollutant_name_en": "aldehydo-D-galacturonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-galacturonate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；该途径为经典的大肠杆菌型糖醛酸分解途径（Ux aC/UxaB/UxaA/KdgK/Eda），运行不依赖氧气，常见于兼性厌氧菌。"
+  },
+  "route_summary": "D-galacturonate degradation I（D-半乳糖醛酸降解途径I）：醛式-D-半乳糖醛酸根经糖醛酸异构酶异构为D-塔格糖醛酸根，再经NADH依赖的塔格糖醛酸还原酶还原为D-阿卓糖酸根，随后阿卓糖酸脱水酶脱水生成2-脱氢-3-脱氧-D-葡萄糖酸（KDG），KDG经激酶磷酸化为KDG-6-磷酸，最后由KDPG醛缩酶裂解为丙酮酸与D-甘油醛-3-磷酸，进入中心碳代谢。该途径以 Escherichia coli K-12 为模式菌（基因 uxaC、uxaB、uxaA、kdgK、eda）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "aldehydo-D-galacturonate",
+          "smiles": "C([C@@H]([C@H]([C@@H]([C@H](C(=O)[O-])O)O)O)O)C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-tagaturonate",
+          "smiles": "C([C@@H]([C@H]([C@H](C(=O)CO)O)O)O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛糖-酮糖异构化",
+      "enzyme": {
+        "name": "uronate isomerase",
+        "ec_number": "5.3.1.12",
+        "gene_or_protein": "uxaC",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "开链醛式与吡喃环式D-半乳糖醛酸根处于平衡，数据库多以D-galacturonate统称。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "D-tagaturonate",
+          "smiles": "C([C@@H]([C@H]([C@H](C(=O)CO)O)O)O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-altronate",
+          "smiles": "C([C@H]([C@H]([C@@H]([C@H](C(=O)[O-])O)O)O)O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD(+)",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "NADH依赖性氧化还原（酮基还原）",
+      "enzyme": {
+        "name": "tagaturonate reductase",
+        "ec_number": "1.1.1.58",
+        "gene_or_protein": "uxaB",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "D-altronate",
+          "smiles": "C([C@H]([C@H]([C@@H]([C@H](C(=O)[O-])O)O)O)O)C=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-D-gluconate",
+          "smiles": "O=C([O-])C(=O)CC(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱水反应（水裂合酶，消除脱水）",
+      "enzyme": {
+        "name": "altronate dehydratase",
+        "ec_number": "4.2.1.7",
+        "gene_or_protein": "uxaA",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-D-gluconate",
+          "smiles": "O=C([O-])C(=O)CC(O)C(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "NC1=NC=NC2=C1N=CN2[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])OP(=O)([O-])[O-])[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-dehydro-3-deoxy-D-gluconate 6-phosphate",
+          "smiles": "O=C([O-])C(=O)CC(O)C(O)COP(=O)([O-])[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": "NC1=NC=NC2=C1N=CN2[C@@H]1O[C@H](COP(=O)([O-])OP(=O)([O-])[O-])[C@@H](O)[C@H]1O",
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "ATP依赖性磷酸化（激酶）",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxygluconokinase",
+        "ec_number": "2.7.1.45",
+        "gene_or_protein": "kdgK",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-dehydro-3-deoxy-D-gluconate 6-phosphate",
+          "smiles": "O=C([O-])C(=O)CC(O)C(O)COP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "D-glyceraldehyde 3-phosphate",
+          "smiles": "O=CC(O)COP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛缩裂解（逆醛醇裂解）",
+      "enzyme": {
+        "name": "2-dehydro-3-deoxy-phosphogluconate aldolase",
+        "ec_number": "4.1.2.14",
+        "gene_or_protein": "eda",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该酶与Entner-Doudoroff途径共用（eda编码KDPG醛缩酶）。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温菌（嗜温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": 0.5,
+            "maximum": null,
+            "unit": "% NaCl",
+            "category": "非嗜盐菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7.0,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": "Escherichia coli K-12 MG1655 保藏编号 ATCC 700926（同物异名 DSM 18039）。",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸与发酵（兼性厌氧）",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "葡萄糖等多种糖类；亦可利用D-半乳糖醛酸等糖醛酸作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种糖与糖醛酸（包括D-半乳糖醛酸、D-葡萄糖醛酸）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有糖醛酸分解相关酶活性：糖醛酸异构酶（UxaC）、塔格糖醛酸还原酶（UxaB）、阿卓糖酸脱水酶（UxaA）、KDG激酶（KdgK）、KDPG醛缩酶（Eda）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "主要栖息于温血动物肠道，亦可在水、土壤等多种环境中检出，具较广的栖息地适应性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "D-glyceraldehyde 3-phosphate"],
+    "explanation": "途径终产物丙酮酸可经丙酮酸脱氢酶生成乙酰辅酶A进入三羧酸循环；D-甘油醛-3-磷酸直接进入糖酵解（Embden-Meyerhof途径）下游，完全进入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "丙酮酸进入三羧酸循环",
+      "summary": "丙酮酸经丙酮酸脱氢酶复合体转化为乙酰-CoA，进入TCA循环彻底氧化。"
+    },
+    {
+      "name": "甘油醛-3-磷酸进入糖酵解",
+      "summary": "D-甘油醛-3-磷酸经磷酸丙糖异构/糖酵解下游酶系转化为丙酮酸。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "D-galacturonate degradation II",
+      "summary": "经5-脱氢-4-脱氧-D-葡糖二酸（5-keto-4-deoxy-D-glucarate）的氧化型替代途径，见于部分土壤细菌（如Agrobacterium fabrum），不属于本题被评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway: D-galacturonate degradation I（反应序列与催化酶）",
+      "claim_scope": ["pathway_reactions", "main_route", "enzyme_assignment"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EcoCyc",
+      "record_id": null,
+      "locator": "Escherichia coli K-12 基因-酶对应：uxaC (EC 5.3.1.12), uxaB (EC 1.1.1.58), uxaA (EC 4.2.1.7), kdgK (EC 2.7.1.45), eda (EC 4.1.2.14)",
+      "claim_scope": ["gene_enzyme_assignment", "organism_pathway"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": null,
+      "locator": "Escherichia coli K-12 MG1655 生理与培养性状记录",
+      "claim_scope": ["traits", "physiology", "morphology"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655 complete genome",
+      "claim_scope": ["genome_basic", "taxonomy"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "ATCC 菌种目录：Escherichia coli K-12 MG1655",
+      "claim_scope": ["culture_collection"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面起始物为开链醛式（aldehydo）D-半乳糖醛酸根，数据库与文献通常以D-galacturonate统称，异构平衡不影响主链反应序列。",
+    "NADH与NAD(+)的SMILES未给出（结构庞大且数据库间表示不一致），仅标注其辅因子角色。",
+    "盐度最适值（0.5% NaCl）为常用培养条件近似值，缺乏严格实验界定，置信度低。",
+    "MetaCyc/EcoCyc途径的内部记录号未引用具体ID，以途径名称定位。"
+  ]
+}

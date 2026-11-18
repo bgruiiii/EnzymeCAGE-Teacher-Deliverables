@@ -1,0 +1,477 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_068",
+  "pollutant_name_zh": "3-氯苯甲酸根",
+  "pollutant_name_en": "3-Chlorobenzoate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "3-chlorobenzoate degradation I (via chlorocatechol)",
+    "is_single_continuous_route": false,
+    "notes": "题面未指定氧条件。该命名路线是依赖分子氧的好氧修饰邻位裂解途径，故oxygen_condition填aerobic。3-氯苯甲酸双加氧同时通向4-氯儿茶酚与3-氯儿茶酚两条平行支路，随后在马来酰乙酸汇合；steps只列占优的4-氯儿茶酚连续主链。"
+  },
+  "route_summary": "3-氯苯甲酸在好氧条件下由苯甲酸1,2-双加氧酶生成5-氯顺式二氢二醇，再经二醇脱氢酶脱氢脱羧得到4-氯儿茶酚。4-氯儿茶酚经氯代儿茶酚1,2-双加氧酶、氯代粘康酸环异构酶、二烯内酯水解酶和马来酰乙酸还原酶完成修饰邻位裂解与脱氯，生成3-氧代己二酸并进入中心代谢。模型菌为Pseudomonas knackmussii B13。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "3-chlorobenzoate",
+          "smiles": "O=C([O-])c1cccc(Cl)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-chloro-cis-1,2-dihydroxycyclohexa-3,5-diene-1-carboxylate",
+          "smiles": "O=C([O-])C1(O)C(O)C=CC(Cl)=C1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "双加氧",
+      "enzyme": {
+        "name": "benzoate 1,2-dioxygenase",
+        "ec_number": "1.14.12.10",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "1,6-位与1,2-位双加氧并行。本主链取生成4-氯儿茶酚的5-氯二氢二醇分支；1,2-位攻击生成3-氯儿茶酚的分支见alternative_branches。B13中该双加氧酶的基因符号未指定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "5-chloro-cis-1,2-dihydroxycyclohexa-3,5-diene-1-carboxylate",
+          "smiles": "O=C([O-])C1(O)C(O)C=CC(Cl)=C1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-chlorocatechol",
+          "smiles": "Oc1cc(Cl)ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "脱氢脱羧",
+      "enzyme": {
+        "name": "1,6-dihydroxycyclohexa-2,4-diene-1-carboxylate dehydrogenase",
+        "ec_number": "1.3.1.25",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "脱氢与脱羧由EC 1.3.1.25的同一反应完成。酶的IUBMB接受名采用1,6-编号，与底物常用的1,2-二醇编号指同一类反应。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-chlorocatechol",
+          "smiles": "Oc1cc(Cl)ccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-chloro-cis,cis-muconate",
+          "smiles": "O=C([O-])C=C(Cl)C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "邻位开环",
+      "enzyme": {
+        "name": "chlorocatechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": "clcA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "clcA编码的氯代儿茶酚1,2-双加氧酶与普通儿茶酚1,2-双加氧酶在多数数据库中共用EC 1.13.11.1，蛋白并不相同。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "3-chloro-cis,cis-muconate",
+          "smiles": "O=C([O-])C=C(Cl)C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis-4-carboxymethylenebut-2-en-4-olide",
+          "smiles": "O=C1C=CC(=CC(=O)[O-])O1",
+          "role": "main"
+        },
+        {
+          "name": "chloride",
+          "smiles": "[Cl-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "环异构化并脱氯",
+      "enzyme": {
+        "name": "chloromuconate cycloisomerase",
+        "ec_number": "5.5.1.7",
+        "gene_or_protein": "clcB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "3-氯-顺,顺-粘康酸由氯代粘康酸环异构酶转化为顺式二烯内酯并释放氯离子。普通粘康酸环异构酶会导向原白头翁素死端，不属于本主链。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "cis-4-carboxymethylenebut-2-en-4-olide",
+          "smiles": "O=C1C=CC(=CC(=O)[O-])O1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylacetate",
+          "smiles": "O=C([O-])C=CC(=O)CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解",
+      "enzyme": {
+        "name": "dienelactone hydrolase",
+        "ec_number": "3.1.1.45",
+        "gene_or_protein": "clcD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "maleylacetate",
+          "smiles": "O=C([O-])C=CC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipate",
+          "smiles": "O=C([O-])CC(=O)CCC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "还原",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas knackmussii",
+        "strain": "B13",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "该酶可利用NAD(P)H；本途径生理辅因子取NADH。B13中对应基因符号未指定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas knackmussii",
+      "strain": "B13",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以3-氯苯甲酸作为唯一碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧矿化3-氯苯甲酸，并经修饰邻位裂解降解氯代儿茶酚",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有氯代儿茶酚1,2-双加氧酶及clc编码的修饰邻位裂解途径酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["3-oxoadipate", "succinyl-CoA", "acetyl-CoA"],
+    "explanation": "本主链止于3-氧代己二酸。3-氧代己二酸再经β-酮己二酸途径裂解为琥珀酰CoA和乙酰CoA，进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "3-oxoadipate pathway",
+      "summary": "3-氧代己二酸经CoA转移和硫解生成琥珀酰CoA与乙酰CoA，汇入TCA循环。该段为共享的中心代谢途径，未计入本评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "3-chlorobenzoate to 3-chlorocatechol parallel branch",
+      "summary": "3-氯苯甲酸经1,2-位双加氧生成3-氯-顺式-1,2-二羟基环己-3,5-二烯-1-甲酸，脱氢脱羧得到3-氯儿茶酚；再经2-氯-顺,顺-粘康酸和反式二烯内酯汇入马来酰乙酸。该支路与4-氯儿茶酚主链平行，不作为本答案评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "好氧3-氯苯甲酸经氯代儿茶酚的修饰邻位裂解途径；IUBMB EC 1.14.12.10、1.3.1.25、1.13.11.1、5.5.1.7、3.1.1.45、1.3.1.32",
+      "claim_scope": ["reaction", "enzyme", "ec_number", "compound"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas knackmussii B13（原Pseudomonas sp. B13）是3-氯苯甲酸完全矿化的模型菌，clcA/clcB/clcD编码修饰邻位裂解酶",
+      "claim_scope": ["microorganism", "gene", "degradation_phenotype", "enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas属及P. knackmussii的细胞形态、革兰氏染色、不产孢和有氧呼吸特征",
+      "claim_scope": ["oxygen_tolerance", "respiration", "morphology", "gram", "sporulation", "temperature_preference"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面氧条件为空；根据途径对分子氧的依赖判为好氧。",
+    "3-氯苯甲酸双加氧并行生成4-氯儿茶酚和3-氯儿茶酚。本答案以占优的4-氯儿茶酚通量作为评分主链，3-氯儿茶酚支路未计入steps。",
+    "氯代儿茶酚1,2-双加氧酶与儿茶酚1,2-双加氧酶常共用EC 1.13.11.1。",
+    "B13苯甲酸双加氧酶、二醇脱氢酶和马来酰乙酸还原酶的基因符号，以及TaxID、保藏号、基因组登录号未填写。",
+    "温度上下限、最适温度、pH、盐度、运动性、栖息地广适性和基因组数值缺乏可核对原文，已置null。",
+    "二氢二醇、氯代粘康酸和二烯内酯的SMILES只表示连接关系，顺反构型以化合物英文名为准。"
+  ]
+}

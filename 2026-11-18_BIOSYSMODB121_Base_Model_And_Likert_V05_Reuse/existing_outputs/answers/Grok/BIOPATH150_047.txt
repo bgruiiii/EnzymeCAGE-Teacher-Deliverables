@@ -1,0 +1,243 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_047",
+  "pollutant_name_zh": "吲哚-3-乙酸根",
+  "pollutant_name_en": "Indole-3-acetate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "indole-3-acetate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。按iac加氧酶途径将本路线记为好氧，路线名按题面原样保留。已证实的主链终点中间体是儿茶酚；iac内部单酶步骤未完全阐明，故主链以净转化表示，不把未证实中间体写成步骤。"
+  },
+  "route_summary": "在本回答采用的对应关系下，indole-3-acetate degradation I是恶臭假单胞菌1290由iac基因簇编码的好氧降解路线，净结果是把吲哚-3-乙酸转化为儿茶酚。iacA编码起始的Rieske型非血红素铁加氧酶，但官方EC未赋值，且各后续iac基因与具体中间体的一一对应尚未定论，因此不拆成未证实的单酶反应，也不绑定单一酶。儿茶酚之后的环裂解属于下游芳香化合物降解，不计入本命名路线已证实步骤。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "indole-3-acetate",
+          "smiles": "O=C([O-])Cc1c[nH]c2ccccc12",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "catechol",
+          "smiles": "Oc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "多步好氧氧化分解（净转化）",
+      "enzyme": null,
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "1290",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "此步是iac基因簇多酶转化的合并表示，不是单一酶反应。iacA是起始Rieske型加氧酶，但直接产物和EC未定，故enzyme整体为null。碳碎片和氮释放产物的计量式未确认，未写入。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "1290",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "吲哚-3-乙酸可作为唯一碳源和氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "已证实可降解并矿化吲哚-3-乙酸；其他污染物降解谱未核实",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "iac基因簇介导吲哚-3-乙酸分解代谢，iacA编码Rieske型加氧酶",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "极生鞭毛运动",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本路线已确认交接到儿茶酚。儿茶酚需再经环裂解才进入中心代谢：邻位裂解入口通常为琥珀酰CoA与乙酰CoA，间位裂解产物不同。菌株1290的实际裂解方式没有菌株级证据，故不指定中心代谢入口产物。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "儿茶酚邻位裂解（β-酮己二酸途径）",
+      "summary": "恶臭假单胞菌常见染色体下游是儿茶酚1,2-双加氧酶（EC 1.13.11.1）生成顺,顺-粘康酸，再经粘康酸环异构酶（EC 5.5.1.1）、粘康酸内酯异构酶（EC 5.3.3.4）、3-氧代己二酸烯醇内酯水解酶（EC 3.1.1.24）、3-氧代己二酸CoA转移酶（EC 2.8.3.6）和3-氧代己二酰CoA硫解酶（EC 2.3.1.174）生成琥珀酰CoA与乙酰CoA。此为可能的生理延续，不是本题已证实的iac主链步骤，也未经菌株1290逐酶确认。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "慢生根瘤菌好氧代谢物路线",
+      "summary": "Bradyrhizobium japonicum报道的好氧代谢物包括二氧吲哚-3-乙酸、靛红和邻氨基苯甲酸，酶与EC多未鉴定。不能确认它就是题面指定的indole-3-acetate degradation I，因此不写入评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "儿茶酚间位裂解",
+      "summary": "儿茶酚也可由儿茶酚2,3-双加氧酶（EC 1.13.11.2）进行间位裂解，产物去向与β-酮己二酸途径不同。未见菌株1290走该分支的直接证据。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "厌氧吲哚-3-乙酸CoA活化降解",
+      "summary": "另有厌氧细菌把吲哚-3-乙酸活化为酰基CoA后再降解。该路线与好氧iac路线不同；代表菌和逐步酶系此处不展开。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Leveau JH, Gerards S. 2008. Discovery of a bacterial gene cluster for catabolism of the plant hormone indole 3-acetic acid. FEMS Microbiology Ecology.",
+      "claim_scope": [
+        "organism_identity",
+        "iac_gene_cluster",
+        "trait_F7",
+        "trait_F8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Scott JC, Greenhut IV, Leveau JH. 2013. Functional characterization of the bacterial iac genes for degradation of the plant hormone indole-3-acetic acid. Journal of Chemical Ecology.",
+      "claim_scope": [
+        "IAA_to_catechol",
+        "iacA_oxygenase",
+        "trait_F9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas putida物种分类学特征（革兰氏阴性杆状、不产芽孢、极生鞭毛、专性好氧、中温）；用于菌株1290时属于物种级推断。",
+      "claim_scope": [
+        "trait_F1",
+        "trait_F2",
+        "trait_F6",
+        "trait_F10",
+        "trait_F11",
+        "trait_F12",
+        "trait_F13"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "路线名对应关系未用实时数据库复核：本回答把indole-3-acetate degradation I对应为Pseudomonas putida 1290的iac途径，净产物为儿茶酚。若该MetaCyc路线实际是其他中间体序列，主链步骤需要改写。",
+    "iacA之后到儿茶酚的单酶反应、直接产物、EC和碳碎片形态均未确定，故未拆步，enzyme为null。",
+    "吲哚氮预期会释放，常见形态为氨，但释放步骤和计量产物未经所据文献确认，未列入产物。",
+    "菌株1290的儿茶酚去向是邻位还是间位裂解，没有菌株级证据。",
+    "ncbi_taxid 303是Pseudomonas putida物种级TaxID，不是菌株1290的独立编号。",
+    "菌株1290的温度极限、pH、盐度、保藏号、基因组登录号和栖息地广适性没有可引用数据；形态、染色、产孢和氧关系来自物种分类特征。"
+  ]
+}

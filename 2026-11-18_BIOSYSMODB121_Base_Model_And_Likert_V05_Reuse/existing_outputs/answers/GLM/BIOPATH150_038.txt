@@ -1,0 +1,603 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_038",
+  "pollutant_name_zh": "4-硝基甲苯",
+  "pollutant_name_en": "4-Nitrotoluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-nitrotoluene degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；'4-nitrotoluene degradation I' 为好氧途径（经甲基侧链氧化），故填 aerobic。主链为单一连续线性途径。"
+  },
+  "route_summary": "4-硝基甲苯好氧降解主链（路线 I）：Pseudomonas putida TW3 通过类二甲苯单加氧酶将甲基侧链羟化为 4-nitrobenzyl alcohol，再经醇脱氢酶与醛脱氢酶依次氧化为 4-nitrobenzaldehyde 与 4-nitrobenzoate；4-nitrobenzoate 经 4 电子部分还原生成 4-hydroxylaminobenzoate，后者经水解裂解释放氨并生成 protocatechuate；protocatechuate 经 3,4-双加氧酶邻位开环生成 3-carboxy-cis,cis-muconate，随后进入 β-酮己二酸途径，最终以琥珀酰辅酶A 与乙酰辅酶A 进入中央代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-nitrotoluene",
+          "smiles": "Cc1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-nitrobenzyl alcohol",
+          "smiles": "OCc1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧化（甲基侧链羟化）",
+      "enzyme": {
+        "name": "xylene monooxygenase",
+        "ec_number": "1.14.15.26",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "TW3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "初始酶按与 TOL 质粒二甲苯单加氧酶同源的甲基侧链单加氧酶归类（EC 1.14.15.26）；TW3 中该酶的菌株特异基因命名未能核实。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-nitrobenzyl alcohol",
+          "smiles": "OCc1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-nitrobenzaldehyde",
+          "smiles": "O=Cc1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醇氧化脱氢",
+      "enzyme": {
+        "name": "4-nitrobenzyl-alcohol dehydrogenase",
+        "ec_number": "1.1.1.90",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "TW3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 编号按芳基-醇脱氢酶（NAD+，1.1.1.90）归类；TW3 的菌株特异性酶名或 EC 归类可能不同。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-nitrobenzaldehyde",
+          "smiles": "O=Cc1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-nitrobenzoate",
+          "smiles": "O=C([O-])c1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛氧化脱氢",
+      "enzyme": {
+        "name": "4-nitrobenzaldehyde dehydrogenase",
+        "ec_number": "1.2.1.28",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "TW3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 编号按苯甲醛脱氢酶（NAD+，1.2.1.28）归类；TW3 的菌株特异性归类未能核实。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-nitrobenzoate",
+          "smiles": "O=C([O-])c1ccc(cc1)[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADPH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxylaminobenzoate",
+          "smiles": "O=C([O-])c1ccc(cc1)NO",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "硝基部分还原（4电子，生成羟氨基）",
+      "enzyme": {
+        "name": "4-nitrobenzoate reductase",
+        "ec_number": null,
+        "gene_or_protein": "pnbA",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "YH101",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "4-nitrobenzoate reductase 暂无确定 EC 编号（填 null）；菌株 YH101 与基因 pnbA 基于内部文献记忆，未能精确核对原始文献；TW3 亦被报道可继续氧化降解 4-nitrobenzoate。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-hydroxylaminobenzoate",
+          "smiles": "O=C([O-])c1ccc(cc1)NO",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C([O-])c1cc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-N 键水解裂解脱氨",
+      "enzyme": {
+        "name": "4-hydroxylaminobenzoate hydrolyase",
+        "ec_number": null,
+        "gene_or_protein": "pnbB",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "YH101",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "4-hydroxylaminobenzoate hydrolyase 暂无确定 EC 编号（填 null）；产物为 protocatechuate 并释放氨；基因 pnbB 与菌株未精确核对。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C([O-])c1cc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-carboxy-cis,cis-muconate",
+          "smiles": "O=C([O-])C=C(C(=O)[O-])C=CC(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "邻位（3,4-）双加氧开环",
+      "enzyme": {
+        "name": "protocatechuate 3,4-dioxygenase",
+        "ec_number": "1.13.11.3",
+        "gene_or_protein": "pcaHG",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "YH101",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "按 Pseudomonas putida 典型的原儿茶酸 3,4-邻位裂解填写；YH101 是否具 pcaHG 基因型未直接核实；muconate 的 SMILES 未编码顺,顺立体构型。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "TW3",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（专性好氧；4-硝基甲苯降解在有氧条件下进行）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": null, "maximum": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": null, "accession": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2（分子氧）"},
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以 4-硝基甲苯作为唯一碳源、氮源和能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "完全降解 4-硝基甲苯：氧化甲基侧链生成 4-nitrobenzoate，再经 4-hydroxylaminobenzoate、protocatechuate 进入 β-酮己二酸途径",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具 4-硝基甲苯侧链单加氧酶、4-nitrobenzyl alcohol 脱氢酶与 4-nitrobenzaldehyde 脱氢酶活性，可将 4-硝基甲苯氧化为 4-nitrobenzoate",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具运动性（Pseudomonas putida 典型特征）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（Pseudomonas 属典型形态）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（外膜-肽聚糖细胞包膜）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "分离自土壤；所属种 Pseudomonas putida 广泛分布于土壤、水体等多种环境，栖息地广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "YH101",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {"minimum_c": null, "optimum_c": null, "maximum_c": null, "preference": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（有氧条件下经硝基部分还原途径降解 4-nitrobenzoate）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {"minimum": null, "optimum": null, "maximum": null, "unit": null, "category": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {"minimum": null, "optimum": null, "maximum": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {"collection": null, "accession": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {"respiration_mode": "好氧呼吸", "terminal_electron_acceptor": "O2（分子氧）"},
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以 4-nitrobenzoate 为碳源生长并完全矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解 4-nitrobenzoate：经 4-hydroxylaminobenzoate 转化为 protocatechuate，再开环进入 β-酮己二酸途径",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "具 4-nitrobenzoate reductase（pnbA）与 4-hydroxylaminobenzoate hydrolyase（pnbB）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": "具运动性（Pseudomonas putida 典型特征）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（Pseudomonas 属典型形态）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {"genome_accession": null, "genome_size_bp": null, "gc_percent": null},
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "所属种 Pseudomonas putida 广泛分布于土壤、水体等环境（该菌株原始分离信息未知），推断栖息地广适性较高",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["Succinyl-CoA", "Acetyl-CoA"],
+    "explanation": "主链末端的 protocatechuate 经邻位（3,4-）开环进入 β-酮己二酸途径，最终裂解为琥珀酰辅酶A与乙酰辅酶A，进入 TCA 循环等中央代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate degradation II (β-ketoadipate pathway)",
+      "summary": "3-carboxy-cis,cis-muconate 经环化异构、脱羧与烯醇内酯水解生成 3-oxoadipate，再经辅酶A转移与硫解生成琥珀酰辅酶A和乙酰辅酶A进入中央代谢。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "还原性硝基还原分支（4-nitrotoluene → 4-hydroxylaminotoluene / 4-aminotoluene）",
+      "summary": "在还原或缺氧条件下，4-硝基甲苯的硝基可被逐步还原为羟氨基或氨基（生成对甲苯胺类中间体）；该分支不属于本题指定的有氧主链路线。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1/S2/S3 反应：Pseudomonas putida TW3 将 4-nitrotoluene 经 4-nitrobenzyl alcohol 与 4-nitrobenzaldehyde 氧化为 4-nitrobenzoate",
+        "TW3 以 4-nitrotoluene 为唯一碳源好氧生长",
+        "TW3 的甲基侧链氧化酶系活性"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S4/S5 反应：4-nitrobenzoate 经 4-hydroxylaminobenzoate 转化为 protocatechuate 并释放氨（pnbA/pnbB）",
+        "菌株 Pseudomonas putida YH101 利用并降解 4-nitrobenzoate"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S6 反应：protocatechuate 经 3,4-双加氧开环生成 3-carboxy-cis,cis-muconate（EC 1.13.11.3）",
+        "β-酮己二酸途径终产物为琥珀酰辅酶A与乙酰辅酶A"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Pseudomonas putida 属级性状：革兰氏阴性、杆状、好氧呼吸、不产芽孢、具运动性、广布于土壤与水体"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc/UniPathway",
+      "record_id": null,
+      "locator": "pathway: 4-nitrotoluene degradation I",
+      "claim_scope": [
+        "路线名称 '4-nitrotoluene degradation I' 及其经甲基侧链氧化的总体路线走向"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "Pseudomonas putida TW3 的温度、pH、盐度、菌种保藏、基因组等菌株级性状缺乏可靠来源，均填 null。",
+    "S4/S5 对应菌株 Pseudomonas putida YH101 及基因 pnbA/pnbB 基于内部文献记忆填写，未能在本回答中定位可核对的原始文献，置信度低。",
+    "4-nitrobenzoate reductase 与 4-hydroxylaminobenzoate hydrolyase 目前无确定 EC 编号，均填 null。",
+    "S1-S3 各酶的 EC 编号按同类酶（xylene monooxygenase 1.14.15.26、aryl-alcohol dehydrogenase 1.1.1.90、benzaldehyde dehydrogenase 1.2.1.28）归类，TW3 菌株特异性归类可能不同。",
+    "3-carboxy-cis,cis-muconate 的 SMILES 未编码顺,顺立体构型。"
+  ]
+}

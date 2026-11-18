@@ -1,0 +1,193 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_128",
+  "pollutant_name_zh": "L-苏糖醇",
+  "pollutant_name_en": "l-Threitol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-threitol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，oxygen_condition保持null。chosen_route_name按题面原样填写。主链按L-苏糖醇脱氢、磷酸化后醛缩裂解进入中心代谢的连续路线整理；EC编号、基因与对应微生物未经可核验记录确认，故置null。"
+  },
+  "route_summary": "L-苏糖醇降解主链为三步：L-苏糖醇经脱氢生成L-赤藓酮糖，再磷酸化为L-赤藓酮糖-1-磷酸，随后醛缩裂解为磷酸二羟丙酮与甲醛。磷酸二羟丙酮进入糖酵解/糖异生；甲醛另行氧化，不计入本主链。脱氢辅酶按分解代谢惯例写为NAD+，磷酸化位点按1-位填写，二者及酶、菌均存在未核实项。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-threitol",
+          "smiles": "C([C@@H]([C@@H](CO)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-erythrulose",
+          "smiles": "C([C@@H](C(=O)CO)O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "L-threitol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "氧化产物为L-赤藓酮糖较确定；辅酶按分解代谢惯例写为NAD+，不能排除NADP+。EC编号、基因与对应降解菌未核实。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "L-erythrulose",
+          "smiles": "C([C@@H](C(=O)CO)O)O",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-erythrulose 1-phosphate",
+          "smiles": "C([C@@H](C(=O)COP(=O)(O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": {
+        "name": "L-erythrulose 1-kinase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "磷酸化位点按C1填写，以便后续裂解生成磷酸二羟丙酮；不能排除4-磷酸产物及另一条进入磷酸戊糖途径的路线。EC编号与微生物未知。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "L-erythrulose 1-phosphate",
+          "smiles": "C([C@@H](C(=O)COP(=O)(O)O)O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "C(C(=O)COP(=O)(O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "L-erythrulose-1-phosphate aldolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "按四碳2-酮糖-1-磷酸的醛缩裂解写为磷酸二羟丙酮与甲醛；该酶的EC编号、基因及微生物均未核实。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["dihydroxyacetone phosphate"],
+    "explanation": "主链碳骨架的三碳部分以磷酸二羟丙酮进入糖酵解/糖异生。甲醛是裂解的一碳产物，不直接进入该中心代谢节点。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "甲醛氧化",
+      "summary": "甲醛通常可再氧化为甲酸并进一步氧化为二氧化碳，属于一碳代谢而非L-苏糖醇碳骨架进入中心代谢的主链；本题未核实该后续步骤的酶、EC与微生物，故不列入评分主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "L-threitol NAD-dependent dehydrogenation to L-erythrulose",
+        "enzyme name L-threitol dehydrogenase"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "phosphorylation of L-erythrulose to L-erythrulose 1-phosphate",
+        "aldol cleavage to dihydroxyacetone phosphate and formaldehyde"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未能将本路线核对到可引用的数据库记录号，步骤2和步骤3依据四碳糖醇分解的常见生化顺序推断，置信度低。",
+    "脱氢辅酶写为NAD+，不能排除NADP+；磷酸化写为1-位，不能排除4-磷酸及经赤藓糖-4-磷酸进入磷酸戊糖途径的分支。",
+    "未找到可可靠对应到各步的首选微生物、菌株、EC编号与基因名，故微生物整体为null，未编造菌种性状。",
+    "Gluconobacter可将L-苏糖醇不完全氧化为赤藓酮糖，但这通常是酮糖积累而非完整同化降解，故未用作本主链微生物。",
+    "SMILES按(2S,3S)-苏糖醇与(3S)-赤藓酮糖的常用立体写法填写，本次未用化学信息学工具复核绝对构型编码。",
+    "题面未指定氧条件；脱氢反应本身不直接消耗分子氧，细胞如何再生NAD+未在本题范围内确定。"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_145",
+  "pollutant_name_zh": "6-磺酸基-α-D-奎诺糖",
+  "pollutant_name_en": "6-sulfo-alpha-D-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation V",
+    "is_single_continuous_route": null,
+    "notes": "题面未指定氧条件。未能在不与其他磺基奎诺糖降解路线混淆的前提下确认 degradation V 的反应序列，因此不推断氧条件，也不判断是否为单一连续路线。"
+  },
+  "route_summary": "起始污染物为 6-sulfo-alpha-D-quinovose。题面指定主链名称必须为 sulfoquinovose degradation V，但该罗马数字路线的逐步主反应、主产物、首选酶、EC 编号与对应微生物无法可靠确定；已知的 sulfo-EMP、sulfo-ED 与 sulfo-TAL 不能改标为本题主链。缺失项按未知留空，不编造步骤。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-sulfo-alpha-D-quinovose",
+          "smiles": "C([C@@H]1[C@H]([C@@H]([C@H]([C@@H](O1)O)O)O)O)S(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": null,
+          "smiles": null,
+          "role": "unknown"
+        }
+      ],
+      "reaction_type": null,
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "仅能确认主链应从题面给定的 6-sulfo-alpha-D-quinovose 开始；degradation V 的主产物、反应类型、首选酶与对应微生物均未知，故不猜测。底物 SMILES 为 6-脱氧-6-磺酸基-α-D-吡喃葡萄糖的内部结构表示，本回答未绑定数据库记录。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "sulfo-EMP pathway",
+      "summary": "大肠杆菌 K-12 等细菌中的磺基糖酵解 Embden-Meyerhof-Parnas 型路线：磺基奎诺糖异构为 6-deoxy-6-sulfo-D-fructose 后磷酸化，再裂解为 dihydroxyacetone phosphate 与 sulfolactaldehyde，后者可还原为 DHPS。这不是本题指定的 sulfoquinovose degradation V。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "sulfo-ED pathway",
+      "summary": "Pseudomonas putida SQ1 等细菌中的磺基糖酵解 Entner-Doudoroff 型路线：磺基奎诺糖经脱氢、内酯水解和脱水后，裂解为 pyruvate 与 sulfolactaldehyde。这不是本题指定的 sulfoquinovose degradation V。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "sulfo-TAL pathway",
+      "summary": "部分环境细菌中的转醛醇酶型路线：磺基奎诺糖异构为 6-deoxy-6-sulfo-D-fructose 后，与 glyceraldehyde 3-phosphate 经磺基果糖转醛醇酶反应，生成 fructose 6-phosphate 与 sulfolactaldehyde。这不是本题指定的 sulfoquinovose degradation V。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [],
+  "uncertainties": [
+    "未能可靠对应 sulfoquinovose degradation V 的主链反应序列，因此不把 sulfo-EMP、sulfo-ED 或 sulfo-TAL 改写为该路线。",
+    "主产物、酶、EC 编号、微生物、TaxID、保藏编号、基因组与 15 项性状均无可用来源，按未知留空。",
+    "氧条件题面为未指定，且不能由未确认的路线 V 反推。"
+  ]
+}

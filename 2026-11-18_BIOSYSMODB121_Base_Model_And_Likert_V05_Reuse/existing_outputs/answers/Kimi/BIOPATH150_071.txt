@@ -1,0 +1,451 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_071",
+  "pollutant_name_zh": "5-氯水杨酸根 / 4-Chlorosalicylate",
+  "pollutant_name_en": "5-Chlorosalicylate / 4-Chlorosalicylate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "chlorosalicylate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。所选路线为文献报道的氯代水杨酸好氧降解主链（以 Pseudomonas reinekei MT1 为代表菌）：5-氯水杨酸与4-氯水杨酸在第一步羟化-脱羧后均生成4-氯儿茶酚，随后经ortho（胞内）开环的氯代儿茶酚途径完成矿化。"
+  },
+  "route_summary": "好氧主链（Pseudomonas reinekei MT1）：(1) 5-氯水杨酸经水杨酸1-单加氧酶羟化-脱羧生成4-氯儿茶酚；(2) 4-氯儿茶酚经（氯代）儿茶酚1,2-双加氧酶胞内开环生成3-氯-顺,顺-黏康酸；(3) 氯代黏康酸环异构酶催化脱氯并环化生成反式双烯内酯（trans-dienelactone），释放氯离子；(4) 双烯内酯水解酶水解生成马来酰乙酸；(5) 马来酰乙酸还原酶（NADH依赖）将其还原为3-氧代己二酸；(6)-(7) 3-氧代己二酸经β-酮己二酸途径（CoA转移酶、硫解酶）生成琥珀酰-CoA与乙酰-CoA，进入三羧酸循环。4-氯水杨酸同样经4-氯儿茶酚汇入该主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {"name": "5-chlorosalicylate", "smiles": "O=C([O-])c1cc(Cl)ccc1O", "role": "main"},
+        {"name": "NADH", "smiles": null, "role": "cofactor"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "4-chlorocatechol", "smiles": "Oc1ccc(Cl)cc1O", "role": "main"},
+        {"name": "carbon dioxide", "smiles": "O=C=O", "role": "byproduct"},
+        {"name": "NAD(+)", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "羟化-脱羧（NADH依赖的黄素蛋白单加氧反应）",
+      "enzyme": {
+        "name": "salicylate 1-monooxygenase",
+        "ec_number": "1.14.13.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas reinekei",
+        "strain": "MT1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "4-氯水杨酸亦为该酶底物并同样生成4-氯儿茶酚，两底物在此步汇入同一主链；MT1中该羟化酶的基因命名未确证，gene_or_protein置null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {"name": "4-chlorocatechol", "smiles": "Oc1ccc(Cl)cc1O", "role": "main"},
+        {"name": "oxygen", "smiles": "O=O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-chloro-cis,cis-muconate", "smiles": "O=C([O-])C=C(Cl)C=CC(=O)[O-]", "role": "main"}
+      ],
+      "reaction_type": "胞内（ortho）双加氧开环",
+      "enzyme": {
+        "name": "chlorocatechol 1,2-dioxygenase",
+        "ec_number": "1.13.11.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas reinekei",
+        "strain": "MT1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "SMILES未标注双键立体化学；文献产物为3-氯-顺,顺-黏康酸。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {"name": "3-chloro-cis,cis-muconate", "smiles": "O=C([O-])C=C(Cl)C=CC(=O)[O-]", "role": "main"}
+      ],
+      "products": [
+        {"name": "trans-dienelactone (trans-4-carboxymethylenebut-2-en-4-olide)", "smiles": "O=C1OC(=CC(=O)[O-])C=C1", "role": "main"},
+        {"name": "chloride", "smiles": "[Cl-]", "role": "byproduct"}
+      ],
+      "reaction_type": "脱氯-环异构化（内酯化）",
+      "enzyme": {
+        "name": "chloromuconate cycloisomerase",
+        "ec_number": "5.5.1.7",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas reinekei",
+        "strain": "MT1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "脱氯发生在环异构化步骤；该酶在部分文献中亦称muconate cycloisomerase（EC 5.5.1.1），此处按氯代儿茶酚途径归类为chloromuconate cycloisomerase（EC 5.5.1.7）。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {"name": "trans-dienelactone (trans-4-carboxymethylenebut-2-en-4-olide)", "smiles": "O=C1OC(=CC(=O)[O-])C=C1", "role": "main"},
+        {"name": "water", "smiles": "O", "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "maleylacetate", "smiles": "O=C([O-])/C=C\\C(=O)CC(=O)[O-]", "role": "main"}
+      ],
+      "reaction_type": "内酯水解",
+      "enzyme": {
+        "name": "dienelactone hydrolase",
+        "ec_number": "3.1.1.45",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas reinekei",
+        "strain": "MT1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "反式双烯内酯水解产物为顺式构型的马来酰乙酸（(2Z)-4-oxohex-2-enedioate）。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {"name": "maleylacetate", "smiles": "O=C([O-])/C=C\\C(=O)CC(=O)[O-]", "role": "main"},
+        {"name": "NADH", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-oxoadipate", "smiles": "O=C([O-])CC(=O)CCC(=O)[O-]", "role": "main"},
+        {"name": "NAD(+)", "smiles": null, "role": "byproduct"}
+      ],
+      "reaction_type": "NADH依赖还原（双键加氢）",
+      "enzyme": {
+        "name": "maleylacetate reductase",
+        "ec_number": "1.3.1.32",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas reinekei",
+        "strain": "MT1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {"name": "3-oxoadipate", "smiles": "O=C([O-])CC(=O)CCC(=O)[O-]", "role": "main"},
+        {"name": "succinyl-CoA", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "3-oxoadipyl-CoA", "smiles": null, "role": "main"},
+        {"name": "succinate", "smiles": "O=C([O-])CCC(=O)[O-]", "role": "byproduct"}
+      ],
+      "reaction_type": "CoA转移",
+      "enzyme": {
+        "name": "3-oxoadipate CoA-transferase",
+        "ec_number": "2.8.3.6",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas reinekei",
+        "strain": "MT1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "通用β-酮己二酸途径步骤，非氯代水杨酸特异；在MT1中未逐一实验验证。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {"name": "3-oxoadipyl-CoA", "smiles": null, "role": "main"},
+        {"name": "coenzyme A", "smiles": null, "role": "cofactor"}
+      ],
+      "products": [
+        {"name": "succinyl-CoA", "smiles": null, "role": "main"},
+        {"name": "acetyl-CoA", "smiles": null, "role": "main"}
+      ],
+      "reaction_type": "硫解（thiolysis）",
+      "enzyme": {
+        "name": "3-oxoadipyl-CoA thiolase",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas reinekei",
+        "strain": "MT1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "产物琥珀酰-CoA与乙酰-CoA进入三羧酸循环；该步为通用中心代谢衔接步骤。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas reinekei",
+      "strain": "MT1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧（aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSMZ",
+            "accession": "DSM 18361"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（respiration）",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以4-氯水杨酸、5-氯水杨酸（以及4-、5-甲基水杨酸）为唯一碳源与能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解多种取代水杨酸（4-/5-氯水杨酸、4-/5-甲基水杨酸），经4-取代儿茶酚ortho开环途径矿化",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具水杨酸1-单加氧酶、（氯代）儿茶酚1,2-双加氧酶、氯代黏康酸环异构酶、双烯内酯水解酶与马来酰乙酸还原酶活性（氯代儿茶酚ortho开环途径）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（motile）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆菌（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["succinyl-CoA", "acetyl-CoA"],
+    "explanation": "3-氧代己二酸经3-氧代己二酸CoA转移酶（EC 2.8.3.6）与3-氧代己二酰-CoA硫解酶（EC 2.3.1.174）转化为琥珀酰-CoA与乙酰-CoA，由此进入三羧酸循环，实现矿化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "三羧酸循环（TCA cycle）",
+      "summary": "琥珀酰-CoA与乙酰-CoA进入三羧酸循环彻底氧化为CO2。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "3-氯黏康酸脱氯-脱羧生成原白头翁素（protoanemonin）死端支路",
+      "summary": "在未适应氯代底物的菌株中，（普通）黏康酸环异构酶作用于3-氯-顺,顺-黏康酸可脱氯并脱羧生成原白头翁素（5-methylenefuran-2(5H)-one），为不可继续代谢的死端产物；该支路不属于被评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Camara B, Strömpl C, Verbarg S, Spröer C, Pieper DH, Tindall BJ. Pseudomonas reinekei sp. nov., Pseudomonas moorei sp. nov. and Pseudomonas mohnii sp. nov., novel species capable of degrading chlorosalicylates or isopimaric acid. Int J Syst Evol Microbiol 2007; 57: 923-931.",
+      "claim_scope": ["Pseudomonas reinekei sp. nov. MT1物种描述与命名", "4-氯水杨酸与5-氯水杨酸降解能力", "革兰氏染色、细胞形态、运动性、氧耐受等基本生理性状"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Camara B, Bielecki P, Kaminski F, dos Santos VAPM, Plumeier I, Nikodem P, Pieper DH. A gene cluster involved in degradation of substituted salicylates via ortho cleavage in Pseudomonas reinekei MT1 encodes enzymes specifically adapted for transformation of 4-methylcatechol and 3-methylmuconate. J Bacteriol 2007; 189(21).",
+      "claim_scope": ["取代水杨酸经4-取代儿茶酚的ortho开环途径降解", "步骤S1羟化-脱羧反应与MT1的对应关系"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Camara B, Nikodem P, Bielecki P, Bobadilla R, Junca H, Pieper DH. Characterization of a gene cluster involved in 4-chlorocatechol degradation by Pseudomonas reinekei MT1. J Bacteriol 2009; 191(15).",
+      "claim_scope": ["MT1中4-氯儿茶酚降解基因簇", "3-氯黏康酸脱氯环化生成反式双烯内酯", "双烯内酯水解酶与马来酰乙酸还原酶步骤"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "map01220",
+      "locator": "KEGG PATHWAY: Degradation of aromatic compounds（β-酮己二酸途径段）",
+      "claim_scope": ["3-氧代己二酸经CoA转移酶与硫解酶生成琥珀酰-CoA和乙酰-CoA", "EC 2.8.3.6 与 EC 2.3.1.174"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": null,
+      "locator": "EC 3.1.1.45 dienelactone hydrolase; EC 1.3.1.32 maleylacetate reductase",
+      "claim_scope": ["双烯内酯水解酶与马来酰乙酸还原酶的酶名及EC编号核对"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "DSMZ/BacDive",
+      "record_id": "DSM 18361",
+      "locator": null,
+      "claim_scope": ["Pseudomonas reinekei MT1菌株保藏编号"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件题面未指定（null）；所引文献路线为好氧降解途径，厌氧条件下的氯代水杨酸降解路线未纳入。",
+    "步骤1羟化酶在MT1中的基因命名（如salA类）未确证，各步骤gene_or_protein均置null。",
+    "步骤3环异构脱氯酶在MT1中的确切EC归类（chloromuconate cycloisomerase 5.5.1.7 与 muconate cycloisomerase 5.5.1.1）存在不确定性。",
+    "Pseudomonas reinekei MT1的NCBI TaxID、最适/极限生长温度、pH与盐度范围、基因组登录号及GC含量未查得可靠来源，相应字段如实置null。",
+    "DSM 18361保藏编号依据记忆填写并标记为低置信度，建议以DSMZ/BacDive目录核实。"
+  ]
+}

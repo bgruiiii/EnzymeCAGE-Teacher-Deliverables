@@ -1,0 +1,424 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_022",
+  "pollutant_name_zh": "对甲苯磺酸根",
+  "pollutant_name_en": "Tosylate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "4-toluenesulfonate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线；好氧条件下按 4-toluenesulfonate degradation I 主链填写。"
+  },
+  "route_summary": "在好氧条件下，Pseudomonas putida T-2 将对甲苯磺酸根（4-toluenesulfonate）的甲基依次氧化为醇、醛和羧酸，生成 4-sulfobenzoate；随后经脱磺基反应生成 protocatechuate（3,4-dihydroxybenzoate），进入芳香族化合物中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-toluenesulfonate",
+          "smiles": "Cc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-sulfobenzyl alcohol",
+          "smiles": "OCc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "4-toluenesulfonate monooxygenase",
+        "ec_number": "1.14.13.174",
+        "gene_or_protein": "tsaA",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "T-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-sulfobenzyl alcohol",
+          "smiles": "OCc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-sulfobenzaldehyde",
+          "smiles": "O=Cc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "alcohol dehydrogenation",
+      "enzyme": {
+        "name": "4-sulfobenzyl alcohol dehydrogenase",
+        "ec_number": "1.1.1.313",
+        "gene_or_protein": "tsaB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "T-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-sulfobenzaldehyde",
+          "smiles": "O=Cc1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-sulfobenzoate",
+          "smiles": "[O-]C(=O)c1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "aldehyde dehydrogenation",
+      "enzyme": {
+        "name": "4-sulfobenzaldehyde dehydrogenase",
+        "ec_number": "1.2.1.62",
+        "gene_or_protein": "tsaC",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "T-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "4-sulfobenzoate",
+          "smiles": "[O-]C(=O)c1ccc(S(=O)(=O)[O-])cc1",
+          "role": "main"
+        },
+        {
+          "name": "O2",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "[O-]C(=O)c1cc(O)c(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "sulfite",
+          "smiles": "[O-]S(=O)[O-]",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "dioxygenative desulfonation",
+      "enzyme": {
+        "name": "4-sulfobenzoate dioxygenase",
+        "ec_number": "1.14.12.20",
+        "gene_or_protein": "tsaD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "T-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "T-2",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes 4-toluenesulfonate as a carbon and energy source",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades 4-toluenesulfonate through 4-sulfobenzyl alcohol, 4-sulfobenzaldehyde and 4-sulfobenzoate to protocatechuate",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-toluenesulfonate monooxygenase activity converting 4-toluenesulfonate to 4-sulfobenzyl alcohol",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "protocatechuate (3,4-dihydroxybenzoate)"
+    ],
+    "explanation": "4-sulfobenzoate 经脱磺基生成 protocatechuate，可进入 beta-ketoadipate 途径。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway: 4-toluenesulfonate degradation I",
+      "claim_scope": [
+        "pathway steps",
+        "substrates and products",
+        "enzyme names and EC numbers",
+        "Pseudomonas putida T-2 association",
+        "degradation capacity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "303",
+      "locator": "Pseudomonas putida",
+      "claim_scope": [
+        "organism name",
+        "ncbi_taxid"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "General Pseudomonas putida phenotype",
+      "claim_scope": [
+        "oxygen tolerance",
+        "respiration",
+        "motility",
+        "cell morphology",
+        "Gram stain",
+        "sporulation"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未直接核对数据库记录编号；菌株 T-2 的多数生理生化性状未逐项给出原始文献，未知项填 null。"
+  ]
+}

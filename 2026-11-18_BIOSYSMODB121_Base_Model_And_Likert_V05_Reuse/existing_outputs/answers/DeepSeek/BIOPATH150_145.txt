@@ -1,0 +1,394 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_145",
+  "pollutant_name_zh": "6-磺酸基-α-D-奎诺糖",
+  "pollutant_name_en": "6-sulfo-alpha-D-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation V",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "6-磺酸基-α-D-奎诺糖通过 sulfoquinovose degradation V 途径在 Pseudomonas putida KT2440 中降解：首先异构化为 6-脱氧-6-磺酸-D-果糖，随后磷酸化，经醛缩酶裂解为磷酸二羟丙酮和 3-磺酸-D-甘油醛，后者氧化为 3-磺酸-D-甘油酸，最终裂解为丙酮酸和亚硫酸盐。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-sulfo-alpha-D-quinovose",
+          "smiles": "OC1OC(CS(=O)(=O)O)C(O)C(O)C1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-deoxy-6-sulfo-D-fructose",
+          "smiles": "OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "sulfoquinovose isomerase",
+        "ec_number": "5.3.1.30",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "6-deoxy-6-sulfo-D-fructose",
+          "smiles": "OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-deoxy-6-sulfo-D-fructose 1-phosphate",
+          "smiles": "OP(=O)(O)OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": {
+        "name": "sulfoquinovose kinase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "6-deoxy-6-sulfo-D-fructose 1-phosphate",
+          "smiles": "OP(=O)(O)OCC(=O)C(O)C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "O=C(CO)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "3-sulfo-D-glyceraldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": {
+        "name": "6-deoxy-6-sulfo-D-fructose 1-phosphate aldolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "3-sulfo-D-glyceraldehyde",
+          "smiles": "O=CC(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-sulfo-D-glycerate",
+          "smiles": "O=C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "sulfolactaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "3-sulfo-D-glycerate",
+          "smiles": "O=C(O)C(O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "sulfite",
+          "smiles": "OS(=O)=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "sulfolyase",
+      "enzyme": {
+        "name": "sulfolactate sulfolyase",
+        "ec_number": "4.4.1.19",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "KT2440",
+        "ncbi_taxid": 160488,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "KT2440",
+      "ncbi_taxid": 160488,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 4,
+            "optimum_c": 30,
+            "maximum_c": 37,
+            "preference": "中温菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐菌"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 5.5,
+            "optimum": 7.0,
+            "maximum": 8.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSM",
+            "accession": "6125"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes a wide range of carbon sources, including aromatic compounds",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "broad degradation capacity, degrades various organic pollutants",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "diverse oxygenases and dehydrogenases",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile by polar flagella",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002947",
+            "genome_size_bp": 6181873,
+            "gc_percent": 61.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "soil, rhizosphere, water; versatile and widely distributed",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "dihydroxyacetone phosphate"],
+    "explanation": "丙酮酸和磷酸二羟丙酮进入中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["sulfoquinovose degradation V main route"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida KT2440 traits"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["enzyme assignments for sulfoquinovose degradation V"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida KT2440 genome"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "酶EC编号中，sulfoquinovose kinase、6-deoxy-6-sulfo-D-fructose 1-phosphate aldolase 和 sulfolactaldehyde dehydrogenase 的EC编号未能确定。",
+    "菌株KT2440的保藏编号可能存在多个，此处使用DSM 6125。"
+  ]
+}

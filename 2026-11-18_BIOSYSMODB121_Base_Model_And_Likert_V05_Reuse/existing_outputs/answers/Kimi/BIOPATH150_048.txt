@@ -1,0 +1,322 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_048",
+  "pollutant_name_zh": "左旋肉碱",
+  "pollutant_name_en": "Levocarnitine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-carnitine degradation III",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件（null）。按文献与途径库记录，L-carnitine degradation III 为有氧条件下的降解路线：L-肉碱经 3-脱氢肉碱生成甘氨酸甜菜碱和乙酸。"
+  },
+  "route_summary": "主链为两步连续反应：第一步，L-肉碱在 NAD+ 依赖的 L-肉碱-3-脱氢酶（carnitine 3-dehydrogenase，EC 1.1.1.108）作用下，3 位羟基被氧化为羰基，生成 3-脱氢肉碱；第二步，3-脱氢肉碱经水解脱去乙酰基（C–C 键水解断裂），生成甘氨酸甜菜碱（glycine betaine）和乙酸。甘氨酸甜菜碱随后可经连续去甲基化（二甲基甘氨酸→肌氨酸→甘氨酸）进入中心代谢（属独立途径，不计入本题主链）。代表菌为铜绿假单胞菌 Pseudomonas aeruginosa PAO1，该菌可以 L-肉碱为唯一碳氮源好氧生长并完成上述转化。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "L-carnitine",
+          "smiles": "C[N+](C)(C)C[C@@H](CC(=O)[O-])O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "NAD+ 依赖的氧化还原反应（3-位羟基脱氢氧化为羰基）",
+      "enzyme": {
+        "name": "L-carnitine 3-dehydrogenase",
+        "ec_number": "1.1.1.108",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": "PAO1",
+        "ncbi_taxid": 208964,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-dehydrocarnitine",
+          "smiles": "C[N+](C)(C)CC(=O)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycine betaine",
+          "smiles": "C[N+](C)(C)CC(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "acetate",
+          "smiles": "CC(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解（β-酮酸类底物的 C–C 键水解断裂，脱去乙酰基）",
+      "enzyme": {
+        "name": "3-dehydrocarnitine hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas aeruginosa",
+        "strain": "PAO1",
+        "ncbi_taxid": 208964,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "3-脱氢肉碱水解酶尚无正式 EC 编号与明确的基因归属；部分文献提示该 C–C 键断裂步骤可能含有自发进行的成分。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas aeruginosa",
+      "strain": "PAO1",
+      "ncbi_taxid": 208964,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": 42,
+            "preference": "中温菌（嗜温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "需氧菌；在硝酸盐存在时可进行厌氧呼吸（兼性厌氧生长）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "15692"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸（氧化磷酸化）",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以 L-肉碱作为唯一碳源和氮源好氧生长；也可利用多种有机酸、氨基酸等多种碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解季铵类化合物（L-肉碱、胆碱、甘氨酸甜菜碱）及多种天然有机物",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 L-肉碱-3-脱氢酶活性（EC 1.1.1.108，NAD+ 依赖），将 L-肉碱氧化为 3-脱氢肉碱",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（单端极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（杆菌）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_002516.2",
+            "genome_size_bp": 6264404,
+            "gc_percent": 66.6
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适：广泛分布于土壤、水体、医院环境以及动植物宿主相关环境，为典型的环境广适性机会致病菌",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["glycine betaine", "acetate"],
+    "explanation": "主链产物甘氨酸甜菜碱经连续去甲基化生成二甲基甘氨酸、肌氨酸和甘氨酸，进入一碳/甘氨酸代谢；副产物乙酸可活化为乙酰辅酶A进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "glycine betaine degradation",
+      "summary": "甘氨酸甜菜碱依次去甲基化为二甲基甘氨酸、肌氨酸、甘氨酸（MetaCyc 中为独立的甘氨酸甜菜碱降解途径），不属于本路线主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "L-carnitine degradation I（厌氧生成 γ-丁酰甜菜碱）",
+      "summary": "大肠杆菌等在厌氧/兼性厌氧条件下经巴豆甜菜碱将 L-肉碱还原为 γ-丁酰甜菜碱（cai/fix 操纵子），不属于本题被评分的主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "TMA 生成型肉碱裂解（cntAB/yeaWX）",
+      "summary": "部分肠道菌经 Rieske 型双组分加氧酶 CntAB 将 L-肉碱裂解释放三甲胺（TMA），属于与本路线不同的降解方式，不属于本题被评分的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc 途径页：L-carnitine degradation III",
+      "claim_scope": ["route_scope", "reaction_sequence", "enzyme_assignment"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA / ExPASy ENZYME",
+      "record_id": "EC 1.1.1.108",
+      "locator": "carnitine 3-dehydrogenase: L-carnitine + NAD+ = 3-dehydrocarnitine + NADH + H+",
+      "claim_scope": ["enzyme", "reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Aurich H, Kleber HP, Sorger H, Tauchert H (1968) Reinigung und Eigenschaften der Carnitindehydrogenase aus Pseudomonas aeruginosa. Eur J Biochem 6:196-201",
+      "claim_scope": ["enzyme", "organism", "reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Meadows JA, Wargo MJ (2015) Carnitine in bacterial physiology and metabolism. Microbiology 161:1161-1174（综述：P. aeruginosa 以 L-肉碱为唯一碳氮源，经 3-脱氢肉碱降解为甘氨酸甜菜碱）",
+      "claim_scope": ["organism_pathway", "carbon_utilization", "degradation_capacity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Pseudomonas aeruginosa 标准微生物学性状（教科书级常识：革兰氏阴性杆菌、极生鞭毛、不产孢、好氧/硝酸盐厌氧呼吸、中温 37-42°C、栖息地广适）",
+      "claim_scope": ["traits"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Genome",
+      "record_id": "NC_002516.2",
+      "locator": "Pseudomonas aeruginosa PAO1 complete chromosome（6,264,404 bp，GC 66.6%）",
+      "claim_scope": ["genome", "taxonomy"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "ATCC 15692",
+      "locator": "Pseudomonas aeruginosa PAO1 菌株保藏信息",
+      "claim_scope": ["culture_collection"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；按文献记录，L-carnitine degradation III 为有氧降解路线，但本回答按要求将 oxygen_condition 记为 null。",
+    "第二步 3-脱氢肉碱水解生成甘氨酸甜菜碱和乙酸的酶缺乏正式 EC 编号与明确基因归属，置信度低，不排除部分自发进行。",
+    "MetaCyc 中该途径的具体 PWY 记录号不确定，故相应证据条目的 record_id 置为 null。",
+    "NAD+/NADH 的 SMILES 未凭记忆填写，按纪律置 null。"
+  ]
+}

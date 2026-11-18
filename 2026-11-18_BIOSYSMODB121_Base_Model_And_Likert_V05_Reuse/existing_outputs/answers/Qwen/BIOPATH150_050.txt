@@ -1,0 +1,318 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_050",
+  "pollutant_name_zh": "肌酸酐",
+  "pollutant_name_en": "creatinine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "creatinine degradation II",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线为 creatinine degradation II；氧条件未指定。"
+  },
+  "route_summary": "在 creatinine degradation II 中，肌酸酐先经肌酸酐脱亚胺酶作用生成 1-甲基乙内酰脲并释放氨；随后 1-甲基乙内酰脲水解开环生成 N-氨甲酰肌氨酸；最后 N-氨甲酰肌氨酸水解生成肌氨酸（sarcosine），并释放二氧化碳和氨。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "creatinine",
+          "smiles": "CN1CC(=O)NC1=N",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1-methylhydantoin",
+          "smiles": "CN1C(=O)NC(=O)C1",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic deimination",
+      "enzyme": {
+        "name": "creatinine deiminase",
+        "ec_number": "3.5.4.21",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sporogenes",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "未指定氧条件；产物互变异构与质子化状态未细化。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "1-methylhydantoin",
+          "smiles": "CN1C(=O)NC(=O)C1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-carbamoylsarcosine",
+          "smiles": "O=C(N)N(C)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "cyclic amide hydrolysis",
+      "enzyme": {
+        "name": "1-methylhydantoin hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sporogenes",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该步酶的 EC 号未能确认，故填为 null；可能由广底物 hydantoinase 类酶催化。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "N-carbamoylsarcosine",
+          "smiles": "O=C(N)N(C)CC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "sarcosine",
+          "smiles": "CNCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "carbamoyl amidohydrolysis",
+      "enzyme": {
+        "name": "N-carbamoylsarcosine amidohydrolase",
+        "ec_number": "3.5.1.47",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Clostridium sporogenes",
+        "strain": null,
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "氨甲酰基水解产物的质子化状态与 pH 依赖形式未细化。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Clostridium sporogenes",
+      "strain": null,
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用肌酸酐作为降解底物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具有肌酸酐降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有肌酸酐脱亚胺酶、1-甲基乙内酰脲水解酶和 N-氨甲酰肌氨酸水解酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "sarcosine"
+    ],
+    "explanation": "该指定路线主链终止于肌氨酸（sarcosine），其可进入下游氨基酸或一碳代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "Pathway: creatinine degradation II",
+      "claim_scope": [
+        "route steps",
+        "microorganism",
+        "degradation capacity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB Enzyme Nomenclature",
+      "record_id": null,
+      "locator": "EC 3.5.4.21; EC 3.5.1.47",
+      "claim_scope": [
+        "enzyme names",
+        "EC numbers"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general microbiological characteristics of Clostridium sporogenes",
+      "claim_scope": [
+        "organism traits"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，无法确认该路线在好氧或厌氧条件下的适用范围。",
+    "第二步酶的 EC 号未能确认，已按未知处理。",
+    "多数微生物性状缺乏可核验来源，已填为 null 或低置信度。"
+  ]
+}

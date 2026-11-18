@@ -1,0 +1,486 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_057",
+  "pollutant_name_zh": "2-硝基甲苯",
+  "pollutant_name_en": "2-Nitrotoluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "2-nitrotoluene degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本主链采用已确立的好氧路线：2-硝基甲苯双加氧脱硝生成3-甲基儿茶酚，再经间位裂解进入中心代谢。甲基氧化等支路不计入评分主链。"
+  },
+  "route_summary": "以Acidovorax sp. JS42为代表的好氧矿化主链中，2-硝基甲苯由2-硝基甲苯2,3-双加氧酶氧化脱硝生成3-甲基儿茶酚并释放亚硝酸盐；3-甲基儿茶酚经儿茶酚2,3-双加氧酶间位开环，再经水解、水合和醛缩生成丙酮酸与乙醛，乙醛进一步转化为乙酰辅酶A。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-nitrotoluene",
+          "smiles": "Cc1ccccc1[N+](=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-methylcatechol",
+          "smiles": "Cc1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "nitrite",
+          "smiles": "[O-]N=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "双加氧脱硝",
+      "enzyme": {
+        "name": "2-nitrotoluene 2,3-dioxygenase",
+        "ec_number": null,
+        "gene_or_protein": "ntdAaAbAcAd",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acidovorax sp.",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该多组分双加氧酶无独立四位EC编号，故EC记为null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-methylcatechol",
+          "smiles": "Cc1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "间位开环",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acidovorax sp.",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "开环产物与EC按3-甲基儿茶酚标准间位裂解归类；JS42中该酶的基因名未核实。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "C=CCC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetate",
+          "smiles": "CC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxohepta-2,4-dienoate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acidovorax sp.",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "水解直接产物为2-羟基戊-2,4-二烯酸，随后互变异构为2-氧代戊-4-烯酸；该步未单列互变异构，且无确切四位EC。因开环产物为酮而非醛，不走半醛脱氢支路。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-oxopent-4-enoate",
+          "smiles": "C=CCC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合",
+      "enzyme": {
+        "name": "2-oxopent-4-enoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acidovorax sp.",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "反应与EC属于标准间位裂解下游途径；JS42中该酶的菌株水平基因归属未核实。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛缩裂解",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxovalerate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acidovorax sp.",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "丙酮酸可直接进入中心代谢，乙醛继续进入下一步；JS42中该醛缩酶的基因归属未核实。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "酰化脱氢",
+      "enzyme": {
+        "name": "acetaldehyde dehydrogenase (acetylating)",
+        "ec_number": "1.2.1.10",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Acidovorax sp.",
+        "strain": "JS42",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "乙酰辅酶A为中心代谢入口；JS42中该脱氢酶的菌株水平基因归属未核实。辅酶SMILES未填写。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acidovorax sp.",
+      "strain": "JS42",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "2-硝基甲苯可作为唯一碳源、氮源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可好氧矿化2-硝基甲苯",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "2-硝基甲苯2,3-双加氧酶活性，氧化脱硝生成3-甲基儿茶酚并释放亚硝酸盐",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA", "acetate"],
+    "explanation": "丙酮酸和乙酰辅酶A进入中心代谢；水解步骤释放的乙酸也可活化为乙酰辅酶A后进入三羧酸循环。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "中心碳代谢",
+      "summary": "丙酮酸与乙酰辅酶A进入三羧酸循环等中心途径，碳骨架可进一步矿化。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "甲基氧化支路",
+      "summary": "部分微生物可氧化2-硝基甲苯的甲基，生成2-硝基苯甲醇、2-硝基苯甲醛和2-硝基苯甲酸；该支路不是Acidovorax sp. JS42矿化2-硝基甲苯的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Haigler, Nishino and Spain, Applied and Environmental Microbiology: Biodegradation of 2-nitrotoluene by Pseudomonas sp. strain JS42; organism later placed in Acidovorax sp. JS42",
+      "claim_scope": ["S1反应", "3-甲基儿茶酚与亚硝酸盐", "JS42矿化2-硝基甲苯", "唯一碳氮源"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Parales, Gibson and coworkers: multicomponent 2-nitrotoluene 2,3-dioxygenase of strain JS42 encoded by ntdAa, ntdAb, ntdAc and ntdAd",
+      "claim_scope": ["酶名", "基因ntdAaAbAcAd", "氧化脱硝活性"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "KEGG map00633 nitrotoluene degradation and the canonical 3-methylcatechol meta-cleavage pathway, including EC 1.13.11.2, EC 4.2.1.80, EC 4.1.3.39 and EC 1.2.1.10",
+      "claim_scope": ["间位裂解下游反应", "EC编号", "中心代谢入口"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Taxonomic placement of Acidovorax sp. JS42, formerly Pseudomonas sp. JS42, as an aerobic Gram-negative betaproteobacterium",
+      "claim_scope": ["氧关系", "呼吸方式", "革兰氏染色", "细胞形态", "不产芽孢"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，主链按好氧双加氧脱硝-间位裂解路线填写。",
+    "2-硝基甲苯2,3-双加氧酶无独立四位EC编号。",
+    "S2至S6的酶类与EC按标准3-甲基儿茶酚间位裂解途径填写；除S1外，JS42的具体基因归属未核实，故这些步骤的微生物置信度为medium。",
+    "水解直接产物2-羟基戊-2,4-二烯酸到2-氧代戊-4-烯酸的互变异构已并入S3，未单列。",
+    "TaxID、保藏号、基因组登录号以及温度、pH、盐度、运动性和栖息地广适性无已核实来源，均记为null。",
+    "NADH、NAD+、辅酶A和乙酰辅酶A的SMILES未填写。"
+  ]
+}

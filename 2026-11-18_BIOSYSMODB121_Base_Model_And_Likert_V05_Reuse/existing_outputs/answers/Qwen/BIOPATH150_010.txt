@@ -1,0 +1,303 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_010",
+  "pollutant_name_zh": "甲胺磷",
+  "pollutant_name_en": "Methamidophos",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Methamidophos pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定的 Methamidophos pathway 填写；基于甲胺磷降解菌 Pseudomonas sp. M6 的推断主链。"
+  },
+  "route_summary": "在好氧条件下，甲胺磷主链按水解途径推进：首先水解 P-S 键生成甲硫醇和 O-甲基磷酰胺，随后水解 P-N 键生成氨和甲基磷酸，最后甲基磷酸水解生成甲醇和磷酸盐。甲醇可进入一碳代谢，磷酸盐进入磷酸盐代谢，氨进入氮代谢；甲硫醇的后续氧化未纳入本主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Methamidophos",
+          "smiles": "COP(=O)(N)SC",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "methanethiol",
+          "smiles": "CS",
+          "role": "main"
+        },
+        {
+          "name": "O-methyl phosphoramidate",
+          "smiles": "COP(=O)(N)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "methamidophos hydrolase",
+        "ec_number": "3.1.8.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. M6",
+        "strain": "M6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "首选酶可能属于有机磷水解酶类，但针对甲胺磷的确切酶学编号、基因和键位选择性证据不足。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "O-methyl phosphoramidate",
+          "smiles": "COP(=O)(N)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "main"
+        },
+        {
+          "name": "methyl phosphate",
+          "smiles": "COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "phosphamidase",
+        "ec_number": "3.9.1.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. M6",
+        "strain": "M6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "P-N 键水解步骤的具体酶和菌株归属不确定，此处按磷酸胺酶类推断。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "methyl phosphate",
+          "smiles": "COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "methanol",
+          "smiles": "CO",
+          "role": "main"
+        },
+        {
+          "name": "phosphate",
+          "smiles": "OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "phosphatase",
+        "ec_number": "3.1.3.1",
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp. M6",
+        "strain": "M6",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "甲基磷酸酯水解可能由非特异性磷酸酶催化，具体酶与证据不足。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp. M6",
+      "strain": "M6",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用甲胺磷作为碳源/磷源（推断）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解有机磷农药甲胺磷",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F9_enzyme_activity": {
+          "value": "甲胺磷水解酶/磷酸酯酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤和水体；农药污染环境可富集（推断）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "methanol",
+      "phosphate",
+      "ammonia"
+    ],
+    "explanation": "甲醇可进入一碳代谢，磷酸盐进入磷酸盐代谢，氨进入氮代谢；甲硫醇需经后续硫氧化过程进入硫代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "pathway",
+        "steps",
+        "enzyme",
+        "microorganism",
+        "traits"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "甲胺磷的结构标注在不同资料中可能存在 P=O/P=S 或取代基差异；本答案按 COP(=O)(N)SC 所示 O,S-二甲基磷酰胺硫代磷酸酯处理。",
+    "各步酶的具体 EC 编号、基因或蛋白名称证据不足，均按低置信度推断。",
+    "Pseudomonas sp. M6 是否连续催化全部三步以及其完整生理性状缺乏直接来源，性状多为低置信度推断。",
+    "甲硫醇的后续好氧氧化路径未纳入本题指定主链。"
+  ]
+}

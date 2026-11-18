@@ -1,0 +1,427 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_017",
+  "pollutant_name_zh": "2-甲基喹啉",
+  "pollutant_name_en": "2-Methylquinoline",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Quinaldine  pathway",
+    "is_single_continuous_route": true,
+    "notes": "chosen_route_name按题面原样保留。主链为Arthrobacter nitroguajacolicus Rü61a（早期文献亦称Arthrobacter sp. Rü61a或Arthrobacter ilicis Rü61a）中阐明的好氧quinaldine降解途径，自2-甲基喹啉至邻氨基苯甲酸；邻氨基苯甲酸之后的降解不计入该指定路线主链。"
+  },
+  "route_summary": "好氧条件下，Arthrobacter nitroguajacolicus Rü61a经由Quinaldine pathway将2-甲基喹啉依次转化为1H-4-oxoquinaldine和1H-3-hydroxy-4-oxoquinaldine，再由辅因子非依赖的2,4-双加氧酶开环并释放一氧化碳，生成N-乙酰邻氨基苯甲酸，最后水解为邻氨基苯甲酸和乙酸。邻氨基苯甲酸进入下游降解，不作为本路线主链步骤。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-methylquinoline",
+          "smiles": "Cc1nc2ccccc2cc1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1H-4-oxoquinaldine",
+          "smiles": "Cc1cc(=O)c2ccccc2[nH]1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "钼羟基化酶催化的C4羟基化",
+      "enzyme": {
+        "name": "quinaldine 4-oxidase",
+        "ec_number": null,
+        "gene_or_protein": "qoxLMS",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter nitroguajacolicus",
+        "strain": "Rü61a",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_008"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "产物氧原子来自水而非分子氧。生理电子受体未确定，未列入底物或产物。该酶无把握的正式EC编号，已置null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "1H-4-oxoquinaldine",
+          "smiles": "Cc1cc(=O)c2ccccc2[nH]1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1H-3-hydroxy-4-oxoquinaldine",
+          "smiles": "Cc1[nH]c2ccccc2c(=O)c1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NADH依赖的C3单加氧",
+      "enzyme": {
+        "name": "1H-4-oxoquinaldine 3-monooxygenase",
+        "ec_number": "1.14.13.43",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter nitroguajacolicus",
+        "strain": "Rü61a",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_008"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "EC采用文献常用号1.14.13.43，其是否已转移至新的1.14.14编号本次未复核。基因符号不确定，已置null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "1H-3-hydroxy-4-oxoquinaldine",
+          "smiles": "Cc1[nH]c2ccccc2c(=O)c1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-acetylanthranilic acid",
+          "smiles": "CC(=O)Nc1ccccc1C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "carbon monoxide",
+          "smiles": "[C-]#[O+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "辅因子非依赖的2,4-双加氧开环并释放一氧化碳",
+      "enzyme": {
+        "name": "1H-3-hydroxy-4-oxoquinaldine 2,4-dioxygenase",
+        "ec_number": "1.13.11.48",
+        "gene_or_protein": "hod",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter nitroguajacolicus",
+        "strain": "Rü61a",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_008"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "N-acetylanthranilic acid",
+          "smiles": "CC(=O)Nc1ccccc1C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "anthranilic acid",
+          "smiles": "Nc1ccccc1C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetic acid",
+          "smiles": "CC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "酰胺水解",
+      "enzyme": {
+        "name": "N-acetylanthranilate amidase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter nitroguajacolicus",
+        "strain": "Rü61a",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_008"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_006",
+      "uncertainty": "该酰胺酶的EC编号与基因符号未确认，已置null。此步为Quinaldine pathway主链终点，产物邻氨基苯甲酸交由下游途径。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter nitroguajacolicus",
+      "strain": "Rü61a",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以2-甲基喹啉（quinaldine）为碳源、氮源和能源进行好氧生长",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解2-甲基喹啉，并经Quinaldine pathway转化为邻氨基苯甲酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有quinaldine 4-oxidase、1H-4-oxoquinaldine 3-monooxygenase、1H-3-hydroxy-4-oxoquinaldine 2,4-dioxygenase（Hod）和N-acetylanthranilate amidase活性",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本路线主链终产物为邻氨基苯甲酸，尚未直接进入中心代谢。其后通常经邻氨基苯甲酸途径生成儿茶酚再开环，才进入TCA循环；Rü61a的具体下游开环方式未确认，故不列出中心代谢入口产物。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "anthranilate degradation",
+      "summary": "邻氨基苯甲酸可经邻氨基苯甲酸1,2-双加氧酶转化为儿茶酚，再经邻位或间位开环进入中心代谢。该段不属于题面指定的Quinaldine pathway主链，且Rü61a中对应酶与开环方式本次未确认。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Hund et al. 1990, Biol Chem Hoppe Seyler, Microbial metabolism of quinoline and related compounds. VI. Degradation of quinaldine by Arthrobacter sp.; Parschat et al. 2003, J Biol Chem, gene cluster of Arthrobacter ilicis Rü61a involved in degradation of quinaldine to anthranilate",
+      "claim_scope": ["pathway", "reaction", "trait"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Stephan, Tshisuaka, Fetzner, Lingens. 1996. Eur J Biochem. Quinaldine 4-oxidase from Arthrobacter spec. Rü61a; qoxL, qoxM, qoxS subunit genes in subsequent Fetzner-group papers",
+      "claim_scope": ["enzyme", "gene", "reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "IUBMB EC 1.14.13.43, accepted name 1H-4-oxoquinaldine 3-monooxygenase; enzyme characterized in the Arthrobacter sp. Rü61a quinaldine pathway",
+      "claim_scope": ["enzyme", "ec_number", "reaction"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Bauer, Max, Fetzner, Lingens. 1996. Eur J Biochem. 2,4-Dioxygenases catalyzing N-heterocyclic-ring cleavage and formation of carbon monoxide; EC 1.13.11.48; gene hod",
+      "claim_scope": ["enzyme", "ec_number", "gene", "reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Kolkenbrock et al. 2006. J Bacteriol. N-Acetylanthranilate amidase from Arthrobacter nitroguajacolicus Rü61a",
+      "claim_scope": ["enzyme", "reaction", "organism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Aerobic growth and degradation studies of Arthrobacter sp. Rü61a on quinaldine as carbon, nitrogen and energy source (Hund et al. 1990 and subsequent Fetzner-group papers)",
+      "claim_scope": ["trait", "organism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Strain Rü61a identified and subsequently treated as a Gram-positive Arthrobacter in the Lingens/Fetzner quinaldine literature",
+      "claim_scope": ["trait", "organism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Post-reclassification Fetzner-group papers, including Kolkenbrock et al. 2006, designate the quinaldine-degrading strain as Arthrobacter nitroguajacolicus Rü61a; earlier papers used Arthrobacter sp. Rü61a or Arthrobacter ilicis Rü61a",
+      "claim_scope": ["organism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Combined enzyme assignment for strain Rü61a from Stephan et al. 1996 (quinaldine 4-oxidase), EC 1.14.13.43 monooxygenase literature, Bauer et al. 1996 (Hod), and Kolkenbrock et al. 2006 (amidase)",
+      "claim_scope": ["enzyme", "trait"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "quinaldine 4-oxidase与N-acetylanthranilate amidase的正式EC编号未能确认，已置null，未用未指定编号占位。",
+    "1H-4-oxoquinaldine 3-monooxygenase采用常用EC 1.14.13.43，现行IUBMB转移状态未复核，基因符号未确认。",
+    "第一步生理电子受体未确定，故只列出主底物、水和主产物。",
+    "菌株Rü61a早期称作Arthrobacter sp.或Arthrobacter ilicis，后归入Arthrobacter nitroguajacolicus；TaxID、保藏号和基因组登录号未确认，已置null。",
+    "温度、pH、盐度、运动性、细胞形态、产孢、基因组和栖息地广适性无可靠菌株级来源，已置null，未用属级近似值占位。",
+    "证据来自既有文献知识而非本次数据库检索，source_type记为INTERNAL_KNOWLEDGE_ONLY；raw_text无原文可核，故为null。"
+  ]
+}

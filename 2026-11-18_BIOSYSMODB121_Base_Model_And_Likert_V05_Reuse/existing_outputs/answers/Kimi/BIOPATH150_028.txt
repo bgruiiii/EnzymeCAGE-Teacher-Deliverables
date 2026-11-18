@@ -1,0 +1,343 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_028",
+  "pollutant_name_zh": "肌酸酐",
+  "pollutant_name_en": "creatinine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "creatinine degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；按 MetaCyc 的 creatinine degradation I 路线给出水解-氧化型主链（肌酸酐→肌酸→肌氨酸→甘氨酸）。"
+  },
+  "route_summary": "creatinine degradation I 主链：肌酸酐（creatinine）经肌酐酶（creatinine amidohydrolase, EC 3.5.2.10）水解生成肌酸（creatine）；肌酸经肌酸酶（creatine amidinohydrolase, EC 3.5.3.3）水解生成肌氨酸（sarcosine）和尿素；肌氨酸经肌氨酸氧化酶（sarcosine oxidase, EC 1.5.3.1）氧化脱甲基生成甘氨酸（glycine）和甲醛，甘氨酸随后可经甘氨酸裂解系统进入一碳代谢。该路线在 MetaCyc 中的参考物种为 Pseudomonas putida。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "creatinine",
+          "smiles": "CN1CC(=O)N=C1N",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "creatine",
+          "smiles": "CN(CC(=O)O)C(=N)N",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解（cyclic amidase，creatinine + H2O → creatine）",
+      "enzyme": {
+        "name": "creatinine amidohydrolase (creatininase)",
+        "ec_number": "3.5.2.10",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "creatine",
+          "smiles": "CN(CC(=O)O)C(=N)N",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "sarcosine",
+          "smiles": "CNCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "urea",
+          "smiles": "NC(=O)N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解（脒基水解酶，creatine + H2O → sarcosine + urea）",
+      "enzyme": {
+        "name": "creatine amidinohydrolase (creatinase)",
+        "ec_number": "3.5.3.3",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "sarcosine",
+          "smiles": "CNCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycine",
+          "smiles": "NCC(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "hydrogen peroxide",
+          "smiles": "OO",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱甲基（sarcosine + H2O + O2 → glycine + formaldehyde + H2O2）",
+      "enzyme": {
+        "name": "sarcosine oxidase",
+        "ec_number": "1.5.3.1",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": null,
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "题面未指定氧条件；此处按好氧型的 sarcosine oxidase（EC 1.5.3.1）填写，厌氧条件下同一转化可能由 sarcosine dehydrogenase（EC 1.5.99.1）催化。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": null,
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（嗜中温）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "化能有机异养；可降解利用肌酸酐、肌酸、肌氨酸等含氮有机物（本路线底物）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解肌酸酐及其相关肌酸代谢物（肌酸、肌氨酸）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "肌酐酶（creatinine amidohydrolase, EC 3.5.2.10）、肌酸酶（creatine amidinohydrolase, EC 3.5.3.3）、肌氨酸氧化酶（sarcosine oxidase, EC 1.5.3.1）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状细菌（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛分布于土壤、水体、植物根际等多种环境，属环境广适性较强的腐生菌",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["glycine"],
+    "explanation": "主链末端产物甘氨酸可经甘氨酸裂解系统（Gcv）生成 5,10-亚甲基四氢叶酸、CO2 和 NH3，进入一碳代谢；也可经丝氨酸羟甲基转移酶生成丝氨酸，进入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "glycine cleavage / one-carbon metabolism",
+      "summary": "甘氨酸经甘氨酸裂解系统或丝氨酸羟甲基转移酶进入一碳代谢与中心碳代谢，完成矿化。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "creatinine degradation II",
+      "summary": "厌氧等条件下经 creatinine deiminase（EC 3.5.4.21）将肌酸酐脱亚氨生成 N-甲基乙内酰脲（1-methylhydantoin）和氨，再经 N-氨甲酰肌氨酸生成肌氨酸；该分支不属于本题被评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page: creatinine degradation I",
+      "claim_scope": [
+        "主链反应顺序：creatinine → creatine → sarcosine → glycine",
+        "各步酶：creatinine amidohydrolase / creatine amidinohydrolase / sarcosine oxidase",
+        "参考物种：Pseudomonas putida"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz (IUBMB Enzyme Nomenclature)",
+      "record_id": "EC 3.5.2.10",
+      "locator": null,
+      "claim_scope": ["creatinine amidohydrolase (creatininase) 的酶名与 EC 编号，催化 creatinine + H2O = creatine"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz (IUBMB Enzyme Nomenclature)",
+      "record_id": "EC 3.5.3.3",
+      "locator": null,
+      "claim_scope": ["creatine amidinohydrolase (creatinase) 的酶名与 EC 编号，催化 creatine + H2O = sarcosine + urea"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz (IUBMB Enzyme Nomenclature)",
+      "record_id": "EC 1.5.3.1",
+      "locator": null,
+      "claim_scope": ["sarcosine oxidase 的酶名与 EC 编号，催化 sarcosine + H2O + O2 = glycine + formaldehyde + H2O2"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["Pseudomonas putida 一般生物学性状：严格好氧、革兰氏阴性直杆状、极生鞭毛运动、不产芽孢、中温、环境广布"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "PubChem",
+      "record_id": "CID:588,586,1088,750,1176,712,977,784",
+      "locator": null,
+      "claim_scope": ["creatinine/creatine/sarcosine/glycine/urea/formaldehyde/oxygen/hydrogen peroxide 的 SMILES 结构"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "步骤微生物按 MetaCyc 'creatinine degradation I' 的参考物种 Pseudomonas putida 填写到种，菌株未指定；因此 F5 菌种保藏编号与 F14 基因组信息填 null。",
+    "S3（肌氨酸→甘氨酸）所用酶取决于氧条件（题面未指定），主链按好氧的 sarcosine oxidase（EC 1.5.3.1）填写，厌氧情形可能为 sarcosine dehydrogenase（EC 1.5.99.1）。",
+    "Pseudomonas putida 的 pH、盐度等性状缺乏可直接引用的物种级实测来源，按 null 如实记录；温度最适值仅按内部知识以低置信度填写。"
+  ]
+}

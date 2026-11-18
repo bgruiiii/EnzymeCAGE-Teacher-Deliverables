@@ -1,0 +1,361 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_150",
+  "pollutant_name_zh": "(-)-奎尼酸",
+  "pollutant_name_en": "(-)-Quinate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "quinate degradation I",
+    "is_single_continuous_route": true,
+    "notes": "氧条件题面未指定，按要求保持 null；路线名称按题面原样填写为 quinate degradation I。该路线按 MetaCyc 中的细菌型奎尼酸降解路线理解：奎尼酸经3-脱氢奎尼酸、3-脱氢莽草酸被氧化为原儿茶酸，再汇入β-酮己二酸途径。"
+  },
+  "route_summary": "(-)-奎尼酸在细菌型 quinate degradation I 路线中降解：第一步由奎尼酸脱氢酶（quiA，EC 1.1.1.282）将奎尼酸氧化为3-脱氢奎尼酸；第二步由3-脱氢奎尼酸脱水酶（EC 4.2.1.10）脱水生成3-脱氢莽草酸；第三步由3-脱氢莽草酸脱水酶（quiC，EC 4.2.1.51）再脱去一分子水并芳构化生成原儿茶酸。原儿茶酸随后经原儿茶酸3,4-双加氧酶开环进入β-酮己二酸途径，最终生成琥珀酰-CoA与乙酰-CoA进入TCA循环（该段属下游延续，不计入本路线主链）。全程以 Acinetobacter baylyi ADP1（旧称 Acinetobacter calcoaceticus / Acinetobacter sp. ADP1）为典型微生物。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "quinate",
+          "smiles": "OC1(C(=O)O)CC(O)C(O)C(O)C1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydroquinate",
+          "smiles": "OC1(C(=O)O)CC(=O)C(O)C(O)C1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "氧化脱氢（C3位羟基氧化为酮，NAD+为电子受体）",
+      "enzyme": {
+        "name": "quinate dehydrogenase (NAD+)",
+        "ec_number": "1.1.1.282",
+        "gene_or_protein": "quiA",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 400667,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "EC编号1.1.1.282与NAD+依赖性来自记忆，未经数据库直接核验；ADP1的quiA产物可能兼具莽草酸脱氢活性。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "3-dehydroquinate",
+          "smiles": "OC1(C(=O)O)CC(=O)C(O)C(O)C1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-dehydroshikimate",
+          "smiles": "OC(=O)C1=CC(=O)C(O)C(O)C1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "脱水（消除一分子水形成C1=C2环内双键）",
+      "enzyme": {
+        "name": "3-dehydroquinate dehydratase",
+        "ec_number": "4.2.1.10",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 400667,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "ADP1中催化该步的3-脱氢奎尼酸脱水酶的具体基因名（I型aroD类或II型aroQ类）未能确认，故gene_or_protein填null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-dehydroshikimate",
+          "smiles": "OC(=O)C1=CC(=O)C(O)C(O)C1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "OC(=O)c1cc(O)c(O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "脱水芳构化（脱去一分子水形成苯环）",
+      "enzyme": {
+        "name": "3-dehydroshikimate dehydratase",
+        "ec_number": "4.2.1.51",
+        "gene_or_protein": "quiC",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Acinetobacter baylyi",
+        "strain": "ADP1",
+        "ncbi_taxid": 400667,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "3-脱氢莽草酸脱水酶的EC编号（4.2.1.51）与基因名（quiC）为记忆值；路线终点边界亦可能因数据库版本而异（此步在某些数据库中归入莽草酸降解途径）。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Acinetobacter baylyi",
+      "strain": "ADP1",
+      "ncbi_taxid": 400667,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温性（mesophilic），实验室常规于30 °C左右培养"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（obligately aerobic）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐（土壤来源细菌，无盐度需求）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSM",
+            "accession": "14961"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2（分子氧）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以奎尼酸作为唯一碳源与能源生长，并能利用莽草酸、原儿茶酸、对羟基苯甲酸、苯甲酸等多种芳香族化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "广谱芳香族化合物降解能力：经β-酮己二酸（3-oxoadipate）途径降解苯甲酸、对羟基苯甲酸、原儿茶酸、奎尼酸、莽草酸等多种芳香底物",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "奎尼酸脱氢酶（QuiA）活性：以NAD+为辅酶将奎尼酸氧化为3-脱氢奎尼酸",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "无鞭毛、不运动",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "短杆菌至球杆菌（对数生长期呈杆状，静止期趋近球状）",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性，细胞包膜含外膜与肽聚糖",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_005966",
+            "genome_size_bp": 3598621,
+            "gc_percent": 40.2
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适性强：土壤与水体等环境中常见的代谢多样化细菌，可利用多种有机底物、适应多种生态位，并非局限于单一栖息地的物种",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "succinyl-CoA",
+      "acetyl-CoA"
+    ],
+    "explanation": "主链终点为原儿茶酸。原儿茶酸经原儿茶酸3,4-双加氧酶开环进入β-酮己二酸（3-oxoadipate）途径，依次生成β-羧基-顺,顺-黏康酸、β-酮己二酸、β-酮己二酰-CoA，最终裂解为琥珀酰-CoA与乙酰-CoA进入TCA循环。此段属下游延续，不计入 quinate degradation I 主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "protocatechuate degradation via β-ketoadipate pathway",
+      "summary": "原儿茶酸由原儿茶酸3,4-双加氧酶（EC 1.13.11.3）开环生成β-羧基-顺,顺-黏康酸，经内酯化、β-酮己二酸生成与CoA活化，最终产生琥珀酰-CoA与乙酰-CoA进入TCA循环；Acinetobacter baylyi ADP1 等菌可完成该段降解。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "quinate degradation II（真菌型：经5-脱氢奎尼酸与莽草酸）",
+      "summary": "真菌（如 Aspergillus nidulans、Neurospora crassa 的 qut/qa 基因簇）经NADP+依赖的奎尼酸5-脱氢酶（EC 1.1.1.24）将奎尼酸氧化为5-脱氢奎尼酸，再经5-脱氢奎尼酸脱水酶与5-脱氢莽草酸还原酶生成莽草酸，随后汇入莽草酸途径/芳香族氨基酸代谢。该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "pathway page: quinate degradation I（反应与物种归属经内部知识回忆，未经在线核验）",
+      "claim_scope": [
+        "路线结构与各步反应（奎尼酸→3-脱氢奎尼酸→3-脱氢莽草酸→原儿茶酸）",
+        "S2、S3的反应与酶",
+        "S2、S3对应微生物为 Acinetobacter baylyi ADP1"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Elsemore D, Ornston LN. J Bacteriol (1994)：位于 Acinetobacter（ADP1）pca-pob 超操纵子簇中的 quiA 为奎尼酸脱氢酶结构基因（菌株现名 Acinetobacter baylyi ADP1）",
+      "claim_scope": [
+        "S1的酶（quinate dehydrogenase, quiA）",
+        "S1的反应与对应微生物",
+        "F7 碳源利用（奎尼酸）",
+        "F9 酶活"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Barbe V, et al. Unique features revealed by the genome sequence of Acinetobacter sp. ADP1, a versatile and naturally transformation competent bacterium. Nucleic Acids Res (2004)",
+      "claim_scope": [
+        "F14 基因组基本信息（约3.6 Mb，GC约40%）",
+        "F15 栖息地广适性",
+        "F8 广义降解能力（代谢多样性）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Vaneechoutte M, et al. Acinetobacter baylyi sp. nov. 描述论文（含 ADP1 作为模式菌株的命名与保藏信息）. Int J Syst Evol Microbiol (2006)",
+      "claim_scope": [
+        "物种命名 Acinetobacter baylyi（ADP1 的现用种名）",
+        "F5 菌种保藏（DSM 14961）"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "F1 专性好氧",
+        "F6 好氧呼吸与O2末端电子受体",
+        "F10 无运动性",
+        "F11 细胞形态",
+        "F12 革兰氏阴性",
+        "F13 不产芽孢",
+        "F4 非嗜盐",
+        "F2 中温"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "路线名 quinate degradation I 按 MetaCyc 中的细菌型路线理解（奎尼酸→3-脱氢奎尼酸→3-脱氢莽草酸→原儿茶酸）；若出处数据库将其定义为真菌型路线（经5-脱氢奎尼酸→5-脱氢莽草酸→莽草酸），主链步骤需整体替换。",
+    "S1酶EC编号（1.1.1.282）、S3酶EC编号（4.2.1.51）及基因名（quiA、quiC）为记忆回忆，未经数据库直接核验，可能存在偏差。",
+    "Acinetobacter baylyi ADP1 的 TaxID（400667）、保藏号（DSM 14961）、基因组大小（3598621 bp）与 GC 含量（40.2%）为记忆值，可能与最新数据库记录不一致。",
+    "温度、pH、盐度等生长生理参数缺乏可靠来源，按规范填 null 并以低/未知置信度标注。",
+    "路线终点边界存在不确定性：3-脱氢莽草酸→原儿茶酸一步在某些数据库版本中归属莽草酸降解途径而非 quinate degradation I 本身。"
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_039",
+  "pollutant_name_zh": "D-脯氨酸甜菜碱",
+  "pollutant_name_en": "D-proline betaine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "proline betaine degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition记为null。该命名路线的脱甲基化学依赖分子氧，但未据此改写题面条件。"
+  },
+  "route_summary": "脯氨酸甜菜碱降解I的主链为两步连续氧化性N-脱甲基：D-脯氨酸甜菜碱先转化为N-甲基-D-脯氨酸并释放甲醛，再转化为D-脯氨酸并再次释放甲醛。代表菌为Sinorhizobium meliloti，对应stc基因簇编码的Rieske型加氧酶系。本回答未把后续脯氨酸至谷氨酸的步骤计入该命名路线主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-proline betaine",
+          "smiles": "C[N+]1(CCC[C@@H]1C(=O)[O-])C",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-methyl-D-proline",
+          "smiles": "C[NH+]1CCC[C@@H]1C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化性N-脱甲基",
+      "enzyme": {
+        "name": "stachydrine demethylase",
+        "ec_number": null,
+        "gene_or_protein": "stc2",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sinorhizobium meliloti",
+        "strain": "1021",
+        "ncbi_taxid": 266834,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "经典stc途径底物为L-脯氨酸甜菜碱（水苏碱）；此处按题面D构型书写，并假定脱甲基保留C2构型。催化组分首选stc2，还原酶组分为stc3，基因栏只填一个催化组分。生理电子供体未指定为单一NADH或NADPH，故未写入烟酰胺辅因子。无已确认的EC编号。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "N-methyl-D-proline",
+          "smiles": "C[NH+]1CCC[C@@H]1C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-proline",
+          "smiles": "[NH2+]1CCC[C@@H]1C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化性N-脱甲基",
+      "enzyme": {
+        "name": "N-methylproline demethylase",
+        "ec_number": null,
+        "gene_or_protein": "stc4",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Sinorhizobium meliloti",
+        "strain": "1021",
+        "ncbi_taxid": 266834,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "stc4与第二步N-甲基脯氨酸脱甲基的对应关系来自基因簇功能解析，酶对D对映体的直接实验证据未在本次复核。电子供体与EC编号未知，故辅因子只保留分子氧，EC记为null。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Sinorhizobium meliloti",
+      "strain": "1021",
+      "ncbi_taxid": 266834,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用脯氨酸甜菜碱作为碳源和氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可降解脯氨酸甜菜碱（水苏碱）等植物季铵类化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有水苏碱脱甲基酶及N-甲基脯氨酸脱甲基酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_003047.1",
+            "genome_size_bp": 3654135,
+            "gc_percent": 62.7
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "宿主范围较窄的根瘤共生菌，可在土壤中自由生活，栖息地广适性有限",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["D-proline"],
+    "explanation": "该命名路线主链的直接终点按两步脱甲基记为D-脯氨酸。D-脯氨酸需先衔接至L-脯氨酸，才可能经脯氨酸脱氢酶途径进入L-谷氨酸；该衔接未纳入主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "proline degradation",
+      "summary": "若构型可转化为L-脯氨酸，后续可由脯氨酸脱氢酶（EC 1.5.5.2）生成1-吡咯啉-5-羧酸，再由1-吡咯啉-5-羧酸脱氢酶（EC 1.2.1.88）生成L-谷氨酸。该段是否属于proline betaine degradation I未确认，故不计入评分主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Phillips et al. 1998 Appl Environ Microbiol; Burnet et al. 2000 Gene; Sinorhizobium meliloti stc2/stc3/stc4 stachydrine catabolism cluster",
+      "claim_scope": ["pathway_steps", "enzyme_identity", "gene", "organism_degradation_capacity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "standard species description of Sinorhizobium meliloti 1021",
+      "claim_scope": ["oxygen_tolerance", "temperature_preference", "respiration", "morphology", "gram", "motility", "sporulation", "habitat_generalism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_003047.1",
+      "locator": "Sinorhizobium meliloti 1021 chromosome; recalled from Galibert et al. 2001 and RefSeq, not re-queried",
+      "claim_scope": ["genome_accession", "genome_size_bp", "gc_percent"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面底物为D-脯氨酸甜菜碱，经典stc文献描述的是天然L-脯氨酸甜菜碱（水苏碱）；主链按D构型连续书写，酶是否同等作用于D对映体未重新核对。",
+    "D-脯氨酸甜菜碱SMILES由常见L-水苏碱SMILES翻转手性得到，未用结构数据库实时校验。",
+    "两步反应需要还原型电子供体，但NADH与NADPH未区分，故未填写具体烟酰胺辅因子；水苏碱脱甲基酶与N-甲基脯氨酸脱甲基酶的EC编号未知，记为null。",
+    "proline betaine degradation I的数据库边界可能只含两步脱甲基，也可能绘至谷氨酸；本回答仅将两步脱甲基作为评分主链。",
+    "菌株1021的保藏编号、精确温度上下限、最适温度、pH与盐度范围未能确认，相关性状为null。基因组大小与GC为记忆值，未实时复核。"
+  ]
+}

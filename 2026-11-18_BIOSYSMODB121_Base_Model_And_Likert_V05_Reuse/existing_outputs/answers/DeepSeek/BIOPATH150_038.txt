@@ -1,0 +1,480 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_038",
+  "pollutant_name_zh": "4-硝基甲苯",
+  "pollutant_name_en": "4-Nitrotoluene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-nitrotoluene degradation I",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "4-硝基甲苯先经甲基氧化生成4-硝基苯甲酸，再经硝基还原、重排和脱氨生成龙胆酸，随后通过龙胆酸途径开环生成延胡索酸和丙酮酸，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "4-nitrotoluene",
+          "smiles": "Cc1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-nitrobenzyl alcohol",
+          "smiles": "OCc1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "4-nitrotoluene monooxygenase",
+        "ec_number": "1.14.13.196",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-nitrobenzyl alcohol",
+          "smiles": "OCc1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-nitrobenzaldehyde",
+          "smiles": "O=Cc1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "4-nitrobenzyl alcohol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-nitrobenzaldehyde",
+          "smiles": "O=Cc1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-nitrobenzoate",
+          "smiles": "OC(=O)c1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenation",
+      "enzyme": {
+        "name": "4-nitrobenzaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-nitrobenzoate",
+          "smiles": "OC(=O)c1ccc([N+](=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxylaminobenzoate",
+          "smiles": "ONc1ccc(C(=O)O)cc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "nitroreduction",
+      "enzyme": {
+        "name": "4-nitrobenzoate nitroreductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-hydroxylaminobenzoate",
+          "smiles": "ONc1ccc(C(=O)O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-amino-5-hydroxybenzoate",
+          "smiles": "OC(=O)c1c(N)ccc(O)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "4-hydroxylaminobenzoate mutase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "2-amino-5-hydroxybenzoate",
+          "smiles": "OC(=O)c1c(N)ccc(O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "gentisate",
+          "smiles": "OC(=O)c1c(O)ccc(O)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "deamination",
+      "enzyme": {
+        "name": "2-amino-5-hydroxybenzoate deaminase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "gentisate",
+          "smiles": "OC(=O)c1c(O)ccc(O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleylpyruvate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring cleavage",
+      "enzyme": {
+        "name": "gentisate 1,2-dioxygenase",
+        "ec_number": "1.13.11.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "maleylpyruvate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarylpyruvate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "maleylpyruvate isomerase",
+        "ec_number": "5.2.1.4",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    },
+    {
+      "step_id": "S9",
+      "order": 9,
+      "branch_id": null,
+      "predecessor_step_ids": ["S8"],
+      "substrates": [
+        {
+          "name": "fumarylpyruvate",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarate",
+          "smiles": "OC(=O)/C=C/C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "fumarylpyruvate hydrolase",
+        "ec_number": "3.7.1.20",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "TW3",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": null
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "TW3",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["fumarate", "pyruvate"],
+    "explanation": "路径最终生成延胡索酸和丙酮酸，可分别进入TCA循环和糖酵解/糖异生。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [],
+  "uncertainties": []
+}

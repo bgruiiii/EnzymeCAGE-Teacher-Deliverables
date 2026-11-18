@@ -1,0 +1,311 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_009",
+  "pollutant_name_zh": "D-柠檬烯",
+  "pollutant_name_en": "D-Limonene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Limonene degradation III (to perillate)",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线，主链为D-柠檬烯（(4R)-limonene）经C7甲基羟化至紫苏醇，再氧化为紫苏醛和紫苏酸（perillate）的连续三步；不改选香芹醇/香芹酮或环氧化物路线。"
+  },
+  "route_summary": "好氧条件下，D-柠檬烯经C7位（环上甲基）单加氧羟化生成(4R)-紫苏醇，再依次脱氢氧化为(4R)-紫苏醛和(4R)-紫苏酸（perillate）。代表菌为Geobacillus stearothermophilus BR388（文献原名Bacillus stearothermophilus BR388）。该路线以紫苏酸为终点，不包含进入中心代谢的后续步骤。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(4R)-limonene",
+          "smiles": "CC1=CC[C@@H](CC1)C(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(4R)-perillyl alcohol",
+          "smiles": "OCC1=CC[C@@H](CC1)C(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C7位单加氧羟化",
+      "enzyme": {
+        "name": "limonene 7-monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Geobacillus stearothermophilus",
+        "strain": "BR388",
+        "ncbi_taxid": 1422,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "文献常称limonene hydroxylase，此处按区域选择性写作limonene 7-monooxygenase；无已确认的四位EC。生理还原辅因子是NADH还是NADPH未确定，故未列入底物。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "(4R)-perillyl alcohol",
+          "smiles": "OCC1=CC[C@@H](CC1)C(=C)C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(4R)-perillyl aldehyde",
+          "smiles": "O=CC1=CC[C@@H](CC1)C(=C)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醇氧化为醛",
+      "enzyme": {
+        "name": "perillyl alcohol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Geobacillus stearothermophilus",
+        "strain": "BR388",
+        "ncbi_taxid": 1422,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "紫苏醛已被报道为转化产物，但相应脱氢酶未见纯化或基因鉴定，酶名为功能推断；NAD+或NADP+未确定，故未写入辅因子。相对紫苏醇，该步可能只是次要活性。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "(4R)-perillyl aldehyde",
+          "smiles": "O=CC1=CC[C@@H](CC1)C(=C)C",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(4R)-perillate",
+          "smiles": "O=C([O-])C1=CC[C@@H](CC1)C(=C)C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛氧化为羧酸",
+      "enzyme": {
+        "name": "perillyl aldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Geobacillus stearothermophilus",
+        "strain": "BR388",
+        "ncbi_taxid": 1422,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "紫苏酸为该路线终点产物，醛脱氢酶未纯化，酶名为功能推断；烟酰胺辅因子未确定。不能排除氧化酶而非脱氢酶机制，故置信度为low。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Geobacillus stearothermophilus",
+      "strain": "BR388",
+      "ncbi_taxid": 1422,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "嗜热"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可转化D-柠檬烯，生成紫苏醇、紫苏醛和紫苏酸；是否以柠檬烯为唯一生长碳源未确认",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "已报道的相关能力为柠檬烯C7氧化至紫苏酸；更广谱污染物降解能力未知",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具柠檬烯羟化酶活性，可将D-柠檬烯转化为紫苏醇",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "产内生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "题面路线止于紫苏酸（perillate）。紫苏酸不是中心代谢中间体，BR388是否将其继续裂解并进入中心代谢没有可靠证据。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [
+    {
+      "name": "limonene degradation via carveol and carvone",
+      "summary": "柠檬烯在C6位烯丙位羟化生成香芹醇，再氧化为香芹酮，与本题C7羟化至紫苏酸的主链不同。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "limonene epoxide routes",
+      "summary": "柠檬烯可经1,2-或8,9-环氧化后再开环降解，不属于本题至紫苏酸的主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Chang HC, Oriel P. 1994. Bioproduction of perillyl alcohol and related monoterpenes by isolates of Bacillus stearothermophilus. Journal of Food Science.",
+      "claim_scope": ["pathway_reactions", "organism", "limonene_hydroxylation", "perillyl_alcohol", "perillyl_aldehyde", "perillate"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": "由BR388转化液中紫苏醛和紫苏酸的出现，按标准醇/醛氧化顺序推断脱氢酶活性；并非纯化酶或基因直接证据。",
+      "claim_scope": ["enzyme_functional_assignment"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "物种级知识：Geobacillus stearothermophilus（异名Bacillus stearothermophilus）为革兰氏阳性、产内生孢子的杆状嗜热好氧菌；NCBI TaxID 1422。数值范围未套用模式菌株数据。",
+      "claim_scope": ["taxonomy", "morphology", "gram_stain", "sporulation", "thermophily", "oxygen", "respiration"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "各步均无把握对应到单一四位EC编号，ec_number全部置null，避免误用香芹醇途径的单加氧酶EC。",
+    "S1还原辅因子（NADH或NADPH）未确定，未写入反应物。",
+    "S2与S3的脱氢酶未纯化，酶名是根据中间产物作出的功能推断，置信度为low。",
+    "菌株BR388的保藏编号、基因组登录号以及温度、pH、盐度数值和运动性没有可核验记录，相应性状为null。",
+    "文献原名为Bacillus stearothermophilus BR388，此处采用现名Geobacillus stearothermophilus，TaxID用物种级1422。",
+    "该菌中此过程更接近积累紫苏酸的生物转化，是否继续矿化未知。",
+    "其他菌株（如部分Pseudomonas putida）也能把柠檬烯转化为紫苏酸，但主链代表菌选用能形成紫苏醇、紫苏醛和紫苏酸的BR388。"
+  ]
+}

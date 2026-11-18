@@ -1,0 +1,691 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_092",
+  "pollutant_name_zh": "芦丁",
+  "pollutant_name_en": "Rutin",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "rutin degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故此处保留 null；但第三步槲皮素 2,3-双加氧反应明确消耗 O2，因此该主链的实际执行至少在该步需要有氧或供氧条件。"
+  },
+  "route_summary": "芦丁先由 α-L-鼠李糖苷酶脱去末端鼠李糖形成异槲皮苷，再由 β-葡萄糖苷酶水解脱糖形成槲皮素；槲皮素经 2,3-双加氧开环生成 2-protocatechuoylphloroglucinol carboxylate 和 CO，随后酯水解产生原儿茶酸与间苯三酚羧酸，后者脱羧形成间苯三酚。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "rutin",
+          "smiles": "CC1C(C(C(C(O1)OCC2C(C(C(C(O2)OC3=C(OC4=CC(=CC(=C4C3=O)O)O)C5=CC(=C(C=C5)O)O)O)O)O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "isoquercitrin",
+          "smiles": "C1=CC(=C(C=C1C2=C(C(=O)C3=C(C=C(C=C3O2)O)O)OC4C(C(C(C(O4)CO)O)O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "L-rhamnose",
+          "smiles": "CC1C(C(C(C(O1)O)O)O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解，断裂芦丁中的末端 α-L-鼠李糖苷键",
+      "enzyme": {
+        "name": "alpha-L-rhamnosidase",
+        "ec_number": "3.2.1.168",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": "CBS 513.88",
+        "ncbi_taxid": 425011,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_013"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_013",
+      "uncertainty": "数据库反应并不唯一限定执行菌；此处以具有相应分泌型糖苷水解能力的 Aspergillus niger CBS 513.88 作为代表菌。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "isoquercitrin",
+          "smiles": "C1=CC(=C(C=C1C2=C(C(=O)C3=C(C=C(C=C3O2)O)O)OC4C(C(C(C(O4)CO)O)O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "quercetin",
+          "smiles": "C1=CC(=C(C=C1C2=C(C(=O)C3=C(C=C(C=C3O2)O)O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "D-glucose",
+          "smiles": "OCC1OC(O)C(O)C(O)C1O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解，断裂异槲皮苷的 β-D-葡萄糖苷键",
+      "enzyme": {
+        "name": "beta-glucosidase",
+        "ec_number": "3.2.1.21",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": "CBS 513.88",
+        "ncbi_taxid": 425011,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_013"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_013",
+      "uncertainty": "以 Aspergillus niger CBS 513.88 作为代表菌；其他真菌或细菌也可执行同等脱糖基反应。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "quercetin",
+          "smiles": "C1=CC(=C(C=C1C2=C(C(=O)C3=C(C=C(C=C3O2)O)O)O)O)O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-protocatechuoylphloroglucinol carboxylate",
+          "smiles": "O=C(Oc1c(O)cc(O)cc1C(=O)[O-])c1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "carbon monoxide",
+          "smiles": "[C-]#[O+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化开环，槲皮素 2,3-双加氧并释放 CO",
+      "enzyme": {
+        "name": "quercetin 2,3-dioxygenase",
+        "ec_number": "1.13.11.24",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus flavus",
+        "strain": null,
+        "ncbi_taxid": 5059,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_007"
+      },
+      "reaction_evidence_id": "EVID_004",
+      "trait_evidence_id": "EVID_007",
+      "uncertainty": "经典槲皮素酶证据来自 Aspergillus flavus，具体菌株未由所引文献信息确定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-protocatechuoylphloroglucinol carboxylate",
+          "smiles": "O=C(Oc1c(O)cc(O)cc1C(=O)[O-])c1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "protocatechuate",
+          "smiles": "O=C([O-])c1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "phloroglucinol carboxylate",
+          "smiles": "O=C([O-])c1c(O)cc(O)cc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "酯水解， depside 键断裂",
+      "enzyme": {
+        "name": "2-protocatechuoylphloroglucinol carboxylate esterase",
+        "ec_number": "3.1.1.124",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": "CBS 513.88",
+        "ncbi_taxid": 425011,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_013"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_013",
+      "uncertainty": "主链在间苯三酚羧酸一侧继续；原儿茶酸是同一反应的另一条碳流终点。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "phloroglucinol carboxylate",
+          "smiles": "O=C([O-])c1c(O)cc(O)cc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "phloroglucinol",
+          "smiles": "Oc1cc(O)cc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "phloroglucinol carboxylate decarboxylase",
+        "ec_number": "4.1.1.124",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Aspergillus niger",
+        "strain": "CBS 513.88",
+        "ncbi_taxid": 425011,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_013"
+      },
+      "reaction_evidence_id": "EVID_006",
+      "trait_evidence_id": "EVID_013",
+      "uncertainty": "以 Aspergillus niger CBS 513.88 作为该后续酶系的代表菌，具体反应菌株归属为中等置信。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Aspergillus niger",
+      "strain": "CBS 513.88",
+      "ncbi_taxid": 425011,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧丝状真菌",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "CBS",
+            "accession": "513.88"
+          },
+          "raw_text": "CBS 513.88",
+          "evidence_id": "EVID_010",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "葡萄糖及多种植物源糖苷/多糖；本路线相关底物包括芦丁及其脱糖基中间体",
+          "raw_text": null,
+          "evidence_id": "EVID_013",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具有较强的植物源糖苷水解能力，并具备槲皮素后续酯水解和脱羧相关降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_013",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "α-L-鼠李糖苷酶、β-葡萄糖苷酶以及槲皮素降解后续酯酶/脱羧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_013",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "不运动；无鞭毛，主要以菌丝延伸扩展",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "有隔分枝菌丝，形成黑色分生孢子头",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏染色不适用；为具有几丁质细胞壁的丝状真菌",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "产生无性分生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "GCF_000002855.3",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": "GCF_000002855.3",
+          "evidence_id": "EVID_011",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛存在于土壤、腐败植物材料及多种食品或农产品基质中，属于栖息范围较广的腐生真菌",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Aspergillus flavus",
+      "strain": null,
+      "ncbi_taxid": 5059,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧丝状真菌",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "葡萄糖及多种植物源有机物；槲皮素可作为其氧化开环底物",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "具有槲皮素氧化开环降解能力",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "槲皮素 2,3-双加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "不运动；无鞭毛，主要以菌丝延伸扩展",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "有隔分枝菌丝，通常形成黄绿色分生孢子头",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏染色不适用；为具有几丁质细胞壁的丝状真菌",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "产生无性分生孢子",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广泛存在于土壤、腐败植物、储藏谷物和坚果等多种环境或基质中，属于栖息范围较广的腐生真菌",
+          "raw_text": null,
+          "evidence_id": "EVID_012",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "protocatechuate",
+      "phloroglucinol"
+    ],
+    "explanation": "本主链在原儿茶酸和间苯三酚处停止，未把二者继续完整矿化。原儿茶酸在许多需氧微生物中可经 β-酮己二酸途径转化为琥珀酰-CoA 和乙酰-CoA；间苯三酚的继续降解依赖具体微生物及氧条件，因此未作为主链外推。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG PATHWAY",
+      "record_id": "map00944",
+      "locator": "Flavonoid degradation map, rutin/isoquercitrin/quercetin branch",
+      "claim_scope": [
+        "route",
+        "reaction_sequence",
+        "enzyme_context"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 3.2.1.168",
+      "locator": "alpha-L-rhamnosidase accepted reaction",
+      "claim_scope": [
+        "S1_reaction",
+        "S1_enzyme_ec"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 3.2.1.21",
+      "locator": "beta-glucosidase accepted reaction",
+      "claim_scope": [
+        "S2_reaction",
+        "S2_enzyme_ec"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 1.13.11.24",
+      "locator": "quercetin 2,3-dioxygenase accepted reaction",
+      "claim_scope": [
+        "S3_reaction",
+        "S3_enzyme_ec"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 3.1.1.124",
+      "locator": "2-protocatechuoylphloroglucinol carboxylate esterase accepted reaction",
+      "claim_scope": [
+        "S4_reaction",
+        "S4_enzyme_ec"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ExplorEnz",
+      "record_id": "EC 4.1.1.124",
+      "locator": "phloroglucinol carboxylate decarboxylase accepted reaction",
+      "claim_scope": [
+        "S5_reaction",
+        "S5_enzyme_ec"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Oka T, Simpson FJ. Quercetinase, a dioxygenase containing copper. Biochemical and Biophysical Research Communications. 1971;43(1):1-5.",
+      "claim_scope": [
+        "Aspergillus_flavus_quercetinase",
+        "S3_microorganism",
+        "ORG_002_enzyme_activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "425011",
+      "locator": "Aspergillus niger CBS 513.88",
+      "claim_scope": [
+        "ORG_001_identity",
+        "ORG_001_ncbi_taxid"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "5059",
+      "locator": "Aspergillus flavus",
+      "claim_scope": [
+        "ORG_002_identity",
+        "ORG_002_ncbi_taxid"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_010",
+      "source_type": "DATABASE_DIRECT",
+      "database": "CBS Fungal Collection",
+      "record_id": "CBS 513.88",
+      "locator": "Aspergillus niger CBS 513.88 collection record",
+      "claim_scope": [
+        "ORG_001_culture_collection"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_011",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Assembly",
+      "record_id": "GCF_000002855.3",
+      "locator": "Aspergillus niger CBS 513.88 genome assembly ASM285v2",
+      "claim_scope": [
+        "ORG_001_genome_accession"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_012",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "General biological characteristics of Aspergillus as aerobic, nonmotile, filamentous, conidia-producing fungi",
+      "claim_scope": [
+        "oxygen_tolerance",
+        "respiration",
+        "motility",
+        "morphology",
+        "cell_envelope",
+        "sporulation",
+        "habitat_generalism"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_013",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": "Aspergillus niger CBS 513.88 is selected as the representative organism for rutin deglycosylation and the downstream esterase/decarboxylase steps on the basis of its reported flavonoid glycoside hydrolase and quercetin-catabolic capacities",
+      "claim_scope": [
+        "ORG_001_microorganism_assignment",
+        "rutin_deglycosylation",
+        "downstream_esterase_decarboxylase_activity"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；第三步明确消耗 O2，因此不能把整条已给主链解释为严格的全程厌氧路径。",
+    "第一步、第二步、第四步和第五步选用 Aspergillus niger CBS 513.88 作为代表菌，属于中等置信的酶源归属；文献中也可能使用其他 Aspergillus 菌株或菌种。",
+    "第三步采用 Aspergillus flavus 的经典槲皮素酶证据，但原始文献信息未在本答案中确定到菌株。",
+    "本答案未继续展开原儿茶酸和间苯三酚的下游矿化路径，以避免超出题定的 rutin degradation 主链。"
+  ]
+}

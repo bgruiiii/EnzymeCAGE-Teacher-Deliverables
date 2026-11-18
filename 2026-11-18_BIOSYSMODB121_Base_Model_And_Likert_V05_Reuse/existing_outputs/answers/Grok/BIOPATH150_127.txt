@@ -1,0 +1,140 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_127",
+  "pollutant_name_zh": "D-苏糖醇",
+  "pollutant_name_en": "D-Threitol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "D-threitol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，oxygen_condition保持null。下列三步写成一条连续主链，各步不直接消耗分子氧。酶、EC与菌株没有可核对的独立来源，相关字段按缺失记为null，不把活性通称写成已鉴定酶。"
+  },
+  "route_summary": "D-苏糖醇降解主链按四碳糖醇氧化—磷酸化—醛缩裂解重建为三步：D-threitol的仲羟基氧化生成L-erythrulose，再磷酸化为L-erythrulose 1-phosphate，随后裂解为dihydroxyacetone phosphate与formaldehyde。磷酸二羟丙酮可进入中心碳代谢。该序列依据立体化学和多元醇分解通式，置信度低，不是已核对的数据库途径；首选酶、EC号和对应微生物均未知。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "D-threitol",
+          "smiles": "OC[C@H](O)[C@@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-erythrulose",
+          "smiles": "O=C(CO)[C@@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "secondary-alcohol dehydrogenation",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "（2S,3S）-D-threitol氧化任一仲羟基，立体化学上得到（3S）-L-erythrulose。活性可称为D-threitol dehydrogenase，但辅因子究竟是NAD+还是NADP+、EC号和菌株均无可靠来源，故酶与微生物整体为null，辅因子未写入。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "L-erythrulose",
+          "smiles": "O=C(CO)[C@@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "L-erythrulose 1-phosphate",
+          "smiles": "O=C(COP(=O)(O)O)[C@@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "磷酸化是把丁酮糖接到可裂解的酮糖磷酸上的常见衔接，但是否为本路线必需步骤、磷酸是否加在C1、供体是否为ATP，以及激酶身份，均未被独立来源确认。ATP/ADP未写入。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "L-erythrulose 1-phosphate",
+          "smiles": "O=C(COP(=O)(O)O)[C@@H](O)CO",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "O=C(CO)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "formaldehyde",
+          "smiles": "C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aldol cleavage",
+      "enzyme": null,
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": null,
+      "uncertainty": "丁酮糖1-磷酸的醛缩裂解可给出磷酸二羟丙酮与甲醛。EC 4.1.2.2的规定底物是D-erythrulose 1-phosphate，与本步L构型底物不符，不能把该EC当作本步首选酶，故enzyme为null。"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["dihydroxyacetone phosphate"],
+    "explanation": "若第三步成立，磷酸二羟丙酮可进入糖酵解或糖异生。该入口依赖于尚未核定的上游酶与菌株。甲醛不是糖酵解中间体。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "formaldehyde detoxification",
+      "summary": "甲醛通常需另行脱氢氧化为甲酸或二氧化碳后才能并入C1代谢；具体酶与菌未知，因此不列入评分主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S1", "D-threitol_to_L-erythrulose_stereochemistry"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S2", "S3", "central_metabolism_entry"],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "未定位到可逐字段核对的D-threitol degradation数据库条目，主链是低置信度重建，不是实验途径摘录。",
+    "未能确认完成该路线的微生物，因此microorganism为null，organism_profiles为空，15项性状无从填写。",
+    "S1产物按仲羟基氧化的立体化学写作L-erythrulose；若实际首步是伯羟基氧化，产物应是L-erythrose，该分支未写入主链。",
+    "亦可能先经激酶或PTS生成苏糖醇磷酸再脱氢，而不是先生成游离L-erythrulose；该顺序未被排除，也未另立评分分支。",
+    "EC 4.1.2.2只对应D-erythrulose 1-phosphate，不能填到L-erythrulose 1-phosphate步骤上。",
+    "脱氢酶辅因子（NAD+或NADP+）和激酶的ATP未写入，避免在机制未定时用辅因子占位。",
+    "氧条件未指定；主链本身不直接使用分子氧，不能据此判断好氧或厌氧。"
+  ]
+}

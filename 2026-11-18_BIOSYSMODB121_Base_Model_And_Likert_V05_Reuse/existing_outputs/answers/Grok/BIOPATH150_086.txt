@@ -1,0 +1,484 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_086",
+  "pollutant_name_zh": "(S)-2,3-二羟基丙烷-1-磺酸根",
+  "pollutant_name_en": "(S)-2,3-dihydroxypropane-1-sulfonate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "3-sulfopropanediol degradation I",
+    "is_single_continuous_route": true,
+    "notes": "氧条件按题面保持null。本主链为(S)-2,3-二羟基丙烷-1-磺酸根经磺基乳醛、磺基乳酸至丙酮酸与亚硫酸氢根的氧化–裂解路线；各步脱氢与C–S裂解本身不消耗分子氧。代表菌来自不同实验体系的拼接。"
+  },
+  "route_summary": "(S)-2,3-二羟基丙烷-1-磺酸根（DHPS，亦称3-磺基丙二醇）先由NAD+依赖的3-脱氢酶氧化为(S)-3-磺基乳醛，再由醛脱氢酶氧化为(S)-3-磺基乳酸，最后由磺基乳酸磺酸裂解酶切断C–S键，生成丙酮酸和亚硫酸氢根。丙酮酸进入中心代谢。该线性序列作为题面指定的3-sulfopropanediol degradation I主链。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(S)-2,3-dihydroxypropane-1-sulfonate",
+          "smiles": "OC[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-3-sulfolactaldehyde",
+          "smiles": "O=C[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+依赖的伯醇脱氢",
+      "enzyme": {
+        "name": "(S)-2,3-dihydroxypropane-1-sulfonate 3-dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": "HpsN",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": 246200,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "EC编号未能确认，置null。产物按构型保持及CIP（C2上磺甲基优先于甲酰基）记为(S)-3-sulfolactaldehyde；若文献把同一空间构型写成(R)-3-sulfolactaldehyde，名称会不一致。Cupriavidus pinatubonensis JMP134的dihydroxypropanesulfonate 3-dehydrogenase是相关酶，但可能优先作用于另一对映体，故不作为本(S)底物的首选。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "(S)-3-sulfolactaldehyde",
+          "smiles": "O=C[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H2O",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-3-sulfolactate",
+          "smiles": "O=C([O-])[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "H+",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+依赖的醛脱氢",
+      "enzyme": {
+        "name": "3-sulfolactaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Ruegeria pomeroyi",
+        "strain": "DSS-3",
+        "ncbi_taxid": 246200,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "Ruegeria pomeroyi DSS-3的DHPS分解途径包含磺基乳醛至磺基乳酸的氧化，但该步具体基因名与EC未能确认，均置null。辅因子按典型NAD+依赖醛脱氢酶反应书写。产物对映体按构型保持记为(S)-3-sulfolactate。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "(S)-3-sulfolactate",
+          "smiles": "O=C([O-])[C@H](O)CS(=O)(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "hydrogen sulfite",
+          "smiles": "OS(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "C-S磺酸裂解",
+      "enzyme": {
+        "name": "3-sulfolactate sulfo-lyase",
+        "ec_number": null,
+        "gene_or_protein": "SuyAB",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Paracoccus pantotrophus",
+        "strain": "NKNCYSA",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "SuyAB的经典生化表征来自Paracoccus pantotrophus NKNCYSA对磺基乳酸/磺基丙氨酸的分解，不是从DHPS直接起始的同一实验。文献常将该酶的底物写成(2R)-3-sulfolactate，与上游(S)产物是否一致不确定，其间可能需要磺基乳酸消旋酶，本题未把消旋步骤列入主链。EC未能确认，置null。部分数据库可能把本步归入衔接的磺基乳酸降解途径而非3-sulfopropanediol degradation I本体。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Ruegeria pomeroyi",
+      "strain": "DSS-3",
+      "ncbi_taxid": 246200,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "海洋细菌，生长需NaCl（轻度嗜盐）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用(S)-2,3-dihydroxypropane-1-sulfonate（DHPS）作为碳源和硫源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解DHPS以及DMSP等海洋有机硫化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "(S)-2,3-dihydroxypropane-1-sulfonate 3-dehydrogenase（HpsN）",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "CP000031",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "对多种海洋溶解有机碳硫底物代谢较广，但栖息地主要限于沿岸海水，不是跨淡水、土壤与海洋的广适种",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Paracoccus pantotrophus",
+      "strain": "NKNCYSA",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用3-sulfolactate与cysteate作为碳源和硫源",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "分解3-磺基乳酸和磺基丙氨酸并释放亚硫酸盐",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "3-sulfolactate sulfo-lyase（SuyAB）",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "球状",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "C–S裂解生成的丙酮酸是碳骨架进入中心代谢的入口，可进一步转化为乙酰辅酶A或用于生物合成；硫以亚硫酸氢根形式离开有机碳骨架。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "sulfite oxidation to sulfate",
+      "summary": "亚硫酸氢根可再被氧化为硫酸盐，例如玫瑰杆菌的Sox系统或亚硫酸盐脱氢酶；该过程不属于本题碳骨架降解主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "sulfolactate oxidation via sulfopyruvate and cysteate",
+      "summary": "部分细菌不直接裂解磺基乳酸，而是先脱氢生成磺基丙酮酸，再转氨为磺基丙氨酸，随后由磺基丙氨酸磺酸裂解酶释放亚硫酸盐。该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "(R)-2,3-dihydroxypropane-1-sulfonate dehydrogenase route",
+      "summary": "Cupriavidus pinatubonensis JMP134等可降解2,3-二羟基丙烷-1-磺酸的另一对映体，酶为dihydroxypropanesulfonate 3-dehydrogenase。该路线不作为本题(S)构型主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Ruegeria pomeroyi DSS-3 hpsN literature (Moran/Durham group); related dehydrogenase: Mayer et al. 2010 Microbiology 156:1556-1564",
+      "claim_scope": ["S1_reaction", "S1_enzyme", "S1_organism", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "DHPS catabolism in Ruegeria pomeroyi linking 3-sulfolactaldehyde oxidation to 3-sulfolactate",
+      "claim_scope": ["S2_reaction", "S2_enzyme", "S2_organism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Rein et al. 2005 Microbiology 151:737-747, Paracoccus pantotrophus NKNCYSA SuyAB",
+      "claim_scope": ["S3_reaction", "S3_enzyme", "S3_organism", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Gonzalez et al. 2003 IJSEM description of Silicibacter pomeroyi DSS-3; Roseobacter clade cell properties",
+      "claim_scope": ["F1_oxygen_tolerance", "F2_temperature", "F4_salinity", "F6_respiration_electron_acceptor", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation", "F15_habitat_generalism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Paracoccus pantotrophus species properties and Rein et al. 2005 Microbiology 151:737-747 strain NKNCYSA",
+      "claim_scope": ["F1_oxygen_tolerance", "F2_temperature", "F6_respiration_electron_acceptor", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "NCBI accession CP000031 and taxonomy 246200 for Ruegeria pomeroyi DSS-3 chromosome; Moran et al. 2004 Nature",
+      "claim_scope": ["F14_genome_basic", "ncbi_taxid"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "各步EC编号均未能确认，已置null，未用近似编号占位。",
+    "磺基乳醛和磺基乳酸的R/S按构型保持及CIP规则（磺甲基优先于甲酰基或羧基）记为S；部分文献可能将同一空间构型记为R。",
+    "SuyAB的对映体专一性与上游(S)-3-sulfolactate是否匹配不确定，可能存在未列入主链的磺基乳酸消旋步骤。",
+    "题面路线3-sulfopropanediol degradation I在某些数据库中的边界可能止于磺基乳酸，磺酸裂解步或被归入衔接的磺基乳酸降解途径；本题将裂解至丙酮酸列入降解主链。",
+    "三步代表菌并非同一菌株完成全途径的直接实验证明，不能指定单一complete_pathway_organism。",
+    "氧条件题面未指定，故route_scope.oxygen_condition保持null；路线化学不直接依赖分子氧。",
+    "性状无可用原文摘录，raw_text均为null；温度与盐度的具体数值、pH、保藏号、基因组大小与GC含量等不确定项已置null。"
+  ]
+}

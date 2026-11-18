@@ -1,0 +1,108 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_141",
+  "pollutant_name_zh": "S-[1-(2-羟乙基)-1-甲基丁基]-L-半胱氨酰甘氨酸",
+  "pollutant_name_en": "S-[1-(2-hydroxyethyl)-1-methylbutyl]-(l)-cysteinylglycine",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteinylglycine degradation",
+    "is_single_continuous_route": null,
+    "notes": null
+  },
+  "route_summary": "该主链从 S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteinylglycine 出发，先经二肽酶水解去除甘氨酸，生成 S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteine；随后经半胱氨酸-S-共轭β-裂解酶催化 C-S 键裂解，释放 6-hydroxy-4-methylhexane-4-thiol、丙酮酸和氨。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "S-[1-(2-hydroxyethyl)-1-methylbutyl]-L-cysteinylglycine",
+          "smiles": "N[C@@H](CSC(C)(CCC)CCO)C(=O)NCC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteine",
+          "smiles": "N[C@@H](CSC(C)(CCC)CCO)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "glycine",
+          "smiles": "NCC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "cysteinylglycine dipeptidase",
+        "ec_number": "3.4.13.19",
+        "gene_or_protein": null,
+        "confidence": "unknown",
+        "evidence_id": null
+      },
+      "microorganism": null,
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "酶和微生物来源未确定"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "S-(6-hydroxy-4-methylhexan-4-yl)-L-cysteine",
+          "smiles": "N[C@@H](CSC(C)(CCC)CCO)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-hydroxy-4-methylhexane-4-thiol",
+          "smiles": "SCC(C)(CCC)CCO",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "byproduct"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "C-S lyase cleavage",
+      "enzyme": {
+        "name": "cysteine-S-conjugate beta-lyase",
+        "ec_number": "4.4.1.13",
+        "gene_or_protein": null,
+        "confidence": "unknown",
+        "evidence_id": null
+      },
+      "microorganism": null,
+      "reaction_evidence_id": null,
+      "trait_evidence_id": null,
+      "uncertainty": "酶和微生物来源未确定"
+    }
+  ],
+  "organism_profiles": [],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": null
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [],
+  "uncertainties": [
+    "酶和微生物来源未确定；主链可能延伸至硫醇下游代谢。"
+  ]
+}

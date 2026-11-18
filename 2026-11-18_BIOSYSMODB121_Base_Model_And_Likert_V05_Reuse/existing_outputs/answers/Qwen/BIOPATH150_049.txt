@@ -1,0 +1,299 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_049",
+  "pollutant_name_zh": "甘油",
+  "pollutant_name_en": "Glycerol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "glycerol degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线范围为 glycerol degradation I；氧条件未指定。"
+  },
+  "route_summary": "在 glycerol degradation I 中，甘油先由甘油激酶磷酸化为甘油-3-磷酸，再由甘油-3-磷酸脱氢酶氧化为二羟丙酮磷酸，从而进入中心碳代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "glycerol",
+          "smiles": "OCC(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycerol 3-phosphate",
+          "smiles": "OCC(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "phosphorylation",
+      "enzyme": {
+        "name": "glycerol kinase",
+        "ec_number": "2.7.1.30",
+        "gene_or_protein": "glpK",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "氧条件未指定；该反应也可由其他具备甘油激酶的微生物完成。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "glycerol 3-phosphate",
+          "smiles": "OCC(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "acceptor",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "OCC(=O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "reduced acceptor",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "glycerol-3-phosphate dehydrogenase",
+        "ec_number": "1.1.5.3",
+        "gene_or_protein": "glpD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "氧条件未指定；甘油-3-磷酸脱氢酶的具体电子受体和有氧/厌氧酶系可能不同。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温/嗜温，最适约37°C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（facultative anaerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧；有氧时以有氧呼吸为主，无氧时可发酵或厌氧呼吸",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用甘油作为碳源和能源，通过甘油激酶途径进入中心代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有甘油激酶（EC 2.7.1.30）和甘油-3-磷酸脱氢酶（EC 1.1.5.3）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性较强，常见于人和动物肠道及多种外界环境",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "dihydroxyacetone phosphate"
+    ],
+    "explanation": "甘油经甘油激酶和甘油-3-磷酸脱氢酶转化为二羟丙酮磷酸，进入糖酵解/糖异生中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "glycerol degradation I",
+      "claim_scope": [
+        "step:S1",
+        "step:S2",
+        "enzyme:glycerol kinase",
+        "enzyme:glycerol-3-phosphate dehydrogenase",
+        "trait:F7_carbon_substrate_utilization",
+        "trait:F9_enzyme_activity"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "511145",
+      "locator": "Escherichia coli str. K-12 substr. MG1655",
+      "claim_scope": [
+        "organism identity",
+        "ncbi_taxid"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655 complete genome",
+      "claim_scope": [
+        "trait:F14_genome_basic"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "general microbiological characteristics of Escherichia coli K-12",
+      "claim_scope": [
+        "trait:F1_oxygen_tolerance",
+        "trait:F2_temperature",
+        "trait:F6_respiration_electron_acceptor",
+        "trait:F11_cell_morphology",
+        "trait:F12_gram_cell_envelope",
+        "trait:F13_sporulation",
+        "trait:F15_habitat_generalism",
+        "step trait evidence"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定，甘油-3-磷酸脱氢酶的具体电子受体和有氧/厌氧酶系可能不同。",
+    "部分微生物性状基于内部知识，未逐项给出原始文献摘录。"
+  ]
+}

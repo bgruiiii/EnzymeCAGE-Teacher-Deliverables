@@ -1,0 +1,774 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_045",
+  "pollutant_name_zh": "苯乙酸根",
+  "pollutant_name_en": "Benzeneacetate",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "phenylacetate degradation I (aerobic)",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定路线填写：phenylacetate degradation I (aerobic)，即经典的好氧paa（苯乙酰-CoA）途径；主链按MetaCyc及文献给出9步连续反应。"
+  },
+  "route_summary": "好氧苯乙酸降解I路线（paa途径）：苯乙酸先由PaaK活化为苯乙酰-CoA；经PaaABCDE环氧化生成1,2-环氧苯乙酰-CoA；异构/扩环为oxepin-CoA（2-oxepin-2(3H)-ylideneacetyl-CoA）；双功能酶PaaZ水解开环并脱氢生成3-氧代-5,6-脱氢辛二酰-CoA；再经PaaJ硫解、PaaF水合、PaaH脱氢、PaaJ硫解的β-氧化样序列，最终生成琥珀酰-CoA与乙酰-CoA进入中心代谢。代表微生物：Escherichia coli K-12 MG1655与Pseudomonas putida U。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "phenylacetate",
+          "smiles": "O=C([O-])Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N",
+          "role": "cofactor"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@@H](O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "phenylacetyl-CoA",
+          "smiles": "O=C(Cc1ccccc1)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)O)O)O)N",
+          "role": "byproduct"
+        },
+        {
+          "name": "diphosphate",
+          "smiles": "O=P(O)(O)OP(=O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "酰基-CoA连接（AMP-forming连接酶，活化苯乙酸）",
+      "enzyme": {
+        "name": "phenylacetate-CoA ligase (AMP-forming)",
+        "ec_number": "6.2.1.30",
+        "gene_or_protein": "paaK",
+        "confidence": "high",
+        "evidence_id": "EVID_008"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "phenylacetyl-CoA",
+          "smiles": "O=C(Cc1ccccc1)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADPH",
+          "smiles": "NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H](n4cnc5c(N)ncnc54)[C@H](OP(=O)(O)O)[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "1,2-epoxyphenylacetyl-CoA",
+          "smiles": "O=C(CC12OC1C=CC=C2)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADP+",
+          "smiles": "NC(=O)c1ccc[n+]([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H](n4cnc5c(N)ncnc54)[C@H](OP(=O)(O)O)[C@@H]3O)[C@@H](O)[C@H]2O)c1",
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "环氧化（多组分单加氧酶，芳环1,2-环氧化）",
+      "enzyme": {
+        "name": "phenylacetyl-CoA 1,2-epoxidase",
+        "ec_number": "1.14.13.149",
+        "gene_or_protein": "paaABCDE",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "1,2-epoxyphenylacetyl-CoA",
+          "smiles": "O=C(CC12OC1C=CC=C2)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxepin-2(3H)-ylideneacetyl-CoA (oxepin-CoA)",
+          "smiles": "O=C(C=C1OCC=CC=C1)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "异构化（环扩展形成氧杂䓬oxepin）",
+      "enzyme": {
+        "name": "1,2-epoxyphenylacetyl-CoA isomerase (oxepin-CoA-forming)",
+        "ec_number": null,
+        "gene_or_protein": "paaB",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "该异构化步骤是否完全由PaaB催化抑或部分自发进行尚有不确定性；EC编号未确定，记为null。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-oxepin-2(3H)-ylideneacetyl-CoA (oxepin-CoA)",
+          "smiles": "O=C(C=C1OCC=CC=C1)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxo-5,6-dehydrosuberyl-CoA semialdehyde",
+          "smiles": "O=CCC=CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水解开环（oxepin环C–C键水解断裂）",
+      "enzyme": {
+        "name": "oxepin-CoA hydrolase (2-oxepin-2(3H)-ylideneacetyl-CoA hydrolase, PaaZ)",
+        "ec_number": null,
+        "gene_or_protein": "paaZ",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "PaaZ水解开环活性对应的EC编号不确定，记为null。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "3-oxo-5,6-dehydrosuberyl-CoA semialdehyde",
+          "smiles": "O=CCC=CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD(P)+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxo-5,6-dehydrosuberyl-CoA",
+          "smiles": "O=C(O)CC=CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD(P)H",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化（醛脱氢，PaaZ醛脱氢酶结构域）",
+      "enzyme": {
+        "name": "3-oxo-5,6-dehydrosuberyl-CoA semialdehyde dehydrogenase (PaaZ)",
+        "ec_number": null,
+        "gene_or_protein": "paaZ",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "辅酶特异性（NAD+或NADP+）因物种而异，以NAD(P)+表示；对应EC编号未确定，记为null。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "3-oxo-5,6-dehydrosuberyl-CoA",
+          "smiles": "O=C(O)CC=CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@@H](O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,3-dehydroadipyl-CoA",
+          "smiles": "O=C(O)CCC=CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "硫解（thiolysis，β-氧化样第一步）",
+      "enzyme": {
+        "name": "3-oxoadipyl-CoA thiolase (PaaJ)",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": "paaJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "U",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "PaaJ同时催化路线中两步硫解；P. putida U中该步归属主要基于其paa基因簇（苯乙酰-CoA分解子）的表征。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "2,3-dehydroadipyl-CoA",
+          "smiles": "O=C(O)CCC=CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-hydroxyadipyl-CoA",
+          "smiles": "O=C(O)CCC(O)CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合（enoyl-CoA hydration）",
+      "enzyme": {
+        "name": "2,3-dehydroadipyl-CoA hydratase (PaaF)",
+        "ec_number": "4.2.1.17",
+        "gene_or_protein": "paaF",
+        "confidence": "medium",
+        "evidence_id": "EVID_008"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "3-hydroxyadipyl-CoA",
+          "smiles": "O=C(O)CCC(O)CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": "NC(=O)c1ccc[n+]([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H](n4cnc5c(N)ncnc54)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O)c1",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": "O=C(O)CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": "NC(=O)C1=CN([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@H](n4cnc5c(N)ncnc54)[C@H](O)[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱氢（3-羟酰-CoA脱氢）",
+      "enzyme": {
+        "name": "3-hydroxyadipyl-CoA dehydrogenase (PaaH)",
+        "ec_number": "1.1.1.35",
+        "gene_or_protein": "paaH",
+        "confidence": "medium",
+        "evidence_id": "EVID_008"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S9",
+      "order": 9,
+      "branch_id": null,
+      "predecessor_step_ids": ["S8"],
+      "substrates": [
+        {
+          "name": "3-oxoadipyl-CoA",
+          "smiles": "O=C(O)CCC(=O)CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O)[C@@H](O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "succinyl-CoA",
+          "smiles": "O=C(O)CCC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetyl-CoA",
+          "smiles": "CC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)COP(=O)(O)OP(=O)(O)OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "硫解（thiolysis，生成琥珀酰-CoA与乙酰-CoA）",
+      "enzyme": {
+        "name": "3-oxoadipyl-CoA thiolase (PaaJ)",
+        "ec_number": "2.3.1.174",
+        "gene_or_protein": "paaJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "U",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温菌（mesophile）"
+          },
+          "raw_text": "culture temperature: 37 °C (BacDive, DSM 18039)",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧（facultative anaerobe）",
+          "raw_text": "oxygen tolerance: facultative anaerobe (BacDive)",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 4.4,
+            "optimum": 7.0,
+            "maximum": 9.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": "Escherichia coli K-12 MG1655 = ATCC 700926",
+          "evidence_id": "EVID_007",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（兼性厌氧，亦可无氧呼吸与发酵）",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以D-葡萄糖为主要碳源，亦可以苯乙酸为唯一碳源好氧生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经paa途径好氧降解苯乙酸及L-苯丙氨酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "phenylacetate-CoA ligase（PaaK）与phenylacetyl-CoA 1,2-epoxidase（PaaABCDE）等paa途径酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "能运动（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "直杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": "Escherichia coli str. K-12 substr. MG1655 complete genome: 4,641,652 bp, GC 50.8% (NC_000913.3)",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "较广适：主要栖息于温血动物肠道，亦可在水、土壤、沉积物等环境存活",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "U",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温菌（mesophile）"
+          },
+          "raw_text": "Pseudomonas putida U was grown aerobically at 30 °C with phenylacetic acid as sole carbon source",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧（obligate aerobe）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以苯乙酸为唯一碳源好氧生长，亦可利用多种芳香族化合物与有机酸",
+          "raw_text": "Pseudomonas putida U grows on phenylacetic acid as sole carbon and energy source",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经苯乙酰-CoA分解子（phenylacetyl-CoA catabolon）好氧降解苯乙酸、苯丙氨酸等芳香族化合物",
+          "raw_text": "Molecular characterization of the phenylacetic acid catabolic pathway in Pseudomonas putida U: the phenylacetyl-CoA catabolon",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "phenylacetate-CoA ligase（PaaK）及paa途径相关酶（含PaaJ硫解酶）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "能运动（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（rod-shaped）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性（Gram-negative）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不产孢（non-spore-forming）",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "广适性环境菌：广泛分布于土壤、水体及芳香烃污染场地",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA", "succinyl-CoA"],
+    "explanation": "路线末端产物琥珀酰-CoA与乙酰-CoA直接进入三羧酸循环：琥珀酰-CoA为TCA循环中间体，乙酰-CoA经柠檬酸合酶进入TCA循环，最终被彻底氧化为CO2和水。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "tricarboxylic acid cycle",
+      "summary": "琥珀酰-CoA与乙酰-CoA进入三羧酸循环，经氧化磷酸化彻底矿化。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway page: phenylacetate degradation I (aerobic)",
+      "claim_scope": ["路线主链", "反应序列", "酶与代谢物归属", "E. coli碳源利用与降解能力"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Teufel R et al. (2010) Proc Natl Acad Sci USA 107(32):14390-14395, 'Bacterial phenylalanine and phenylacetate catabolic pathway revealed'",
+      "claim_scope": ["S2-S5反应机制（环氧酶、异构化、oxepin-CoA水解酶、醛脱氢酶）", "E. coli paa酶系"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Olivera ER et al. (1998) Proc Natl Acad Sci USA 95(11):6419-6424, 'Molecular characterization of the phenylacetic acid catabolic pathway in Pseudomonas putida U: the phenylacetyl-CoA catabolon'",
+      "claim_scope": ["P. putida U paa基因簇与苯乙酰-CoA分解子", "paaJ硫解酶", "30°C好氧培养条件"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI RefSeq",
+      "record_id": "NC_000913.3",
+      "locator": "Escherichia coli str. K-12 substr. MG1655 complete genome",
+      "claim_scope": ["基因组大小与GC含量", "paa基因存在"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive (DSMZ)",
+      "record_id": null,
+      "locator": "BacDive entry for Escherichia coli DSM 18039 (K-12 MG1655)",
+      "claim_scope": ["培养温度", "氧耐受性"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["常规微生物学性状（形态、革兰氏染色、产孢、运动性、呼吸方式、栖息地等）"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "ATCC 700926 Escherichia coli K-12 MG1655",
+      "claim_scope": ["菌种保藏编号"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UniProt",
+      "record_id": null,
+      "locator": "UniProt entries for E. coli K-12 PaaK / PaaABCDE / PaaZ / PaaF / PaaH / PaaJ",
+      "claim_scope": ["酶名称与EC编号"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "S3的1,2-环氧苯乙酰-CoA异构酶归属（PaaB）及是否部分自发进行不确定，EC编号未知，记为null。",
+    "S4/S5中PaaZ两个催化活性（oxepin-CoA水解酶、醛脱氢酶）对应的EC编号未确定，记为null。",
+    "S5辅酶特异性未区分NAD+与NADP+，以NAD(P)+表示。",
+    "Pseudomonas putida U菌株未见全基因组序列、明确保藏编号与NCBI TaxID，相关字段记为null。",
+    "E. coli K-12 MG1655的pH生长范围（4.4-9.0）及耐盐数据缺乏直接来源，pH性状置信度记为low、盐度记为unknown。"
+  ]
+}

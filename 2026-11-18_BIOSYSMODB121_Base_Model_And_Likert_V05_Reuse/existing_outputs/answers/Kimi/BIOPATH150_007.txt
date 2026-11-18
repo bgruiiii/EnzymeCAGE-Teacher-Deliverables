@@ -1,0 +1,543 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_007",
+  "pollutant_name_zh": "1,3-二氯-2-丙醇",
+  "pollutant_name_en": "1,3-Dichloro-2-propanol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "1,3-Dichloro-2-propanol pathway",
+    "is_single_continuous_route": true,
+    "notes": "按题面固定路线；化学上按单一连续主链处理，各步代表菌按该反应较常见的文献来源填写。"
+  },
+  "route_summary": "好氧主链为：1,3-二氯-2-丙醇经卤醇脱卤酶分子内脱氯化氢生成环氧氯丙烷；环氧氯丙烷由环氧化物水解酶加水开环为3-氯-1,2-丙二醇；后者再经卤醇脱卤酶脱去第二个氯形成缩水甘油；缩水甘油进一步水解开环为甘油，进入中心碳代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "1,3-Dichloro-2-propanol",
+          "smiles": "OC(CCl)CCl",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "epichlorohydrin",
+          "smiles": "ClCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "chloride",
+          "smiles": "[Cl-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydrohalogenative cyclization of a vicinal chlorohydrin to an epoxide",
+      "enzyme": {
+        "name": "haloalcohol dehalogenase HheA",
+        "ec_number": "4.5.1.5",
+        "gene_or_protein": "hheA",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Arthrobacter sp.",
+        "strain": "AD2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "未指定环氧氯丙烷产物立体构型。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "epichlorohydrin",
+          "smiles": "ClCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-chloro-1,2-propanediol",
+          "smiles": "OCC(O)CCl",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolytic epoxide ring opening",
+      "enzyme": {
+        "name": "epoxide hydrolase EchA",
+        "ec_number": "3.3.2.3",
+        "gene_or_protein": "echA",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Agrobacterium radiobacter",
+        "strain": "AD1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "3-chloro-1,2-propanediol",
+          "smiles": "OCC(O)CCl",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycidol",
+          "smiles": "OCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "chloride",
+          "smiles": "[Cl-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "dehydrohalogenative cyclization of a vicinal chlorohydrin to an epoxide",
+      "enzyme": {
+        "name": "haloalcohol dehalogenase HheC",
+        "ec_number": "4.5.1.5",
+        "gene_or_protein": "hheC",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Agrobacterium radiobacter",
+        "strain": "AD1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "glycidol",
+          "smiles": "OCC1CO1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "glycerol",
+          "smiles": "OCC(O)CO",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolytic epoxide ring opening",
+      "enzyme": {
+        "name": "epoxide hydrolase EchA",
+        "ec_number": "3.3.2.3",
+        "gene_or_protein": "echA",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Agrobacterium radiobacter",
+        "strain": "AD1",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "缩水甘油到甘油这一步按同一环氧化物水解酶主链处理；该底物归属的专一性证据弱于S2/S3。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Arthrobacter sp.",
+      "strain": "AD2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "1,3-dichloro-2-propanol and related chlorinated C3 haloalcohols",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "dehalogenates vicinal chlorohydrins such as 1,3-dichloro-2-propanol to epoxides",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "haloalcohol dehalogenase HheA activity: vicinal haloalcohol to epoxide plus chloride",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "pleomorphic rods/cocci typical of Arthrobacter",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-positive actinobacterial cell envelope",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "not demonstrably host-restricted; consistent with soil/sludge Arthrobacter and isolation through chlorinated-alcohol degradation enrichment",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Agrobacterium radiobacter",
+      "strain": "AD1",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "epichlorohydrin and 3-chloro-1,2-propanediol; chlorinated C3 compounds channelled toward glycerol",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "converts epichlorohydrin via 3-chloro-1,2-propanediol and glycidol toward glycerol; dehalogenates chlorinated C3 haloalcohols",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "epoxide hydrolase EchA and haloalcohol dehalogenase HheC activities",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative cell envelope",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "soil/rhizosphere-associated alphaproteobacterium; AD1 is treated here as an epichlorohydrin-degrading enrichment isolate rather than an obligate plant-host symbiont/pathogen",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": [
+      "glycerol"
+    ],
+    "explanation": "主链终点甘油可经甘油激酶生成sn-甘油-3-磷酸，再氧化为磷酸二羟丙酮进入糖酵解；在部分细菌中也可经甘油脱氢酶/二羟丙酮途径汇入中心代谢。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "EAWAG-BBD/UM-BBD",
+      "record_id": null,
+      "locator": "1,3-Dichloro-2-propanol pathway",
+      "claim_scope": [
+        "chosen route",
+        "reaction sequence 1,3-dichloro-2-propanol -> epichlorohydrin -> 3-chloro-1,2-propanediol -> glycidol -> glycerol"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "haloalcohol dehalogenase HheA from Arthrobacter sp. strain AD2; dehalogenation of 1,3-dichloro-2-propanol to epichlorohydrin",
+      "claim_scope": [
+        "S1 reaction",
+        "HheA enzyme",
+        "Arthrobacter sp. AD2 microorganism",
+        "aerobic degradation trait for ORG_001"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": null,
+      "locator": "Agrobacterium radiobacter AD1 epichlorohydrin degradation via epoxide hydrolase EchA and haloalcohol dehalogenase HheC through 3-chloro-1,2-propanediol and glycidol toward glycerol",
+      "claim_scope": [
+        "S2 reaction",
+        "S3 reaction",
+        "S4 reaction",
+        "EchA enzyme",
+        "HheC enzyme",
+        "Agrobacterium radiobacter AD1 microorganism",
+        "aerobic degradation trait for ORG_002"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "4.5.1.5",
+      "locator": "haloalcohol dehalogenase reaction: vicinal haloalcohol -> epoxide + halide",
+      "claim_scope": [
+        "EC 4.5.1.5",
+        "haloalcohol dehalogenase reaction chemistry"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "3.3.2.3",
+      "locator": "epoxide hydrolase reaction: epoxide + H2O -> vicinal diol",
+      "claim_scope": [
+        "EC 3.3.2.3",
+        "epoxide hydrolase reaction chemistry"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": null,
+      "locator": "Agrobacterium radiobacter among Rhizobiaceae/Alphaproteobacteria; Arthrobacter among Micrococcaceae/Actinomycetota",
+      "claim_scope": [
+        "genus-level taxonomy",
+        "cell envelope/Gram stain",
+        "cell morphology",
+        "non-spore-forming status",
+        "habitat generalism"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "AD1与AD2的保藏编号、NCBI TaxID、基因组登录号及多数生理数值未用可靠来源确认，故填null。",
+    "该主链将Arthrobacter sp. AD2的1,3-DCP脱卤反应与Agrobacterium radiobacter AD1的环氧氯丙烷/3-MCPD下游反应连成化学连续路线；未主张存在已证实的单一complete-pathway菌。",
+    "S4中EchA用于缩水甘油水解为甘油的专一性证据较弱，confidence已降为low。"
+  ]
+}

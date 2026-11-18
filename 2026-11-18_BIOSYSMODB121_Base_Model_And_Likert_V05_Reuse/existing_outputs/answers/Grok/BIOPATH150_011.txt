@@ -1,0 +1,465 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_011",
+  "pollutant_name_zh": "间甲酚",
+  "pollutant_name_en": "m-Cresol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "m-cresol degradation pathway",
+    "is_single_continuous_route": true,
+    "notes": "题面路线名原样保留。本答案主链采用好氧3-甲基儿茶酚meta-裂解的水解支路，直至丙酮酸与乙酰辅酶A；不把龙胆酸路线计入评分主链。"
+  },
+  "route_summary": "好氧条件下，间甲酚由多组分苯酚羟化酶羟基化为3-甲基儿茶酚，再经儿茶酚2,3-双加氧酶外二醇开环。3-甲基儿茶酚的开环产物为酮而非醛，不能走脱氢支路，而由水解酶释放乙酸并生成2-羟基戊-2,4-二烯酸；后者水合为4-羟基-2-氧代戊酸，醛缩酶裂解为丙酮酸和乙醛，乙醛再经乙酰化脱氢生成乙酰辅酶A。代表菌为携带完整dmp操纵子的Pseudomonas sp. CF600。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "m-cresol",
+          "smiles": "Cc1cccc(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-methylcatechol",
+          "smiles": "Cc1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧羟基化",
+      "enzyme": {
+        "name": "phenol 2-monooxygenase",
+        "ec_number": "1.14.13.7",
+        "gene_or_protein": "dmpKLMNOP",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC 1.14.13.7的官方反应式以NADPH计，CF600的多组分苯酚羟化酶生理供氢体为NADH。间甲酚邻位羟基化的主产物为3-甲基儿茶酚。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-methylcatechol",
+          "smiles": "Cc1c(O)c(O)ccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "外二醇双加氧开环",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "dmpB",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "主反应为靠近甲基取代基的近端meta-裂解；远端裂解不是本主链。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxohepta-2,4-dienoate",
+          "smiles": "CC(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetate",
+          "smiles": "CC(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解",
+      "enzyme": {
+        "name": "2-hydroxymuconate-semialdehyde hydrolase",
+        "ec_number": "3.7.1.9",
+        "gene_or_protein": "dmpD",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "该酮式开环产物常由dmpD水解，数据库多归入EC 3.7.1.9；IUBMB对该EC的原型底物是2-羟基粘康酸半醛，专一性编号在不同库中可能不一致。乙酸为化学计量副产物，可另行进入中心代谢。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合",
+      "enzyme": {
+        "name": "2-oxopent-4-enoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": "dmpE",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "水合酶的直接底物是酮式互变异构体2-氧代戊-4-烯酸；2-羟基戊-2,4-二烯酸到该酮式的互变通常自发，本步未单列互变酶。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        },
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛缩酶裂解",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxovalerate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": "dmpG",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "乙酰化脱氢",
+      "enzyme": {
+        "name": "acetaldehyde dehydrogenase (acetylating)",
+        "ec_number": "1.2.1.10",
+        "gene_or_protein": "dmpF",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas sp.",
+        "strain": "CF600",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "乙酰辅酶A、辅酶A、NAD(H)的全结构SMILES未逐原子复核，故置null。丙酮酸已在上一步直接进入中心代谢，本步只转化乙醛。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas sp.",
+      "strain": "CF600",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用苯酚及甲酚类（含间甲酚相关底物）经dmp途径作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解苯酚、甲酚和3,4-二甲基苯酚，经甲基儿茶酚meta-裂解",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "多组分苯酚羟化酶（dmpKLMNOP）与儿茶酚2,3-双加氧酶（dmpB）活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA", "acetate"],
+    "explanation": "丙酮酸可直接进入中心碳代谢；乙醛经本主链转化为乙酰辅酶A后进入三羧酸循环。水解副产物乙酸也可被活化为乙酰辅酶A，但该活化不属于本降解主链。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA cycle",
+      "summary": "丙酮酸与乙酰辅酶A进入三羧酸循环，可被进一步氧化。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "gentisate pathway",
+      "summary": "另一条好氧路线是甲基先氧化为3-羟基苯甲醇、3-羟基苯甲醛和3-羟基苯甲酸，再羟化为龙胆酸并开环，最终生成丙酮酸与富马酸。该路线不属于本答案评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "Shingler V, Powlowski J, Marklund U (1992) Nucleotide sequence and functional analysis of the complete phenol/3,4-dimethylphenol catabolic pathway of Pseudomonas sp. strain CF600. J Bacteriol 174:711-724（据既有知识回忆，本题未重新检索原文）",
+      "claim_scope": ["dmp_operon", "meta_cleavage_pathway", "Pseudomonas_sp_CF600", "methylphenol_catabolism"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB",
+      "record_id": null,
+      "locator": "IUBMB Enzyme Nomenclature recalled EC 1.14.13.7, 1.13.11.2, 3.7.1.9, 4.2.1.80, 4.1.3.39, 1.2.1.10",
+      "claim_scope": ["ec_number"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "CF600的TaxID、保藏编号、基因组登录号以及温度、pH、盐度、形态、运动性、产孢和氧耐受类型均无本题可复核的菌株级数据，相关字段置null。",
+    "EC 1.14.13.7官方辅因子为NADPH，而CF600苯酚羟化酶以NADH为主。",
+    "2-羟基-6-氧代庚-2,4-二烯酸水解常被注释为EC 3.7.1.9，但是否应使用更专一的EC，不同数据库不完全一致。",
+    "2-羟基戊-2,4-二烯酸需先互变异构为2-氧代戊-4-烯酸再水合，该互变未单列酶步骤。",
+    "间甲酚另有经3-羟基苯甲酸和龙胆酸的好氧路线，本答案未将其作为评分主链。",
+    "乙酰辅酶A及烟酰胺辅酶的SMILES未复核，置null。"
+  ]
+}

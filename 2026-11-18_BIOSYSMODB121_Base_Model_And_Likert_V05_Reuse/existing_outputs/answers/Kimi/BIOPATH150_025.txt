@@ -1,0 +1,536 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_025",
+  "pollutant_name_zh": "对甲苯甲酸根",
+  "pollutant_name_en": "p-Toluate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "4-toluenecarboxylate degradation",
+    "is_single_continuous_route": true,
+    "notes": "氧条件按题面保留为 null。所给路线的典型主链为 Pseudomonas putida mt-2 中 TOL 质粒编码的需氧双加氧化和间位环裂解途径。"
+  },
+  "route_summary": "按所指定的 4-toluenecarboxylate degradation，主链采用 Pseudomonas putida mt-2 的经典 TOL 路线：p-toluate 先经 toluate 1,2-dioxygenase 形成顺式二氢二醇，再经 XylL 氧化芳构化并脱羧生成 4-methylcatechol；随后由 XylE 进行间位环裂解，经 XylG 水解支路、XylJ 水合和 XylK 醛醇裂解生成 pyruvate 与 propanal，丙醛再由 XylQ 氧化并酰化为 propionyl-CoA。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "p-Toluate",
+          "smiles": "Cc1ccc(C(=O)[O-])cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "cis-1,2-dihydroxy-1,2-dihydro-4-methylbenzoate",
+          "smiles": "O=C([O-])C1(O)C(O)C=C(C)C=C1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "双加氧羟化，形成顺式二氢二醇",
+      "enzyme": {
+        "name": "Toluate 1,2-dioxygenase",
+        "ec_number": "1.14.12.10",
+        "gene_or_protein": "xylXYZ",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "cis-1,2-dihydroxy-1,2-dihydro-4-methylbenzoate",
+          "smiles": "O=C([O-])C1(O)C(O)C=C(C)C=C1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Methylcatechol",
+          "smiles": "Cc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "Carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化芳构化并脱羧",
+      "enzyme": {
+        "name": "cis-Toluate dihydrodiol dehydrogenase",
+        "ec_number": "1.3.1.67",
+        "gene_or_protein": "xylL",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-Methylcatechol",
+          "smiles": "Cc1ccc(O)c(O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxy-5-methyl-6-oxohexa-2,4-dienoate",
+          "smiles": "O=C/C(=C/C=C(/O)C(=O)[O-])/C",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "间位环裂解双加氧",
+      "enzyme": {
+        "name": "Catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "xylE",
+        "confidence": "high",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "2-Hydroxy-5-methyl-6-oxohexa-2,4-dienoate",
+          "smiles": "O=C/C(=C/C=C(/O)C(=O)[O-])/C",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxyhexa-2,4-dienoate",
+          "smiles": "C/C=C/C=C(/O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Formate",
+          "smiles": "C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "水解性碳碳键断裂并释放甲酸根",
+      "enzyme": {
+        "name": "2-Hydroxymuconate-semialdehyde hydrolase",
+        "ec_number": "3.7.1.9",
+        "gene_or_protein": "xylG",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "环裂解半醛在 TOL 下游还存在 XylF–XylH–XylI 氧化支路；本主链按处理该甲基化底物的 XylG 水解支路填写。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "2-Hydroxyhexa-2,4-dienoate",
+          "smiles": "C/C=C/C=C(/O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Hydroxy-2-oxohexanoate",
+          "smiles": "CCC(O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合",
+      "enzyme": {
+        "name": "2-Hydroxypent-2,4-dienoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": "xylJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "XylJ 通常以较短链 TOL 底物命名；此处按其可处理的甲基化同系物主链填写。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "4-Hydroxy-2-oxohexanoate",
+          "smiles": "CCC(O)CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "Propanal",
+          "smiles": "CCC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛醇裂解",
+      "enzyme": {
+        "name": "4-Hydroxy-2-oxovalerate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": "xylK",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "XylK 的正式酶名来自五碳 TOL 底物；对六碳同系物的裂解生成 pyruvate 与 propanal。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "Propanal",
+          "smiles": "CCC=O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Propionyl-CoA",
+          "smiles": "CCC(=O)SCCNC(=O)CCNC(=O)[C@H](O)C(C)(C)COP(=O)([O-])OP(=O)([O-])OC[C@H]1O[C@H](n2cnc3c(N)ncnc23)[C@H](O)[C@@H]1OP(=O)([O-])[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "依赖 CoA 的醛氧化酰化",
+      "enzyme": {
+        "name": "Acetaldehyde dehydrogenase (acetylating)",
+        "ec_number": "1.2.1.10",
+        "gene_or_protein": "xylQ",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "XylQ 以乙醛为经典底物；对丙醛生成 propionyl-CoA 属于较宽醛底物范围的解释，置信度低于前几步。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温性；保藏机构给出的常规培养温度为 30°C，未见可直接引用的耐受上下限"
+          },
+          "raw_text": "Growth temperature: 30 °C",
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": "oxygen tolerance: aerobe",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "33015"
+          },
+          "raw_text": "Pseudomonas putida mt-2, ATCC 33015",
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "氧气"
+          },
+          "raw_text": "oxygen tolerance: aerobe",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用 4-甲基苯甲酸（p-toluate）及其他甲基苯甲酸类芳香化合物作为碳源",
+          "raw_text": "Metabolism of benzoate and the methylbenzoates by Pseudomonas putida (arvilla) mt-2",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "携带 TOL 质粒 pWW0，具备甲苯、二甲苯及相应苯甲酸或甲基苯甲酸中间体的降解能力",
+          "raw_text": "Metabolism of benzoate and the methylbenzoates by Pseudomonas putida (arvilla) mt-2: evidence for the existence of a TOL plasmid",
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有 toluate 1,2-dioxygenase、顺式二氢二醇脱氢酶、catechol 2,3-dioxygenase 及 TOL 间位裂解下游酶系活性",
+          "raw_text": "4-toluenecarboxylate degradation",
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "有运动性，具鞭毛",
+          "raw_text": "motility: motile",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状细胞",
+          "raw_text": "cell shape: rod-shaped",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": "Gram stain: negative",
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": "spore formation: no",
+          "evidence_id": "EVID_006",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "较广的环境广适性；Pseudomonas putida 常见于土壤、水体、植物根际以及芳香烃污染环境，并非限定于单一栖息地",
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Pyruvate",
+      "Propionyl-CoA"
+    ],
+    "explanation": "主链的醛醇裂解直接产生 pyruvate；另一半碳骨架先形成 propanal，再按 TOL 下游醛脱氢酶反应转化为 propionyl-CoA。pyruvate 可进入乙酰辅酶 A 和三羧酸循环，propionyl-CoA 可进入丙酰-CoA 同化途径。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "propionyl-CoA assimilation",
+      "summary": "propionyl-CoA 可经 methylmalonyl-CoA 路线转化为 succinyl-CoA；pyruvate 可经 pyruvate dehydrogenase 形成 acetyl-CoA。该部分已超出题面指定的 4-toluenecarboxylate degradation 主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "XylF–XylH–XylI oxidative branch",
+      "summary": "环裂解产生的 2-hydroxy-5-methylmuconate semialdehyde 还可由 XylF 氧化，再经 XylH 与 XylI 走草酰巴豆酸型支路，并与后续水合、醛醇裂解阶段汇合。此处不将该支路作为被评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway record titled “4-toluenecarboxylate degradation”",
+      "claim_scope": [
+        "路线名称",
+        "S1–S3 的反应顺序",
+        "p-toluate 至 4-methylcatechol 的转化"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Williams PA, Murray K. 1974. Metabolism of benzoate and the methylbenzoates by Pseudomonas putida (arvilla) mt-2: evidence for the existence of a TOL plasmid. Journal of Bacteriology 120(1):416–423",
+      "claim_scope": [
+        "Pseudomonas putida mt-2 与甲基苯甲酸代谢",
+        "TOL 质粒相关性状",
+        "步骤对应微生物"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "map00622",
+      "locator": "Xylene degradation pathway, 4-toluenecarboxylate and methylcatechol meta-cleavage section",
+      "claim_scope": [
+        "S4–S7 下游间位裂解反应",
+        "XylG、XylJ、XylK、XylQ 反应顺序",
+        "中心代谢产物"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "UniProtKB",
+      "record_id": null,
+      "locator": "UniProtKB entries for xylXYZ, xylL, xylE, xylG, xylJ, xylK and xylQ from Pseudomonas putida mt-2 / TOL plasmid pWW0",
+      "claim_scope": [
+        "酶名称",
+        "EC 编号",
+        "基因与蛋白对应关系"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "ATCC",
+      "record_id": "33015",
+      "locator": "ATCC product record for Pseudomonas putida mt-2, ATCC 33015",
+      "claim_scope": [
+        "菌种保藏编号",
+        "常规培养温度",
+        "菌株身份"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": null,
+      "locator": "BacDive strain record searchable by accession ATCC 33015",
+      "claim_scope": [
+        "氧耐受性",
+        "革兰氏染色",
+        "细胞形态",
+        "运动性",
+        "芽孢形成",
+        "一般栖息地信息"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，因此 route_scope.oxygen_condition 照题面保留为 null；但所选 TOL 主链本身依赖分子氧。",
+    "环裂解半醛之后存在水解支路和氧化支路，本答案按处理该底物的 XylG 水解支路作为主链，并将氧化支路列入 alternative_branches。",
+    "Pseudomonas putida mt-2 的菌株级盐度、pH、完整基因组及部分数值型表型缺少可直接引用的数据，故相应性状如实填 null。",
+    "XylQ 将丙醛转化为 propionyl-CoA 属于宽底物醛脱氢酶的延伸解释，置信度为 medium。"
+  ]
+}

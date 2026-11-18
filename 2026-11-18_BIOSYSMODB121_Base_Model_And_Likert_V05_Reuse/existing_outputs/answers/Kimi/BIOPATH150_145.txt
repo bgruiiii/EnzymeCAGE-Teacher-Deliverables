@@ -1,0 +1,353 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_145",
+  "pollutant_name_zh": "6-磺酸基-α-D-奎诺糖",
+  "pollutant_name_en": "6-sulfo-alpha-D-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation V",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，按 null 处理；路线名称按题面原样填写。主链按 Firmicutes（如 Bacillus cereus）中已表征的 6-脱氧-6-磺基-D-果糖转醛醇酶型磺基奎诺糖降解途径重建。"
+  },
+  "route_summary": "磺基奎诺糖（6-脱氧-6-磺基-D-葡萄糖）先经磺基奎诺糖异构酶异构化为 6-脱氧-6-磺基-D-果糖；随后由磺基果糖转醛醇酶以甘油醛-3-磷酸为受体进行 C3 转移裂解，生成 (S)-3-磺基乳醛和果糖-6-磷酸（进入糖酵解）；3-磺基乳醛再经还原酶还原为 2,3-二羟基丙烷-1-磺酸盐（DHPS）排出或进一步被群落利用。主链参照 Frommeyer 等（2020，iScience）在 Bacillus cereus 中表征的转醛醇酶型途径；该途径与题面给定的 MetaCyc 风格路线名 sulfoquinovose degradation V 的严格对应关系存在不确定性（见 uncertainties）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-sulfo-alpha-D-quinovose",
+          "smiles": "O=S(=O)(O)C[C@@H]1[C@H]([C@@H]([C@H]([C@@H](O1)O)O)O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-deoxy-6-sulfo-D-fructose",
+          "smiles": "OCC(=O)[C@@H](O)[C@@H](O)[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛糖-酮糖异构化（isomerization）",
+      "enzyme": {
+        "name": "sulfoquinovose isomerase",
+        "ec_number": "5.3.1.31",
+        "gene_or_protein": "yihS",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Bacillus cereus",
+        "strain": "ATCC 14579",
+        "ncbi_taxid": 226900,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该步异构化反应在多种磺基奎诺糖降解途径（EMP 型与转醛醇酶型）中相同；B. cereus 中对应基因为 yihS 同源物。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "6-deoxy-6-sulfo-D-fructose",
+          "smiles": "OCC(=O)[C@@H](O)[C@@H](O)[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "D-glyceraldehyde 3-phosphate",
+          "smiles": "O=C[C@H](O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "(S)-3-sulfolactaldehyde",
+          "smiles": "O=C[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "D-fructose 6-phosphate",
+          "smiles": "OCC(=O)[C@@H](O)[C@H](O)[C@H](O)COP(=O)(O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "转醛醇反应（二羟丙酮单元转移/裂解，transaldolase cleavage）",
+      "enzyme": {
+        "name": "6-deoxy-6-sulfo-D-fructose transaldolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Bacillus cereus",
+        "strain": "ATCC 14579",
+        "ncbi_taxid": 226900,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该转醛醇酶的 EC 编号与基因名未确证，按规则填 null；受体醛确定为甘油醛-3-磷酸，产物为果糖-6-磷酸。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "(S)-3-sulfolactaldehyde",
+          "smiles": "O=C[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "(2S)-2,3-dihydroxypropane-1-sulfonate",
+          "smiles": "OC[C@H](O)CS(=O)(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "还原反应（NAD(P)H 依赖的醛还原）",
+      "enzyme": {
+        "name": "sulfolactaldehyde reductase",
+        "ec_number": null,
+        "gene_or_protein": "yihU",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Bacillus cereus",
+        "strain": "ATCC 14579",
+        "ncbi_taxid": 226900,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "该还原为 DHPS 的一步是否被纳入题面所指 MetaCyc 途径主链不确定；辅因子为 NADH 还是 NADPH 未确证。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Bacillus cereus",
+      "strain": "ATCC 14579",
+      "ncbi_taxid": 226900,
+      "traits": {
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": "facultatively anaerobic",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温（嗜温）菌"
+          },
+          "raw_text": "Bacillus cereus ATCC 14579（= DSM 31）培养温度 30 °C",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "14579"
+          },
+          "raw_text": "Bacillus cereus ATCC 14579（模式菌株，= DSM 31）",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸（兼性厌氧，可行发酵）",
+            "terminal_electron_acceptor": "氧气（O2）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "能以磺基奎诺糖（sulfoquinovose）为唯一碳源生长（经 6-脱氧-6-磺基-D-果糖转醛醇酶途径）；亦利用葡萄糖等多种碳水化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解植物磺脂（SQDG）水解释放的磺基奎诺糖，碳骨架 C3 部分以 2,3-二羟基丙烷-1-磺酸盐（DHPS）形式排出，其余进入糖酵解",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "6-脱氧-6-磺基-D-果糖转醛醇酶活性：将磺基果糖与甘油醛-3-磷酸转化为 3-磺基乳醛与果糖-6-磷酸",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "有运动性（周生鞭毛）",
+          "raw_text": "motile",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状（直杆菌），常呈链状排列",
+          "raw_text": "rod-shaped cells, in chains",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性",
+          "raw_text": "Gram-positive",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "形成内生芽孢（椭圆形，中生，孢子囊不明显膨大）",
+          "raw_text": "forms ellipsoidal endospores",
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_004722.1",
+            "genome_size_bp": 5411809,
+            "gc_percent": 35.3
+          },
+          "raw_text": "Bacillus cereus ATCC 14579 chromosome, complete genome: 5,411,809 bp, 35.3% GC",
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "栖息地广适：土壤、水体、尘埃、植物体表及多种食品环境中普遍存在；亦为食源性条件致病菌",
+          "raw_text": "ubiquitous in soil, water and food environments",
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["D-fructose 6-phosphate"],
+    "explanation": "第二步转醛醇反应产生的果糖-6-磷酸直接进入糖酵解（中央碳代谢）；含硫的 C3 片段经还原为 2,3-二羟基丙烷-1-磺酸盐（DHPS）排出细胞或交由群落中其他微生物进一步降解，不进入本菌中央碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "DHPS further degradation",
+      "summary": "2,3-二羟基丙烷-1-磺酸盐（DHPS）可被其他细菌经 DHPS 脱氢酶氧化为 3-磺基乳酸，进一步降解为磺基乙醛并最终矿化释放亚硫酸盐/硫化物；不属于本评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "sulfo-EMP pathway",
+      "summary": "在大肠杆菌等细菌中，磺基奎诺糖经异构化生成 6-脱氧-6-磺基-D-果糖后，经 1-位激酶磷酸化并由醛缩酶裂解为磷酸二羟丙酮（DHAP）与 3-磺基乳醛；与本主链（转醛醇酶裂解）不同。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "sulfo-ED pathway",
+      "summary": "在 Pseudomonas putida SQ1 中，磺基奎诺糖经氧化生成 6-脱氧-6-磺基-D-葡萄糖酸，再经脱水生成 2-酮-3-脱氧-6-磺基-D-葡萄糖酸并由醛缩酶裂解为丙酮酸与 3-磺基乳醛；与本主链不同。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": null,
+      "record_id": "doi:10.1016/j.isci.2020.101510",
+      "locator": "Frommeyer B. et al., iScience, 2020, 23(9):101510",
+      "claim_scope": ["S1 反应与酶", "S2 反应与酶", "S3 反应与酶", "Bacillus cereus 经转醛醇酶途径降解磺基奎诺糖", "F7/F8/F9 性状"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "MetaCyc pathway: sulfoquinovose degradation V",
+      "claim_scope": ["路线名称与范围"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BacDive",
+      "record_id": null,
+      "locator": "BacDive strain entry: Bacillus cereus ATCC 14579 (DSM 31)",
+      "claim_scope": ["F1 氧耐受", "F2 温度", "F5 菌种保藏", "F6 呼吸方式", "F10 运动性", "F11 细胞形态", "F12 革兰氏染色", "F13 芽孢", "F15 栖息地"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Nucleotide",
+      "record_id": "NC_004722.1",
+      "locator": "Bacillus cereus ATCC 14579 chromosome, complete genome",
+      "claim_scope": ["F14 基因组大小与 GC 含量"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "NCBI Taxonomy",
+      "record_id": "226900",
+      "locator": "Bacillus cereus ATCC 14579",
+      "claim_scope": ["菌株分类学身份与 ncbi_taxid"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "IUBMB ExplorEnz",
+      "record_id": "5.3.1.31",
+      "locator": "EC 5.3.1.31 sulfoquinovose isomerase",
+      "claim_scope": ["S1 酶名称与 EC 编号"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面路线名 sulfoquinovose degradation V 与本回答重建的转醛醇酶型途径（文献称 sulfo-TAL 途径，Frommeyer et al. 2020）的严格对应关系未能核验：MetaCyc 对磺基奎诺糖降解 I–V 的编号与 EMP/ED/TAL 等变体的一一映射不确定；若 V 实际对应其他变体，中间步骤的底物/产物可能不同。",
+    "第二步 6-脱氧-6-磺基-D-果糖转醛醇酶的 EC 编号与基因名未确证，按规则填 null。",
+    "第三步 3-磺基乳醛还原为 (2S)-DHPS 是否包含在题面所指途径主链内不确定；还原酶的辅因子特异性（NADH/NADPH）及其 EC 编号未确证。",
+    "3-磺基乳醛与 DHPS 的立体构型按 CIP 规则由 D-果糖 C5 构型推导为 (S)，文献中亦有用 (R)/(S) 不同表述的情况，存在标注不一致风险。",
+    "Bacillus cereus ATCC 14579 的 pH 与盐度范围无可靠来源数据，按规则整体填 null；温度仅填最适培养温度 30 °C（非耐受极限）。"
+  ]
+}

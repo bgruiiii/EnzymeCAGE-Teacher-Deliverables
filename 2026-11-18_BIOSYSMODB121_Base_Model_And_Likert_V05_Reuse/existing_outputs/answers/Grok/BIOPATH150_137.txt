@@ -1,0 +1,489 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_137",
+  "pollutant_name_zh": "吡啶-2-甲酸根",
+  "pollutant_name_en": "Picolinate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "picolinate degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，故oxygen_condition保持null。文献中机制最完整的picolinate degradation主链为好氧6-位羟基化后开环的连续途径，本答案只填写该主链。代表菌采用已报道可降解该底物并携带相应pic途径的Alcaligenes faecalis JQ135。"
+  },
+  "route_summary": "吡啶-2-甲酸根的微生物降解主链为：picolinate由水提供氧原子经脱氢羟化生成6-hydroxypicolinate，再在C3位单加氧生成3,6-dihydroxypicolinate，脱羧得到2,5-dihydroxypyridine；随后双加氧开环为N-formylmaleamate，水解生成maleamate与甲酸，再水解为maleate与氨，最后异构为富马酸并进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "picolinate",
+          "smiles": "[O-]C(=O)c1ccccn1",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-hydroxypicolinate",
+          "smiles": "[O-]C(=O)c1cccc(O)n1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "dehydrogenative hydroxylation",
+      "enzyme": {
+        "name": "picolinate dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Alcaligenes faecalis",
+        "strain": "JQ135",
+        "ncbi_taxid": 511,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "生理电子受体未确定，故未列入。该酶为钼辅因子羟化酶类，氧原子来自水而非O2；经典文献亦称picolinic acid hydroxylase。正式EC编号未核定。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "6-hydroxypicolinate",
+          "smiles": "[O-]C(=O)c1cccc(O)n1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3,6-dihydroxypicolinate",
+          "smiles": "O=C([O-])c1nc(O)ccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "monooxygenation",
+      "enzyme": {
+        "name": "6-hydroxypicolinate 3-monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Alcaligenes faecalis",
+        "strain": "JQ135",
+        "ncbi_taxid": 511,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "还原辅因子是NADH还是NADPH未核定，故未写入；正式EC编号未指定。C3位羟化由后续脱羧产物为2,5-dihydroxypyridine这一化学约束支持。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "3,6-dihydroxypicolinate",
+          "smiles": "O=C([O-])c1nc(O)ccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2,5-dihydroxypyridine",
+          "smiles": "Oc1ccc(O)nc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "decarboxylation",
+      "enzyme": {
+        "name": "3,6-dihydroxypicolinate decarboxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Alcaligenes faecalis",
+        "strain": "JQ135",
+        "ncbi_taxid": 511,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "脱羧步骤的化学转化明确，但该脱羧酶尚无已核定的正式EC编号。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2,5-dihydroxypyridine",
+          "smiles": "Oc1ccc(O)nc1",
+          "role": "main"
+        },
+        {
+          "name": "dioxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "N-formylmaleamate",
+          "smiles": "O=CNC(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "aromatic ring-cleaving dioxygenation",
+      "enzyme": {
+        "name": "2,5-dihydroxypyridine 5,6-dioxygenase",
+        "ec_number": "1.13.11.9",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Alcaligenes faecalis",
+        "strain": "JQ135",
+        "ncbi_taxid": 511,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "开环反应本身由EC 1.13.11.9确定；该酶在JQ135中的具体基因符号未核定。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "N-formylmaleamate",
+          "smiles": "O=CNC(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleamate",
+          "smiles": "NC(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "formate",
+          "smiles": "O=C[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolytic deformylation",
+      "enzyme": {
+        "name": "N-formylmaleamate deformylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Alcaligenes faecalis",
+        "strain": "JQ135",
+        "ncbi_taxid": 511,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "水解去甲酰基的反应方向明确；可能对应EC 3.5.1.106，但本次未复核酶学数据库，故ec_number填null。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "maleamate",
+          "smiles": "NC(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "maleate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "ammonia",
+          "smiles": "N",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "amide hydrolysis",
+      "enzyme": {
+        "name": "maleamate amidohydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Alcaligenes faecalis",
+        "strain": "JQ135",
+        "ncbi_taxid": 511,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "酰胺水解生成maleate与氨的反应方向明确；可能对应EC 3.5.1.107，但本次未复核酶学数据库，故ec_number填null。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "maleate",
+          "smiles": "[O-]C(=O)/C=C\\C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "fumarate",
+          "smiles": "[O-]C(=O)/C=C/C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "cis-trans isomerization",
+      "enzyme": {
+        "name": "maleate isomerase",
+        "ec_number": "5.2.1.1",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Alcaligenes faecalis",
+        "strain": "JQ135",
+        "ncbi_taxid": 511,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "异构反应由EC 5.2.1.1确定；该酶在JQ135中的具体基因符号未核定。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Alcaligenes faecalis",
+      "strain": "JQ135",
+      "ncbi_taxid": 511,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "有氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以picolinate作为唯一碳源和氮源",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解picolinate",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有picolinate脱氢酶及下游开环途径酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["fumarate"],
+    "explanation": "主链末端产物富马酸是三羧酸循环中间体，可由此进入中心碳代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "TCA cycle",
+      "summary": "富马酸可经富马酸酶水合为苹果酸，随后进入三羧酸循环。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "综合记忆自Tate & Ensign 1974对Arthrobacter picolinophilus的picolinic acid hydroxylase研究、Siegmund et al. 1990关于钼辅因子的报道，以及Qiu、He等对Alcaligenes faecalis JQ135好氧picolinate降解及pic途径的研究（约2017-2019）；本次未实时核对原文。",
+      "claim_scope": ["pathway", "reaction", "enzyme", "organism", "degradation_trait"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB ExplorEnz",
+      "record_id": "1.13.11.9",
+      "locator": "EC 1.13.11.9 2,5-dihydroxypyridine 5,6-dioxygenase：2,5-dihydroxypyridine + O2 = N-formylmaleamate",
+      "claim_scope": ["enzyme", "ec_number", "reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "IUBMB ExplorEnz",
+      "record_id": "5.2.1.1",
+      "locator": "EC 5.2.1.1 maleate isomerase：maleate = fumarate",
+      "claim_scope": ["enzyme", "ec_number", "reaction"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI Taxonomy",
+      "record_id": "511",
+      "locator": "Alcaligenes faecalis物种描述：好氧、革兰氏阴性杆状、运动、不产芽孢；NCBI Taxonomy txid 511。性状为物种水平知识，未取得JQ135原文摘录。",
+      "claim_scope": ["taxonomy", "morphology", "physiology"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件；本答案采用文献中最完整的好氧picolinate degradation主链，未改写路线名称。",
+    "上游三步（脱氢羟化、C3单加氧、脱羧）的正式EC编号以及pic基因符号本次未核定，相关字段填null。",
+    "N-formylmaleamate deformylase与maleamate amidohydrolase可能分别对应EC 3.5.1.106和EC 3.5.1.107，但未复核酶学数据库，故未填写。",
+    "ncbi_taxid填写的是物种Alcaligenes faecalis的511，不是JQ135可能另有的菌株级TaxID。",
+    "JQ135的保藏编号、基因组登录号、温度、pH、盐度范围和栖息地广适性没有可靠原文，均填null；形态与氧相关性状来自物种水平知识。",
+    "自2,5-dihydroxypyridine起的下游反应与烟酸降解途径共享，酶学在多种细菌中得到证实；全程归于JQ135是基于其完整降解能力，个别酶-菌株对应关系的直接实验证据强度不均一。"
+  ]
+}

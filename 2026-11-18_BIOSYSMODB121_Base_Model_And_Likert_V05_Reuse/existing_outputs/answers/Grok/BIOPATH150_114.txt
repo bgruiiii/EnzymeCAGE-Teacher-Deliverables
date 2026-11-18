@@ -1,0 +1,399 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_114",
+  "pollutant_name_zh": "Naphthalene",
+  "pollutant_name_en": "Naphthalene",
+  "route_scope": {
+    "oxygen_condition": "anaerobic",
+    "chosen_route_name": "naphthalene degradation (anaerobic)",
+    "is_single_continuous_route": true,
+    "notes": "题面指定厌氧萘降解。主链采用共识的直接羧化、辅酶A活化及分步还原去芳构化路线，不采用早期甲基化活化假说。酶学证据主要来自硫酸盐还原富集培养物N47；纯培养物NaphS2可在硫酸盐还原条件下矿化萘，但逐步酶归属不如N47明确，故不另建性状档案。主链止于六氢-2-萘甲酰辅酶A，开环以后放入下游延续。"
+  },
+  "route_summary": "厌氧条件下萘的主链为：萘与CO2羧化为2-萘甲酸，再经ATP依赖的辅酶A连接生成2-萘甲酰辅酶A；随后由不依赖ATP的2-萘甲酰辅酶A还原酶先还原远端环，生成5,6-二氢-2-萘甲酰辅酶A，再进一步还原为5,6,7,8-四氢-2-萘甲酰辅酶A，并再还原为六氢-2-萘甲酰辅酶A。此后经β-氧化类似反应开环，最终进入乙酰辅酶A水平的中心代谢。本主链各步对应脱硫杆菌科细菌N47（硫酸盐还原富集培养物中的优势菌）。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "naphthalene",
+          "smiles": "c1ccc2ccccc2c1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-naphthoic acid",
+          "smiles": "O=C(O)c1ccc2ccccc2c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "羧化",
+      "enzyme": {
+        "name": "naphthalene carboxylase",
+        "ec_number": null,
+        "gene_or_protein": "UbiD-like carboxylase",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacteraceae bacterium N47",
+        "strain": "N47",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "羧化反应本身证据较强，但酶尚无正式EC编号；一碳底物在文献中既写作CO2也写作碳酸氢盐。UbiD样羧化酶为目前最可接受的酶归属，亚基组成仍可能细化。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "2-naphthoic acid",
+          "smiles": "O=C(O)c1ccc2ccccc2c1",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCS",
+          "role": "cofactor"
+        },
+        {
+          "name": "ATP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)OP(=O)(O)OP(=O)(O)O)C(O)C1O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-naphthoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc2ccccc2c1",
+          "role": "main"
+        },
+        {
+          "name": "AMP",
+          "smiles": "Nc1ncnc2c1ncn2C1OC(COP(=O)(O)O)C(O)C1O",
+          "role": "byproduct"
+        },
+        {
+          "name": "pyrophosphate",
+          "smiles": "O=P(O)(O)OP(=O)(O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "辅酶A连接",
+      "enzyme": {
+        "name": "2-naphthoate-CoA ligase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacteraceae bacterium N47",
+        "strain": "N47",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "连接酶尚无正式EC编号，基因符号未核实，故gene_or_protein置null。AMP与焦磷酸按芳香酸辅酶A连接酶的通用AMP形成机制列出。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-naphthoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc2ccccc2c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5,6-dihydro-2-naphthoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc2CCC=Cc2c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "还原去芳构化",
+      "enzyme": {
+        "name": "2-naphthoyl-CoA reductase",
+        "ec_number": null,
+        "gene_or_protein": "Ncr",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacteraceae bacterium N47",
+        "strain": "N47",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "生理电子供体未确定，故未列入辅底物。该还原酶不依赖ATP，不同于I类苯甲酰辅酶A还原酶。EC编号未正式指定。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "5,6-dihydro-2-naphthoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc2CCC=Cc2c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5,6,7,8-tetrahydro-2-naphthoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc2CCCCc2c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "还原去芳构化",
+      "enzyme": {
+        "name": "5,6-dihydro-2-naphthoyl-CoA reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacteraceae bacterium N47",
+        "strain": "N47",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "N47提取物可把5,6-二氢产物进一步还原为5,6,7,8-四氢-2-萘甲酰辅酶A，但独立酶的基因与EC尚未明确，酶名仅为功能称呼。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "5,6,7,8-tetrahydro-2-naphthoyl-CoA",
+          "smiles": "CC(C)(COP(=O)(O)OP(=O)(O)OCC1OC(n2cnc3c(N)ncnc32)C(O)C1OP(=O)(O)O)C(O)C(=O)NCCC(=O)NCCSC(=O)c1ccc2CCCCc2c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "hexahydro-2-naphthoyl-CoA",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "还原去芳构化",
+      "enzyme": {
+        "name": "5,6,7,8-tetrahydro-2-naphthoyl-CoA reductase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Desulfobacteraceae bacterium N47",
+        "strain": "N47",
+        "ncbi_taxid": null,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "六氢-2-萘甲酰辅酶A是文献常用的下一还原水平名称，但具体双键异构体未统一，故SMILES置null。催化酶是否为苯甲酰辅酶A还原酶类同源物尚未定论，酶名为功能称呼，置信度低。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Desulfobacteraceae bacterium N47",
+      "strain": "N47",
+      "ncbi_taxid": null,
+      "traits": {
+        "F2_temperature": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "淡水（低盐）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧呼吸",
+            "terminal_electron_acceptor": "硫酸盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以萘为碳源和电子供体",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "硫酸盐还原条件下厌氧降解萘和2-甲基萘",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有萘羧化、2-萘甲酸辅酶A连接和2-萘甲酰辅酶A还原活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["acetyl-CoA"],
+    "explanation": "六氢-2-萘甲酰辅酶A之后的开环产物经β-氧化类似反应生成乙酰辅酶A，从而进入中心代谢。培养物水平可矿化萘并偶联硫酸盐还原，但开环后的逐步酶与中间体尚未完全指定。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "beta-oxidation-like ring cleavage",
+      "summary": "六氢-2-萘甲酰辅酶A之后，经水合、脱氢和开环等类似苯甲酰辅酶A下游或脂环酰辅酶A β-氧化的反应，逐步释放可进入中心代谢的乙酰辅酶A。该段不纳入已评分主链，因为具体中间体、酶和EC尚未统一。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "methylation activation hypothesis",
+      "summary": "早期研究曾提出萘先甲基化为2-甲基萘，再按2-甲基萘的延胡索酸加成路线降解。后续代谢物与酶学证据更支持直接羧化为2-萘甲酸，因此甲基化路线不是本评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "厌氧萘降解共识路线：直接羧化为2-萘甲酸、辅酶A活化，以及经5,6-二氢和5,6,7,8-四氢中间体进一步还原；对应硫酸盐还原体系N47的代谢物与提取物活性。未核对接录号，故不用数据库记录冒充来源。",
+      "claim_scope": ["S1_reaction", "S2_reaction", "S4_reaction", "S5_reaction", "naphthalene_carboxylase", "2-naphthoate-CoA_ligase"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "2-萘甲酰辅酶A还原酶（Ncr）将2-萘甲酰辅酶A还原为5,6-二氢-2-萘甲酰辅酶A，且该去芳构化还原不依赖ATP。依据Eberlein等人关于该新型还原酶的研究转述，未核对DOI与页码。",
+      "claim_scope": ["S3_reaction", "2-naphthoyl-CoA_reductase"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "N47为淡水硫酸盐还原富集培养物中降解萘的优势脱硫杆菌科细菌，专性厌氧，以硫酸盐为末端电子受体，可利用萘和2-甲基萘。未核对TaxID、保藏号和基因组登录号。",
+      "claim_scope": ["organism_N47", "F1_oxygen_tolerance", "F4_salinity", "F6_respiration_electron_acceptor", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "萘羧化酶、2-萘甲酸辅酶A连接酶及后续还原酶均无已核实的正式EC编号，相关字段为null。",
+    "N47是富集培养物中的优势菌而非已核实的纯培养保藏株，TaxID、保藏号和基因组登录号未核对，一律为null。",
+    "六氢-2-萘甲酰辅酶A的双键异构体不确定，SMILES为null。",
+    "辅酶A、ATP和AMP的SMILES只表示组成连接，未标注立体化学。",
+    "温度、pH、细胞形态、运动性、产孢、革兰氏染色、栖息地广适性和基因组数值没有可逐字核对的来源，相应性状为null。",
+    "纯培养海洋硫酸盐还原菌NaphS2也能厌氧矿化萘，但本题酶学步骤未改挂到该菌，以避免把N47中测定的酶活性误写到NaphS2。"
+  ]
+}

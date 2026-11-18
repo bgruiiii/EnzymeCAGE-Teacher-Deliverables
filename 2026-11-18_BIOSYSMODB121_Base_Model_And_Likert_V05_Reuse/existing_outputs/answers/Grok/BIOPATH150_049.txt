@@ -1,0 +1,325 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_049",
+  "pollutant_name_zh": "甘油",
+  "pollutant_name_en": "Glycerol",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "glycerol degradation I",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件，oxygen_condition保持null。chosen_route_name按题面原样填写为glycerol degradation I，未改选其他路线。该主链为甘油激酶磷酸化后经醌依赖甘油-3-磷酸脱氢酶生成磷酸二羟丙酮的连续两步，碳骨架无分支。"
+  },
+  "route_summary": "甘油降解I的主链为两步：甘油由甘油激酶磷酸化为sn-甘油-3-磷酸，再由需氧甘油-3-磷酸脱氢酶氧化为磷酸二羟丙酮并进入中心糖代谢。代表菌为具有完整glp系统的大肠杆菌K-12 MG1655。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "glycerol",
+          "smiles": "OCC(O)CO",
+          "role": "main"
+        },
+        {
+          "name": "ATP",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "sn-glycerol 3-phosphate",
+          "smiles": "OCC(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ADP",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "磷酸化",
+      "enzyme": {
+        "name": "glycerol kinase",
+        "ec_number": "2.7.1.30",
+        "gene_or_protein": "glpK",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "sn-glycerol 3-phosphate",
+          "smiles": "OCC(O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ubiquinone-8",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "dihydroxyacetone phosphate",
+          "smiles": "OCC(=O)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "ubiquinol-8",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "氧化脱氢",
+      "enzyme": {
+        "name": "aerobic glycerol-3-phosphate dehydrogenase",
+        "ec_number": "1.1.5.3",
+        "gene_or_protein": "glpD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "氧条件未指定。甘油降解I的碳骨架转化在有氧条件下由GlpD完成，电子受体为泛醌-8；厌氧条件下同工酶GlpABC亦可生成同一主产物，但使用甲基萘醌。此处按该路线常见的需氧酶GlpD作为首选。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 37,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "兼性厌氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": "非嗜盐"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "700926"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "high"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "兼性厌氧",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用甘油作为唯一碳源和能源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可将甘油经磷酸化和脱氢转化为磷酸二羟丙酮并进入中心糖代谢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F9_enzyme_activity": {
+          "value": "甘油激酶（GlpK）与需氧甘油-3-磷酸脱氢酶（GlpD）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "周生鞭毛，可运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "U00096",
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_006",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "以温血动物肠道共生为主，亦可在水体和土壤等次生生境存留，生境广适性中等，既非单一生境专性菌，也非极端广适菌",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["dihydroxyacetone phosphate"],
+    "explanation": "主链止于磷酸二羟丙酮。该化合物是糖酵解与糖异生的共同三碳中间体，由此进入中心代谢。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "glycolysis",
+      "summary": "磷酸二羟丙酮可经磷酸丙糖异构酶转化为甘油醛-3-磷酸，随后进入糖酵解下半部，或反向进入糖异生。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "NAD-dependent glycerol dehydrogenase route",
+      "summary": "甘油可由甘油脱氢酶氧化为二羟丙酮，再经二羟丙酮激酶磷酸化为磷酸二羟丙酮。该路线不属本题指定的甘油降解I，不计入评分主链。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "glycerol dehydratase route",
+      "summary": "甘油可经甘油脱水酶生成3-羟基丙醛，再还原为1,3-丙二醇或氧化为3-羟基丙酸。该路线不属甘油降解I，不计入评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": "glycerol degradation I",
+      "claim_scope": ["pathway_steps", "enzyme_identity", "ec_number", "reaction_stoichiometry"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "EcoCyc",
+      "record_id": null,
+      "locator": "Escherichia coli K-12 MG1655 glycerol degradation I; glpK; glpD",
+      "claim_scope": ["organism_pathway_link", "gene_names", "glycerol_utilization", "enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI Taxonomy",
+      "record_id": "511145",
+      "locator": "Escherichia coli str. K-12 substr. MG1655",
+      "claim_scope": ["ncbi_taxid", "organism_name", "strain"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "standard microbiological description of Escherichia coli K-12",
+      "claim_scope": ["oxygen_tolerance", "temperature_optimum", "salinity_category", "respiration", "motility", "morphology", "gram_stain", "sporulation", "habitat_generalism"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "ATCC",
+      "record_id": "700926",
+      "locator": "ATCC 700926",
+      "claim_scope": ["culture_collection"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "NCBI GenBank",
+      "record_id": "U00096",
+      "locator": "U00096",
+      "claim_scope": ["genome_accession"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "氧条件未指定：有氧首选GlpD并以泛醌-8为电子受体，厌氧可由GlpABC催化同一碳骨架转化并改用甲基萘醌。",
+    "sn-甘油-3-磷酸的SMILES仅给出构造式，未写入立体化学，以避免错误手性标记。",
+    "ATP、ADP、泛醌-8和泛醇-8未给出SMILES。",
+    "温度耐受极限、pH范围、盐度数值以及基因组大小和GC含量缺乏可逐字核对的来源，已置null。",
+    "未填写MetaCyc途径对象编号，避免在不能核对时编造记录号。"
+  ]
+}

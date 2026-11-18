@@ -1,0 +1,584 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_103",
+  "pollutant_name_zh": "2-异丙基苯酚",
+  "pollutant_name_en": "2-Isopropylphenol",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "2-isopropylphenol degradation",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件。本回答给出的主链为好氧间位开环路线：2-异丙基苯酚先羟化为3-异丙基儿茶酚，其后与异丙苯降解下游途径汇合，直至丙酮酸与乙酰辅酶A。未将未经核实的厌氧路线写入主链。"
+  },
+  "route_summary": "好氧主链为：2-异丙基苯酚经苯酚羟化酶在游离邻位再羟化生成3-异丙基儿茶酚，再由3-异丙基儿茶酚2,3-双加氧酶间位开环为2-羟基-6-氧代-7-甲基辛-2,4-二烯酸；水解酶将其裂解为2-羟基戊-2,4-二烯酸并释放异丁酸。2-羟基戊-2,4-二烯酸经水合生成4-羟基-2-氧代戊酸，醛缩酶裂解为丙酮酸和乙醛，乙醛再乙酰化脱氢为乙酰辅酶A，从而进入中心代谢。3-异丙基儿茶酚之后的步骤有经典菌株与酶学对应；由2-异丙基苯酚起始的首步菌株与确切EC未核实，故首步微生物置空、酶置信度为低。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "2-isopropylphenol",
+          "smiles": "CC(C)c1ccccc1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD(P)H",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "3-isopropylcatechol",
+          "smiles": "CC(C)c1cccc(O)c1O",
+          "role": "main"
+        },
+        {
+          "name": "NAD(P)+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "芳香环邻位单加氧羟化",
+      "enzyme": {
+        "name": "phenol hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": null,
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": null,
+      "uncertainty": "首步依据邻烷基酚好氧降解的通用区域选择性推断，产物为3-异丙基儿茶酚；未能核实以2-异丙基苯酚为底物的特定菌株、基因和EC。还原辅因子是NADH还是NADPH亦不确定，故不填写EC与微生物。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "3-isopropylcatechol",
+          "smiles": "CC(C)c1cccc(O)c1O",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "儿茶酚间位开环双加氧",
+      "enzyme": {
+        "name": "3-isopropylcatechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "ipbC",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "IP01",
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该开环反应及IpbC来自Pseudomonas fluorescens IP01的异丙苯途径，底物为3-异丙基儿茶酚；并未核实该菌株能直接降解2-异丙基苯酚。EC 1.13.11.2为儿茶酚2,3-双加氧酶的通用编号。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate",
+          "smiles": "CC(C)C(=O)C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "isobutyrate",
+          "smiles": "CC(C)C(=O)O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "间位开环产物水解裂解",
+      "enzyme": {
+        "name": "2-hydroxy-6-oxo-7-methylocta-2,4-dienoate hydrolase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas fluorescens",
+        "strain": "IP01",
+        "ncbi_taxid": 294,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "水解切断后芳香环碳进入2-羟基戊-2,4-二烯酸，异丙基侧链以异丁酸释放，这是3-取代儿茶酚间位开环产物的标准化学。IP01中该水解酶的基因名与EC编号未核实，故二者置空。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxypenta-2,4-dienoate",
+          "smiles": "C=CC=C(O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合",
+      "enzyme": {
+        "name": "2-oxopent-4-enoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": "xylJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "生理上水合酶作用于互变异构体2-氧代戊-4-烯酸；互变异构未单列成步。代表酶来自甲苯/二甲苯间位途径，不是2-异丙基苯酚降解专一实验记录。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxopentanoate",
+          "smiles": "CC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛缩酶裂解",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxovalerate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": "xylK",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "丙酮酸可直接进入中心代谢；乙醛继续进入下一步。代表菌为间位途径下游经典菌株，而非已证实的2-异丙基苯酚全程降解菌。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "acetaldehyde",
+          "smiles": "CC=O",
+          "role": "main"
+        },
+        {
+          "name": "coenzyme A",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "acetyl-CoA",
+          "smiles": null,
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "乙酰化脱氢",
+      "enzyme": {
+        "name": "acetaldehyde dehydrogenase (acetylating)",
+        "ec_number": "1.2.1.10",
+        "gene_or_protein": "xylQ",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_005",
+      "uncertainty": "此步为间位开环途径的常规下游反应，使乙醛进入乙酰辅酶A；不表示mt-2已被证实降解2-异丙基苯酚。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas fluorescens",
+      "strain": "IP01",
+      "ncbi_taxid": 294,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用异丙苯作为生长碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "降解异丙苯，并经3-异丙基儿茶酚进行间位开环",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有3-异丙基儿茶酚2,3-双加氧酶IpbC活性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可利用甲苯作为碳源",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "通过TOL质粒间位途径降解甲苯、间二甲苯和对二甲苯",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "具有2-氧代戊-4-烯酸水合酶XylJ和4-羟基-2-氧戊酸醛缩酶XylK活性",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "low"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "acetyl-CoA"],
+    "explanation": "丙酮酸可进入中心碳代谢；乙醛经乙酰化脱氢生成乙酰辅酶A后进入中心代谢。水解副产物异丁酸不计入芳香环主链的中心代谢入口。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "isobutyrate catabolism",
+      "summary": "异丁酸可活化为异丁酰辅酶A后进入支链有机酸代谢，不属于本评分主链。"
+    }
+  ],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "MODEL_INFERENCE",
+      "database": null,
+      "record_id": null,
+      "locator": "由邻烷基酚好氧降解的通用机制推断：苯酚羟化酶将2-异丙基苯酚游离邻位羟化为3-异丙基儿茶酚。本次未检索到可直接引用的数据库记录或原文献。",
+      "claim_scope": ["S1_reaction", "S1_enzyme"],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：Pseudomonas fluorescens IP01异丙苯降解ipb基因簇，ipbC编码3-异丙基儿茶酚2,3-双加氧酶，开环产物可经水解释放异丁酸。本次未重新核对原文。",
+      "claim_scope": ["S2_reaction", "S2_enzyme", "S2_organism", "S3_reaction", "S3_enzyme", "S3_organism", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：Pseudomonas putida mt-2的TOL质粒pWW0下游间位途径，xylJ为EC 4.2.1.80，xylK为EC 4.1.3.39，xylQ为EC 1.2.1.10。本次未重新核对原文。",
+      "claim_scope": ["S4_reaction", "S4_enzyme", "S4_organism", "S5_reaction", "S5_enzyme", "S5_organism", "S6_reaction", "S6_enzyme", "S6_organism", "F7_carbon_substrate_utilization", "F8_degradation_capacity_broad", "F9_enzyme_activity"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：Pseudomonas fluorescens的典型细胞与生理性状。非IP01菌株专属定量实验数据，无原文摘录。",
+      "claim_scope": ["F1_oxygen_tolerance", "F2_temperature", "F6_respiration_electron_acceptor", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": "内部知识：Pseudomonas putida的典型细胞与生理性状。非mt-2菌株专属定量实验数据，无原文摘录。",
+      "claim_scope": ["F1_oxygen_tolerance", "F2_temperature", "F6_respiration_electron_acceptor", "F10_motility", "F11_cell_morphology", "F12_gram_cell_envelope", "F13_sporulation"],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "题面未指定氧条件，主链按好氧间位开环填写。",
+    "未能核实以2-异丙基苯酚为唯一碳源生长并完成全程的单一菌株，故complete_pathway_organism_profile_id置空。",
+    "首步羟化的酶EC、基因和对应微生物未知，未作猜测性填写。",
+    "2-羟基-6-氧代-7-甲基辛-2,4-二烯酸水解酶的EC编号和基因名未核实。",
+    "IP01与mt-2只分别对应3-异丙基儿茶酚开环及间位途径下游公共中间体的转化，不能解读为它们已被证实降解2-异丙基苯酚。",
+    "两株菌的温度、pH、盐度定量范围、保藏编号、基因组登录号和栖息地广适性均无可靠来源，已置空。",
+    "NCBI TaxID使用的是物种级编号，菌株级TaxID及现行分类修订未核实。"
+  ]
+}

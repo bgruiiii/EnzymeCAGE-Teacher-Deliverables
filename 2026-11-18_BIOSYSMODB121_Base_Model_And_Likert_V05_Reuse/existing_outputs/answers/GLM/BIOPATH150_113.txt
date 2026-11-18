@@ -1,0 +1,415 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_113",
+  "pollutant_name_zh": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+  "pollutant_name_en": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "L-tyrosine degradation IV (to 4-methylphenol)",
+    "is_single_continuous_route": true,
+    "notes": "题面未指定氧条件；该路线为厌氧（发酵型）通路，典型存在于肠道梭菌。"
+  },
+  "route_summary": "在厌氧梭菌（以Clostridioides difficile，即Clostridium difficile为代表）中，L-tyrosine先经转氨生成4-hydroxyphenylpyruvate；其α-酮酸侧链经脱羧并氧化为4-hydroxyphenylacetate（C6-C2中间体）；最终由甘氨酸自由基酶4-hydroxyphenylacetate decarboxylase（EC 4.1.1.83，hpdBCA）脱羧生成4-methylphenol（p-cresol）。全途径共脱去两分子CO2、苯环不开环，4-methylphenol作为发酵终产物分泌，不进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(2S)-2-amino-3-(4-hydroxyphenyl)propanoate (L-tyrosine)",
+          "smiles": "N[C@@H](Cc1ccc(O)cc1)C([O-])=O",
+          "role": "main"
+        },
+        {
+          "name": "2-oxoglutarate",
+          "smiles": "O=C([O-])CCC(=O)C(=O)[O-]",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylpyruvate",
+          "smiles": "O=C([O-])C(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "L-glutamate",
+          "smiles": "N[C@@H](CCC(=O)[O-])C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "transamination（PLP依赖的转氨基作用）",
+      "enzyme": {
+        "name": "tyrosine aminotransferase (L-tyrosine:2-oxoglutarate aminotransferase)",
+        "ec_number": "2.6.1.5",
+        "gene_or_protein": null,
+        "confidence": "medium",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Clostridioides difficile (Clostridium difficile)",
+        "strain": "630",
+        "ncbi_taxid": 1496,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "C. difficile中具体执行该转氨步骤的酶基因/同工酶未确证；EC 2.6.1.5为催化该反应的典型酶。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylpyruvate",
+          "smiles": "O=C([O-])C(=O)Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylacetaldehyde",
+          "smiles": "O=CCc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "thiamine-diphosphate-dependent α-keto acid decarboxylation（非氧化脱羧）",
+      "enzyme": {
+        "name": "4-hydroxyphenylpyruvate decarboxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Clostridioides difficile (Clostridium difficile)",
+        "strain": "630",
+        "ncbi_taxid": 1496,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该步在C. difficile中的酶学身份（基因与EC）未确证；该净转化（4-hydroxyphenylpyruvate→4-hydroxyphenylacetate）也可能由α-酮酸:铁氧还蛋白氧化还原酶一步氧化脱羧实现（见alternative_branches）。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetaldehyde",
+          "smiles": "O=CCc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "O=C([O-])Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "NAD+-dependent aldehyde oxidation（醛脱氢/氧化）",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetaldehyde dehydrogenase (NAD+)",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": null
+      },
+      "microorganism": {
+        "organism_name": "Clostridioides difficile (Clostridium difficile)",
+        "strain": "630",
+        "ncbi_taxid": 1496,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": null,
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "该步酶在C. difficile中的基因与EC未确证；为类比Ehrlich途径/芳香酮酸代谢及产甲苯途径类似物推断的步骤，置信度低。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "4-hydroxyphenylacetate",
+          "smiles": "O=C([O-])Cc1ccc(O)cc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-methylphenol (p-cresol)",
+          "smiles": "Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "glycyl-radical-mediated decarboxylation（甘氨酸自由基酶脱羧）",
+      "enzyme": {
+        "name": "4-hydroxyphenylacetate decarboxylase",
+        "ec_number": "4.1.1.83",
+        "gene_or_protein": "hpdBCA",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Clostridioides difficile (Clostridium difficile)",
+        "strain": "630",
+        "ncbi_taxid": 1496,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_005"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_004",
+      "uncertainty": "hpdBCA操纵元命名（HpdB/HpdC亚基与HpdA激活酶的分工）基于内部知识，未逐项核对原始文献；该甘氨酸自由基酶需radical SAM激活酶预先活化且对氧敏感。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Clostridioides difficile (Clostridium difficile)",
+      "strain": "630",
+      "ncbi_taxid": 1496,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 30,
+            "optimum_c": 37,
+            "maximum_c": 42,
+            "preference": "中温性，最适约37 °C（接近人体温度）"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "严格厌氧（obligate anaerobe，对氧高度敏感）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 5.5,
+            "optimum": 7.0,
+            "maximum": 8.5
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "low"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "DSM",
+            "accession": "2754"
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "low"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "厌氧发酵（以底物水平磷酸化产能，无标准有氧呼吸链）",
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "可发酵葡萄糖等多种碳水化合物；并可利用氨基酸发酵（含Stickland反应）产能",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可将L-tyrosine厌氧降解（发酵）为4-methylphenol；并能在厌氧条件下发酵多种氨基酸与小分子芳香底物",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "4-hydroxyphenylacetate decarboxylase（EC 4.1.1.83，甘氨酸自由基酶）活性：4-hydroxyphenylacetate → 4-methylphenol + CO2",
+          "raw_text": null,
+          "evidence_id": "EVID_005",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "具运动性（周生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆菌，单个或成对排列",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阳性（厚肽聚糖细胞壁）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "形成芽孢（亚末端卵圆形芽孢）",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_009089",
+            "genome_size_bp": 4290252,
+            "gc_percent": 29.1
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        },
+        "F15_habitat_generalism": {
+          "value": "宿主关联型：主要栖息于人及哺乳动物肠道（肠道定殖菌）；但芽孢耐受性强，可在土壤、水体及医院外环境中长期存留并传播，具有一定环境广适性",
+          "raw_text": null,
+          "evidence_id": "EVID_004",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "该路线终点为4-methylphenol（对甲酚），属发酵排泄产物，不汇入中心代谢；酪氨酸侧链3个碳中有2个以CO2形式散失，仅1个碳保留为甲基。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "4-methylphenol aerobic degradation",
+      "summary": "在有氧条件下，部分好氧变形菌（如Pseudomonas spp.）可经苯环羟化与邻苯二酚型开环进一步矿化4-methylphenol；此为好氧后续过程，不属于本题厌氧主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "direct oxidative decarboxylation of 4-hydroxyphenylpyruvate to 4-hydroxyphenylacetate",
+      "summary": "4-hydroxyphenylpyruvate可能由α-酮酸:铁氧还蛋白氧化还原酶（PPOR/IOR类，或经4-hydroxyphenylacetyl-CoA硫酯再水解释放CoA）一步氧化脱羧为4-hydroxyphenylacetate，代替主链中S2+S3两步；本回答按酮酸脱羧酶+醛脱氢酶两步表示，该替代可能性记录于此。",
+      "is_part_of_scored_main_route": false
+    },
+    {
+      "name": "4-ethylphenol branch via 4-hydroxycinnamate/3-(4-hydroxyphenyl)propionate",
+      "summary": "部分梭菌可走C6-C3路线：4-hydroxyphenylpyruvate→4-hydroxyphenyllactate→4-hydroxycinnamate→3-(4-hydroxyphenyl)propionate，再脱羧生成4-ethylphenol（而非4-methylphenol）；与本题主链不同。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "MetaCyc",
+      "record_id": "L-tyrosine degradation IV (to 4-methylphenol)",
+      "locator": null,
+      "claim_scope": [
+        "题面给定路线名称及总体走向（L-tyrosine → 4-methylphenol）",
+        "S1以L-tyrosine为起点、4-methylphenol为终点"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 4.1.1.83",
+      "locator": null,
+      "claim_scope": [
+        "反应4-hydroxyphenylacetate + H+ → 4-methylphenol + CO2及4-hydroxyphenylacetate decarboxylase的存在"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "BRENDA",
+      "record_id": "EC 2.6.1.5",
+      "locator": null,
+      "claim_scope": [
+        "L-tyrosine + 2-oxoglutarate → 4-hydroxyphenylpyruvate + L-glutamate转氨反应的酶学身份"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Clostridioides difficile基本生物学性状：专性厌氧、革兰氏阳性、产芽孢杆菌、周生鞭毛、肠道栖息",
+        "最适生长温度约37 °C",
+        "菌株630基因组（约4.29 Mb，GC约29%）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "C. difficile将L-tyrosine发酵为4-methylphenol（经4-hydroxyphenylacetate）",
+        "hpdBCA编码C. difficile的4-hydroxyphenylacetate decarboxylase"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "主链S2、S3两步（4-hydroxyphenylpyruvate→4-hydroxyphenylacetaldehyde→4-hydroxyphenylacetate）的酶身份与EC在C. difficile中未确证，confidence为low；该净转化也可能以单一氧化脱羧（α-酮酸:铁氧还蛋白氧化还原酶类）实现，已记录于alternative_branches。",
+    "hpdBCA基因命名、DSM 2754保藏编号、NC_009089基因组编号及4,290,252 bp/29.1% GC等数值来自内部知识，未经原始来源逐项核对。",
+    "F3_pH区间（5.5–8.5）与F2_temperature边界（30–42 °C）为近似记忆值，confidence为low/medium。",
+    "本题未指定氧条件；主链按厌氧发酵通路作答（该通路在厌氧条件下运行）。"
+  ]
+}

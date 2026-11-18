@@ -1,0 +1,745 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_019",
+  "pollutant_name_zh": "甲苯",
+  "pollutant_name_en": "Toluene",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "Toluene degradation II (aerobic) (via 4-methylcatechol)",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定的好氧、经4-甲基儿茶酚路线填写，不改选经邻甲酚、顺式二氢二醇、对甲酚甲基氧化或侧链氧化等其他甲苯路线。主链取4-甲基儿茶酚的meta-裂解脱氢酶支路，连续至丙酮酸与丙醛。"
+  },
+  "route_summary": "好氧条件下，甲苯先由甲苯4-单加氧酶对位羟化生成4-甲基苯酚，再二次羟化生成4-甲基儿茶酚；4-甲基儿茶酚经儿茶酚2,3-双加氧酶外二醇开环，沿meta-裂解脱氢酶支路经脱氢、互变异构、脱羧、水合和醛醇裂解，进入中心代谢物丙酮酸与丙醛。上半段与下半段的最充分证据来自不同菌株。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": "main",
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "toluene",
+          "smiles": "Cc1ccccc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-methylphenol",
+          "smiles": "Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧反应",
+      "enzyme": {
+        "name": "toluene 4-monooxygenase",
+        "ec_number": "1.14.13.236",
+        "gene_or_protein": "tmoABCDEF",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas mendocina",
+        "strain": "KR1",
+        "ncbi_taxid": 300,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "4-methylphenol",
+          "smiles": "Cc1ccc(O)cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-methylcatechol",
+          "smiles": "Cc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧反应",
+      "enzyme": {
+        "name": "toluene 4-monooxygenase",
+        "ec_number": "1.14.13.236",
+        "gene_or_protein": "tmoABCDEF",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas mendocina",
+        "strain": "KR1",
+        "ncbi_taxid": 300,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 1.14.13.236的法定反应只定义甲苯到4-甲基苯酚；同一酶对4-甲基苯酚的二次羟化生成4-甲基儿茶酚有实验证据，但是否为KR1体内主通量不确定，KR1生理上更常将对甲酚导向甲基氧化。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S2"],
+      "substrates": [
+        {
+          "name": "4-methylcatechol",
+          "smiles": "Cc1ccc(O)c(O)c1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-5-methyl-6-oxohexa-2,4-dienoate",
+          "smiles": "CC(=CC=C(O)C(=O)O)C=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "外二醇双加氧开环",
+      "enzyme": {
+        "name": "catechol 2,3-dioxygenase",
+        "ec_number": "1.13.11.2",
+        "gene_or_protein": "xylE",
+        "confidence": "high",
+        "evidence_id": "EVID_003"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "high",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_011",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "开环代表酶取自能代谢4-甲基儿茶酚的TOL质粒下游途径，不是甲苯经4-甲基苯酚进入该化合物的同一菌株。"
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S3"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-5-methyl-6-oxohexa-2,4-dienoate",
+          "smiles": "CC(=CC=C(O)C(=O)O)C=O",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-hydroxy-5-methylhexa-2,4-dienedioate",
+          "smiles": "CC(=CC=C(O)C(=O)O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "reaction_type": "脱氢",
+      "enzyme": {
+        "name": "2-hydroxymuconate-semialdehyde dehydrogenase",
+        "ec_number": "1.2.1.85",
+        "gene_or_protein": "xylG",
+        "confidence": "medium",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_009",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "EC 1.2.1.85的法定底物是无甲基的2-羟基粘康酸半醛；4-甲基儿茶酚来源的5-甲基醛更偏好脱氢酶而非水解酶，此处按该特异性填写。"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S4"],
+      "substrates": [
+        {
+          "name": "2-hydroxy-5-methylhexa-2,4-dienedioate",
+          "smiles": "CC(=CC=C(O)C(=O)O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "5-methyl-2-oxohex-3-enedioate",
+          "smiles": "CC(C(=O)O)C=CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "互变异构",
+      "enzyme": {
+        "name": "4-oxalocrotonate tautomerase",
+        "ec_number": "5.3.2.6",
+        "gene_or_protein": "xylH",
+        "confidence": "medium",
+        "evidence_id": "EVID_005"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_009",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "酮式互变异构体结构由无甲基4-氧代巴豆酸途径类推到5-甲基底物，优势立体异构未单独复核。"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S5"],
+      "substrates": [
+        {
+          "name": "5-methyl-2-oxohex-3-enedioate",
+          "smiles": "CC(C(=O)O)C=CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-oxohex-4-enoate",
+          "smiles": "CC=CCC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "carbon dioxide",
+          "smiles": "O=C=O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "脱羧",
+      "enzyme": {
+        "name": "4-oxalocrotonate decarboxylase",
+        "ec_number": "4.1.1.77",
+        "gene_or_protein": "xylI",
+        "confidence": "medium",
+        "evidence_id": "EVID_006"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_009",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "脱羧丢失侧链羧基并伴随双键移位，生成2-氧代己-4-烯酸；该步对5-甲基底物的直接动力学证据弱于无甲基底物。"
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S6"],
+      "substrates": [
+        {
+          "name": "2-oxohex-4-enoate",
+          "smiles": "CC=CCC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-hydroxy-2-oxohexanoate",
+          "smiles": "CCC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "水合",
+      "enzyme": {
+        "name": "2-oxopent-4-enoate hydratase",
+        "ec_number": "4.2.1.80",
+        "gene_or_protein": "xylJ",
+        "confidence": "medium",
+        "evidence_id": "EVID_007"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_009",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "EC 4.2.1.80的法定底物是2-氧代戊-4-烯酸；此处作用于高一个碳的2-氧代己-4-烯酸，属同系物活性。"
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": "main",
+      "predecessor_step_ids": ["S7"],
+      "substrates": [
+        {
+          "name": "4-hydroxy-2-oxohexanoate",
+          "smiles": "CCC(O)CC(=O)C(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "propanal",
+          "smiles": "CCC=O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "醛醇裂解",
+      "enzyme": {
+        "name": "4-hydroxy-2-oxovalerate aldolase",
+        "ec_number": "4.1.3.39",
+        "gene_or_protein": "xylK",
+        "confidence": "medium",
+        "evidence_id": "EVID_008"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "mt-2",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_002",
+        "confidence": "medium",
+        "evidence_id": "EVID_009"
+      },
+      "reaction_evidence_id": "EVID_009",
+      "trait_evidence_id": "EVID_009",
+      "uncertainty": "EC 4.1.3.39的法定产物是丙酮酸与乙醛；4-羟基-2-氧代己酸裂解的对应产物是丙酮酸与丙醛。丙醛之后的活化未列入主链。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas mendocina",
+      "strain": "KR1",
+      "ncbi_taxid": 300,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "甲苯",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "好氧降解甲苯及对甲酚等芳香化合物",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "甲苯4-单加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "环境来源的假单胞菌，可利用芳香烃，但菌株水平的栖息地广适性数据不足",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "organism_profile_id": "ORG_002",
+      "organism_name": "Pseudomonas putida",
+      "strain": "mt-2",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "好氧",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "分子氧"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "甲苯、间二甲苯和对二甲苯",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "经TOL质粒好氧降解甲苯、二甲苯及相应芳香酸，其中4-甲基儿茶酚走meta-裂解",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "儿茶酚2,3-双加氧酶及meta-裂解下游酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_009",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F13_sporulation": {
+          "value": "不产芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "底物谱较广的环境细菌，可利用多种芳香烃与有机酸，不属于单一底物专性菌",
+          "raw_text": null,
+          "evidence_id": "EVID_010",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": null,
+  "central_metabolism_entry": {
+    "products": ["pyruvate", "propanal"],
+    "explanation": "4-甲基儿茶酚经meta-裂解脱氢酶支路后，碳骨架拆分为丙酮酸与丙醛。丙酮酸可直接进入中心碳代谢；丙醛需再氧化活化后同化。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "丙醛转化为丙酰辅酶A",
+      "summary": "丙醛可由辅酶A酰化的醛脱氢酶转化为丙酰辅酶A，再经甲基丙二酰辅酶A等途径进入琥珀酰辅酶A。该段不属于本题评分主链。"
+    },
+    {
+      "name": "丙酮酸进入中心碳代谢",
+      "summary": "丙酮酸可进入三羧酸循环或用于糖异生等中心代谢。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "2-羟基-5-甲基粘康酸半醛水解支路",
+      "summary": "开环醛也可被2-羟基粘康酸半醛水解酶（EC 3.7.1.9，如xylF）水解，但该酶更偏好3-甲基儿茶酚来源的酮式底物，不是4-甲基儿茶酚的主通量。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "1.14.13.236",
+      "locator": "https://www.kegg.jp/entry/1.14.13.236",
+      "claim_scope": ["S1_reaction", "S1_enzyme", "ORG_001_toluene_utilization", "ORG_001_enzyme_activity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S2_reaction", "S2_enzyme", "T4MO_successive_hydroxylation"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "1.13.11.2",
+      "locator": "https://www.kegg.jp/entry/1.13.11.2",
+      "claim_scope": ["S3_enzyme_identity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "1.2.1.85",
+      "locator": "https://www.kegg.jp/entry/1.2.1.85",
+      "claim_scope": ["S4_enzyme_identity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "5.3.2.6",
+      "locator": "https://www.kegg.jp/entry/5.3.2.6",
+      "claim_scope": ["S5_enzyme_identity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_006",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "4.1.1.77",
+      "locator": "https://www.kegg.jp/entry/4.1.1.77",
+      "claim_scope": ["S6_enzyme_identity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_007",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "4.2.1.80",
+      "locator": "https://www.kegg.jp/entry/4.2.1.80",
+      "claim_scope": ["S7_enzyme_identity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_008",
+      "source_type": "DATABASE_DIRECT",
+      "database": "KEGG",
+      "record_id": "4.1.3.39",
+      "locator": "https://www.kegg.jp/entry/4.1.3.39",
+      "claim_scope": ["S8_enzyme_identity"],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_009",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S3_to_S8_organism", "S4_to_S8_methylated_meta_pathway", "ORG_002_degradation_traits", "xyl_gene_assignment"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_010",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["pseudomonas_morphology", "oxygen_relation", "motility", "gram_stain", "sporulation", "mesophily"],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_011",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": ["S3_reaction_4_methylcatechol_extradiol_cleavage"],
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "题面路线的上半段（甲苯到4-甲基儿茶酚）与下半段（4-甲基儿茶酚meta-裂解至丙酮酸和丙醛）没有确认由同一野生型菌株作为甲苯降解主通量完成，因此complete_pathway_organism_profile_id为null。",
+    "Pseudomonas mendocina KR1的生理主路线在4-甲基苯酚之后通常是甲基氧化至对羟基苯甲酸和原儿茶酸，而不是4-甲基儿茶酚；S2采用的是同一甲苯4-单加氧酶已被证实的二次羟化活性。",
+    "S4至S8的甲基化中间体名称和碳骨架流向按meta-裂解脱氢酶支路及对二甲苯经4-甲基儿茶酚的代谢类推，个别中间体的优势立体异构和同系物动力学未逐条用原文献复核。",
+    "菌株保藏编号、基因组登录号以及温度、pH、盐度的具体数值没有可靠来源，均记为null。"
+  ]
+}

@@ -1,0 +1,498 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_093",
+  "pollutant_name_zh": "苯乙烯",
+  "pollutant_name_en": "Styrene",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "styrene degradation",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "苯乙烯经侧链氧化生成苯乙烯氧化物、苯乙醛、苯乙酸，再经2-羟基苯乙酸和尿黑酸途径开环，最终生成延胡索酸和乙酰乙酸进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "Styrene",
+          "smiles": "C=Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Styrene oxide",
+          "smiles": "C1OC1c1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "epoxidation",
+      "enzyme": {
+        "name": "Styrene monooxygenase",
+        "ec_number": "1.14.13.144",
+        "gene_or_protein": "StyA",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CA-3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "Styrene oxide",
+          "smiles": "C1OC1c1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Phenylacetaldehyde",
+          "smiles": "O=CCc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "Styrene oxide isomerase",
+        "ec_number": "5.3.99.7",
+        "gene_or_protein": "StyC",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CA-3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "Phenylacetaldehyde",
+          "smiles": "O=CCc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Phenylacetic acid",
+          "smiles": "O=C(O)Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation",
+      "enzyme": {
+        "name": "Phenylacetaldehyde dehydrogenase",
+        "ec_number": "1.2.1.39",
+        "gene_or_protein": "StyD",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CA-3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S4",
+      "order": 4,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S3"
+      ],
+      "substrates": [
+        {
+          "name": "Phenylacetic acid",
+          "smiles": "O=C(O)Cc1ccccc1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "2-Hydroxyphenylacetic acid",
+          "smiles": "O=C(O)Cc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "Phenylacetate 2-hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CA-3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC number not confirmed"
+    },
+    {
+      "step_id": "S5",
+      "order": 5,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S4"
+      ],
+      "substrates": [
+        {
+          "name": "2-Hydroxyphenylacetic acid",
+          "smiles": "O=C(O)Cc1ccccc1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Homogentisic acid",
+          "smiles": "O=C(O)Cc1c(O)ccc(O)c1",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydroxylation",
+      "enzyme": {
+        "name": "2-Hydroxyphenylacetate 5-hydroxylase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CA-3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": "EC number not confirmed"
+    },
+    {
+      "step_id": "S6",
+      "order": 6,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S5"
+      ],
+      "substrates": [
+        {
+          "name": "Homogentisic acid",
+          "smiles": "O=C(O)Cc1c(O)ccc(O)c1",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Maleylacetoacetic acid",
+          "smiles": "O=C(O)C=CC(=O)CC(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "ring cleavage",
+      "enzyme": {
+        "name": "Homogentisate 1,2-dioxygenase",
+        "ec_number": "1.13.11.5",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CA-3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S7",
+      "order": 7,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S6"
+      ],
+      "substrates": [
+        {
+          "name": "4-Maleylacetoacetic acid",
+          "smiles": "O=C(O)C=CC(=O)CC(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-Fumarylacetoacetic acid",
+          "smiles": "O=C(O)/C=C/C(=O)CC(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "isomerization",
+      "enzyme": {
+        "name": "Maleylacetoacetate isomerase",
+        "ec_number": "5.2.1.2",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CA-3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S8",
+      "order": 8,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S7"
+      ],
+      "substrates": [
+        {
+          "name": "4-Fumarylacetoacetic acid",
+          "smiles": "O=C(O)/C=C/C(=O)CC(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Fumaric acid",
+          "smiles": "O=C(O)/C=C/C(=O)O",
+          "role": "main"
+        },
+        {
+          "name": "Acetoacetic acid",
+          "smiles": "CC(=O)CC(=O)O",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "Fumarylacetoacetase",
+        "ec_number": "3.7.1.2",
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "CA-3",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_001",
+      "uncertainty": null
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "CA-3",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "low"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "aerobic",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "aerobic respiration",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "utilizes styrene as sole carbon and energy source",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades styrene via styrene oxide, phenylacetaldehyde, phenylacetate, and homogentisate",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "styrene monooxygenase, styrene oxide isomerase, phenylacetaldehyde dehydrogenase",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile by polar flagella",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-spore-forming",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "widely distributed in soil and water; generalist",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Fumaric acid",
+      "Acetoacetic acid"
+    ],
+    "explanation": "Fumaric acid enters TCA cycle; acetoacetic acid is converted to acetyl-CoA and enters TCA cycle."
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "styrene degradation pathway",
+        "Pseudomonas putida CA-3 traits"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "EC numbers for phenylacetate 2-hydroxylase and 2-hydroxyphenylacetate 5-hydroxylase are not confirmed."
+  ]
+}

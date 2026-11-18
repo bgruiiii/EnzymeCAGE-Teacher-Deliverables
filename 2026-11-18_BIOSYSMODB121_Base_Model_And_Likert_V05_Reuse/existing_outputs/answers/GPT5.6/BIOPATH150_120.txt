@@ -1,0 +1,297 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_120",
+  "pollutant_name_zh": "6-磺酸基-d-奎诺糖",
+  "pollutant_name_en": "6-Sulfo-d-quinovose",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "sulfoquinovose degradation II",
+    "is_single_continuous_route": true,
+    "notes": "按题面指定的 sulfoquinovose degradation II 路线填写；氧条件未指定。"
+  },
+  "route_summary": "6-Sulfo-d-quinovose先异构化为6-deoxy-6-sulfo-D-fructose，随后经磺基果糖醛缩酶裂解为二羟基丙酮磷酸和磺基乳醛等产物。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "6-Sulfo-d-quinovose",
+          "smiles": "O=S(=O)(O)C[C@H]1O[C@H](O)[C@@H](O)[C@H](O)[C@H]1O",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "6-Deoxy-6-sulfo-D-fructose",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "reaction_type": "Aldose-ketose isomerization",
+      "enzyme": {
+        "name": "Sulfoquinovose isomerase",
+        "ec_number": null,
+        "gene_or_protein": "YihS",
+        "confidence": "low",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_003",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该步骤及其酶学命名依据通路和基因功能的内部知识记录；EC编号未确认。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "6-Deoxy-6-sulfo-D-fructose",
+          "smiles": null,
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "Dihydroxyacetone phosphate",
+          "smiles": "O=C(CO)COP(=O)(O)O",
+          "role": "main"
+        },
+        {
+          "name": "Sulfolactaldehyde",
+          "smiles": null,
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "Aldol cleavage",
+      "enzyme": {
+        "name": "Sulfofructose aldolase",
+        "ec_number": null,
+        "gene_or_protein": "YihR",
+        "confidence": "low",
+        "evidence_id": "EVID_004"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "low",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_005",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "Sulfolactaldehyde的立体化学和该步EC编号未确认；二羟基丙酮磷酸为进入中心代谢的主产物。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": null,
+            "maximum_c": null,
+            "preference": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F1_oxygen_tolerance": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": null,
+            "terminal_electron_acceptor": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F9_enzyme_activity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F10_motility": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F11_cell_morphology": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F12_gram_cell_envelope": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F13_sporulation": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [
+      "Dihydroxyacetone phosphate"
+    ],
+    "explanation": "二羟基丙酮磷酸可进入糖酵解及相关中心碳代谢；磺基乳醛的后续去向未在本题主链中展开。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S1 enzyme"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli K-12 substr. MG1655 as corresponding microorganism"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "6-Sulfo-d-quinovose to 6-deoxy-6-sulfo-D-fructose"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_004",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "S2 enzyme"
+      ],
+      "confidence": "low"
+    },
+    {
+      "evidence_id": "EVID_005",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "6-deoxy-6-sulfo-D-fructose to dihydroxyacetone phosphate and sulfolactaldehyde"
+      ],
+      "confidence": "low"
+    }
+  ],
+  "uncertainties": [
+    "两个步骤的EC编号未确认。",
+    "中间体和磺基乳醛的规范立体化学SMILES未确认。",
+    "氧条件未指定。",
+    "微生物与具体路线步骤的菌株级对应关系仅作低置信度记录。"
+  ]
+}

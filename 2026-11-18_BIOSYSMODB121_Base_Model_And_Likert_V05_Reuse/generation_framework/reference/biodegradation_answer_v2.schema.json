@@ -1,0 +1,988 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://enzymecage.local/schemas/biodegradation_answer_v2.schema.json",
+  "title": "Biodegradation pathway model answer v2",
+  "description": "Engineering answer-collection schema v2 (authority: BIOSYSMODB150_API_ANSWER_COLLECTION_EXECUTION_PLAN_2026-09-26.md sections 6, 9 and 11). Format conformance is recorded as an experimental observation only; a schema failure never deletes, rewrites or re-questions a model answer.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "case_id",
+    "pollutant_name_zh",
+    "pollutant_name_en",
+    "route_scope",
+    "route_summary",
+    "steps",
+    "organism_profiles",
+    "evidence_registry"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "biodegradation_answer_v2"
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^BIOPATH150_[0-9]{3}$"
+    },
+    "pollutant_name_zh": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pollutant_name_en": {
+      "type": "string",
+      "minLength": 1
+    },
+    "route_scope": {
+      "$ref": "#/definitions/routeScope"
+    },
+    "route_summary": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/step"
+      }
+    },
+    "organism_profiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/organismProfile"
+      }
+    },
+    "complete_pathway_organism_profile_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "central_metabolism_entry": {
+      "type": "object",
+      "required": [
+        "products",
+        "explanation"
+      ],
+      "properties": {
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "explanation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "downstream_continuation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "summary"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "summary": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "alternative_branches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "summary",
+          "is_part_of_scored_main_route"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "summary": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "is_part_of_scored_main_route": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "evidence_registry": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/evidence"
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "definitions": {
+    "routeScope": {
+      "type": "object",
+      "required": [
+        "oxygen_condition",
+        "chosen_route_name",
+        "is_single_continuous_route",
+        "notes"
+      ],
+      "properties": {
+        "oxygen_condition": {
+          "enum": [
+            "aerobic",
+            "anaerobic",
+            "mixed",
+            "unknown",
+            null
+          ]
+        },
+        "chosen_route_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "is_single_continuous_route": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "chemical": {
+      "type": "object",
+      "required": [
+        "name",
+        "smiles",
+        "role"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "smiles": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "role": {
+          "enum": [
+            "main",
+            "cofactor",
+            "byproduct",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "enzyme": {
+      "type": "object",
+      "required": [
+        "name",
+        "ec_number",
+        "gene_or_protein",
+        "confidence",
+        "evidence_id"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ec_number": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gene_or_protein": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "evidence_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "microorganism": {
+      "type": "object",
+      "required": [
+        "organism_name",
+        "strain",
+        "ncbi_taxid",
+        "organism_profile_id",
+        "confidence",
+        "evidence_id"
+      ],
+      "properties": {
+        "organism_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "strain": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ncbi_taxid": {
+          "type": [
+            "integer",
+            "string",
+            "null"
+          ]
+        },
+        "organism_profile_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "evidence_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "step": {
+      "type": "object",
+      "required": [
+        "step_id",
+        "order",
+        "branch_id",
+        "predecessor_step_ids",
+        "substrates",
+        "products",
+        "reaction_type",
+        "enzyme",
+        "microorganism",
+        "reaction_evidence_id",
+        "trait_evidence_id",
+        "uncertainty"
+      ],
+      "properties": {
+        "step_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "branch_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "predecessor_step_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "substrates": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/chemical"
+          }
+        },
+        "products": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/chemical"
+          }
+        },
+        "reaction_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "enzyme": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/enzyme"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "microorganism": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/microorganism"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reaction_evidence_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trait_evidence_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "uncertainty": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "confidenceScale": {
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "unknown"
+      ]
+    },
+    "temperatureValue": {
+      "type": "object",
+      "required": [
+        "minimum_c",
+        "optimum_c",
+        "maximum_c",
+        "preference"
+      ],
+      "properties": {
+        "minimum_c": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "optimum_c": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maximum_c": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "preference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "salinityValue": {
+      "type": "object",
+      "required": [
+        "minimum",
+        "optimum",
+        "maximum",
+        "unit",
+        "category"
+      ],
+      "properties": {
+        "minimum": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "optimum": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maximum": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "category": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "phValue": {
+      "type": "object",
+      "required": [
+        "minimum",
+        "optimum",
+        "maximum"
+      ],
+      "properties": {
+        "minimum": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "optimum": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maximum": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "cultureCollectionValue": {
+      "type": "object",
+      "required": [
+        "collection",
+        "accession"
+      ],
+      "properties": {
+        "collection": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "accession": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "respirationValue": {
+      "type": "object",
+      "required": [
+        "respiration_mode",
+        "terminal_electron_acceptor"
+      ],
+      "properties": {
+        "respiration_mode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "terminal_electron_acceptor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "genomeBasicValue": {
+      "type": "object",
+      "required": [
+        "genome_accession",
+        "genome_size_bp",
+        "gc_percent"
+      ],
+      "properties": {
+        "genome_accession": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "genome_size_bp": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "gc_percent": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "traitFactString": {
+      "type": "object",
+      "required": [
+        "value",
+        "raw_text",
+        "evidence_id",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "raw_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/definitions/confidenceScale"
+        }
+      }
+    },
+    "traitFactTemperature": {
+      "type": "object",
+      "required": [
+        "value",
+        "raw_text",
+        "evidence_id",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/temperatureValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "raw_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/definitions/confidenceScale"
+        }
+      }
+    },
+    "traitFactSalinity": {
+      "type": "object",
+      "required": [
+        "value",
+        "raw_text",
+        "evidence_id",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/salinityValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "raw_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/definitions/confidenceScale"
+        }
+      }
+    },
+    "traitFactPh": {
+      "type": "object",
+      "required": [
+        "value",
+        "raw_text",
+        "evidence_id",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/phValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "raw_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/definitions/confidenceScale"
+        }
+      }
+    },
+    "traitFactCultureCollection": {
+      "type": "object",
+      "required": [
+        "value",
+        "raw_text",
+        "evidence_id",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/cultureCollectionValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "raw_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/definitions/confidenceScale"
+        }
+      }
+    },
+    "traitFactRespiration": {
+      "type": "object",
+      "required": [
+        "value",
+        "raw_text",
+        "evidence_id",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/respirationValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "raw_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/definitions/confidenceScale"
+        }
+      }
+    },
+    "traitFactGenomeBasic": {
+      "type": "object",
+      "required": [
+        "value",
+        "raw_text",
+        "evidence_id",
+        "confidence"
+      ],
+      "properties": {
+        "value": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/genomeBasicValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "raw_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "$ref": "#/definitions/confidenceScale"
+        }
+      }
+    },
+    "traits": {
+      "type": "object",
+      "required": [
+        "F1_oxygen_tolerance",
+        "F2_temperature",
+        "F3_pH",
+        "F4_salinity",
+        "F5_culture_collection",
+        "F6_respiration_electron_acceptor",
+        "F7_carbon_substrate_utilization",
+        "F8_degradation_capacity_broad",
+        "F9_enzyme_activity",
+        "F10_motility",
+        "F11_cell_morphology",
+        "F12_gram_cell_envelope",
+        "F13_sporulation",
+        "F14_genome_basic",
+        "F15_habitat_generalism"
+      ],
+      "properties": {
+        "F1_oxygen_tolerance": {
+          "$ref": "#/definitions/traitFactString"
+        },
+        "F2_temperature": {
+          "$ref": "#/definitions/traitFactTemperature"
+        },
+        "F3_pH": {
+          "$ref": "#/definitions/traitFactPh"
+        },
+        "F4_salinity": {
+          "$ref": "#/definitions/traitFactSalinity"
+        },
+        "F5_culture_collection": {
+          "$ref": "#/definitions/traitFactCultureCollection"
+        },
+        "F6_respiration_electron_acceptor": {
+          "$ref": "#/definitions/traitFactRespiration"
+        },
+        "F7_carbon_substrate_utilization": {
+          "$ref": "#/definitions/traitFactString"
+        },
+        "F8_degradation_capacity_broad": {
+          "$ref": "#/definitions/traitFactString"
+        },
+        "F9_enzyme_activity": {
+          "$ref": "#/definitions/traitFactString"
+        },
+        "F10_motility": {
+          "$ref": "#/definitions/traitFactString"
+        },
+        "F11_cell_morphology": {
+          "$ref": "#/definitions/traitFactString"
+        },
+        "F12_gram_cell_envelope": {
+          "$ref": "#/definitions/traitFactString"
+        },
+        "F13_sporulation": {
+          "$ref": "#/definitions/traitFactString"
+        },
+        "F14_genome_basic": {
+          "$ref": "#/definitions/traitFactGenomeBasic"
+        },
+        "F15_habitat_generalism": {
+          "$ref": "#/definitions/traitFactString"
+        }
+      }
+    },
+    "organismProfile": {
+      "type": "object",
+      "required": [
+        "organism_profile_id",
+        "organism_name",
+        "strain",
+        "ncbi_taxid",
+        "traits"
+      ],
+      "properties": {
+        "organism_profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "organism_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "strain": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ncbi_taxid": {
+          "type": [
+            "integer",
+            "string",
+            "null"
+          ]
+        },
+        "traits": {
+          "$ref": "#/definitions/traits"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "evidence_id",
+        "source_type",
+        "database",
+        "record_id",
+        "locator",
+        "claim_scope",
+        "confidence"
+      ],
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_type": {
+          "enum": [
+            "DATABASE_DIRECT",
+            "LITERATURE_DIRECT",
+            "PREDICTED_BY_TOOL",
+            "MODEL_INFERENCE",
+            "INTERNAL_KNOWLEDGE_ONLY",
+            "UNKNOWN"
+          ]
+        },
+        "database": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "record_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "locator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "claim_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "confidence": {
+          "$ref": "#/definitions/confidenceScale"
+        }
+      }
+    }
+  }
+}

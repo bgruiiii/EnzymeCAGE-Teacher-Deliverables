@@ -1,0 +1,267 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_054",
+  "pollutant_name_zh": "(R)-S-乳酰谷胱甘肽(1-)",
+  "pollutant_name_en": "(R)-S-lactoylglutathionate(1-)",
+  "route_scope": {
+    "oxygen_condition": null,
+    "chosen_route_name": "methylglyoxal degradation VIII",
+    "is_single_continuous_route": true,
+    "notes": null
+  },
+  "route_summary": "污染物质 (R)-S-乳酰谷胱甘肽(1-) 在 methylglyoxal degradation VIII 路线中先经羟基酰谷胱甘肽水解酶 (EC 3.1.2.6) 水解为 D-乳酸和谷胱甘肽，随后 D-乳酸经 D-乳酸脱氢酶 (醌) (EC 1.1.99.6) 氧化为丙酮酸，进入中心代谢。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "(R)-S-lactoylglutathione(1-)",
+          "smiles": "[NH3+][C@@H](CCC(=O)N[C@@H](CSC(=O)[C@@H](C)O)C(=O)NCC(=O)[O-])C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "D-lactate",
+          "smiles": "C[C@@H](O)C(=O)[O-]",
+          "role": "main"
+        },
+        {
+          "name": "glutathione",
+          "smiles": "[NH3+][C@@H](CCC(=O)N[C@@H](CS)C(=O)NCC(=O)[O-])C(=O)[O-]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "hydrolysis",
+      "enzyme": {
+        "name": "hydroxyacylglutathione hydrolase",
+        "ec_number": "3.1.2.6",
+        "gene_or_protein": "gloB",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": null
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": ["S1"],
+      "substrates": [
+        {
+          "name": "D-lactate",
+          "smiles": "C[C@@H](O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "products": [
+        {
+          "name": "pyruvate",
+          "smiles": "CC(=O)C(=O)[O-]",
+          "role": "main"
+        }
+      ],
+      "reaction_type": "oxidation-reduction",
+      "enzyme": {
+        "name": "D-lactate dehydrogenase (quinone)",
+        "ec_number": "1.1.99.6",
+        "gene_or_protein": "dld",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "microorganism": {
+        "organism_name": "Escherichia coli",
+        "strain": "K-12 substr. MG1655",
+        "ncbi_taxid": 511145,
+        "organism_profile_id": "ORG_001",
+        "confidence": "medium",
+        "evidence_id": "EVID_002"
+      },
+      "reaction_evidence_id": "EVID_002",
+      "trait_evidence_id": "EVID_003",
+      "uncertainty": "若为厌氧条件，可能使用 NAD+ 依赖的 D-乳酸脱氢酶 EC 1.1.1.28 (ldhA)。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Escherichia coli",
+      "strain": "K-12 substr. MG1655",
+      "ncbi_taxid": 511145,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": 4,
+            "optimum_c": 37,
+            "maximum_c": 49,
+            "preference": "嗜温菌，最适37°C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "facultative anaerobe",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": null,
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": 4.4,
+            "optimum": 7.0,
+            "maximum": 9.0
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": "ATCC",
+            "accession": "47076"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "facultative anaerobic",
+            "terminal_electron_acceptor": "oxygen"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "glucose and a wide range of carbohydrates",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "degrades methylglyoxal via the glyoxalase system and D-lactate dehydrogenase",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "hydroxyacylglutathione hydrolase (GloB) and D-lactate dehydrogenase (Dld)",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        },
+        "F10_motility": {
+          "value": "motile by peritrichous flagella",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F11_cell_morphology": {
+          "value": "rod-shaped",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "Gram-negative",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "non-sporulating",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": "NC_000913.3",
+            "genome_size_bp": 4641652,
+            "gc_percent": 50.8
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "high"
+        },
+        "F15_habitat_generalism": {
+          "value": "widely distributed in mammalian gastrointestinal tracts and environmental habitats; generalist",
+          "raw_text": null,
+          "evidence_id": "EVID_003",
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": ["pyruvate"],
+    "explanation": "丙酮酸是中心代谢中间产物，可进入 TCA 循环或发酵途径。"
+  },
+  "downstream_continuation": [],
+  "alternative_branches": [],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "enzyme: hydroxyacylglutathione hydrolase EC 3.1.2.6",
+        "microorganism: Escherichia coli K-12 MG1655",
+        "reaction: (R)-S-lactoylglutathione + H2O -> D-lactate + glutathione"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": "MetaCyc",
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "enzyme: D-lactate dehydrogenase (quinone) EC 1.1.99.6",
+        "microorganism: Escherichia coli K-12 MG1655",
+        "reaction: D-lactate -> pyruvate"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "Escherichia coli K-12 MG1655 traits"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "D-乳酸脱氢酶的辅因子和 EC 编号可能因氧条件不同而变化；若为厌氧条件，可能使用 EC 1.1.1.28 (ldhA) 替代 EC 1.1.99.6 (dld)。",
+    "各性状值基于 Escherichia coli K-12 MG1655 的常见文献描述，未逐项引用原始文献。"
+  ]
+}

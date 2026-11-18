@@ -1,0 +1,384 @@
+{
+  "schema_version": "biodegradation_answer_v2",
+  "case_id": "BIOPATH150_016",
+  "pollutant_name_zh": "对伞花烃",
+  "pollutant_name_en": "p-CYMENE",
+  "route_scope": {
+    "oxygen_condition": "aerobic",
+    "chosen_route_name": "p-Cymene degradation to p-cumate",
+    "is_single_continuous_route": true,
+    "notes": "题面指定路线：好氧条件下经对位甲基侧链连续氧化（甲基→苄醇→醛→羧酸）将 p-cymene 转化为 p-cumate 的线性三步主链。"
+  },
+  "route_summary": "好氧条件下，Pseudomonas putida F1 通过对 p-伞花烃（p-cymene，1-甲基-4-异丙基苯）对位甲基侧链的连续三步氧化将其转化为 p-cumate（4-isopropylbenzoate，对枯茗酸/枯茗酸盐）：第 1 步 p-cymene methyl-monooxygenase 以 O2 与 NADH 为辅因子，将对位甲基羟基化生成 4-isopropylbenzyl alcohol；第 2 步 4-isopropylbenzyl alcohol dehydrogenase 将醇氧化为 4-isopropylbenzaldehyde（cuminaldehyde）；第 3 步 4-isopropylbenzaldehyde dehydrogenase 将醛氧化为 p-cumate。主链为单一线性连续途径；p-cumate 的后续开环降解（cmt 途径，终产物为 isobutyrate 与 pyruvate）不在本题路线范围内。",
+  "steps": [
+    {
+      "step_id": "S1",
+      "order": 1,
+      "branch_id": null,
+      "predecessor_step_ids": [],
+      "substrates": [
+        {
+          "name": "p-cymene",
+          "smiles": "Cc1ccc(C(C)C)cc1",
+          "role": "main"
+        },
+        {
+          "name": "oxygen",
+          "smiles": "O=O",
+          "role": "cofactor"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-isopropylbenzyl alcohol",
+          "smiles": "OCc1ccc(C(C)C)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "单加氧反应（对位甲基侧链的 NADH 依赖性羟基化）",
+      "enzyme": {
+        "name": "p-cymene methyl-monooxygenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "该酶未查得正式 EC 编号，可能为多组分单加氧酶系统；具体基因符号未能可靠核实，均填 null。"
+    },
+    {
+      "step_id": "S2",
+      "order": 2,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S1"
+      ],
+      "substrates": [
+        {
+          "name": "4-isopropylbenzyl alcohol",
+          "smiles": "OCc1ccc(C(C)C)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "4-isopropylbenzaldehyde (cuminaldehyde)",
+          "smiles": "O=Cc1ccc(C(C)C)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醇脱氢氧化（伯醇→醛）",
+      "enzyme": {
+        "name": "4-isopropylbenzyl alcohol dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 编号与基因符号未能核实，填 null。"
+    },
+    {
+      "step_id": "S3",
+      "order": 3,
+      "branch_id": null,
+      "predecessor_step_ids": [
+        "S2"
+      ],
+      "substrates": [
+        {
+          "name": "4-isopropylbenzaldehyde (cuminaldehyde)",
+          "smiles": "O=Cc1ccc(C(C)C)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NAD+",
+          "smiles": null,
+          "role": "cofactor"
+        },
+        {
+          "name": "water",
+          "smiles": "O",
+          "role": "cofactor"
+        }
+      ],
+      "products": [
+        {
+          "name": "p-cumate (4-isopropylbenzoate)",
+          "smiles": "O=C([O-])c1ccc(C(C)C)cc1",
+          "role": "main"
+        },
+        {
+          "name": "NADH",
+          "smiles": null,
+          "role": "byproduct"
+        },
+        {
+          "name": "proton",
+          "smiles": "[H+]",
+          "role": "byproduct"
+        }
+      ],
+      "reaction_type": "醛脱氢氧化（醛→羧酸/羧酸盐）",
+      "enzyme": {
+        "name": "4-isopropylbenzaldehyde dehydrogenase",
+        "ec_number": null,
+        "gene_or_protein": null,
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "microorganism": {
+        "organism_name": "Pseudomonas putida",
+        "strain": "F1",
+        "ncbi_taxid": 303,
+        "organism_profile_id": "ORG_001",
+        "confidence": "high",
+        "evidence_id": "EVID_001"
+      },
+      "reaction_evidence_id": "EVID_001",
+      "trait_evidence_id": "EVID_002",
+      "uncertainty": "EC 编号与基因符号未能核实，填 null；p-cumate 在生理 pH 下以 4-isopropylbenzoate 阴离子形式存在。"
+    }
+  ],
+  "organism_profiles": [
+    {
+      "organism_profile_id": "ORG_001",
+      "organism_name": "Pseudomonas putida",
+      "strain": "F1",
+      "ncbi_taxid": 303,
+      "traits": {
+        "F2_temperature": {
+          "value": {
+            "minimum_c": null,
+            "optimum_c": 30,
+            "maximum_c": null,
+            "preference": "中温性，常用培养温度约 30 °C"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F1_oxygen_tolerance": {
+          "value": "专性好氧，需分子氧生长",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F4_salinity": {
+          "value": {
+            "minimum": null,
+            "optimum": null,
+            "maximum": null,
+            "unit": null,
+            "category": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F3_pH": {
+          "value": {
+            "minimum": null,
+            "optimum": 7,
+            "maximum": null
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F5_culture_collection": {
+          "value": {
+            "collection": null,
+            "accession": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F6_respiration_electron_acceptor": {
+          "value": {
+            "respiration_mode": "好氧呼吸",
+            "terminal_electron_acceptor": "O2"
+          },
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F7_carbon_substrate_utilization": {
+          "value": "以 p-cymene、p-cumate、甲苯等芳香族化合物作为唯一碳源与能源生长",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F8_degradation_capacity_broad": {
+          "value": "可好氧降解多种单环芳烃：经 toluene 二加氧酶途径氧化甲苯类底物，经 cym/cmt 基因簇途径降解 p-cymene 与 p-cumate；toluene 二加氧酶底物谱较宽",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F9_enzyme_activity": {
+          "value": "含 p-cymene methyl-monooxygenase、4-isopropylbenzyl alcohol dehydrogenase、4-isopropylbenzaldehyde dehydrogenase（cym 基因簇）以及 p-cumate 降解酶系和 toluene 二加氧酶活性",
+          "raw_text": null,
+          "evidence_id": "EVID_001",
+          "confidence": "high"
+        },
+        "F10_motility": {
+          "value": "运动性阳性（极生鞭毛）",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F11_cell_morphology": {
+          "value": "杆状",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "medium"
+        },
+        "F12_gram_cell_envelope": {
+          "value": "革兰氏阴性",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F13_sporulation": {
+          "value": "不形成芽孢",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "high"
+        },
+        "F14_genome_basic": {
+          "value": {
+            "genome_accession": null,
+            "genome_size_bp": null,
+            "gc_percent": null
+          },
+          "raw_text": null,
+          "evidence_id": null,
+          "confidence": "unknown"
+        },
+        "F15_habitat_generalism": {
+          "value": "泛栖息性腐生环境菌：可从土壤、水体等多种生境分离，碳源利用谱广，能利用多种芳烃",
+          "raw_text": null,
+          "evidence_id": "EVID_002",
+          "confidence": "low"
+        }
+      }
+    }
+  ],
+  "complete_pathway_organism_profile_id": "ORG_001",
+  "central_metabolism_entry": {
+    "products": [],
+    "explanation": "本路线终点为 p-cumate（4-isopropylbenzoate），尚未进入中枢代谢；p-cumate 需经 cmt 途径开环降解为 isobutyrate 与 pyruvate 后才进入后续产能代谢，该段超出本题路线范围。"
+  },
+  "downstream_continuation": [
+    {
+      "name": "p-Cumate catabolic pathway (cmt 基因簇)",
+      "summary": "P. putida F1 的 cmt 基因簇编码 p-cumate 的双加氧开环及后续降解，最终产生 isobutyrate 与 pyruvate；该段不属于本题 p-cymene→p-cumate 评分主链。"
+    }
+  ],
+  "alternative_branches": [
+    {
+      "name": "异丙基侧链氧化分支",
+      "summary": "文献中亦有微生物优先氧化 p-cymene 异丙基侧链（而非对位甲基）从而进入不同下游途径的报道；其中间体细节本回答未能核实，该分支不属于本题评分主链。",
+      "is_part_of_scored_main_route": false
+    }
+  ],
+  "evidence_registry": [
+    {
+      "evidence_id": "EVID_001",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Eaton RW. p-Cymene catabolic pathway in Pseudomonas putida F1: cloning and characterization of DNA encoding conversion of p-cymene to p-cumate. Journal of Bacteriology, 1996.",
+      "claim_scope": [
+        "S1 反应 p-cymene→4-isopropylbenzyl alcohol",
+        "S2 反应 4-isopropylbenzyl alcohol→4-isopropylbenzaldehyde",
+        "S3 反应 4-isopropylbenzaldehyde→p-cumate",
+        "酶 p-cymene methyl-monooxygenase",
+        "酶 4-isopropylbenzyl alcohol dehydrogenase",
+        "酶 4-isopropylbenzaldehyde dehydrogenase",
+        "Pseudomonas putida F1 以 p-cymene 为唯一碳源并经此途径降解",
+        "ORG_001:F7",
+        "ORG_001:F9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "evidence_id": "EVID_002",
+      "source_type": "INTERNAL_KNOWLEDGE_ONLY",
+      "database": null,
+      "record_id": null,
+      "locator": null,
+      "claim_scope": [
+        "ORG_001 性状 F1/F2/F3/F6/F8/F10/F11/F12/F13/F15（基于 Pseudomonas putida 一般生物学特征）"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "evidence_id": "EVID_003",
+      "source_type": "LITERATURE_DIRECT",
+      "database": "PubMed",
+      "record_id": null,
+      "locator": "Eaton RW. p-Cumate catabolic pathway in Pseudomonas putida F1: cloning and characterization of DNA encoding conversion of p-cumate to isobutyrate and pyruvate. Journal of Bacteriology, 1997.",
+      "claim_scope": [
+        "downstream_continuation：p-cumate 后续降解为 isobutyrate 与 pyruvate"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "uncertainties": [
+    "三步酶均未查得现行 EC 分类中的正式编号，ec_number 填 null。",
+    "酶的基因/蛋白符号（cym 基因簇具体成员命名）未能可靠核实，gene_or_protein 填 null。",
+    "P. putida F1 的菌株级 NCBI TaxID 未能核实，ncbi_taxid 采用物种级 TaxID 303。",
+    "P. putida F1 的保藏编号（F5）与基因组登录号/大小/GC（F14）未能核实，填 null。",
+    "F2/F3/F10/F11/F15 等性状主要基于 Pseudomonas putida 属种级一般知识推断，置信度中低。"
+  ]
+}
