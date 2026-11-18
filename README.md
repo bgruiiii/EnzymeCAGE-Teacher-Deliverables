@@ -1,5 +1,13 @@
 # EnzymeCAGE Teacher Deliverables
 
+## 六基模思考用量与正文长度 — 2026-11-18
+
+- [报告与统计入口](2026-11-18_BIOSYSMODB121_Reasoning_Tokens_And_Response_Length/README.md)
+- [给黄老师的完整报告](2026-11-18_BIOSYSMODB121_Reasoning_Tokens_And_Response_Length/REPORT_TO_HUANG.md)
+- [Excel总表](2026-11-18_BIOSYSMODB121_Reasoning_Tokens_And_Response_Length/六基模_思考Token与正文长度_20261118.xlsx)
+
+区分请求总输出上限、实际思考token和可见正文字符；含有效答卷均值/P90/P95及失败消耗。无独立thinking_budget设定，Kimi思考计数未返回，缺失未填0。
+
 ## 六基模调用框架与Likert V0.5完整复用交接 — 2026-11-18
 
 - [完整入口：题目、六模型调用、评分代码与参考数据](2026-11-18_BIOSYSMODB121_Base_Model_And_Likert_V05_Reuse/README.md)
