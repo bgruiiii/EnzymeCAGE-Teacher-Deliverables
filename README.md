@@ -1,5 +1,12 @@
 # EnzymeCAGE Teacher Deliverables
 
+## 基模生成参数初步试验阶段反馈 — 2026-11-19
+
+- [给黄老师的审阅版阶段回应](2026-11-19_BIOSYSMODB121_Parameter_Early_Stage_High_Low/REPORT_TO_HUANG.md)
+- [同题high/low、六模型进展和费用口径](2026-11-19_BIOSYSMODB121_Parameter_Early_Stage_High_Low/README.md)
+
+Token Plan GLM同题仅改effort：high思考131070且长度空答，low思考982、33.66秒完整schema有效。仅单题各一次、科学质量未评；累计4次生成后停止，40题pilot未执行，不是最优预算或非劣结论。本目录只发布阶段报告与白名单汇总，不新增原始答卷/思考文本/凭据。
+
 ## 六基模思考用量与正文长度 — 2026-11-18
 
 - [报告与统计入口](2026-11-18_BIOSYSMODB121_Reasoning_Tokens_And_Response_Length/README.md)
