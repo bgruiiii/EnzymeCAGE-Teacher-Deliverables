@@ -1,5 +1,12 @@
 # EnzymeCAGE Teacher Deliverables
 
+## 基模参数10题单档与工程恢复阶段反馈 - 2026-11-20
+
+- [给黄老师的最新审阅报告](2026-11-20_BIOSYSMODB121_Parameter_Pilot10_Engineering_Recovery/REPORT_TO_HUANG.md)
+- [六配置、60题位、费用与Kimi通道说明](2026-11-20_BIOSYSMODB121_Parameter_Pilot10_Engineering_Recovery/README.md)
+
+实际执行10题单档，不是此前20题提案或原40题多档验收。pilot53次POST取得五线50份结构有效答卷，Kimi10题未发；原始有效47与恢复视图分开。程序reaction命中不等于完整科学正确，预算非劣、最小预算及输入公平性仍未验收。只新增白名单汇总，不新增原始答卷、Gold、思考/SSE或凭据。
+
 ## 基模生成参数初步试验阶段反馈 — 2026-11-19
 
 - [给黄老师的审阅版阶段回应](2026-11-19_BIOSYSMODB121_Parameter_Early_Stage_High_Low/REPORT_TO_HUANG.md)

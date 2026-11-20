@@ -1,5 +1,7 @@
 # 基模参数初步验证：GLM同题high/low阶段反馈
 
+> 2026-11-20更新：本目录保留11月19日历史阶段记录，20题只是当时提案，实际后来执行的是10题单档。最新完成范围、工程恢复、费用与Kimi未发状态请看[最新审阅报告](../2026-11-20_BIOSYSMODB121_Parameter_Pilot10_Engineering_Recovery/REPORT_TO_HUANG.md)。下文“最新方案建议”属于历史时点，不是当前执行授权。
+
 2026-11-19。**[给黄老师的审阅版阶段报告](REPORT_TO_HUANG.md)**。
 
 同一Token Plan通道glm-5.3、同一原题，实际body只差reasoning_effort：high思考131070、输出131072，length且无可用答卷；low思考982、输出4841，33.66秒完整schema有效。各一次、不同时刻，尚未评reaction质量，不是总体最优预算或非劣结论。
