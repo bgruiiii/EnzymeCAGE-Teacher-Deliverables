@@ -1,0 +1,29 @@
+{
+ "_comment": "Chenyu full config. THREE roots distinct. evidence_tiers must stay empty (unsupported -> typed rejection). pool.max_size None keeps all; a configured cap BLOCKS the step instead of selecting a subset.",
+ "retrieval": {
+  "backend": "fixed_r3",
+  "master_parquet": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_pollutant_biodegradation_category_capacity_census_r0_20260920/01_funnel/REACTION_MASTER_POOL.parquet",
+  "pairs_parquet": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_pollutant_biodegradation_category_capacity_census_r0_20260920/01_funnel/ALL_SCIENTIFIC_PAIRS.parquet",
+  "mode": "PRODUCTION_INCLUDE_EXACT",
+  "evidence_tiers": []
+ },
+ "pool": {
+  "max_size": null
+ },
+ "scoring": {
+  "backend": "enzyme_cage_wrapper",
+  "wrapper_code_root": "<dir containing python package wrapper>",
+  "enzymecage_source_root": "<dir containing python package enzymecage>",
+  "weights_package_root": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_v1_20260714",
+  "top_k": 10,
+  "return_ci": true
+ },
+ "sources": {
+  "backend": "b1_revision1_table",
+  "b1_table": "<path>/B1_UID_SOURCE_MAP_7468.tsv"
+ },
+ "traits": {
+  "dehp_package_root": "<path>/DEHP_AUDITED_TRAITS_FOR_MERGE_20261114/payload/DEHP_AUDITED_TRAITS_FOR_MERGE_20261114",
+  "c8_lookup_index": "<path>/C8_METATRAITS_LOOKUP_INDEX.jsonl"
+ }
+}

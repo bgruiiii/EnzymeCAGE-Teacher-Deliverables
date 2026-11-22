@@ -1,0 +1,213 @@
+# C8-P 412 BacDive v2 availability live refresh R1 local audit
+
+Date: 2026-09-11
+
+## Audited object
+
+```text
+03_HPC_Returned_Result_Summaries/
+c8p_412_bacdive_v2_availability_live_refresh_20260911_r1.tar.gz
+```
+
+```text
+bytes=6940423
+sha256=d318d9c6480bf87f22972d75a75e9523fdd09ae360ca595eb81b24a30bae5944
+gzip_test=PASS
+archive_members=1444
+regular_files=1439
+directories=5
+unsafe_members=0
+```
+
+## Verdict
+
+```text
+LOCAL_AUDIT_VERDICT=PASS_WITH_DELIVERY_OMISSIONS
+SCIENTIFIC_STATUS=COMPLETE_412_AVAILABILITY_ASSESSMENT
+SCIENTIFIC_RERUN_REQUIRED=NO
+STEP2_ZERO_COMPUTE_JOIN_AUTHORIZED=YES
+CURRENT_ORDERABILITY_ESTABLISHED=NO
+```
+
+The live BacDive v2 refresh is scientifically acceptable for the frozen 412 C8-P
+sources. All 412 sources have an explicit status, no source remains runtime unresolved,
+and the positive exact/representative classifications were reconstructed from the raw
+BacDive responses rather than accepted from executor-reported booleans.
+
+## Delivery omissions
+
+The expected external files were not present locally:
+
+```text
+c8p_412_bacdive_v2_availability_live_refresh_20260911_r1.tar.gz.identity.txt
+c8p_412_bacdive_v2_availability_live_refresh_20260911_r1.tar.gz.validation.txt
+```
+
+The internal result manifest is internally consistent for its declared 1,427 files and
+all 1,427 hashes pass. It intentionally excludes three files written after the manifest:
+
+```text
+FINAL_STATUS.txt
+VALIDATION.json
+MUTATION_TESTS.json
+```
+
+Those three files were independently parsed in this audit, but the manifest therefore
+does not provide complete final-package coverage. These are delivery/closure omissions,
+not evidence that the BacDive queries must be rerun. If strict three-file delivery is
+required, retrieve or regenerate only the two sidecars from the existing immutable
+archive; do not repeat the live 412 query.
+
+## Frozen identity reconstruction
+
+Independent comparison to the local frozen matrix confirmed:
+
+```text
+status rows=412
+unique source_signature=412
+unique versioned assembly_accession=412
+source_signature set=frozen set exact
+assembly_accession mapping=frozen mapping exact
+evidence JSONL rows=412
+status/evidence source set exact
+status/evidence status mismatches=0
+```
+
+The input identity report also retains the expected historical baseline:
+
+```text
+historical rows=2478
+historical unique source_signature=2478
+historical-to-frozen join=412/412
+matrix SHA256=aa3ad45df24aab80a7e59c054414212bbaff083ff83c2cabcc199d56ddde498c
+historical SHA256=0cea0f8cead08398b03d985db1c35f421771652ce92475bfdedb9a1ce0cb9818
+```
+
+## Live BacDive result
+
+Independent status counts are:
+
+| Status | Count | Fraction |
+|---|---:|---:|
+| Exact source strain with collection evidence | 120 | 29.1% |
+| Species representative with collection evidence | 107 | 26.0% |
+| Ambiguous candidate | 16 | 3.9% |
+| Not found after completed routes | 169 | 41.0% |
+| Exact/representative without collection number | 0 | 0.0% |
+| Insufficient identity | 0 | 0.0% |
+| API runtime unresolved | 0 | 0.0% |
+| Total | 412 | 100.0% |
+
+Thus:
+
+```text
+exact-source collection evidence=120/412
+explicit species-representative collection evidence=107/412
+reliable exact-or-representative registry evidence=227/412=55.1%
+ambiguous-or-not-found=185/412=44.9%
+```
+
+This is a complete 412-row availability assessment, not 100% positive availability.
+
+## Raw-response reconstruction
+
+The raw index contains:
+
+```text
+index rows=1414
+unique URLs=1414
+HTTP 200=1414
+exceptions=0
+raw cache files=1414
+orphan cache files=0
+missing cache files=0
+response byte/SHA mismatches=0
+fetch URLs=213
+fetch URLs missing predictions=0=0
+```
+
+The 120 exact-source rows were reconstructed as:
+
+```text
+exact genome accession=25
+exact culture collection number=95
+```
+
+For every exact-genome row, the selected raw BacDive record contains the same versioned
+or unversioned assembly identity and compatible taxonomy. For every exact-culture row,
+the source identity and selected raw BacDive record share the normalized collection
+number and compatible taxonomy.
+
+All 107 representative rows were reconstructed against raw BacDive records. Four use
+species/subspecies forms such as `Klebsiella variicola` versus `Klebsiella variicola
+subsp. variicola`; the runner's two-token species normalization accepts these as the
+same species-level representative. They are not exact-source claims.
+
+The 169 `NOT_FOUND` rows each retain completed versioned and unversioned genome queries
+and a completed species route. None is backed by a failed HTTP request. The 16 ambiguous
+rows remain conservatively unresolved rather than being promoted through short tokens
+or unvalidated synonyms.
+
+## Collection-record table
+
+```text
+collection rows=1208
+BacDive curated-record rows=822
+frozen-source identity rows=386
+unique source signatures represented=227
+```
+
+The table is evidence-dense and intentionally can contain multiple collection numbers
+per selected BacDive strain. It must not be interpreted as 1,208 available source
+strains.
+
+## Five-priority implication
+
+The previously accepted porTraits/GenomeSPOT environmental coverage remains:
+
+```text
+temperature complete=408/412
+salinity complete=408/412
+oxygen complete=412/412
+pH complete=408/412
+all four environmental dimensions complete=408/412
+```
+
+All four environmental-missing genomes are `NOT_FOUND` in this BacDive refresh. Hence
+all 227 genomes with positive exact-or-representative BacDive registry evidence also
+have complete predicted temperature, salinity, oxygen, and pH values:
+
+```text
+all four environmental predictions + any positive BacDive registry evidence=227/412
+all four environmental predictions + exact-source BacDive collection evidence=120/412
+```
+
+The 107 representative rows must be shown separately. They do not prove availability
+of the enzyme source strain and do not prove that the representative contains the
+target enzyme.
+
+## Interpretation boundary
+
+```text
+BacDiveAI porTraits rows=predicted phenotype, not availability evidence
+BacDive v2 predictions=0 rows=curated registry evidence
+culture collection number=deposition/registry evidence
+current live catalogue orderability=not checked
+species representative=not the exact enzyme source strain
+NOT_FOUND=no matching BacDive evidence after completed routes, not proof of biological absence
+```
+
+## Next action
+
+Proceed to Step 2 as a local zero-compute join of:
+
+```text
+C8P_412_BACDIVE_AVAILABILITY_STATUS.tsv
+frozen 412 identity matrix
+audited portraits_results.tsv.gz
+```
+
+Produce the focused 412-row five-priority review table and coverage/missingness evidence.
+Do not rerun porTraits and do not send the raw BacDive cache or 66,332-row source table
+to the teacher-facing GitHub package.
+

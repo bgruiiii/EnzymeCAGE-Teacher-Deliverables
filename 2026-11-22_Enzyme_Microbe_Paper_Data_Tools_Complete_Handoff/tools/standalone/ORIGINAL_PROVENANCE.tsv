@@ -1,0 +1,11 @@
+role	path	note
+vendored_engine_copy	tool/vendored/copied_old_pipeline.py	byte-identical to BASE first-package and R1 copies; itself a documented frozen multi-source amalgam (retrieve.py/utils/enzymecage.base/rhea_data_cleaning per its header); NOT claimed whole-file-equal to original retrieve.py
+vendored_engine_copy	tool/vendored/fixed_retrieval_engine.py	byte-identical to BASE first-package and R1 copies
+external_facade_reference	code/wrapper/{predictor,utils,schema}.py of EnzymeCAGE-Enzyme-Microbe-Workflow_20261110	ordering (-score,uid), 5-seed quantile CI rule, last_trace per_seed contract, top_k 1..100 honoured unchanged; SHA in INPUTS.tsv
+semantics_reference	code/biosysmodb121_stages/b2a_retrieve.py + b2b_pool.py	index freeze + association expansion mirrored; tiers deliberately NOT re-implemented (rejected instead)
+semantics_reference	code/current95_five_model/prep_sources/r3_gf_unified.py + scripts_node/r4_gf_enzgfm.py	target-reaction x candidates pairing contract evidence
+conservative_rules	code/depending_t6_prod/src/tools/trait_query.py::_trait_evidence/_conservative_structured_value	semicolon-only split, trim/drop-empty/first-seen dedup, fungi IDENTITY_ONLY precedence, blank observed flag -> MISSING+warning
+data_inputs	B1 revision1 table / C2 export (rankings+trace) / DEHP payload / audit native_c8_sample.jsonl	read-only; identities in INPUTS.tsv; private C8 originals not redistributed
+first_package_identity	BASE/revision1_contract_fix_20261119 30-file return_identity from Astra R1 audit	baseline comparison executed in checks.json (this round made no writes to BASE/R1)
+licenses	custom/github_upload THIRD_PARTY_NOTICES.md	EnzymeCAGE CC BY-NC 4.0 non-commercial clauses; depending snapshot 00574c82 uncommitted; no relicensing; nothing pushed
+reviewed_contract_corrections	revision2_reviewed_fix_20261120/REVIEW_CORRECTIONS_20261120.md	Coordinator CPU-only seam fixes: native group expansion, baseline batch order, replay identity gates, finite disclosure and strict config; original R2 retained unchanged

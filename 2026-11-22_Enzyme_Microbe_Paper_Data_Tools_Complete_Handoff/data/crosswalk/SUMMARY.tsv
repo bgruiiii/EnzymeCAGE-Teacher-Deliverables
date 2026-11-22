@@ -1,0 +1,21 @@
+metric	value	note
+scope_note	Two separate denominators: 412 old sources vs 7468 UID entries; 16448 step-UID links are a third axis. Never divide 412 by 7468 as coverage.	
+OLD412_sources_total	412	unique source_signature, statuses EXACT 120 / SPECIES_REP 107 / AMBIGUOUS 16 / NOT_FOUND 169
+OLD412_strict_matched	185	44.90% of 412 connected to >=1 current UID by exact hist_source_signature
+OLD412_strict_matched_by_old_status	"{""AMBIGUOUS_CANDIDATE"": 11, ""EXACT_SOURCE_STRAIN_COLLECTION_EVIDENCE"": 61, ""NOT_FOUND"": 72, ""SPECIES_REPRESENTATIVE_COLLECTION_EVIDENCE"": 41}"	
+OLD412_strict_unmatched	227	no current UID carries the same source key
+OLD412_strict_unmatched_by_old_status	"{""AMBIGUOUS_CANDIDATE"": 5, ""EXACT_SOURCE_STRAIN_COLLECTION_EVIDENCE"": 59, ""NOT_FOUND"": 97, ""SPECIES_REPRESENTATIVE_COLLECTION_EVIDENCE"": 66}"	
+UID7468_total	7468	fixed queue
+UID7468_strict_matched	642	8.60% of 7468; all lookup FOUND and in_microbe_scope true
+UID7468_strict_matched_source_stage_mix	"{""HISTORICAL_UID_TO_SOURCE_2026-01-21"": 573, ""ONLINE_UNIPARC_ARCHIVE_2026-11-19_FOR_HISTORICAL_UID"": 12, ""ONLINE_UNIPROTKB_2026-11-19"": 57}"	signature provenance per source_stage, not all are original-history-table rows
+UID7468_unmatched_reason_counts	"{""EMPTY_KEY_STATUS_IDENTITY_CONFLICT"": 1, ""EMPTY_KEY_STATUS_NO_HIT"": 30, ""EMPTY_KEY_STATUS_UPI_SOURCE_SET"": 7, ""KEY_NOT_IN_OLD412"": 6788}"	empty keys stay empty; no source was assigned to them
+STEPLINKS_axis_total	16448	fixed step-UID link count
+STEPLINKS_axis_strict_matched	1423	8.65% of 16448 links whose UID carries an old 412 source key
+SPECIES_layer_old_rows_resolved	196	old 412 rows whose taxid resolves to a species taxid from local lineage evidence
+SPECIES_layer_old_rows_unresolved	216	species layer unconfirmed this round (no live lookup)
+SPECIES_layer_edges_non_strict	348	same-species reference pairs, one-to-many preserved, excludes strict pairs
+SPECIES_layer_uids_set_dedup	245	distinct UIDs with >=1 species-reference old source (set dedup, not summed edges)
+SPECIES_layer_uids_also_strict	213	species-only = difference; do not add to strict counts
+SPECIES_layer_steplinks_set_dedup	510	step x UID links after deduplicating species-reference UIDs; not distinct reaction-step count
+SPECIES_layer_distinct_reaction_steps	187	distinct (ctx, step_id) touched by species-reference UIDs; not step x UID links
+strict_plus_species_union_uids	674	report-only union, still not all 7468

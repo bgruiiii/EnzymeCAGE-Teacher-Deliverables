@@ -1,0 +1,223 @@
+# SCNET C8-P Stage-Targeted Full-412 Production Resume-1 Final Local Audit
+
+Date: 2026-09-11
+
+## Audited Object
+
+```text
+03_HPC_Returned_Result_Summaries/
+scnet_c8p_stage_targeted_production_resume1_result_20260910.tar.gz
+```
+
+```text
+bytes=5100085
+sha256=15ec01c6a4d97a3ab8b9a0e8e6260bae30af16e56265c5a8654d824619dc0cb1
+identity_sidecar=PASS
+gzip_test=PASS
+archive_members=1715
+regular_files=1710
+directories=5
+unsafe_members=0
+internal_manifest_paths=1709/1709/1709 exact
+internal_manifest_hashes=PASS
+external_validation_sidecar=NOT_PRESENT_LOCALLY
+```
+
+## Final Verdict
+
+```text
+LOCAL_AUDIT_VERDICT=PASS_WITH_DISCLOSED_TOOL_LEVEL_MISSINGNESS
+FINAL_STATUS=COMPLETE
+FINAL_MESSAGE=resume1_full_412_strict_66332_row_contract_passed
+FULL_412_TARGETS=PASS
+FULL_COLLATE=PASS
+SCIENTIFIC_RERUN_REQUIRED=NO
+MORE_EXECUTOR_REPAIR_REQUIRED=NO
+DOWNSTREAM_USE_AUTHORIZED=YES_WITH_PROVENANCE_AND_NA_DISCLOSURE
+```
+
+The full C8-P porTraits production run is complete and accepted. The quota
+resume performed no duplicate GenomeSPOT or eggNOG computation and retained
+the exact locally audited executor bytes.
+
+## Scheduler And Quota Closure
+
+The resume ledger contains nine submitted units:
+
+```text
+E2M batches=4 x 103 tasks
+downstream batches=4 x 103 tasks
+collate jobs=1
+total terminal task rows=825
+```
+
+Independent parsing of `FINAL_SACCT.psv` found:
+
+```text
+COMPLETED=825
+FAILED=0
+nonzero_exit=0
+```
+
+Every pre-submit headroom row recorded `used=1`. Each 103-task batch therefore
+requested a total group count of 104, below the conservative ceiling 180 and
+the Slurm account limit 200. The collate request used 2 total group slots.
+
+## Source Reuse Validation
+
+```text
+PREFLIGHT all_pass=true, failures=[]
+resume source validation all_pass=true, failures=[]
+GenomeSPOT reused=55/55
+eggNOG reused=128/128
+eggNOG files rehashed=384
+total reused source files recorded=439
+failed partial inventory=empty
+```
+
+The executed `executor_snapshot` contains 42 files. Its path set and every
+SHA256 are byte-identical to the locally authored Resume-1 payload.
+
+## Per-Target Closure
+
+`FULL_TARGET_STATUS.tsv` independently contains:
+
+```text
+rows=412
+unique accessions=412
+indices=0..411 exact
+all_pass=true for 412/412
+missing COMPLETE hashes=0
+unique COMPLETE hashes=412
+```
+
+Final result file counts are:
+
+```text
+409 native-downstream targets: 97 files each
+3 validated-reuse targets: 96 files each
+```
+
+The difference is the native tool exit-code evidence file, not a missing
+scientific output. The three 96-file targets are exactly the frozen reuse set:
+
+```text
+GCA_000016125.1
+GCA_000016325.1
+GCA_000145295.1
+```
+
+Seven zero-byte E2M stdout logs map exactly to the seven E2M reuse targets, and
+three zero-byte downstream stdout logs map exactly to these three reuse targets.
+
+## Independent Final Table Validation
+
+Authoritative file:
+
+```text
+collate_result/portraits_results.tsv.gz
+bytes=2259911
+sha256=9bcee8097091c6c80b4392121b3531059d13afaf371204534b2ccac3b6819c28
+```
+
+Independent local parsing confirmed:
+
+```text
+data rows=66332
+genomes=412 exact frozen accessions
+per-genome rows=161 for all 412
+GenomeSPOT total=4120, per genome=10
+MICROPHERRET total=30488, per genome=74
+BacDiveAI total=3708, per genome=9
+Traitar total=28016, per genome=68
+```
+
+There are zero duplicate full rows and zero duplicate
+`(genome, tool, tool_feature)` keys. No genome ID retains the `_genomic`
+suffix. Every tool has one invariant `(feature, tool_feature)` signature across
+all 412 genomes:
+
+```text
+GenomeSPOT tool features=10
+MICROPHERRET tool features=74
+BacDiveAI tool features=9
+Traitar tool features=68
+```
+
+MICROPHERRET maps its 74 tool features to 63 harmonized features, including 11
+rows with `feature=NA`; Traitar maps 68 tool features to 63 harmonized features,
+including 6 `feature=NA` rows. These mappings are invariant across all genomes
+and have unique tool-feature keys; they are not missing rows.
+
+## Value Domains
+
+```text
+MICROPHERRET probabilities in [0,1], binary values in {0,1}: PASS
+BacDiveAI probabilities in [0,1], binary values in {0,1}: PASS
+Traitar probabilities in [0,1], binary values in {0,1}: PASS
+GenomeSPOT numeric values finite where present: PASS
+```
+
+The 409 native MICROPHERRET stdout logs contain exactly 23 known model warnings
+per target (`409 x 23 = 9407`). The three reuse targets contain none. All 412
+finalizers ran the accepted Keras compatibility path, and the final 74-row
+contract passes for every genome. No traceback, fatal error, missing command,
+OOM, killed process or segmentation fault appears in the returned logs.
+
+## Taxonomy And specI
+
+GTDB first-domain results are:
+
+```text
+d__Bacteria=321
+d__Archaea=90
+Unclassified Bacteria=1 (GCA_007281055.1)
+taxonomy-group mismatches=0
+```
+
+All 66,332 rows have nonempty GTDB, trait-link and tool-version values.
+`specI=NA` occurs for exactly 13 frozen targets: the 10 accepted zero-byte calls
+plus three terminal no-call targets. This is 13 x 161 = 2,093 rows and exactly
+matches the frozen source contract.
+
+## Disclosed GenomeSPOT Missingness
+
+GenomeSPOT has 4,120 expected rows. Of these, 4,084 have numeric values and 36
+contain `value_probability=NA`. The 36 rows are exactly nine continuous
+environmental traits for four reduced endosymbiont genomes; oxygen remains
+available for all four:
+
+```text
+GCA_000010365.1
+GCA_000011745.1
+GCA_000043285.1
+GCF_900080145.1
+```
+
+The affected traits are salinity min/optimum/max, temperature
+min/optimum/max, and pH min/optimum/max. The pipeline correctly retains NA
+rather than fabricating values. This is accepted tool-level missingness and
+must remain disclosed in downstream use.
+
+## Delivery Qualification
+
+The result archive, identity sidecar, internal manifest and all scientific
+gates pass. The external `.validation.txt` sidecar was not copied into the
+local returned directory. This is a minor delivery omission because its claims
+were independently reconstructed and verified; it does not block acceptance.
+
+The archive contains the final collated table, reports, source identities,
+complete status table, all task logs and executor snapshot. Per-target raw
+result trees remain on SCNET and are represented locally by 412 distinct
+COMPLETE hashes rather than being embedded in the return archive.
+
+## Final Decision
+
+```text
+C8P_FULL_412_PRODUCTION=CLOSED_PASS
+QUOTA_RESUME=CLOSED_PASS
+FINAL_TABLE_AUTHORITY=collate_result/portraits_results.tsv.gz
+FINAL_TABLE_SHA256=9bcee8097091c6c80b4392121b3531059d13afaf371204534b2ccac3b6819c28
+NEXT_ACTION=INTEGRATE_AUDITED_TABLE_WITH_NA_PROVENANCE
+```
+

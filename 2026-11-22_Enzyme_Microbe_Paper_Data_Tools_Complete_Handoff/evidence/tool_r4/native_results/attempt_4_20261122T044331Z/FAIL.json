@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/tool_r4_s02_s03_20261122/stage_20261122T044331Z/worker.py", line 187, in <module>
+    rc = main()
+         ^^^^^^
+  File "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/tool_r4_s02_s03_20261122/stage_20261122T044331Z/worker.py", line 115, in main
+    idx = NC.build_native_c95_index(nb, CTX)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/tool_r4_s02_s03_20261122/stage_20261122T044331Z/tool/enzyme_host_tool/native_c95_assets.py", line 84, in build_native_c95_index
+    idx = RH.build_3b_index(_Paths(), ctx, merged, PrecomputedAssetIndex, C95AssetIndex)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/five_model_complete_20261103/current95_five_model_complete_prep_20261103/scripts/recovery_helpers.py", line 61, in build_3b_index
+    return extended_class(base_class(config), paths.PKG + '/inputs/' + ctx + '/RUNTIME_SEQUENCE_PARENT.tsv')
+                          ^^^^^^^^^^^^^^^^^^
+  File "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716/enzymecage_wrapper/asset_index.py", line 12, in __init__
+    geometric = importlib.import_module("enzymecage.dataset.geometric")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1310, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'enzymecage'

@@ -1,0 +1,40 @@
+{
+  "release_id": "20260915_microbial_traits_v1",
+  "created_utc": "2026-09-15T08:11:35Z",
+  "candidate_only": false,
+  "frozen": true,
+  "published_to_t6": false,
+  "layout": {
+    "microbial_traits/base": "observed authority layer (BASE_ROOT three files, byte-exact)",
+    "microbial_traits/predicted_trait_assets": "predicted soft layer (five candidate-task outputs, byte-exact)",
+    "enzyme_host_mapping": "UID -> source_signature authority map",
+    "reaction_knowledge": "reserved empty placeholder per teacher adjudication 3",
+    "manifests": "release manifests"
+  },
+  "base_lookup_identity": {
+    "C8_METATRAITS_LOOKUP_INDEX.jsonl": {"bytes": 57211793, "sha256": "d51a540db2f9798d65e25b46f22960ba29ae2d4b288be218c83c299f24f5d5af"},
+    "C8_BACDIVE_AVAILABILITY_LOOKUP.csv": {"bytes": 1446093, "sha256": "4a47c6af40582f84b6819a834ba254dfe4fc83977df0b4e738ecc95d58d0d92e"},
+    "C8_LOOKUP_SOURCE_UNIVERSE.csv": {"bytes": 269234, "sha256": "0dea78fdd83479aa367714c923746f54336958fec94ec9cd38d50a56d7d30ac1"}
+  },
+  "candidate_identity": {
+    "C8_2478_LAYERED_MERGE_CANDIDATE.jsonl": {"bytes": 68023014, "sha256": "089c949338686af6183b46307387c5e3f727d08eaa005cc904f69d4f61c72182"},
+    "C8_2478_FIELD_DIFF.tsv": {"bytes": 16850083, "sha256": "0350854f7987cd87775cad8c5e1722341587b6aebca5acf2e1313c127a9ce047"},
+    "C8_412_EVIDENCE_CLASS_TRANSITIONS.tsv": {"bytes": 6191, "sha256": "6ce1c106fc39ff09b4d2371341fb301caace9dfb74a78df86c2d3d05396fcc90"},
+    "C8_2478_MERGE_CANDIDATE_SUMMARY.json": {"bytes": 2331, "sha256": "21f0971b4eb7fb20fd137a398a35c3db7e94f19ecb07a2cc59c5d0197bb038e3"},
+    "INDEPENDENT_AUDIT.json": {"bytes": 1497, "sha256": "522253da6012ecf4e78ca5e4d5d5ea2c3c646000c689cdf52198bd037f4e4c7b"}
+  },
+  "uid_map_identity": {
+    "enzyme_host_mapping/uid_to_source_keep_bacteria_fungi_archaea.csv": {"bytes": 104025134, "sha256": "7b92e8e625cb73f070c8e902687ea5bbdbf749f04a19828e550e3fe205684fe6"}
+  },
+  "teacher_adjudication_identity": {
+    "second_stage_freeze_approval": {"bytes": 4724, "sha256": "0217c22679586a4b9c150a465ce3222688347036a543d8846c5a83233f6d5c91"},
+    "first_stage_merge_adjudication": {"bytes": 3024, "sha256": "3f5f0ed3a0ee4e8901dcfe2efd629ea8655c855f827ecbe89ed41098d7a49c2f"}
+  },
+  "governance_rules": {
+    "observed_first": "observed always wins; predicted only soft-fills when observed is missing; no observed value is ever overwritten",
+    "f5_no_prediction": "F5 prediction_used=0 enforced by independent audit (13/13 checks)",
+    "salinity_native_scale": "salinity stays in GenomeSPOT native scale; no conversion, no percent labeling",
+    "transitions_history_preserved": "19 evidence-class transitions preserved permanently (ADD_REFRESH_LAYER_PRESERVE_LEGACY_HISTORY); silent replacement forbidden",
+    "freeze_vs_publish_separation": "frozen database release is separate from publication; T6 switch reserved for teacher final confirmation"
+  }
+}

@@ -1,0 +1,57 @@
+# B1 revision1独立复审与协调端收尾
+
+2026-11-19。**接收为既定7468UID队列的来源、身份和登记证据材料。** 不接收为宿主推荐准确率、降解功能验证或当前部署能力证明。原BASE回包、原缓存、原始输入未改；修正版位置仍为`ENZYME_HOST_B1_UID_SOURCE_MAPPING_20261119/revision1_exact_source_20261119/`。
+
+本轮回到原CSV、批量TSV、单条JSON、UniParc交叉引用和NCBI XML做独立检查，没有以执行方“八项全绿”代替来源核查。独立脚本未导入执行方程序；机读结果为`B1_R1_INDEPENDENT_CHECKS.json`，脚本为`audit_r1_independent.py`。
+
+## 1. 核实结果及证据
+
+| 结论 | 实际独立核查 | 原始证据位置/字段 |
+|---|---|---|
+| 队列固定 | 7468UID唯一，SHA/n_step_links/n_paths逐项一致；16448关联无漏连或膨胀 | C2两份固定输入及R1主表 |
+| 历史来源 | 5808UID的原名称、TaxID、reviewed与原CSV一致；未重核序列标记保留 | `data/processed/rhea/2026-01-21/microbe/uid_to_source.csv`，UniprotID精确join |
+| 失效原UID来源 | 259条请求记录→UPI→固定序列SHA→精确原UID交叉引用→该引用自己的organism全部成立 | BASE的`internal/cache/single/{uid}.json`中`extraAttributes.uniParcId`；对应UniParc JSON的`uniParcCrossReferences[database=UniProtKB/*,id=原UID]` |
+| 活跃/关联来源 | 1363条逐项核序列、TaxID、PE完整raw及规范化值 | 原批量TSV、单条JSON、4条xref查询TSV；其中5条正规重定向有secondaryAccessions显式关系 |
+| UPI来源集合 | 7个UPI序列全部匹配，40条交叉引用完整对齐；未强选唯一原菌株 | BASE的`internal/cache/uniparc/{UPI}.json`与R1长明细UNIPARC_SOURCE_RECORD |
+| 分类层级 | 7418条来源的rank/物种祖先与原taxonomy JSON一致；另12条按原NCBI AkaTaxIds补齐 | BASE的taxonomy原JSON；`internal/cache/ncbi/3e72d373e285be8cde38ed316c2c02a30e8eb485fcdeed69794cca9e8bcdb6dd.xml` |
+| BacDive登记 | 2174个UID的代表记录与原代表表同source_signature下记录逐项一致 | 原`bacdive_species_representative_strain_records_v2.csv`，核id/strain/保藏号/验证状态及重复数 |
+| 追溯 | 214359条证据ID唯一；主表引用ID属于本UID；10054个原响应引用SHA和时间核对通过 | 原缓存及对应meta；多查询逐项保存query_responses，引用计数不是请求数 |
+
+51条原/修正版manifest记录均通过，探索时留存的9份源身份未变；1757份缓存meta及其成功响应正文SHA核查通过。网络、模型调用均0，没有GPU操作。
+
+### 一条需要限定的特殊记录
+
+A0A558G7M6对应单条请求返回的是Inactive主号A0A6C0UP49，不将它当成有明确secondaryAccessions的正规重定向。该响应的UPI中仍有**精确A0A558G7M6交叉引用**，其序列匹配固定输入，来源按该引用自己的organism恢复。原响应主号在长明细保留；不谎称259条响应主号都与请求号相同。
+
+4条EMBL/RefSeq xref来源表示精确查询与序列匹配所关联条目的来源信息，不据此声称外部ID在全球只有唯一来源。UPI集合、存档来源和历史UID join也按source_stage分别解释。
+
+## 2. 协调端直接完成的窄修
+
+初收R1的主来源修复方向正确，但还有能从本地直接修好的追溯/说明问题，本轮已经完成，不再派新一轮全量返工。
+
+1. **212条单条JSON的PE raw被截成首字符。** 原响应proteinExistence是字符串，代码误按列表取`[0]`；完整raw现已保留，canonical未因此改变，未知不补为5。原审计PE对照表是301条记录涉及291UID，包含他UID成员对照；报告已纠正计数单位，不称301个独立错分UID。
+2. **1088条带缓存路径的证据漏写response SHA。** 已从实际meta补齐响应SHA和meta路径。独立检查现为0漏项。
+3. **原声称不可恢复的42条时间实际都能恢复。** 12条taxonomy缺rank引用可按uniprot_batch_url找到meta，30条QUERY_NO_HIT按原查询URL找到meta；多查询保存所有响应指针。现UNKNOWN时间为0，均匹配原attempt/retrieval时间，没有写成返修时间。
+4. **NCBI合并号解析漏用。** 回读原XML，190486→1203463、683960→4927、983966→4903、1206466→1041607均有明确AkaTaxIds。已为12个主表UID补入rank/物种祖先，原来源TaxID保留，canonical lookup ID另列`taxonomy_resolved_taxid`。原UniProt缺7TaxID，原XML实际可解释6个；剩余6666666无主表UID直接使用，不当作本队列来源查无。
+5. **strain统计补充范围。** 4274是全队列来源记录直接标注strain/isolate的UID数，其中细菌/真菌/古菌范围为4248。剩余26个为该范围外来源；不能把全数都称为微生物菌株覆盖，也不等于独立湿实验证实。
+
+已同步修正解析、导出、检查、报告脚本，离线重建后运行执行方检查并完成本独立审核。原R1收包文件及脚本保存在本目录`before_narrow_fix/`，身份清单为`R1_RETURN_IDENTITY_BEFORE_NARROW_FIX.tsv`。主表状态数、来源绑定、proteome和代表登记覆盖的主数未因这些窄修改变；12条分类层级有依据补充，6802条变更日志保留原因。
+
+## 3. 可采用的数与单位
+
+- FOUND 7430；FOUND_SOURCE_SET 7；指定UniProtKB xref NO_HIT 30；序列IDENTITY_CONFLICT 1。合计7468。
+- 对应16448关联：FOUND 16338、来源集合35、NO_HIT 73、冲突2。不可将关联数当独立蛋白数。
+- 来源记录直接strain/isolate标注4274UID，细菌/真菌/古菌范围4248UID；数据库身份注释不等于宿主功能验证。
+- proteome关联5139UID，其中带非空strain字段4814UID；关联记录5806条，三种单位分别列。
+- 既有BacDive代表登记覆盖2174UID；只表示已有关联登记记录，不证明本UID在代表菌株中存在、现货可买或目标降解功能。
+- 1757是留存meta记录的attempt下界，历史多轮覆盖可能遗漏更早尝试；不得写不足千次或假造精确累计请求数。本轮新增请求0。
+
+## 4. 剩余缺口及给师姐反馈的边界
+
+- 30条EMBL/RefSeq仅在指定UniProt xref查询未返回；未新增NCBI Protein检索，不能称全球没有来源。
+- Q9R2F5返回P12015的序列不匹配固定SHA，仍未绑定，不自行裁决。
+- 5808历史条目沿用UID精确来源映射，本轮未独立重核其序列；不能说本轮所有7468条序列都重新核过。
+- 412个旧来源与7468UID队列的交集尚未独立完成。新B1可支持同一队列来源统计；如继续使用412旧图，仍需标明其样本范围/对应，不写“完全无关”或“412算错”。
+- B1验收不代表A3多步已接通、性状已筛菌或当前服务在线。给师姐逐条反馈仍需对应各自的代码/配置/日志及版本证据；已有C1、C2/C3复审材料按其限定范围使用。
+
+建议采用修正版`REPORT_FOR_SISTER.md`及本报告中的范围，不再传播BASE旧覆盖数或初收R1的“42时间不可恢复”等表述。此次不自动上传GitHub或对外发送。

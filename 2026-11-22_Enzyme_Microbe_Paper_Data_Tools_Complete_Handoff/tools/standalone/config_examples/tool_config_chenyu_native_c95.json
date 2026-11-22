@@ -1,0 +1,73 @@
+{
+  "_comment": "Derived from retained attempt6 worker. Native main-context scoring verified for the two fixed pools; this combined CLI config was not newly executed. Set sources/traits paths after unpacking; retrieval can produce a different pool than the frozen scoring checks.",
+  "retrieval": {
+    "backend": "fixed_r3",
+    "master_parquet": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_pollutant_biodegradation_category_capacity_census_r0_20260920/01_funnel/REACTION_MASTER_POOL.parquet",
+    "pairs_parquet": "/usrdata/EnzymeCAGE_data/workspaces/enzymecage_pollutant_biodegradation_category_capacity_census_r0_20260920/01_funnel/ALL_SCIENTIFIC_PAIRS.parquet",
+    "mode": "PRODUCTION_INCLUDE_EXACT",
+    "evidence_tiers": []
+  },
+  "pool": {
+    "max_size": null
+  },
+  "scoring": {
+    "backend": "enzyme_cage_wrapper_native_c95",
+    "wrapper_code_root": "/usrdata/EnzymeCAGE_data/workspaces/path_enzyme_microbe_code_review_20261110/review_payload/src_snapshot",
+    "enzymecage_source_root": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master",
+    "weights_package_root": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/enzymecage_v1_20260714",
+    "top_k": 10,
+    "return_ci": true,
+    "native_binding": {
+      "ctx": "main",
+      "paths": {
+        "pkg": "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/five_model_complete_20261103/current95_five_model_complete_prep_20261103",
+        "a109": "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/a109_admission_resume_20261102_run",
+        "c95_dir": "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/five_model_complete_20261103/current95_five_model_complete_prep_20261103/historical/a109",
+        "wrap_pkg_root": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716",
+        "rh_dir": "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/five_model_complete_20261103/current95_five_model_complete_prep_20261103/scripts",
+        "enzymecage_source_root": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master",
+        "merged_cfg": {
+          "main": "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/asset_repair_r3_20261101/output/materialize_main/cfg/c95_3b_merged_config.yaml"
+        },
+        "module_shas": {
+          "wrapper_predictor": {
+            "path": "/usrdata/EnzymeCAGE_data/workspaces/path_enzyme_microbe_code_review_20261110/review_payload/src_snapshot/wrapper/predictor.py",
+            "sha256": "b9877649deea4f929778331453a0f1f4eb73d72529e3f1c4b95d0a56c4ab82d3"
+          },
+          "enzymecage_model": {
+            "path": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/enzymecage/model.py",
+            "sha256": "005037a1d2c063bd7d71b8ff08ed4361c139ba37be3b822c87c8fa2d84890348"
+          },
+          "enzymecage_dataset_geometric": {
+            "path": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/enzymecage/dataset/geometric.py",
+            "sha256": "8415f772f2b4a723c6a2895d74db3b54b28b514c259a1424d2b1e83073657dfb"
+          },
+          "c95_asset_index_ext": {
+            "path": "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/five_model_complete_20261103/current95_five_model_complete_prep_20261103/historical/a109/c95_asset_index_ext.py",
+            "sha256": "ad6a64b6a5a9e0b7e3c025cd5f11cc7b00f01afaa6fabc2109a1846af113df47"
+          },
+          "recovery_helpers": {
+            "path": "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/five_model_complete_20261103/current95_five_model_complete_prep_20261103/scripts/recovery_helpers.py",
+            "sha256": "1a16d5f05fa947d0fbc93a0493bc26b8d6590e88dc93604fab893413290301c8"
+          },
+          "r3_gf_unified": {
+            "path": "/usrdata/EnzymeCAGE_data/workspaces/current95_ngpu32g_20261031/five_model_complete_20261103/current95_five_model_complete_prep_20261103/sources/r3_gf_unified.py",
+            "sha256": "0f7a100920992860ae2d7e78699c90a3ef825e5e9b3bcf3ea5424f38f11945d6"
+          },
+          "enzymecage_wrapper_asset_index": {
+            "path": "/usrdata/EnzymeCAGE_data/EnzymeCAGE-master/HPC_Returned_Result_Summaries/d4b1a_wrapper_hash_relative_path_final_package_correction_20260716/enzymecage_wrapper/asset_index.py",
+            "sha256": "07dceed083aecb5310ac3b208f0a1bca8e147aeb69897908b529045ba30d7d3c"
+          }
+        }
+      }
+    }
+  },
+  "sources": {
+    "backend": "b1_revision1_table",
+    "b1_table": "<path>/B1_UID_SOURCE_MAP_7468.tsv"
+  },
+  "traits": {
+    "dehp_package_root": "<path>/DEHP_AUDITED_TRAITS_FOR_MERGE_20261114/payload/DEHP_AUDITED_TRAITS_FOR_MERGE_20261114",
+    "c8_lookup_index": "<path>/C8_METATRAITS_LOOKUP_INDEX.jsonl"
+  }
+}

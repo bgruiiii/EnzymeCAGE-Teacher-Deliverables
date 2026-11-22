@@ -1,0 +1,35 @@
+# C3-c 方法引用与来源条款：独立复审采用稿（2026-11-20）
+
+采用本目录的表格与引用；原执行回包保留，不作为覆盖本稿的结论。本轮只整理已有五臂身份对应的来源与条款，不改模型、训练、性能或科学分母。
+
+## 可用于方法段的引用文字
+
+五组排序器采用三种已登记蛋白编码器：legacy_esm2_3b为ESM-2 3B（esm2_t36_3B_UR50D，layer36/2560维）；legacy_esmc600m与new_esmc600m为ESM-C 600M（esmc-600m-2024-12，1152维）；current_e0_enzgfm650m与new_enzgfm650m为EnzGFM 650M（Jamba/2048维）。编码器用于既有离线特征抽取；五组训练数据/特征路线与25个排序器checkpoint身份沿已核表保留，不把这些checkpoint当成原PLM权重。
+
+可独立确认的三篇论文为：
+
+- Lin et al., *Evolutionary-scale prediction of atomic-level protein structure with a language model*. Science 379(6637),1123–1130 (2023), DOI **10.1126/science.ade2574**。
+- Wang et al., *An enzyme-specific protein language model for catalytic property prediction*. Nature Communications 17,8760 (2026), online 2026-07-17, DOI **10.1038/s41467-026-75283-3**。
+- Liu et al., *A geometric foundation model for enzyme retrieval with evolutionary insights*. Nature Catalysis 9(2),148–160 (2026), online 2026-02-12, DOI **10.1038/s41929-026-01478-y**。
+
+完整作者信息从Crossref原始JSON生成，见CITATIONS_VERIFIED.bib。EnzymeCAGE官方README原本已写2026年Nature Catalysis条目，但页码是1–13；建议补全卷期页码和DOI，不能仅凭页码称其为预印本引用。
+
+ESM-C须另注明模型ID/版本与官方发布来源。本轮未独立确认专门描述这份2024-12权重的完整论文绑定；当前官方README在ESMC栏目推荐2026预印本 *Language Modeling Materializes a World Model of Protein Biology*，另列ESM3论文与2024代码/权重Zenodo引用。该推荐原文已留存，但不把ESM3论文冒充ESM-C原论文，也不把软件归档当成已核实的第四篇模型论文。
+
+## 来源与条款记录
+
+以下是查到的文件/标签和版本事实，不能合并为所有资产适用同一许可。
+
+1. **ESM-2**：官方代码LICENSE当前为MIT。项目使用的原预训练权重文件唯一位置、字节身份和下载使用时点条款未确认，明确保留UNKNOWN；已有3B排序器checkpoint不能补这个缺口。
+2. **ESM-C**：历史d11cc14d模型卡声明custom non-commercial并链接Cambrian协议；e4d83bc7卡标注mit与other并链接依赖NOTICE。晨羽两快照均解析同一已登记blob（2300275866B）；模型卡字节与指定revision官方raw完全相符。历史权重SHA沿旧独立审计，本轮仅stat与链接检查，没有重哈希2.3GB本体。两个版本的模型卡事实均保留，不从中裁定使用事件适用哪一版。NOTICE列第三方依赖，不因此否定模型卡本身的许可标签。当前SDK代码LICENSE为MIT；项目历史SDK发行物条款仍未逐版本核完。
+3. **EnzGFM**：当前Zenodo记录22042585的许可字段为cc-by-4.0，650M zip的大小和MD5与既有独立部署登记一致；本轮节点stat/config进一步吻合，没有重哈希权重本体。此处记录本轮所见条款，不自动裁定过去使用事件适用条款。实际源码位于历史P0工作区，commit0631099828e1b2aadbfe56751eec5f67a7bfdf0c与旧审计一致，该提交受跟踪文件中未见独立LICENSE，README未见license说明；代码条款保留未核实，不扩大为所有上游版本都没有许可。
+4. **EnzymeCAGE**：当前上游LICENSE与本地原文逐字节一致，SHA256=fb751e466bbc7a82eca82c7b202e751959fd492e2ead782e22f1ec316210460d。标题CC BY-NC 4.0，并有No Commercial Use、No Use in Drug Development or Discovery及Use of Outputs附加段。原文涉及AI Model/Contributions/Derivative Works/Outputs等对象，不能仅因文件位于源码仓库就断言它只约束代码，或当然不适用于项目训练所得checkpoint；也不自动套给所有独立PLM/数据。本轮不作适用范围或重新授权裁定。
+
+Zenodo版本关系：19412283与22042585的conceptrecid均为19412282，文件清单不同。前者是较早版本，后者是我们650M zip登记对应记录。未检查旧zip内容，不能断言其中不含代码/数据，因而本轮不把旧文“代码/数据归档”称法直接判错；方法中准确标明实际权重对应22042585即可。
+
+## 未核项如何进入交接
+
+ESM-2原预训练权重身份；ESM-C历史revision标签/历史SDK条款/专门权重论文绑定；EnzGFM实际源码条款；项目checkpoint及depending副本具体分享范围均逐项留在表内。数据源逐库条款不在本卡范围，本表不提供再分发授权。
+
+上述缺口不等于模型结果有误或需要重训。此次C3-c资料任务按“已证与未证分列”完成；不声称全部许可问题已解决。depending是否采用工具和整合仍由黄老师决定，本次没有改main、发布、发消息或下载权重。
+

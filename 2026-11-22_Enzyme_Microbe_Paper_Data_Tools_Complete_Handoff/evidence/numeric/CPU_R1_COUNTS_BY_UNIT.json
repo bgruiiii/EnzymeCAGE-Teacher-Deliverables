@@ -1,0 +1,60 @@
+{
+ "kind": "R1_COUNTS_BY_UNIT",
+ "utc": "2026-11-22T02:27:05Z",
+ "stageA_legacy600m": {
+  "logical_whole_step_forwards": 100,
+  "underlying_model_forward_batches": 100,
+  "unit": "whole-step pure batch = 1 batch per logical forward",
+  "measured": "worker loop counter"
+ },
+ "stageB_new600m": {
+  "logical_seed_condition_scorings": 2250,
+  "logical_matches_first_package": true,
+  "underlying_model_forward_batches_bounded": 7540,
+  "underlying_plus_wholestep60": 7600,
+  "reconciliation_to_reviewer_7600": "reviewer's 7600 = this card's 7540 (bounded) + 60 whole-step batches; unit-aligned, both SOURCE_DERIVED_EXPECTATION, not runtime counters",
+  "expectation": "SOURCE_DERIVED_EXPECTATION: ceil(n/16) micro-batches per logical pass at max_candidates=16 with frozen padding (helper c95_bounded_forward.forward_dataset); NOT a runtime counter",
+  "ws_layer_logical": 60,
+  "ws_layer_underlying": 60,
+  "warning": "2250 in first-package COVERAGE is a logical whole-step counter (2190 bounded passes + 60 whole-step); it must NOT be read as 2250 physical model.forward calls"
+ },
+ "stageC_enzgfm": {
+  "vector_files": 62,
+  "seed_step_arm_records": 310,
+  "conditions_per_record": 4,
+  "logical_fwd_calls_saved_in_stageC_COVERAGE": 1550,
+  "underlying_batches_each_fwd_is_whole_step_batch1": true
+ },
+ "stageD_tool": {
+  "wrapper_api_attempts": 4,
+  "successful_requests": 1,
+  "model_evaluate_calls_under_successful_requests": 5,
+  "note": "first-package forward_call_count=1 counts the successful rt.predict REQUEST; each request loops the 5 seed models via model.evaluate",
+  "d1_two_typed_reactions": true,
+  "d2_chain_scoring_missing_assets": true
+ },
+ "do_not_sum_across_units": true,
+ "gpu_occupancy_windows": {
+  "stageA": {
+   "wall_seconds_observed_in_log_last_stamp": 18.0
+  },
+  "stageB": {
+   "wall_seconds_observed_in_log_last_stamp": 6351.7
+  },
+  "stageC": {
+   "wall_seconds_observed_in_log_last_stamp": 1001.5
+  },
+  "stageD": {
+   "wall_seconds_observed_in_log_last_stamp": 713.6
+  },
+  "stageD3": {
+   "wall_seconds_observed_in_log_last_stamp": 105.8
+  },
+  "note": "per-stage process wall windows (GPU-locked sections); not summed into a fake physical-second total because stages do not overlap"
+ },
+ "gpu_lock_reality": {
+  "acquisitions": "OUT/gpu.lock was acquired and released SEPARATELY by each stage process (stageA, stageB, stageC, stageD, stageD3) \u2014 four/five independent acquisitions, not one lock held continuously across A..D",
+  "first_package_claim_retracted": "the first-package plan/ledger wording 'one exclusive lock across all stages' was inaccurate; corrected here without modifying the original files",
+  "lock_source_amendment_timeline": "worker/gpu_lock.py was amended after the START freeze (refuse-if-busy -> wait-until-release) and recorded in receipts/START_ENV_SOURCES.json amendments; the original time-narrative mismatch is kept as-is"
+ }
+}

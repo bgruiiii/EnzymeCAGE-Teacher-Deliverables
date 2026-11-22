@@ -1,0 +1,103 @@
+{
+ "task": "ENZYME_HOST_STANDALONE_TOOL_R2_FINAL_BINDING_AND_STATUS_20261119",
+ "date": "2026-11-21",
+ "reviewed_version": "revision3_native_cpu_verified_20261121",
+ "native_cpu_validation": {
+  "pass": true,
+  "parquet_queries": 3,
+  "full_C8_rows": 37170,
+  "model_forward": 0
+ },
+ "independent_validation": {
+  "checks": 24,
+  "all_pass": true
+ },
+ "this_round": {
+  "network_http": 0,
+  "ssh_attempts": 0,
+  "gpu_model_loads": 0,
+  "scnet_submissions": 0,
+  "training": 0,
+  "git_push": 0,
+  "depending_writes": 0
+ },
+ "validation": {
+  "machine_checks": 23,
+  "machine_pass": true,
+  "rows_pass": 23,
+  "report_counts_consistent": true,
+  "failed": []
+ },
+ "r1_identity_vs_audit_baseline": {
+  "files_checked": 30,
+  "mismatch": [],
+  "missing": [],
+  "pass": true
+ },
+ "audit_dir_self_identity": {
+  "files_checked": 6,
+  "pass": true
+ },
+ "first_package_identity": {
+  "pass": true,
+  "mismatch": [],
+  "missing": []
+ },
+ "github_upload_snapshot": {
+  "git_returncode_ok": true,
+  "tracked_changes_in_path": [],
+  "note": "untracked snapshot dir cannot be proven byte-perfect by git alone; vendored parity + INPUTS sha cover what this round actually read"
+ },
+ "vendored_parity_vs_base_copies": true,
+ "layers": [
+  "INTERFACE",
+  "CACHE_REPLAY",
+  "REAL_FORWARD_NOT_RUN"
+ ],
+ "open_items": [
+  "real GPU forward numeric parity on target env",
+  "historical library/current target-environment numerical portability beyond3 CPU queries",
+  "SCNET submission by design not run",
+  "depending integration = Huang-sensei decision"
+ ],
+ "manifests_separated": "INPUTS.tsv (external consumed originals) vs MANIFEST_OUT.tsv (this package files; excludes self/INPUTS/checks)",
+ "deliverables_present": {
+  "README.md": true,
+  "VALIDATION_REPORT.md": true,
+  "CHANGELOG_FROM_R1.md": true,
+  "USER_RESULT_AND_OPEN_ISSUES.md": true,
+  "HANDOFF_FOR_ASTRA.md": true,
+  "PROVENANCE.tsv": true,
+  "INPUTS.tsv": true,
+  "MANIFEST_OUT.tsv": true,
+  "checks.json": true,
+  "tool/enzyme_host_tool/predict.py": true,
+  "tool/enzyme_host_tool/scoring_backends.py": true,
+  "tool/enzyme_host_tool/retrieval_backends.py": true,
+  "tool/enzyme_host_tool/traits_backends.py": true,
+  "tool/enzyme_host_tool/sources_backends.py": true,
+  "tool/enzyme_host_tool/pool.py": true,
+  "tool/enzyme_host_tool/config.py": true,
+  "tool/enzyme_host_tool/schemas.py": true,
+  "tool/enzyme_host_tool/cli.py": true,
+  "tool/enzyme_host_tool/__init__.py": true,
+  "tool/enzyme_host_tool/__main__.py": true,
+  "tool/vendored/copied_old_pipeline.py": true,
+  "tool/vendored/fixed_retrieval_engine.py": true,
+  "tool/examples/pathway_example.json": true,
+  "tool/examples/reaction_example.json": true,
+  "tool/examples/pathway_example_output_cache_replay.json": true,
+  "tool/config_examples/tool_config_cache_replay_example.json": true,
+  "tool/config_examples/tool_config_local_assets.json": true,
+  "tool/config_examples/tool_config_chenyu_example.json": true,
+  "validation/validate_tool.py": true,
+  "internal/validation_results.json": true,
+  "scripts/write_manifest_checks.py": true,
+  "scripts/final_binding_demo.py": true
+ },
+ "required_files_missing": [],
+ "metadata_sha256": {
+  "INPUTS.tsv": "ad416eefeb36acdde5c3f0f0e1a336e3ac6504f6a2c630d0691530878af060b4",
+  "MANIFEST_OUT.tsv": "9c6366957bddde5ffc07221425e0b237fc6b7f417af50d9f2893518caef4bc90"
+ }
+}

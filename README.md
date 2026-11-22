@@ -1,5 +1,11 @@
 # EnzymeCAGE Teacher Deliverables
 
+## 酶与微生物线：师姐任务完整交付 — 2026-11-22
+
+- [统一入口：逐项反馈、原始数据、性状库、工具与验证](2026-11-22_Enzyme_Microbe_Paper_Data_Tools_Complete_Handoff/README.md)
+
+按11月18日任务书收齐原五组成绩与复算、7468候选酶来源、412交叉对应、2478来源性状资料及82路径1100物种的本地MetaTraits查询。独立工具R4完成13/31候选两步真实评分；原数值限制保留，main采用与部署由黄老师决定。
+
 ## 新3B-S10训练与82路径六模型比较
 
 - [给师姐的完整交付文件夹](NEW3B_S10_COMPLETE82_SIX_MODEL_REVIEW/)

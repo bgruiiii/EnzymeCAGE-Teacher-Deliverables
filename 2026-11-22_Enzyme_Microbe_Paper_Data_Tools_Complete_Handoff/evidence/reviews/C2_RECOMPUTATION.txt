@@ -1,0 +1,96 @@
+# RECOMPUTATION — C2 复算对照说明
+
+任务 `ENZYME_HOST_C2_C3_LOCAL_EXPORT_20261118`（2026-11-18）。本地 CPU、标准库；
+脚本 `scripts/export_c2_tables.py`（主导出+复算）、`scripts/build_identity_table.py`（身份表）。
+机器账本：`checks.json`；逐成员/逐文件身份：`SOURCE_MANIFEST.tsv`。
+
+## 1. 输入身份（先核后消费）
+
+| 包 | bytes | SHA256 | 核验 |
+|---|---:|---|---|
+| RETURN_RESULTS_CURRENT95_FIVE_MODEL_COMPLETE_20261103.tar.gz | 49133435 | dbafa789…bbe5 | 与任务卡一致；按成员流式消费 39 个文件，不落全量解压目录（38292 成员不复制） |
+| CURRENT95_FIVE_MODEL_AUDIT_EVIDENCE_20261104_032142.tar.gz | 8719499 | d769212d…c1aa | 与卡一致；2083 文件全量内部 CHECKSUMS 逐体验证（2082 门，CHECKSUMS 自身除外）；`EXPORT_STATUS.original_return_sha256` 绑定上包 SHA；`ORIGINAL_NODE_TENSOR_REGISTRY.json` 与主包 `NODE_TENSOR_REGISTRY.json` 字节相等 |
+| CURRENT95_FIVE_MODEL_AUDIT_EVIDENCE_ADDENDUM_20261104_033520.tar.gz | 2744835 | 2122c420…170d | 与卡一致；6 项内部 CHECKSUMS 通过；`main_archive_sha256` 绑定主证据包 |
+
+成员名带 `./` 前缀：表内 `source_member` 保留归档原名（如 `./EVAL/…`）用于 SHA 追溯；路径安全检查
+拒绝绝对路径/跨目录/重复成员。1910 份 raw 逐份对 `NODE_TENSOR_REGISTRY` 的 bytes+SHA 现场核验通过。
+
+## 2. 复算公式与顺序（与 2026-11-04 原审计一致）
+
+- 正式概率：`p = (sigmoid(logit_seed40)+…+sigmoid(logit_seed44))/5`，逐 seed 各做一次 float64
+  `1/(1+exp(-x))`，按 seed40→44、候选索引 0→n-1 的原审计累加顺序求和后除 5。**未**使用
+  `sigmoid(mean(logit))`、未平均 seed 指标。
+- 排名：p 降序，精确同分按科学 UID 字符串的 SHA256 升序（本轮实测同分相邻对为 0，
+  `equal_prob_tie_pairs_ordered_by_uid_sha=0`，断序规则未被触发但与原审计实现一致）。
+- raw 侧身份现场重验（非引用旧结论）：五 seed 齐全且全 finite；`pool_uids/pool_shas` 与 POOL 步表一致；
+  `asset_uids` 与该臂资产路由列一致；`model_key_sha256 == SHA(model_reaction)`；
+  `output_semantics == RAW_LOGIT_FORWARD_SIGMOID_READOUT_FALSE`（logit 不是概率）；
+  每份 raw 的 `common_context_sha256` 与 10 份 COMMON 的 canonical SHA 一致；25 个 seed checkpoint SHA
+  与 `MODEL_IDENTITIES_27.tsv`/`CHECKPOINTS_25.tsv`/COMMON `locked_ckpt_shas` 三方一致。
+- 指标：每步取第一个 Gold 名次 r，Hit@k = r≤k，MRR = 1/r，MRR@10 单列；
+  `capability_denominator` 1910 步全部为 INCLUDED（原纳入政策照原结果，本轮未剔除任何步）。
+
+## 3. 复算结果（逐项对照）
+
+| 对照项 | 范围 | 结果 |
+|---|---|---|
+| 候选集成概率 | 82240 个（5 臂×382 步×候选） | 与原 RANKINGS `ensemble_prob_float64` **逐项绝对差全部为 0**；maxdiff=0.0，nonzero_count=0 |
+| 完整排名/身份 | 82240 行 | UID、序列 SHA、rank、gold_flag 对 POOL+EVAL_LABELS 重排后逐项一致；mismatch=0 |
+| 逐步指标 | 1910 步 | 与发布 `PER_STEP_METRICS_SEQ_LEVEL`（gold_ranks 串、best_gold_rank、Hit、MRR、MRR@10）及原审计 `FINAL_RAW_STEP_METRICS_1910.tsv` 全部一致；mismatch=0 |
+| 五组 382 汇总 | 5 组 | Hit@1/3/5/10 计数与 MRR/MRR@10 字符串与 `FIVE_MODEL_RESULTS_RAW_VERIFIED.tsv` **逐字节相等**（表 2 `ALL_SCORED382`） |
+| 五组 338 子集 | 5 组 | 与既有子集表 `figure_tables_82path_20261104/topk_counts_5_models.csv`、`mrr_5_models.csv` 逐值一致（MRR 绝对差 0）；子集按 `PATH_COVERAGE_RECOMPUTED_95.tsv` complete=True 的 82 题联筛，恰 338 步，未重挑 |
+| 分母对账 | 同一固定池 | 382 步×5=1910 raw；候选关联 16153+295=16448；唯一科学 UID 7468；Gold 关联 822+19=841；完整路径子集 82 路径/338 步/14396 关联/7056 UID/739 Gold |
+| 排除政策 | 12 UID/24 关联 | 未回到池（`excluded_background_links_absent_from_pool=true`） |
+| UID 序列异常 | 7468 UID | 无同 UID 多序列 SHA 异常（`uid_multi_sequence_anomalies=[]`） |
+| pathway 关联 | 382 步 | case→pathway_id 全部在 `G2_questions/main_cases.jsonl` 命中，无缺口 |
+
+浮点口径：数值以 Python float64 最短往返表示（`repr`）写入表 3；因计算顺序与原审计一致，未出现舍入差，
+无需解释性容差。1910 raw（步骤×臂文件）/9550（步骤×seed 向量）/82240（候选均值）为三个不同计数单位，
+不可混称"模型数"或"独立酶数"。
+
+## 4. 交付表单位
+
+- 表 1 `STEP_CANDIDATE_RANKINGS.tsv.gz`：一行 = arm×步骤×科学候选，82240 数据行；含师姐要求的
+  pathway/case/step/reaction、科学 UID/序列 SHA/该臂 asset UID、rank、集成概率、Gold/标签、
+  步级 n_gold/best_gold_rank/Hit@k/MRR/MRR@10、`in_complete82`、来源成员名与整文件 SHA。
+  `label_class` 保持原导出统一值 `UNLABELED_CANDIDATE`（含 Gold 行），参考命中层由 `gold_flag` 表达，
+  未改写。
+- 表 2 `FIVE_MODEL_SUMMARY.tsv`：arm×view 10 行（`ALL_SCORED382`、`COMPLETE82_STEP338`），
+  各 view 自带候选/UID/Gold 计数，数值限制逐臂标注在 `numeric_quality_note`。
+- 表 3 `ENSEMBLE_PROBABILITY_TRACE.tsv.gz`：一行 = arm×步骤×候选（82240，非一 seed 一行的 411200），
+  含 5 个 raw logit、5 个逐 seed sigmoid 概率、均值、发布值、逐项差、5 个 checkpoint SHA、COMMON SHA、
+  raw 成员名与 SHA——可脱离原包独立复算概率与排名。
+- `PATH_COVERAGE_RECOMPUTED_95.tsv`：原审计 95 路径流失表**字节复用**（SHA 654a165c…e0c2 与原件相同），
+  不伪装成新计算。required 合计 396、scored 合计 382、missing 列 14 步；95 路径/411 原步骤出现口径见
+  `CURRENT95_CAP100_GOLD_PRESERVED_POOL_20261101/README.md`，两口径并存如实报。
+
+## 5. 保留的原始限制（不因精确复算而删）
+
+1. 五方同候选/同顺序/同参考 ≠ 所有模态特征值一致：旧 600M legacy 口袋定义、两 EnzGFM 少量特征路由
+   差异仍在（E0 vs S10 口袋值 SHA 差 290 处/101 UID；旧 600M vs 600M-S10 口袋 16448 处等，见差异 README）。
+2. 原严格数值门未全部无条件通过：旧 600M 1e-5 replay、ESMC 救援批 0.05 影响界、EnzGFM batch/padding
+   敏感性照原审计披露；50 份生产 smoke 判定按原记录保留。
+3. NC2/NC2b/NC6c 曾用 mean logit 的稳定性结论不能替代生产 mean sigmoid 集成；A/B 逐 seed 控制向量
+   未留存；本轮未开 GPU 补证。
+4. 两份旧准入说明正文覆写不可恢复，保留已知缺失，不用新文档替旧 SHA。
+5. 成绩为固定池条件排序（见 C3-a），宿主/性状无验证金标。
+6. C1 部署现状待晨羽现场核查，本导出仅整理现成结果。
+
+## 6. 零新增操作与原件未改
+
+`checks.json`：`new_model_forward_calls=0`、`gpu_used=false`、`network_used=false`、`api_calls=0`、
+`pickle_or_training_code_imported=false`。`audit_final_evidence.py` 未被执行/导入（只读复用其算法）。
+三包与全部审计原件只读；三包 SHA 运行前后复核对账一致（见 HANDOFF 第 0 节）。新增文件仅在 OUT 目录。
+
+## 7. 重放方法
+
+```bash
+python3 -B scripts/export_c2_tables.py     # 重建表1/2/3、B1两索引、流失表副本、SOURCE_MANIFEST、checks.json
+python3 -B scripts/build_identity_table.py # 重建 FIVE_MODEL_IDENTITY.tsv（断言三方checkpoint一致性）
+```
+两脚本只读输入、只写 OUT，重复运行可复现表格内容；gzip头部含时间戳，压缩文件SHA不据此声称逐字节相同。
+
+
+## 2026-11-18 Astra导出字段窄修
+
+独立复算确认82240个概率、1910步排名/命中/MRR和10行汇总正确；发现表1的`n_gold`在候选循环内被写成“目前已遇到Gold的累计数”。已改为该步骤的Gold总数，28914行涉及该字段，1718个arm×step分组受影响。其余字段逐行未变，B1两索引和五组结果未变。导出脚本同步修复；修改前文件在`04_Local_Review_Audits/ENZYME_HOST_C1_C2_C3_RETURN_REVIEW_20261118/before_n_gold_fix/`留档。表3不受影响。
