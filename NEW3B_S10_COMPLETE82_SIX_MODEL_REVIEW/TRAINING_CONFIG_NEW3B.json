@@ -1,0 +1,47 @@
+{
+  "config": {
+    "amp": false,
+    "batch_size": 256,
+    "best_rule": "max validation macro reaction AUC, strict > (first max wins)",
+    "ddp": false,
+    "loss": "weighted BCEWithLogitsLoss, weight all-ones",
+    "lr_init": 0.0003,
+    "num_epochs": 20,
+    "optimizer": "Adam",
+    "plm_dim": 2560,
+    "plm_model": "esm2_t36_3B_UR50D",
+    "pocket_inner_interaction": true,
+    "pretrain_model": null,
+    "random_init": true,
+    "rxn_inner_interaction": true,
+    "scheduler": "0.95**epoch",
+    "sigmoid_readout": false,
+    "use_drfp": true,
+    "use_esm": true,
+    "use_gradient_accumulation": false,
+    "use_prods_info": false,
+    "use_structure": true,
+    "warm_start": false,
+    "weight_col": null
+  },
+  "data": {
+    "total_labeled_rows": 755828,
+    "positives": 112245,
+    "constructed_negatives": 643583,
+    "directed_reactions": 5770,
+    "split_groups": 5452
+  },
+  "seeds": [
+    40,
+    41,
+    42,
+    43,
+    44
+  ],
+  "protein_feature_layer": 36,
+  "protein_feature_dimension": 2560,
+  "random_ranker_init": true,
+  "plm_finetuned": false,
+  "selection": "first strictly maximal validation macro reaction AUROC; no external selection",
+  "warning": "weighted BCE function uses all-one weights; scores are not calibrated biochemical probabilities"
+}
