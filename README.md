@@ -1,18 +1,10 @@
 # EnzymeCAGE Teacher Deliverables
 
-## 基模参数10题单档与工程恢复阶段反馈 - 2026-11-20
+## 基模生成参数与输出预算：统一报告
 
-- [给黄老师的最新审阅报告](2026-11-20_BIOSYSMODB121_Parameter_Pilot10_Engineering_Recovery/REPORT_TO_HUANG.md)
-- [六配置、60题位、费用与Kimi通道说明](2026-11-20_BIOSYSMODB121_Parameter_Pilot10_Engineering_Recovery/README.md)
+- [给黄老师的统一阶段报告](BASE_MODEL_PARAMETERS_REPORT_TO_HUANG.md)
 
-实际执行10题单档，不是此前20题提案或原40题多档验收。pilot53次POST取得五线50份结构有效答卷，Kimi10题未发；原始有效47与恢复视图分开。程序reaction命中不等于完整科学正确，预算非劣、最小预算及输入公平性仍未验收。只新增白名单汇总，不新增原始答卷、Gold、思考/SSE或凭据。
-
-## 基模生成参数初步试验阶段反馈 — 2026-11-19
-
-- [给黄老师的审阅版阶段回应](2026-11-19_BIOSYSMODB121_Parameter_Early_Stage_High_Low/REPORT_TO_HUANG.md)
-- [同题high/low、六模型进展和费用口径](2026-11-19_BIOSYSMODB121_Parameter_Early_Stage_High_Low/README.md)
-
-Token Plan GLM同题仅改effort：high思考131070且长度空答，low思考982、33.66秒完整schema有效。仅单题各一次、科学质量未评；累计4次生成后停止，40题pilot未执行，不是最优预算或非劣结论。本目录只发布阶段报告与白名单汇总，不新增原始答卷/思考文本/凭据。
+本任务只保留这一个阅读入口。正文含原要求逐项回应、必要单题验证、10题单档、3题双档与恢复、GPT/Grok诊断、Kimi阻塞、统一费用及未完成项；无需跳转旧阶段报告。额度受限的阶段测试已收口，原40题完整验收尚未完成。
 
 ## 六基模思考用量与正文长度 — 2026-11-18
 
