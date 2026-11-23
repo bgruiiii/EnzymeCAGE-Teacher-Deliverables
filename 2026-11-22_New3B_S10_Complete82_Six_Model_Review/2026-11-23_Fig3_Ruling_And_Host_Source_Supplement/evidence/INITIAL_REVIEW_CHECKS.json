@@ -1,0 +1,158 @@
+{
+  "decision": "NUMERIC_A_FIG3AB_ACCEPTABLE_B_D_REQUIRE_TARGETED_REVISION_NO_NEW_EXPERIMENT",
+  "checks": {
+    "return_manifest": {
+      "pass": false,
+      "detail": {
+        "files": 46,
+        "bad": [
+          "RUN_END_UTC.txt"
+        ]
+      }
+    },
+    "all_36_original_inputs_unchanged": {
+      "pass": true,
+      "detail": {
+        "files": 36,
+        "drift": []
+      }
+    },
+    "denominator_set_equations": {
+      "pass": true,
+      "detail": {
+        "scored": 382,
+        "complete_view_steps": 338,
+        "other_scored": 44,
+        "kept_difference": 34,
+        "excluded_in_other44": 10,
+        "unscored_reasons": {
+          "CHEMICAL_REPRESENTATION": 6,
+          "NO_CONSUMABLE_REFERENCE_ENZYME_ASSET": 8
+        }
+      }
+    },
+    "411_membership_flags_against_original_sets": {
+      "pass": true,
+      "detail": 411
+    },
+    "integer_rank_recomputation_all2292": {
+      "pass": true,
+      "detail": 2292
+    },
+    "fig3a_all60_independent_direct_path_resampling": {
+      "pass": true,
+      "detail": {
+        "rows": 60,
+        "max_error": 8.326672684688674e-17
+      }
+    },
+    "fig3b_all72_independent_direct_path_resampling": {
+      "pass": true,
+      "detail": {
+        "rows": 72,
+        "max_error": 3.3306690738754696e-16
+      }
+    },
+    "V6_all382_graph_matches_and_ids_independently_recomputed": {
+      "pass": true,
+      "detail": {
+        "V6_rows": 298,
+        "hit_steps": 12,
+        "same12_in_338": true,
+        "same12_in_original_primary228": true
+      }
+    },
+    "sixth_masks_sets_not_only_counts": {
+      "pass": true,
+      "detail": {
+        "V6_ONLY_FROM_ORIGINAL_VIEW|ALL_SCORED382": 370,
+        "V6_ONLY_FROM_ORIGINAL_VIEW|COMPLETE82_STEP338": 326,
+        "PRIMARY_PAIR_EXCLUDED_PLUS_V6|ALL_SCORED382": 250,
+        "PRIMARY_PAIR_EXCLUDED_PLUS_V6|COMPLETE82_STEP338": 216
+      }
+    },
+    "V1_sixth_metric_appendix_24_rows": {
+      "pass": true,
+      "detail": {
+        "rows": 24,
+        "max_error": 4.996003610813204e-16
+      }
+    },
+    "derived_UID_source_fields_equal_B1": {
+      "pass": true,
+      "detail": 7468
+    },
+    "B_separates_unidentified_species_labels": {
+      "pass": false,
+      "detail": {
+        "unidentified_UIDs_marked_accepted": 22,
+        "record_level_base": 5601,
+        "identified_microbe_base": 5579
+      }
+    },
+    "V1_coverage_numeric_values_match_stated_broad_trace_definition": {
+      "pass": true,
+      "detail": {
+        "rows": 11760,
+        "bad": []
+      }
+    },
+    "coverage_label_matches_requested_usable_microbe_definition": {
+      "pass": false,
+      "detail": {
+        "step_arm_k_rows_differing": 596,
+        "reason": "delivered judgementB counts non-microbe sources and unidentified labels; V2 says do not use those as recommended species"
+      }
+    },
+    "machine_expected_counts_consistent": {
+      "pass": false,
+      "detail": {
+        "declared_expected": 132,
+        "actual": 84,
+        "author_counts_match_boolean": true,
+        "effect": "collection metadata only; independent actual rows verified"
+      }
+    }
+  },
+  "all_checks_pass": false,
+  "findings": [
+    {
+      "id": "F01",
+      "severity": "MATERIAL",
+      "topic": "B unidentified sources",
+      "action": "Keep database-trace and accepted-scope columns; add explicit unidentified-label state and usable-species column; 22 affected UID records; no B1 rewrite."
+    },
+    {
+      "id": "F02",
+      "severity": "MATERIAL",
+      "topic": "B coverage archive interpretation",
+      "action": "Do not offer broad-source coverage as final usable-microbe B. Mark V1 tables as broad-trace appendix; sister computes final coverage using corrected derived field; no need to rerun coverage."
+    },
+    {
+      "id": "F03",
+      "severity": "MATERIAL",
+      "topic": "D export schema source mapping",
+      "action": "Separate candidate recall provenance from B1 biological-source evidence and model-scoring status. Candidate recall route is in R4 PoolCandidate.provenance_records, not in B1/T2; add full-rank typed failures, no-Gold state, runtime mode/run_id, trait backend errors."
+    },
+    {
+      "id": "N01",
+      "severity": "CLOSEOUT",
+      "topic": "Checks predicate",
+      "action": "Fix actual 3c count 84 vs expected132 and remove tautological E check. Rebuild manifest after targeted repairs; no numerical rerun needed."
+    },
+    {
+      "id": "N02",
+      "severity": "WORDING",
+      "topic": "C release authority",
+      "action": "Request authorization for agreed integration branch and maintainer merge/deployment; 2-day estimate conditional. Version hashes are historical snapshots, not fresh observation of current main."
+    },
+    {
+      "id": "N03",
+      "severity": "WORDING",
+      "topic": "E EnzGFM split",
+      "action": "10 steps/140 candidate-rank changes and19/411 describe rank changes; Top1 changes were2 steps in new arm, not all10/19. Use exact existing review wording."
+    }
+  ],
+  "model_GPU_calls": 0,
+  "original_return_modified": false
+}

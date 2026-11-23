@@ -1,0 +1,138 @@
+{
+ "SCHEMA_ONLY": true,
+ "note": "field protocol example, NOT a real chain. The two steps verified in R4 (BIOPATH150_001__S02__BSY-r00595 and BIOPATH150_013__S03__BSY-r00201) belong to DIFFERENT pathways and must never be stitched into one pollutant case.",
+ "case": {
+  "case_id": "<PATHWAY_ID>",
+  "pollutant_query_smiles": "<original>",
+  "steps": [
+   {
+    "step_order": 1,
+    "direction": "forward",
+    "rt_id": "RT-<16hex>",
+    "original_query_smiles": "<>",
+    "model_query_smiles": "<step own target>",
+    "model_key_sha256": "<>",
+    "candidates_top_k": [
+     {
+      "rank": 1,
+      "scientific_uid": "<>",
+      "sequence_sha256": "<>",
+      "ensemble_prob_float64": "<mean of five seed probabilities>",
+      "ci_2.5_97.5": [
+       "<>",
+       "<>"
+      ],
+      "gold_flag": "<TRUE/FALSE>",
+      "label_class": "UNLABELED_CANDIDATE",
+      "score_disclosure": "<full prefix kept; no Gold deletion/refill>"
+     }
+    ],
+    "n_candidates_pool": "<int>",
+    "n_gold": "<int>",
+    "best_gold_rank": "<int or 0>",
+    "source_evidence_family": {
+     "binding_kind": "<B1 column>",
+     "stage": "<source_stage>",
+     "authoritative_source_key": "<>",
+     "lookup_status": "<FOUND|FOUND_SOURCE_SET|NO_HIT|IDENTITY_CONFLICT>"
+    },
+    "host_identity": {
+     "species_taxid": "<or empty>",
+     "species_name": "<>",
+     "strain_annotations_json": "<as-is>",
+     "in_microbe_scope": "<true|false|UNRESOLVED>"
+    },
+    "traits": {
+     "slots": "<per C8 layer>",
+     "observed_available_n": "<int>",
+     "prediction_reused_n": "<int>",
+     "missing_n": "<int>",
+     "identity_only_n": "<int>"
+    },
+    "provenance": {
+     "ranking_artifact_sha256": "<>",
+     "b1_row_ref": "<scientific_uid>",
+     "run_utc": "<>"
+    },
+    "axis_A_recall_basis": {
+     "retrieval_status": "OK",
+     "retrieval_mode": "fixed_r3",
+     "recall_repr_used": "<...>",
+     "groups_top10": [
+      {
+       "rank": 1,
+       "reaction_cd": "<>",
+       "similarity": "<float>",
+       "exact_same_direction_retrieval_repr": "<true|false>",
+       "undirected_key": "<>",
+       "group_cds": [
+        "<>"
+       ],
+       "associated_pairs": "<int>"
+      }
+     ],
+     "candidate_provenance": {
+      "provenance_records": [
+       {
+        "source_datasets": "<pair-table column>",
+        "accessions": "<...>",
+        "evidence_tiers": "<pair-table column, e.g. replay_only>"
+       }
+      ],
+      "sources": [
+       "<tokens>"
+      ],
+      "evidence_tiers": [
+       "<tokens>"
+      ]
+     },
+     "availability_note": "IN_TOOL_ON_RUN; for frozen-pool verification runs mark NOT_AVAILABLE_IN_R4_VERIFICATION"
+    },
+    "axis_B_source_binding": {
+     "source_status": "<FOUND|FOUND_SOURCE_SET|NO_HIT|IDENTITY_CONFLICT>",
+     "authoritative_source_signature": "<>",
+     "source_resolution": "<>",
+     "species_identity_state": "<IDENTIFIED_SPECIES|UNIDENTIFIED_PLACEHOLDER_LABEL|...>",
+     "identified_microbe_source_for_followup": "<TRUE|FALSE>",
+     "strain_layers": {
+      "original_strains": "<as-is>",
+      "proteome_linked_strains": "<as-is>",
+      "representative_registration_coverage": "<separate>"
+     },
+     "evidence_ids": [
+      "<>"
+     ],
+     "evidence_source_file": "<B1 file identity>",
+     "evidence_row_key": "<file+uid>"
+    },
+    "axis_C_scoring_state": {
+     "execution_mode": "REAL_FORWARD|CACHE_REPLAY|TEST_ONLY",
+     "scoring_status": "<outcome.status>",
+     "forward_executed": "<bool>",
+     "api_successful_requests": "<int>",
+     "all_candidate_scores_full": [
+      "<ScoredCandidate with FULL rank + ci>"
+     ],
+     "ranked_topk_prefix": [
+      "<display slice>"
+     ],
+     "not_evaluated": [
+      "<typed>"
+     ],
+     "scores_not_disclosed": [
+      "<typed>"
+     ],
+     "gold_state": {
+      "kind": "PRESENT|ABSENT",
+      "n_gold": "<int>",
+      "best_gold_rank": "<int, only when PRESENT>",
+      "note_absent": "GOLD_NOT_AVAILABLE — no registered reference; NOT a claim that candidates are wrong"
+     }
+    }
+   }
+  ],
+  "unmatched_steps_kept": "mandatory; never cherry-picked"
+ },
+ "export_mode_note": "run_id/RT-ID are export-layer contract fields; RT-ID requires C wiring",
+ "R4_raw_coverage_note": "axis-C full scores/provenance exist in the two attempt6 RAW files; axes A/B come from tool runs with retrieval+sources+traits attached, NOT from those RAW files alone"
+}

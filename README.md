@@ -9,6 +9,7 @@
 ## 新3B-S10训练与82路径六模型比较
 
 - [给师姐的完整交付文件夹](2026-11-22_New3B_S10_Complete82_Six_Model_Review/)
+- [图3裁定及宿主线追加请求A–E补件（已复审）](2026-11-22_New3B_S10_Complete82_Six_Model_Review/2026-11-23_Fig3_Ruling_And_Host_Source_Supplement/README.md)
 - [11月23日外测与S10配对重叠审计及228步主结果](2026-11-22_New3B_S10_Complete82_Six_Model_Review/2026-11-23_S10_External_Gold_Pair_Overlap_Audit/README.md)
 
 新3B采用冻结S10数据训练下游排序器，五seed各20轮；报告含82路径338步的六组比较、121→95→82逐路径筛选账、必要输入/资产阻塞、路径级诊断与审计限制。口袋行序修正后成绩已独立复算；最新CPU补件的全来源验收仍待独立复审，不预定新模型赢家。

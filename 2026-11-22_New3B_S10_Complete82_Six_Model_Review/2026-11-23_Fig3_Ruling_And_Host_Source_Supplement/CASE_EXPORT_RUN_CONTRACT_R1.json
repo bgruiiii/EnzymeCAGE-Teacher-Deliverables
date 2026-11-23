@@ -1,0 +1,35 @@
+{
+ "run_id": "<export-layer generated uuid>",
+ "started_utc": "...",
+ "ended_utc": "...",
+ "mode_evidence": {
+  "scoring_status": "OK -> REAL_FORWARD if backend_kinds.scoring in {enzyme_cage_wrapper, enzyme_cage_wrapper_native_c95}; OK_CACHE_REPLAY -> CACHE_REPLAY; TEST_DOUBLE -> TEST_ONLY",
+  "forward_executed": "batch_shape.forward_executed true/false",
+  "api_successful_requests": "runtime.forward_call_count",
+  "model_evaluate_calls": "source-derived 5 per request (wrapper loops five seed models)"
+ },
+ "step_fields": [
+  "step_order",
+  "direction",
+  "rt_id(REQUIRES_C_WIRING)",
+  "reaction_smiles_original",
+  "model_query_reaction",
+  "query_representation_source",
+  "model_key_sha256",
+  "pool_status",
+  "pool_candidates[]",
+  "all_candidate_scores[]",
+  "ranked_topk[] (separate slice)",
+  "not_evaluated[]",
+  "scores_not_disclosed[]",
+  "gold_state: {PRESENT|ABSENT_GOLD_NOT_AVAILABLE}",
+  "hosts[] (axis B)",
+  "traits[] (backend statuses)",
+  "provenance{source_member,sha256,run_utc}"
+ ],
+ "honesty_notes": [
+  "R4 RAW = fixed-pool scoring evidence of TWO steps from DIFFERENT pathways; not one pollutant chain",
+  "cache example outputs keep synthetic labels; never relabeled as real",
+  "unmatched/unscored steps preserved; no zero-fill; no candidate deletion/refill after Gold"
+ ]
+}

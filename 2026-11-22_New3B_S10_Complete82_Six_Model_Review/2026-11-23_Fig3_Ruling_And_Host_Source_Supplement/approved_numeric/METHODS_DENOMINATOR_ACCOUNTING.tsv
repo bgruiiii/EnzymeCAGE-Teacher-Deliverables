@@ -1,0 +1,13 @@
+stage	unit	count	rule	set_sources	usage
+原95路径展开步骤出现	step	411	95条Current95路径的全部step occurrence（同一冻结键集，四视图一致）	STEP_LEDGER_411==STEP_SCOPE_411==OLD_MASKS universe==R4 STEP_STATUS_411_FORMAL_R4	Methods/对账
+policy豁免	step	15	9个stereo_omitted_9 ∪ 6 TRANSPORT（互斥）	STEP_LEDGER_411.stereo_exempt/transport_exempt	解释411→396
+required	step	396	411−15	STEP_LEDGER_411.required==411−(stereo∪transport)	路径完整性判定基
+scored	step	382	required中实际有评分结果	STEP_LEDGER_411.scored；396−14	382视图（ALL_SCORED382）
+missing(未评分required)	step	14	6化学表示BLOCKED+8 READY等参考资产	MISSING_REQUIRED_STEPS_14	SI缺失原因表
+338视图	step	338	82条政策完整路径的评分步骤	ledger.in_scored338；⊆382	原政策完整视图
+44=382−338	step	44	13条不完整路径中已评分的步骤（进入382、不进338）	scored−in338按路径并集	解释两视图差
+主228	step	228	338−110（PRIMARY train Gold-UID正配对命中步骤）	OLD_MASKS[COMPLETE82_STEP338].PRIMARY.kept	图3主口径
+补充262	step	262	382−120（同一规则作用于382视图）	OLD_MASKS[ALL_SCORED382].PRIMARY.kept	补充视图
+262−228=34	step	34	44步中10被PRIMARY排除、34保留	集合差验证	解释228/262关系
+228 cohort	step×uid	8594	4893唯一候选UID/437步骤×Gold	OLD_COHORT_COUNTS	单位不可互换
+262 cohort	step×uid	10049	5282唯一候选UID/521步骤×Gold	OLD_COHORT_COUNTS	单位不可互换
