@@ -1,0 +1,14 @@
+requirement_id	teacher_section	teacher_requirement	actual_evidence	status	remaining_or_limit
+SCOPE	开头	仅生成参数/输出预算，不改评分口径	冻结G3与Gold保留，无新AI judge	DONE_WITH_SCOPE_LIMIT	题面信息量公平性是另案，未解决
+QWEN	§3/4/6	budget36864/cap131072；24576/32768/36864/无上限四档	新增098/103同窗两题双档4答卷；命中分别2/4与1/3，两档相同；合计输出少17.0374%，一题增一题减	PARTIAL_WITH_NEW_NONFLOOR_PAIRED2	未达本次20%用量目标；样本2对不能证非劣；32768/无上限/40题仍未做
+DEEPSEEK	§3/4/6	effort high、max_completion_tokens131072；cap/schema对照	10份有效答卷，含工程恢复	PARTIAL	缺充分cap对照；未触顶不证明硬cap
+GLM	§4/6	low/high pilot；low/high/max；low仍>120k才考虑5.2/剔除	当前TokenPlan high样本交付不稳；暂停作为可靠质量对照，low与历史有效答卷保留	HIGH_COMPARATOR_SUSPENDED_SCOPE_BOUNDED	不是修复通过或模型科学失败；low长思考换模预案未触发；max/正式非劣未做
+KIMI	§3/4/6	同exact K3 high/max、cap131072，检查high是否<80k	OpenCode Go kimi-k3 max两题完整交付；旧TokenPlan型号阻塞单列；未以K2/K3.1替代	GO_MAX_FORMAL2_DONE_HIGH_AND_DIRECT_NOT_DONE	high未获当前Go支持证据；Moonshot官方直连未执行，不能称老师指定通道已完成
+GROK	§4补充2/6	核字段/usage并修cap映射，确认生效后统一131072	8192请求与回显、completed output33032反例；裁定该入口不承诺硬总预算	HARD_TOTAL_CAP_NOT_GUARANTEED_SCOPE_BOUNDED	执行/记账根因未定位；不是机制修复通过，不推翻其他有效答卷
+GPT	§4补充3/6	不加预算，检查strict/schema	012单次原/strict双校验，reaction3/7；cap65536不变	DIAGNOSTIC_DONE_VALIDATION_PARTIAL	无同期原生随机对照；失败率下降/服务端强制未证
+HEADROOM	§3/4/8	C=B+R，R>=2倍正文P99，C不超过模型最大输出	参数已按路由配置；effort软目标，Grok有反例，GLM high仍空答	NOT_FULLY_VERIFIED	不能宣称所有路由充分留出2倍P99余量
+FAILURES	§5	分类日志；UNKNOWN恢复留原件；LENGTH_EMPTY是配置失败非科学错	新增098发网络前worker崩溃占1槽；A方案扩展后两题成功，原失败/4GET含网络失败保留	BOUNDED_RECOVERY_CLOSED_WITH_TRACEABILITY_LIMITS	新增队列与commit旧SHA不一致；扩展事前授权时间未独立证明；不倒签、不追认全链PASS
+PILOT40	§6	40题按Gold3/4/5步与思考四分位分层，完整档位预登记	老师11-22明确暂不开40题；已做定向两题Qwen配对与Kimi新渠道单列诊断	NOT_DONE_PAUSED_PER_TEACHER_V2	暂停理由包含测量条件，不再仅写额度不足；未取消原验收要求
+DECISION	§6	逐题reaction配对bootstrap10k；无上限基线CI下界>-5pp；完成率100%，最小预算	旧地板配对与新非地板2对分开；未正式非劣、未选最小预算	NOT_DONE_NO_MINIMUM_BUDGET_SELECTED	无完整max/无上限基线；两题同分不证明质量不降
+FAIRNESS	§7	充分预算能力口径或32k硬控等资源口径，不混用名义cap	按路由/实际usage报告；Go max和TokenPlan预算臂不混成等资源；评分不改	REPORTING_DONE_EXPERIMENT_NOT_ACCEPTED_WITH_UNKNOWNS	名义cap不代表相同资源；输入信息量/内部搜索及旧G3表示差异限制保留
+PRIORITY	§8	先保正文余量，GLM low/high优先	两个协议裁定、Qwen定向双档、Kimi Go单列补测均已给出阶段结果	V2_BOUNDED_ACTIONS_REPORTED_NOT_FULL_ACCEPTANCE	不称全部任务完成；Moonshot直连/high与正式决策仍未完成

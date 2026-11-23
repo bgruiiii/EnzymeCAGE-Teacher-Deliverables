@@ -1,27 +1,35 @@
-# 基模参数与输出预算：统一阶段交付
+# 基模参数任务：统一交付资料
 
-更新：2026-11-23。回应黄老师v2反馈的审阅交付包。GitHub沿用现有 `2026-11-22_Base_Model_Parameters_Teacher_Review` 文件夹，不另建分散入口。
+更新：2026年11月22日。本文件夹整合此前全部参数测试阶段；对外只需转发本文件夹链接。
 
-**先读 [给黄老师的统一反馈](REPORT_TO_HUANG.md)。** 本轮只收口现有证据，不新增调用、不修评分、不启动40题。
+**请先读 [给黄老师的统一报告及40题继续派发请示](REPORT_TO_HUANG.md)。** 报告含原任务逐项回应、全部测试结果、费用、未完成项及请老师裁定的问题。
 
-当前结论：Qwen新两题双档全部交付，低档合计少约17%总输出，但一题增加、一题减少，不能证明普遍省量或质量非劣；Kimi-K3在OpenCode Go完成两题max单档，原“所有渠道都不可用”的说法已不适用，但high与Moonshot直连仍未做。GLM high暂停可靠质量对照，Grok本入口不承诺硬总预算，这两项是范围受限裁定，不是机制修复验收。
+目前结论：额度受限的阶段测试已收口，原40题完整多配置验收尚未完成。API额度限制与Kimi-K3 Token Plan通道阻塞已明确披露；未把失败或未发题算作科学零分，未继续扩量。
 
-| 文件 | 内容 |
+## 核查表格
+
+| 材料 | 内容 |
 |---|---|
-| [统一报告](REPORT_TO_HUANG.md) | v2三项要求、结果、费用、限制与请老师裁定的问题 |
-| [当前13项对照](TEACHER_REQUIREMENT_RESPONSE.tsv) | 不把未完成改成完成 |
-| [Qwen新两题配对](QWEN_PAIRED2_RESULTS.tsv) | 4份新答卷，按题保留两档差异 |
-| [Kimi正式两题](KIMI_FORMAL2_RESULTS.tsv) | 2份有效答卷，独立于Qwen及旧百炼Kimi |
-| [当前83槽逐项账](CALL_ACCOUNTING_83_CURRENT.tsv) | 75旧槽+8新槽，不等于83个成功HTTP请求 |
-| [当前分阶段账](CALL_ACCOUNTING_BY_PHASE_CURRENT.tsv) | 币种、参考价、已观察费用分别列 |
-| [机器可读当前终态](CURRENT_FINAL_STATE.json) | 当前83槽、费用与验收状态的唯一顶层视图 |
-| [8笔旧未知预留](UNKNOWN_COST_RESERVATIONS.tsv) | 原位继承，不因新答卷成功清零 |
-| [Kimi补发追溯](KIMI_RECOVERY_TRACEABILITY.tsv) | 明示旧/新队列SHA不一致和授权时序限制 |
-| [更正与边界](CORRECTIONS_AND_LIMITS.md) | 不倒签、不改旧commit，不夸大cap或科学结论 |
-| [审计摘要](AUDIT_SUMMARY.json) | 原始流、schema、旧G3复核范围及保留项 |
-| [11月22日历史包](history_20261122/README.md) | 原75槽、10题单档、3题双档和诊断原样留存；只代表旧时点 |
-| [校验清单](SHA256SUMS) | 本候选目录全部其他常规文件SHA256 |
+| [原要求逐项对照](TEACHER_REQUIREMENT_RESPONSE.tsv) | 13项原要求、完成情况和剩余边界 |
+| [10题配置](PILOT10_CONFIGURATION_6.tsv) | exact模型ID、通道、实际参数及搜索控制限制 |
+| [10题模型汇总](PILOT10_ARM_SUMMARY_6.tsv) | 五线50份有效、Kimi10位未发；原始/恢复数分列 |
+| [10题逐题状态与评分](PILOT10_CASE_RESULTS_60.tsv) | 60题位、实际attempt、命中分母、交付状态 |
+| [早期GLM005 high/low](EARLY_GLM_HIGH_LOW_COMPARISON.tsv) | 同题请求仅effort不同；high顶满、low有效 |
+| [双档原轮6对](PAIRED3_ORIGINAL_RESULTS_6.tsv) | 原14次中的主试验配对，unknown/格式失败保留 |
+| [双档恢复后6对](PAIRED3_RECOVERED_RESULTS_6.tsv) | 不覆盖原轮；跨日、格式失败及high空答显式列出 |
+| [GPT/Grok诊断](GPT_GROK_DIAGNOSTICS.tsv) | strict一次正向观察与8192总cap反例 |
+| [分阶段费用](CALL_ACCOUNTING_BY_PHASE.tsv) | 4+53+14+4计数及分币种费用口径 |
+| [75次逐attempt费用账](CALL_ACCOUNTING_75.tsv) | 观察费用、旧价参考、未知预留分别列示 |
+| [8笔未知费用预留](UNKNOWN_COST_RESERVATIONS.tsv) | 原失败费用未知，不因恢复成功清零 |
+| [Kimi通道说明](KIMI_TOKENPLAN_STATUS.md) | 支持范围、同型号阻塞及待老师确认安排 |
+| [审计摘要](AUDIT_SUMMARY.json) | 数量核对、完成状态、不可外推的结论 |
+| [校验清单](SHA256SUMS) | 本文件夹其余15份文件的SHA256 |
 
-历史包中的“Kimi阻塞、累计75、请示是否开40题”等表述保留为当时记录；当前状态以本层统一报告和CURRENT_FINAL_STATE为准。正式40题目前按老师v2暂停，并非取消或通过验收。
+## 阅读边界
 
-本文件夹只含审阅汇总，不含Key、完整题面、Gold、答卷、思考或SSE。公开汇总不能独立重放私有原始流。额度余额、标价、套餐占用、参考CNY和cash不可混加为总支出。
+- schema有效不是科学正确，reaction命中不是完整路径正确率。10题单档、3题双档、协议诊断不混为一个质量分母。
+- Qwen恢复后3对、GLM1对共同有效；样本少且参考reaction有地板效应，不作正式非劣或最小预算判断。
+- LENGTH_EMPTY属于配置/交付失败，不是科学答错；没有因低分再采样。原失败、partial和恢复答卷均本地留存。
+- CNY参考价、USD标价、套餐占用、现金和未知预留不能相加为“实际总支出”；Token Plan实扣Credits不可观测。
+- 公开包只含审阅报告、结构化汇总与来源身份，不含Key、私有凭据路径、完整题面/Gold、原始答卷、思考文本或SSE。不能只凭公开汇总独立重放私有流。
+- 旧阶段目录及错误的根目录单文件入口均由本文件夹替代；其他任务不动，原始证据与Git历史保留。
