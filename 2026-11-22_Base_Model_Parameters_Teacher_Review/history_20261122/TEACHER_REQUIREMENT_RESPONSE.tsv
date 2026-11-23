@@ -1,0 +1,14 @@
+requirement_id	teacher_section	teacher_requirement	actual_evidence	status	remaining_or_limit
+SCOPE	开头	仅生成参数/输出预算，不改评分口径	冻结G3与Gold保留，无新AI judge	DONE_WITH_SCOPE_LIMIT	题面信息量公平性是另案，未解决
+QWEN	§3/4/6	budget36864/cap131072；24576/32768/36864/无上限四档	10题单档；3题两档共同有效，1对跨日，reaction均0	PARTIAL	缺32768/无上限及40题；硬预算/非劣未证
+DEEPSEEK	§3/4/6	effort high、max_completion_tokens131072；cap/schema对照	10份有效答卷，含工程恢复	PARTIAL	缺充分cap对照；未触顶不证明硬cap
+GLM	§4/6	low/high pilot；low/high/max；low仍>120k才考虑5.2/剔除	low10题有效；早期005对照；恢复后1个共同有效配对，另low格式失败/high顶满空答	PARTIAL	max/40题与非劣未测；high空答不触发针对low的换模条件
+KIMI	§3/4/6	同exact K3 high/max、cap131072，检查high是否<80k	历史PAYG保留；11-22公开TokenPlan列表无K3，新参数0次	BLOCKED	需原型号授权通道与费用；不换K2、不记科学零分
+GROK	§4补充2/6	核字段/usage并修cap映射，确认生效后统一131072	8192发送/回显，completed总output33032，reasoning28662	DIAGNOSTIC_DONE_REPAIR_NOT_DONE	总预算反例已复现，内部根因/修复未完成
+GPT	§4补充3/6	不加预算，检查strict/schema	012单次原/strict双校验，reaction3/7；cap65536不变	DIAGNOSTIC_DONE_VALIDATION_PARTIAL	无同期原生随机对照；失败率下降/服务端强制未证
+HEADROOM	§3/4/8	C=B+R，R>=2倍正文P99，C不超过模型最大输出	参数已按路由配置；effort软目标，Grok有反例，GLM high仍空答	NOT_FULLY_VERIFIED	不能宣称所有路由充分留出2倍P99余量
+FAILURES	§5	分类日志；UNKNOWN恢复留原件；LENGTH_EMPTY是配置失败非科学错	4工程unknown各恢复一次，3有效/1顶满，原件/预留保留	DONE_THIS_BOUNDED_ROUND_WITH_LIMITS	最大cap空答不机械加cap；历史缺收据/通道限制保留
+PILOT40	§6	40题按Gold3/4/5步与思考四分位分层，完整档位预登记	10题单档+旧样本内3题两档	NOT_DONE	题量/档位/分层不足；额度缩减非老师豁免
+DECISION	§6	逐题reaction配对bootstrap10k；无上限基线CI下界>-5pp；完成率100%，最小预算	逐题评分已有；Qwen3对/GLM1对，仍有格式/空答	NOT_DONE	无无上限全基线，不做正式非劣、不选最小预算、完成率未达100%
+FAIRNESS	§7	充分预算能力口径或32k硬控等资源口径，不混用名义cap	分route/config/实际usage报告，不冒称等资源	REPORTING_DONE_EXPERIMENT_NOT_ACCEPTED	充分预算未全面证实；无独立32k等资源实验；题面提示另案保留
+PRIORITY	§8	先保正文余量，GLM low/high优先	已优先做参数调整和GLM low/high	PARTIAL_NOT_WAIVER	不是全部路由统一同名字段；不是免除§6完整验收
