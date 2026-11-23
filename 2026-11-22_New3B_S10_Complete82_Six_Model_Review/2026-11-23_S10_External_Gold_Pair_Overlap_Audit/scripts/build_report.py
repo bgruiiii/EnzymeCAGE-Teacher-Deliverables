@@ -1,0 +1,168 @@
+#!/usr/bin/env python3
+"""Readable results and a small publication layer; never changes frozen masks."""
+import csv
+import gzip
+import hashlib
+import json
+import shutil
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+RUN = ROOT.parent
+PUB = ROOT / 'public'
+
+
+def rows(p):
+    with p.open() as f:
+        return list(csv.DictReader(f, delimiter='\t'))
+
+
+def table(name, rr):
+    assert rr
+    with (PUB / name).open('w') as f:
+        w = csv.DictWriter(f, fieldnames=list(rr[0]), delimiter='\t', lineterminator='\n')
+        w.writeheader()
+        w.writerows(rr)
+
+
+def main():
+    summary = rows(PUB / 'OVERLAP_SUMMARY_2VIEWS_3SPLITS.tsv')
+    all_metrics = rows(PUB / 'SIX_ARM_FILTERED_RECOMPUTATION_60.tsv')
+    primary = [r for r in all_metrics if r['mask'] == 'PRIMARY_DROP_TRAIN_GOLD_UID_PAIR']
+    aliases = [r for r in rows(PUB / 'GOLD_PAIR_MATCHES_2523.tsv')
+               if r['exact_uid_pair_positive_match'] == 'False' and r['exact_sequence_pair_positive_match'] == 'True']
+    table('EXACT_SEQUENCE_ALIAS_PAIR_ADDITIONS.tsv', aliases)
+    table('PRIMARY_SIX_ARM_RESULTS_12.tsv', primary)
+    table('PAPER_MAIN_S10_TRAIN_PAIR_EXCLUDED_228.tsv', [r for r in primary if r['view'] == 'COMPLETE82_STEP338'])
+    table('SUPPLEMENT_ALL382_PAIR_EXCLUDED_262.tsv', [r for r in primary if r['view'] == 'ALL_SCORED382'])
+    table('SEQUENCE_PAIR_SENSITIVITY_12.tsv', [r for r in all_metrics if r['mask'] == 'SENSITIVITY_DROP_TRAIN_GOLD_SEQUENCE_PAIR'])
+    matrix = rows(PUB / 'STEP_OVERLAP_382.tsv')
+    masks = json.loads((PUB / 'STEP_MASKS_FROZEN.json').read_text())
+    ext = {}
+    c2 = RUN / 'ENZYME_HOST_C2_C3_EXPORT_20261118/STEP_CANDIDATE_RANKINGS.tsv.gz'
+    raw_train_reactions = set()
+    with gzip.open(ROOT / 'private_inputs/S10_POSITIVE_ROWS_SOURCE_BOUND.jsonl.gz', 'rt') as f:
+        for line in f:
+            r = json.loads(line)
+            if r['kind'] == 'positive' and r['split'] == 'train':
+                raw_train_reactions.add(r['reaction'])
+    with gzip.open(c2, 'rt') as f:
+        for r in csv.DictReader(f, delimiter='\t'):
+            if r['arm'] != 'legacy_esm2_3b':
+                continue
+            s = ext.setdefault(r['step_id'], {'case': r['case_id'], 'rxn': r['model_reaction'], 'uids': set(), 'gold': set()})
+            s['uids'].add(r['scientific_uid'])
+            if r['gold_flag'] == 'TRUE':
+                s['gold'].add(r['scientific_uid'])
+    membership = rows(PUB / 'CANDIDATE_UID_MEMBERSHIP_7468.tsv')
+    union_rows, cohorts = [], []
+    for view, viewmasks in masks.items():
+        ss = [r for r in matrix if view == 'ALL_SCORED382' or r['in_complete82'] == 'True']
+        ids = {r['step_id'] for r in ss}
+        us = [r for r in membership if view == 'ALL_SCORED382' or r['in_complete82'] == 'True']
+        d = {'view': view, 'n_steps': len(ss), 'split_scope': 'train OR valid OR test positive union'}
+        for field in ['reaction_match', 'original_s7_family_match', 'any_gold_uid_pair_match', 'any_gold_sequence_pair_match']:
+            n = sum(any(r[sp + '_' + field] == 'True' for sp in ('train', 'valid', 'test')) for r in ss)
+            d[field + '_steps'] = n
+            d[field + '_percent'] = n / len(ss) * 100
+        d['unique_candidate_uids'] = len(us)
+        d['positive_uid_membership_union_count'] = sum(any(r[sp + '_positive_uid_match'] == 'True' for sp in ('train', 'valid', 'test')) for r in us)
+        d['positive_uid_membership_union_percent'] = d['positive_uid_membership_union_count'] / len(us) * 100
+        union_rows.append(d)
+        for name, subsets in viewmasks.items():
+            kept = set(subsets['kept'])
+            cohorts.append({'original_view': view, 'mask': name, 'original_steps': len(ids), 'kept_steps': len(kept),
+                'excluded_steps': len(subsets['dropped']), 'paths_with_kept_steps': len({ext[s]['case'] for s in kept}),
+                'retained_unique_candidate_UIDs': len(set().union(*(ext[s]['uids'] for s in kept))),
+                'retained_step_candidate_associations': sum(len(ext[s]['uids']) for s in kept),
+                'retained_step_Gold_UID_associations': sum(len(ext[s]['gold']) for s in kept),
+                'is_original_82_complete_path_cohort': False})
+    table('ANY_SPLIT_EXPOSURE_SUMMARY.tsv', union_rows)
+    table('FILTERED_COHORT_COUNTS_10.tsv', cohorts)
+    for src, dest in [('PROTOCOL_FROZEN_BEFORE_COUNTS.json', 'PROTOCOL_FROZEN_BEFORE_COUNTS.json'),
+                      ('PROTOCOL_SHA256.txt', 'PROTOCOL_SHA256.txt'),
+                      ('evidence/NORMALIZATION_CONTROLS.json', 'NORMALIZATION_CONTROLS.json'),
+                      ('evidence/STAGE_ORDER_RECEIPT.json', 'STAGE_ORDER_RECEIPT.json'),
+                      ('evidence/CANONICALIZATION_IMPLEMENTATION_NOTE.json', 'CANONICALIZATION_IMPLEMENTATION_NOTE.json'),
+                      ('evidence/s7_reaction_group_split.py', 'original_s7_reaction_group_split.py')]:
+        shutil.copyfile(ROOT / src, PUB / dest)
+    (PUB / 'scripts').mkdir(exist_ok=True)
+    for p in (ROOT / 'scripts').glob('*.py'):
+        shutil.copyfile(p, PUB / 'scripts' / p.name)
+    decisions = []
+    for r in summary:
+        if r['split'] != 'train':
+            continue
+        rate = float(r['any_gold_uid_pair_match_step_percent'])
+        decisions.append({'view': r['view'], 'overlap_steps': int(r['any_gold_uid_pair_match_steps']),
+            'denominator': int(r['n_external_steps']), 'percent': rate,
+            'sister_prespecified_branch': '<5%' if rate < 5 else '5-20%' if rate <= 20 else '>20%',
+            'main_result_policy': 'pair-excluded subset primary; original full cohort supplementary; no unseen/generalization claims',
+            'pair_excluded_steps': int(r['n_external_steps']) - int(r['any_gold_uid_pair_match_steps'])})
+    (PUB / 'DECISION_BY_PRESPECIFIED_THRESHOLD.json').write_text(json.dumps(decisions, ensure_ascii=False, indent=2) + '\n')
+    report = ['# 外测与S10训练集：反应、Gold配对和UID重叠审计', '',
+        '2026-11-23。**师姐要求的新任务已完成：存在实质配对重叠，两视图均超过20%。按事先约定，主文采用排除S10训练已见Gold-UID配对后的228步，全338步降为补充；全382步对应的排除后262步另报。** 原分数、Gold和候选池全部保留，没有重训、重新评分或改变排名。', '',
+        '## 1. 师姐要的数字', '',
+        '每格为“命中数 / 对应分母（百分比）”。前三种步骤统计始终以382或338步为分母；UID membership以该视图唯一候选UID数为分母。只匹配split中Label=1的正样本。', '',
+        '| 原视图 | S10 split | RDKit同方向反应 | 反应×任一Gold UID | 原S7正反向家族 | 候选UID在正样本中 |',
+        '|---|---|---|---|---|---|']
+    for r in summary:
+        n = r['n_external_steps']
+        fmt = lambda field: f"{r[field+'_steps']}/{n}（{float(r[field+'_step_percent']):.2f}%）"
+        report.append(f"| {n}步 | {r['split']} | {fmt('reaction_match')} | {fmt('any_gold_uid_pair_match')} | {fmt('original_s7_family_match')} | {r['positive_uid_membership_count']}/{r['n_unique_candidate_uids']}（{float(r['positive_uid_membership_percent']):.2f}%） |")
+    report += ['', '关键的训练配对重叠是**120/382=31.41%**和**110/338=32.54%**。分别涉及188/841、174/739条Gold关联；一个步骤可能有多个Gold，不能把188或174当作步骤数。全部Gold均已见的步骤分别为62、54；主剔除规则为任一Gold已见即整步排除。', '',
+        'valid/test分开报告，不混称“用于梯度训练”；三split并集见[暴露并集表](ANY_SPLIT_EXPOSURE_SUMMARY.tsv)。UID交集可跨split重复，三个数不能直接相加。此前4186/2625/2568是包括负样本UID在内的membership披露；本次按师姐要求只看正样本，train得到3747/7468=50.17%，338视图为3560/7056=50.45%，并非沿用旧数字换算。', '',
+        '## 2. 反应、立体和“家族”的确切含义', '',
+        '- 实际用RDKit 2026.03.5解析/清洗分子图，去atom-map编号，输出canonical isomeric SMILES并按每侧组分排序；同方向匹配。保留已指定的手性、双键立体、同位素、电荷、组分及其重复次数；未指定立体不等同于指定立体。',
+        '- 次级口径仅RemoveStereochemistry后重算，单独列在结果表：训练反应重叠变为164/382、150/338；训练Gold-UID配对变为131/382、120/338。没有把这层静默代替主规则。',
+        '- 不做互变异构、质子化、辅因子删减、计量配平或宽泛机制等价归并；这是明确的RDKit图表示判等，不宣称覆盖一切化学等价。所有5770个训练反应均能解析，外测382步无解析失败。107个源反应保留字面dummy原子，外测没有dummy；不作子结构扩展或用泛式替代具体反应。',
+        '- “同家族”完全复用原S7函数：把原方向字符串R及其精确reverse排好序，以`ISG_ + SHA256(a + 换行 + b)`为组键。源CSV中全部存储组号逐行回验一致。这是精确正反向操作分组，不是EC家族、机制家族或蛋白同源家族。', '',
+        '以前116个同向键是去重后的反应键数；当前按师姐要求统计的是步骤出现次数，116个同向键对应142步。它们不能直接比较成“116步变142步”。', '',
+        '## 3. Gold配对还核了UID别名和序列', '',
+        '主配对按原目标反应＋Gold科学UID判等；训练正样本中的UID同序列冲突为0。另按反应＋精确序列SHA做独立敏感性检查：训练重叠为121/382、111/338，比UID口径各多1步。`BIOPATH150_052__S02__BSY-r00343`的Gold A5W4G5与训练carrier P0C622序列完全相同，UID不同；没有把它当成蛋白同源相似，而是精确序列身份。内部test另有一例P0A390/P0A391别名，详见[别名表](EXACT_SEQUENCE_ALIAS_PAIR_ADDITIONS.tsv)。', '',
+        '因此同时交付UID主口径262/228步和更保守的精确序列261/227步。两套掩码都在看剔除后成绩之前固定，不因哪套模型表现更好而切换。这一审计不含全蛋白同源聚类，也不证明PLM预训练未暴露。', '',
+        '## 4. 不重训，只按冻结名单复算六臂', '',
+        '以下为338步视图排除110步后留下的228步；六臂使用完全同一个掩码，每步原候选/Gold/分数/排名不变。H1/H10为百分比，Δ为相对原338步的百分点差；MRR保留原定义。', '',
+        '| 模型臂 | 原H1→228步H1 | 原H10→228步H10 | ΔH10（百分点） | 原MRR→228步MRR |',
+        '|---|---|---|---|---|']
+    for r in primary:
+        if r['view'] != 'COMPLETE82_STEP338':
+            continue
+        report.append(f"| {r['arm']} | {float(r['full_hit_at_1'])*100:.2f}→{float(r['kept_hit_at_1'])*100:.2f} | {float(r['full_hit_at_10'])*100:.2f}→{float(r['kept_hit_at_10'])*100:.2f} | {float(r['delta_hit_at_10_percentage_points']):+.2f} | {float(r['full_mrr']):.5f}→{float(r['kept_mrr']):.5f} |")
+    report += ['', '**不能写“变化不超过很小阈值、结论完全不变”。** 六臂H1/H10/MRR的点估计有变化，原全量模型名次也不能直接沿用。新3B的H1从21.89%降为16.67%，H10从77.51%降为73.25%；Hit@5从59.76%降为52.19%，变化−7.57个百分点。该结果衡量剔除后样本组成，不是一次新训练、干预因果效应或“模型忘记了知识”。', '',
+        '主结果表：[228步六臂](PAPER_MAIN_S10_TRAIN_PAIR_EXCLUDED_228.tsv)；补充：[262步六臂](SUPPLEMENT_ALL382_PAIR_EXCLUDED_262.tsv)；[精确序列敏感性](SEQUENCE_PAIR_SENSITIVITY_12.tsv)。另有反应排除、原家族排除、三split配对并集排除共五套预冻结规则的[60行完整复算](SIX_ARM_FILTERED_RECOMPUTATION_60.tsv)。', '',
+        '原60条配对区间不能照搬到新子集。按既有路径cluster方法，对UID和序列两套掩码重算10000次、seed=20261120，共[120条新3B对其余五臂的配对区间](FILTERED_PATH_CLUSTER_PAIRED_CI_120.tsv)；未作多比较校正，不以跨0证明等效。以包含保留步骤的路径为cluster，不以五seed波动替代总体区间。', '',
+        '**228步不再是82条完整路径。** 它们来自原82路径中的76条；只有24条保留了该路径原有的全部评分步。原382步排除后262步来自88条路径，31条保留原有全部评分步。不能用新步骤成绩替代原“30/82整条路径每步进Top10”结果，不能把原微生物1100物种等分母搬到新子集；新分母见[筛选后队列计数](FILTERED_COHORT_COUNTS_10.tsv)。', '',
+        '## 5. 论文采用口径与边界', '',
+        '两视图均超过师姐事先规定的20%阈值，因此采用**配对排除子集为主结果、全量为补充**；删除unseen/generalization的主张，写作“在固定候选池内、排除S10训练已见正样本配对后的条件排序”。本审计只对S10三split负责，不能据共同掩码认证三个旧formal臂也全部未见；保留的步骤仍可能见过反应、其他酶配对或近同源蛋白。', '',
+        '上线究竟装载哪组仍按师姐安排由她向黄老师确认，本轮不追部署。旧600M replay门、新600M logit门、EnzGFM拆批敏感性、新3B Q66/Q78等逐臂限制全部保留，不改签已通过。没有重训、forward、新候选池、Gold重建或按成绩删题。', '',
+        '## 6. 可核查材料', '',
+        '- [逐步骤重叠表](STEP_OVERLAP_382.tsv)及[382步标准化结果](EXTERNAL_REACTION_NORMALIZATION_382.tsv)。',
+        '- [841条Gold×3split的2523行匹配证据](GOLD_PAIR_MATCHES_2523.tsv)：每个命中含原CSV记录号，序列别名另列。',
+        '- [UID membership](CANDIDATE_UID_MEMBERSHIP_7468.tsv)及[六行主汇总](OVERLAP_SUMMARY_2VIEWS_3SPLITS.tsv)。',
+        '- [预先冻结协议](PROTOCOL_FROZEN_BEFORE_COUNTS.json)、[名单](STEP_MASKS_FROZEN.json)、[先封名单后算成绩的收据](MASKS_SEALED_BEFORE_METRICS.json)。',
+        '- [三个原CSV起止SHA回执](S10_SOURCE_RECEIPTS.json)、[独立SQL/图解析核查](INDEPENDENT_CHECKS.json)、[标准化控制](NORMALIZATION_CONTROLS.json)、[bootstrap减算核查](BOOTSTRAP_REDUCTION_CHECKS.json)。',
+        '- `scripts/`为实际执行源码快照，保留原项目输入绑定；S10表本体/完整正样本导出不随公开材料分发。复算本次六臂指标只需已交逐步表与冻结掩码，重做训练侧匹配需有权限的原S10表。', '',
+        '本任务只读原件并写独立交付目录；没有向师姐/黄老师发送消息。']
+    (PUB / 'REPORT_FOR_SISTER.md').write_text('\n'.join(report) + '\n')
+    (PUB / 'README.md').write_text('''# 11月23日新增任务：外测与S10训练正样本配对级重叠审计
+
+**已完成。配对重叠为120/382（31.41%）、110/338（32.54%），超过预定20%分支。**
+
+先读[给师姐的完整结果与采用说明](REPORT_FOR_SISTER.md)。按原约定改用[228步配对排除主表](PAPER_MAIN_S10_TRAIN_PAIR_EXCLUDED_228.tsv)，全量338/382保留在上一级作为补充；新表不是82条完整路径。更保守的精确序列别名口径为227步，敏感性结果一并提供。
+
+反应级、配对级、正样本UID membership、原S7家族占比均按382/338两个视图、train/valid/test三个split分别量化。匹配与名单先冻结，再读既有六臂排名做离线复算，不重训、不重新评分、不改候选或Gold。
+
+[六行重叠汇总](OVERLAP_SUMMARY_2VIEWS_3SPLITS.tsv) · [逐步证据](STEP_OVERLAP_382.tsv) · [Gold配对证据](GOLD_PAIR_MATCHES_2523.tsv) · [全部敏感性复算](SIX_ARM_FILTERED_RECOMPUTATION_60.tsv) · [独立核查](INDEPENDENT_CHECKS.json)
+''')
+    # Reproducible file identities, including reader pages and the original source scripts.
+    with (PUB / 'SHA256SUMS').open('w') as f:
+        for p in sorted(PUB.rglob('*')):
+            if p.is_file() and p.name != 'SHA256SUMS' and '__pycache__' not in p.parts:
+                f.write(hashlib.sha256(p.read_bytes()).hexdigest() + '  ' + str(p.relative_to(PUB)) + '\n')
+    print(json.dumps({'public_files': sum(x.is_file() for x in PUB.rglob('*')), 'primary_rows': len(primary),
+                      'decision': decisions}, ensure_ascii=False))
+
+
+if __name__ == '__main__':
+    main()

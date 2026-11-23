@@ -1,0 +1,52 @@
+{
+  "task": "Sister requested external-vs-S10 reaction / Gold-pair / positive-UID overlap; no generation or training",
+  "frozen_utc": "2026-11-23T07:43:27.344861+00:00",
+  "views": {
+    "ALL_SCORED382": 382,
+    "COMPLETE82_STEP338": 338
+  },
+  "split_scope": [
+    "train",
+    "valid",
+    "test"
+  ],
+  "positive_label": "Label == 1; negative rows never establish seen-positive pairs or positive UID membership",
+  "canonical_primary": "RDKit sanitized molecular graphs, clear atom mapping, canonical isomeric SMILES per connected component, sort components on each side, keep reaction direction; preserve specified stereochemistry, isotope, formal charge, components and multiplicity. No tautomer/protonation/cofactor balancing or implicit reaction equivalence.",
+  "stereo_secondary": "Same graph normalization after RemoveStereochemistry; all such results separate, never silently substituted for primary",
+  "parse_failures": "Preserve per-record error and UNKNOWN; no failed canonicalization treated as a confirmed non-overlap",
+  "reaction_metric": "Step target directed canonical reaction appears in split positive reaction set; count steps, not distinct reactions",
+  "gold_primary": "Step target directed canonical reaction + exact Gold scientific UID appears as a positive sample in that split. A step is overlapped if ANY retained Gold matches. Also report ALL-Gold matched and pair counts.",
+  "gold_sequence_sensitivity": "Same reaction + exact sequence SHA; count independently because training-carrier UID aliases can hide identical proteins. No homology threshold or full homology audit.",
+  "uid_membership": "Unique candidate UIDs in each external view intersect split positive UIDs; additionally report step-candidate association weighting separately",
+  "family_secondary": "Reuse actual frozen S7 INTERNAL_SPLIT_GROUP construction, including exact reverse representation; verify implementation / stored group IDs before counting. This is an operational exact forward/reverse family, not EC/mechanism/homology grouping.",
+  "frozen_masks": {
+    "PRIMARY_DROP_TRAIN_GOLD_UID_PAIR": "drop every step with primary canonical reaction x Gold UID match in TRAIN positive rows, same steps for all six arms",
+    "SENSITIVITY_DROP_TRAIN_GOLD_SEQUENCE_PAIR": "drop every step with canonical reaction x exact Gold sequence SHA match in TRAIN positive rows",
+    "SENSITIVITY_DROP_TRAIN_REACTION": "drop train-positive directed canonical reaction overlap",
+    "SENSITIVITY_DROP_TRAIN_FAMILY": "drop train-positive original S7 forward/reverse group overlap",
+    "SENSITIVITY_DROP_ANY_SPLIT_GOLD_UID_PAIR": "drop primary Gold UID pair if present in train OR valid OR test, exposure sensitivity only"
+  },
+  "mask_freeze_order": "This file is sealed before calculating overlap counts or any filtered metrics. First produce matching tables and step masks without reading ranks; seal mask SHA, then read existing per-step metrics.",
+  "metrics": "Reuse unchanged six-arm per-step results. No rerank, candidate deletion, Gold deletion, forwards or new model selection. Report original and filtered n, Hit@1/3/5/10, MRR and MRR@10 with differences in percentage points for hits.",
+  "sister_thresholds": {
+    "lt_5_percent": "keep full-view primary; filtered supplement; measure actual change before saying unchanged",
+    "5_through_20_percent_inclusive": "keep full-view primary; filtered supplement and knowledge-interpolation wording",
+    "gt_20_percent": "recommend filtered primary and full-view supplement; remove unseen/generalization claims"
+  },
+  "threshold_basis": "Primary TRAIN directed canonical reaction x exact Gold UID step fraction, separately 382/338. Sequence-alias sensitivity and partial-family caveats must accompany decision. No subgroup outcome changes masks.",
+  "interpretation_limits": [
+    "S10 overlap audit does not certify old-formal training sets of the three original-formal arms as unseen",
+    "No family/UID match alone proves a positive reaction-enzyme pair was seen",
+    "If only some steps remain in a path, filtered set is steps from 82 paths, not 82 complete pathways",
+    "No hypothesis of unchanged conclusions is preaccepted"
+  ],
+  "forbidden": [
+    "retraining",
+    "model forward",
+    "GPU experiment",
+    "candidate reconstruction",
+    "change original Gold/pool/ranking",
+    "filter by score",
+    "send messages to sister or Huang"
+  ]
+}
