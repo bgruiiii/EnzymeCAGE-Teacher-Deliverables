@@ -1,0 +1,99 @@
+{
+  "record_type": "release_approval_record",
+  "prepared_by_note": "按黄老师11-24旧指定路线范围授权，由主窗口于实际UTC完成机械复核和本地发布冻结；非黄老师电子签名，非独立真人科学评审；未上传GitHub。",
+  "task_id": "T03_OLD_V05_FREEZE_CANDIDATE_20261126",
+  "authorization": {
+    "authorizer": "黄老师",
+    "authorization_date": "2026-11-24",
+    "authorization_date_precision": "DAY",
+    "note_on_time": "授权原文只给出日期（2026-11-24，Asia/Shanghai），未给出精确时刻；本记录不伪造00:00Z或任何具体时刻。",
+    "source_file_path": "/home/a/EnzymeCAGE/custom/docs/enzyme_feature_expansion/ENZYMECAGE_LUCAPCYCLE_MODEL_TRAINING_RUN_2026-07-01/00_Authority_Teacher_Plan/回复-陈浩然-三项裁决清单-20261124(1).md",
+    "source_file_sha256": "8ac5e174b55a848faee406458ef0d69e6172ef28db8e355f3d353c67974c9430",
+    "source_location": "第三节「我现在就批的三件」第1条（文件第126行）；配套上下文第一节Q2（第30-37行，锁死句为第34行）与附注SCORE_RULES_RELEASE.json引用（第156-165行）",
+    "original_sentence": "1. **批准 V0.5 走完冻结程序。** 补 `RELEASE_APPROVAL.json`，绑定 `SOURCE_MANIFEST.tsv` 的 sha，把 `status` 从 `READY_FOR_RELEASE_REVIEW` 推到已发布。**冻结范围仅限旧题面/指定路线**，不含开放路线。",
+    "related_quote_Q2": "锁死：三份正文 SHA `4d891baa…`、权重 `D1 15 / D2 25 / D3a 10 / D3b 10 / D4 15 / D5 15 / D6 10`、总分与科学子分公式。**不改维度、不改权重、不改公式。**",
+    "scope_authorized": "范围授权，仅针对旧题面/指定路线的冻结手续；本记录不得用于宣称开放路线已冻结或已放行。"
+  },
+  "packaging": {
+    "packaging_started_utc": "20261126T014654Z",
+    "executor_role": "本地ZCode执行窗口（AI），受总合同T03执行卡指派；不是黄老师电子签名，不是独立真人审查。",
+    "candidate_directory": "/home/a/EnzymeCAGE/custom/docs/enzyme_feature_expansion/ENZYMECAGE_LUCAPCYCLE_MODEL_TRAINING_RUN_2026-07-01/HUANG_THREE_DECISIONS_EXECUTION_20261124/01_old_v05_freeze/candidate_20261126_20261126T014654Z",
+    "single_authoritative_copy": "本最终包内RELEASE_APPROVAL.json为最终权威副本；外层同名文件仅为逐字节快照。候审包保持原状。",
+    "final_release_directory": "/home/a/EnzymeCAGE/custom/docs/enzyme_feature_expansion/ENZYMECAGE_LUCAPCYCLE_MODEL_TRAINING_RUN_2026-07-01/HUANG_THREE_DECISIONS_EXECUTION_20261124/01_old_v05_freeze/release_final_20261126T020633Z"
+  },
+  "scope": "OLD_SPECIFIED_ROUTE_ONLY",
+  "scope_exclusions": [
+    "新开放路线评分、排名与对外结论（老师红线1；本包不构成任何开放路线放行）",
+    "三版本 task_scope_version / reference_version / adapter_version 的登记与冻结（属Q2另发版本号范围，另行办理）",
+    "开放路线D2判定附录（§2.2，独立SHA独立版本号，不在本包）",
+    "applicability四态与NE阈值规则（§2.1/§2.3，属T04/T05澄清范围）",
+    "人类独立外部效度、真人评分与任何真实模型/API调用"
+  ],
+  "release_subject": {
+    "source_package_original_path": "/home/a/EnzymeCAGE/custom/docs/enzyme_feature_expansion/ENZYMECAGE_LUCAPCYCLE_MODEL_TRAINING_RUN_2026-07-01/LIKERT_V05_CODE_DELIVERY_20261114/payload/2026-11-14_Likert_V05_Scoring_Code",
+    "source_package_regular_file_count": 81,
+    "manifest_path": "provenance/SOURCE_MANIFEST.tsv",
+    "manifest_binding_note": "manifest_sha绑定本最终副本实际来源清单；candidate_manifest_sha256及source_manifest_original_sha256仅保存历史值。包级SHA256SUMS另行覆盖所有文件。",
+    "source_manifest_original_sha256": "c0f92da92a30c27204fb18054c23403577cb6f115d2b941e5716f4c1bfb5e148",
+    "scientific_rubric_txt_sha256": "4d891baa45d1887d2fa7c67d5e90ffbd37341b79f8c664e73118e5bd7b03a128",
+    "readable_docx_sha256": "48073544896e18b27a741f7cd381dc2e64ad2845ae1b798c43bdd82c1bb18f73",
+    "rules_json_sha256_in_candidate": "a758978587ae57004e3ba030f7822bc373fb8173010e0b72af689cbfdf8ff8a4",
+    "file_identity_note": "TXT正文、机器规则JSON、readable DOCX是三个不同文件，各自SHA如上；三者不存在互相等于的要求。老师Q2所说'三份正文同SHA'的原证据既存登记见 HUANG_THREE_DECISION_REQUEST_EVIDENCE_20261124/EVIDENCE_INDEX.tsv 行L06，本包只引用该登记，不重复制作。",
+    "release_id": "LIKERT_V05_SCORING_FLOW_FIXED_20261111",
+    "release_id_evidence_pointer": "rubric/SCORE_RULES_RELEASE.json#/release_id",
+    "primary_judge": "deepseek-v4.1-flash-1017",
+    "primary_judge_evidence_pointers": [
+      "docs/WORKFLOW.md 第17行（评分模型为`deepseek-v4.1-flash-1017`）",
+      "config_templates/scoring.example.json#/model",
+      "tests/test_scoring.py、examples/synthetic_request.json、examples/synthetic_repair_request.json 中的同一模型ID"
+    ],
+    "frozen_weights": {
+      "D1": 15,
+      "D2": 25,
+      "D3a": 10,
+      "D3b": 10,
+      "D4": 15,
+      "D5": 15,
+      "D6": 10
+    },
+    "weights_evidence_pointers": [
+      "rubric/SCORE_RULES_RELEASE.json#/weights",
+      "rubric/SYSTEM_RUBRIC_USED_S8.txt 第113行（C08）与第222行（[P77]）"
+    ],
+    "formula_unchanged_check_pointers": [
+      "rubric/SYSTEM_RUBRIC_USED_S8.txt 第113行：'七维15/25/10/10/15/15/10权重、总分1.5D1+2.5D2+D3a+D3b+1.5D4+1.5D5+D6、科学子分(25D2+10D3a+10D3b+15D4)/60不变'（原文提取，未重写）",
+      "rubric/SYSTEM_RUBRIC_USED_S8.txt 第222行 [P77]：'专家加权总分 = 15×D1/10 + 25×D2/10 + 10×D3a/10 + 10×D3b/10 + 15×D4/10 + 15×D5/10 + 10×D6/10'（原文提取，未重写）",
+      "科学正文字节不变；最终复核见外层FINAL_CHECKS.json及包内RELEASE_RECORD.md。"
+    ],
+    "candidate_manifest_sha256": "c0f92da92a30c27204fb18054c23403577cb6f115d2b941e5716f4c1bfb5e148",
+    "manifest_sha": "4d5b723128a9f85a11f15b7953e0611a0654cb2a15fff099eab1b932b963f9bc",
+    "manifest_sha256_final": "4d5b723128a9f85a11f15b7953e0611a0654cb2a15fff099eab1b932b963f9bc",
+    "rules_json_sha256_final": "ae0e9bec3850e34bfe49b400b67528c1f42c80378e66999ff2f824c21dbf52b0"
+  },
+  "current_status": {
+    "engineering_review_status": "PRIMARY_WINDOW_ACCEPTED",
+    "released": true,
+    "reviewed_by": "主窗口（Codex，AI机械复核；非独立真人科学评审）",
+    "reviewed_utc": "20261126T020634Z",
+    "rules_json_status_field": "RELEASED",
+    "rules_json_formal_freeze_field": "FROZEN_20261126T020634Z_PRIMARY_WINDOW (scope=OLD_SPECIFIED_ROUTE_ONLY; binding recorded in RELEASE_APPROVAL.json)",
+    "distribution_status": "LOCAL_FROZEN_NOT_UPLOADED",
+    "scope": "OLD_SPECIFIED_ROUTE_ONLY",
+    "scientific_review_note": "仅旧指定路线发布手续完成；开放路线方法、人类独立效度、depending接入均不由此获得完成状态。"
+  },
+  "manifest_path": "provenance/SOURCE_MANIFEST.tsv",
+  "manifest_sha": "4d5b723128a9f85a11f15b7953e0611a0654cb2a15fff099eab1b932b963f9bc",
+  "approved_by": "黄老师",
+  "approval_date": "2026-11-24",
+  "finalized_utc": "20261126T020634Z",
+  "primary_review": {
+    "candidate_review_path": "/home/a/EnzymeCAGE/custom/docs/enzyme_feature_expansion/ENZYMECAGE_LUCAPCYCLE_MODEL_TRAINING_RUN_2026-07-01/HUANG_THREE_DECISIONS_EXECUTION_20261124/05_review/T03_FREEZE_PRIMARY_REVIEW_20261126/CANDIDATE_REVIEW.json",
+    "candidate_review_sha256": "00f560bf39eb66962b6ea95f0bcf31b736aa407c98015e2c2c1280bf3f964d5f",
+    "findings_resolved_in_final_copy": [
+      "F01",
+      "F02",
+      "N01"
+    ],
+    "final_verification": "外层FINAL_CHECKS.json是封包后结果，不让审批文件与最终包清单互相自哈希。"
+  }
+}

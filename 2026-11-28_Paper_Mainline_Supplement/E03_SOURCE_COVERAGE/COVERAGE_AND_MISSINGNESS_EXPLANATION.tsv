@@ -1,0 +1,15 @@
+item_id	value	unit	layer	denominator	ratio	source_table_column	predicate_or_scope	can_say	cannot_say
+E03-01	7468	候选酶UID行	全体队列	7468	1.000000	MICROBE_UID_EVIDENCE_FOR_PAPER_7468.tsv.gz#scientific_uid	全表行数；每行=一个科学UID+其冻结序列	论文可说：候选酶集合共7468条UID行	不能说：7468个物种/菌株；不能说每行都是已识别微生物来源
+E03-02	7430	UID行	来源表记录层（source_lookup_status）	7468	0.994912	MICROBE_UID_EVIDENCE_FOR_PAPER_7468.tsv.gz#source_lookup_status	值==FOUND	可说：指定查询命中并绑定到单一权威来源的记录层条数	不能说：7430条都可用于微生物后续推荐（范围与物种可识别性是另外的层）
+E03-03	7	UID行	来源表记录层（source_lookup_status）	7468	0.000937	MICROBE_UID_EVIDENCE_FOR_PAPER_7468.tsv.gz#source_lookup_status	值==FOUND_SOURCE_SET	可说：命中来源集合但无单一来源身份；按原记录证据单独判定	不能说：当作单一已识别物种；也不能并入NO_HIT的'未命中'表述
+E03-04	30	UID行	来源表记录层（source_lookup_status）	7468	0.004017	MICROBE_UID_EVIDENCE_FOR_PAPER_7468.tsv.gz#source_lookup_status	值==NO_HIT	可说：30条在指定来源查询中未命中	不能说：该酶无活性、无来源、不能降解；也不能据此删除该行
+E03-05	1	UID行	来源表记录层（source_lookup_status）	7468	0.000134	MICROBE_UID_EVIDENCE_FOR_PAPER_7468.tsv.gz#source_lookup_status	值==IDENTITY_CONFLICT	可说：1条来源身份冲突，已显式保留处理	不能说：静默填成任一候选来源
+E03-06	5579	候选酶UID行	R1工作定义层（判定B基线）	7468	0.747054	UID_SPECIES_TRACE_7468_R1.tsv#identified_microbe_source_for_followup	谓词=traceable∧scope_accepted∧species_identity_state==IDENTIFIED_SPECIES；辅助比例5579/5601=0.996072（条件分母=记录可追∧范围接受5601）	可说：满足已审工作定义、可作后续微生物来源证据的候选酶条数	不能说：5579个物种/菌株；不证明可培养、可购买或整链功能；不从7430随意加减推算
+E03-07	31	字段空值行	来源表原始空字段（BASE.species_name）	7468	0.004151	MICROBE_UID_EVIDENCE_FOR_PAPER_7468.tsv.gz#species_name	原值==空字符串（严格定义，未合并R1列）	可说：31条species_name原样为空，保留为真实缺失	不能说：填假物种；不能与R1的cur_species_tax_id空值（另一列口径）混算成一个数
+E03-08	38	字段空值行	来源表原始空字段（BASE.source_signature）	7468	0.005088	MICROBE_UID_EVIDENCE_FOR_PAPER_7468.tsv.gz#source_signature	原值==空字符串	可说：38条source_signature原样为空，保留为真实缺失	不能说：视同0覆盖或删除；这38与31是两条不同轴的计数，不可相加成一个总量
+E03-09	5607	UID行	工作定义辅助层（范围接受，独立于追溯层）	7468	0.750803	UID_SPECIES_TRACE_7468_R1.tsv#microbe_scope_accepted	值==TRUE（BASE对应列accepted_microbe_scope_flag==true同为5607）	可说：已按先前接受口径认定为微生物范围的条数	不能说：范围接受即物种已识别；此层与记录可追层是两轴，5607+7430无意义
+E03-10	5601	UID行	工作定义辅助层（记录可追∧范围接受）	7468	0.750000	UID_SPECIES_TRACE_7468_R1.tsv#source_record_species_traceable+microbe_scope_accepted	两列同时==TRUE	可说：保留的记录层基础数（先前审定的5601）	不能说：直接当判定B采用数（还差占位未识别一步）
+E03-11	22	UID行	工作定义辅助层（占位未识别单列）	5601	0.003928	UID_SPECIES_TRACE_7468_R1.tsv#species_identity_state	值==UNIDENTIFIED_PLACEHOLDER_LABEL（22项在5601内单列，已登记Unknown/uncultured名单）	可说：5601−22=5579；占位标签按已审state列单列	不能说：按名字regex重新分类；不能与NO_HIT/CONFLICT/source-set合并成新unknown
+E03-12	229	UID行	元数据轴（历史歧义flag保留）	7468	0.030664	UID_SPECIES_TRACE_7468_R1.tsv#hist_is_ambiguous_retained	值==1	可说：229条保留历史歧义元数据标记，含义不变	不能说：重编码为物种不确定；不能并入采用/未采用计数
+E03-13	71	物种数	证据丰富度轴（原表引用，本窗口未重算）			SPECIES_TRACE_STATUS_COUNTS_R1.tsv#statistic=multi-proteome keys on one species	引自已审计数表；引用保持原义	可说：71个物种上存在多proteome键，属证据丰富度	不能说：判为歧义/unknown；本窗口未独立重算该数
+E03-14	4845	UID行	性状资料轴（C8记录存在，原表引用）	7468	0.648768	SPECIES_TRACE_STATUS_COUNTS_R1.tsv#statistic=C8_source_record_present	引自已审计数表；BASE#c8_record_status==OK实测4845一致（仅作交叉观察，不构成来源门）	可说：C8记录存在是性状资料轴	不能说：当作来源判定门；不能拿4845与7430/5579相加或相减
